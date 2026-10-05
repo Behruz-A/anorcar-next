@@ -1,0 +1,334 @@
+#pc-wrap {
+	#my-page {
+		background: #f6f6f6;
+		.container {
+			.my-page {
+				position: relative;
+				width: 100%;
+				flex-direction: row;
+				gap: 25px;
+				padding-top: 96px;
+				.back-frame {
+					width: 1260px;
+					height: auto;
+					display: flex;
+					flex-direction: row;
+					margin: 100px 0 200px 0;
+					border-radius: 12px;
+					border: 1px solid #c4c4c4;
+					background: #fff;
+					box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
+					.left-config {
+						position: relative;
+						padding: 0 0 0 0;
+						width: 266px;
+						height: 700px;
+						border-radius: 12px;
+						background: #fff;
+						border: 1px solid rgba(196, 196, 196, 0.79);
+						box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
+						margin: 180px 20px 40px 20px;
+						.profile {
+							margin-top: 5px;
+							position: relative;
+							display: flex;
+							flex-direction: row;
+							.profile-img {
+								img {
+									width: 79px;
+									height: 79px;
+									border-radius: 50%;
+									right: 30px;
+									bottom: 12px;
+									object-fit: cover;
+								}
+							}
+							.user-info {
+								margin-left: 20px;
+								display: flex;
+								flex-direction: column;
+								.user-name {
+									color: #181a20;
+									font-family: $font;
+									font-size: 15px;
+									font-style: normal;
+									font-weight: 600;
+									line-height: normal;
+								}
+								.user-phone {
+									display: flex;
+									flex-direction: row;
+									img {
+										margin-top: 7px;
+										margin-right: 4px;
+										width: 16px;
+										height: 16px;
+									}
+								}
+								.view-list {
+									font-weight: bold;
+									color: red;
+								}
+							}
+						}
+						.sections {
+							height: auto;
+							gap: 45px;
+							margin-top: 30px;
+							.section {
+								height: auto;
+								.title {
+									font-family: $font;
+									font-size: 15px;
+									font-style: normal;
+									font-weight: 400;
+									line-height: 28px;
+								}
+								.sub-section {
+									width: 230px;
+									height: 26px;
+									display: flex;
+									flex-direction: column;
+									align-items: center;
+									cursor: pointer;
+									padding: 0 5px 0 5px;
+									li {
+										height: 33px;
+										margin-bottom: 6px;
+										border-radius: 4px;
+									}
+									.focus {
+										height: 50px;
+										background: #000000;
+										border-radius: 10px;
+										p {
+											font-size: 14px;
+											color: #ffffff;
+										}
+									}
+									.flex-box {
+										display: flex;
+										align-items: center;
+										.com-icon {
+											display: flex;
+											flex-direction: row;
+											justify-content: flex-end;
+											margin-left: 11px;
+										}
+										p {
+											font-size: 14px;
+										}
+									}
+								}
+								img {
+									width: 16px;
+									height: 16px;
+								}
+								.sub-title {
+									margin-left: 12px;
+									color: #181a20;
+									font-family: $font;
+									font-size: 14px;
+									font-style: normal;
+									font-weight: 600;
+									line-height: 55px;
+								}
+							}
+						}
+					}
+					.main-config {
+						position: relative;
+						width: 936px;
+						margin-top: 52px;
+						align-items: center;
+						gap: 109px;
+						.list-config {
+							display: flex;
+							width: 100%;
+							height: auto;
+							flex-direction: row;
+							flex-wrap: wrap;
+							gap: 22px;
+							.card-config {
+								width: 296px;
+								height: 413px;
+								margin-bottom: 7px;
+								border-radius: 12px;
+								background: #fff;
+								box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
+								.top {
+									position: relative;
+									width: 100%;
+									height: 240px;
+									img {
+										width: 100%;
+										height: 100%;
+										object-fit: contain;
+										border-radius: 12px 12px 0 0;
+									}
+									.top-badge {
+										position: absolute;
+										top: 20px;
+										left: 16px;
+										display: flex;
+										width: 80px;
+										height: 30px;
+										justify-content: center;
+										align-items: center;
+										border-radius: 6px;
+										padding: 6px 20px;
+										background: #eb6753;
+										color: #fff;
+										text-align: center;
+										text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+										font-family: $font;
+										font-size: 12px;
+										font-style: normal;
+										font-weight: 600;
+										line-height: normal;
+										img {
+											height: 16px;
+										}
+									}
+									.price-box {
+										position: absolute;
+										bottom: 20px;
+										left: 20px;
+										padding: 8px 15px;
+										align-items: center;
+										border-radius: 6px;
+										border: 1px solid rgba(255, 255, 255, 0.5);
+										background: #fff;
+										p {
+											color: #181a20;
+											font-family: $font;
+											font-size: 15px;
+											font-style: normal;
+											font-weight: 600;
+											line-height: normal;
+										}
+									}
+								}
+								.bottom {
+									width: 100%;
+									height: 100%;
+									padding: 20px 16px 10px 16px;
+									.name-address {
+										width: 100%;
+										height: 48px;
+										gap: 5px;
+										margin-bottom: 20px;
+										.name {
+											width: 100%;
+											height: 23px;
+											overflow: hidden;
+											p {
+												color: #181a20;
+												font-family: $font;
+												font-size: 15px;
+												font-style: normal;
+												font-weight: 600;
+												line-height: normal;
+												text-transform: capitalize;
+											}
+										}
+										.address {
+											width: 100%;
+											overflow: hidden;
+											p {
+												color: #717171;
+												font-family: $font;
+												font-size: 13px;
+												font-style: normal;
+												font-weight: 400;
+												line-height: normal;
+											}
+										}
+									}
+									.options {
+										flex-direction: row;
+										width: 100%;
+										height: 20px;
+										gap: 20px;
+										margin-bottom: 10px;
+										.option {
+											flex-direction: row;
+											gap: 5px;
+											align-items: center;
+											p {
+												color: #181a20;
+												font-family: $font;
+												font-size: 13px;
+												font-style: normal;
+												font-weight: 400;
+												line-height: normal;
+											}
+										}
+									}
+									.divider {
+										width: 100%;
+										height: 1px;
+										background: #ddd;
+										margin-bottom: 17px;
+									}
+									.type-buttons {
+										flex-direction: row;
+										width: 100%;
+										justify-content: space-between;
+										align-items: center;
+										.type {
+											flex-direction: row;
+											align-items: center;
+											gap: 7px;
+											p {
+												color: #181a20;
+												font-family: $font;
+												font-style: normal;
+												line-height: normal;
+											}
+											.disabled-type {
+												color: rgba(143, 143, 143, 0.54);
+												font-family: $font;
+												font-style: normal;
+												line-height: normal;
+											}
+										}
+										.buttons {
+											flex-direction: row;
+											width: auto;
+											gap: 12px;
+											justify-content: center;
+											align-items: center;
+											padding-right: 10px;
+										}
+									}
+								}
+							}
+						}
+						.pagination-config {
+							width: 442px;
+							height: 86px;
+							align-items: center;
+							gap: 20px;
+							.pagination-box {
+								width: 100%;
+								align-items: center;
+							}
+							.total-result {
+								p {
+									color: #181a20;
+									text-align: center;
+									font-family: $font;
+									font-size: 24px;
+									font-style: normal;
+									font-weight: 275;
+									line-height: 26px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

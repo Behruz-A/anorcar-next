@@ -1,0 +1,57 @@
+#pc-wrap {
+	#member-articles-page {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		.main-title-box {
+			width: auto;
+			height: auto;
+			flex-direction: row;
+			justify-content: space-between;
+			align-self: flex-start;
+			.right-box {
+				width: 315px;
+				.main-title {
+					color: #181a20;
+					font-family: $font;
+					font-size: 30px;
+					font-style: normal;
+					font-weight: 600;
+					line-height: normal;
+					letter-spacing: 0.6px;
+					text-transform: capitalize;
+				}
+			}
+		}
+		.articles-list-box {
+			width: 100%;
+			height: auto;
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 35px;
+			margin-top: 85px;
+			.no-data {
+				width: 100%;
+			}
+		}
+		.pagination-config {
+			width: 100%;
+			height: auto;
+			justify-content: center;
+			align-items: center;
+			margin-top: 30px;
+			.total-result {
+				p {
+					color: #181a20;
+					text-align: center;
+					font-family: $font;
+					font-size: 14px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 26px;
+				}
+			}
+		}
+	}
+}

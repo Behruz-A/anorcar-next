@@ -1,0 +1,316 @@
+.property-big-card-box {
+	position: relative;
+	margin-right: 8px;
+	margin-left: 8px;
+	margin-bottom: 35px;
+	width: 410px;
+	height: 455px;
+	display: flex;
+	flex-direction: column;
+	.card-img {
+		position: relative;
+		width: 100%;
+		height: 264px;
+		background-size: cover;
+		border-radius: 12px 12px 0px 0px;
+		cursor: pointer;
+		div.status {
+			position: absolute;
+			padding: 6px 34px;
+			left: 20px;
+			top: 20px;
+			display: flex;
+			align-items: center;
+			border-radius: 6px;
+			background: #eb6753;
+			img {
+				width: 14px;
+				height: 14px;
+			}
+			span {
+				margin-left: 5px;
+				color: #fff;
+				font-family: $font;
+				font-size: 12px;
+				font-style: normal;
+				font-weight: 600;
+				line-height: normal;
+				text-transform: uppercase;
+			}
+		}
+		div.price {
+			position: absolute;
+			padding: 8px 12px;
+			left: 20px;
+			bottom: 20px;
+			border-radius: 6px;
+			background: #fff;
+			color: #181a20;
+			font-family: $font;
+			font-size: 15px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: normal;
+		}
+	}
+	.info {
+		padding: 20px 22px 17px;
+		display: flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		border-radius: 0px 0px 12px 12px;
+		border: 1px solid #ddd;
+		border-top: none;
+		background: #fff;
+		.title {
+			overflow: hidden;
+			color: #181a20;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			font-family: $font;
+			font-size: 15px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: normal;
+			text-transform: capitalize;
+			cursor: pointer;
+		}
+		.desc {
+			margin-top: 5px;
+			overflow: hidden;
+			color: #717171;
+			font-family: $font;
+			font-size: 13px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.options {
+			margin-top: 15px;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			div {
+				display: flex;
+				flex-direction: row;
+				img {
+					margin-right: 5px;
+					width: 17px;
+					height: 17px;
+				}
+				span {
+					color: #181a20;
+					font-family: $font;
+					font-size: 13px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: normal;
+				}
+			}
+		}
+		.bott {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			div {
+				width: 65px;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+			}
+			p {
+				color: #181a20;
+				font-family: $font;
+				font-size: 13px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: normal;
+				text-transform: capitalize;
+			}
+			span {
+				margin-left: 6px;
+				color: rgba(143, 143, 143, 0.54);
+				font-family: $font;
+				font-size: 15px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: normal;
+				text-transform: capitalize;
+			}
+			button {
+				margin-left: 15px;
+				width: 16px;
+				height: 16px;
+				box-sizing: border-box;
+			}
+			.buttons-box {
+				width: auto;
+				height: auto;
+				display: flex;
+				flex-direction: row;
+				gap: 7px;
+			}
+		}
+	}
+}
+.agent-general-card {
+	position: relative;
+	margin-right: 27px;
+	margin-bottom: 34px;
+	display: flex;
+	flex-direction: column;
+	.agent-img {
+		border-radius: 12px;
+		width: 233px;
+		height: 273px;
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		cursor: pointer;
+		div {
+			position: absolute;
+			padding: 12px;
+			top: 12px;
+			left: 12px;
+			border-radius: 6px;
+			background: #eb6753;
+			color: #fff;
+			font-family: $font;
+			font-size: 12px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: normal;
+		}
+	}
+	.agent-desc {
+		margin-top: 23px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		.agent-info {
+			display: flex;
+			flex-direction: column;
+			strong {
+				color: #181a20;
+				font-family: $font;
+				font-size: 15px;
+				font-style: normal;
+				font-weight: 600;
+				line-height: normal;
+				cursor: pointer;
+			}
+			span {
+				color: #181a20;
+				font-family: $font;
+				font-size: 15px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 28px;
+			}
+		}
+		.buttons {
+			width: auto;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			svg {
+				width: 24px;
+				height: 24px;
+				cursor: pointer;
+			}
+			.view-cnt {
+				font-size: 13px;
+			}
+		}
+	}
+}
+.community-general-card-config {
+	position: relative;
+	height: auto;
+	gap: 20px;
+	border-radius: 12px;
+	cursor: pointer;
+	.image-box {
+		width: 100%;
+		height: 283px;
+		.card-img {
+			width: 100%;
+			height: 100%;
+			border-radius: 12px;
+		}
+	}
+	.desc-box {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		height: 80px;
+		.title {
+			color: #717171;
+			font-family: $font;
+			font-size: 13px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+		}
+		.desc {
+			color: #181a20;
+			font-family: $font;
+			font-size: 15px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: 26px;
+			text-transform: capitalize;
+		}
+		.buttons {
+			width: auto;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			svg {
+				width: 24px;
+				height: 24px;
+				cursor: pointer;
+			}
+			.view-cnt {
+				font-size: 13px;
+			}
+		}
+	}
+	.date-box {
+		position: absolute;
+		width: 70px;
+		height: 69.014px;
+		align-items: center;
+		justify-content: center;
+		top: 235px;
+		right: 20px;
+		border-radius: 12px;
+		background: #fff;
+		box-shadow: 0px 6px 15px 0px rgba(64, 79, 104, 0.05);
+		.month {
+			color: #181a20;
+			text-align: center;
+			font-family: $font;
+			font-size: 13px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+		}
+		.day {
+			color: #181a20;
+			font-family: $font;
+			font-size: 20px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: normal;
+		}
+	}
+}

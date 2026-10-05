@@ -1,0 +1,81 @@
+#pc-wrap {
+	#write-article-page {
+		width: 100%;
+		height: auto;
+		.main-title-box {
+			width: auto;
+			height: auto;
+			flex-direction: row;
+			justify-content: space-between;
+			.right-box {
+				width: 315px;
+				.main-title {
+					color: #181a20;
+					font-family: $font;
+					font-size: 30px;
+					font-style: normal;
+					font-weight: 600;
+					line-height: normal;
+					letter-spacing: 0.6px;
+					text-transform: capitalize;
+				}
+				.sub-title {
+					color: #181a20;
+					font-family: $font;
+					font-size: 14px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 26px;
+				}
+			}
+		}
+		
+		.right-wrap {
+			width: 100%;
+			height: auto;
+			.cont_bd {
+				padding: 30px 0px;
+				.form_hd > div {
+					margin-bottom: 16px;
+				}
+			}
+			.flex-space {
+				.btn-next {
+					background: #87cdf9;
+					color: #000000;
+				}
+			}
+			.select {
+				width: 214px;
+				height: 40px;
+				font-size: 14px;
+			}
+			.input-tit {
+				font-size: 14px;
+				padding: 0 16px;
+				margin-top: 16px;
+				border: 1px solid #eee;
+				border-radius: 4px;
+			}
+			.btn-flex { margin-top: 40px; }
+		}
+		.css-guvl2y-MuiButtonBase-root-MuiButton-root {
+			background: #87cdf9;
+			svg {
+				fill: #000000;
+			}
+		}
+		.toastui-editor-popup-body { padding: 20px; }
+		.youtube-input {
+			padding: 8px 16px;
+			border: 1px solid #ddd;
+		}
+		.youtube-div {
+			display:flex;
+			flex-direction: column;
+		}
+		.toastui-editor-defaultUI button {
+			padding: 4px;
+		}
+	}
+}

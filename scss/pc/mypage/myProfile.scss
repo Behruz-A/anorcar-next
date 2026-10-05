@@ -1,0 +1,321 @@
+#pc-wrap {
+	#my-page {
+		#my-profile-page {
+			width: 100%;
+			height: auto;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			.main-title-box {
+				width: auto;
+				height: auto;
+				flex-direction: row;
+				justify-content: space-between;
+				.right-box {
+					width: 315px;
+					.main-title {
+						color: #181a20;
+						font-family: $font;
+						font-size: 30px;
+						font-style: normal;
+						font-weight: 600;
+						line-height: normal;
+						letter-spacing: 0.6px;
+						text-transform: capitalize;
+					}
+					.sub-title {
+						color: #181a20;
+						font-family: $font;
+						font-size: 14px;
+						font-style: normal;
+						font-weight: 400;
+						line-height: 26px;
+					}
+				}
+			}
+			.top-box {
+				width: 100%;
+				padding: 30px;
+				margin-top: 35px;
+				gap: 25px;
+				border-radius: 12px;
+				border: 1px solid #c4c4c4;
+				background: #fff;
+				box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
+				.photo-box {
+					gap: 23px;
+					.title {
+						color: #181a20;
+						font-family: $font;
+						font-size: 17px;
+						font-style: normal;
+						font-weight: 600;
+						line-height: normal;
+					}
+					.image-big-box {
+						flex-direction: row;
+						gap: 50px;
+						.image-box {
+							position: relative;
+							width: 194px;
+							height: 157px;
+							img {
+								width: 100%;
+								height: 100%;
+								object-fit: cover;
+								border-radius: 15px;
+								object-fit: cover;
+							}
+							.delete-box {
+								position: absolute;
+								top: 10px;
+								left: 10px;
+								width: 36px;
+								height: 32px;
+								background-color: #ffffff;
+								align-items: center;
+								justify-content: center;
+								border-radius: 12px;
+							}
+						}
+						.upload-big-box {
+							align-self: flex-end;
+							gap: 22px;
+							.labeler {
+								display: flex;
+								width: 210.023px;
+								height: 40.135px;
+								justify-content: center;
+								align-items: center;
+								cursor: pointer;
+								border-radius: 12px;
+								border: 1px solid #181a20;
+								p {
+									color: #181a20;
+									font-family: $font;
+									font-size: 13px;
+									font-style: normal;
+									font-weight: 600;
+									line-height: normal;
+								}
+							}
+							.upload-text {
+								color: #181a20;
+								font-family: $font;
+								font-size: 12px;
+								font-style: normal;
+								font-weight: 400;
+								line-height: 26px;
+							}
+						}
+					}
+				}
+				.small-input-box {
+					width: 100%;
+					height: auto;
+					flex-direction: row;
+					flex-wrap: wrap;
+					gap: 30px;
+					.input-box {
+						width: 48%;
+						gap: 10px;
+						.title {
+							color: #181a20;
+							font-family: $font;
+							font-size: 12px;
+							font-style: normal;
+							font-weight: 600;
+							line-height: normal;
+						}
+						input {
+							height: 55px;
+							outline: none;
+							padding: 0px 15px;
+							border-radius: 8px;
+							border: 1px solid #ddd;
+							::placeholder {
+								color: #717171;
+								font-family: $font;
+								font-size: 12px;
+								font-style: normal;
+								font-weight: 400;
+								line-height: 26px;
+							}
+						}
+					}
+				}
+				.address-box {
+					gap: 10px;
+					.title {
+						color: #181a20;
+						font-family: $font;
+						font-size: 12px;
+						font-style: normal;
+						font-weight: 600;
+						line-height: normal;
+					}
+					input {
+						height: 55px;
+						outline: none;
+						padding: 0px 15px;
+						border-radius: 8px;
+						border: 1px solid #ddd;
+						::placeholder {
+							color: #717171;
+							font-family: $font;
+							font-size: 12px;
+							font-style: normal;
+							font-weight: 400;
+							line-height: 26px;
+						}
+					}
+				}
+				.about-me-box {
+					gap: 10px;
+					.title {
+						color: #181a20;
+						font-family: $font;
+						font-size: 12px;
+						font-style: normal;
+						font-weight: 600;
+						line-height: normal;
+					}
+					.about-textarea {
+						height: 170px;
+						padding: 20px 15px;
+						border-radius: 8px;
+						border: 1px solid #ddd;
+						color: #717171;
+						font-family: $font;
+						font-size: 12px;
+						font-style: normal;
+						font-weight: 400;
+						line-height: 26px;
+					}
+					.update-button {
+						display: flex;
+						width: 170px;
+						height: 38px;
+						justify-content: center;
+						align-items: center;
+						gap: 10px;
+						align-self: flex-end;
+						margin-top: 30px;
+						border-radius: 12px;
+						background-color: #000000;
+						p {
+							color: #fff;
+							font-family: $font;
+							font-size: 13px;
+							font-style: normal;
+							font-weight: 600;
+							line-height: normal;
+						}
+					}
+					button:disabled {
+						background: #181a2045;
+					}
+				}
+			}
+			.bottom-box {
+				width: 100%;
+				padding: 30px;
+				gap: 25px;
+				border-radius: 12px;
+				border: 1px solid #c4c4c4;
+				background: #fff;
+				box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
+				.top-inner-box {
+					gap: 20px;
+					.title {
+						color: #181a20;
+						font-family: $font;
+						font-size: 15px;
+						font-style: normal;
+						font-weight: 600;
+						line-height: normal;
+					}
+					.old-password-box {
+						gap: 10px;
+						.title {
+							color: #181a20;
+							font-family: $font;
+							font-size: 12px;
+							font-style: normal;
+							font-weight: 600;
+							line-height: normal;
+						}
+						input {
+							width: 50%;
+							height: 55px;
+							outline: none;
+							padding: 0px 15px;
+							border-radius: 8px;
+							border: 1px solid #ddd;
+							::placeholder {
+								color: #717171;
+								font-family: $font;
+								font-size: 12px;
+								font-style: normal;
+								font-weight: 400;
+								line-height: 26px;
+							}
+						}
+					}
+				}
+				.bottom-inner-box {
+					width: 100%;
+					flex-direction: row;
+					gap: 45px;
+					.new-password-box {
+						width: 100%;
+						gap: 10px;
+						.title {
+							color: #181a20;
+							font-family: $font;
+							font-size: 12px;
+							font-style: normal;
+							font-weight: 600;
+							line-height: normal;
+						}
+						input {
+							height: 55px;
+							outline: none;
+							padding: 0px 15px;
+							border-radius: 8px;
+							border: 1px solid #ddd;
+							::placeholder {
+								color: #717171;
+								font-family: $font;
+								font-size: 12px;
+								font-style: normal;
+								font-weight: 400;
+								line-height: 26px;
+							}
+						}
+					}
+				}
+				.change-password {
+					display: flex;
+					width: 170px;
+					height: 38px;
+					justify-content: center;
+					align-items: center;
+					gap: 10px;
+					align-self: flex-end;
+					margin-top: 18px;
+					border-radius: 12px;
+					background-color: #000000;
+					p {
+						color: #fff;
+						font-family: $font;
+						font-size: 13px;
+						font-style: normal;
+						font-weight: 600;
+						line-height: normal;
+					}
+				}
+			}
+		}
+	}
+}
