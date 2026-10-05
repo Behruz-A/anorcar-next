@@ -29,3 +29,13 @@ and etc inside of anorcar/docs/ai
 4. Run typecheck after each phase.
 5. Do not remove working logic unless replaced safely.
 6. Update anorcar/docs/ai/COMPLETED_TASKS.md after major changes.
+
+## Package Manager
+
+-Use Yarn for all frontend commands.
+-Do not use npm or pnpm.
+-Install dependencies with:
+
+```bash
+yarn  install
+```
