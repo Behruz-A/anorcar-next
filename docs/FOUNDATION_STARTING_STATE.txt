@@ -1,0 +1,123 @@
+Authoritative starting state: HEAD a67b9f1; inspected before foundation edits.
+NESTAR reference: HEAD 7466964; clean working tree.
+Previous uncommitted frontend migration was still present; no reset or restore performed.
+
+Initial git status --short:
+ M apollo/admin/mutation.ts
+ M apollo/admin/query.ts
+ M apollo/client.ts
+ M apollo/store.ts
+ M apollo/user/mutation.ts
+ M apollo/user/query.ts
+ M libs/auth/index.ts
+ M libs/components/Footer.tsx
+ M libs/components/Top.tsx
+ M libs/components/admin/AdminMenuList.tsx
+ D libs/components/admin/properties/PropertyList.tsx
+ M libs/components/common/AgentCard.tsx
+ D libs/components/common/PropertyBigCard.tsx
+ M libs/components/cs/Faq.tsx
+ M libs/components/cs/Notice.tsx
+ M libs/components/homepage/Advertisement.tsx
+ M libs/components/homepage/HeaderFilter.tsx
+ D libs/components/homepage/PopularProperties.tsx
+ D libs/components/homepage/PopularPropertyCard.tsx
+ M libs/components/homepage/TopAgentCard.tsx
+ M libs/components/homepage/TopAgents.tsx
+ D libs/components/homepage/TopProperties.tsx
+ D libs/components/homepage/TopPropertyCard.tsx
+ D libs/components/homepage/TrendProperties.tsx
+ D libs/components/homepage/TrendPropertyCard.tsx
+ M libs/components/layout/LayoutAdmin.tsx
+ M libs/components/layout/LayoutBasic.tsx
+ M libs/components/layout/LayoutFull.tsx
+ M libs/components/layout/LayoutHome.tsx
+ M libs/components/member/MemberArticles.tsx
+ M libs/components/member/MemberFollowers.tsx
+ M libs/components/member/MemberFollowings.tsx
+ M libs/components/member/MemberMenu.tsx
+ D libs/components/member/MemberProperties.tsx
+ D libs/components/mypage/AddNewProperty.tsx
+ M libs/components/mypage/Article.tsx
+ M libs/components/mypage/MyFavorites.tsx
+ M libs/components/mypage/MyMenu.tsx
+ D libs/components/mypage/MyProperties.tsx
+ D libs/components/mypage/PropertyCard.tsx
+ M libs/components/mypage/RecentlyVisited.tsx
+ D libs/components/property/Filter.tsx
+ D libs/components/property/PropertyCard.tsx
+ D libs/components/property/Review.tsx
+ M libs/config.ts
+ M libs/enums/comment.enum.ts
+ M libs/enums/like.enum.ts
+ M libs/enums/notification.enum.ts
+ D libs/enums/property.enum.ts
+ M libs/enums/view.enum.ts
+ M libs/hooks/useDeviceDetect.ts
+ M libs/types/board-article/board-article.ts
+ M libs/types/comment/comment.ts
+ M libs/types/customJwtPayload.ts
+ M libs/types/follow/follow.ts
+ M libs/types/member/member.ts
+ D libs/types/property/property.input.ts
+ D libs/types/property/property.ts
+ D libs/types/property/property.update.ts
+ M libs/utils.ts
+ M next.config.js
+ M package.json
+ M pages/_admin/properties/index.tsx
+ M pages/_app.tsx
+ M pages/_document.tsx
+ M pages/about/index.tsx
+ M pages/account/join.tsx
+ M pages/agent/detail.tsx
+ M pages/community/index.tsx
+ M pages/index.tsx
+ M pages/member/index.tsx
+ M pages/mypage/index.tsx
+ M pages/property/detail.tsx
+ M pages/property/index.tsx
+ M public/locales/en/common.json
+ M public/locales/kr/common.json
+ M public/locales/ru/common.json
+ M scss/mobile/main.scss
+ M scss/pc/homepage/homepage.scss
+ M scss/pc/main.scss
+?? apollo/brand.ts
+?? apollo/car.ts
+?? docs/
+?? libs/car.ts
+?? libs/components/admin/cars/
+?? libs/components/car/
+?? libs/components/common/CarBigCard.tsx
+?? libs/components/homepage/PopularCarCard.tsx
+?? libs/components/homepage/PopularCars.tsx
+?? libs/components/homepage/TopCarCard.tsx
+?? libs/components/homepage/TopCars.tsx
+?? libs/components/homepage/TrendCarCard.tsx
+?? libs/components/homepage/TrendCars.tsx
+?? libs/components/member/MemberCars.tsx
+?? libs/components/mypage/AddNewCar.tsx
+?? libs/components/mypage/CarCard.tsx
+?? libs/components/mypage/MyCars.tsx
+?? libs/components/mypage/SavedCars.tsx
+?? libs/enums/brand.enum.ts
+?? libs/enums/car.enum.ts
+?? libs/types/brand/
+?? libs/types/car/
+?? libs/types/engagement.ts
+?? pages/_admin/brands/
+?? pages/_admin/cars/
+?? pages/car/
+?? public/img/car/
+?? public/img/icons/car.svg
+?? public/img/icons/fuel.svg
+?? public/img/icons/transmission.svg
+?? public/img/logo/anorcar-white.svg
+?? public/img/logo/anorcar.svg
+?? scripts/
+?? scss/car.scss
+?? scss/pc/car/
+?? scss/pc/member/memberCars.scss
+?? scss/pc/mypage/addNewCar.scss
+?? scss/pc/mypage/myCars.scss

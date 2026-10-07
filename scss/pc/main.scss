@@ -4,14 +4,14 @@
 
 @import '/scss/pc/homepage/homepage';
 
-@import '/scss/pc/property/property';
-@import '/scss/pc/property/detail.scss';
+@import '/scss/pc/car/car';
+@import '/scss/pc/car/detail.scss';
 
 @import '/scss/pc/agent/agent';
 @import '/scss/pc/agent/detail.scss';
 @import '/scss/pc/mypage/mypage.scss';
-@import '/scss/pc/mypage/addNewProperty.scss';
-@import '/scss/pc/mypage/myProperties.scss';
+@import '/scss/pc/mypage/addNewCar.scss';
+@import '/scss/pc/mypage/myCars.scss';
 @import '/scss/pc/mypage/myFavorites.scss';
 @import '/scss/pc/mypage/mySaved.scss';
 @import '/scss/pc/mypage/myProfile.scss';
@@ -31,7 +31,7 @@
 @import '/scss/pc/member/memberPage.scss';
 @import '/scss/pc/member/memberFollows.scss';
 @import '/scss/pc/member/memberArticles.scss';
-@import '/scss/pc/member/memberProperties.scss';
+@import '/scss/pc/member/memberCars.scss';
 
 body {
 	-ms-overflow-style: none; /* for Internet Explorer, Edge */

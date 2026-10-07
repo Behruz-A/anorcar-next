@@ -4,7 +4,7 @@ import useDeviceDetect from '../../libs/hooks/useDeviceDetect';
 import withLayoutBasic from '../../libs/components/layout/LayoutBasic';
 import { Stack } from '@mui/material';
 import MemberMenu from '../../libs/components/member/MemberMenu';
-import MemberProperties from '../../libs/components/member/MemberProperties';
+import MemberCars from '../../libs/components/member/MemberCars';
 import { useRouter } from 'next/router';
 import MemberFollowers from '../../libs/components/member/MemberFollowers';
 import MemberArticles from '../../libs/components/member/MemberArticles';
@@ -36,11 +36,11 @@ const MemberPage: NextPage = () => {
 	/** LIFECYCLES **/
 	useEffect(() => {
 		if (!router.isReady) return;
-		if (!category) {
+		if (!category || category === 'properties') {
 			router.replace(
 				{
 					pathname: router.pathname,
-					query: { ...router.query, category: 'properties' },
+					query: { ...router.query, category: 'cars' },
 				},
 				undefined,
 				{ shallow: true },
@@ -114,9 +114,7 @@ const MemberPage: NextPage = () => {
 		}
 	};
 
-	if (device === 'mobile') {
-		return <>MEMBER PAGE MOBILE</>;
-	} else {
+	{
 		return (
 			<div id="member-page" style={{ position: 'relative' }}>
 				<div className="container">
@@ -127,7 +125,7 @@ const MemberPage: NextPage = () => {
 							</Stack>
 							<Stack className="main-config" mb={'76px'}>
 								<Stack className={'list-config'}>
-									{category === 'properties' && <MemberProperties />}
+									{category === 'cars' && <MemberCars />}
 									{category === 'followers' && (
 										<MemberFollowers
 											subscribeHandler={subscribeHandler}

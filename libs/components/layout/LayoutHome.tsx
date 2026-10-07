@@ -4,11 +4,12 @@ import Head from 'next/head';
 import Top from '../Top';
 import Footer from '../Footer';
 import { Stack } from '@mui/material';
-import FiberContainer from '../common/FiberContainer';
+
 import HeaderFilter from '../homepage/HeaderFilter';
+import Hero from '../homepage/Hero';
 import { userVar } from '../../../apollo/store';
 import { useReactiveVar } from '@apollo/client';
-import { getJwtToken, updateUserInfo } from '../../auth';
+import { hydrateUser } from '../../auth';
 import Chat from '../Chat';
 //@ts-ignore
 import 'swiper/css';
@@ -18,14 +19,13 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 const withLayoutMain = (Component: any) => {
-	return (props: any) => {
+	return function HomeLayout(props: any) {
 		const device = useDeviceDetect();
 		const user = useReactiveVar(userVar);
 
 		/** LIFECYCLES **/
 		useEffect(() => {
-			const jwt = getJwtToken();
-			if (jwt) updateUserInfo(jwt);
+			hydrateUser();
 		}, []);
 
 		/** HANDLERS **/
@@ -34,14 +34,18 @@ const withLayoutMain = (Component: any) => {
 			return (
 				<>
 					<Head>
-						<title>Nestar</title>
-						<meta name={'title'} content={`Nestar`} />
+						<title>ANORCAR</title>
+						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="mobile-wrap">
+					<Stack id="mobile-wrap" className="homepage-shell">
 						<Stack id={'top'}>
 							<Top />
 						</Stack>
 
+						<Stack className="header-main homepage-header">
+							<Hero />
+							<HeaderFilter />
+						</Stack>
 						<Stack id={'main'}>
 							<Component {...props} />
 						</Stack>
@@ -56,19 +60,17 @@ const withLayoutMain = (Component: any) => {
 			return (
 				<>
 					<Head>
-						<title>Nestar</title>
-						<meta name={'title'} content={`Nestar`} />
+						<title>ANORCAR</title>
+						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="pc-wrap">
+					<Stack id="pc-wrap" className="homepage-shell">
 						<Stack id={'top'}>
 							<Top />
 						</Stack>
 
-						<Stack className={'header-main'}>
-							<FiberContainer />
-							<Stack className={'container'}>
-								<HeaderFilter />
-							</Stack>
+						<Stack className="header-main homepage-header">
+							<Hero />
+							<HeaderFilter />
 						</Stack>
 
 						<Stack id={'main'}>

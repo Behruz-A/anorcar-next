@@ -17,7 +17,7 @@ export const UPDATE_MEMBER_BY_ADMIN = gql`
 			memberImage
 			memberAddress
 			memberDesc
-			memberProperties
+			memberCars
 			memberRank
 			memberArticles
 			memberPoints
@@ -33,67 +33,8 @@ export const UPDATE_MEMBER_BY_ADMIN = gql`
 	}
 `;
 
-/**************************
- *        PROPERTY        *
- *************************/
 
-export const UPDATE_PROPERTY_BY_ADMIN = gql`
-	mutation UpdatePropertyByAdmin($input: PropertyUpdate!) {
-		updatePropertyByAdmin(input: $input) {
-			_id
-			propertyType
-			propertyStatus
-			propertyLocation
-			propertyAddress
-			propertyTitle
-			propertyPrice
-			propertySquare
-			propertyBeds
-			propertyRooms
-			propertyViews
-			propertyLikes
-			propertyImages
-			propertyDesc
-			propertyBarter
-			propertyRent
-			memberId
-			soldAt
-			deletedAt
-			constructedAt
-			createdAt
-			updatedAt
-		}
-	}
-`;
 
-export const REMOVE_PROPERTY_BY_ADMIN = gql`
-	mutation RemovePropertyByAdmin($input: String!) {
-		removePropertyByAdmin(propertyId: $input) {
-			_id
-			propertyType
-			propertyStatus
-			propertyLocation
-			propertyAddress
-			propertyTitle
-			propertyPrice
-			propertySquare
-			propertyBeds
-			propertyRooms
-			propertyViews
-			propertyLikes
-			propertyImages
-			propertyDesc
-			propertyBarter
-			propertyRent
-			memberId
-			soldAt
-			deletedAt
-			constructedAt
-			createdAt
-			updatedAt
-		}
-	}
-`;
 
 /**************************
  *      BOARD-ARTICLE     *
@@ -152,4 +93,178 @@ export const REMOVE_COMMENT_BY_ADMIN = gql`
 			updatedAt
 		}
 	}
+`;
+
+
+/**************************
+ * CAR
+ *************************/
+
+export const UPDATE_CAR_BY_ADMIN = gql`
+mutation UpdateCarByAdmin($input: CarUpdate!) {
+  updateCarByAdmin(input: $input) {
+    _id
+    carStatus
+    carFuelType
+    carCondition
+    carModel
+    carYear
+    carLocation
+    carAddress
+    carTransmission
+    carTitle
+    carPrice
+    carColor
+    carViews
+    carLikes
+    carComments
+    carRank
+    carImages
+    brandId
+    carDesc
+    carBarter
+    carRent
+    memberId
+    soldAt
+    deletedAt
+    createdAt
+    updatedAt
+    brandData {
+      _id
+      brandName
+      brandLogo
+      brandStatus
+    }
+    memberData {
+      _id
+      memberType
+      memberStatus
+      memberNick
+      memberPhone
+      memberFullName
+      memberImage
+      memberAddress
+      memberDesc
+      memberCars
+      memberLikes
+      memberViews
+    }
+    meLiked {
+      memberId
+      likeRefId
+      myFavorite
+    }
+  }
+}
+`;
+
+
+/**************************
+ * CAR
+ *************************/
+
+export const REMOVE_CAR_BY_ADMIN = gql`
+mutation RemoveCarByAdmin($input: String!) {
+  removeCarByAdmin(carId: $input) {
+    _id
+    carStatus
+    carFuelType
+    carCondition
+    carModel
+    carYear
+    carLocation
+    carAddress
+    carTransmission
+    carTitle
+    carPrice
+    carColor
+    carViews
+    carLikes
+    carComments
+    carRank
+    carImages
+    brandId
+    carDesc
+    carBarter
+    carRent
+    memberId
+    soldAt
+    deletedAt
+    createdAt
+    updatedAt
+    brandData {
+      _id
+      brandName
+      brandLogo
+      brandStatus
+    }
+    memberData {
+      _id
+      memberType
+      memberStatus
+      memberNick
+      memberPhone
+      memberFullName
+      memberImage
+      memberAddress
+      memberDesc
+      memberCars
+      memberLikes
+      memberViews
+    }
+    meLiked {
+      memberId
+      likeRefId
+      myFavorite
+    }
+  }
+}
+`;
+
+
+/**************************
+ * BRAND
+ *************************/
+
+export const CREATE_BRAND = gql`
+mutation CreateBrand($input: BrandInput!) {
+  createBrand(input: $input) {
+    _id
+    brandName
+    brandLogo
+    brandStatus
+  }
+}
+`;
+
+
+/**************************
+ * BRAND
+ *************************/
+
+export const UPDATE_BRAND_BY_ADMIN = gql`
+mutation UpdateBrandByAdmin($input: BrandUpdate!) {
+  updateBrandByAdmin(input: $input) {
+    _id
+    brandName
+    brandLogo
+    brandStatus
+  }
+}
+`;
+
+
+/**************************
+ * BRAND
+ *************************/
+
+export const REMOVE_BRAND_BY_ADMIN = gql`
+mutation RemoveBrandByAdmin($input: String!) {
+  removeBrandByAdmin(brandId: $input) {
+    _id
+    brandName
+    brandLogo
+    brandStatus
+  }
+}
 `;

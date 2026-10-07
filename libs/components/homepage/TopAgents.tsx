@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Stack, Box } from '@mui/material';
@@ -17,6 +18,7 @@ interface TopAgentsProps {
 }
 
 const TopAgents = (props: TopAgentsProps) => {
+ const { t } = useTranslation('common');
 	const { initialInput } = props;
 	const device = useDeviceDetect();
 	const router = useRouter();
@@ -44,7 +46,7 @@ const TopAgents = (props: TopAgentsProps) => {
 			<Stack className={'top-agents'}>
 				<Stack className={'container'}>
 					<Stack className={'info-box'}>
-						<span>Top Agents</span>
+						<span>{t("Top sellers")}</span>
 					</Stack>
 					<Stack className={'wrapper'}>
 						<Swiper
@@ -72,12 +74,12 @@ const TopAgents = (props: TopAgentsProps) => {
 				<Stack className={'container'}>
 					<Stack className={'info-box'}>
 						<Box component={'div'} className={'left'}>
-							<span>Top Agents</span>
-							<p>Our Top Agents always ready to serve you</p>
+							<span>{t("Top sellers")}</span>
+							<p>{t("Connect with sellers")}</p>
 						</Box>
 						<Box component={'div'} className={'right'}>
 							<div className={'more-box'}>
-								<span>See All Agents</span>
+								<span>{t("See all sellers")}</span>
 								<img src="/img/icons/rightup.svg" alt="" />
 							</div>
 						</Box>

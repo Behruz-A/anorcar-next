@@ -4,21 +4,21 @@ import { NextPage } from 'next';
 import { Stack } from '@mui/material';
 import useDeviceDetect from '../../libs/hooks/useDeviceDetect';
 import withLayoutBasic from '../../libs/components/layout/LayoutBasic';
-import MyProperties from '../../libs/components/mypage/MyProperties';
+import MyCars from '../../libs/components/mypage/MyCars';
 import MyFavorites from '../../libs/components/mypage/MyFavorites';
 import RecentlyVisited from '../../libs/components/mypage/RecentlyVisited';
-import AddProperty from '../../libs/components/mypage/AddNewProperty';
+import AddCar from '../../libs/components/mypage/AddNewCar';
 import MyProfile from '../../libs/components/mypage/MyProfile';
 import MyArticles from '../../libs/components/mypage/MyArticles';
 import { useMutation, useReactiveVar } from '@apollo/client';
-import { userVar } from '../../apollo/store';
+import { userVar, authReadyVar } from '../../apollo/store';
 import MyMenu from '../../libs/components/mypage/MyMenu';
 import WriteArticle from '../../libs/components/mypage/WriteArticle';
 import MemberFollowers from '../../libs/components/member/MemberFollowers';
 import { sweetErrorHandling, sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
 import MemberFollowings from '../../libs/components/member/MemberFollowings';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { LIKE_TARGET_MEMBER, LIKE_TARGET_PROPERTY, SUBSCRIBE, UNSUBSCRIBE } from '../../apollo/user/mutation';
+import { LIKE_TARGET_MEMBER, SUBSCRIBE, UNSUBSCRIBE } from '../../apollo/user/mutation';
 import { Messages } from '../../libs/config';
 
 export const getStaticProps = async ({ locale }: any) => ({
@@ -30,8 +30,15 @@ export const getStaticProps = async ({ locale }: any) => ({
 const MyPage: NextPage = () => {
 	const device = useDeviceDetect();
 	const user = useReactiveVar(userVar);
+	const authReady = useReactiveVar(authReadyVar);
 	const router = useRouter();
-	const category: any = router.query?.category ?? 'myProfile';
+	const rawCategory = router.query.category;
+ const category = rawCategory === 'addProperty' ? 'addCar' : rawCategory === 'myProperties' ? 'myCars' : rawCategory ?? 'myProfile';
+ useEffect(() => {
+  if (router.isReady && rawCategory !== category) void router.replace({ pathname: router.pathname, query: {
+   ...router.query, category, carId: router.query.carId ?? router.query.propertyId,
+  } }, undefined, { shallow: true });
+ }, [router.isReady, rawCategory, category]);
 
 	/** APOLLO REQUESTS **/
 	const [subscribe] = useMutation(SUBSCRIBE);
@@ -40,8 +47,8 @@ const MyPage: NextPage = () => {
 
 	/** LIFECYCLES **/
 	useEffect(() => {
-		if (!user._id) router.push('/').then();
-	}, [user]);
+		if (authReady && !user._id) void router.replace('/account/join');
+	}, [authReady, user._id, router]);
 
 	/** HANDLERS **/
 	const subscribeHandler = async (id: string, refetch: any, query: any) => {
@@ -109,9 +116,8 @@ const MyPage: NextPage = () => {
 		}
 	};
 
-	if (device === 'mobile') {
-		return <div>MY PAGE</div>;
-	} else {
+	if (!authReady || !user._id || !router.isReady) return null;
+	{
 		return (
 			<div id="my-page" style={{ position: 'relative' }}>
 				<div className="container">
@@ -122,8 +128,8 @@ const MyPage: NextPage = () => {
 							</Stack>
 							<Stack className="main-config" mb={'76px'}>
 								<Stack className={'list-config'}>
-									{category === 'addProperty' && <AddProperty />}
-									{category === 'myProperties' && <MyProperties />}
+									{category === 'addCar' && <AddCar />}
+									{category === 'myCars' && <MyCars />}
 									{category === 'myFavorites' && <MyFavorites />}
 									{category === 'recentlyVisited' && <RecentlyVisited />}
 									{category === 'myArticles' && <MyArticles />}

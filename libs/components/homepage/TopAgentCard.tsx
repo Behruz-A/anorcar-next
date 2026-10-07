@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import React from 'react';
 import { useRouter } from 'next/router';
 import { Stack } from '@mui/material';
@@ -9,6 +10,7 @@ interface TopAgentProps {
 	agent: Member;
 }
 const TopAgentCard = (props: TopAgentProps) => {
+ const { t } = useTranslation('common');
 	const { agent } = props;
 	const device = useDeviceDetect();
 	const router = useRouter();

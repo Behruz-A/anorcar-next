@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import React from 'react';
 import { useRouter } from 'next/router';
 import { Stack, Typography, Box, List, ListItem } from '@mui/material';
@@ -12,6 +13,7 @@ import { logOut } from '../../auth';
 import { sweetConfirmAlert, sweetMixinErrorAlert } from '../../sweetAlert';
 
 const MyMenu = () => {
+ const { t } = useTranslation('common');
 	const device = useDeviceDetect();
 	const router = useRouter();
 	const pathname = router.query.category ?? 'myProfile';
@@ -27,9 +29,7 @@ const MyMenu = () => {
 		}
 	};
 
-	if (device === 'mobile') {
-		return <div>MY MENU</div>;
-	} else {
+	{
 		return (
 			<Stack width={'100%'} padding={'30px 24px'}>
 				<Stack className={'profile'}>
@@ -46,9 +46,9 @@ const MyMenu = () => {
 							<Typography className={'p-number'}>{user?.memberPhone}</Typography>
 						</Box>
 						{user?.memberType === 'ADMIN' ? (
-							<a href="/_admin/users" target={'_blank'}>
+							<Link href="/_admin/users" target={'_blank'}>
 								<Typography className={'view-list'}>{user?.memberType}</Typography>
-							</a>
+							</Link>
 						) : (
 							<Typography className={'view-list'}>{user?.memberType}</Typography>
 						)}
@@ -56,53 +56,47 @@ const MyMenu = () => {
 				</Stack>
 				<Stack className={'sections'}>
 					<Stack className={'section'} style={{ height: user.memberType === 'AGENT' ? '228px' : '153px' }}>
-						<Typography className="title" variant={'h5'}>
-							MANAGE LISTINGS
-						</Typography>
+						<Typography className="title" variant={'h5'}>{t("MANAGE LISTINGS")}</Typography>
 						<List className={'sub-section'}>
 							{user.memberType === 'AGENT' && (
 								<>
-									<ListItem className={pathname === 'addProperty' ? 'focus' : ''}>
+									<ListItem className={pathname === 'addCar' ? 'focus' : ''}>
 										<Link
 											href={{
 												pathname: '/mypage',
-												query: { category: 'addProperty' },
+												query: { category: 'addCar' },
 											}}
 											scroll={false}
 										>
 											<div className={'flex-box'}>
-												{category === 'addProperty' ? (
+												{category === 'addCar' ? (
 													<img className={'com-icon'} src={'/img/icons/whiteTab.svg'} alt={'com-icon'} />
 												) : (
 													<img className={'com-icon'} src={'/img/icons/newTab.svg'} alt={'com_icon'} />
 												)}
-												<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-													Add Property
-												</Typography>
-												<IconButton aria-label="delete" sx={{ ml: '40px' }}>
+												<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("Add car")}</Typography>
+												<IconButton aria-label={t("delete")} sx={{ ml: '40px' }}>
 													<PortraitIcon style={{ color: 'red' }} />
 												</IconButton>
 											</div>
 										</Link>
 									</ListItem>
-									<ListItem className={pathname === 'myProperties' ? 'focus' : ''}>
+									<ListItem className={pathname === 'myCars' ? 'focus' : ''}>
 										<Link
 											href={{
 												pathname: '/mypage',
-												query: { category: 'myProperties' },
+												query: { category: 'myCars' },
 											}}
 											scroll={false}
 										>
 											<div className={'flex-box'}>
-												{category === 'myProperties' ? (
+												{category === 'myCars' ? (
 													<img className={'com-icon'} src={'/img/icons/homeWhite.svg'} alt={'com-icon'} />
 												) : (
 													<img className={'com-icon'} src={'/img/icons/home.svg'} alt={'com-icon'} />
 												)}
-												<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-													My Properties
-												</Typography>
-												<IconButton aria-label="delete" sx={{ ml: '36px' }}>
+												<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("My cars")}</Typography>
+												<IconButton aria-label={t("delete")} sx={{ ml: '36px' }}>
 													<PortraitIcon style={{ color: 'red' }} />
 												</IconButton>
 											</div>
@@ -125,9 +119,7 @@ const MyMenu = () => {
 											<img className={'com-icon'} src={'/img/icons/like.svg'} alt={'com-icon'} />
 										)}
 
-										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-											My Favorites
-										</Typography>
+										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("My Favorites")}</Typography>
 									</div>
 								</Link>
 							</ListItem>
@@ -146,9 +138,7 @@ const MyMenu = () => {
 											<img className={'com-icon'} src={'/img/icons/search.svg'} alt={'com-icon'} />
 										)}
 
-										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-											Recently Visited
-										</Typography>
+										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("Recently Visited")}</Typography>
 									</div>
 								</Link>
 							</ListItem>
@@ -193,9 +183,7 @@ const MyMenu = () => {
 												/>
 											</g>
 										</svg>
-										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-											My Followers
-										</Typography>
+										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("My Followers")}</Typography>
 									</div>
 								</Link>
 							</ListItem>
@@ -241,9 +229,7 @@ const MyMenu = () => {
 											</g>
 										</svg>
 
-										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-											My Followings
-										</Typography>
+										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("My Followings")}</Typography>
 									</div>
 								</Link>
 							</ListItem>
@@ -251,9 +237,7 @@ const MyMenu = () => {
 					</Stack>
 					<Stack className={'section'} sx={{ marginTop: '10px' }}>
 						<div>
-							<Typography className="title" variant={'h5'}>
-								Community
-							</Typography>
+							<Typography className="title" variant={'h5'}>{t("Community")}</Typography>
 							<List className={'sub-section'}>
 								<ListItem className={pathname === 'myArticles' ? 'focus' : ''}>
 									<Link
@@ -270,9 +254,7 @@ const MyMenu = () => {
 												<img className={'com-icon'} src={'/img/icons/discovery.svg'} alt={'com-icon'} />
 											)}
 
-											<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-												Articles
-											</Typography>
+											<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("Articles")}</Typography>
 										</div>
 									</Link>
 								</ListItem>
@@ -290,9 +272,7 @@ const MyMenu = () => {
 											) : (
 												<img className={'com-icon'} src={'/img/icons/newTab.svg'} alt={'com_icon'} />
 											)}
-											<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-												Write Article
-											</Typography>
+											<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("Write Article")}</Typography>
 										</div>
 									</Link>
 								</ListItem>
@@ -300,9 +280,7 @@ const MyMenu = () => {
 						</div>
 					</Stack>
 					<Stack className={'section'} sx={{ marginTop: '30px' }}>
-						<Typography className="title" variant={'h5'}>
-							MANAGE ACCOUNT
-						</Typography>
+						<Typography className="title" variant={'h5'}>{t("MANAGE ACCOUNT")}</Typography>
 						<List className={'sub-section'}>
 							<ListItem className={pathname === 'myProfile' ? 'focus' : ''}>
 								<Link
@@ -318,18 +296,14 @@ const MyMenu = () => {
 										) : (
 											<img className={'com-icon'} src={'/img/icons/user.svg'} alt={'com-icon'} />
 										)}
-										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-											My Profile
-										</Typography>
+										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("My Profile")}</Typography>
 									</div>
 								</Link>
 							</ListItem>
 							<ListItem onClick={logoutHandler}>
 								<div className={'flex-box'}>
 									<img className={'com-icon'} src={'/img/icons/logout.svg'} alt={'com-icon'} />
-									<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-										Logout
-									</Typography>
+									<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("Logout")}</Typography>
 								</div>
 							</ListItem>
 						</List>

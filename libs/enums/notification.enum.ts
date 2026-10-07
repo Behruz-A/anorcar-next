@@ -11,5 +11,5 @@ export enum NotificationStatus {
 export enum NotificationGroup {
 	MEMBER = 'MEMBER',
 	ARTICLE = 'ARTICLE',
-	PROPERTY = 'PROPERTY',
+	CAR = 'CAR',
 }

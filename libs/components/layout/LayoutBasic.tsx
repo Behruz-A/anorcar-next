@@ -1,11 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import Head from 'next/head';
 import Top from '../Top';
 import Footer from '../Footer';
 import { Stack } from '@mui/material';
-import { getJwtToken, updateUserInfo } from '../../auth';
+import { hydrateUser } from '../../auth';
 import Chat from '../Chat';
 import { useReactiveVar } from '@apollo/client';
 import { userVar } from '../../../apollo/store';
@@ -18,11 +18,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 const withLayoutBasic = (Component: any) => {
-	return (props: any) => {
+	return function BasicLayout(props: any) {
 		const router = useRouter();
 		const { t, i18n } = useTranslation('common');
 		const device = useDeviceDetect();
-		const [authHeader, setAuthHeader] = useState<boolean>(false);
+		const authHeader = router.pathname === '/account/join';
 		const user = useReactiveVar(userVar);
 
 		const memoizedValues = useMemo(() => {
@@ -31,34 +31,34 @@ const withLayoutBasic = (Component: any) => {
 				bgImage = '';
 
 			switch (router.pathname) {
-				case '/property':
-					title = 'Property Search';
+				case '/car':
+					title = 'Search cars';
 					desc = 'We are glad to see you again!';
-					bgImage = '/img/banner/properties.png';
+					bgImage = '/img/car/hero.svg';
 					break;
 				case '/agent':
 					title = 'Agents';
-					desc = 'Home / For Rent';
+					desc = 'Find your car';
 					bgImage = '/img/banner/agents.webp';
 					break;
 				case '/agent/detail':
 					title = 'Agent Page';
-					desc = 'Home / For Rent';
+					desc = 'Find your car';
 					bgImage = '/img/banner/header2.svg';
 					break;
 				case '/mypage':
 					title = 'my page';
-					desc = 'Home / For Rent';
+					desc = 'Find your car';
 					bgImage = '/img/banner/header1.svg';
 					break;
 				case '/community':
 					title = 'Community';
-					desc = 'Home / For Rent';
+					desc = 'Find your car';
 					bgImage = '/img/banner/header2.svg';
 					break;
 				case '/community/detail':
 					title = 'Community Detail';
-					desc = 'Home / For Rent';
+					desc = 'Find your car';
 					bgImage = '/img/banner/header2.svg';
 					break;
 				case '/cs':
@@ -70,11 +70,10 @@ const withLayoutBasic = (Component: any) => {
 					title = 'Login/Signup';
 					desc = 'Authentication Process';
 					bgImage = '/img/banner/header2.svg';
-					setAuthHeader(true);
 					break;
 				case '/member':
 					title = 'Member Page';
-					desc = 'Home / For Rent';
+					desc = 'Find your car';
 					bgImage = '/img/banner/header1.svg';
 					break;
 				default:
@@ -86,8 +85,7 @@ const withLayoutBasic = (Component: any) => {
 
 		/** LIFECYCLES **/
 		useEffect(() => {
-			const jwt = getJwtToken();
-			if (jwt) updateUserInfo(jwt);
+			hydrateUser();
 		}, []);
 
 		/** HANDLERS **/
@@ -96,8 +94,8 @@ const withLayoutBasic = (Component: any) => {
 			return (
 				<>
 					<Head>
-						<title>Nestar</title>
-						<meta name={'title'} content={`Nestar`} />
+						<title>ANORCAR</title>
+						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
 					<Stack id="mobile-wrap">
 						<Stack id={'top'}>
@@ -118,8 +116,8 @@ const withLayoutBasic = (Component: any) => {
 			return (
 				<>
 					<Head>
-						<title>Nestar</title>
-						<meta name={'title'} content={`Nestar`} />
+						<title>ANORCAR</title>
+						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
 					<Stack id="pc-wrap">
 						<Stack id={'top'}>

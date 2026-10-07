@@ -1,0 +1,125 @@
+.car-header-search {
+ position: relative; z-index: 1; width: min(560px, 100%); padding: 28px;
+ border-radius: 16px; background: #fff; box-shadow: 0 8px 36px #0002;
+ h3 { font-size: 32px; }
+}
+.car-hero-art { position: absolute; inset: 0; background: #16232e url('/img/car/hero.svg') center / cover no-repeat; }
+#pc-wrap .header-main { position: relative; min-height: 530px; height: auto; padding: 130px 0 55px; }
+#pc-wrap .header-main > .container { position: relative; }
+.car-filter { padding: 24px; border-radius: 12px; background: #fff; }
+.car-form { width: 100%; max-width: 760px; padding: 24px 0; }
+.car-form fieldset { border: 0; min-width: 0; padding: 0; margin: 0; }
+.car-photo-previews { flex-wrap: wrap; gap: 12px; }
+#pc-wrap #car-list-page > .container { flex-direction: column; }
+#pc-wrap #car-list-page .car-page { padding-top: 24px; }
+.car-browse-toolbar { padding-top: 32px; gap: 16px; align-items: center; }
+.card-config .option { min-width: 0; }
+.option img, .options img { width: 20px; height: 20px; object-fit: contain; }
+.car-about { max-width: 950px; margin: 0 auto; padding: 64px 24px; }
+.car-about h1 { margin-bottom: 24px; }
+.car-about section { margin-top: 32px; }
+.car-card-box { display: flex; flex-direction: row !important; align-items: center; gap: 16px; width: 100%; padding: 18px 0; border-bottom: 1px solid #ddd; }
+.car-card-box .image-box img { width: 120px; height: 88px; object-fit: cover; border-radius: 8px; }
+.car-card-box .information-box { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.car-card-box .action-box { flex-direction: row; }
+.car-card-box .image-box, .car-card-box .name { cursor: pointer; }
+#my-car-page .list-box, #member-cars-page .list-box { width: 100%; gap: 12px; }
+#pc-wrap #my-page .main-config, #pc-wrap #member-page .main-config { min-width: 0; }
+#pc-wrap .favorites-list-box { gap: 24px; flex-wrap: wrap; }
+.car-big-card-box { cursor: pointer; }
+.car-big-card-box .card-img { min-height: 200px; background-size: cover; background-position: center; border-radius: 12px 12px 0 0; }
+.car-big-card-box .info { padding: 18px; border: 1px solid #ddd; }
+.car-big-card-box .options, .car-big-card-box .bott, .car-big-card-box .buttons-box { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.car-big-card-box .options img { width: 20px; height: 20px; margin-right: 6px; }
+.car-big-card-box .price { padding: 12px; display: inline-block; background: white; border-radius: 8px; margin: 12px; }
+.car-form .MuiFormControl-root { min-width: 0; }
+.car-form fieldset > .MuiStack-root { width: 100%; }
+#pc-wrap .header-main { background-image: none; }
+#pc-wrap .navbar-main .container { gap: 18px; }
+#pc-wrap .navbar-main .router-box { flex: 1; gap: 12px; width: auto !important; }
+#pc-wrap #footer .footer-container { max-width: calc(100% - 48px); }
+@media (max-width: 1100px) {
+ #pc-wrap #my-page .back-frame, #pc-wrap #member-page .back-frame { flex-direction: column; }
+ #pc-wrap #my-page .left-config, #pc-wrap #member-page .left-config,
+ #pc-wrap #my-page .main-config, #pc-wrap #member-page .main-config { width: 100%; }
+ #pc-wrap #car-detail-page .car-info-config .info, #pc-wrap #car-detail-page .car-desc-config { flex-direction: column; gap: 24px; }
+ #pc-wrap #car-detail-page .left-config, #pc-wrap #car-detail-page .right-config { width: 100%; }
+ #pc-wrap #car-detail-page .container { width: calc(100% - 32px); }
+ #pc-wrap .navbar-main .user-box { width: auto !important; }
+ #pc-wrap .navbar-main .logo-box img { width: 120px !important; }
+}
+@media (max-width: 1350px) {
+ #pc-wrap .container { width: calc(100% - 48px); }
+ #pc-wrap #car-list-page .main-config { flex: 1; width: auto; min-width: 0; }
+ #pc-wrap #car-list-page .filter-config { flex: 0 0 300px; }
+}
+@media (max-width: 768px) {
+ #mobile-wrap { min-width: 0; width: 100%; }
+ #mobile-wrap #main { min-width: 0; }
+ #mobile-wrap .top { flex-direction: row; flex-wrap: wrap; gap: 12px; align-items: center; padding: 16px; background: #fff; border-bottom: 1px solid #ddd; }
+ #mobile-wrap .top > a:first-child { flex-basis: 100%; }
+ #mobile-wrap .top a { font-size: 14px; }
+ #mobile-wrap .top select { max-width: 110px; padding: 6px; }
+ #mobile-wrap #footer .footer-container { width: 100%; min-width: 0; }
+ #mobile-wrap #footer .main .right .bottom { flex-wrap: wrap; gap: 20px; }
+ #mobile-wrap .car-browse-toolbar { flex-wrap: wrap; }
+ #mobile-wrap .car-page, #mobile-wrap .back-frame { flex-direction: column; }
+ #mobile-wrap .main-config, #mobile-wrap .left-config, #mobile-wrap .right-config, #mobile-wrap .filter-config { width: 100%; min-width: 0; }
+ #mobile-wrap .profile { flex-direction: row; align-items: center; gap: 16px; }
+ #mobile-wrap .profile-img img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; }
+ #mobile-wrap .sections .section { height: auto !important; }
+ #mobile-wrap .flex-box { display: flex; align-items: center; gap: 12px; width: 100%; }
+ #mobile-wrap .com-icon, #mobile-wrap .flex-box > svg { width: 20px; height: 20px; }
+ #mobile-wrap .user-phone { display: flex; align-items: center; gap: 8px; }
+ #mobile-wrap .user-phone img { width: 16px; }
+ #mobile-wrap .list-config { display: flex; }
+ #mobile-wrap .favorites-list-box { display: grid; grid-template-columns: 1fr; gap: 20px; }
+ #mobile-wrap .car-card-box { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; }
+ #mobile-wrap .car-card-box .image-box img { width: 88px; height: 80px; }
+ #mobile-wrap .car-card-box .action-box { grid-column: 1 / -1; justify-content: flex-end; }
+ #mobile-wrap .car-form .MuiStack-root { max-width: 100%; flex-wrap: wrap; }
+ #mobile-wrap .car-form .MuiStack-root > .MuiTextField-root { flex: 1 1 140px; }
+ #mobile-wrap .car-form .car-photo-previews { flex-direction: row; }
+ #mobile-wrap .car-header-search { width: calc(100% - 32px); }
+ #mobile-wrap .join-page .main, #mobile-wrap .join-page .left { width: 100%; padding: 20px 0; }
+ #mobile-wrap .join-page .input-box { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+ #mobile-wrap .join-page input { width: 100%; min-height: 44px; padding: 10px; border: 1px solid #bbb; border-radius: 8px; }
+ #mobile-wrap .join-page .logo img { width: 160px; }
+ #mobile-wrap .join-page .register button { width: 100%; }
+ #mobile-wrap .join-page .type-option > div { display: flex; flex-wrap: wrap; }
+ #mobile-wrap .join-page .ask-info { margin-top: 20px; }
+ #mobile-wrap .join-page b { cursor: pointer; margin-left: 8px; }
+ #mobile-wrap #car-detail-page .main-image img { max-height: 340px; }
+ #mobile-wrap #car-detail-page .options-config { padding: 16px 0; }
+ #mobile-wrap #car-detail-page .car-desc-config, #mobile-wrap #car-detail-page .car-info-config .info { flex-direction: column; }
+ #mobile-wrap #car-detail-page .img-box, #mobile-wrap #car-detail-page .member-image { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+ #mobile-wrap #car-detail-page .img-name-box, #mobile-wrap #car-detail-page .image-info { flex-direction: row; align-items: center; gap: 12px; }
+ #mobile-wrap #car-detail-page .review-config { padding: 20px 0; border-bottom: 1px solid #ddd; }
+ #mobile-wrap #car-detail-page .cards-box, #mobile-wrap .home-page .card-box { min-width: 0; }
+ #mobile-wrap #car-detail-page .similar-homes-slide { width: min(300px, 100%); }
+ #mobile-wrap .car-big-card-box { display: flex; width: 100%; min-width: 0; }
+ #mobile-wrap .container { width: 100%; padding: 16px; }
+ #mobile-wrap .car-page { gap: 20px; }
+ #mobile-wrap .car-header-search { margin: 20px auto; padding: 20px; }
+ #mobile-wrap .list-config { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+ #mobile-wrap .card-config { width: 100%; background: #fff; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; }
+ #mobile-wrap .card-config .top { position: relative; }
+ #mobile-wrap .card-config .top > a img { width: 100%; height: 220px; object-fit: cover; }
+ #mobile-wrap .card-config .bottom { padding: 16px; gap: 12px; }
+ #mobile-wrap .card-config .options, #mobile-wrap .card-config .type-buttons, #mobile-wrap .card-config .buttons,
+ #mobile-wrap .card-config .option, #mobile-wrap .card-config .type { flex-direction: row; align-items: center; gap: 8px; }
+ #mobile-wrap .card-config .option img { width: 20px; height: 20px; }
+ #mobile-wrap .card-config .price-box { position: absolute; bottom: 10px; left: 10px; background: #fff; padding: 8px; border-radius: 4px; }
+ #mobile-wrap .top-badge { display: none; }
+ #mobile-wrap #car-detail-page { padding: 20px 0; }
+ #mobile-wrap #car-detail-page .container { flex-direction: column; }
+ #mobile-wrap #car-detail-page .images img { width: 100%; object-fit: cover; border-radius: 8px; }
+ #mobile-wrap #car-detail-page .sub-images { flex-direction: row; gap: 8px; overflow: auto; }
+ #mobile-wrap #car-detail-page .sub-img-box { min-width: 80px; width: 80px; }
+ #mobile-wrap #car-detail-page .option img { width: 24px; }
+ #mobile-wrap #car-detail-page .info, #mobile-wrap #car-detail-page .bottom-box { gap: 14px; }
+ #mobile-wrap #car-detail-page .option, #mobile-wrap #car-detail-page .buttons { flex-direction: row; gap: 8px; }
+ #mobile-wrap #car-detail-page .options-config { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+ #mobile-wrap #car-detail-page .car-desc-config { gap: 24px; }
+ #mobile-wrap #car-detail-page .leave-review-config textarea { min-height: 120px; width: 100%; }
+}

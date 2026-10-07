@@ -1,5 +1,5 @@
 {
-	"name": "nestar-next",
+	"name": "anorcar-next",
 	"version": "2.2.0",
 	"private": true,
 	"license": "ITC",
@@ -8,7 +8,10 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"changelog": "standard-version --skip.tag"
+		"changelog": "standard-version --skip.tag",
+		"typecheck": "tsc --noEmit --incremental false",
+		"test:migration": "node scripts/check-car-migration.cjs",
+		"check:graphql": "node scripts/check-graphql-contract.cjs"
 	},
 	"dependencies": {
 		"@mui/material": "^5.10.1",

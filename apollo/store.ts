@@ -14,14 +14,19 @@ export const userVar = makeVar<CustomJwtPayload>({
 	memberImage: '',
 	memberAddress: '',
 	memberDesc: '',
-	memberProperties: 0,
+	memberCars: 0,
 	memberRank: 0,
 	memberArticles: 0,
 	memberPoints: 0,
 	memberLikes: 0,
 	memberViews: 0,
+	memberFollowers: 0,
+	memberFollowings: 0,
+	memberComments: 0,
 	memberWarnings: 0,
 	memberBlocks: 0,
 });
 //@ts-ignore
 export const socketVar = makeVar<WebSocket>();
+
+export const authReadyVar = makeVar(false);

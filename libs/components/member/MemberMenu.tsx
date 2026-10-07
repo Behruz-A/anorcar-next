@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Stack, Typography, Box, List, ListItem, Button } from '@mui/material';
@@ -15,6 +16,7 @@ interface MemberMenuProps {
 }
 
 const MemberMenu = (props: MemberMenuProps) => {
+ const { t } = useTranslation('common');
 	const { subscribeHandler, unsubscribeHandler } = props;
 	const device = useDeviceDetect();
 	const router = useRouter();
@@ -38,9 +40,7 @@ const MemberMenu = (props: MemberMenuProps) => {
 		},
 	});
 
-	if (device === 'mobile') {
-		return <div>MEMBER MENU MOBILE</div>;
-	} else {
+	{
 		return (
 			<Stack width={'100%'} padding={'30px 24px'}>
 				<Stack className={'profile'}>
@@ -66,48 +66,40 @@ const MemberMenu = (props: MemberMenuProps) => {
 								variant="outlined"
 								sx={{ background: '#b9b9b9' }}
 								onClick={() => unsubscribeHandler(member?._id, getMemberRefetch, memberId)}
-							>
-								Unfollow
-							</Button>
-							<Typography>Following</Typography>
+							>{t("Unfollow")}</Button>
+							<Typography>{t("Following")}</Typography>
 						</>
 					) : (
 						<Button
 							variant="contained"
 							sx={{ background: '#ff5d18', ':hover': { background: '#ff5d18' } }}
 							onClick={() => subscribeHandler(member?._id, getMemberRefetch, memberId)}
-						>
-							Follow
-						</Button>
+						>{t("Follow")}</Button>
 					)}
 				</Stack>
 				<Stack className={'sections'}>
 					<Stack className={'section'}>
-						<Typography className="title" variant={'h5'}>
-							Details
-						</Typography>
+						<Typography className="title" variant={'h5'}>{t("Details")}</Typography>
 						<List className={'sub-section'}>
 							{member?.memberType === 'AGENT' && (
-								<ListItem className={category === 'properties' ? 'focus' : ''}>
+								<ListItem className={category === 'cars' ? 'focus' : ''}>
 									<Link
 										href={{
 											pathname: '/member',
-											query: { ...router.query, category: 'properties' },
+											query: { ...router.query, category: 'cars' },
 										}}
 										scroll={false}
 										style={{ width: '100%' }}
 									>
 										<div className={'flex-box'}>
-											{category === 'properties' ? (
+											{category === 'cars' ? (
 												<img className={'com-icon'} src={'/img/icons/homeWhite.svg'} alt={'com-icon'} />
 											) : (
 												<img className={'com-icon'} src={'/img/icons/home.svg'} alt={'com-icon'} />
 											)}
-											<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-												Properties
-											</Typography>
+											<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("Cars")}</Typography>
 											<Typography className="count-title" variant="subtitle1">
-												{member?.memberProperties}
+												{member?.memberCars}
 											</Typography>
 										</div>
 									</Link>
@@ -155,9 +147,7 @@ const MemberMenu = (props: MemberMenuProps) => {
 												/>
 											</g>
 										</svg>
-										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-											Followers
-										</Typography>
+										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("Followers")}</Typography>
 										<Typography className="count-title" variant="subtitle1">
 											{member?.memberFollowers}
 										</Typography>
@@ -206,9 +196,7 @@ const MemberMenu = (props: MemberMenuProps) => {
 												/>
 											</g>
 										</svg>
-										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-											Followings
-										</Typography>
+										<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("Followings")}</Typography>
 										<Typography className="count-title" variant="subtitle1">
 											{member?.memberFollowings}
 										</Typography>
@@ -219,9 +207,7 @@ const MemberMenu = (props: MemberMenuProps) => {
 					</Stack>
 					<Stack className={'section'} sx={{ marginTop: '10px' }}>
 						<div>
-							<Typography className="title" variant={'h5'}>
-								Community
-							</Typography>
+							<Typography className="title" variant={'h5'}>{t("Community")}</Typography>
 							<List className={'sub-section'}>
 								<ListItem className={category === 'articles' ? 'focus' : ''}>
 									<Link
@@ -239,9 +225,7 @@ const MemberMenu = (props: MemberMenuProps) => {
 												<img className={'com-icon'} src={'/img/icons/discovery.svg'} alt={'com-icon'} />
 											)}
 
-											<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-												Articles
-											</Typography>
+											<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("Articles")}</Typography>
 											<Typography className="count-title" variant="subtitle1">
 												{member?.memberArticles}
 											</Typography>

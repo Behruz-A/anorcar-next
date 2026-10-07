@@ -19,7 +19,7 @@ export const SIGN_UP = gql`
 			memberDesc
 			memberWarnings
 			memberBlocks
-			memberProperties
+			memberCars
 			memberRank
 			memberArticles
 			memberPoints
@@ -48,7 +48,7 @@ export const LOGIN = gql`
 			memberDesc
 			memberWarnings
 			memberBlocks
-			memberProperties
+			memberCars
 			memberRank
 			memberPoints
 			memberLikes
@@ -74,7 +74,7 @@ export const UPDATE_MEMBER = gql`
 			memberImage
 			memberAddress
 			memberDesc
-			memberProperties
+			memberCars
 			memberRank
 			memberArticles
 			memberPoints
@@ -105,7 +105,7 @@ export const LIKE_TARGET_MEMBER = gql`
 			memberDesc
 			memberWarnings
 			memberBlocks
-			memberProperties
+			memberCars
 			memberRank
 			memberPoints
 			memberLikes
@@ -118,96 +118,9 @@ export const LIKE_TARGET_MEMBER = gql`
 	}
 `;
 
-/**************************
- *        PROPERTY        *
- *************************/
 
-export const CREATE_PROPERTY = gql`
-	mutation CreateProperty($input: PropertyInput!) {
-		createProperty(input: $input) {
-			_id
-			propertyType
-			propertyStatus
-			propertyLocation
-			propertyAddress
-			propertyTitle
-			propertyPrice
-			propertySquare
-			propertyBeds
-			propertyRooms
-			propertyViews
-			propertyLikes
-			propertyImages
-			propertyDesc
-			propertyBarter
-			propertyRent
-			memberId
-			soldAt
-			deletedAt
-			constructedAt
-			createdAt
-			updatedAt
-		}
-	}
-`;
 
-export const UPDATE_PROPERTY = gql`
-	mutation UpdateProperty($input: PropertyUpdate!) {
-		updateProperty(input: $input) {
-			_id
-			propertyType
-			propertyStatus
-			propertyLocation
-			propertyAddress
-			propertyTitle
-			propertyPrice
-			propertySquare
-			propertyBeds
-			propertyRooms
-			propertyViews
-			propertyLikes
-			propertyImages
-			propertyDesc
-			propertyBarter
-			propertyRent
-			memberId
-			soldAt
-			deletedAt
-			constructedAt
-			createdAt
-			updatedAt
-		}
-	}
-`;
 
-export const LIKE_TARGET_PROPERTY = gql`
-	mutation LikeTargetProperty($input: String!) {
-		likeTargetProperty(memberId: $input) {
-			_id
-			propertyType
-			propertyStatus
-			propertyLocation
-			propertyAddress
-			propertyTitle
-			propertyPrice
-			propertySquare
-			propertyBeds
-			propertyRooms
-			propertyViews
-			propertyLikes
-			propertyImages
-			propertyDesc
-			propertyBarter
-			propertyRent
-			memberId
-			soldAt
-			deletedAt
-			constructedAt
-			createdAt
-			updatedAt
-		}
-	}
-`;
 
 /**************************
  *      BOARD-ARTICLE     *
@@ -327,4 +240,193 @@ export const UNSUBSCRIBE = gql`
 			updatedAt
 		}
 	}
+`;
+
+
+/**************************
+ * CAR
+ *************************/
+
+export const CREATE_CAR = gql`
+mutation CreateCar($input: CarInput!) {
+  createCar(input: $input) {
+    _id
+    carStatus
+    carFuelType
+    carCondition
+    carModel
+    carYear
+    carLocation
+    carAddress
+    carTransmission
+    carTitle
+    carPrice
+    carColor
+    carViews
+    carLikes
+    carComments
+    carRank
+    carImages
+    brandId
+    carDesc
+    carBarter
+    carRent
+    memberId
+    soldAt
+    deletedAt
+    createdAt
+    updatedAt
+    brandData {
+      _id
+      brandName
+      brandLogo
+      brandStatus
+    }
+    memberData {
+      _id
+      memberType
+      memberStatus
+      memberNick
+      memberPhone
+      memberFullName
+      memberImage
+      memberAddress
+      memberDesc
+      memberCars
+      memberLikes
+      memberViews
+    }
+    meLiked {
+      memberId
+      likeRefId
+      myFavorite
+    }
+  }
+}
+`;
+
+
+/**************************
+ * CAR
+ *************************/
+
+export const UPDATE_CAR = gql`
+mutation UpdateCar($input: CarUpdate!) {
+  updateCar(input: $input) {
+    _id
+    carStatus
+    carFuelType
+    carCondition
+    carModel
+    carYear
+    carLocation
+    carAddress
+    carTransmission
+    carTitle
+    carPrice
+    carColor
+    carViews
+    carLikes
+    carComments
+    carRank
+    carImages
+    brandId
+    carDesc
+    carBarter
+    carRent
+    memberId
+    soldAt
+    deletedAt
+    createdAt
+    updatedAt
+    brandData {
+      _id
+      brandName
+      brandLogo
+      brandStatus
+    }
+    memberData {
+      _id
+      memberType
+      memberStatus
+      memberNick
+      memberPhone
+      memberFullName
+      memberImage
+      memberAddress
+      memberDesc
+      memberCars
+      memberLikes
+      memberViews
+    }
+    meLiked {
+      memberId
+      likeRefId
+      myFavorite
+    }
+  }
+}
+`;
+
+
+/**************************
+ * CAR
+ *************************/
+
+export const LIKE_TARGET_CAR = gql`
+mutation LikeTargetCar($input: String!) {
+  likeTargetCar(carId: $input) {
+    _id
+    carStatus
+    carFuelType
+    carCondition
+    carModel
+    carYear
+    carLocation
+    carAddress
+    carTransmission
+    carTitle
+    carPrice
+    carColor
+    carViews
+    carLikes
+    carComments
+    carRank
+    carImages
+    brandId
+    carDesc
+    carBarter
+    carRent
+    memberId
+    soldAt
+    deletedAt
+    createdAt
+    updatedAt
+    brandData {
+      _id
+      brandName
+      brandLogo
+      brandStatus
+    }
+    memberData {
+      _id
+      memberType
+      memberStatus
+      memberNick
+      memberPhone
+      memberFullName
+      memberImage
+      memberAddress
+      memberDesc
+      memberCars
+      memberLikes
+      memberViews
+    }
+    meLiked {
+      memberId
+      likeRefId
+      myFavorite
+    }
+  }
+}
 `;

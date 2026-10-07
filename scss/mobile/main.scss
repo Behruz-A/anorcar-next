@@ -30,7 +30,7 @@
 
   }
 
-  .trend-properties {
+  .trend-cars {
     padding: 0px 10px;
     width: 100%;
     height: auto;
@@ -51,12 +51,12 @@
           justify-content: center;
           align-items: center;
         }
-        .trend-property-swiper {
+        .trend-car-swiper {
           width: 100%;
           height: 400px;
           display: flex;
           flex-direction: row;
-          .trend-property-slide {
+          .trend-car-slide {
             width: 98%;
             height: auto;
             display: flex;
@@ -314,7 +314,7 @@
     }
   }
 
-  .popular-properties {
+  .popular-cars {
     padding: 10px 10px;
     width: 100%;
     height: auto;
@@ -332,12 +332,12 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        .popular-property-swiper {
+        .popular-car-swiper {
           width: 100%;
           height: 390px;
           display: flex;
           flex-direction: row;
-          .popular-property-slide {
+          .popular-car-slide {
             width: 98%;
             height: auto;
             display: flex;
@@ -521,7 +521,7 @@
     box-shadow: -3px 0px 20px 14px #34343480;
   }
 
-  .top-properties {
+  .top-cars {
     padding: 0px 10px;
     width: 100%;
     height: auto;
@@ -536,12 +536,12 @@
         margin-top: 25px;
         display: flex;
         flex-direction: row;
-        .top-property-swiper {
+        .top-car-swiper {
           width: 100%;
           height: 400px;
           display: flex;
           flex-direction: row;
-          .top-property-slide {
+          .top-car-slide {
             width: 98%;
             height: auto;
             display: flex;

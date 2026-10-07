@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import React, { useCallback, useState } from 'react';
 import { NextPage } from 'next';
 import useDeviceDetect from '../../libs/hooks/useDeviceDetect';
@@ -15,6 +16,7 @@ export const getStaticProps = async ({ locale }: any) => ({
 });
 
 const Join: NextPage = () => {
+ const { t } = useTranslation('common');
 	const router = useRouter();
 	const device = useDeviceDetect();
 	const [input, setInput] = useState({ nick: '', password: '', phone: '', type: 'USER' });
@@ -42,30 +44,26 @@ const Join: NextPage = () => {
 	}, []);
 
 	const doLogin = useCallback(async () => {
-		console.warn(input);
 		try {
 			await logIn(input.nick, input.password);
-			await router.push(`${router.query.referrer ?? '/'}`);
+			const referrer = typeof router.query.referrer === 'string' && router.query.referrer.startsWith('/') && !router.query.referrer.startsWith('//') ? router.query.referrer : '/';
+			await router.push(referrer);
 		} catch (err: any) {
 			await sweetMixinErrorAlert(err.message);
 		}
-	}, [input]);
+	}, [input, router]);
 
 	const doSignUp = useCallback(async () => {
-		console.warn(input);
 		try {
 			await signUp(input.nick, input.password, input.phone, input.type);
-			await router.push(`${router.query.referrer ?? '/'}`);
+			const referrer = typeof router.query.referrer === 'string' && router.query.referrer.startsWith('/') && !router.query.referrer.startsWith('//') ? router.query.referrer : '/';
+			await router.push(referrer);
 		} catch (err: any) {
 			await sweetMixinErrorAlert(err.message);
 		}
-	}, [input]);
+	}, [input, router]);
 
-	console.log('+input: ', input);
-
-	if (device === 'mobile') {
-		return <div>LOGIN MOBILE</div>;
-	} else {
+	{
 		return (
 			<Stack className={'join-page'}>
 				<Stack className={'container'}>
@@ -73,8 +71,8 @@ const Join: NextPage = () => {
 						<Stack className={'left'}>
 							{/* @ts-ignore */}
 							<Box className={'logo'}>
-								<img src="/img/logo/logoText.svg" alt="" />
-								<span>Nestar</span>
+								<img src="/img/logo/anorcar.svg" alt="" />
+								<span>ANORCAR</span>
 							</Box>
 							<Box className={'info'}>
 								<span>{loginView ? 'login' : 'signup'}</span>
@@ -82,7 +80,7 @@ const Join: NextPage = () => {
 							</Box>
 							<Box className={'input-wrap'}>
 								<div className={'input-box'}>
-									<span>Nickname</span>
+									<span>{t("Nickname")}</span>
 									<input
 										type="text"
 										placeholder={'Enter Nickname'}
@@ -95,7 +93,7 @@ const Join: NextPage = () => {
 									/>
 								</div>
 								<div className={'input-box'}>
-									<span>Password</span>
+									<span>{t("Password")}</span>
 									<input
 										type="text"
 										placeholder={'Enter Password'}
@@ -109,7 +107,7 @@ const Join: NextPage = () => {
 								</div>
 								{!loginView && (
 									<div className={'input-box'}>
-										<span>Phone</span>
+										<span>{t("Phone")}</span>
 										<input
 											type="text"
 											placeholder={'Enter Phone'}
@@ -125,7 +123,7 @@ const Join: NextPage = () => {
 							<Box className={'register'}>
 								{!loginView && (
 									<div className={'type-option'}>
-										<span className={'text'}>I want to be registered as:</span>
+										<span className={'text'}>{t("I want to be registered as:")}</span>
 										<div>
 											<FormGroup>
 												<FormControlLabel
@@ -137,7 +135,7 @@ const Join: NextPage = () => {
 															checked={input?.type == 'USER'}
 														/>
 													}
-													label="User"
+													label={t("User")}
 												/>
 											</FormGroup>
 											<FormGroup>
@@ -150,7 +148,7 @@ const Join: NextPage = () => {
 															checked={input?.type == 'AGENT'}
 														/>
 													}
-													label="Agent"
+													label={t("Agents")}
 												/>
 											</FormGroup>
 										</div>
@@ -160,9 +158,9 @@ const Join: NextPage = () => {
 								{loginView && (
 									<div className={'remember-info'}>
 										<FormGroup>
-											<FormControlLabel control={<Checkbox defaultChecked size="small" />} label="Remember me" />
+											<FormControlLabel control={<Checkbox defaultChecked size="small" />} label={t("Remember me")} />
 										</FormGroup>
-										<a>Lost your password?</a>
+										<a>{t("Lost your password?")}</a>
 									</div>
 								)}
 
@@ -172,18 +170,14 @@ const Join: NextPage = () => {
 										endIcon={<img src="/img/icons/rightup.svg" alt="" />}
 										disabled={input.nick == '' || input.password == ''}
 										onClick={doLogin}
-									>
-										LOGIN
-									</Button>
+									>{t("LOGIN")}</Button>
 								) : (
 									<Button
 										variant="contained"
 										disabled={input.nick == '' || input.password == '' || input.phone == '' || input.type == ''}
 										onClick={doSignUp}
 										endIcon={<img src="/img/icons/rightup.svg" alt="" />}
-									>
-										SIGNUP
-									</Button>
+									>{t("SIGNUP")}</Button>
 								)}
 							</Box>
 							<Box className={'ask-info'}>
@@ -194,14 +188,12 @@ const Join: NextPage = () => {
 											onClick={() => {
 												viewChangeHandler(false);
 											}}
-										>
-											SIGNUP
-										</b>
+										>{t("SIGNUP")}</b>
 									</p>
 								) : (
 									<p>
 										Have account?
-										<b onClick={() => viewChangeHandler(true)}> LOGIN</b>
+										<b onClick={() => viewChangeHandler(true)}>{t("LOGIN")}</b>
 									</p>
 								)}
 							</Box>

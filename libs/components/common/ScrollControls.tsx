@@ -193,7 +193,7 @@ export function ScrollControls({
 	return <context.Provider value={state}>{children}</context.Provider>;
 }
 
-const ScrollCanvas = React.forwardRef(({ children }, ref) => {
+const ScrollCanvas = React.forwardRef(function ScrollCanvas({ children }, ref) {
 	const group = React.useRef<THREE.Group>(null!);
 	const state = useScroll();
 	const { width, height } = useThree((state) => state.viewport);
@@ -205,7 +205,7 @@ const ScrollCanvas = React.forwardRef(({ children }, ref) => {
 });
 
 const ScrollHtml = React.forwardRef(
-	({ children, style, ...props }: { children?: React.ReactNode; style?: React.StyleHTMLAttributes<any> }, ref) => {
+	function ScrollHtml({ children, style, ...props }: { children?: React.ReactNode; style?: React.StyleHTMLAttributes<any> }, ref) {
 		const state = useScroll();
 		const group = React.useRef<HTMLDivElement>(null!);
 		const { width, height } = useThree((state) => state.size);
@@ -217,7 +217,7 @@ const ScrollHtml = React.forwardRef(
 				}px,${state.horizontal ? 0 : height * (state.pages - 1) * -state.offset}px,0)`;
 			}
 		});
-		ReactDOM.render(
+		return ReactDOM.createPortal(
 			<div
 				ref={mergeRefs([ref, group])}
 				style={{ ...style, position: 'absolute', top: 0, left: 0, willChange: 'transform' }}
@@ -229,7 +229,6 @@ const ScrollHtml = React.forwardRef(
 			</div>,
 			state.fixed,
 		);
-		return null;
 	},
 );
 
@@ -238,7 +237,7 @@ type ScrollProps = {
 	children?: React.ReactNode;
 };
 
-export const Scroll = React.forwardRef(({ html, ...props }: ScrollProps, ref) => {
+export const Scroll = React.forwardRef(function Scroll({ html, ...props }: ScrollProps, ref) {
 	const El = html ? ScrollHtml : ScrollCanvas;
 	return <El ref={ref} {...props} />;
 });

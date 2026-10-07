@@ -20,7 +20,7 @@ export const GET_ALL_MEMBERS_BY_ADMIN = gql`
 				memberDesc
 				memberWarnings
 				memberBlocks
-				memberProperties
+				memberCars
 				memberRank
 				memberArticles
 				memberPoints
@@ -38,66 +38,7 @@ export const GET_ALL_MEMBERS_BY_ADMIN = gql`
 	}
 `;
 
-/**************************
- *        PROPERTY        *
- *************************/
 
-export const GET_ALL_PROPERTIES_BY_ADMIN = gql`
-	query GetAllPropertiesByAdmin($input: AllPropertiesInquiry!) {
-		getAllPropertiesByAdmin(input: $input) {
-			list {
-				_id
-				propertyType
-				propertyStatus
-				propertyLocation
-				propertyAddress
-				propertyTitle
-				propertyPrice
-				propertySquare
-				propertyBeds
-				propertyRooms
-				propertyViews
-				propertyLikes
-				propertyImages
-				propertyDesc
-				propertyBarter
-				propertyRent
-				memberId
-				soldAt
-				deletedAt
-				constructedAt
-				createdAt
-				updatedAt
-				memberData {
-					_id
-					memberType
-					memberStatus
-					memberAuthType
-					memberPhone
-					memberNick
-					memberFullName
-					memberImage
-					memberAddress
-					memberDesc
-					memberWarnings
-					memberBlocks
-					memberProperties
-					memberRank
-					memberPoints
-					memberLikes
-					memberViews
-					deletedAt
-					createdAt
-					updatedAt
-					accessToken
-				}
-			}
-			metaCounter {
-				total
-			}
-		}
-	}
-`;
 
 /**************************
  *      BOARD-ARTICLE     *
@@ -131,7 +72,7 @@ export const GET_ALL_BOARD_ARTICLES_BY_ADMIN = gql`
 					memberDesc
 					memberWarnings
 					memberBlocks
-					memberProperties
+					memberCars
 					memberRank
 					memberPoints
 					memberLikes
@@ -178,7 +119,7 @@ export const GET_COMMENTS = gql`
 					memberDesc
 					memberWarnings
 					memberBlocks
-					memberProperties
+					memberCars
 					memberRank
 					memberPoints
 					memberLikes
@@ -194,4 +135,88 @@ export const GET_COMMENTS = gql`
 			}
 		}
 	}
+`;
+
+
+/**************************
+ * CAR
+ *************************/
+
+export const GET_ALL_CARS_BY_ADMIN = gql`
+query GetAllCarsByAdmin($input: AllCarsInquiry!) {
+  getAllCarsByAdmin(input: $input) {
+    list {
+      _id
+      carStatus
+      carFuelType
+      carCondition
+      carModel
+      carYear
+      carLocation
+      carAddress
+      carTransmission
+      carTitle
+      carPrice
+      carColor
+      carViews
+      carLikes
+      carComments
+      carRank
+      carImages
+      brandId
+      carDesc
+      carBarter
+      carRent
+      memberId
+      soldAt
+      deletedAt
+      createdAt
+      updatedAt
+      brandData {
+        _id
+        brandName
+        brandLogo
+        brandStatus
+      }
+      memberData {
+        _id
+        memberType
+        memberStatus
+        memberNick
+        memberPhone
+        memberFullName
+        memberImage
+        memberAddress
+        memberDesc
+        memberCars
+        memberLikes
+        memberViews
+      }
+      meLiked {
+        memberId
+        likeRefId
+        myFavorite
+      }
+    }
+    metaCounter {
+      total
+    }
+  }
+}
+`;
+
+
+/**************************
+ * BRAND
+ *************************/
+
+export const GET_ALL_BRANDS_BY_ADMIN = gql`
+query GetAllBrandsByAdmin {
+  getAllBrandsByAdmin {
+    _id
+    brandName
+    brandLogo
+    brandStatus
+  }
+}
 `;

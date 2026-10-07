@@ -11,7 +11,6 @@ export interface MemberUpdate {
 	memberImage?: string;
 	memberAddress?: string;
 	memberDesc?: string;
-	deletedAt?: Date;
 }
 
 export interface AdminMemberUpdate {
@@ -24,5 +23,4 @@ export interface AdminMemberUpdate {
 	memberImage?: string;
 	memberAddress?: string;
 	memberDesc?: string;
-	deletedAt?: Date;
 }

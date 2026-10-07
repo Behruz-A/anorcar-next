@@ -1,8 +1,10 @@
+import { useTranslation } from 'next-i18next';
 import React from 'react';
 import { Stack, Box } from '@mui/material';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 
 const Notice = () => {
+ const { t } = useTranslation('common');
 	const device = useDeviceDetect();
 
 	/** APOLLO REQUESTS **/
@@ -13,12 +15,12 @@ const Notice = () => {
 		{
 			no: 1,
 			event: true,
-			title: 'Register to use and get discounts',
+			title: 'Welcome to ANORCAR',
 			date: '01.03.2024',
 		},
 		{
 			no: 2,
-			title: "It's absolutely free to upload and trade properties",
+			title: "Publish and manage car listings",
 			date: '31.03.2024',
 		},
 	];
@@ -37,7 +39,7 @@ const Notice = () => {
 					</Box>
 					<Stack className={'bottom'}>
 						{data.map((ele: any) => (
-							<div className={`notice-card ${ele?.event && 'event'}`} key={ele.title}>
+							<div className={`notice-card ${ele?.event && 'event'}`} key={t(ele.title)}>
 								{ele?.event ? <div>event</div> : <span className={'notice-number'}>{ele.no}</span>}
 								<span className={'notice-title'}>{ele.title}</span>
 								<span className={'notice-date'}>{ele.date}</span>

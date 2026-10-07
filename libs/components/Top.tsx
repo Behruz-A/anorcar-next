@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { useRouter, withRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { getJwtToken, logOut, updateUserInfo } from '../auth';
+import { hydrateUser, logOut } from '../auth';
 import { Stack, Box } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
@@ -23,6 +23,7 @@ const Top = () => {
 	const user = useReactiveVar(userVar);
 	const { t, i18n } = useTranslation('common');
 	const router = useRouter();
+	const isHomepage = router.pathname === '/';
 	const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
 	const [lang, setLang] = useState<string | null>('en');
 	const drop = Boolean(anchorEl2);
@@ -35,27 +36,31 @@ const Top = () => {
 
 	/** LIFECYCLES **/
 	useEffect(() => {
-		if (localStorage.getItem('locale') === null) {
-			localStorage.setItem('locale', 'en');
-			setLang('en');
-		} else {
-			setLang(localStorage.getItem('locale'));
-		}
-	}, [router]);
+		const locale = router.locale ?? 'en';
+		localStorage.setItem('locale', locale);
+		setLang(locale);
+	}, [router.locale]);
 
 	useEffect(() => {
 		switch (router.pathname) {
-			case '/property/detail':
+			case '/car/detail':
 				setBgColor(true);
 				break;
 			default:
+				setBgColor(false);
 				break;
 		}
 	}, [router]);
 
 	useEffect(() => {
-		const jwt = getJwtToken();
-		if (jwt) updateUserInfo(jwt);
+		hydrateUser();
+	}, []);
+
+	useEffect(() => {
+		const changeNavbarColor = () => setColorChange(window.scrollY >= 50);
+		changeNavbarColor();
+		window.addEventListener('scroll', changeNavbarColor, { passive: true });
+		return () => window.removeEventListener('scroll', changeNavbarColor);
 	}, []);
 
 	/** HANDLERS **/
@@ -69,21 +74,15 @@ const Top = () => {
 
 	const langChoice = useCallback(
 		async (e: any) => {
-			setLang(e.target.id);
-			localStorage.setItem('locale', e.target.id);
+			const locale = e.currentTarget.id;
+			if (!['en', 'kr', 'ru'].includes(locale)) return;
+			setLang(locale);
+			localStorage.setItem('locale', locale);
 			setAnchorEl2(null);
-			await router.push(router.asPath, router.asPath, { locale: e.target.id });
+			await router.push(router.asPath, router.asPath, { locale });
 		},
 		[router],
 	);
-
-	const changeNavbarColor = () => {
-		if (window.scrollY >= 50) {
-			setColorChange(true);
-		} else {
-			setColorChange(false);
-		}
-	};
 
 	const handleClose = () => {
 		setAnchorEl(null);
@@ -112,7 +111,7 @@ const Top = () => {
 		/>
 	))(({ theme }) => ({
 		'& .MuiPaper-root': {
-			top: '109px',
+			top: isHomepage ? '64px' : '109px',
 			borderRadius: 6,
 			marginTop: theme.spacing(1),
 			minWidth: 160,
@@ -135,18 +134,14 @@ const Top = () => {
 		},
 	}));
 
-	if (typeof window !== 'undefined') {
-		window.addEventListener('scroll', changeNavbarColor);
-	}
-
-	if (device == 'mobile') {
+	if (device == 'mobile' && !isHomepage) {
 		return (
 			<Stack className={'top'}>
 				<Link href={'/'}>
 					<div>{t('Home')}</div>
 				</Link>
-				<Link href={'/property'}>
-					<div>{t('Properties')}</div>
+				<Link href={'/car'}>
+					<div>{t('Cars')}</div>
 				</Link>
 				<Link href={'/agent'}>
 					<div> {t('Agents')} </div>
@@ -161,20 +156,20 @@ const Top = () => {
 		);
 	} else {
 		return (
-			<Stack className={'navbar'}>
+			<Stack className={`navbar ${isHomepage ? 'homepage-nav' : ''}`}>
 				<Stack className={`navbar-main ${colorChange ? 'transparent' : ''} ${bgColor ? 'transparent' : ''}`}>
 					<Stack className={'container'}>
 						<Box component={'div'} className={'logo-box'}>
 							<Link href={'/'}>
-								<img src="/img/logo/logoWhite.svg" alt="" />
+								<img src={isHomepage ? '/img/logo/anorcar-home.svg' : '/img/logo/anorcar-white.svg'} alt="ANORCAR" />
 							</Link>
 						</Box>
 						<Box component={'div'} className={'router-box'}>
-							<Link href={'/'}>
+							<Link href={'/'} className={isHomepage ? 'active' : undefined} aria-current={isHomepage ? 'page' : undefined}>
 								<div>{t('Home')}</div>
 							</Link>
-							<Link href={'/property'}>
-								<div>{t('Properties')}</div>
+							<Link href={'/car'}>
+								<div>{t('Cars')}</div>
 							</Link>
 							<Link href={'/agent'}>
 								<div> {t('Agents')} </div>
@@ -244,6 +239,7 @@ const Top = () => {
 											<img src={`/img/flag/langen.png`} alt={'usaFlag'} />
 										)}
 									</Box>
+									{isHomepage && <span className="locale-code">{(router.locale ?? 'en').toUpperCase()}</span>}
 								</Button>
 
 								<StyledMenu anchorEl={anchorEl2} open={drop} onClose={langClose} sx={{ position: 'absolute' }}>
@@ -251,7 +247,6 @@ const Top = () => {
 										<img
 											className="img-flag"
 											src={'/img/flag/langen.png'}
-											onClick={langChoice}
 											id="en"
 											alt={'usaFlag'}
 										/>
@@ -261,8 +256,7 @@ const Top = () => {
 										<img
 											className="img-flag"
 											src={'/img/flag/langkr.png'}
-											onClick={langChoice}
-											id="uz"
+											id="kr"
 											alt={'koreanFlag'}
 										/>
 										{t('Korean')}
@@ -271,7 +265,6 @@ const Top = () => {
 										<img
 											className="img-flag"
 											src={'/img/flag/langru.png'}
-											onClick={langChoice}
 											id="ru"
 											alt={'russiaFlag'}
 										/>

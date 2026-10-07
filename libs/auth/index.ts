@@ -1,9 +1,11 @@
 import decodeJWT from 'jwt-decode';
 import { initializeApollo } from '../../apollo/client';
-import { userVar } from '../../apollo/store';
+import { userVar, authReadyVar } from '../../apollo/store';
 import { CustomJwtPayload } from '../types/customJwtPayload';
-import { sweetMixinErrorAlert } from '../sweetAlert';
+import { Message } from '../enums/common.enum';
+import { MemberType } from '../enums/member.enum';
 import { LOGIN, SIGN_UP } from '../../apollo/user/mutation';
+import { GET_MEMBER } from '../../apollo/user/query';
 
 export function getJwtToken(): any {
 	if (typeof window !== 'undefined') {
@@ -25,8 +27,7 @@ export const logIn = async (nick: string, password: string): Promise<void> => {
 		}
 	} catch (err) {
 		console.warn('login err', err);
-		logOut();
-		// throw new Error('Login Err');
+		throw err;
 	}
 };
 
@@ -48,19 +49,12 @@ const requestJwtToken = async ({
 
 		console.log('---------- login ----------');
 		const { accessToken } = result?.data?.login;
+		if (!accessToken) throw new Error(Message.TOKEN_NOT_EXIST);
 
 		return { jwtToken: accessToken };
 	} catch (err: any) {
 		console.log('request token err', err.graphQLErrors);
-		switch (err.graphQLErrors[0].message) {
-			case 'Definer: login and password do not match':
-				await sweetMixinErrorAlert('Please check your password again');
-				break;
-			case 'Definer: user has been blocked!':
-				await sweetMixinErrorAlert('User has been blocked!');
-				break;
-		}
-		throw new Error('token error');
+		throw new Error(err.graphQLErrors?.[0]?.message ?? err.message ?? Message.SOMETHING_WENT_WRONG);
 	}
 };
 
@@ -74,8 +68,7 @@ export const signUp = async (nick: string, password: string, phone: string, type
 		}
 	} catch (err) {
 		console.warn('login err', err);
-		logOut();
-		// throw new Error('Login Err');
+		throw err;
 	}
 };
 
@@ -90,6 +83,7 @@ const requestSignUpJwtToken = async ({
 	phone: string;
 	type: string;
 }): Promise<{ jwtToken: string }> => {
+	if (type !== MemberType.USER && type !== MemberType.AGENT) throw new Error(Message.ONLY_SPECIFIC_ROLES_ALLOWED);
 	const apolloClient = await initializeApollo();
 
 	try {
@@ -103,19 +97,12 @@ const requestSignUpJwtToken = async ({
 
 		console.log('---------- login ----------');
 		const { accessToken } = result?.data?.signup;
+		if (!accessToken) throw new Error(Message.TOKEN_NOT_EXIST);
 
 		return { jwtToken: accessToken };
 	} catch (err: any) {
 		console.log('request token err', err.graphQLErrors);
-		switch (err.graphQLErrors[0].message) {
-			case 'Definer: login and password do not match':
-				await sweetMixinErrorAlert('Please check your password again');
-				break;
-			case 'Definer: user has been blocked!':
-				await sweetMixinErrorAlert('User has been blocked!');
-				break;
-		}
-		throw new Error('token error');
+		throw new Error(err.graphQLErrors?.[0]?.message ?? err.message ?? Message.SOMETHING_WENT_WRONG);
 	}
 };
 
@@ -128,6 +115,9 @@ export const updateUserInfo = (jwtToken: any) => {
 	if (!jwtToken) return false;
 
 	const claims = decodeJWT<CustomJwtPayload>(jwtToken);
+	if (!claims._id || !Object.values(MemberType).includes(claims.memberType as MemberType)) {
+		throw new Error(Message.NOT_AUTHENTICATED);
+	}
 	userVar({
 		_id: claims._id ?? '',
 		memberType: claims.memberType ?? '',
@@ -142,15 +132,19 @@ export const updateUserInfo = (jwtToken: any) => {
 				: `${claims.memberImage}`,
 		memberAddress: claims.memberAddress ?? '',
 		memberDesc: claims.memberDesc ?? '',
-		memberProperties: claims.memberProperties,
-		memberRank: claims.memberRank,
-		memberArticles: claims.memberArticles,
-		memberPoints: claims.memberPoints,
-		memberLikes: claims.memberLikes,
-		memberViews: claims.memberViews,
-		memberWarnings: claims.memberWarnings,
-		memberBlocks: claims.memberBlocks,
+		memberCars: claims.memberCars ?? 0,
+		memberRank: claims.memberRank ?? 0,
+		memberArticles: claims.memberArticles ?? 0,
+		memberPoints: claims.memberPoints ?? 0,
+		memberLikes: claims.memberLikes ?? 0,
+		memberViews: claims.memberViews ?? 0,
+		memberFollowers: claims.memberFollowers ?? 0,
+		memberFollowings: claims.memberFollowings ?? 0,
+		memberComments: claims.memberComments ?? 0,
+		memberWarnings: claims.memberWarnings ?? 0,
+		memberBlocks: claims.memberBlocks ?? 0,
 	});
+	authReadyVar(true);
 };
 
 export const logOut = () => {
@@ -176,13 +170,39 @@ const deleteUserInfo = () => {
 		memberImage: '',
 		memberAddress: '',
 		memberDesc: '',
-		memberProperties: 0,
+		memberCars: 0,
 		memberRank: 0,
 		memberArticles: 0,
 		memberPoints: 0,
 		memberLikes: 0,
 		memberViews: 0,
+		memberFollowers: 0,
+		memberFollowings: 0,
+		memberComments: 0,
 		memberWarnings: 0,
 		memberBlocks: 0,
 	});
 };
+
+export function hydrateUser() {
+ if (typeof window === 'undefined' || authReadyVar()) return;
+ try {
+  const token = getJwtToken();
+  if (token) {
+   const claims = decodeJWT<CustomJwtPayload>(token);
+   if (claims.exp && claims.exp * 1000 <= Date.now()) throw new Error('Session expired');
+   updateUserInfo(token);
+  }
+ } catch {
+  localStorage.removeItem('accessToken');
+  deleteUserInfo();
+ } finally { authReadyVar(true); }
+}
+
+export async function refreshMemberCars() {
+ const user = userVar();
+ if (!user._id) return;
+ const client = initializeApollo();
+ const { data } = await client.query({ query: GET_MEMBER, variables: { input: user._id }, fetchPolicy: 'network-only' });
+ if (userVar()._id === user._id && data?.getMember) userVar({ ...userVar(), memberCars: data.getMember.memberCars ?? 0 });
+}
