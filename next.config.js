@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
+	// Keep production builds from replacing files served by the running dev server.
+	distDir: process.env.NODE_ENV === 'development' ? '.next-dev' : '.next',
 	eslint: { dirs: ['pages', 'libs', 'apollo'] },
  async redirects() {
   return [

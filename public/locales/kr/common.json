@@ -286,5 +286,16 @@
   "Great Deals": "좋은 선택",
   "New & Used Cars": "신차와 중고차",
   "in One Place": "한곳에서",
-  "Search": "검색"
+  "Search": "검색",
+  "Browse by Budget": "예산별 차량 찾기",
+  "Under $10K": "$10K 이하",
+  "Under $20K": "$20K 이하",
+  "Under $30K": "$30K 이하",
+  "Under $50K": "$50K 이하",
+  "Under $100K": "$100K 이하",
+  "Any Budget": "모든 예산",
+  "Previous budgets": "이전 가격대",
+  "Next budgets": "다음 가격대",
+  "Under $40K": "$40K 이하",
+  "Under $75K": "$75K 이하"
 }

@@ -1,0 +1,42 @@
+{
+  "budget-blue": {
+    "asset": "public/img/car/budget/budget-blue.png",
+    "mode": "built-in image_gen",
+    "prompt": "Generate a single photorealistic automotive studio photograph for an ANORCAR website Browse by Budget category tile. Subject: metallic cobalt blue compact hatchback, modest everyday small car. Landscape 3:2 composition. Nearly side profile with a gentle front three-quarter angle, nose pointing to the LEFT, front wheel and front bumper clearly visible. Entire vehicle inside the frame, occupying 94 percent of image width, placed in the lower middle of the image. Seamless plain light warm gray studio backdrop and matching floor (#e6e5e4), soft even daylight, subtle realistic tire contact shadow, crisp realistic paint and wheels. Background has no objects. This is one standalone photograph, not a grid or collage. No typography, no price labels, no watermark, no visible brand logos, no people. The left side of the photograph must still look good when the right portion is cropped to fit a tall narrow website card. Keep uniform studio lighting and camera scale across this set."
+  },
+  "budget-orange": {
+    "asset": "public/img/car/budget/budget-orange.png",
+    "mode": "built-in image_gen",
+    "prompt": "Generate a single photorealistic automotive studio photograph for an ANORCAR website Browse by Budget category tile. Subject: metallic burnt orange compact crossover. Landscape 3:2 composition. Nearly side profile with a gentle front three-quarter angle, nose pointing to the LEFT, front wheel and front bumper clearly visible. Entire vehicle inside the frame, occupying 94 percent of image width, placed in the lower middle of the image. Seamless plain light warm gray studio backdrop and matching floor (#e6e5e4), soft even daylight, subtle realistic tire contact shadow, crisp realistic paint and wheels. Background has no objects. This is one standalone photograph, not a grid or collage. No typography, no price labels, no watermark, no visible brand logos, no people. The left side of the photograph must still look good when the right portion is cropped to fit a tall narrow website card. Keep uniform studio lighting and camera scale across this set."
+  },
+  "budget-red": {
+    "asset": "public/img/car/budget/budget-red.png",
+    "mode": "built-in image_gen",
+    "prompt": "Generate a single photorealistic automotive studio photograph for an ANORCAR website Browse by Budget category tile. Subject: glossy red sporty modern compact sedan. Landscape 3:2 composition. Nearly side profile with a gentle front three-quarter angle, nose pointing to the LEFT, front wheel and front bumper clearly visible. Entire vehicle inside the frame, occupying 94 percent of image width, placed in the lower middle of the image. Seamless plain light warm gray studio backdrop and matching floor (#e6e5e4), soft even daylight, subtle realistic tire contact shadow, crisp realistic paint and wheels. Background has no objects. This is one standalone photograph, not a grid or collage. No typography, no price labels, no watermark, no visible brand logos, no people. The left side of the photograph must still look good when the right portion is cropped to fit a tall narrow website card. Keep uniform studio lighting and camera scale across this set."
+  },
+  "budget-slate": {
+    "asset": "public/img/car/budget/budget-slate.png",
+    "mode": "built-in image_gen",
+    "prompt": "Generate a single photorealistic automotive studio photograph for an ANORCAR website Browse by Budget category tile. Subject: metallic blue gray midsize premium crossover SUV. Landscape 3:2 composition. Nearly side profile with a gentle front three-quarter angle, nose pointing to the LEFT, front wheel and front bumper clearly visible. Entire vehicle inside the frame, occupying 94 percent of image width, placed in the lower middle of the image. Seamless plain light warm gray studio backdrop and matching floor (#e6e5e4), soft even daylight, subtle realistic tire contact shadow, crisp realistic paint and wheels. Background has no objects. This is one standalone photograph, not a grid or collage. No typography, no price labels, no watermark, no visible brand logos, no people. The left side of the photograph must still look good when the right portion is cropped to fit a tall narrow website card. Keep uniform studio lighting and camera scale across this set."
+  },
+  "budget-white": {
+    "asset": "public/img/car/budget/budget-white.png",
+    "mode": "built-in image_gen",
+    "prompt": "Generate a single photorealistic automotive studio photograph for an ANORCAR website Browse by Budget category tile. Subject: pearl white elegant performance sedan. Landscape 3:2 composition. Nearly side profile with a gentle front three-quarter angle, nose pointing to the LEFT, front wheel and front bumper clearly visible. Entire vehicle inside the frame, occupying 94 percent of image width, placed in the lower middle of the image. Seamless plain light warm gray studio backdrop and matching floor (#e6e5e4), soft even daylight, subtle realistic tire contact shadow, crisp realistic paint and wheels. Background has no objects. This is one standalone photograph, not a grid or collage. No typography, no price labels, no watermark, no visible brand logos, no people. The left side of the photograph must still look good when the right portion is cropped to fit a tall narrow website card. Keep uniform studio lighting and camera scale across this set."
+  },
+  "budget-yellow": {
+    "asset": "public/img/car/budget/budget-yellow.png",
+    "mode": "built-in image_gen",
+    "prompt": "Generate a single photorealistic automotive studio photograph for an ANORCAR website Browse by Budget category tile. Subject: bright golden yellow sports fastback coupe, show the rear three-quarter side view with its rear at the left and the nose pointing to the right. Landscape 3:2 composition. Rear three-quarter side view, rear at the left. Entire vehicle inside the frame, occupying 94 percent of image width, placed in the lower middle of the image. Seamless plain light warm gray studio backdrop and matching floor (#e6e5e4), soft even daylight, subtle realistic tire contact shadow, crisp realistic paint and wheels. Background has no objects. This is one standalone photograph, not a grid or collage. No typography, no price labels, no watermark, no visible brand logos, no people. The left side of the photograph must still look good when the right portion is cropped to fit a tall narrow website card. Keep uniform studio lighting and camera scale across this set."
+  },
+  "budget-green": {
+    "asset": "public/img/car/budget/budget-green.png",
+    "mode": "built-in image_gen",
+    "prompt": "Generate one photorealistic automotive studio photograph for an ANORCAR Browse by Budget category tile. Subject: deep metallic green premium crossover SUV. Landscape 3:2 composition, nearly side profile with a gentle front three-quarter angle, nose pointing to the LEFT. Entire vehicle inside frame, occupying 94 percent of image width, lower middle placement. Seamless plain light warm gray studio backdrop and matching floor (#e6e5e4), soft even daylight, subtle realistic tire contact shadow, crisp realistic paint and wheels. Match a consistent catalog photo set of blue, orange, red, blue-gray, white and yellow cars. No typography, price labels, watermark, visible brand logos, people, objects or collage. The left portion must look good when the right portion is cropped into a tall narrow website card."
+  },
+  "budget-silver": {
+    "asset": "public/img/car/budget/budget-silver.png",
+    "mode": "built-in image_gen",
+    "prompt": "Generate one photorealistic automotive studio photograph for an ANORCAR Browse by Budget category tile. Subject: metallic silver luxury performance sedan. Landscape 3:2 composition, nearly side profile with a gentle front three-quarter angle, nose pointing to the LEFT. Entire vehicle inside frame, occupying 94 percent of image width, lower middle placement. Seamless plain light warm gray studio backdrop and matching floor (#e6e5e4), soft even daylight, subtle realistic tire contact shadow, crisp realistic paint and wheels. Match a consistent catalog photo set of blue, orange, red, blue-gray, white and yellow cars. No typography, price labels, watermark, visible brand logos, people, objects or collage. The left portion must look good when the right portion is cropped into a tall narrow website card."
+  }
+}

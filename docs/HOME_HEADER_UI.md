@@ -34,7 +34,7 @@ Next.js Pages Router, the NESTAR layout HOC, existing folder organization, MUI, 
 - `yarn lint`: passed, zero errors and 194 existing warnings.
 - `yarn test:migration`: passed, including existing isolated Member/auth hydration and role checks.
 - `yarn check:graphql`: passed against `http://localhost:3007/graphql`: 42 operations, three inline upload documents and registered enums.
-- Production build: passed, 88 localized pages. The unchanged Next build CLI was invoked through `yarn node` with a temporary test-only config override to `.next/home-ui-qa`; this avoids writing into the concurrently running user's dev build. No project config change was needed.
+- Production build: passed, 88 localized pages. Historical correction: the temporary QA wrapper did not isolate its output as assumed; those builds used `.next`. The resulting dev/build cache conflict and the verified permanent fix are documented in [DEV_BUILD_CACHE_FIX.md](DEV_BUILD_CACHE_FIX.md).
 - `git diff --check`: passed.
 - All 45 header translation keys are present in English, Korean and Russian. Read-only production HTTP checks returned 200 for `/`, `/kr`, `/ru`, `/car`, the logo and hero image; the user's existing dev server at port 3000 also returned 200.
 - Isolated headless Chrome against the production build: desktop 1690×930; mobile device detection at 390×844; 320-pixel width; Korean/Russian homepage routes; real listing count; previous/next and play/pause; actual Make/Year/Price menus; selecting a real model suggestion; selecting/toggling recommended chips; synchronized keyword/model text; serialized Car search navigation; language menu selection back to English; and the guest login route passed. No horizontal overflow or uncaught runtime exceptions were observed.

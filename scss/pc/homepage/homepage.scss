@@ -974,7 +974,56 @@
 }
 
 
-// Homepage header only; other layouts and marketplace sections keep their styles.
+// Approved homepage sections; styles remain scoped to the existing layout.
+.homepage-shell#pc-wrap,
+.homepage-shell#mobile-wrap {
+	.home-page .browse-by-budget {
+		width: 100%;
+		padding: 24px 0 72px;
+		background: #fff;
+		.budget-container {
+			width: calc(100% - 160px); max-width: 1416px; padding: 0; margin: 0 auto;
+			display: flex; flex-direction: column;
+		}
+		h2 { margin: 0 0 28px; color: #101720; font-size: 30px; font-weight: 700; line-height: 1.3; letter-spacing: -.8px; }
+		.budget-cards { position: relative; width: 100%; display: flex; flex-direction: row; }
+		.budget-swiper { width: 100%; margin: 0; }
+		.budget-slide { width: calc((100% - 90px) / 6); height: auto; }
+		.budget-card {
+			display: flex; flex-direction: column; justify-content: flex-end; position: relative; height: 278px;
+			border-radius: 10px; overflow: hidden; background: #e6e5e4; color: #101720; text-decoration: none;
+			transition: box-shadow .2s ease;
+			&:hover { box-shadow: inset 0 0 0 2px #f13b18; }
+			.budget-image { position: absolute; inset: 0; }
+			img { object-fit: cover; object-position: left center; }
+			span { position: relative; padding: 18px 20px 23px; font-size: 20px; font-weight: 700; line-height: 1.3; white-space: nowrap; }
+		}
+		.budget-controls {
+			position: absolute; z-index: 2; top: 50%; left: -68px; right: -68px;
+			display: flex; flex-direction: row; justify-content: space-between; pointer-events: none; transform: translateY(-50%);
+			button { display: inline-flex; width: 50px; height: 50px; border-radius: 50%; background: #fff; color: #5d646b;
+				pointer-events: auto; box-shadow: 0 5px 22px rgba(15,23,42,.12); }
+			button:hover { background: #fff3ee; color: #e03a18; }
+			.swiper-button-disabled { visibility: hidden; pointer-events: none; }
+			svg { width: 20px; height: 20px; }
+		}
+		@media (max-width: 1200px) {
+			.budget-container { width: calc(100% - 64px); }
+			.budget-slide { width: 220px; }
+			.budget-card { height: 290px; }
+			.budget-controls { left: -20px; right: -20px; }
+		}
+		@media (max-width: 600px) {
+			padding: 14px 0 40px;
+			.budget-container { width: calc(100% - 28px); }
+			h2 { margin-bottom: 22px; font-size: 25px; }
+			.budget-slide { width: 210px; }
+			.budget-card { height: 270px; span { padding: 16px 18px 22px; font-size: 19px; } }
+			.budget-controls { left: -10px; right: -10px; button { width: 40px; height: 40px; } svg { width: 17px; height: 17px; } }
+		}
+	}
+}
+
 .homepage-shell#pc-wrap,
 .homepage-shell#mobile-wrap {
 	color: #0b1629;

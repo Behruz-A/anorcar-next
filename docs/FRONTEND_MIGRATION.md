@@ -1,6 +1,6 @@
 # Frontend migration status
 
-Current approved status: foundation Phases 0 and 4–8 are complete. The user subsequently approved only the homepage navigation, hero and Model Search screenshot slice; that implementation and validation are recorded in [HOME_HEADER_UI.md](HOME_HEADER_UI.md). Further Home/Cars UI work remains deferred. See [FOUNDATION_MIGRATION.md](FOUNDATION_MIGRATION.md) for the foundation changes, backend findings and deferred defects. The integration report below is historical and does not establish strict NESTAR UI parity.
+Current approved status: foundation Phases 0 and 4–8 are complete. The user subsequently approved the homepage navigation, hero and Model Search screenshot slice ([HOME_HEADER_UI.md](HOME_HEADER_UI.md)), then replacing Trend Cars with Browse by Budget ([HOME_BUDGET_UI.md](HOME_BUDGET_UI.md)). Prices are USD, explicitly confirmed by the user. Further Home/Cars UI work remains deferred. See [FOUNDATION_MIGRATION.md](FOUNDATION_MIGRATION.md) for the foundation changes, backend findings and deferred defects. The integration report below is historical and does not establish strict NESTAR UI parity.
 
 Updated: 2026-10-07. Implementation is integrated; release acceptance remains pending.
 
