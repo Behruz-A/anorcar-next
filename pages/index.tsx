@@ -4,6 +4,7 @@ import withLayoutMain from '../libs/components/layout/LayoutHome';
 import CommunityBoards from '../libs/components/homepage/CommunityBoards';
 import PopularCars from '../libs/components/homepage/PopularCars';
 import TopAgents from '../libs/components/homepage/TopAgents';
+import RecentlyAddedCars from '../libs/components/homepage/RecentlyAddedCars';
 import Events from '../libs/components/homepage/Events';
 import BrowseByBudget from '../libs/components/homepage/BrowseByBudget';
 import TrendCars from '../libs/components/homepage/TrendCars';
@@ -27,6 +28,7 @@ const Home: NextPage = () => {
 				<BrowseByBudget />
 				<TrendCars />
 				<TopAgents />
+				<RecentlyAddedCars />
 				<PopularCars />
 				<Advertisement />
 				<TopCars />
@@ -38,6 +40,7 @@ const Home: NextPage = () => {
 				<BrowseByBudget />
 				<TrendCars />
 				<TopAgents />
+				<RecentlyAddedCars />
 				<PopularCars />
 				<Advertisement />
 				<TopCars />
