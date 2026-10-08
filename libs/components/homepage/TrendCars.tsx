@@ -67,7 +67,10 @@ const TrendCars = (props: TrendCarsProps) => {
   <Stack component="section" className="trend-cars trending-cars-section" aria-labelledby="trending-cars-heading">
    <Stack className="container">
     <Stack className="info-box">
-     <h2 id="trending-cars-heading">{t('Trending Cars')}</h2>
+     <div className="left">
+      <h2 id="trending-cars-heading">{t('Trending Cars')}</h2>
+      <p>{t('Trend is based on likes')}</p>
+     </div>
      <Link className="trending-view-all" href={{ pathname: '/car', query: { input: JSON.stringify({ ...initialInput, page: 1, limit: 9 }) } }}>
       {t('View All')} <EastIcon fontSize="small" />
      </Link>

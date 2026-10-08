@@ -985,7 +985,7 @@
 			width: calc(100% - 160px); max-width: 1416px; padding: 0; margin: 0 auto;
 			display: flex; flex-direction: column;
 		}
-		h2 { margin: 0 0 28px; color: #101720; font-size: 30px; font-weight: 700; line-height: 1.3; letter-spacing: -.8px; }
+		h2 { margin: 0 0 28px; color: #181a20; font-family: $font; font-size: 34px; font-weight: 500; line-height: 150%; letter-spacing: -.646px; }
 		.budget-cards { position: relative; width: 100%; display: flex; flex-direction: row; }
 		.budget-swiper { width: 100%; margin: 0; }
 		.budget-slide { width: calc((100% - 90px) / 6); height: auto; }
@@ -1228,7 +1228,8 @@
   .container { width: calc(100% - 160px); max-width: 1416px; flex-direction: column; }
   .info-box {
    width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 20px;
-   h2 { margin: 0; color: #101828; font-size: 32px; font-weight: 700; line-height: 1.3; }
+   h2 { margin: 0; color: #181a20; font-family: $font; font-size: 34px; font-weight: 500; line-height: 150%; letter-spacing: -.646px; }
+   .left p { margin: 0; color: #181a20; font-family: $font; font-size: 14px; font-weight: 400; line-height: 26px; }
    .trending-view-all { display: inline-flex; align-items: center; gap: 12px; color: #596270; font-size: 17px; white-space: nowrap; }
   }
   .container .card-box {

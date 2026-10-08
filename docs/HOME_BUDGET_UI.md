@@ -58,3 +58,7 @@ The existing NESTAR homepage folder/layout HOC, Pages Router, Swiper, MUI, SCSS 
 Mode: built-in `image_gen`, six separate generation calls. Final files: `public/img/car/budget/budget-{blue,orange,red,slate,white,yellow}.png`. Original generated files were retained. Exact final prompts, modes and saved paths are recorded in [BUDGET_IMAGE_PROMPTS.json](BUDGET_IMAGE_PROMPTS.json).
 
 Further homepage sections, Cars UI/forms, comments, authentication and backend defects remain outside this slice. Backend documentation only was updated in its actual `docs/COMPLETED_TASKS.md`; `docs/ai` does not exist. No dependencies, lockfiles, database records or Git commits were changed.
+
+
+## Popular typography alignment — 2026-10-08
+Trending Cars and Browse by Budget headings match existing Popular Cars desktop typography exactly: Poppins, 34px, weight 500, 150% line height, -0.646px letter spacing, #181a20. Added existing translated Trend is based on likes subtitle under Trending, matching Popular subtitle typography. Responsive 25px mobile headings retained. Existing GraphQL carLikes DESC ordering, >=1 like AND >=2 views eligibility, Budget filters and arrow behavior unchanged; no data writes or backend source changes. Typecheck, lint (190 existing warnings/no errors), migration/auth tests, live GraphQL and 88-page build passed. Real browser compared computed typography for all three headings, verified like subtitle and descending real counts, four cards, 816px desktop height, responsive mobile and no exceptions. Updated live Trending screenshots.
