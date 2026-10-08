@@ -1056,3 +1056,69 @@ body::-webkit-scrollbar {
 	border-radius: 2px;
 	margin-right: 8px;
 }
+#pc-wrap, #mobile-wrap {
+ #footer .footer-container.anorcar-footer {
+  width: calc(100% - 160px); max-width: 1416px; min-width: 0; margin: 0 auto; padding: 40px 0 24px; box-sizing: border-box; color: #fff; font-family: $font;
+  .footer-content { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 54px 70px; }
+  .footer-brand { grid-row: 1 / 3; min-width: 0; }
+  .footer-logo { display: inline-flex; width: 260px; max-width: 100%; img { width: 100%; height: auto; } }
+  .footer-description { margin: 18px 0 32px; font-size: 16px; font-weight: 400; line-height: 28px; color: #aeb2bb; }
+  .footer-contact { display: flex; flex-direction: column; gap: 16px; margin-bottom: 38px;
+   span, a { display: inline-flex; align-items: center; gap: 18px; color: #f4f4f5; font-size: 14px; line-height: 24px; overflow-wrap: anywhere; white-space: normal; }
+   svg { width: 23px; height: 23px; color: #b5bac3; }
+  }
+  h3 { margin: 0 0 18px; font-size: 12px; font-weight: 500; line-height: 20px; letter-spacing: 2.4px; text-transform: uppercase; color: #c2c6ce; white-space: normal; }
+  .footer-socials { display: flex; gap: 22px; align-items: center; span { display: inline-flex; } svg { width: 22px; height: 22px; color: #f4f4f5; } }
+  .footer-newsletter { min-width: 0; padding-top: 6px; }
+  .footer-subscribe-box { display: flex; width: 100%; align-items: stretch; background: #24272e; border-radius: 40px; min-height: 60px;
+   input { flex: 1; min-width: 0; padding: 18px 24px; border: 0; border-radius: 40px; color: #fff; background: transparent; font-family: $font; font-size: 14px; outline: none; }
+   input::placeholder { color: #aeb2bb; opacity: 1; }
+   &:focus-within { outline: 2px solid #fa3c16; outline-offset: 3px; }
+  }
+  .footer-subscribe, .footer-back-top { background: #fa3c16; color: #fff; &:hover { background: #df3513; } }
+  .footer-subscribe { min-width: 154px; padding: 16px 26px; border-radius: 40px; font-family: $font; font-size: 14px; font-weight: 500; text-transform: none; box-shadow: none; }
+  .footer-link-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(180px, 1.15fr); gap: 24px; }
+  nav { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; h3 { margin-bottom: 8px; }
+   a, span { color: #f4f4f5; font-size: 14px; font-weight: 400; line-height: 22px; white-space: normal; }
+   a:hover { color: #fa3c16; }
+  }
+  .footer-apps { border-left: 1px solid #34373d; padding-left: 24px; min-width: 0; }
+  .footer-app-badge { display: flex; align-items: center; gap: 12px; width: 100%; border: 0; padding: 14px 18px; margin-bottom: 12px; border-radius: 12px; color: #fff; background: #24272e; text-align: left; font-family: $font;
+   svg { width: 30px; height: 30px; flex-shrink: 0; }
+   span { display: flex; flex-direction: column; gap: 3px; } small { font-size: 10px; line-height: 16px; color: #c2c6ce; } strong { font-size: 15px; font-weight: 500; line-height: 22px; white-space: nowrap; }
+  }
+  .footer-bottom { display: flex; align-items: center; gap: 28px; border-top: 1px solid #34373d; margin-top: 60px; padding-top: 28px;
+   p { flex: 1; margin: 0; font-size: 13px; line-height: 24px; color: #aeb2bb; }
+  }
+  .footer-legal { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 13px; line-height: 22px; color: #aeb2bb; }
+  .footer-back-top { width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; svg { width: 23px; height: 23px; } }
+  a:focus-visible, button:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+ }
+}
+@media (max-width: 1200px) {
+ #pc-wrap, #mobile-wrap {
+  #footer .footer-container.anorcar-footer {
+   width: calc(100% - 64px); .footer-content { grid-template-columns: 280px minmax(0, 1fr); gap: 40px; }
+   .footer-link-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+   .footer-apps { padding-left: 0; border-left: 0; }
+  }
+ }
+}
+@media (max-width: 768px) {
+ #pc-wrap, #mobile-wrap {
+  #footer .footer-container.anorcar-footer {
+   width: calc(100% - 32px); padding-top: 0;
+   .footer-content { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+   .footer-brand { grid-row: auto; }
+   .footer-description { max-width: 430px; }
+   .footer-logo { width: 240px; }
+   .footer-subscribe { min-width: 110px; padding: 14px 18px; font-size: 13px; }
+   .footer-subscribe-box input { padding: 16px; font-size: 13px; }
+   .footer-bottom { margin-top: 40px; flex-wrap: wrap; gap: 18px; padding-top: 24px; p { flex-basis: 100%; } }
+   .footer-legal { flex: 1; }
+  }
+ }
+}
+@media (max-width: 380px) {
+ #pc-wrap, #mobile-wrap { #footer .footer-container.anorcar-footer { .footer-link-columns { gap: 24px 16px; } .footer-app-badge { padding: 12px 10px; gap: 8px; svg { width: 24px; } strong { font-size: 13px; } } } }
+}

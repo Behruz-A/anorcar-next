@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 46" role="img" aria-label="ANORCAR">
+  <g fill="#f43b17">
+    <path d="M4 27C4 16 10 7 19 7v25L4 27Z"/>
+    <path d="M21 31V7h26L21 31Z"/>
+    <path d="m25 33 16-16 18 16H25Z"/>
+    <path d="M20 34 8 30c2 7 6 9 12 9v-5Z"/>
+  </g>
+  <text x="63" y="34" fill="#ffffff" font-family="Arial,sans-serif" font-size="30" font-weight="800" letter-spacing="-.9">ANORCAR</text>
+</svg>
