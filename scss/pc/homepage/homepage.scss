@@ -1392,3 +1392,70 @@
   }
  }
 }
+.homepage-shell#pc-wrap, .homepage-shell#mobile-wrap {
+ .home-page .community-board.community-highlights {
+  width: 100%; height: auto; min-height: 1000px; box-sizing: border-box; padding: 132px 0 94px; display: flex; flex-direction: column; background: #fff; font-family: $font;
+  .container { width: calc(100% - 160px); max-width: 1416px; min-width: 0; margin: 0 auto; padding: 0; align-items: stretch; }
+  .community-heading-row { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+  .community-eyebrow { display: flex; align-items: center; gap: 12px; margin: 0 0 8px; color: #667080; font-size: 12px; line-height: 20px; font-weight: 500; text-transform: uppercase;
+   &::before { content: ''; width: 34px; height: 2px; background: #fa3c16; }
+  }
+  h2 { margin: 0; color: #181a20; font-size: 34px; font-weight: 500; line-height: 150%; letter-spacing: -.646px; }
+  .community-description { margin: 8px 0 0; font-size: 16px; line-height: 26px; color: #667080; }
+  .community-view-all { display: inline-flex; align-items: center; gap: 16px; color: #181a20; font-size: 15px; font-weight: 500; white-space: nowrap; }
+  .community-category-tabs { margin: 28px 0 18px; min-height: 48px;
+   .MuiTabs-indicator { display: none; }
+   .MuiTabs-flexContainer { gap: 16px; }
+   .MuiTab-root { min-height: 48px; padding: 10px 22px; border: 1px solid #e5e7eb; border-radius: 10px; color: #596270; text-transform: none; font-family: $font; font-size: 14px; font-weight: 500; gap: 10px; }
+   .MuiTab-iconWrapper { margin: 0; }
+   .Mui-selected { background: #181a20; border-color: #181a20; color: #fff; }
+   .Mui-focusVisible { outline: 2px solid #fa3c16; outline-offset: -3px; }
+  }
+  .community-highlight-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: repeat(2, 280px); gap: 18px; }
+  .community-highlight-card { position: relative; min-width: 0; display: block; overflow: hidden; border-radius: 10px; background: #252a32; color: #fff;
+   &::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,14,23,.06) 15%, rgba(9,14,23,.15) 40%, rgba(9,14,23,.95) 100%); pointer-events: none; }
+   &:focus-visible { outline: 2px solid #fa3c16; outline-offset: 3px; }
+   .community-post-image { object-fit: cover; transition: transform .35s ease; }
+   @media (hover: hover) and (pointer: fine) { &:hover .community-post-image { transform: scale(1.05); } }
+  }
+  .community-featured { grid-row: span 2; }
+  .community-wide { grid-column: 2 / 4; }
+  .community-category-badge { position: absolute; z-index: 1; top: 16px; left: 16px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 13px; max-width: calc(100% - 32px); box-sizing: border-box; background: rgba(18,23,31,.7); color: #fff; border-radius: 24px; font-size: 12px; font-weight: 500; }
+  .community-post-caption { position: absolute; z-index: 1; bottom: 18px; left: 20px; right: 20px; }
+  h3 { margin: 0 0 14px; font-size: 18px; font-weight: 600; line-height: 26px; color: #fff; white-space: normal; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .community-featured h3 { font-size: 25px; line-height: 34px; }
+  .community-post-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px;
+   span { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 400; line-height: 20px; color: #fff; }
+   span + span { border-left: 1px solid rgba(255,255,255,.35); padding-left: 12px; }
+  }
+  svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .community-status { padding: 100px 0; margin: 0; color: #667080; text-align: center; }
+ }
+}
+@media (max-width: 1200px) {
+ .homepage-shell#pc-wrap, .homepage-shell#mobile-wrap {
+  .home-page .community-board.community-highlights { min-height: 0; padding: 62px 0 70px; .container { width: calc(100% - 64px); } }
+ }
+}
+@media (max-width: 900px) {
+ .homepage-shell#pc-wrap, .homepage-shell#mobile-wrap {
+  .home-page .community-board.community-highlights {
+   .community-heading-row { align-items: flex-start; flex-direction: column; gap: 18px; }
+   .community-highlight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; grid-auto-rows: 260px; }
+   .community-featured { grid-column: 1 / -1; grid-row: auto; min-height: 360px; }
+   .community-wide { grid-column: 1 / -1; }
+  }
+ }
+}
+@media (max-width: 600px) {
+ .homepage-shell#pc-wrap, .homepage-shell#mobile-wrap {
+  .home-page .community-board.community-highlights {
+   padding: 40px 0 48px; .container { width: calc(100% - 28px); }
+   h2 { font-size: 25px; } .community-description { font-size: 14px; line-height: 24px; }
+   .community-category-tabs { margin-top: 24px; .MuiTabs-flexContainer { gap: 10px; } .MuiTab-root { padding: 10px 16px; } }
+   .community-highlight-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; gap: 16px; }
+   .community-featured, .community-wide { grid-column: auto; grid-row: auto; min-height: 0; }
+   .community-featured h3 { font-size: 20px; line-height: 28px; }
+  }
+ }
+}

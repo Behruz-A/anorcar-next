@@ -32,6 +32,7 @@ const Home: NextPage = () => {
 				<PopularCars />
 				<Advertisement />
 				<TopCars />
+				<CommunityBoards />
 			</Stack>
 		);
 	} else {
