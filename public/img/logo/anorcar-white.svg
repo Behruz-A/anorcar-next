@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 55"><path d="m3 28 7-18h35l7 18v17H3Z" fill="none" stroke="#eb6753" stroke-width="3"/><path d="M3 28h49M10 36h8m18 0h8" stroke="#eb6753" stroke-width="3"/><text x="65" y="38" fill="#fff" font-family="Arial,sans-serif" font-size="29" font-weight="700">ANORCAR</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 46" role="img" aria-label="ANORCAR">
+  <g fill="#ff3b1d">
+    <path d="M1 25C0 36 5 43 21 43L1 25Z"/>
+    <path d="M22 2C8 7 6 28 22 40V2Z"/>
+    <path d="M25 40V20C25 8 33 1 45 1H66L25 40Z"/>
+    <path d="M29 43 47 25C54 19 64 21 70 29L81 43H29Z"/>
+  </g>
+  <text x="87" y="40" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="36" font-weight="800" letter-spacing="-1">ANORCAR</text>
+</svg>

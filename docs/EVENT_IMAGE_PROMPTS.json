@@ -1,0 +1,26 @@
+{
+  "tool": "Built-in image_gen",
+  "purpose": "Fictional illustrative event concepts",
+  "prompts": [
+    {
+      "file": "public/img/events/anorcar-meetup.png",
+      "prompt": "Create a photorealistic editorial website image for a fictional ANORCAR car-community meetup concept, no real event claim. Landscape 3:2 composition. A small tasteful group of diverse adult car enthusiasts talking beside three modern unbranded sedans and SUVs in a spacious outdoor city plaza at golden hour, Korean urban skyline softly visible. Warm amber highlights, charcoal and silver cars, cinematic natural light, premium automotive magazine photography, realistic proportions. Car and people centered with enough surrounding space for portrait card cropping. No text, no typography, no watermarks, no logos, no readable license plates. This is illustrative website artwork."
+    },
+    {
+      "file": "public/img/events/anorcar-show.png",
+      "prompt": "Generate a single portrait 2:3 illustrative image for a fictional automotive community event website card. A premium silver unbranded sports coupe in a vast indoor automotive expo hall, spectators softly in background, sculptural ceiling lighting, glossy floor, cinematic editorial automotive photography. Photorealistic, carefully proportioned cars. Keep top third relatively quiet sky or ceiling for text overlay. Vehicle in lower half. No text, logos, badges, brand names, readable license plates, watermark or UI."
+    },
+    {
+      "file": "public/img/events/anorcar-track.png",
+      "prompt": "Generate a single portrait 2:3 illustrative image for a fictional automotive community event website card. Red and orange unbranded performance cars lined up at a racetrack paddock, mountains in distance, blue sky, premium editorial automotive photography. Photorealistic, carefully proportioned cars. Keep top third relatively quiet sky or ceiling for text overlay. Vehicle in lower half. No text, logos, badges, brand names, readable license plates, watermark or UI."
+    },
+    {
+      "file": "public/img/events/anorcar-festival.png",
+      "prompt": "Generate a single portrait 2:3 illustrative image for a fictional automotive community event website card. An unbranded black performance coupe at a waterfront night car festival, warm fireworks in sky and colorful small event tents far behind, cinematic editorial photography. Photorealistic, carefully proportioned cars. Keep top third relatively quiet sky or ceiling for text overlay. Vehicle in lower half. No text, logos, badges, brand names, readable license plates, watermark or UI."
+    },
+    {
+      "file": "public/img/events/anorcar-ev.png",
+      "prompt": "Generate a single portrait 2:3 illustrative image for a fictional automotive community event website card. White modern electric car in foreground at a lakeside electric car expo at sunset, neutral tall flags with no writing, mountains and people softly in background, cinematic editorial photography. Photorealistic, carefully proportioned cars. Keep top third relatively quiet sky or ceiling for text overlay. Vehicle in lower half. No text, logos, badges, brand names, readable license plates, watermark or UI."
+    }
+  ]
+}

@@ -1459,3 +1459,54 @@
   }
  }
 }
+
+.homepage-shell#pc-wrap, .homepage-shell#mobile-wrap {
+ .home-page .events.anorcar-events {
+  box-sizing: border-box; height: auto; min-height: 900px; padding: 64px 0 44px; background: #f5f3ef; display: flex; flex-direction: column; overflow: hidden;
+  .events-heading { text-align: center; padding: 0 20px; }
+  .events-eyebrow { color: #fa3c16; font-size: 12px; font-weight: 500; line-height: 20px; letter-spacing: 2.4px; text-transform: uppercase; }
+  h2 { margin: 8px 0; font-family: $font; font-size: 34px; font-weight: 500; line-height: 150%; letter-spacing: -0.646px; color: #181a20; }
+  .events-heading p { margin: 0; color: #717986; font-size: 16px; line-height: 28px; }
+  .events-swiper { width: 100%; margin-top: 48px; overflow: visible; }
+  .event-slide { width: 22vw; max-width: 420px; min-width: 280px; }
+  .event-card { position: relative; width: 100%; height: 590px; overflow: hidden; border-radius: 8px; isolation: isolate; background: #24272e;
+   &:hover .event-image img { transform: scale(1.05); }
+   &::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,16,23,.72), rgba(12,16,23,.1) 46%, rgba(12,16,23,.05)); z-index: -1; }
+   .event-image { position: absolute; inset: 0; z-index: -2; img { object-fit: cover; transition: transform .35s ease; } }
+   .event-copy { position: absolute; top: 26px; left: 26px; right: 26px; .event-city { margin: 0 0 4px; font-size: 24px; font-weight: 500; line-height: 32px; color: #ff6949; } h3 { margin: 0; font-size: 18px; font-weight: 500; line-height: 28px; color: #fff; white-space: normal; } }
+  }
+  .events-controls { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 28px; }
+  .events-controls button { width: 46px; height: 46px; border: 1px solid #858585; color: #181a20; &:hover { color: #fa3c16; border-color: #fa3c16; } &.swiper-button-disabled { opacity: .35; cursor: default; } &:focus-visible { outline: 2px solid #fa3c16; outline-offset: 4px; } }
+  .events-pagination { width: auto; display: flex; gap: 10px; align-items: center; .swiper-pagination-bullet { display: block; width: 9px; height: 9px; border-radius: 50%; background: #ccc; opacity: 1; cursor: pointer; } .swiper-pagination-bullet-active { background: #fa3c16; } }
+  .events-note { margin: 18px 20px 0; text-align: center; font-size: 12px; line-height: 20px; color: #717986; }
+ }
+}
+@media (max-width: 1000px) {
+ .homepage-shell#pc-wrap, .homepage-shell#mobile-wrap { .home-page .events.anorcar-events { min-height: 0; .event-slide { width: 42vw; min-width: 0; } .event-card { height: 500px; } } }
+}
+@media (max-width: 600px) {
+ .homepage-shell#pc-wrap, .homepage-shell#mobile-wrap { .home-page .events.anorcar-events { padding: 48px 0 36px; h2 { font-size: 25px; } .events-heading p { font-size: 14px; line-height: 24px; } .events-swiper { margin-top: 32px; } .event-slide { width: 82vw; } .event-card { height: 450px; .event-copy { top: 22px; left: 22px; right: 22px; .event-city { font-size: 22px; } h3 { font-size: 17px; } } } .events-controls { gap: 20px; } } }
+}
+@media (prefers-reduced-motion: reduce) { .homepage-shell .anorcar-events .event-image img { transition: none !important; } }
+
+.homepage-shell#pc-wrap, .homepage-shell#mobile-wrap {
+ .home-page .events.anorcar-events .event-card {
+  .event-more { position: absolute; bottom: 24px; left: 24px; right: 24px; margin: 0; padding: 14px 16px; border-radius: 8px; background: rgba(255,255,255,.94); color: #181a20; font-family: $font; font-size: 14px; font-weight: 400; line-height: 24px; white-space: normal; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity .25s ease, transform .25s ease, visibility .25s; pointer-events: none; }
+  &:hover .event-more, &:focus-within .event-more { opacity: 1; visibility: visible; transform: translateY(0); }
+  &:focus-visible { outline: 2px solid #fa3c16; outline-offset: -3px; }
+ }
+ .home-page .events.anorcar-events .events-pagination .swiper-pagination-bullet:focus-visible { outline: 2px solid #fa3c16; outline-offset: 4px; }
+}
+@media (hover: none) {
+ .homepage-shell#pc-wrap, .homepage-shell#mobile-wrap { .home-page .events.anorcar-events .event-card .event-more { opacity: 1; visibility: visible; transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) {
+ .homepage-shell#pc-wrap, .homepage-shell#mobile-wrap { .home-page .events.anorcar-events .event-card .event-more { transition: none; } }
+}
+
+.homepage-shell#pc-wrap, .homepage-shell#mobile-wrap {
+ .home-page .events.anorcar-events .event-card .event-copy { left: calc(26px + var(--event-caption-shift, 0px)); }
+}
+@media (max-width: 600px) {
+ .homepage-shell#pc-wrap, .homepage-shell#mobile-wrap { .home-page .events.anorcar-events .event-card .event-copy { left: calc(22px + var(--event-caption-shift, 0px)); } }
+}
