@@ -1,131 +1,83 @@
 import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
-import { Stack, Box } from '@mui/material';
+import Link from 'next/link';
+import { Stack, Alert, CircularProgress, IconButton } from '@mui/material';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
+import EastIcon from '@mui/icons-material/East';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper';
+import { A11y, Keyboard, Navigation } from 'swiper';
 import TopAgentCard from './TopAgentCard';
 import { Member } from '../../types/member/member';
 import { AgentsInquiry } from '../../types/member/member.input';
+import { Direction } from '../../enums/common.enum';
 import { useQuery } from '@apollo/client';
 import { GET_AGENTS } from '../../../apollo/user/query';
 import { T } from '../../types/common';
 
-interface TopAgentsProps {
-	initialInput: AgentsInquiry;
-}
+interface TopAgentsProps { initialInput: AgentsInquiry; }
 
-const TopAgents = (props: TopAgentsProps) => {
+const TopAgents = ({ initialInput }: TopAgentsProps) => {
  const { t } = useTranslation('common');
-	const { initialInput } = props;
-	const device = useDeviceDetect();
-	const router = useRouter();
-	const [topAgents, setTopAgents] = useState<Member[]>([]);
+ const device = useDeviceDetect();
+ const [topAgents, setTopAgents] = useState<Member[]>([]);
 
-	/** APOLLO REQUESTS **/
+ /** APOLLO REQUESTS **/
+ const { loading: getAgentsLoading, data: getAgentsData, error: getAgentsError } = useQuery(GET_AGENTS, {
+  fetchPolicy: 'cache-and-network',
+  variables: { input: initialInput },
+  notifyOnNetworkStatusChange: true,
+  onCompleted: (data: T) => {
+   const list: Member[] = [...(data?.getAgents?.list ?? [])];
+   // Preserve rank ordering; recently updated profiles resolve equal-rank ties.
+   if (initialInput.sort === 'memberRank') {
+    list.sort((a, b) => b.memberRank - a.memberRank || Date.parse(b.updatedAt) - Date.parse(a.updatedAt));
+   }
+   setTopAgents(list);
+  },
+ });
 
-	const {
-		loading: getAgentsLoading,
-		data: getAgentsData,
-		error: getAgentsError,
-		refetch: getAgentsRefetch,
-	} = useQuery(GET_AGENTS, {
-		fetchPolicy: 'cache-and-network',
-		variables: { input: initialInput },
-		notifyOnNetworkStatusChange: true,
-		onCompleted: (data: T) => {
-			setTopAgents(data?.getAgents?.list);
-		},
-	});
-	/** HANDLERS **/
-
-	if (device === 'mobile') {
-		return (
-			<Stack className={'top-agents'}>
-				<Stack className={'container'}>
-					<Stack className={'info-box'}>
-						<span>{t("Top sellers")}</span>
-					</Stack>
-					<Stack className={'wrapper'}>
-						<Swiper
-							className={'top-agents-swiper'}
-							slidesPerView={'auto'}
-							centeredSlides={true}
-							spaceBetween={29}
-							modules={[Autoplay]}
-						>
-							{topAgents.map((agent: Member) => {
-								return (
-									<SwiperSlide className={'top-agents-slide'} key={agent?._id}>
-										<TopAgentCard agent={agent} key={agent?.memberNick} />
-									</SwiperSlide>
-								);
-							})}
-						</Swiper>
-					</Stack>
-				</Stack>
-			</Stack>
-		);
-	} else {
-		return (
-			<Stack className={'top-agents'}>
-				<Stack className={'container'}>
-					<Stack className={'info-box'}>
-						<Box component={'div'} className={'left'}>
-							<span>{t("Top sellers")}</span>
-							<p>{t("Connect with sellers")}</p>
-						</Box>
-						<Box component={'div'} className={'right'}>
-							<div className={'more-box'}>
-								<span>{t("See all sellers")}</span>
-								<img src="/img/icons/rightup.svg" alt="" />
-							</div>
-						</Box>
-					</Stack>
-					<Stack className={'wrapper'}>
-						<Box component={'div'} className={'switch-btn swiper-agents-prev'}>
-							<ArrowBackIosNewIcon />
-						</Box>
-						<Box component={'div'} className={'card-wrapper'}>
-							<Swiper
-								className={'top-agents-swiper'}
-								slidesPerView={'auto'}
-								spaceBetween={29}
-								modules={[Autoplay, Navigation, Pagination]}
-								navigation={{
-									nextEl: '.swiper-agents-next',
-									prevEl: '.swiper-agents-prev',
-								}}
-							>
-								{topAgents.map((agent: Member) => {
-									return (
-										<SwiperSlide className={'top-agents-slide'} key={agent?._id}>
-											<TopAgentCard agent={agent} key={agent?.memberNick} />
-										</SwiperSlide>
-									);
-								})}
-							</Swiper>
-						</Box>
-						<Box component={'div'} className={'switch-btn swiper-agents-next'}>
-							<ArrowBackIosNewIcon />
-						</Box>
-					</Stack>
-				</Stack>
-			</Stack>
-		);
-	}
+ return (
+  <Stack component="section" className="top-agents agents-showcase" aria-labelledby="top-agents-heading">
+   <Stack className="container">
+    <Stack className="info-box">
+     <div className="agents-heading">
+      <p className="agents-eyebrow">{t('Trusted Experts')}</p>
+      <h2 id="top-agents-heading">{t('Top Agents')}</h2>
+      <p className="agents-description">{t('Our agents are always ready to serve you.')}</p>
+     </div>
+     <Link className="agents-view-all" href="/agent">{t('View all agents')} <EastIcon fontSize="small" /></Link>
+    </Stack>
+    <Stack className="wrapper">
+     {getAgentsLoading && !getAgentsData ? <CircularProgress aria-label={t('Loading agents')} /> :
+      getAgentsError ? <Alert severity="error">{t('Agents could not be loaded. Please try again.')}</Alert> :
+      topAgents.length === 0 ? <p className="agents-empty">{t('No agents yet.')}</p> :
+      <>
+      <Swiper className="top-agents-swiper" slidesPerView="auto" spaceBetween={device === 'mobile' ? 16 : 22}
+       breakpoints={{ 0: { slidesPerGroup: 1 }, 1201: { slidesPerGroup: 5 } }}
+       modules={[Keyboard, A11y, Navigation]} keyboard={{ enabled: true, onlyInViewport: true }}
+       navigation={{ prevEl: '.swiper-agents-prev', nextEl: '.swiper-agents-next' }}
+       a11y={{ prevSlideMessage: t('Previous agents'), nextSlideMessage: t('Next agents') }}>
+       {topAgents.map((agent) => (
+        <SwiperSlide className="top-agents-slide" key={agent._id}>
+         <TopAgentCard agent={agent} />
+        </SwiperSlide>
+       ))}
+      </Swiper>
+      <Stack className="agents-controls">
+       <IconButton className="swiper-agents-prev" aria-label={t('Previous agents')}><ArrowBackIosNewIcon /></IconButton>
+       <IconButton className="swiper-agents-next" aria-label={t('Next agents')}><ArrowForwardIosIcon /></IconButton>
+      </Stack>
+      </>}
+    </Stack>
+   </Stack>
+  </Stack>
+ );
 };
 
 TopAgents.defaultProps = {
-	initialInput: {
-		page: 1,
-		limit: 10,
-		sort: 'memberRank',
-		direction: 'DESC',
-		search: {},
-	},
+ initialInput: { page: 1, limit: 10, sort: 'memberRank', direction: Direction.DESC, search: {} },
 };
 
 export default TopAgents;

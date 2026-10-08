@@ -1,0 +1,53 @@
+{
+    "mode":  "built-in image_gen",
+    "assets":  [
+                   {
+                       "name":  "minyoung-shin",
+                       "prompt":  "Use case: photorealistic-natural. Asset type: demo agent profile photo for a car marketplace. A fictional adult Korean woman about 30, long dark wavy hair, black blazer and white blouse, arms gently crossed, calm warm smile. Scene: contemporary indoor car showroom with softly blurred parked cars, glass windows and warm ceiling lights. Composition: square head-and-upper-body portrait, one person centered, full head visible with small space above, waist cropped at bottom, direct eye contact with camera. Style: realistic professional portrait photography, natural skin texture, soft warm indoor lighting, neutral dark background, consistent premium showroom visual style. Constraints: fictional person, no text, no watermark, no graphic overlays, no logos.",
+                       "path":  "public/img/agents/demo/minyoung-shin.png"
+                   },
+                   {
+                       "name":  "hyeryeong-yoon",
+                       "prompt":  "Use case: photorealistic-natural. Asset type: demo agent profile photo for a car marketplace. A fictional adult Korean woman about 32, short straight dark bob hair, black business blazer and white blouse, holding a dark tablet, warm confident smile. Scene: contemporary indoor car showroom with softly blurred parked cars, glass windows and warm ceiling lights. Composition: square head-and-upper-body portrait, one person centered, full head visible with small space above, waist cropped at bottom, direct eye contact with camera. Style: realistic professional portrait photography, natural skin texture, soft warm indoor lighting, neutral dark background, consistent premium showroom visual style. Constraints: fictional person, no text, no watermark, no graphic overlays, no logos.",
+                       "path":  "public/img/agents/demo/hyeryeong-yoon.png"
+                   },
+                   {
+                       "name":  "daniel-kim",
+                       "prompt":  "Use case: photorealistic-natural. Asset type: demo agent profile photo for a car marketplace. A fictional adult Korean man about 33, neatly styled dark hair, navy business suit and tie, arms gently crossed, calm confident smile. Scene: contemporary indoor car showroom with softly blurred parked cars, glass windows and warm ceiling lights. Composition: square head-and-upper-body portrait, one person centered, full head visible with small space above, waist cropped at bottom, direct eye contact with camera. Style: realistic professional portrait photography, natural skin texture, soft warm indoor lighting, neutral dark background, consistent premium showroom visual style. Constraints: fictional person, no text, no watermark, no graphic overlays, no logos.",
+                       "path":  "public/img/agents/demo/daniel-kim.png"
+                   },
+                   {
+                       "name":  "sophie-park",
+                       "prompt":  "Use case: photorealistic-natural. Asset type: demo agent profile photo for a car marketplace. A fictional adult Korean woman about 29, shoulder-length auburn hair, cream business blazer and light blouse, holding a dark tablet, friendly smile. Scene: contemporary indoor car showroom with softly blurred parked cars, glass windows and warm ceiling lights. Composition: square head-and-upper-body portrait, one person centered, full head visible with small space above, waist cropped at bottom, direct eye contact with camera. Style: realistic professional portrait photography, natural skin texture, soft warm indoor lighting, neutral dark background, consistent premium showroom visual style. Constraints: fictional person, no text, no watermark, no graphic overlays, no logos.",
+                       "path":  "public/img/agents/demo/sophie-park.png"
+                   },
+                   {
+                       "name":  "junho-lee",
+                       "prompt":  "Use case: photorealistic-natural. Asset type: demo agent profile photo for a car marketplace. A fictional adult Korean man about 36, short dark hair, charcoal business suit and dark tie, natural cheerful smile. Scene: contemporary indoor car showroom with softly blurred parked cars, glass windows and warm ceiling lights. Composition: square head-and-upper-body portrait, one person centered, full head visible with small space above, waist cropped at bottom, direct eye contact with camera. Style: realistic professional portrait photography, natural skin texture, soft warm indoor lighting, neutral dark background, consistent premium showroom visual style. Constraints: fictional person, no text, no watermark, no graphic overlays, no logos.",
+                       "path":  "public/img/agents/demo/junho-lee.png"
+                   },
+                   {
+                       "value":  [
+                                     {
+                                         "name":  "jisoo-han",
+                                         "fullName":  "Jisoo Han",
+                                         "prompt":  "Use case: photorealistic-natural. Asset type: fictional demo agent profile photo for a car marketplace. A fictional adult Korean woman about 34, straight shoulder-length dark hair, elegant dark navy blazer and ivory blouse, relaxed confident smile, holding a tablet. Scene: modern indoor car showroom with softly blurred cars, glass windows and warm ceiling lights. Composition: square centered head-and-upper-body portrait, full head with small space above, waist cropped at bottom, direct eye contact, one person. Style: realistic professional photography, natural skin texture, soft warm showroom light, premium neutral background. Constraints: fictional person, no text, no logos, no watermark, no graphics.",
+                                         "path":  "public/img/agents/demo/jisoo-han.png"
+                                     },
+                                     {
+                                         "name":  "alex-choi",
+                                         "fullName":  "Alex Choi",
+                                         "prompt":  "Use case: photorealistic-natural. Asset type: fictional demo agent profile photo for a car marketplace. A fictional adult Korean man about 31, short neat dark hair, charcoal business suit and tie, arms gently crossed, friendly confident smile. Scene: modern indoor car showroom with softly blurred cars, glass windows and warm ceiling lights. Composition: square centered head-and-upper-body portrait, full head with small space above, waist cropped at bottom, direct eye contact, one person. Style: realistic professional photography, natural skin texture, soft warm showroom light, premium neutral background. Constraints: fictional person, no text, no logos, no watermark, no graphics.",
+                                         "path":  "public/img/agents/demo/alex-choi.png"
+                                     },
+                                     {
+                                         "name":  "eunwoo-lim",
+                                         "fullName":  "Eunwoo Lim",
+                                         "prompt":  "Use case: photorealistic-natural. Asset type: fictional demo agent profile photo for a car marketplace. A fictional adult Korean man about 38, neatly styled dark hair, dark navy business suit, white shirt and muted tie, relaxed warm smile. Scene: modern indoor car showroom with softly blurred cars, glass windows and warm ceiling lights. Composition: square centered head-and-upper-body portrait, full head with small space above, waist cropped at bottom, direct eye contact, one person. Style: realistic professional photography, natural skin texture, soft warm showroom light, premium neutral background. Constraints: fictional person, no text, no logos, no watermark, no graphics.",
+                                         "path":  "public/img/agents/demo/eunwoo-lim.png"
+                                     }
+                                 ],
+                       "Count":  3
+                   }
+               ]
+}

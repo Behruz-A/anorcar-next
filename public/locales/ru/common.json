@@ -305,5 +305,15 @@
   "Sale": "Продажа",
   "Rent / Barter": "Аренда / Обмен",
   "Like car": "Нравится автомобиль",
-  "Unlike car": "Убрать отметку"
+  "Unlike car": "Убрать отметку",
+  "Trusted Experts": "Надёжные эксперты",
+  "Top Agents": "Лучшие агенты",
+  "Our agents are always ready to serve you.": "Наши агенты всегда готовы помочь вам.",
+  "View all agents": "Все агенты",
+  "Loading agents": "Загрузка агентов",
+  "Agents could not be loaded. Please try again.": "Не удалось загрузить агентов. Попробуйте ещё раз.",
+  "No agents yet.": "Агентов пока нет.",
+  "AGENT": "АГЕНТ",
+  "Previous agents": "Предыдущие агенты",
+  "Next agents": "Следующие агенты"
 }

@@ -1,44 +1,29 @@
 import { useTranslation } from 'next-i18next';
 import React from 'react';
-import { useRouter } from 'next/router';
-import { Stack } from '@mui/material';
-import useDeviceDetect from '../../hooks/useDeviceDetect';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Member } from '../../types/member/member';
-import { REACT_APP_API_URL } from '../../config';
+import { imageUrl } from '../../config';
 
-interface TopAgentProps {
-	agent: Member;
-}
-const TopAgentCard = (props: TopAgentProps) => {
+interface TopAgentProps { agent: Member; }
+
+const TopAgentCard = ({ agent }: TopAgentProps) => {
  const { t } = useTranslation('common');
-	const { agent } = props;
-	const device = useDeviceDetect();
-	const router = useRouter();
-	const agentImage = agent?.memberImage
-		? `${REACT_APP_API_URL}/${agent.memberImage}`
-		: '/img/profile/defaultUser.svg';
+ const name = agent.memberFullName?.trim() || agent.memberNick;
+ const agentImage = agent.memberImage ? imageUrl(agent.memberImage) : '/img/profile/defaultUser.svg';
 
-	/** HANDLERS **/
-
-	if (device === 'mobile') {
-		return (
-			<Stack className="top-agent-card">
-				<img src={agentImage} alt="" />
-
-				<strong>{agent?.memberNick}</strong>
-				<span>{agent?.memberType}</span>
-			</Stack>
-		);
-	} else {
-		return (
-			<Stack className="top-agent-card">
-				<img src={agentImage} alt="" />
-
-				<strong>{agent?.memberNick}</strong>
-				<span>{agent?.memberType}</span>
-			</Stack>
-		);
-	}
+ return (
+  <Link className="top-agent-card" href={{ pathname: '/agent/detail', query: { agentId: agent._id } }} aria-label={name}>
+   <div className="agent-portrait">
+    <Image src={agentImage} alt={name} fill sizes="(max-width: 600px) 250px, (max-width: 1200px) 270px, 300px" unoptimized
+     onError={(event) => { if (!event.currentTarget.src.endsWith('/img/profile/defaultUser.svg')) event.currentTarget.src = '/img/profile/defaultUser.svg'; }} />
+   </div>
+   <div className="agent-caption">
+    <strong>{name}</strong>
+    <span>{t(agent.memberType)}</span>
+   </div>
+  </Link>
+ );
 };
 
 export default TopAgentCard;

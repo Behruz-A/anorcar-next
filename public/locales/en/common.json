@@ -305,5 +305,15 @@
   "Sale": "Sale",
   "Rent / Barter": "Rent / Barter",
   "Like car": "Like car",
-  "Unlike car": "Unlike car"
+  "Unlike car": "Unlike car",
+  "Trusted Experts": "Trusted Experts",
+  "Top Agents": "Top Agents",
+  "Our agents are always ready to serve you.": "Our agents are always ready to serve you.",
+  "View all agents": "View all agents",
+  "Loading agents": "Loading agents",
+  "Agents could not be loaded. Please try again.": "Agents could not be loaded. Please try again.",
+  "No agents yet.": "No agents yet.",
+  "AGENT": "AGENT",
+  "Previous agents": "Previous agents",
+  "Next agents": "Next agents"
 }

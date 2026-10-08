@@ -26,10 +26,10 @@ const Home: NextPage = () => {
 			<Stack className={'home-page'}>
 				<BrowseByBudget />
 				<TrendCars />
+				<TopAgents />
 				<PopularCars />
 				<Advertisement />
 				<TopCars />
-				<TopAgents />
 			</Stack>
 		);
 	} else {
@@ -37,10 +37,10 @@ const Home: NextPage = () => {
 			<Stack className={'home-page'}>
 				<BrowseByBudget />
 				<TrendCars />
+				<TopAgents />
 				<PopularCars />
 				<Advertisement />
 				<TopCars />
-				<TopAgents />
 				<Events />
 				<CommunityBoards />
 			</Stack>
