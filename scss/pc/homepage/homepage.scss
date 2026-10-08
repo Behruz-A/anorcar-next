@@ -1347,9 +1347,9 @@
  .home-page .recently-added-cars {
   width: 100%; padding: 84px 0 88px; background: #f7f8fa; font-family: $font;
   .container { width: calc(100% - 160px); max-width: 1416px; min-width: 0; padding: 0; margin: 0 auto; align-items: stretch; }
-  .recent-heading { text-align: center; margin-bottom: 28px;
+  .recent-heading { text-align: center; margin-bottom: 48px;
    h2 { margin: 0; color: #181a20; font-size: 34px; font-weight: 500; line-height: 150%; letter-spacing: -.646px; }
-   p { margin: 6px 0 0; font-size: 16px; font-weight: 400; line-height: 26px; color: #667080; }
+   p { margin: 10px 0 0; font-size: 16px; font-weight: 400; line-height: 26px; color: #667080; }
   }
   .recent-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
   .recent-car-card { display: flex; flex-direction: column; min-width: 0; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; overflow: hidden; color: #181a20;
@@ -1369,7 +1369,7 @@
   .recent-price-location { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 4px;
    strong { font-size: 20px; font-weight: 600; line-height: 28px; color: #fa3c16; }
   }
-  .recent-view-all { display: inline-flex; align-items: center; justify-content: center; gap: 16px; align-self: center; margin-top: 28px; padding: 16px 40px; max-width: 100%; box-sizing: border-box; border-radius: 40px; background: #fa3c16; color: #fff; font-size: 15px; font-weight: 500; line-height: 24px; text-align: center;
+  .recent-view-all { display: inline-flex; align-items: center; justify-content: center; gap: 16px; align-self: center; margin-top: 48px; padding: 16px 40px; max-width: 100%; box-sizing: border-box; border-radius: 40px; background: #fa3c16; color: #fff; font-size: 15px; font-weight: 500; line-height: 24px; text-align: center;
    &:hover { background: #df3513; }
    &:focus-visible { outline: 2px solid #181a20; outline-offset: 3px; }
   }
@@ -1386,9 +1386,9 @@
   .home-page .recently-added-cars {
    padding: 40px 0 48px;
    .container { width: calc(100% - 28px); }
-   .recent-heading { h2 { font-size: 25px; } p { font-size: 14px; line-height: 24px; } }
+   .recent-heading { margin-bottom: 32px; h2 { font-size: 25px; } p { margin-top: 8px; font-size: 14px; line-height: 24px; } }
    .recent-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
-   .recent-view-all { padding: 14px 22px; font-size: 14px; }
+   .recent-view-all { margin-top: 32px; padding: 14px 22px; font-size: 14px; }
   }
  }
 }
