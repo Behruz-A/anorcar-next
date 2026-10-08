@@ -1222,3 +1222,64 @@
 		#top .navbar.homepage-nav .navbar-main .container .user-box .join-box { width: 36px; span { display: none; } svg { margin: 0; } }
 	}
 }
+.homepage-shell#pc-wrap, .homepage-shell#mobile-wrap {
+ .home-page .trend-cars.trending-cars-section {
+  width: 100%; height: auto; min-height: 816px; box-sizing: border-box; padding: 132px 0 94px; background: #f8f9fc; font-family: $font;
+  .container { width: calc(100% - 160px); max-width: 1416px; flex-direction: column; }
+  .info-box {
+   width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 20px;
+   h2 { margin: 0; color: #101828; font-size: 32px; font-weight: 700; line-height: 1.3; }
+   .trending-view-all { display: inline-flex; align-items: center; gap: 12px; color: #596270; font-size: 17px; white-space: nowrap; }
+  }
+  .container .card-box {
+   margin-top: 32px; width: 100%; min-width: 0;
+   .empty-list { height: 220px; width: 100%; display: flex; align-items: center; justify-content: center; color: #596270; }
+   .trend-car-swiper { width: 100%; height: auto; padding: 0 0 6px; }
+   .trend-car-swiper .trend-car-slide { width: calc((100% - 72px) / 4); height: auto; margin: 0; }
+   .trend-car-swiper .trend-car-slide .trend-card-box {
+    width: 100%; height: 100%; border-radius: 9px; overflow: hidden; background: white; box-shadow: 0 2px 6px rgba(16,24,40,.06);
+    &:hover { transform: none; }
+    .card-img {
+     display: block; position: relative; width: 100%; height: auto; aspect-ratio: 1.53; border-radius: 0;
+     > img { object-fit: cover; }
+     .trending-top { position: absolute; left: 15px; top: 15px; display: flex; align-items: center; gap: 5px; padding: 7px 12px; border-radius: 7px; background: #fa3c16; color: white; font-weight: 700; font-size: 16px; }
+     .trending-price { position: absolute; left: 12px; bottom: 12px; padding: 10px 13px; background: white; color: #101828; border-radius: 9px; font-size: 17px; font-weight: 700; }
+    }
+    .info {
+     padding: 17px 18px 15px; border: none; box-shadow: none; gap: 11px;
+     .trending-brand { display: flex; align-items: center; gap: 9px; min-height: 28px; color: #6b7280; font-size: 16px; img { object-fit: contain; } }
+     .title { display: block; font-size: 22px; font-weight: 700; color: #101828; text-transform: none; }
+     .trending-location { display: flex; align-items: center; gap: 6px; font-size: 14px; color: #667085; }
+     .options { margin-top: 7px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between;
+      > span { display: inline-flex; align-items: center; gap: 6px; color: #667085; font-size: 13px; }
+     }
+     .bott {
+      margin-top: 6px; padding-top: 13px; border-top: 1px solid #e9eaed; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between; color: #596270; font-size: 14px;
+      .trending-sale, .trending-views { display: inline-flex; align-items: center; gap: 6px; }
+      .view-like-box { display: flex; align-items: center; gap: 6px; }
+      .trending-like { margin: 0; width: 32px; height: 32px; padding: 4px; color: #596270; }
+     }
+    }
+   }
+  }
+ }
+}
+@media (max-width: 1200px) {
+ .homepage-shell#pc-wrap, .homepage-shell#mobile-wrap {
+  .home-page .trend-cars.trending-cars-section {
+   min-height: 0; padding: 72px 0 80px;
+   .container { width: calc(100% - 64px); }
+   .container .card-box .trend-car-swiper .trend-car-slide { width: 310px; }
+  }
+ }
+}
+@media (max-width: 600px) {
+ .homepage-shell#pc-wrap, .homepage-shell#mobile-wrap {
+  .home-page .trend-cars.trending-cars-section {
+   padding: 42px 0 48px;
+   .container { width: calc(100% - 28px); }
+   .info-box { gap: 10px; h2 { font-size: 25px; } .trending-view-all { font-size: 14px; gap: 6px; } }
+   .container .card-box { margin-top: 24px; .trend-car-swiper .trend-car-slide { width: 280px; } }
+  }
+ }
+}

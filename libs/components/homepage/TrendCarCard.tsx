@@ -2,149 +2,74 @@ import { useTranslation } from 'next-i18next';
 import { imageUrl } from '../../config';
 import { carLabel } from '../../car';
 import React from 'react';
-import { Stack, Box, Divider, Typography } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import useDeviceDetect from '../../hooks/useDeviceDetect';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Stack, IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { Car } from '../../types/car/car';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import { REACT_APP_API_URL } from '../../config';
-import { useRouter } from 'next/router';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import LocalGasStationOutlinedIcon from '@mui/icons-material/LocalGasStationOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
+import BoltIcon from '@mui/icons-material/Bolt';
+import { Car } from '../../types/car/car';
+import { CustomJwtPayload } from '../../types/customJwtPayload';
 import { useReactiveVar } from '@apollo/client';
 import { userVar } from '../../../apollo/store';
 
 interface TrendCarCardProps {
-	car: Car;
-	likeCarHandler: any;
+ car: Car;
+ likeCarHandler: (user: CustomJwtPayload, id: string) => Promise<void>;
 }
 
-const TrendCarCard = (props: TrendCarCardProps) => {
+const TrendCarCard = ({ car, likeCarHandler }: TrendCarCardProps) => {
  const { t } = useTranslation('common');
-	const { car, likeCarHandler } = props;
-	const device = useDeviceDetect();
-	const router = useRouter();
-	const user = useReactiveVar(userVar);
+ const user = useReactiveVar(userVar);
+ const detail = { pathname: '/car/detail', query: { id: car._id } };
+ const liked = !!car.meLiked?.[0]?.myFavorite;
+ const saleType = car.carRent && car.carBarter ? 'Rent / Barter' : car.carRent ? 'Rent' : car.carBarter ? 'Barter' : 'Sale';
 
-	/**.  HANDLERS* */
-	const pushDetailHandler = async (carId: string) => {
-		console.log('ID:', carId);
-		await router.push({ pathname: `/car/detail`, query: { id: carId } });
-	};
+ /** HANDLERS **/
+ const handleLikeClick = (event: React.MouseEvent) => {
+  event.stopPropagation();
+  void likeCarHandler(user, car._id);
+ };
 
-	const handleLikeClick = (e: React.MouseEvent) => {
-		e.stopPropagation(); // Card sahifasiga o'tib ketishni to'xtatadi
-		likeCarHandler(user, String(car?._id));
-	};
-
-	if (device === 'mobile') {
-		return (
-			<Stack className="trend-card-box" key={car._id}>
-				<Box
-					component={'div'}
-					className={'card-img'}
-					style={{ backgroundImage: `url(${imageUrl(car?.carImages[0])})` }}
-					onClick={() => pushDetailHandler(String(car?._id))}
-				>
-					<div>${car.carPrice}</div>
-				</Box>
-				<Box component={'div'} className={'info'}>
-					<strong className={'title'} onClick={() => pushDetailHandler(String(car?._id))}>
-						{car.carTitle}
-					</strong>
-					<p className={'desc'}>{car.carDesc ?? 'no description'}</p>
-					<div className={'options'}>
-						<div>
-							<img src="/img/icons/car.svg" alt="" />
-							<span>{car.carYear} year</span>
-						</div>
-						<div>
-							<img src="/img/icons/fuel.svg" alt="" />
-							<span>{t(carLabel(car.carFuelType ?? ''))}</span>
-						</div>
-						<div>
-							<img src="/img/icons/transmission.svg" alt="" />
-							<span>{t(carLabel(car.carTransmission ?? ''))}</span>
-						</div>
-					</div>
-					<Divider sx={{ mt: '15px', mb: '17px' }} />
-					<div className={'bott'}>
-						<p>
-							{car.carRent ? 'Rent' : ''} {car.carRent && car.carBarter && '/'}{' '}
-							{car.carBarter ? 'Barter' : ''}
-						</p>
-						<div className="view-like-box">
-							<IconButton color={'default'}>
-								<RemoveRedEyeIcon />
-							</IconButton>
-							<Typography className="view-cnt">{car?.carViews}</Typography>
-							<IconButton color={'default'} onClick={() => likeCarHandler(user, car?._id)}>
-								{car?.meLiked && car?.meLiked[0]?.myFavorite ? (
-									<FavoriteIcon style={{ color: 'red' }} />
-								) : (
-									<FavoriteIcon />
-								)}
-							</IconButton>
-							<Typography className="view-cnt">{car?.carLikes}</Typography>
-						</div>
-					</div>
-				</Box>
-			</Stack>
-		);
-	} else {
-		return (
-			<Stack className="trend-card-box" key={car._id}>
-				<Box
-					component={'div'}
-					className={'card-img'}
-					style={{ backgroundImage: `url(${imageUrl(car?.carImages[0])})` }}
-					onClick={() => pushDetailHandler(String(car?._id))}
-				>
-					<div>${car.carPrice}</div>
-				</Box>
-				<Box component={'div'} className={'info'}>
-					<strong className={'title'} onClick={() => pushDetailHandler(String(car?._id))}>
-						{car.carTitle}
-					</strong>
-					<p className={'desc'}>{car.carDesc ?? 'no description'}</p>
-					<div className={'options'}>
-						<div>
-							<img src="/img/icons/car.svg" alt="" />
-							<span>{car.carYear} year</span>
-						</div>
-						<div>
-							<img src="/img/icons/fuel.svg" alt="" />
-							<span>{t(carLabel(car.carFuelType ?? ''))}</span>
-						</div>
-						<div>
-							<img src="/img/icons/transmission.svg" alt="" />
-							<span>{t(carLabel(car.carTransmission ?? ''))}</span>
-						</div>
-					</div>
-					<Divider sx={{ mt: '15px', mb: '17px' }} />
-					<div className={'bott'}>
-						<p>
-							{car.carRent ? 'Rent' : ''} {car.carRent && car.carBarter && '/'}{' '}
-							{car.carBarter ? 'Barter' : ''}
-						</p>
-						<div className="view-like-box">
-							<IconButton color={'default'}>
-								<RemoveRedEyeIcon />
-							</IconButton>
-							<Typography className="view-cnt">{car?.carViews}</Typography>
-							<IconButton color={'default'} onClick={() => likeCarHandler(user, car?._id)}>
-								{car?.meLiked && car?.meLiked[0]?.myFavorite ? (
-									<FavoriteIcon style={{ color: 'red' }} />
-								) : (
-									<FavoriteIcon />
-								)}
-							</IconButton>
-							<Typography className="view-cnt">{car?.carLikes}</Typography>
-						</div>
-					</div>
-				</Box>
-			</Stack>
-		);
-	}
+ return (
+  <Stack className="trend-card-box">
+   <Link className="card-img" href={detail} aria-label={car.carTitle}>
+    <Image src={imageUrl(car.carImages[0])} alt={car.carTitle} fill
+     sizes="(max-width: 600px) 280px, (max-width: 1200px) 320px, 360px" unoptimized />
+    <span className="trending-top"><BoltIcon fontSize="small" />{t('TOP')}</span>
+    <span className="trending-price">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(car.carPrice)}</span>
+   </Link>
+   <div className="info">
+    {car.brandData && <div className="trending-brand">
+     {car.brandData.brandLogo && <Image src={imageUrl(car.brandData.brandLogo)} alt="" width={28} height={28} unoptimized
+      onError={(event) => { event.currentTarget.style.display = 'none'; }} />}
+     <span>{car.brandData.brandName}</span>
+    </div>}
+    <Link className="title" href={detail}>{car.carModel || car.carTitle}</Link>
+    <div className="trending-location"><LocationOnIcon fontSize="small" />{t(carLabel(car.carLocation))}, {t('Korea')}</div>
+    <div className="options">
+     <span><CalendarMonthOutlinedIcon fontSize="small" />{car.carYear}</span>
+     <span><SettingsOutlinedIcon fontSize="small" />{t(carLabel(car.carTransmission))}</span>
+     <span><LocalGasStationOutlinedIcon fontSize="small" />{t(carLabel(car.carFuelType))}</span>
+    </div>
+    <div className="bott">
+     <span className="trending-sale"><SwapHorizIcon fontSize="small" />{t(saleType)}</span>
+     <div className="view-like-box">
+      <span className="trending-views"><RemoveRedEyeIcon fontSize="small" />{car.carViews}</span>
+      <IconButton className="trending-like" onClick={handleLikeClick} aria-label={t(liked ? 'Unlike car' : 'Like car')} aria-pressed={liked}>
+       <FavoriteIcon fontSize="small" sx={{ color: liked ? '#fa3c16' : 'inherit' }} />
+      </IconButton>
+      <span>{car.carLikes}</span>
+     </div>
+    </div>
+   </div>
+  </Stack>
+ );
 };
 
 export default TrendCarCard;

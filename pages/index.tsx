@@ -6,6 +6,7 @@ import PopularCars from '../libs/components/homepage/PopularCars';
 import TopAgents from '../libs/components/homepage/TopAgents';
 import Events from '../libs/components/homepage/Events';
 import BrowseByBudget from '../libs/components/homepage/BrowseByBudget';
+import TrendCars from '../libs/components/homepage/TrendCars';
 import TopCars from '../libs/components/homepage/TopCars';
 import { Stack } from '@mui/material';
 import Advertisement from '../libs/components/homepage/Advertisement';
@@ -24,6 +25,7 @@ const Home: NextPage = () => {
 		return (
 			<Stack className={'home-page'}>
 				<BrowseByBudget />
+				<TrendCars />
 				<PopularCars />
 				<Advertisement />
 				<TopCars />
@@ -34,6 +36,7 @@ const Home: NextPage = () => {
 		return (
 			<Stack className={'home-page'}>
 				<BrowseByBudget />
+				<TrendCars />
 				<PopularCars />
 				<Advertisement />
 				<TopCars />

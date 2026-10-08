@@ -297,5 +297,13 @@
   "Previous budgets": "이전 가격대",
   "Next budgets": "다음 가격대",
   "Under $40K": "$40K 이하",
-  "Under $75K": "$75K 이하"
+  "Under $75K": "$75K 이하",
+  "Trending Cars": "인기 자동차",
+  "View All": "전체 보기",
+  "No trending cars yet.": "아직 인기 자동차가 없습니다.",
+  "Korea": "한국",
+  "Sale": "판매",
+  "Rent / Barter": "대여 / 교환",
+  "Like car": "자동차 좋아요",
+  "Unlike car": "좋아요 취소"
 }
