@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 190">
+ <defs><g id="wheel"><circle r="39" fill="#ccc" stroke="#fff" stroke-width="4"/><circle r="29" fill="#fff"/><circle r="23" fill="#ccc"/><g stroke="#fff" stroke-width="5"><path d="M0-26V26M-26 0H26M-18-18 18 18M-18 18 18-18"/></g><circle r="7" fill="#ccc"/></g></defs>
+ <path d="M16 113 20 84 17 73 53 68 110 43 143 27 170 25 170 20 183 22 187 26 235 23Q276 23 313 48L354 70 401 75Q439 80 455 96L459 117 454 133Q453 144 439 146H40Q15 144 16 130Z" fill="#ccc"/>
+ <path d="M126 52Q143 37 173 35L222 32 225 73H147Q124 68 126 52ZM235 32Q270 32 294 46L333 74H244Z" fill="#fff"/>
+ <use href="#wheel" x="112" y="143"/><use href="#wheel" x="388" y="143"/>
+</svg>

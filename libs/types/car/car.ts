@@ -1,6 +1,7 @@
 import { CarLocation, CarStatus, CarFuelType, CarCondition, CarTransmission } from '../../enums/car.enum';
 import { Member } from '../member/member';
 import { Brand } from '../brand/brand';
+import { CarMileage } from './car-mileage';
 export interface MeLiked { memberId: string; likeRefId: string; myFavorite: boolean; }
 export interface TotalCounter { total?: number | null; }
 
@@ -11,6 +12,7 @@ export interface Car {
  carCondition: CarCondition;
  carModel: string;
  carYear: number;
+ carMileage?: CarMileage | null;
  carLocation: CarLocation;
  carAddress: string;
  carTransmission: CarTransmission;

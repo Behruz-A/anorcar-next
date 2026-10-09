@@ -16,7 +16,7 @@ import 'swiper/css/pagination';
 //@ts-ignore
 import 'swiper/css/navigation';
 
-const withLayoutFull = (Component: any) => {
+const withLayoutFull = (Component: any, options: { showChat?: boolean } = {}) => {
 	return function FullLayout(props: any) {
 		const router = useRouter();
 		const device = useDeviceDetect();
@@ -67,7 +67,7 @@ const withLayoutFull = (Component: any) => {
 							<Component {...props} />
 						</Stack>
 
-						<Chat />
+						{options.showChat !== false && <Chat />}
 
 						<Stack id={'footer'}>
 							<Footer />

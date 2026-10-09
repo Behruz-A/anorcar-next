@@ -48,6 +48,7 @@ export default function AddCar() {
    carFuelType: car.carFuelType, carCondition: car.carCondition, carLocation: car.carLocation,
    carTransmission: car.carTransmission, brandId: car.brandId, carModel: car.carModel,
    carYear: car.carYear, carTitle: car.carTitle, carPrice: car.carPrice, carColor: car.carColor,
+   carMileage: car.carMileage ?? null,
    carAddress: car.carAddress, carImages: car.carImages, carDesc: car.carDesc ?? '',
    carBarter: car.carBarter, carRent: car.carRent,
   });
@@ -132,6 +133,9 @@ export default function AddCar() {
       <TextField type="number" required label={t("Model year")} value={draft.carYear || ''} inputProps={{ min: 1886, max: maxCarYear, step: 1 }} onChange={e => set('carYear', Number(e.target.value))} />
       <TextField type="number" required label={t("Price")} value={draft.carPrice || ''} inputProps={{ min: 1, step: 'any' }} onChange={e => set('carPrice', Number(e.target.value))} />
      </Stack>
+     <TextField type="number" label={t('Mileage (km)')} value={draft.carMileage ?? ''}
+      inputProps={{ min: 0, max: 2147483647, step: 1 }} helperText={t('Leave empty if mileage is not known.')}
+      onChange={e => set('carMileage', e.target.value === '' ? null : Number(e.target.value))} />
      {selects.map(({ key, label, values }) => <TextField key={key} select required label={t(label)} value={draft[key]}
       onChange={e => setDraft(current => ({ ...current, [key]: e.target.value }))}>
       <MenuItem value="" disabled>{t('Select an option')}</MenuItem>

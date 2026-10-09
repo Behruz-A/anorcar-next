@@ -1,10 +1,12 @@
 import { CarLocation, CarStatus, CarFuelType, CarCondition, CarTransmission } from '../../enums/car.enum';
 import { Direction } from '../../enums/common.enum';
+import { CarMileage } from './car-mileage';
 export interface CarInput {
  carFuelType: CarFuelType;
  carCondition: CarCondition;
  carModel: string;
  carYear: number;
+ carMileage?: CarMileage | null;
  carLocation: CarLocation;
  carAddress: string;
  carTransmission: CarTransmission;

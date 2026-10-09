@@ -44,6 +44,7 @@ const Top = () => {
 	useEffect(() => {
 		switch (router.pathname) {
 			case '/car/detail':
+			case '/car/compare':
 				setBgColor(true);
 				break;
 			default:

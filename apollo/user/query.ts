@@ -356,6 +356,7 @@ query GetCar($input: String!) {
     carCondition
     carModel
     carYear
+    carMileage
     carLocation
     carAddress
     carTransmission
@@ -420,6 +421,7 @@ query GetCars($input: CarsInquiry!) {
       carCondition
       carModel
       carYear
+      carMileage
       carLocation
       carAddress
       carTransmission
@@ -488,6 +490,7 @@ query GetAgentCars($input: AgentCarsInquiry!) {
       carCondition
       carModel
       carYear
+      carMileage
       carLocation
       carAddress
       carTransmission
@@ -556,6 +559,7 @@ query GetFavorites($input: OrdinaryInquiry!) {
       carCondition
       carModel
       carYear
+      carMileage
       carLocation
       carAddress
       carTransmission
@@ -624,6 +628,7 @@ query GetVisited($input: OrdinaryInquiry!) {
       carCondition
       carModel
       carYear
+      carMileage
       carLocation
       carAddress
       carTransmission

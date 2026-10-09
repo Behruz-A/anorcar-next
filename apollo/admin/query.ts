@@ -152,6 +152,7 @@ query GetAllCarsByAdmin($input: AllCarsInquiry!) {
       carCondition
       carModel
       carYear
+      carMileage
       carLocation
       carAddress
       carTransmission

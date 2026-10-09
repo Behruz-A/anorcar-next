@@ -11,6 +11,7 @@
 		"changelog": "standard-version --skip.tag",
 		"typecheck": "tsc --noEmit --incremental false",
 		"test:migration": "node scripts/check-car-migration.cjs",
+		"test:compare": "node scripts/check-car-compare.cjs",
 		"check:graphql": "node scripts/check-graphql-contract.cjs"
 	},
 	"dependencies": {

@@ -56,6 +56,8 @@ export function validateCarInput(input: CarInput): string | undefined {
  if (!/^[a-f\d]{24}$/i.test(input.brandId)) return 'Select a brand.';
  if (!Number.isInteger(input.carYear) || input.carYear < 1886 || input.carYear > maxCarYear) return 'Enter a valid model year.';
  if (!Number.isFinite(input.carPrice) || input.carPrice < 1) return 'Price must be greater than zero.';
+ if (input.carMileage != null && (!Number.isInteger(input.carMileage) || input.carMileage < 0 || input.carMileage > 2147483647))
+  return 'Mileage must be a whole number between 0 and 2147483647.';
  for (const [value, minimum, maximum, name] of [
   [input.carTitle, 3, 100, 'Title'], [input.carAddress, 3, 100, 'Address'],
   [input.carModel, 1, 80, 'Model'], [input.carColor, 1, 40, 'Color'],
