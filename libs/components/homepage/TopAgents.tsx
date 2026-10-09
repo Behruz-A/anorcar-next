@@ -2,7 +2,6 @@ import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Stack, Alert, CircularProgress, IconButton } from '@mui/material';
-import useDeviceDetect from '../../hooks/useDeviceDetect';
 import EastIcon from '@mui/icons-material/East';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -20,7 +19,6 @@ interface TopAgentsProps { initialInput: AgentsInquiry; }
 
 const TopAgents = ({ initialInput }: TopAgentsProps) => {
  const { t } = useTranslation('common');
- const device = useDeviceDetect();
  const [topAgents, setTopAgents] = useState<Member[]>([]);
 
  /** APOLLO REQUESTS **/
@@ -54,8 +52,8 @@ const TopAgents = ({ initialInput }: TopAgentsProps) => {
       getAgentsError ? <Alert severity="error">{t('Agents could not be loaded. Please try again.')}</Alert> :
       topAgents.length === 0 ? <p className="agents-empty">{t('No agents yet.')}</p> :
       <>
-      <Swiper className="top-agents-swiper" slidesPerView="auto" spaceBetween={device === 'mobile' ? 16 : 22}
-       breakpoints={{ 0: { slidesPerGroup: 1 }, 1201: { slidesPerGroup: 5 } }}
+      <Swiper className="top-agents-swiper" slidesPerView="auto" spaceBetween={16}
+       breakpoints={{ 0: { slidesPerGroup: 1, spaceBetween: 16 }, 601: { slidesPerGroup: 1, spaceBetween: 22 }, 1201: { slidesPerGroup: 5, spaceBetween: 22 } }}
        modules={[Keyboard, A11y, Navigation]} keyboard={{ enabled: true, onlyInViewport: true }}
        navigation={{ prevEl: '.swiper-agents-prev', nextEl: '.swiper-agents-next' }}
        a11y={{ prevSlideMessage: t('Previous agents'), nextSlideMessage: t('Next agents') }}>
