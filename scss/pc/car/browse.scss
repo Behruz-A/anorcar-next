@@ -276,7 +276,7 @@
 		align-items: flex-start;
 		justify-content: space-between;
 		gap: 9px;
-		margin-bottom: 7px;
+		margin-bottom: 3px;
 		min-height: 44px;
 		a {
 			min-width: 0;
@@ -539,6 +539,9 @@
 #car-list-page,
 .cars-filter-drawer {
 	.cars-browse-filter {
+		> button[data-action='reset'] {
+			margin-top: 8px;
+		}
 		.MuiInputBase-root {
 			font-family: $font;
 			font-size: 13px;

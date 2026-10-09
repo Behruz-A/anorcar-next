@@ -479,5 +479,6 @@
   "Date added": "Дата добавления",
   "Rank": "Рейтинг",
   "Ascending": "По возрастанию",
-  "Descending": "По убыванию"
+  "Descending": "По убыванию",
+  "Choosing a model replaces your search.": "При выборе модели текущий поисковый запрос будет заменён."
 }

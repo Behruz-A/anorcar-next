@@ -198,7 +198,11 @@ export default function BrowseSearchFields({ search, onChange, ranges, onRangesC
 				size="small"
 				value={selectedModel}
 				disabled={!search.brandIds?.length || modelsLoading || Boolean(modelError)}
-				helperText={t('Selecting a model replaces the keyword. Changing brands keeps your search text.')}
+				helperText={
+					text.trim() && !selectedModel && models.length > 0
+						? t('Choosing a model replaces your search.')
+						: undefined
+				}
 				onChange={(e) => {
 					if (e.target.value || selectedModel) onTextChange(e.target.value);
 				}}
