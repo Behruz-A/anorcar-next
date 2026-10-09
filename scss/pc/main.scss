@@ -6,7 +6,7 @@
 @import '/scss/pc/homepage/compare';
 @import '/scss/pc/homepage/compare-home';
 
-@import '/scss/pc/car/car';
+// Cars browse styles load last through scss/car.scss, after shared responsive rules.
 @import '/scss/pc/car/detail.scss';
 
 @import '/scss/pc/agent/agent';

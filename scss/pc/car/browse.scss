@@ -1,0 +1,734 @@
+// Scoped to the Cars listing; existing shared cards and layout remain in place.
+#pc-wrap #car-list-page,
+#mobile-wrap #car-list-page {
+	background: #f7f8fa;
+	padding-bottom: 48px;
+	font-family: $font;
+	> .container {
+		width: min(1440px, calc(100% - 64px));
+		margin: 0 auto;
+		padding: 0;
+	}
+	.car-page {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		gap: 30px;
+		padding-top: 32px;
+	}
+	.filter-config {
+		width: 310px;
+		flex: 0 0 310px;
+	}
+	.main-config {
+		width: auto;
+		flex: 1;
+		min-width: 0;
+		align-items: stretch;
+		gap: 0;
+	}
+	.cars-browse-filter {
+		padding: 24px;
+		background: #fff;
+		border: 1px solid #eef0f3;
+		border-radius: 12px;
+		box-shadow: 0 2px 8px #181a2005;
+		h6 {
+			font-family: $font;
+			font-size: 20px;
+			font-weight: 600;
+			line-height: 1.5;
+		}
+		.MuiInputBase-root,
+		.MuiFormLabel-root,
+		.MuiButton-root,
+		.MuiTypography-root {
+			font-family: $font;
+		}
+		.MuiInputBase-root {
+			font-size: 13px;
+			border-radius: 7px;
+		}
+		.MuiOutlinedInput-notchedOutline {
+			border-color: #e1e5eb;
+		}
+		.MuiButton-root {
+			text-transform: none;
+			border-radius: 8px;
+		}
+		.MuiButton-contained {
+			min-height: 46px;
+			background: #ff4931;
+			color: white;
+			box-shadow: none;
+			&:hover {
+				background: #e83923;
+			}
+			&.Mui-disabled {
+				background: #e6e8ec;
+				color: #767c87;
+			}
+		}
+	}
+	.cars-filter-group {
+		padding-bottom: 14px;
+		border-bottom: 1px solid #f0f2f5;
+		h3 {
+			margin-bottom: 10px;
+			font-size: 13px;
+			font-weight: 600;
+			color: #181a20;
+		}
+		.MuiTextField-root {
+			min-width: 0;
+			flex: 1;
+		}
+	}
+	.cars-checkboxes {
+		display: grid;
+		gap: 0;
+		.MuiFormControlLabel-root {
+			margin: 0;
+			gap: 7px;
+			min-height: 25px;
+		}
+		.MuiFormControlLabel-label {
+			font-size: 13px;
+			color: #596171;
+		}
+		.MuiCheckbox-root {
+			padding: 0;
+			color: #d7dde6;
+			&.Mui-checked {
+				color: #ff4931;
+			}
+			svg {
+				width: 20px;
+				height: 20px;
+			}
+		}
+	}
+	.cars-checkboxes-columns {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 5px 8px;
+	}
+	.cars-breadcrumb {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		color: #596171;
+		font-size: 12px;
+		line-height: 24px;
+		margin-bottom: 10px;
+		a:hover {
+			color: #ff4931;
+		}
+	}
+	.car-browse-toolbar {
+		padding: 0;
+		margin-bottom: 18px;
+		align-items: center;
+		gap: 16px;
+		h1 {
+			font-family: $font;
+			font-size: 34px;
+			font-weight: 500;
+			line-height: 150%;
+			letter-spacing: -0.646px;
+			color: #181a20;
+		}
+		.cars-count {
+			font-family: $font;
+			font-size: 13px;
+			color: #717783;
+			line-height: 24px;
+		}
+	}
+	.cars-sort-controls {
+		gap: 7px;
+		align-items: center;
+		.MuiTextField-root {
+			width: 160px;
+			margin-right: 8px;
+			background: white;
+		}
+		.MuiInputBase-root {
+			font-size: 13px;
+			font-family: $font;
+			border-radius: 8px;
+		}
+		.MuiIconButton-root {
+			width: 39px;
+			height: 39px;
+			border-radius: 7px;
+			border: 1px solid #e9edf2;
+			color: #657080;
+			background: #fff;
+		}
+		.is-active {
+			background: #ff4931;
+			border-color: #ff4931;
+			color: #fff;
+		}
+	}
+	.cars-brand-strip {
+		gap: 9px;
+		overflow-x: auto;
+		padding: 0 0 8px;
+		margin-bottom: 20px;
+		scrollbar-width: thin;
+		.MuiButton-root {
+			flex: 0 0 auto;
+			min-height: 40px;
+			padding: 8px 14px;
+			border: 1px solid #e9edf2;
+			border-radius: 16px;
+			background: #fff;
+			color: #434b58;
+			font-family: $font;
+			font-size: 12px;
+			text-transform: none;
+			gap: 6px;
+		}
+		.is-active {
+			border-color: #ff4931;
+			color: #181a20;
+			background: #fff8f6;
+		}
+		img {
+			width: 22px;
+			height: 22px;
+			object-fit: contain;
+		}
+	}
+	.list-config.cars-results {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 22px;
+		width: 100%;
+	}
+	.cars-listing-card {
+		position: relative;
+		height: 100%;
+		min-width: 0;
+		overflow: hidden;
+		border: 1px solid #edf0f3;
+		border-radius: 9px;
+		background: #fff;
+		box-shadow: 0 2px 7px #181a2003;
+	}
+	.cars-listing-photo {
+		position: relative;
+		aspect-ratio: 1.88;
+		min-width: 0;
+		> a {
+			position: relative;
+			z-index: 2;
+			display: block;
+			height: 100%;
+			width: 100%;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.cars-listing-favorite {
+			z-index: 3;
+			position: absolute;
+			top: 7px;
+			right: 7px;
+			color: white;
+			filter: drop-shadow(0 1px 2px #0005);
+			&[aria-pressed='true'] {
+				color: #ff4931;
+			}
+		}
+	}
+	.cars-photo-count {
+		z-index: 3;
+		pointer-events: none;
+		position: absolute;
+		bottom: 6px;
+		right: 7px;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		padding: 3px 7px;
+		background: #0009;
+		color: #fff;
+		border-radius: 4px;
+		font-size: 12px;
+		svg {
+			width: 16px;
+			height: 16px;
+		}
+	}
+	.cars-listing-content {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		padding: 15px 17px 13px;
+		min-width: 0;
+	}
+	.cars-listing-title {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 9px;
+		margin-bottom: 7px;
+		min-height: 44px;
+		a {
+			min-width: 0;
+			white-space: normal;
+			&::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				z-index: 1;
+			}
+		}
+		h2 {
+			font-family: $font;
+			font-size: 14px;
+			font-weight: 600;
+			line-height: 22px;
+			color: #181a20;
+			overflow-wrap: anywhere;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			overflow: hidden;
+		}
+	}
+	.cars-listing-type {
+		flex-shrink: 0;
+		padding: 3px 9px;
+		border-radius: 20px;
+		background: #f1f3f5;
+		color: #343b46;
+		font-size: 10px;
+		line-height: 18px;
+	}
+	.cars-listing-location {
+		display: flex;
+		gap: 5px;
+		align-items: center;
+		color: #596171;
+		font-size: 12px;
+		svg {
+			width: 16px;
+			height: 16px;
+			color: #ff4931;
+		}
+	}
+	.cars-listing-specs {
+		min-height: 40px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 3px 7px;
+		margin: 5px 0 8px;
+		color: #717783;
+		font-size: 11px;
+		line-height: 20px;
+		span + span::before {
+			content: '·';
+			margin-right: 7px;
+		}
+	}
+	.cars-listing-price {
+		margin-top: auto;
+		font-family: $font;
+		font-size: 23px;
+		font-weight: 600;
+		line-height: 32px;
+		color: #181a20;
+		margin-bottom: 7px;
+	}
+	.cars-listing-stats {
+		display: flex;
+		align-items: center;
+		gap: 24px;
+		color: #596171;
+		font-size: 12px;
+		span {
+			display: flex;
+			align-items: center;
+			gap: 7px;
+		}
+		svg {
+			width: 18px;
+			height: 18px;
+		}
+	}
+	.list-config.cars-results-list {
+		grid-template-columns: 1fr;
+		.cars-listing-card {
+			flex-direction: row;
+		}
+		.cars-listing-photo {
+			align-self: flex-start;
+			width: 32%;
+			flex-shrink: 0;
+		}
+		.cars-listing-content {
+			flex: 1;
+			align-self: stretch;
+		}
+	}
+	.pagination-config {
+		width: 100%;
+		height: auto;
+		margin-top: 24px;
+		align-items: center;
+		gap: 0;
+		.MuiPaginationItem-root {
+			font-family: $font;
+			background: white;
+			border: 1px solid #eef0f3;
+			border-radius: 6px;
+		}
+		.Mui-selected {
+			color: white;
+			background: #ff4931;
+			border-color: #ff4931;
+			&:hover {
+				background: #e83923;
+			}
+		}
+	}
+	button:focus-visible,
+	a:focus-visible {
+		outline: 2px solid #ff4931;
+		outline-offset: 3px;
+	}
+	@media (max-width: 1200px) {
+		> .container {
+			width: calc(100% - 40px);
+		}
+		.car-page {
+			gap: 22px;
+		}
+		.filter-config {
+			width: 270px;
+			flex-basis: 270px;
+		}
+		.list-config.cars-results {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		.list-config.cars-results-list {
+			grid-template-columns: 1fr;
+		}
+		.car-browse-toolbar {
+			flex-wrap: wrap;
+		}
+	}
+	@media (max-width: 800px) {
+		> .container {
+			width: calc(100% - 32px);
+		}
+		.car-page {
+			flex-direction: column;
+			padding-top: 24px;
+		}
+		.main-config {
+			width: 100%;
+			flex: auto;
+		}
+		.filter-config {
+			display: contents;
+		}
+		.cars-browse-filter {
+			padding: 20px;
+		}
+		.cars-search-fields {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 18px;
+			> * {
+				margin-top: 0;
+				min-width: 0;
+			}
+			> .MuiTextField-root:first-child {
+				grid-column: 1 / -1;
+			}
+		}
+		.car-browse-toolbar h1 {
+			font-size: 25px;
+		}
+		.cars-sort-controls .MuiTextField-root {
+			width: 150px;
+		}
+	}
+	@media (max-width: 480px) {
+		.cars-search-fields {
+			display: flex;
+			gap: 0;
+			> * + * {
+				margin-top: 16px;
+			}
+		}
+		.list-config.cars-results {
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+		.cars-listing-photo {
+			aspect-ratio: 1.88;
+		}
+		.cars-listing-title h2 {
+			font-size: 15px;
+		}
+		.cars-listing-specs {
+			font-size: 12px;
+		}
+		.list-config.cars-results-list .cars-listing-card {
+			flex-direction: row;
+		}
+		.list-config.cars-results-list .cars-listing-photo {
+			width: 34%;
+		}
+		.list-config.cars-results-list .cars-listing-content {
+			width: 66%;
+			padding: 12px;
+		}
+		.list-config.cars-results-list .cars-listing-title {
+			flex-direction: column;
+			gap: 4px;
+		}
+		.list-config.cars-results-list .cars-listing-price {
+			font-size: 20px;
+		}
+		.list-config.cars-results-list .cars-listing-specs {
+			min-height: 0;
+		}
+	}
+}
+
+// The MUI drawer is portalled outside the page. Its unique root class scopes every rule.
+.cars-filter-drawer {
+	.MuiDrawer-paper {
+		width: min(390px, 100%);
+		font-family: $font;
+		background: #fff;
+	}
+	.cars-drawer-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 18px 20px;
+		border-bottom: 1px solid #eef0f3;
+		h2 {
+			font: 600 20px/1.5 $font;
+		}
+	}
+	.cars-browse-filter {
+		padding: 20px;
+		border-radius: 0;
+		box-shadow: none;
+		border: 0;
+	}
+	.cars-search-fields {
+		display: flex;
+		gap: 0;
+		> * + * {
+			margin-top: 18px;
+		}
+	}
+}
+
+#car-list-page,
+.cars-filter-drawer {
+	.cars-browse-filter {
+		.MuiInputBase-root {
+			font-family: $font;
+			font-size: 13px;
+			border-radius: 7px;
+		}
+		.MuiInputLabel-root {
+			font-family: $font;
+			font-size: 13px;
+		}
+		.MuiFormHelperText-root {
+			font-family: $font;
+			font-size: 11px;
+			line-height: 1.6;
+			margin: 6px 0 0;
+		}
+		.MuiOutlinedInput-notchedOutline {
+			border-color: #dce1e8;
+		}
+		.Mui-focused .MuiOutlinedInput-notchedOutline {
+			border-color: #ff4931;
+		}
+		.Mui-error .MuiOutlinedInput-notchedOutline {
+			border-color: #d32f2f;
+		}
+		.MuiButton-root {
+			font-family: $font;
+			text-transform: none;
+			border-radius: 8px;
+			min-height: 44px;
+		}
+		.MuiButton-contained {
+			color: #fff;
+			background: #ff4931;
+			box-shadow: none;
+			&:hover {
+				background: #e83923;
+			}
+			&.Mui-disabled {
+				color: #767c87;
+				background: #e6e8ec;
+			}
+		}
+	}
+	.cars-filter-group {
+		padding-bottom: 14px;
+		border-bottom: 1px solid #eef0f3;
+		h3 {
+			margin-bottom: 10px;
+			font: 600 13px/1.5 $font;
+		}
+		.MuiTextField-root {
+			flex: 1;
+			min-width: 0;
+		}
+	}
+	.cars-checkboxes {
+		display: grid;
+		.MuiFormControlLabel-root {
+			margin: 0;
+			min-height: 32px;
+			gap: 6px;
+		}
+		.MuiFormControlLabel-label {
+			font: 400 12px/1.5 $font;
+			color: #596171;
+			overflow-wrap: anywhere;
+		}
+		.MuiCheckbox-root {
+			padding: 3px;
+			color: #c3cad4;
+			&.Mui-checked {
+				color: #ff4931;
+			}
+			svg {
+				width: 20px;
+				height: 20px;
+			}
+		}
+	}
+	.cars-checkboxes-columns {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0 6px;
+	}
+	.cars-field-error {
+		margin-top: 6px;
+		color: #d32f2f;
+		font: 400 11px/1.6 $font;
+	}
+	button:focus-visible,
+	a:focus-visible {
+		outline: 2px solid #ff4931;
+		outline-offset: 3px;
+	}
+}
+
+#pc-wrap #car-list-page,
+#mobile-wrap #car-list-page {
+	.cars-sort-controls {
+		flex-wrap: wrap;
+		row-gap: 12px;
+	}
+	.cars-filter-trigger {
+		border-color: #dce1e8;
+		color: #181a20;
+		text-transform: none;
+		min-height: 40px;
+		font-family: $font;
+	}
+	.cars-brand-strip {
+		scroll-padding-inline: 10px;
+		.MuiButton-root:focus-visible {
+			outline-offset: -3px;
+		}
+	}
+	.cars-update-progress {
+		height: 4px;
+		margin-bottom: 12px;
+		.MuiLinearProgress-root {
+			background: #fff0ec;
+		}
+		.MuiLinearProgress-bar {
+			background: #ff4931;
+		}
+	}
+	.cars-empty-state {
+		padding: 56px 24px;
+		border: 1px solid #e9edf2;
+		border-radius: 10px;
+		text-align: center;
+		background: #fff;
+		h2 {
+			font: 500 20px/1.5 $font;
+			margin-bottom: 8px;
+		}
+		p {
+			font: 400 13px/1.8 $font;
+			color: #717783;
+			margin-bottom: 20px;
+		}
+		button {
+			font-family: $font;
+			color: #e83923;
+			border-color: #ff4931;
+			text-transform: none;
+		}
+	}
+	.cars-card-skeleton {
+		.cars-listing-photo {
+			width: 100%;
+			height: auto;
+			transform: none;
+		}
+		.cars-listing-content {
+			min-height: 200px;
+		}
+	}
+	.cars-listing-card {
+		transition: border-color 150ms ease, box-shadow 150ms ease;
+		&:hover,
+		&:focus-within {
+			border-color: #d4dae3;
+			box-shadow: 0 4px 14px #181a200b;
+		}
+	}
+	.pagination-config {
+		margin-top: 30px;
+		.MuiPaginationItem-root {
+			min-width: 36px;
+			height: 36px;
+		}
+	}
+	@media (max-width: 480px) {
+		.cars-sort-controls {
+			width: 100%;
+			.MuiTextField-root {
+				width: 140px;
+				margin-right: 0;
+			}
+		}
+		.cars-sort-controls .cars-filter-trigger {
+			min-width: 90px;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.cars-listing-card {
+			transition: none;
+		}
+		.MuiSkeleton-root::after,
+		.MuiLinearProgress-bar {
+			animation: none;
+		}
+	}
+}

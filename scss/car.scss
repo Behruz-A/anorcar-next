@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .car-header-search {
  position: relative; z-index: 1; width: min(560px, 100%); padding: 28px;
  border-radius: 16px; background: #fff; box-shadow: 0 8px 36px #0002;
@@ -123,3 +125,5 @@
  #mobile-wrap #car-detail-page .car-desc-config { gap: 24px; }
  #mobile-wrap #car-detail-page .leave-review-config textarea { min-height: 120px; width: 100%; }
 }
+
+@import './pc/car/browse.scss';
