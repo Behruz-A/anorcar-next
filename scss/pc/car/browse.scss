@@ -9,9 +9,8 @@
 		padding: 16px 0;
 		box-sizing: border-box;
 		z-index: 99;
-		background: rgba(24, 26, 32, .76);
+		background: transparent;
 		border: 0;
-		border-bottom: 1px solid rgba(255, 255, 255, .12);
 		&.transparent { background: #181a20; }
 		.container {
 			width: min(1440px, calc(100% - 64px));
@@ -104,7 +103,8 @@
 	}
 }
 
-#mobile-wrap #top .navbar.marketplace-nav .navbar-main { position: relative; }
+// Let the hero image show behind the navigation on mobile as well.
+#mobile-wrap #top .navbar.marketplace-nav .navbar-main { position: absolute; }
 
 #pc-wrap .header-basic.cars-hero,
 #mobile-wrap .header-basic.cars-hero {
@@ -113,6 +113,7 @@
 	height: 557px;
 	flex-direction: row;
 	justify-content: center;
+	align-items: center;
 	background-color: #181a20;
 	background-size: cover;
 	background-position: center;
@@ -125,7 +126,7 @@
 	.container {
 		position: relative;
 		width: min(1440px, calc(100% - 64px));
-		margin: 175px auto 0;
+		margin: 87px auto 0;
 		padding: 0;
 		gap: 12px;
 		strong {
@@ -145,12 +146,18 @@
 			line-height: 1.5;
 		}
 	}
+	@media (max-width: 1000px) {
+		.container { width: calc(100% - 40px); margin-top: 108px; }
+	}
 	@media (max-width: 800px) {
 		height: 360px;
 		background-position: 60% center;
-		.container { width: calc(100% - 40px); margin-top: 120px; }
 		.container strong { font-size: 32px; max-width: 360px; }
 		.container span { font-size: 15px; }
+	}
+	@media (max-width: 500px) {
+		// Reserve room for navigation labels that wrap in longer translations.
+		.container { margin-top: 148px; }
 	}
 }
 

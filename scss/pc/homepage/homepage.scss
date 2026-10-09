@@ -1031,13 +1031,13 @@
  .header-main.homepage-header {
   --hero-gutter: 6.4%; --search-inset: 88px;
   position: relative; height: clamp(520px, 33.65vw, 654px); min-height: 0;
-  box-sizing: border-box; padding: 87px var(--hero-gutter) 126px; margin: 0 0 75px;
+  box-sizing: border-box; padding: 87px 0 126px; margin: 0 0 75px;
   display: flex; flex-direction: column; align-items: flex-start; gap: 0;
   background: linear-gradient(90deg, rgba(7, 18, 30, .36), rgba(7, 18, 30, .02) 78%), url('/img/hero5.png') center / cover no-repeat;
  }
  .homepage-hero {
   width: 100%; height: auto; flex: 1; justify-content: center; background: none;
-  .hero-container { width: 100%; max-width: none; height: auto; padding: 0; margin: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; }
+  .hero-container { width: min(1440px, calc(100% - 64px)); max-width: none; height: auto; padding: 0; margin: 0; align-self: center; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; }
   .hero-copy { max-width: none; }
   h1 { margin: 0; color: #fff; font-family: $font; font-size: clamp(44px, 3.5vw, 50px); font-weight: 700; line-height: 1.2; letter-spacing: -.7px; }
   .hero-description { margin: 16px 0 0; max-width: 560px; color: #fff; font-size: 18px; line-height: 1.5; }
@@ -1085,13 +1085,14 @@
  }
  @media (max-width: 1000px) {
   .header-main.homepage-header { --search-inset: 199px; height: 620px; padding-top: 109px; padding-bottom: 284px; margin-bottom: 134px; }
+  .homepage-hero .hero-container { width: calc(100% - 40px); }
   .model-search.compact-search .search-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .model-search.compact-search .model-search-button { grid-column: 1 / -1; min-height: 56px; }
  }
  @media (max-width: 600px) {
   .header-main.homepage-header {
    --hero-gutter: 20px; --search-inset: 182px;
-   height: 560px; min-height: 0; padding: 48px var(--hero-gutter) 260px; margin-bottom: 130px;
+   height: 560px; min-height: 0; padding: 48px 0 260px; margin-bottom: 130px;
    background-image: linear-gradient(180deg, rgba(7,18,30,.5), rgba(7,18,30,.08) 80%), url('/img/hero5.png');
    background-position: center, 82% center;
   }
