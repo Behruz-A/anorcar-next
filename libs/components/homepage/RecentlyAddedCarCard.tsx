@@ -13,29 +13,29 @@ import { carLabel } from '../../car';
 const RecentlyAddedCarCard = ({ car }: { car: Car }) => {
 	const { t } = useTranslation('common');
 	const [imageFailed, setImageFailed] = useState(false);
+	const modelName = car.carModel || car.carTitle;
+	const vehicleName = [car.brandData?.brandName, modelName].filter(Boolean).join(' ');
 	return (
-		<Link passHref className="recent-car-card" href={{ pathname: '/car/detail', query: { id: car._id } }} aria-label={car.carTitle}>
+		<Link passHref className="recent-car-card" href={{ pathname: '/car/detail', query: { id: car._id } }} aria-label={vehicleName} title={vehicleName}>
 			<div className="recent-car-image">
 				<Image src={imageFailed ? imageUrl(null) : imageUrl(car.carImages[0])} alt={car.carTitle} fill unoptimized
 					onError={() => setImageFailed(true)}
 					sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 360px" />
 			</div>
 			<div className="recent-car-info">
-				{car.brandData && <div className="recent-brand">
-					{car.brandData.brandLogo && <Image src={imageUrl(car.brandData.brandLogo)} alt="" width={28} height={28} unoptimized
-						onError={(event) => { event.currentTarget.style.display = 'none'; }} />}
-					<span>{car.brandData.brandName}</span>
-				</div>}
-				<h3>{car.carModel || car.carTitle}</h3>
+				<div className="recent-brand">
+					{car.brandData?.brandLogo && <Image src={imageUrl(car.brandData.brandLogo)} alt="" width={28} height={28} unoptimized
+						onError={(event) => { event.currentTarget.style.visibility = 'hidden'; }} />}
+					{car.brandData && <span>{car.brandData.brandName}</span>}
+				</div>
+				<h3>{modelName}</h3>
+				<strong className="recent-price">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(car.carPrice)}</strong>
 				<div className="recent-specs">
-					<span><CalendarMonthOutlinedIcon />{car.carYear}</span>
-					<span><LocalGasStationOutlinedIcon />{t(carLabel(car.carFuelType))}</span>
+					<span><CalendarMonthOutlinedIcon /><span>{car.carYear}</span></span>
+					<span><LocalGasStationOutlinedIcon /><span>{t(carLabel(car.carFuelType))}</span></span>
+					<span className="recent-transmission"><SettingsOutlinedIcon /><span>{t(carLabel(car.carTransmission))}</span></span>
 				</div>
-				<div className="recent-transmission"><SettingsOutlinedIcon />{t(carLabel(car.carTransmission))}</div>
-				<div className="recent-price-location">
-					<strong>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(car.carPrice)}</strong>
-					<span><LocationOnIcon />{t(carLabel(car.carLocation))}</span>
-				</div>
+				<div className="recent-location"><LocationOnIcon /><span>{t(carLabel(car.carLocation))}</span></div>
 			</div>
 		</Link>
 	);

@@ -1351,29 +1351,38 @@
    h2 { margin: 0; color: #181a20; font-size: 34px; font-weight: 500; line-height: 150%; letter-spacing: -.646px; }
    p { margin: 10px 0 0; font-size: 16px; font-weight: 400; line-height: 26px; color: #667080; }
   }
-  .recent-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
-  .recent-car-card { display: flex; flex-direction: column; min-width: 0; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; overflow: hidden; color: #181a20;
-   &:focus-visible { outline: 2px solid #fa3c16; outline-offset: 3px; }
-   &:hover { box-shadow: 0 6px 18px rgba(24,26,32,.08); }
+  .recent-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 1fr; align-items: stretch; gap: 18px; }
+  .recent-car-card { display: flex; flex-direction: column; min-width: 0; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; overflow: hidden; color: #181a20; white-space: normal; transition: border-color .18s ease, box-shadow .18s ease;
+   &:focus-visible { outline: 2px solid #ff3b1f; outline-offset: 3px; }
+   @media (hover: hover) and (pointer: fine) { &:not(.recent-car-placeholder):hover { border-color: #cbd0d8; box-shadow: 0 6px 18px rgba(24,26,32,.08); } }
   }
-  .recent-car-image { position: relative; width: 100%; aspect-ratio: 1.8; overflow: hidden;
-   img { object-fit: cover; transition: transform .35s ease; }
-   @media (hover: hover) and (pointer: fine) { &:hover img { transform: scale(1.05); } }
+  .recent-car-image { position: relative; width: 100%; aspect-ratio: 1.8; flex-shrink: 0; overflow: hidden;
+   img { object-fit: cover; }
+   > .MuiSkeleton-root { position: absolute; inset: 0; }
   }
-  .recent-car-info { padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 8px; }
-  .recent-brand { display: flex; align-items: center; gap: 9px; font-size: 14px; line-height: 24px; color: #667080; img { object-fit: contain; } }
-  h3 { margin: 0; font-size: 18px; font-weight: 600; line-height: 26px; overflow-wrap: anywhere; }
-  .recent-specs { display: flex; flex-wrap: wrap; gap: 12px 24px; }
-  .recent-specs span, .recent-transmission, .recent-price-location span { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; line-height: 22px; color: #667080; }
+  .recent-car-info { padding: 20px; display: flex; flex: 1; flex-direction: column; gap: 12px; min-width: 0; }
+  .recent-brand { display: flex; align-items: center; gap: 9px; min-height: 28px; min-width: 0; font-size: 14px; line-height: 24px; color: #667080;
+   img { width: 28px; height: 28px; flex-shrink: 0; object-fit: contain; }
+   > span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  }
+  h3, .recent-model-placeholder { margin: 0; min-height: 52px; font-size: 18px; font-weight: 600; line-height: 26px; white-space: normal; overflow-wrap: anywhere; }
+  h3 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .recent-price { display: block; min-width: 0; font-size: 24px; font-weight: 600; line-height: 32px; color: #ff3b1f; overflow-wrap: anywhere; }
+  .recent-specs { display: grid; grid-template-columns: max-content minmax(0, 1fr); grid-template-rows: minmax(44px, auto) auto; gap: 6px 16px; min-height: 72px; }
+  .recent-specs > span, .recent-location { display: flex; align-items: flex-start; gap: 7px; min-width: 0; font-size: 13px; line-height: 22px; color: #667080;
+   > span { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
+   svg { margin-top: 2px; }
+  }
+  .recent-transmission { grid-column: 1 / -1; }
+  .recent-location { margin-top: auto; min-height: 22px; }
   svg { width: 18px; height: 18px; flex-shrink: 0; }
-  .recent-price-location { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 4px;
-   strong { font-size: 20px; font-weight: 600; line-height: 28px; color: #fa3c16; }
-  }
-  .recent-view-all { display: inline-flex; align-items: center; justify-content: center; gap: 16px; align-self: center; margin-top: 48px; padding: 16px 40px; max-width: 100%; box-sizing: border-box; border-radius: 40px; background: #fa3c16; color: #fff; font-size: 15px; font-weight: 500; line-height: 24px; text-align: center;
-   &:hover { background: #df3513; }
+  .recent-view-all { display: inline-flex; align-items: center; justify-content: center; gap: 16px; align-self: center; margin-top: 48px; padding: 16px 40px; max-width: 100%; min-width: 0; box-sizing: border-box; border-radius: 40px; background: #ff3b1f; color: #fff; font-size: 15px; font-weight: 500; line-height: 24px; text-align: center; white-space: normal; overflow-wrap: anywhere; transition: background-color .18s ease;
+   @media (hover: hover) and (pointer: fine) { &:hover { background: #df3513; } }
    &:focus-visible { outline: 2px solid #181a20; outline-offset: 3px; }
   }
   .recent-status { margin: 0; padding: 80px 0; text-align: center; color: #667080; }
+  .recent-loading-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  @media (prefers-reduced-motion: reduce) { .recent-car-card, .recent-view-all { transition: none; } }
  }
 }
 @media (max-width: 1200px) {
