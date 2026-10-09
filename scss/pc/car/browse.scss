@@ -1,6 +1,6 @@
-// Scoped to the Cars listing; existing shared cards and layout remain in place.
-#pc-wrap #top .navbar.cars-nav,
-#mobile-wrap #top .navbar.cars-nav {
+// Home and Cars share one navbar; listing styles below remain scoped to Cars.
+#pc-wrap #top .navbar.marketplace-nav,
+#mobile-wrap #top .navbar.marketplace-nav {
 	.navbar-main {
 		position: fixed;
 		top: 0;
@@ -104,7 +104,7 @@
 	}
 }
 
-#mobile-wrap #top .navbar.cars-nav .navbar-main { position: relative; }
+#mobile-wrap #top .navbar.marketplace-nav .navbar-main { position: relative; }
 
 #pc-wrap .header-basic.cars-hero,
 #mobile-wrap .header-basic.cars-hero {

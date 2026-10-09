@@ -25,6 +25,7 @@ const Top = () => {
 	const router = useRouter();
 	const isHomepage = router.pathname === '/';
 	const isCarsPage = router.pathname === '/car';
+	const isMarketplacePage = isHomepage || isCarsPage;
 	const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
 	const [lang, setLang] = useState<string | null>('en');
 	const drop = Boolean(anchorEl2);
@@ -113,7 +114,7 @@ const Top = () => {
 		/>
 	))(({ theme }) => ({
 		'& .MuiPaper-root': {
-			top: isCarsPage ? undefined : isHomepage ? '64px' : '109px',
+			top: isMarketplacePage ? undefined : '109px',
 			borderRadius: 6,
 			marginTop: theme.spacing(1),
 			minWidth: 160,
@@ -158,17 +159,17 @@ const Top = () => {
 		);
 	} else {
 		return (
-			<Stack className={`navbar ${isHomepage ? 'homepage-nav' : ''} ${isCarsPage ? 'cars-nav' : ''}`}>
+			<Stack className={`navbar ${isMarketplacePage ? 'marketplace-nav' : ''}`}>
 				<Stack className={`navbar-main ${colorChange ? 'transparent' : ''} ${bgColor ? 'transparent' : ''}`}>
 					<Stack className={'container'}>
 						<Box component={'div'} className={'logo-box'}>
 							<Link href={'/'}>
-								<img src={isHomepage ? '/img/logo/anorcar-home.svg' : '/img/logo/anorcar-white.svg'} alt="ANORCAR" />
+								<img src="/img/logo/anorcar-white.svg" alt="ANORCAR" />
 							</Link>
 						</Box>
 						<Box
-							component={isCarsPage ? 'nav' : 'div'}
-							aria-label={isCarsPage ? t('Main navigation') : undefined}
+							component={isMarketplacePage ? 'nav' : 'div'}
+							aria-label={isMarketplacePage ? t('Main navigation') : undefined}
 							className={'router-box'}
 						>
 							<Link
@@ -204,23 +205,23 @@ const Top = () => {
 							{user?._id ? (
 								<>
 									<Box
-										component={isCarsPage ? 'button' : 'div'}
+										component={isMarketplacePage ? 'button' : 'div'}
 										className={'login-user'}
-										aria-label={isCarsPage ? t('Account menu') : undefined}
-										aria-haspopup={isCarsPage ? 'menu' : undefined}
-										aria-expanded={isCarsPage ? logoutOpen : undefined}
+										aria-label={isMarketplacePage ? t('Account menu') : undefined}
+										aria-haspopup={isMarketplacePage ? 'menu' : undefined}
+										aria-expanded={isMarketplacePage ? logoutOpen : undefined}
 										onClick={(event: any) => setLogoutAnchor(event.currentTarget)}
 									>
 										<img
 											src={
-												isCarsPage && user?.memberImage?.startsWith('/img/')
+												isMarketplacePage && user?.memberImage?.startsWith('/img/')
 													? user.memberImage
 													: user?.memberImage
 													? `${REACT_APP_API_URL}/${user.memberImage}`
 													: '/img/profile/defaultUser.svg'
 											}
 											onError={
-												isCarsPage
+												isMarketplacePage
 													? (event) => {
 															const image = event.currentTarget;
 															if (!image.src.endsWith('/img/profile/defaultUser.svg'))
@@ -263,11 +264,11 @@ const Top = () => {
 								<Button
 									disableRipple
 									className="btn-lang"
-									aria-label={isCarsPage ? t('Language') : undefined}
+									aria-label={isMarketplacePage ? t('Language') : undefined}
 									aria-haspopup="menu"
 									aria-expanded={drop}
 									onClick={langClick}
-									endIcon={<CaretDown size={14} color={isCarsPage ? 'currentColor' : '#616161'} weight="fill" />}
+									endIcon={<CaretDown size={14} color={isMarketplacePage ? 'currentColor' : '#616161'} weight="fill" />}
 								>
 									<Box component={'div'} className={'flag'}>
 										{lang !== null ? (
@@ -276,7 +277,6 @@ const Top = () => {
 											<img src={`/img/flag/langen.png`} alt={'usaFlag'} />
 										)}
 									</Box>
-									{isHomepage && <span className="locale-code">{(router.locale ?? 'en').toUpperCase()}</span>}
 								</Button>
 
 								<StyledMenu anchorEl={anchorEl2} open={drop} onClose={langClose} sx={{ position: 'absolute' }}>

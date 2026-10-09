@@ -3,6 +3,11 @@ import { Autocomplete, Box, Button, InputAdornment, MenuItem, Stack, TextField, 
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import DirectionsCarOutlinedIcon from '@mui/icons-material/DirectionsCarOutlined';
+import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
+import ElectricCarOutlinedIcon from '@mui/icons-material/ElectricCarOutlined';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -14,13 +19,20 @@ import { CarCondition, CarFuelType } from '../../enums/car.enum';
 import { Direction } from '../../enums/common.enum';
 import { maxCarYear } from '../../config';
 
-interface HeaderFilterProps { initialInput?: CarsInquiry; }
+interface HeaderFilterProps { initialInput?: CarsInquiry; compact?: boolean; }
 const initialValues: CarsInquiry = { page: 1, limit: 9, sort: 'createdAt', direction: Direction.DESC, search: {} };
 const priceOptions = [10000, 20000, 30000, 50000, 100000];
+const categories = [
+	{ label: 'Cars' },
+	{ label: 'Used Cars', condition: CarCondition.USED },
+	{ label: 'New Cars', condition: CarCondition.NEW },
+	{ label: 'Electric Cars', fuel: CarFuelType.ELECTRIC },
+	{ label: 'Hybrid Cars', fuel: CarFuelType.HYBRID },
+];
 const yearOptions = Array.from({ length: maxCarYear - 1886 + 1 }, (_, index) => maxCarYear - index);
 const MenuProps = { PaperProps: { style: { maxHeight: 260 } } };
 
-const HeaderFilter = ({ initialInput = initialValues }: HeaderFilterProps) => {
+const HeaderFilter = ({ initialInput = initialValues, compact = false }: HeaderFilterProps) => {
 	const router = useRouter();
 	const { t } = useTranslation('common');
 	const [searchFilter, setSearchFilter] = useState<CarsInquiry>(initialInput);
@@ -32,6 +44,7 @@ const HeaderFilter = ({ initialInput = initialValues }: HeaderFilterProps) => {
 		fetchPolicy: 'cache-and-network', onCompleted: (data) => setBrands(data.getBrands),
 	});
 	const { loading: totalLoading, error: totalError } = useQuery<{ getCars: Cars }>(GET_CARS, {
+		skip: compact,
 		variables: { input: { page: 1, limit: 1, sort: 'createdAt', direction: Direction.DESC, search: {} } },
 		fetchPolicy: 'network-only', onCompleted: (data) => setTotalCars(data.getCars.metaCounter?.[0]?.total ?? 0),
 	});
@@ -56,17 +69,30 @@ const HeaderFilter = ({ initialInput = initialValues }: HeaderFilterProps) => {
 	};
 
 	return (
-		<Box component="form" className="model-search" onSubmit={searchHandler}>
-			<Stack className="search-heading">
+		<Box component="form" className={`model-search ${compact ? 'compact-search' : ''}`} aria-label={t('Model Search')} onSubmit={searchHandler}>
+			{compact && <Stack className="search-categories" role="group" aria-label={t('Cars')}>
+				{categories.map((category) => {
+					const active = category.condition
+						? searchFilter.search.conditions?.includes(category.condition) ?? false
+						: category.fuel ? searchFilter.search.fuelTypes?.includes(category.fuel) ?? false
+						: !searchFilter.search.conditions?.length && !searchFilter.search.fuelTypes?.length;
+					return <Button key={category.label} type="button" className={active ? 'selected' : ''} aria-pressed={active}
+						onClick={() => updateSearch({ conditions: category.condition ? [category.condition] : undefined,
+							fuelTypes: category.fuel ? [category.fuel] : undefined })}
+						startIcon={category.fuel ? <ElectricCarOutlinedIcon /> : <DirectionsCarOutlinedIcon />}>{t(category.label)}</Button>;
+				})}
+			</Stack>}
+			{!compact && <Stack className="search-heading">
 				<Typography component="h2">{t('Model Search')}</Typography>
 				<Stack className="listing-total" aria-live="polite">
 					<CheckCircleIcon />
 					<span>{t('Total listed cars')} : <strong>{totalLoading && totalCars === null ? t('Loading...') :
 						totalError || totalCars === null ? '—' : totalCars.toLocaleString('en-US')}</strong></span>
 				</Stack>
-			</Stack>
+			</Stack>}
 			<Stack className="search-fields">
 				<TextField select label={t('Make')} value={searchFilter.search.brandIds?.[0] ?? ''}
+					InputProps={compact ? { startAdornment: <InputAdornment position="start"><DirectionsCarOutlinedIcon /></InputAdornment> } : undefined}
 					SelectProps={{ displayEmpty: true, MenuProps, SelectDisplayProps: { 'aria-label': t('Make') } }} InputLabelProps={{ shrink: true }}
 					onChange={(event) => updateSearch({ brandIds: event.target.value ? [event.target.value] : undefined, text: undefined })}>
 					<MenuItem value="">{t('Any Make')}</MenuItem>
@@ -76,14 +102,17 @@ const HeaderFilter = ({ initialInput = initialValues }: HeaderFilterProps) => {
 					loading={modelsLoading} popupIcon={<ExpandMoreIcon />} onChange={(_, value) => updateSearch({ text: value ?? undefined })}
 					onInputChange={(_, value, reason) => { if (reason !== 'reset') updateSearch({ text: value || undefined }); }}
 					renderInput={(params) => <TextField {...params} label={t('Model')} placeholder={t('Any Model')}
+						InputProps={{ ...params.InputProps, startAdornment: compact ? <InputAdornment position="start"><GridViewOutlinedIcon /></InputAdornment> : params.InputProps.startAdornment }}
 						InputLabelProps={{ shrink: true }} />} />
 				<TextField select label={t('Year')} value={searchFilter.search.yearsRange?.start ?? ''}
+					InputProps={compact ? { startAdornment: <InputAdornment position="start"><CalendarMonthOutlinedIcon /></InputAdornment> } : undefined}
 					SelectProps={{ displayEmpty: true, MenuProps, SelectDisplayProps: { 'aria-label': t('Year') } }} InputLabelProps={{ shrink: true }}
 					onChange={(event) => updateSearch({ yearsRange: event.target.value ? { start: Number(event.target.value), end: Number(event.target.value) } : undefined })}>
 					<MenuItem value="">{t('Any Year')}</MenuItem>
 					{yearOptions.map((year) => <MenuItem key={year} value={year}>{year}</MenuItem>)}
 				</TextField>
 				<TextField select label={t('Price')} value={searchFilter.search.pricesRange?.end ?? ''}
+					InputProps={compact ? { startAdornment: <InputAdornment position="start"><LocalOfferOutlinedIcon /></InputAdornment> } : undefined}
 					SelectProps={{ displayEmpty: true, MenuProps, SelectDisplayProps: { 'aria-label': t('Price') } }} InputLabelProps={{ shrink: true }}
 					onChange={(event) => updateSearch({ pricesRange: event.target.value ? { start: 0, end: Number(event.target.value) } : undefined })}>
 					<MenuItem value="">{t('Any Price')}</MenuItem>
@@ -91,7 +120,7 @@ const HeaderFilter = ({ initialInput = initialValues }: HeaderFilterProps) => {
 				</TextField>
 				<Button className="model-search-button" variant="contained" type="submit" startIcon={<SearchOutlinedIcon />}>{t('Search')}</Button>
 			</Stack>
-			<Stack className="search-recommendations">
+			{!compact && <Stack className="search-recommendations">
 				<TextField className="keyword-search" type="search" value={searchText} placeholder={t('Please enter a search term.')}
 					onChange={(event) => updateSearch({ text: event.target.value || undefined })}
 					inputProps={{ 'aria-label': t('Search by model or title') }}
@@ -112,7 +141,7 @@ const HeaderFilter = ({ initialInput = initialValues }: HeaderFilterProps) => {
 							onClick={() => updateSearch({ fuelTypes: active ? undefined : [fuel] })}>{t(fuel === CarFuelType.ELECTRIC ? 'Electric Cars' : 'Hybrid Cars')}</Button>;
 					})}
 				</Stack>
-			</Stack>
+			</Stack>}
 			{brandsError && <Button className="makes-retry" type="button" onClick={() => { void refetchBrands(); }}>{t('Unable to load makes. Try again.')}</Button>}
 		</Box>
 	);

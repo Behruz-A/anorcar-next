@@ -43,8 +43,8 @@ const withLayoutMain = (Component: any) => {
 						</Stack>
 
 						<Stack className="header-main homepage-header">
-							<Hero />
-							<HeaderFilter />
+							<Hero compact />
+							<HeaderFilter compact />
 						</Stack>
 						<Stack id={'main'}>
 							<Component {...props} />
@@ -69,8 +69,8 @@ const withLayoutMain = (Component: any) => {
 						</Stack>
 
 						<Stack className="header-main homepage-header">
-							<Hero />
-							<HeaderFilter />
+							<Hero compact />
+							<HeaderFilter compact />
 						</Stack>
 
 						<Stack id={'main'}>
