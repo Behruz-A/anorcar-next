@@ -33,8 +33,8 @@ const withLayoutBasic = (Component: any) => {
 
 			switch (router.pathname) {
 				case '/car':
-					title = 'Find your next car';
-					desc = 'Your next journey starts here.';
+					title = 'Find Your Next Car';
+					desc = 'Discover the perfect car for your journey.';
 					bgImage = '/img/hero4.png';
 					break;
 				case '/agent':

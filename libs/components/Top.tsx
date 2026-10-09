@@ -24,6 +24,7 @@ const Top = () => {
 	const { t, i18n } = useTranslation('common');
 	const router = useRouter();
 	const isHomepage = router.pathname === '/';
+	const isCarsPage = router.pathname === '/car';
 	const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
 	const [lang, setLang] = useState<string | null>('en');
 	const drop = Boolean(anchorEl2);
@@ -112,7 +113,7 @@ const Top = () => {
 		/>
 	))(({ theme }) => ({
 		'& .MuiPaper-root': {
-			top: isHomepage ? '64px' : '109px',
+			top: isCarsPage ? undefined : isHomepage ? '64px' : '109px',
 			borderRadius: 6,
 			marginTop: theme.spacing(1),
 			minWidth: 160,
@@ -135,7 +136,7 @@ const Top = () => {
 		},
 	}));
 
-	if (device == 'mobile' && !isHomepage) {
+	if (device == 'mobile' && !isHomepage && !isCarsPage) {
 		return (
 			<Stack className={'top'}>
 				<Link href={'/'}>
@@ -157,7 +158,7 @@ const Top = () => {
 		);
 	} else {
 		return (
-			<Stack className={`navbar ${isHomepage ? 'homepage-nav' : ''}`}>
+			<Stack className={`navbar ${isHomepage ? 'homepage-nav' : ''} ${isCarsPage ? 'cars-nav' : ''}`}>
 				<Stack className={`navbar-main ${colorChange ? 'transparent' : ''} ${bgColor ? 'transparent' : ''}`}>
 					<Stack className={'container'}>
 						<Box component={'div'} className={'logo-box'}>
@@ -165,11 +166,23 @@ const Top = () => {
 								<img src={isHomepage ? '/img/logo/anorcar-home.svg' : '/img/logo/anorcar-white.svg'} alt="ANORCAR" />
 							</Link>
 						</Box>
-						<Box component={'div'} className={'router-box'}>
-							<Link href={'/'} className={isHomepage ? 'active' : undefined} aria-current={isHomepage ? 'page' : undefined}>
+						<Box
+							component={isCarsPage ? 'nav' : 'div'}
+							aria-label={isCarsPage ? t('Main navigation') : undefined}
+							className={'router-box'}
+						>
+							<Link
+								href={'/'}
+								className={isHomepage ? 'active' : undefined}
+								aria-current={isHomepage ? 'page' : undefined}
+							>
 								<div>{t('Home')}</div>
 							</Link>
-							<Link href={'/car'}>
+							<Link
+								href={'/car'}
+								className={isCarsPage ? 'active' : undefined}
+								aria-current={isCarsPage ? 'page' : undefined}
+							>
 								<div>{t('Cars')}</div>
 							</Link>
 							<Link href={'/agent'}>
@@ -190,14 +203,34 @@ const Top = () => {
 						<Box component={'div'} className={'user-box'}>
 							{user?._id ? (
 								<>
-									<div className={'login-user'} onClick={(event: any) => setLogoutAnchor(event.currentTarget)}>
+									<Box
+										component={isCarsPage ? 'button' : 'div'}
+										className={'login-user'}
+										aria-label={isCarsPage ? t('Account menu') : undefined}
+										aria-haspopup={isCarsPage ? 'menu' : undefined}
+										aria-expanded={isCarsPage ? logoutOpen : undefined}
+										onClick={(event: any) => setLogoutAnchor(event.currentTarget)}
+									>
 										<img
 											src={
-												user?.memberImage ? `${REACT_APP_API_URL}/${user?.memberImage}` : '/img/profile/defaultUser.svg'
+												isCarsPage && user?.memberImage?.startsWith('/img/')
+													? user.memberImage
+													: user?.memberImage
+													? `${REACT_APP_API_URL}/${user.memberImage}`
+													: '/img/profile/defaultUser.svg'
+											}
+											onError={
+												isCarsPage
+													? (event) => {
+															const image = event.currentTarget;
+															if (!image.src.endsWith('/img/profile/defaultUser.svg'))
+																image.src = '/img/profile/defaultUser.svg';
+													  }
+													: undefined
 											}
 											alt=""
 										/>
-									</div>
+									</Box>
 
 									<Menu
 										id="basic-menu"
@@ -230,8 +263,11 @@ const Top = () => {
 								<Button
 									disableRipple
 									className="btn-lang"
+									aria-label={isCarsPage ? t('Language') : undefined}
+									aria-haspopup="menu"
+									aria-expanded={drop}
 									onClick={langClick}
-									endIcon={<CaretDown size={14} color="#616161" weight="fill" />}
+									endIcon={<CaretDown size={14} color={isCarsPage ? 'currentColor' : '#616161'} weight="fill" />}
 								>
 									<Box component={'div'} className={'flag'}>
 										{lang !== null ? (
@@ -245,30 +281,15 @@ const Top = () => {
 
 								<StyledMenu anchorEl={anchorEl2} open={drop} onClose={langClose} sx={{ position: 'absolute' }}>
 									<MenuItem disableRipple onClick={langChoice} id="en">
-										<img
-											className="img-flag"
-											src={'/img/flag/langen.png'}
-											id="en"
-											alt={'usaFlag'}
-										/>
+										<img className="img-flag" src={'/img/flag/langen.png'} id="en" alt={'usaFlag'} />
 										{t('English')}
 									</MenuItem>
 									<MenuItem disableRipple onClick={langChoice} id="kr">
-										<img
-											className="img-flag"
-											src={'/img/flag/langkr.png'}
-											id="kr"
-											alt={'koreanFlag'}
-										/>
+										<img className="img-flag" src={'/img/flag/langkr.png'} id="kr" alt={'koreanFlag'} />
 										{t('Korean')}
 									</MenuItem>
 									<MenuItem disableRipple onClick={langChoice} id="ru">
-										<img
-											className="img-flag"
-											src={'/img/flag/langru.png'}
-											id="ru"
-											alt={'russiaFlag'}
-										/>
+										<img className="img-flag" src={'/img/flag/langru.png'} id="ru" alt={'russiaFlag'} />
 										{t('Russian')}
 									</MenuItem>
 								</StyledMenu>
