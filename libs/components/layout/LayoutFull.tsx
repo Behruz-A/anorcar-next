@@ -16,7 +16,7 @@ import 'swiper/css/pagination';
 //@ts-ignore
 import 'swiper/css/navigation';
 
-const withLayoutFull = (Component: any, options: { showChat?: boolean } = {}) => {
+const withLayoutFull = (Component: any, options: { showChat?: boolean; className?: string } = {}) => {
 	return function FullLayout(props: any) {
 		const router = useRouter();
 		const device = useDeviceDetect();
@@ -36,7 +36,7 @@ const withLayoutFull = (Component: any, options: { showChat?: boolean } = {}) =>
 						<title>ANORCAR</title>
 						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="mobile-wrap">
+					<Stack id="mobile-wrap" className={options.className}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>
@@ -58,7 +58,7 @@ const withLayoutFull = (Component: any, options: { showChat?: boolean } = {}) =>
 						<title>ANORCAR</title>
 						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="pc-wrap">
+					<Stack id="pc-wrap" className={options.className}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>

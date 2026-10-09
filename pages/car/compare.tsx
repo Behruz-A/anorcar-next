@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Breadcrumbs, Button, CircularProgress } from '@mui/material';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
 import { useApolloClient } from '@apollo/client';
@@ -24,6 +24,18 @@ const CarComparePage = () => {
 	const [loading, setLoading] = useState(true);
 	const [failed, setFailed] = useState(false);
 	const [attempt, setAttempt] = useState(0);
+	const pageRef = useRef<HTMLDivElement>(null);
+	useEffect(() => {
+		const header = document.getElementById('top');
+		if (!header) return;
+		const updateHeight = () => {
+			pageRef.current?.style.setProperty('--compare-navbar-height', `${header.getBoundingClientRect().height}px`);
+		};
+		updateHeight();
+		const observer = new ResizeObserver(updateHeight);
+		observer.observe(header);
+		return () => observer.disconnect();
+	}, []);
 	const idsKey = parseCompareIds(router.query.ids).join(',');
 	useEffect(() => {
 		if (!router.isReady) return;
@@ -64,7 +76,7 @@ const CarComparePage = () => {
 		});
 	};
 	return (
-		<div className="compare-results-page">
+		<div className="compare-results-page" ref={pageRef}>
 			<section className="compare-cars" aria-labelledby="compare-cars-heading">
 				<div className="compare-container">
 					<header className="compare-heading compare-page-heading">
@@ -107,4 +119,4 @@ const CarComparePage = () => {
 		</div>
 	);
 };
-export default withLayoutFull(CarComparePage, { showChat: false });
+export default withLayoutFull(CarComparePage, { showChat: false, className: 'compare-results-shell' });

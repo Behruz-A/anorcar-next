@@ -15,7 +15,7 @@ const CarComparisonTable = ({ cars, onRemove }: { cars: Car[]; onRemove: (id: st
 		{ label: 'Brand', value: (car) => car.brandData?.brandName ?? t('Not provided') },
 		{ label: 'Model', value: (car) => car.carModel },
 		{ label: 'Year', value: (car) => car.carYear },
-		{ label: 'Mileage', value: (car) => formatCarMileage(car, i18n.language) ?? t('Not provided') },
+		{ label: 'Mileage', value: (car) => formatCarMileage(car, i18n.language) ?? '\u2014' },
 		{ label: 'Condition', value: (car) => t(carLabel(car.carCondition)) },
 		{ label: 'Fuel', value: (car) => t(carLabel(car.carFuelType)) },
 		{ label: 'Transmission', value: (car) => t(carLabel(car.carTransmission)) },
@@ -30,7 +30,7 @@ const CarComparisonTable = ({ cars, onRemove }: { cars: Car[]; onRemove: (id: st
 		<div className="compare-results-toolbar"><p>{t('See the details that make a difference.')}</p>
 			<FormControlLabel control={<Switch checked={differencesOnly} onChange={(_, checked) => setDifferencesOnly(checked)} />} label={t('Show differences only')} /></div>
 		<div className="compare-table-scroll" tabIndex={0} role="region" aria-label={t('Car comparison table')}>
-			<table className="compare-table">
+			<table className={`compare-table compare-table-${cars.length}-cars`}>
 				<caption className="compare-sr-only">{t('Specifications and prices side by side')}</caption>
 				<thead><tr><th scope="col" className="compare-row-label"><span>{t('At a glance')}</span><p>{t('Specifications and prices side by side')}</p></th>
 					{cars.map((car) => <th scope="col" key={car._id}><CompareCarCard car={car} compact onRemove={() => onRemove(car._id)} /></th>)}</tr></thead>

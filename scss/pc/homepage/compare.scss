@@ -62,6 +62,63 @@
 }
 .compare-results-page { padding: 110px 0 32px; min-height: 60vh; }
 
+// Results alone use a solid, in-flow sticky navbar. Its real height drives
+// scroll spacing; the homepage retains its existing navbar and card styles.
+#pc-wrap.compare-results-shell,
+#mobile-wrap.compare-results-shell {
+ #top {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background: #181a20;
+ }
+ #top .navbar .navbar-main {
+  position: relative;
+  height: auto;
+  min-height: 87px;
+  background: #181a20;
+  .container { flex-wrap: wrap; row-gap: 16px; }
+ }
+ .compare-results-page {
+  padding-top: 0;
+  --compare-navbar-height: 0px;
+  .compare-cars, button, a, input, .compare-table-scroll {
+   scroll-margin-top: calc(var(--compare-navbar-height) + 16px);
+  }
+  .compare-results, .compare-results-toolbar, .compare-table {
+   font-family: $font;
+  }
+  .compare-table {
+   line-height: 24px;
+   font-variant-numeric: tabular-nums;
+  }
+  .compare-table-3-cars { min-width: 900px; }
+  .compare-table tbody th, .compare-table tbody td {
+   padding: 14px 20px;
+  }
+  .compare-table thead .compare-car-card {
+   height: 100%;
+  }
+  .compare-table-scroll {
+   scrollbar-gutter: stable;
+  }
+  @media (max-width: 600px) {
+   .compare-table tbody th, .compare-table tbody td { padding: 12px 14px; }
+  }
+ }
+}
+
+#mobile-wrap.compare-results-shell #top { background: #fff; }
+
+.homepage-shell#pc-wrap .home-page .compare-cars,
+.homepage-shell#mobile-wrap .home-page .compare-cars {
+ .compare-heading {
+  h2 { font-family: $font; font-size: 34px; font-weight: 500; line-height: 150%; letter-spacing: -.646px; color: #181a20; }
+  > p { margin: 8px 0 0; font-family: $font; font-size: 16px; font-weight: 400; line-height: 26px; color: #667080; }
+ }
+ @media (max-width: 600px) { .compare-heading { h2 { font-size: 25px; } > p { font-size: 14px; line-height: 24px; } } }
+}
+
 #pc-wrap .compare-results-page .compare-cars,
 #mobile-wrap .compare-results-page .compare-cars {
  .compare-page-heading {

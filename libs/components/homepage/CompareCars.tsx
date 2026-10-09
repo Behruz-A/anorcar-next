@@ -1,72 +1,116 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
-import { Button, Stack, Tooltip } from '@mui/material';
+import { Alert, Button, Skeleton, Stack } from '@mui/material';
+import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { Car } from '../../types/car/car';
-import { MAX_COMPARE_CARS, selectCompareCar } from '../../carCompare';
 import CompareCarCard from '../car/CompareCarCard';
 import CarComparePicker from '../car/CarComparePicker';
+import CompareEmptySlot from '../car/CompareEmptySlot';
+import { useCompareSelection } from '../../hooks/useCompareSelection';
 
 const CompareCars = () => {
 	const { t } = useTranslation('common');
 	const router = useRouter();
-	const [slots, setSlots] = useState<(Car | null)[]>(Array(MAX_COMPARE_CARS).fill(null));
+	const { slots, ids, pending, errors, initializing, unavailable, selection } = useCompareSelection();
 	const [pickerSlot, setPickerSlot] = useState<number | null>(null);
-	const selected = slots.filter((car): car is Car => car !== null);
-	const selectCar = (car: Car) => {
-		if (pickerSlot === null) return;
-		setSlots((current) => selectCompareCar(current, car, pickerSlot));
-		setPickerSlot(null);
+	const [navigating, setNavigating] = useState(false);
+	const [navigationError, setNavigationError] = useState(false);
+	const selected = slots.filter((car) => car !== null);
+	const busy = initializing || pending.some(Boolean);
+	const compare = async () => {
+		if (selected.length < 2 || busy || navigating) return;
+		setNavigating(true);
+		setNavigationError(false);
+		try {
+			const changed = await router.push({
+				pathname: '/car/compare',
+				query: { ids: selected.map((car) => car!._id).join(',') },
+			});
+			if (!changed) setNavigationError(true);
+		} catch {
+			setNavigationError(true);
+		} finally {
+			setNavigating(false);
+		}
 	};
 	return (
-		<Stack component="section" className="compare-cars" aria-labelledby="compare-cars-heading">
+		<Stack component="section" className="compare-cars compare-home-premium" aria-labelledby="compare-cars-heading">
 			<div className="compare-container">
-				<div className="compare-heading">
-					<h2 id="compare-cars-heading">{t('Compare Cars')}</h2>
-				</div>
-				<div className={`compare-selection-grid${selected.length ? ' has-selection' : ''}`}>
+				<header className="compare-heading">
+					<span className="compare-eyebrow">{t('SMART COMPARISON')}</span>
+					<h2 id="compare-cars-heading">{t('Compare Cars. Choose Smarter.')}</h2>
+					<p>{t('Compare up to 3 cars side by side and find the perfect match for your needs.')}</p>
+				</header>
+				{unavailable && <Alert severity="info">{t('An unavailable car was removed from your comparison.')}</Alert>}
+				{navigationError && <Alert severity="error">{t('Comparison could not be opened. Please try again.')}</Alert>}
+				<div className="compare-selection-grid">
 					{slots.map((car, index) =>
-						car ? (
+						initializing || pending[index] ? (
+							<article
+								className="compare-slot-loading"
+								key={index}
+								role="status"
+								aria-label={t('Restoring your selection')}
+							>
+								<Skeleton variant="rounded" height={180} />
+								<Skeleton width="70%" height={34} />
+								<Skeleton width="45%" height={28} />
+								<Skeleton height={90} />
+							</article>
+						) : errors[index] ? (
+							<article className="compare-slot-error" key={index}>
+								<p>{t('Your selected car could not be loaded.')}</p>
+								<Button onClick={() => selection.retry(index)}>{t('Try again')}</Button>
+								<Button onClick={() => selection.remove(index)}>{t('Remove car')}</Button>
+							</article>
+						) : car ? (
 							<CompareCarCard
 								key={car._id}
 								car={car}
-								onRemove={() => setSlots((current) => current.map((item) => (item?._id === car._id ? null : item)))}
+								onRemove={() => selection.remove(index)}
+								onReplace={() => setPickerSlot(index)}
 							/>
 						) : (
-							<div
-								key={index}
-								data-slot={index}
-								className={`compare-empty-slot${index === 2 ? ' compare-optional-slot' : ''}`}
-							>
-								{index === 2 && <span className="compare-optional-label">({t('Optional').toLowerCase()})</span>}
-								<span className="compare-car-silhouette">
-									<Image src="/img/car/compare-placeholder.svg" alt="" fill sizes="(max-width: 600px) 320px, 33vw" />
-								</span>
-								<Tooltip title={t('Add Car to Compare')}>
-									<button className="compare-empty-cta" onClick={() => setPickerSlot(index)}>
-										{index === 2 ? '+ ' + t('Add more Car to compare') : t('Add Car {{number}}', { number: index + 1 })}
-									</button>
-								</Tooltip>
-							</div>
+							<CompareEmptySlot key={index} index={index} onAdd={() => setPickerSlot(index)} />
 						),
 					)}
 				</div>
-				<div className="compare-action-bar compare-selection-actions">
-					<Button
-						className="compare-primary"
-						variant="contained"
-						disabled={selected.length < 2}
-						onClick={() =>
-							void router.push({ pathname: '/car/compare', query: { ids: selected.map((car) => car._id).join(',') } })
-						}
-					>
-						{t('Compare Cars')}
-					</Button>
+				<div className="compare-action-bar">
+					<p className="compare-selection-count" role="status" aria-live="polite">
+						{busy
+							? t('Restoring your selection')
+							: t('{{selected}} of {{max}} cars selected', { selected: selected.length, max: 3 })}
+					</p>
+					<div className="compare-actions">
+						<Button
+							variant="contained"
+							className="compare-primary"
+							disabled={selected.length < 2 || busy || navigating}
+							onClick={() => void compare()}
+						>
+							{t('Compare Now')}
+						</Button>
+						<Button
+							className="compare-clear"
+							startIcon={<DeleteOutlineRoundedIcon />}
+							disabled={!ids.some(Boolean) && !busy}
+							onClick={() => {
+								selection.clear();
+								setPickerSlot(null);
+							}}
+						>
+							{t('Clear All')}
+						</Button>
+					</div>
 				</div>
 			</div>
 			{pickerSlot !== null && (
-				<CarComparePicker selected={selected} onAdd={selectCar} onClose={() => setPickerSlot(null)} />
+				<CarComparePicker
+					excludedIds={ids}
+					replacing={!!slots[pickerSlot]}
+					onAdd={(car) => selection.select(car, pickerSlot)}
+					onClose={() => setPickerSlot(null)}
+				/>
 			)}
 		</Stack>
 	);

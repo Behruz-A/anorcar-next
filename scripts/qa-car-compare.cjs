@@ -10,6 +10,7 @@ const chromePath = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'anorcar-compare-qa-'));
 const chrome = spawn(chromePath, ['--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profile}`, '--no-first-run', '--no-default-browser-check', '--disable-gpu', 'about:blank'], { windowsHide: true, stdio: 'ignore' });
 let socket;
+let carRequests = 0;
 let id = 0;
 const pending = new Map();
 const exceptions = [];
@@ -44,104 +45,143 @@ async function screenshot(name) {
 	fs.writeFileSync(`docs/screenshots/${name}.png`, Buffer.from(result.data, 'base64'));
 }
 async function setSearch(value) {
-	await evaluate(`(() => { const input = document.querySelector('.compare-picker input'); Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(input,${JSON.stringify(value)}); input.dispatchEvent(new Event('input',{bubbles:true})); })()`);
+	await evaluate(`(() => { const input = document.querySelector('.compare-picker-premium input'); Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(input,${JSON.stringify(value)}); input.dispatchEvent(new Event('input',{bubbles:true})); })()`);
 	await delay(600);
 }
 async function navigate(locale, mobile = false, desktopWidth = 1440) {
 	await command('Emulation.setDeviceMetricsOverride', { width: mobile ? 390 : desktopWidth, height: mobile ? 844 : 1000, deviceScaleFactor: 1, mobile });
 	await command('Emulation.setUserAgentOverride', { userAgent: mobile ? 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 Version/17.0 Mobile/15E148 Safari/604.1' : 'Mozilla/5.0 Chrome/130.0.0.0 Safari/537.36' });
 	await command('Page.navigate', { url: `http://localhost:3000${locale === 'en' ? '/' : '/' + locale}` });
-	await until("document.querySelectorAll('.compare-empty-slot').length === 3", 'initial three empty slots');
+	await until("!!document.querySelector('.compare-home-premium') && !document.querySelector('.compare-slot-loading')", 'restored homepage');
+	if (await evaluate("!document.querySelector('.compare-home-premium .compare-clear').disabled")) await click('.compare-home-premium .compare-clear');
+	await until("document.querySelectorAll('.compare-empty-slot').length === 3", 'initial empty slots');
 	await until("document.readyState === 'complete' && document.querySelector('.compare-cars')?.getBoundingClientRect().width > 300", 'loaded homepage layout');
 	await evaluate("document.querySelector('.compare-cars').scrollIntoView({block:'start'});");
 	await until("[...document.querySelectorAll('.compare-car-photo img')].every(img => img.complete && img.naturalWidth > 0)", 'loaded card images');
 }
 async function testFlow(locale, mobile = false, desktopWidth = 1440) {
- await navigate(locale, mobile, desktopWidth);
- const labels = JSON.parse(fs.readFileSync(`public/locales/${locale}/common.json`, 'utf8'));
- assert.equal(await evaluate("document.querySelector('#compare-cars-heading').textContent"), labels['Compare Cars']);
- assert.equal(await evaluate("document.querySelectorAll('.compare-selection-count, .compare-intro, .compare-selection-dots').length"), 0);
- assert.equal(await evaluate("document.querySelectorAll('.popular-cars, .anorcar-events, .car-advertisement').length"), 0);
- assert.ok(await evaluate("document.querySelector('.compare-primary').disabled"));
- if (locale === 'en') await screenshot(mobile ? 'compare-empty-mobile' : 'compare-empty-desktop');
- if (locale === 'en' && !mobile) {
-  assert.equal(await evaluate("getComputedStyle(document.querySelector('#compare-cars-heading')).fontFamily.includes('Arial')"), true);
-  const point = await evaluate("(() => { const r = document.querySelector('.compare-empty-slot[data-slot=\"1\"] button').getBoundingClientRect(); return {x:r.left+r.width/2,y:r.top+r.height/2}; })()");
-  await command('Input.dispatchMouseEvent', {type:'mouseMoved', ...point});
-  await delay(450);
-  assert.equal(await evaluate("getComputedStyle(document.querySelector('.compare-empty-slot[data-slot=\"1\"] button')).backgroundColor"), 'rgb(233, 75, 32)');
-  assert.equal(await evaluate("getComputedStyle(document.querySelector('.compare-empty-slot[data-slot=\"1\"] button')).color"), 'rgb(255, 255, 255)');
-  await screenshot('compare-hover-desktop');
-  await command('Input.dispatchMouseEvent', {type:'mouseMoved', x:1,y:1});
- }
- await click('.compare-empty-slot[data-slot="2"] button');
- await until("!!document.querySelector('.compare-picker input')", 'picker open');
- assert.equal(await evaluate("document.querySelector('#compare-picker-title').textContent"), labels['Select Brand/Model']);
- assert.equal(await evaluate("document.querySelectorAll('.compare-picker .MuiPagination-root, .compare-picker-meta, .compare-picker-description').length"), 0);
- await setSearch('Hyundai');
- await until("document.querySelectorAll('.compare-picker-car').length > 2 && !document.querySelector('.compare-picker .MuiCircularProgress-root')", 'brand search');
- assert.ok(await evaluate("[...document.querySelectorAll('.compare-picker-model')].every(row => row.textContent.includes('Hyundai'))"));
- if (locale === 'en' && !mobile) {
-  await delay(300);
-  const result = await command('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
-  fs.writeFileSync('docs/screenshots/compare-picker-desktop.png', Buffer.from(result.data, 'base64'));
- }
- await click('.compare-picker-car:not(:disabled)');
- await until("!document.querySelector('.compare-picker')", 'single selection closes picker');
- assert.ok(await evaluate("document.querySelector('.compare-selection-grid').children[2].classList.contains('compare-car-card')"));
- assert.ok(await evaluate("document.querySelector('.compare-primary').disabled"));
+ await navigate(locale,mobile,desktopWidth);
+ const labels=JSON.parse(fs.readFileSync(`public/locales/${locale}/common.json`,'utf8'));
+ assert.equal(await evaluate("document.querySelector('#compare-cars-heading').textContent"),labels['Compare Cars. Choose Smarter.']);
+ assert.ok(await evaluate("getComputedStyle(document.querySelector('#compare-cars-heading')).fontFamily.includes('Poppins')"));
+ assert.equal(await evaluate("document.querySelectorAll('.compare-home-premium .compare-empty-slot').length"),3);
+ assert.ok(await evaluate("document.querySelector('.compare-home-premium .compare-primary').disabled"));
+ if(locale==='en') await screenshot(mobile?'compare-premium-empty-mobile':desktopWidth>1440?'compare-premium-empty-wide':desktopWidth<1024?'compare-premium-empty-tablet':'compare-premium-empty-desktop');
  await click('.compare-empty-slot[data-slot="0"] button');
- await until("document.querySelectorAll('.compare-picker-car').length > 2", 'recent searches shown on reopen');
- assert.equal(await evaluate("document.querySelector('.compare-picker input').value"), '');
- assert.equal(await evaluate("document.querySelectorAll('.compare-picker-car.is-selected:disabled').length"), 1);
- await setSearch('[');
- await until("!document.querySelector('.compare-picker .MuiCircularProgress-root') && document.querySelectorAll('.compare-picker-car').length === 0", 'literal punctuation search');
- assert.equal(await evaluate("document.querySelectorAll('.compare-picker .MuiAlert-standardError').length"), 0);
- await setSearch('');
- await until("document.querySelectorAll('.compare-picker-car').length > 2", 'restore recent history');
- if (locale === 'en' && !mobile) {
-  await delay(300);
-  const result = await command('Page.captureScreenshot', {format:'png',captureBeyondViewport:false});
-  fs.writeFileSync('docs/screenshots/compare-picker-recent-desktop.png', Buffer.from(result.data,'base64'));
+ await until("document.querySelectorAll('.compare-picker-car').length > 0 && !document.querySelector('.compare-picker-premium .MuiCircularProgress-root')",'initial live listings');
+ const total=await evaluate("document.querySelector('.compare-picker-pagination p').textContent");
+ const firstId=await evaluate("document.querySelector('.compare-picker-car button').getAttribute('aria-label')");
+ assert.equal(await evaluate("document.querySelectorAll('.compare-picker-photo img').length"),await evaluate("document.querySelectorAll('.compare-picker-car').length"));
+ if(await evaluate("!!document.querySelector('.compare-picker-premium button[aria-label=\"Go to next page\"]:not(:disabled)')")) {
+  await click('.compare-picker-premium button[aria-label="Go to next page"]');
+  await until("!!document.querySelector('.compare-picker-premium .MuiPaginationItem-page.Mui-selected') && document.querySelector('.compare-picker-premium .MuiPaginationItem-page.Mui-selected').textContent === '2' && !document.querySelector('.compare-picker-premium .MuiCircularProgress-root')",'server page 2');
+  assert.equal(await evaluate("document.querySelector('.compare-picker-pagination p').textContent"),total);
+  await click('.compare-picker-premium button[aria-label="Go to previous page"]');
+  await until("document.querySelector('.compare-picker-premium .MuiPaginationItem-page.Mui-selected').textContent === '1' && !document.querySelector('.compare-picker-premium .MuiCircularProgress-root')",'server page 1');
  }
- await click('.compare-picker-car:not(:disabled)');
- await until("!document.querySelector('.compare-picker')", 'second selection');
- assert.ok(await evaluate("!document.querySelector('.compare-primary').disabled"));
- assert.ok(await evaluate("[...document.querySelectorAll('.compare-selection-grid > *')].every(el => { const r = el.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth; })"), 'all slots fit inside viewport');
- assert.ok(await evaluate("document.querySelector('#compare-cars-heading').getBoundingClientRect().left >= 14"), 'heading is not clipped');
- assert.ok(await evaluate("[...document.querySelectorAll('.compare-selection-grid .compare-car-photo')].every(el => el.getBoundingClientRect().height <= 181)"), 'selected photos remain compact');
- assert.ok(await evaluate("[...document.querySelectorAll('.compare-selection-grid .compare-car-photo')].every(el => Math.abs(el.getBoundingClientRect().width - (el.closest('article').clientWidth - 20)) < 2)"), 'photos fill card width with equal insets');
- if (!mobile) assert.ok(await evaluate("(() => { const heights = [...document.querySelectorAll('.compare-selection-grid > *')].map(el => el.getBoundingClientRect().height); return Math.max(...heights) - Math.min(...heights) < 2; })()"), 'selected and empty slots have equal heights');
- if (desktopWidth > 1440) await screenshot('compare-selection-wide');
- if (locale === 'en') await screenshot(mobile ? 'compare-selection-mobile' : 'compare-selection-desktop');
+ await setSearch('[');
+ await until("document.querySelectorAll('.compare-picker-car').length === 0 && !document.querySelector('.compare-picker-premium .MuiCircularProgress-root')",'literal regex search');
+ assert.equal(await evaluate("document.querySelectorAll('.compare-picker-premium .MuiAlert-standardError').length"),0);
+ await setSearch('');
+ await until("document.querySelectorAll('.compare-picker-car').length > 0 && !document.querySelector('.compare-picker-premium .MuiCircularProgress-root')",'reset catalog');
+ await click('.compare-picker-car button');
+ await until("!document.querySelector('.compare-picker-premium')",'first choice');
+ assert.ok(await evaluate("document.querySelector('.compare-home-premium .compare-primary').disabled"));
  await click('.compare-empty-slot[data-slot="1"] button');
- await until("document.querySelectorAll('.compare-picker-car.is-selected:disabled').length === 2", 'duplicates disabled');
- await click('.compare-picker-car:not(:disabled)');
- await until("!document.querySelector('.compare-picker')", 'third selection');
- assert.equal(await evaluate("document.querySelectorAll('.compare-selection-grid .compare-car-card').length"), 3);
- await click('.compare-primary');
- await until("location.pathname.endsWith('/car/compare') && document.querySelectorAll('.compare-table thead .compare-car-card').length === 3", 'standalone three-car comparison');
- assert.ok(await evaluate("!!document.querySelector('#top') && !!document.querySelector('#footer')"));
- assert.equal(await evaluate("document.querySelectorAll('.header-basic, .home-page, .chatting, .compare-selection-grid').length"), 0);
- assert.equal(await evaluate("document.querySelectorAll('#main > *').length"), 1);
- assert.equal(await evaluate("document.querySelector('.compare-page-heading h1').textContent"), labels['Compare Cars']);
- assert.equal(await evaluate("document.querySelector('.compare-page-heading [aria-current=page]').textContent"), labels['Compare']);
- assert.ok(await evaluate("document.querySelector('.compare-page-heading p').textContent.length > 20"));
- assert.ok(await evaluate("getComputedStyle(document.querySelector('.compare-page-heading h1')).fontFamily.includes('Poppins')"));
- assert.equal(await evaluate("document.querySelector('.compare-page-heading a').getAttribute('href')"), locale === 'en' ? '/' : '/' + locale);
- assert.equal(await evaluate("document.querySelectorAll('.compare-table tbody tr').length"), 12);
- assert.ok(await evaluate("[...document.querySelectorAll('.compare-details-link')].every(a => a.getAttribute('href').includes('/car/detail?id='))"));
- if (locale === 'en') await screenshot(mobile ? 'compare-results-mobile' : 'compare-results-desktop');
+ await until("document.querySelectorAll('.compare-picker-car').length > 0 && !document.querySelector('.compare-picker-premium .MuiCircularProgress-root')",'second picker');
+ assert.equal(await evaluate("document.querySelector('.compare-picker-pagination p').textContent"),total,'server total unchanged by exclusions');
+ assert.ok(await evaluate(`![...document.querySelectorAll('.compare-picker-car button')].some(el=>el.getAttribute('aria-label')===${JSON.stringify(firstId)})`),'selected listing excluded');
+ await click('.compare-picker-car button');
+ await until("!document.querySelector('.compare-picker-premium')",'second choice');
+ assert.ok(await evaluate("!document.querySelector('.compare-home-premium .compare-primary').disabled"));
+ const before=await evaluate("[...document.querySelectorAll('.compare-selection-grid .compare-car-name h3')].map(el=>el.textContent)");
+ await click('.compare-selection-grid .compare-replace');
+ await until("!!document.querySelector('.compare-picker-premium')",'replacement modal');
+ await click('.compare-picker-heading button');
+ await until("!document.querySelector('.compare-picker-premium')",'cancel replacement');
+ assert.deepEqual(await evaluate("[...document.querySelectorAll('.compare-selection-grid .compare-car-name h3')].map(el=>el.textContent)"),before);
+ await click('.compare-empty-slot[data-slot="2"] button');
+ await until("document.querySelectorAll('.compare-picker-car').length > 0 && !document.querySelector('.compare-picker-premium .MuiCircularProgress-root')",'third picker');
+ if(locale==='en'&&!mobile&&desktopWidth===1440) {
+  await delay(350);
+  const result=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
+  fs.writeFileSync('docs/screenshots/compare-premium-picker-desktop.png',Buffer.from(result.data,'base64'));
+ }
+ await click('.compare-picker-car button');
+ await until("!document.querySelector('.compare-picker-premium')",'third choice');
+ assert.equal(await evaluate("document.querySelectorAll('.compare-selection-grid .compare-car-card').length"),3);
+ await click('.compare-selection-grid .compare-replace');
+ await until("document.querySelectorAll('.compare-picker-car').length > 0 && !document.querySelector('.compare-picker-premium .MuiCircularProgress-root')",'replace at maximum');
+ await click('.compare-picker-car button');
+ await until("!document.querySelector('.compare-picker-premium')",'atomic replacement');
+ assert.equal(await evaluate("document.querySelectorAll('.compare-selection-grid .compare-car-card').length"),3);
+ assert.ok(await evaluate("[...document.querySelectorAll('.compare-selection-grid > *')].every(el=>{const r=el.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth;})"));
+ if(!mobile&&desktopWidth>=1024) assert.ok(await evaluate("(()=>{const hs=[...document.querySelectorAll('.compare-selection-grid > *')].map(el=>el.getBoundingClientRect().height);return Math.max(...hs)-Math.min(...hs)<2;})()"));
+ if(locale==='en') await screenshot(mobile?'compare-premium-selected-mobile':desktopWidth>1440?'compare-premium-selected-wide':desktopWidth<1024?'compare-premium-selected-tablet':'compare-premium-selected-desktop');
+ const selected=await evaluate("[...document.querySelectorAll('.compare-selection-grid .compare-car-name h3')].map(el=>el.textContent)");
+ await click('.compare-home-premium .compare-primary');
+ await until("location.pathname.endsWith('/car/compare') && document.querySelectorAll('.compare-table thead .compare-car-card').length===3",'existing comparison route');
+ assert.ok(await evaluate("!!document.querySelector('#top')&&!!document.querySelector('#footer')"));
+ assert.equal(await evaluate("document.querySelectorAll('.home-page,.chatting').length"),0);
+ assert.equal(await evaluate("document.querySelectorAll('.compare-table tbody tr').length"),12);
+ assert.ok(await evaluate("[...document.querySelectorAll('.compare-details-link')].every(el=>el.href.includes('/car/detail?id='))"));
+ if(locale==='en'&&!mobile&&desktopWidth===1440) await screenshot('compare-premium-results-desktop');
+ const viewRequests=carRequests;
+ await evaluate("history.back()");
+ await until("!!document.querySelector('.compare-home-premium') && document.querySelectorAll('.compare-selection-grid .compare-car-card').length===3",'Back restores slots');
+ assert.deepEqual(await evaluate("[...document.querySelectorAll('.compare-selection-grid .compare-car-name h3')].map(el=>el.textContent)"),selected);
+ assert.equal(carRequests,viewRequests,'warm cache restore must not request GET_CAR');
  await command('Page.reload');
- await until("document.readyState === 'complete' && document.querySelectorAll('.compare-table thead .compare-car-card').length === 3", 'refresh preserves URL selection');
- await click('.compare-results-toolbar input');
- await until("document.querySelectorAll('.compare-table tbody tr').length < 12", 'differences filter');
- await click('.compare-results-toolbar input');
- await click('.compare-table .compare-remove');
- await until("document.querySelectorAll('.compare-table thead .compare-car-card').length === 2", 'remove updates comparison');
- await click('.compare-table .compare-remove');
- await until("!document.querySelector('.compare-table') && !document.querySelector('.compare-cars .MuiCircularProgress-root')", 'insufficient selection handled');
- console.log(`${locale} ${mobile ? 'mobile' : 'desktop'}: recent search, selection, duplicates, literal search, standalone route, refresh, differences and removal passed.`);
+ await until("!!document.querySelector('.compare-home-premium') && document.querySelectorAll('.compare-selection-grid .compare-car-card').length===3",'session refresh restoration');
+ assert.deepEqual(await evaluate("[...document.querySelectorAll('.compare-selection-grid .compare-car-name h3')].map(el=>el.textContent)"),selected);
+ if(locale==='en'&&!mobile&&desktopWidth===1440) {
+  const delayed = await command('Page.addScriptToEvaluateOnNewDocument', {source: `(() => { const original = window.fetch; window.fetch = function(input, options) { let operation; try { operation = JSON.parse(options?.body || '{}').operationName; } catch {} return operation === 'GetCar' ? new Promise(resolve => setTimeout(resolve, 2500)).then(() => original.call(this,input,options)) : original.call(this,input,options); }; })();`});
+  await command('Page.reload');
+  await until("document.querySelectorAll('.compare-slot-loading').length===3 && !document.querySelector('.compare-home-premium .compare-clear').disabled",'restoration skeletons');
+  assert.equal(await evaluate("document.querySelectorAll('.compare-empty-slot').length"),0,'no empty-slot flash during restoration');
+  await screenshot('compare-premium-restoring-desktop');
+  await click('.compare-home-premium .compare-clear');
+  await until("document.querySelectorAll('.compare-empty-slot').length===3",'clear during pending restoration');
+  await delay(3000);
+  assert.equal(await evaluate("document.querySelectorAll('.compare-selection-grid .compare-car-card').length"),0,'late restoration must not undo Clear All');
+  await command('Page.removeScriptToEvaluateOnNewDocument',{identifier:delayed.identifier});
+ } else {
+ await click('.compare-home-premium .compare-clear');
+ }
+ await until("document.querySelectorAll('.compare-empty-slot').length===3",'Clear All');
+ await command('Page.reload');
+ await until("document.querySelectorAll('.compare-empty-slot').length===3",'cleared session remains empty');
+ console.log(`${locale} ${mobile?'mobile':desktopWidth+'px'}: fresh pagination/accurate totals/exclusions/search/replacement/cancel/compare/Back cache reuse/refresh/Clear All passed.`);
+}
+async function testStorageAndKeyboard() {
+ await navigate('en');
+ await screenshot('compare-premium-empty-desktop');
+ const blocked = await command('Page.addScriptToEvaluateOnNewDocument', { source: `(() => { window.__compareStorageBlocked = true; for (const name of ['getItem', 'setItem']) { const original = Storage.prototype[name]; Storage.prototype[name] = function(key, ...args) { if (key === 'anorcar.compare.selection') throw new DOMException('Storage blocked', 'SecurityError'); return original.call(this,key,...args); }; } })();` });
+ await command('Page.reload');
+ await until("window.__compareStorageBlocked && document.querySelectorAll('.compare-empty-slot').length===3", 'blocked storage still renders');
+ await evaluate("document.querySelector('.compare-empty-slot button').focus()");
+ await command('Input.dispatchKeyEvent', {type:'keyDown', key:'Enter', code:'Enter', text:'\r', windowsVirtualKeyCode:13});
+ await command('Input.dispatchKeyEvent', {type:'keyUp', key:'Enter', code:'Enter', windowsVirtualKeyCode:13});
+ await until("!!document.querySelector('.compare-picker-premium')", 'keyboard opens dialog');
+ await until("document.querySelector('.compare-picker-premium input')===document.activeElement", 'keyboard dialog autofocus', 5000);
+ await command('Input.dispatchKeyEvent', {type:'keyDown', key:'Tab', code:'Tab', windowsVirtualKeyCode:9});
+ await command('Input.dispatchKeyEvent', {type:'keyUp', key:'Tab', code:'Tab', windowsVirtualKeyCode:9});
+ assert.ok(await evaluate("!!document.activeElement.closest('.compare-picker-premium')"), 'focus stays inside dialog');
+ await command('Input.dispatchKeyEvent', {type:'keyDown', key:'Escape', code:'Escape', windowsVirtualKeyCode:27});
+ await command('Input.dispatchKeyEvent', {type:'keyUp', key:'Escape', code:'Escape', windowsVirtualKeyCode:27});
+ await until("!document.querySelector('.compare-picker-premium') && document.activeElement.matches('.compare-empty-slot button')", 'Escape restores focus');
+ for(let slot=0;slot<3;slot++) {
+  await click(`.compare-empty-slot[data-slot="${slot}"] button`);
+  await until("document.querySelectorAll('.compare-picker-car').length>0 && !document.querySelector('.compare-picker-premium .MuiCircularProgress-root')", 'storage-independent selection');
+  await click('.compare-picker-car button');
+  await until("!document.querySelector('.compare-picker-premium')", 'selected with blocked storage');
+ }
+ assert.ok(await evaluate("!document.querySelector('.compare-home-premium .compare-primary').disabled"));
+ await screenshot('compare-premium-selected-desktop');
+ await click('.compare-home-premium .compare-clear');
+ await command('Page.removeScriptToEvaluateOnNewDocument',{identifier:blocked.identifier});
+ assert.deepEqual(exceptions, []);
+ console.log('Blocked session storage, keyboard opening/autofocus/focus containment/Escape return and selection passed.');
 }
 async function main() {
 	const activePort = path.join(profile, 'DevToolsActivePort');
@@ -153,6 +193,7 @@ async function main() {
 	await new Promise((resolve, reject) => { socket.once('open', resolve); socket.once('error', reject); });
 	socket.on('message', (raw) => {
 		const message = JSON.parse(raw);
+		if (message.method === 'Network.requestWillBeSent' && message.params.request.postData) { try { if (JSON.parse(message.params.request.postData).operationName === 'GetCar') carRequests++; } catch {} }
 		if (message.method === 'Runtime.exceptionThrown') exceptions.push(message.params.exceptionDetails);
 		if (!message.id) return;
 		const task = pending.get(message.id);
@@ -162,15 +203,34 @@ async function main() {
 	});
 	await command('Page.enable');
 	await command('Runtime.enable');
+	await command('Network.enable');
+	if (process.env.COMPARE_QA_RESILIENCE_ONLY === '1') {
+		await testStorageAndKeyboard();
+		return;
+	}
+	if (process.env.COMPARE_QA_HEADER_ONLY === '1') {
+		for (const [locale, mobile] of [['en', false], ['en', true], ['kr', false], ['ru', false]]) {
+			await navigate(locale, mobile);
+			const labels = JSON.parse(fs.readFileSync(`public/locales/${locale}/common.json`, 'utf8'));
+			assert.equal(await evaluate("getComputedStyle(document.querySelector('#compare-cars-heading')).fontFamily.includes('Poppins')"), true);
+			assert.equal(await evaluate("getComputedStyle(document.querySelector('#compare-cars-heading')).fontSize"), mobile ? '25px' : '34px');
+			assert.equal(await evaluate("document.querySelector('.compare-heading p').textContent"), labels['Compare up to 3 cars side by side and find the perfect match for your needs.']);
+			if (locale === 'en') await screenshot(mobile ? 'compare-empty-mobile' : 'compare-empty-desktop');
+		}
+		assert.deepEqual(exceptions, []);
+		console.log('Homepage heading typography and localized copy passed on desktop/mobile and EN/KR/RU.');
+		return;
+	}
 	await testFlow('en');
 	await testFlow('en', true);
 	await testFlow('kr');
 	await testFlow('ru');
 	await testFlow('en', false, 2796);
+	await testFlow('en', false, 768);
 	assert.deepEqual(exceptions, [], 'No uncaught browser exceptions');
 	console.log('Read-only browser QA passed with real inventory. Empty, selected, results and picker screenshots saved.');
 }
-main().catch(error => { console.error(error); process.exitCode = 1; }).finally(async () => {
+main().catch(async error => { console.error(error); try { console.error(await evaluate("({active:document.activeElement?.outerHTML,dialog:!!document.querySelector('.compare-picker-premium'),slots:document.querySelectorAll('.compare-empty-slot').length})")); } catch {} process.exitCode = 1; }).finally(async () => {
 	if (socket?.readyState === WebSocket.OPEN) { try { await command('Browser.close'); } catch {} }
 	socket?.close();
 	chrome.kill();

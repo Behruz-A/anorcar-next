@@ -1,0 +1,450 @@
+.homepage-shell#pc-wrap .home-page .compare-cars.compare-home-premium,
+.homepage-shell#mobile-wrap .home-page .compare-cars.compare-home-premium {
+	--compare-accent: #ff3b1f;
+	padding: 64px 0;
+	color: #17191d;
+	font-family: $font;
+	.compare-container {
+		width: calc(100% - 64px);
+		max-width: 1300px;
+	}
+	.compare-heading {
+		text-align: center;
+		margin-bottom: 36px;
+		.compare-eyebrow {
+			display: block;
+			color: #c93018;
+			font-family: $font;
+			font-size: 12px;
+			font-weight: 600;
+			letter-spacing: 2px;
+			line-height: 20px;
+			margin-bottom: 12px;
+		}
+		h2 {
+			font-family: $font;
+			font-size: 34px;
+			font-weight: 500;
+			line-height: 150%;
+			letter-spacing: -0.646px;
+			color: #17191d;
+		}
+		> p {
+			font-family: $font;
+			font-size: 16px;
+			line-height: 26px;
+			color: #626b79;
+			max-width: 720px;
+			margin: 10px auto 0;
+		}
+	}
+	.compare-selection-grid {
+		gap: 24px;
+		align-items: stretch;
+	}
+	.compare-empty-slot,
+	.compare-slot-loading,
+	.compare-slot-error {
+		min-height: 480px;
+		aspect-ratio: auto;
+		align-self: stretch;
+		border: 1px dashed #ccd1d9;
+		border-radius: 16px;
+		padding: 32px 24px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 12px;
+		background: #fff;
+		box-sizing: border-box;
+		font-family: $font;
+	}
+	.compare-empty-slot {
+		min-height: 320px;
+		gap: 0;
+		transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+		&:hover,
+		&:focus-within {
+			border-color: var(--compare-accent);
+			background: #fff9f7;
+			box-shadow: 0 8px 24px rgba(255, 59, 31, 0.08);
+		}
+		h3 {
+			margin: 16px 0 0;
+			font-family: $font;
+			font-size: 20px;
+			font-weight: 500;
+			line-height: 28px;
+		}
+		> p {
+			margin: 6px 0 24px;
+			font-family: $font;
+			font-size: 14px;
+			color: #626b79;
+			line-height: 24px;
+			text-align: center;
+		}
+	}
+	.compare-empty-icon {
+		display: grid;
+		place-items: center;
+		width: 76px;
+		height: 76px;
+		border-radius: 50%;
+		background: #fff0eb;
+		color: var(--compare-accent);
+		svg {
+			width: 36px;
+			height: 36px;
+		}
+	}
+	.MuiButton-root {
+		font-family: $font;
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 22px;
+		text-transform: none;
+		border-radius: 8px;
+		min-height: 44px;
+		padding: 10px 18px;
+	}
+	.compare-empty-cta {
+		color: #c93018;
+		border: 1px solid var(--compare-accent);
+		background: #fff;
+		&:hover {
+			background: #fff0eb;
+			color: #a72513;
+		}
+	}
+	.compare-selection-grid > .compare-car-card {
+		min-height: 480px;
+		border-radius: 16px;
+		border: 1px solid #e3e7ed;
+		box-shadow: 0 6px 20px rgba(23, 25, 29, 0.035);
+		.compare-car-photo {
+			height: 180px;
+			width: calc(100% - 20px);
+			aspect-ratio: auto;
+		}
+		.compare-car-copy {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			padding: 16px;
+		}
+		.compare-car-brand {
+			font-family: $font;
+			font-size: 12px;
+			line-height: 20px;
+		}
+		.compare-car-name {
+			align-items: flex-start;
+			h3 {
+				font-family: $font;
+				font-size: 20px;
+				font-weight: 500;
+				line-height: 28px;
+			}
+			> span {
+				font-family: $font;
+				font-size: 12px;
+				white-space: nowrap;
+				flex-shrink: 0;
+			}
+		}
+		.compare-car-price {
+			color: #c93018;
+			font-family: $font;
+			font-size: 22px;
+			line-height: 30px;
+			margin-top: 6px;
+		}
+		.compare-car-specs {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 12px;
+			padding-top: 14px;
+			margin-top: 14px;
+			dt {
+				font-family: $font;
+				font-size: 11px;
+				line-height: 18px;
+			}
+			dd {
+				font-family: $font;
+				font-size: 13px;
+				line-height: 20px;
+				margin-top: 2px;
+			}
+		}
+		.compare-replace {
+			margin-top: auto;
+			padding-top: 10px;
+			color: #626b79;
+			align-self: flex-start;
+			&:hover {
+				color: #c93018;
+				background: #fff0eb;
+			}
+		}
+	}
+	.compare-slot-loading {
+		align-items: stretch;
+		justify-content: flex-start;
+		border-style: solid;
+		padding: 16px;
+		gap: 18px;
+	}
+	.compare-slot-error {
+		text-align: center;
+		> p {
+			font-family: $font;
+			font-size: 14px;
+			line-height: 24px;
+		}
+	}
+	.compare-action-bar {
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 16px;
+		margin-top: 24px;
+		padding-top: 20px;
+		border-top: 1px solid #edf0f3;
+	}
+	.compare-selection-count {
+		font-family: $font;
+		color: #17191d;
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 24px;
+		margin: 0;
+		padding: 10px 14px;
+		border-radius: 8px;
+		background: #f6f7f9;
+	}
+	.compare-actions {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+	.compare-primary {
+		background: var(--compare-accent);
+		color: #17191d;
+		min-width: 180px;
+		box-shadow: none;
+		&:hover {
+			background: #f32f14;
+			box-shadow: none;
+		}
+		&.Mui-disabled {
+			color: #727a85;
+			background: #eceff3;
+		}
+	}
+	.compare-clear {
+		color: #626b79;
+		&.Mui-disabled {
+			color: #9299a3;
+		}
+	}
+	.MuiAlert-root {
+		margin-bottom: 20px;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.compare-empty-slot {
+			transition: none;
+		}
+	}
+	@media (max-width: 1023px) {
+		.compare-selection-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	@media (max-width: 600px) {
+		padding: 40px 0;
+		.compare-container {
+			width: calc(100% - 32px);
+		}
+		.compare-heading {
+			margin-bottom: 28px;
+			h2 {
+				font-size: 25px;
+			}
+			> p {
+				font-size: 14px;
+				line-height: 24px;
+			}
+		}
+		.compare-selection-grid {
+			grid-template-columns: 1fr;
+			gap: 16px;
+		}
+		.compare-action-bar {
+			flex-direction: column;
+			align-items: stretch;
+			text-align: center;
+		}
+		.compare-actions {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			align-items: stretch;
+			> .MuiButton-root {
+				min-width: 0;
+				padding-inline: 8px;
+			}
+		}
+	}
+}
+
+.compare-picker-premium.MuiPaper-root {
+	border-radius: 16px;
+	font-family: $font;
+	.compare-picker-heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding: 20px 24px;
+		font-family: $font;
+		font-size: 22px;
+		font-weight: 500;
+		> span {
+			font-family: $font;
+		}
+	}
+	.MuiDialogContent-root {
+		padding: 0 24px 24px;
+	}
+	.MuiInputBase-root {
+		font-family: $font;
+		font-size: 14px;
+		border-radius: 8px;
+	}
+	.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+		border-color: #c93018;
+	}
+	.compare-picker-list {
+		min-height: 220px;
+		max-height: 460px;
+		overflow-y: auto;
+		margin-top: 20px;
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+	}
+	.compare-picker-car {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		padding: 16px 0;
+		border-bottom: 1px solid #edf0f3;
+	}
+	.compare-picker-photo {
+		position: relative;
+		width: 88px;
+		height: 64px;
+		border-radius: 8px;
+		overflow: hidden;
+		flex-shrink: 0;
+		background: #f1f3f5;
+		img {
+			object-fit: cover;
+		}
+	}
+	.compare-picker-copy {
+		flex: 1;
+		min-width: 0;
+		h3 {
+			margin: 0;
+			font-family: $font;
+			font-size: 15px;
+			line-height: 24px;
+			font-weight: 500;
+			overflow-wrap: anywhere;
+		}
+		p {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+			margin: 4px 0 0;
+			span,
+			strong {
+				font-family: $font;
+				font-size: 13px;
+				line-height: 22px;
+			}
+			span {
+				color: #626b79;
+			}
+			strong {
+				color: #c93018;
+				font-weight: 500;
+			}
+		}
+	}
+	.MuiButton-root {
+		color: #c93018;
+		font-family: $font;
+		text-transform: none;
+		min-height: 44px;
+		border-color: #ff3b1f;
+		border-radius: 8px;
+	}
+	.compare-picker-status {
+		padding: 48px 16px;
+		text-align: center;
+		color: #626b79;
+		font-family: $font;
+		font-size: 14px;
+		line-height: 24px;
+	}
+	.compare-picker-pagination {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 20px;
+		p {
+			font-family: $font;
+			font-size: 12px;
+			color: #626b79;
+		}
+	}
+	.MuiPaginationItem-root {
+		font-family: $font;
+	}
+	.MuiAlert-root {
+		margin-top: 16px;
+	}
+	@media (max-width: 600px) {
+		margin: 12px;
+		width: calc(100% - 24px);
+		max-height: calc(100% - 24px);
+		.compare-picker-heading {
+			padding: 16px;
+			font-size: 18px;
+		}
+		.MuiDialogContent-root {
+			padding: 0 16px 16px;
+		}
+		.compare-picker-car {
+			gap: 10px;
+			flex-wrap: wrap;
+		}
+		.compare-picker-photo {
+			width: 64px;
+			height: 52px;
+		}
+		.compare-picker-copy h3 {
+			font-size: 14px;
+		}
+		.compare-picker-car > .MuiButton-root {
+			padding: 6px 10px;
+		}
+	}
+}
