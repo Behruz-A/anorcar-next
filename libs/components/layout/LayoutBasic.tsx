@@ -23,6 +23,7 @@ const withLayoutBasic = (Component: any) => {
 		const { t, i18n } = useTranslation('common');
 		const device = useDeviceDetect();
 		const authHeader = router.pathname === '/account/join';
+		const carsHeader = router.pathname === '/car';
 		const user = useReactiveVar(userVar);
 
 		const memoizedValues = useMemo(() => {
@@ -32,9 +33,9 @@ const withLayoutBasic = (Component: any) => {
 
 			switch (router.pathname) {
 				case '/car':
-					title = 'Search cars';
-					desc = 'We are glad to see you again!';
-					bgImage = '/img/car/hero.svg';
+					title = 'Find your next car';
+					desc = 'Your next journey starts here.';
+					bgImage = '/img/hero4.png';
 					break;
 				case '/agent':
 					title = 'Agents';
@@ -89,6 +90,14 @@ const withLayoutBasic = (Component: any) => {
 		}, []);
 
 		/** HANDLERS **/
+		const carsHero = (
+			<Stack className="header-basic cars-hero" style={{ backgroundImage: `url(${memoizedValues.bgImage})` }}>
+				<Stack className="container">
+					<strong>{t(memoizedValues.title)}</strong>
+					<span>{t(memoizedValues.desc)}</span>
+				</Stack>
+			</Stack>
+		);
 
 		if (device == 'mobile') {
 			return (
@@ -103,6 +112,7 @@ const withLayoutBasic = (Component: any) => {
 						</Stack>
 
 						<Stack id={'main'}>
+							{carsHeader && carsHero}
 							<Component {...props} />
 						</Stack>
 
@@ -124,19 +134,23 @@ const withLayoutBasic = (Component: any) => {
 							<Top />
 						</Stack>
 
-						<Stack
-							className={`header-basic ${authHeader && 'auth'}`}
-							style={{
-								backgroundImage: `url(${memoizedValues.bgImage})`,
-								backgroundSize: 'cover',
-								boxShadow: 'inset 10px 40px 150px 40px rgb(24 22 36)',
-							}}
-						>
-							<Stack className={'container'}>
-								<strong>{t(memoizedValues.title)}</strong>
-								<span>{t(memoizedValues.desc)}</span>
+						{carsHeader ? (
+							carsHero
+						) : (
+							<Stack
+								className={`header-basic ${authHeader && 'auth'}`}
+								style={{
+									backgroundImage: `url(${memoizedValues.bgImage})`,
+									backgroundSize: 'cover',
+									boxShadow: 'inset 10px 40px 150px 40px rgb(24 22 36)',
+								}}
+							>
+								<Stack className={'container'}>
+									<strong>{t(memoizedValues.title)}</strong>
+									<span>{t(memoizedValues.desc)}</span>
+								</Stack>
 							</Stack>
-						</Stack>
+						)}
 
 						<Stack id={'main'}>
 							<Component {...props} />

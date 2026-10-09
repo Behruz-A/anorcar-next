@@ -1,4 +1,52 @@
 // Scoped to the Cars listing; existing shared cards and layout remain in place.
+#pc-wrap .header-basic.cars-hero,
+#mobile-wrap .header-basic.cars-hero {
+	position: relative;
+	width: 100%;
+	height: 557px;
+	flex-direction: row;
+	justify-content: center;
+	background-color: #181a20;
+	background-size: cover;
+	background-position: center;
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(90deg, rgba(16, 24, 36, .64), rgba(16, 24, 36, .08) 75%);
+	}
+	.container {
+		position: relative;
+		width: min(1440px, calc(100% - 64px));
+		margin: 175px auto 0;
+		padding: 0;
+		gap: 12px;
+		strong {
+			max-width: 640px;
+			color: #fff;
+			font-family: $font;
+			font-size: clamp(32px, 3.4vw, 48px);
+			font-weight: 600;
+			line-height: 1.2;
+			letter-spacing: -.6px;
+			text-transform: none;
+		}
+		span {
+			color: #fff;
+			font-family: $font;
+			font-size: 18px;
+			line-height: 1.5;
+		}
+	}
+	@media (max-width: 800px) {
+		height: 360px;
+		background-position: 60% center;
+		.container { width: calc(100% - 40px); margin-top: 120px; }
+		.container strong { font-size: 32px; max-width: 360px; }
+		.container span { font-size: 15px; }
+	}
+}
+
 #pc-wrap #car-list-page,
 #mobile-wrap #car-list-page {
 	background: #f7f8fa;
