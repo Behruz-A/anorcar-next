@@ -25,7 +25,8 @@ const Top = () => {
 	const router = useRouter();
 	const isHomepage = router.pathname === '/';
 	const isCarsPage = router.pathname === '/car';
-	const isMarketplacePage = isHomepage || isCarsPage;
+	const isAgentsPage = router.pathname === '/agent';
+	const isMarketplacePage = isHomepage || isCarsPage || isAgentsPage;
 	const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
 	const [lang, setLang] = useState<string | null>('en');
 	const drop = Boolean(anchorEl2);
@@ -137,7 +138,7 @@ const Top = () => {
 		},
 	}));
 
-	if (device == 'mobile' && !isHomepage && !isCarsPage) {
+	if (device == 'mobile' && !isMarketplacePage) {
 		return (
 			<Stack className={'top'}>
 				<Link href={'/'}>

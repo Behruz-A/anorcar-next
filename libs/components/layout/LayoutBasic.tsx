@@ -23,7 +23,7 @@ const withLayoutBasic = (Component: any) => {
 		const { t, i18n } = useTranslation('common');
 		const device = useDeviceDetect();
 		const authHeader = router.pathname === '/account/join';
-		const carsHeader = router.pathname === '/car';
+		const marketplaceHeader = router.pathname === '/car' || router.pathname === '/agent';
 		const user = useReactiveVar(userVar);
 
 		const memoizedValues = useMemo(() => {
@@ -38,9 +38,9 @@ const withLayoutBasic = (Component: any) => {
 					bgImage = '/img/hero4.png';
 					break;
 				case '/agent':
-					title = 'Agents';
-					desc = 'Find your car';
-					bgImage = '/img/banner/agents.webp';
+					title = 'Find Your Agent';
+					desc = 'Connect with an agent to find your next car.';
+					bgImage = '/img/hero4.png';
 					break;
 				case '/agent/detail':
 					title = 'Agent Page';
@@ -90,7 +90,7 @@ const withLayoutBasic = (Component: any) => {
 		}, []);
 
 		/** HANDLERS **/
-		const carsHero = (
+		const marketplaceHero = (
 			<Stack className="header-basic cars-hero" style={{ backgroundImage: `url(${memoizedValues.bgImage})` }}>
 				<Stack className="container">
 					<strong>{t(memoizedValues.title)}</strong>
@@ -112,7 +112,7 @@ const withLayoutBasic = (Component: any) => {
 						</Stack>
 
 						<Stack id={'main'}>
-							{carsHeader && carsHero}
+							{marketplaceHeader && marketplaceHero}
 							<Component {...props} />
 						</Stack>
 
@@ -134,8 +134,8 @@ const withLayoutBasic = (Component: any) => {
 							<Top />
 						</Stack>
 
-						{carsHeader ? (
-							carsHero
+						{marketplaceHeader ? (
+							marketplaceHero
 						) : (
 							<Stack
 								className={`header-basic ${authHeader && 'auth'}`}
