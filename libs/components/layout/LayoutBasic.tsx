@@ -56,7 +56,7 @@ const withLayoutBasic = (Component: any) => {
 				case '/community':
 					title = 'Community';
 					desc = 'Find your car';
-					bgImage = '/img/banner/header2.svg';
+					bgImage = '/img/hero7.png';
 					break;
 				case '/community/detail':
 					title = 'Community Detail';
@@ -141,7 +141,10 @@ const withLayoutBasic = (Component: any) => {
 							<Stack
 								className={`header-basic ${authHeader && 'auth'}`}
 								style={{
-									backgroundImage: `url(${memoizedValues.bgImage})`,
+									backgroundImage:
+										router.pathname === '/community'
+											? `linear-gradient(90deg, rgba(24, 26, 32, 0.68) 0%, rgba(24, 26, 32, 0.5) 45%, rgba(24, 26, 32, 0.1) 100%), url(${memoizedValues.bgImage})`
+											: `url(${memoizedValues.bgImage})`,
 									backgroundSize: 'cover',
 									boxShadow: 'inset 10px 40px 150px 40px rgb(24 22 36)',
 								}}
