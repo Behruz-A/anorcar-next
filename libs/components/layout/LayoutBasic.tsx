@@ -23,8 +23,9 @@ const withLayoutBasic = (Component: any) => {
 		const { t, i18n } = useTranslation('common');
 		const device = useDeviceDetect();
 		const authHeader = router.pathname === '/account/join';
-		const marketplaceHeader = router.pathname === '/car' || router.pathname === '/agent';
+		const marketplaceHeader = router.pathname === '/car' || router.pathname === '/agent' || router.pathname === '/mypage';
 		const agentDetail = router.pathname === '/agent/detail';
+		const accountPage = router.pathname === '/mypage';
 		const communityHeader = router.pathname === '/community';
 		const user = useReactiveVar(userVar);
 
@@ -50,9 +51,9 @@ const withLayoutBasic = (Component: any) => {
 					bgImage = '/img/banner/header2.svg';
 					break;
 				case '/mypage':
-					title = 'my page';
-					desc = 'Find your car';
-					bgImage = '/img/banner/header1.svg';
+					title = 'My Page';
+					desc = 'Manage your profile, favorites, and community activity.';
+					bgImage = '/img/hero4.png';
 					break;
 				case '/community':
 					title = 'Community';
@@ -93,7 +94,7 @@ const withLayoutBasic = (Component: any) => {
 
 		/** HANDLERS **/
 		const marketplaceHero = (
-			<Stack className="header-basic cars-hero" style={{ backgroundImage: `url(${memoizedValues.bgImage})` }}>
+			<Stack className={`header-basic cars-hero${accountPage ? ' account-hero' : ''}`} style={{ backgroundImage: `url(${memoizedValues.bgImage})` }}>
 				<Stack className="container">
 					<strong>{t(memoizedValues.title)}</strong>
 					<span>{t(memoizedValues.desc)}</span>
@@ -108,7 +109,7 @@ const withLayoutBasic = (Component: any) => {
 						<title>ANORCAR</title>
 						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="mobile-wrap" className={agentDetail ? 'agent-detail-shell' : undefined}>
+					<Stack id="mobile-wrap" className={accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : undefined}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>
@@ -144,7 +145,7 @@ const withLayoutBasic = (Component: any) => {
 						<title>ANORCAR</title>
 						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="pc-wrap" className={agentDetail ? 'agent-detail-shell' : undefined}>
+					<Stack id="pc-wrap" className={accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : undefined}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>

@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { NextPage } from 'next';
 import { Stack } from '@mui/material';
-import useDeviceDetect from '../../libs/hooks/useDeviceDetect';
+import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 import withLayoutBasic from '../../libs/components/layout/LayoutBasic';
 import MyCars from '../../libs/components/mypage/MyCars';
 import MyFavorites from '../../libs/components/mypage/MyFavorites';
@@ -28,17 +29,35 @@ export const getStaticProps = async ({ locale }: any) => ({
 });
 
 const MyPage: NextPage = () => {
-	const device = useDeviceDetect();
+	const { t } = useTranslation('common');
 	const user = useReactiveVar(userVar);
 	const authReady = useReactiveVar(authReadyVar);
 	const router = useRouter();
-	const rawCategory = router.query.category;
- const category = rawCategory === 'addProperty' ? 'addCar' : rawCategory === 'myProperties' ? 'myCars' : rawCategory ?? 'myProfile';
- useEffect(() => {
-  if (router.isReady && rawCategory !== category) void router.replace({ pathname: router.pathname, query: {
-   ...router.query, category, carId: router.query.carId ?? router.query.propertyId,
-  } }, undefined, { shallow: true });
- }, [router.isReady, rawCategory, category]);
+	const rawCategory = Array.isArray(router.query.category) ? router.query.category[0] : router.query.category;
+	const categoryLabels: Record<string, string> = {
+		myProfile: 'My Profile',
+		myFavorites: 'My Favorites',
+		recentlyVisited: 'Recently Visited',
+		followers: 'My Followers',
+		followings: 'My Followings',
+		myArticles: 'My Articles',
+		writeArticle: 'Write Article',
+		addCar: 'Add car',
+		myCars: 'My cars',
+	};
+	const requestedCategory =
+		rawCategory === 'addProperty' ? 'addCar' : rawCategory === 'myProperties' ? 'myCars' : rawCategory;
+	const category = requestedCategory && categoryLabels[requestedCategory] ? requestedCategory : 'myProfile';
+	useEffect(() => {
+		if (!router.isReady) return;
+		const query: typeof router.query = { ...router.query, category };
+		const carId = router.query.carId || router.query.propertyId;
+		if (carId) query.carId = carId;
+		else delete query.carId;
+		if (rawCategory !== category || router.query.carId === '' || Array.isArray(router.query.category)) {
+			void router.replace({ pathname: router.pathname, query }, undefined, { shallow: true, scroll: false });
+		}
+	}, [router, rawCategory, category]);
 
 	/** APOLLO REQUESTS **/
 	const [subscribe] = useMutation(SUBSCRIBE);
@@ -119,14 +138,24 @@ const MyPage: NextPage = () => {
 	if (!authReady || !user._id || !router.isReady) return null;
 	{
 		return (
-			<div id="my-page" style={{ position: 'relative' }}>
+			<div id="my-page" className="account-page" style={{ position: 'relative' }}>
 				<div className="container">
+					<header className="account-heading">
+						<nav aria-label={t('Breadcrumb')} className="account-breadcrumbs">
+							<Link href="/">{t('Home')}</Link>
+							<span aria-hidden="true">›</span>
+							<Link href="/mypage">{t('My Page')}</Link>
+							<span aria-hidden="true">›</span>
+							<span aria-current="page">{t(categoryLabels[String(category)] ?? 'My Profile')}</span>
+						</nav>
+						<h1>{t('My Account')}</h1>
+					</header>
 					<Stack className={'my-page'}>
 						<Stack className={'back-frame'}>
 							<Stack className={'left-config'}>
 								<MyMenu />
 							</Stack>
-							<Stack className="main-config" mb={'76px'}>
+							<Stack className="main-config">
 								<Stack className={'list-config'}>
 									{category === 'addCar' && <AddCar />}
 									{category === 'myCars' && <MyCars />}

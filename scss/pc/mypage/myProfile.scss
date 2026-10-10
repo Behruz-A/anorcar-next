@@ -1,319 +1,332 @@
-#pc-wrap {
-	#my-page {
-		#my-profile-page {
-			width: 100%;
-			height: auto;
+#pc-wrap.account-shell #my-page.account-page,
+#mobile-wrap.account-shell #my-page.account-page {
+	#my-profile-page.account-profile-card {
+		width: 100%;
+		background: #fff;
+		border: 1px solid #e4e7eb;
+		border-radius: 12px;
+		padding: 24px;
+		box-shadow: 0 4px 20px rgba(24, 26, 32, 0.035);
+		.MuiTypography-root {
+			font-family: inherit;
+		}
+		.account-profile-heading {
 			display: flex;
-			flex-direction: column;
-			gap: 20px;
-			.main-title-box {
-				width: auto;
-				height: auto;
-				flex-direction: row;
-				justify-content: space-between;
-				.right-box {
-					width: 315px;
-					.main-title {
-						color: #181a20;
-						font-family: $font;
-						font-size: 30px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-						letter-spacing: 0.6px;
-						text-transform: capitalize;
-					}
-					.sub-title {
-						color: #181a20;
-						font-family: $font;
-						font-size: 14px;
-						font-style: normal;
-						font-weight: 400;
-						line-height: 26px;
-					}
-				}
+			align-items: center;
+			gap: 16px;
+			padding-bottom: 16px;
+			border-bottom: 1px solid #eef0f2;
+		}
+		.account-section-icon {
+			width: 44px;
+			height: 44px;
+			border-radius: 12px;
+			background: #fff1ee;
+			color: #f04432;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+			svg {
+				font-size: 24px;
 			}
-			.top-box {
-				width: 100%;
-				padding: 30px;
-				margin-top: 35px;
-				gap: 25px;
-				border-radius: 12px;
-				border: 1px solid #c4c4c4;
-				background: #fff;
-				box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
-				.photo-box {
-					gap: 23px;
-					.title {
-						color: #181a20;
-						font-family: $font;
-						font-size: 17px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-					}
-					.image-big-box {
-						flex-direction: row;
-						gap: 50px;
-						.image-box {
-							position: relative;
-							width: 194px;
-							height: 157px;
-							img {
-								width: 100%;
-								height: 100%;
-								object-fit: cover;
-								border-radius: 15px;
-								object-fit: cover;
-							}
-							.delete-box {
-								position: absolute;
-								top: 10px;
-								left: 10px;
-								width: 36px;
-								height: 32px;
-								background-color: #ffffff;
-								align-items: center;
-								justify-content: center;
-								border-radius: 12px;
-							}
-						}
-						.upload-big-box {
-							align-self: flex-end;
-							gap: 22px;
-							.labeler {
-								display: flex;
-								width: 210.023px;
-								height: 40.135px;
-								justify-content: center;
-								align-items: center;
-								cursor: pointer;
-								border-radius: 12px;
-								border: 1px solid #181a20;
-								p {
-									color: #181a20;
-									font-family: $font;
-									font-size: 13px;
-									font-style: normal;
-									font-weight: 600;
-									line-height: normal;
-								}
-							}
-							.upload-text {
-								color: #181a20;
-								font-family: $font;
-								font-size: 12px;
-								font-style: normal;
-								font-weight: 400;
-								line-height: 26px;
-							}
-						}
-					}
-				}
-				.small-input-box {
-					width: 100%;
-					height: auto;
-					flex-direction: row;
-					flex-wrap: wrap;
-					gap: 30px;
-					.input-box {
-						width: 48%;
-						gap: 10px;
-						.title {
-							color: #181a20;
-							font-family: $font;
-							font-size: 12px;
-							font-style: normal;
-							font-weight: 600;
-							line-height: normal;
-						}
-						input {
-							height: 55px;
-							outline: none;
-							padding: 0px 15px;
-							border-radius: 8px;
-							border: 1px solid #ddd;
-							::placeholder {
-								color: #717171;
-								font-family: $font;
-								font-size: 12px;
-								font-style: normal;
-								font-weight: 400;
-								line-height: 26px;
-							}
-						}
-					}
-				}
-				.address-box {
-					gap: 10px;
-					.title {
-						color: #181a20;
-						font-family: $font;
-						font-size: 12px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-					}
-					input {
-						height: 55px;
-						outline: none;
-						padding: 0px 15px;
-						border-radius: 8px;
-						border: 1px solid #ddd;
-						::placeholder {
-							color: #717171;
-							font-family: $font;
-							font-size: 12px;
-							font-style: normal;
-							font-weight: 400;
-							line-height: 26px;
-						}
-					}
-				}
-				.about-me-box {
-					gap: 10px;
-					.title {
-						color: #181a20;
-						font-family: $font;
-						font-size: 12px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-					}
-					.about-textarea {
-						height: 170px;
-						padding: 20px 15px;
-						border-radius: 8px;
-						border: 1px solid #ddd;
-						color: #717171;
-						font-family: $font;
-						font-size: 12px;
-						font-style: normal;
-						font-weight: 400;
-						line-height: 26px;
-					}
-					.update-button {
-						display: flex;
-						width: 170px;
-						height: 38px;
-						justify-content: center;
-						align-items: center;
-						gap: 10px;
-						align-self: flex-end;
-						margin-top: 30px;
-						border-radius: 12px;
-						background-color: #000000;
-						p {
-							color: #fff;
-							font-family: $font;
-							font-size: 13px;
-							font-style: normal;
-							font-weight: 600;
-							line-height: normal;
-						}
-					}
-					button:disabled {
-						background: #181a2045;
-					}
-				}
+		}
+		.account-profile-heading h2 {
+			font: inherit;
+			font-size: 22px;
+			font-weight: 600;
+			line-height: 1.5;
+			margin: 0 0 4px;
+		}
+		.account-profile-heading p {
+			font-size: 14px;
+			line-height: 1.6;
+			color: #717782;
+		}
+		fieldset {
+			border: 0;
+			margin: 0;
+			padding: 0;
+			min-width: 0;
+		}
+		.account-sr-only {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			padding: 0;
+			margin: -1px;
+			overflow: hidden;
+			clip: rect(0, 0, 0, 0);
+			white-space: nowrap;
+			border: 0;
+		}
+		.account-photo-section {
+			margin: 0;
+			padding: 24px 0;
+			border-bottom: 1px solid #eef0f2;
+		}
+		.account-field-label,
+		.account-profile-field label {
+			display: block;
+			font-size: 14px;
+			font-weight: 500;
+			line-height: 1.5;
+			margin-bottom: 8px;
+		}
+		.account-photo-row {
+			flex-direction: row;
+			align-items: center;
+			gap: 24px;
+		}
+		.account-photo-preview {
+			position: relative;
+			width: 88px;
+			height: 88px;
+			flex-shrink: 0;
+		}
+		.account-photo-preview > img {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 3px solid #fff;
+			box-shadow: 0 1px 5px rgba(24, 26, 32, 0.08);
+		}
+		.account-camera-button {
+			position: absolute;
+			bottom: 4px;
+			right: 4px;
+			width: 30px;
+			height: 30px;
+			border: 3px solid #fff;
+			border-radius: 50%;
+			background: #f04432;
+			color: #fff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+		}
+		.account-camera-button svg {
+			width: 16px;
+			height: 16px;
+		}
+		.account-photo-controls {
+			min-width: 0;
+			gap: 12px;
+		}
+		.account-photo-actions {
+			flex-direction: row;
+			gap: 12px;
+			flex-wrap: wrap;
+		}
+		.MuiButton-root {
+			font: inherit;
+			font-size: 14px;
+			text-transform: none;
+			border-radius: 8px;
+			min-height: 42px;
+			padding: 8px 18px;
+			box-shadow: none;
+		}
+		.MuiButton-outlined {
+			border-color: #e4e7eb;
+			color: #344054;
+			background: #fff;
+		}
+		.MuiButton-outlined:hover {
+			border-color: #b9bec8;
+			background: #fafbfc;
+		}
+		.MuiButton-startIcon svg {
+			font-size: 17px;
+		}
+		.account-remove-photo {
+			color: #344054;
+		}
+		.account-photo-hint {
+			color: #717782;
+			font-size: 12px;
+			line-height: 1.7;
+		}
+		.account-profile-fields {
+			padding: 24px 0;
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			gap: 24px;
+		}
+		.account-profile-field {
+			min-width: 0;
+		}
+		.account-field-help {
+			font-size: 12px;
+			line-height: 1.5;
+			color: #667085;
+			margin: 6px 0 0;
+		}
+		.account-field-help.is-error {
+			color: #b42318;
+		}
+		.account-input-wrap:has(input[aria-invalid='true']) {
+			border-color: #b42318;
+		}
+		.account-optional {
+			font-weight: 400;
+			color: #667085;
+			font-size: 11px;
+			margin-left: 8px;
+		}
+		.account-address-field {
+			grid-column: 1 / -1;
+		}
+		.account-input-wrap {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			border: 1px solid #e4e7eb;
+			border-radius: 8px;
+			height: 48px;
+			padding: 0 14px;
+		}
+		.account-input-wrap:focus-within {
+			border-color: #f04432;
+			box-shadow: 0 0 0 3px #fff1ef;
+		}
+		.account-input-wrap > svg {
+			font-size: 18px;
+			color: #667085;
+			flex-shrink: 0;
+		}
+		.account-input-wrap input {
+			width: 100%;
+			min-width: 0;
+			height: 100%;
+			background: transparent;
+			border: 0;
+			outline: none;
+			font: inherit;
+			font-size: 14px;
+			color: #344054;
+		}
+		.account-input-wrap input::placeholder {
+			color: #8d949e;
+		}
+		fieldset:disabled {
+			opacity: 0.7;
+		}
+		.account-profile-actions {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+			padding-top: 16px;
+			border-top: 1px solid #eef0f2;
+		}
+		.account-save-buttons {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			flex-shrink: 0;
+		}
+		.account-save-status {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			font-size: 12px;
+			line-height: 1.5;
+			color: #667085;
+			svg {
+				font-size: 16px;
+				flex-shrink: 0;
 			}
-			.bottom-box {
-				width: 100%;
-				padding: 30px;
-				gap: 25px;
-				border-radius: 12px;
-				border: 1px solid #c4c4c4;
-				background: #fff;
-				box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
-				.top-inner-box {
-					gap: 20px;
-					.title {
-						color: #181a20;
-						font-family: $font;
-						font-size: 15px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-					}
-					.old-password-box {
-						gap: 10px;
-						.title {
-							color: #181a20;
-							font-family: $font;
-							font-size: 12px;
-							font-style: normal;
-							font-weight: 600;
-							line-height: normal;
-						}
-						input {
-							width: 50%;
-							height: 55px;
-							outline: none;
-							padding: 0px 15px;
-							border-radius: 8px;
-							border: 1px solid #ddd;
-							::placeholder {
-								color: #717171;
-								font-family: $font;
-								font-size: 12px;
-								font-style: normal;
-								font-weight: 400;
-								line-height: 26px;
-							}
-						}
-					}
+		}
+		.account-save-status.is-dirty {
+			color: #a34916;
+		}
+		.MuiButton-contained {
+			background: #f04432;
+			color: #fff;
+			font-weight: 600;
+			min-width: 164px;
+		}
+		.MuiButton-contained:hover {
+			background: #d93625;
+			box-shadow: none;
+		}
+		.MuiButton-root.Mui-disabled {
+			color: #858b94;
+			border-color: #e4e7eb;
+		}
+		.MuiButton-contained.Mui-disabled {
+			background: #eef0f3;
+			color: #8a919c;
+		}
+		.account-profile-error {
+			color: #b42318;
+			font-size: 14px;
+			line-height: 1.5;
+			margin: 0 0 20px;
+		}
+	}
+}
+@media (max-width: 1000px) {
+	#pc-wrap.account-shell #my-page.account-page,
+	#mobile-wrap.account-shell #my-page.account-page {
+		#my-profile-page.account-profile-card {
+			padding: 24px;
+			.account-photo-row {
+				gap: 16px;
+			}
+			.account-photo-actions {
+				gap: 6px;
+			}
+		}
+	}
+}
+@media (max-width: 550px) {
+	#pc-wrap.account-shell #my-page.account-page,
+	#mobile-wrap.account-shell #my-page.account-page {
+		#my-profile-page.account-profile-card {
+			padding: 20px;
+			.account-profile-heading h2 {
+				font-size: 21px;
+			}
+			.account-photo-row {
+				align-items: flex-start;
+				flex-direction: column;
+			}
+			.account-photo-preview {
+				width: 88px;
+				height: 88px;
+			}
+			.account-photo-section {
+				padding: 24px 0;
+			}
+			.account-photo-actions .MuiButton-root {
+				padding: 8px 10px;
+				font-size: 14px;
+				min-height: 44px;
+			}
+			.account-profile-fields {
+				grid-template-columns: minmax(0, 1fr);
+				gap: 20px;
+			}
+			.account-profile-actions {
+				flex-direction: column;
+				align-items: stretch;
+				gap: 8px;
+				.account-save-status {
+					min-height: 22px;
 				}
-				.bottom-inner-box {
+				.account-save-buttons {
 					width: 100%;
-					flex-direction: row;
-					gap: 45px;
-					.new-password-box {
-						width: 100%;
-						gap: 10px;
-						.title {
-							color: #181a20;
-							font-family: $font;
-							font-size: 12px;
-							font-style: normal;
-							font-weight: 600;
-							line-height: normal;
-						}
-						input {
-							height: 55px;
-							outline: none;
-							padding: 0px 15px;
-							border-radius: 8px;
-							border: 1px solid #ddd;
-							::placeholder {
-								color: #717171;
-								font-family: $font;
-								font-size: 12px;
-								font-style: normal;
-								font-weight: 400;
-								line-height: 26px;
-							}
-						}
-					}
 				}
-				.change-password {
-					display: flex;
-					width: 170px;
-					height: 38px;
-					justify-content: center;
-					align-items: center;
-					gap: 10px;
-					align-self: flex-end;
-					margin-top: 18px;
-					border-radius: 12px;
-					background-color: #000000;
-					p {
-						color: #fff;
-						font-family: $font;
-						font-size: 13px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-					}
+				.MuiButton-root {
+					padding: 8px 12px;
+				}
+				.MuiButton-contained {
+					min-width: 0;
+					flex: 1;
 				}
 			}
 		}
