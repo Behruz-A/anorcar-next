@@ -18,3 +18,14 @@ Read-only browser checks use the 16 existing development posts, without seeds or
 Run `yarn node scripts/qa-community-browse.cjs`. Refreshed desktop/mobile screenshots are in `screenshots/community-browse-1440.png` and `screenshots/community-browse-390.png`; images are loaded before capture. Existing development post content is displayed unchanged.
 
 Modified code: pages/community/index.tsx, libs/components/common/CommunityCard.tsx, libs/community.ts, libs/types/board-article/board-article.input.ts (category optional, matching the existing backend), scss/pc/community/community.scss, shared Top/LayoutBasic only for the Community route, and EN/KR/RU dictionaries. The QA script, this report/screenshots and backend COMPLETED_TASKS handoff document the result. No commit or deployment.
+
+## 2026-10-10 — Listing UI refinement
+
+Refined only `scss/pc/community/community.scss`, scoped to the listing content between the hero and footer. Existing NESTAR-derived page/component structure, JSX, Apollo/state, routes, authentication, enums, data and translations remain unchanged. No new files, components, dependencies or backend fields were introduced.
+
+- Tighter header and section spacing, matching 44px search/sort/view controls, visible focus rings and subtle hover states. Orange fills use a slightly darker shade for white-text contrast.
+- Single-row pill filters scroll horizontally when space is limited, including keyboard-focused pills.
+- Existing images use 16:10 cover cropping. Cards retain two-line titles/excerpts, readable author/date/counts, soft borders/shadows and bottom-aligned metadata. Gentle hover elevation respects reduced motion. Three/two/one grid and list view remain.
+- Centered pagination has clear active, hover and disabled states. Loading placeholders match the image ratio; empty/error states retain their existing behavior.
+
+Yarn typecheck and production build passed (91 pages); build lint retained existing repository warnings. Expanded the existing read-only browser suite with control-height, image-ratio, metadata-clearance, search-focus and mobile category-scroll checks. Those and existing data/navigation/filter/search/sort/pagination/guest-guard/EN/KR/RU/error-retry checks passed at 1440/1024/768/390/320px without runtime exceptions. Desktop/mobile screenshots were refreshed and visually reviewed. `git diff --check` passed. Navbar, hero and footer were not modified; no database mutations, commit or deployment.
