@@ -1,4 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
+import ChatBubbleOutlineRoundedIcon from '@mui/icons-material/ChatBubbleOutlineRounded';
+import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
+import { articleExcerpt, communityCategories } from '../../community';
+import { imageUrl } from '../../config';
 import { useRouter } from 'next/router';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { Stack, Typography } from '@mui/material';
@@ -15,9 +22,119 @@ import { CustomJwtPayload } from '../../types/customJwtPayload';
 
 interface CommunityCardProps {
 	boardArticle: BoardArticle;
+	browse?: boolean;
 	size?: string;
-	likeArticleHandler?: any;
+	likeArticleHandler?: (
+		event: React.MouseEvent<HTMLButtonElement>,
+		user: CustomJwtPayload,
+		id: string,
+	) => void | Promise<void>;
 }
+
+const BrowseCommunityCard = ({ boardArticle: article, likeArticleHandler }: CommunityCardProps) => {
+	const { t, i18n } = useTranslation('common');
+	const user = useReactiveVar(userVar);
+	const [failedImage, setFailedImage] = useState<string | null>(null);
+	const [failedAvatar, setFailedAvatar] = useState<string | null>(null);
+	const [pending, setPending] = useState(false);
+	const portrait = article.articleImage ? imageUrl(article.articleImage) : '';
+	const avatar = article.memberData?.memberImage ? imageUrl(article.memberData.memberImage) : '';
+	const author = article.memberData?.memberFullName?.trim() || article.memberData?.memberNick || t('Community member');
+	const date = new Date(article.createdAt);
+	const locale = i18n.language === 'kr' ? 'ko' : i18n.language;
+	const liked = Boolean(article.meLiked?.[0]?.myFavorite);
+	const href = { pathname: '/community/detail', query: { articleCategory: article.articleCategory, id: article._id } };
+	const memberId = article.memberData?._id || article.memberId;
+	const excerpt = articleExcerpt(article.articleContent);
+	const toggleLike = async (event: React.MouseEvent<HTMLButtonElement>) => {
+		event.preventDefault();
+		event.stopPropagation();
+		if (!likeArticleHandler || pending) return;
+		setPending(true);
+		try {
+			await likeArticleHandler(event, user, article._id);
+		} finally {
+			setPending(false);
+		}
+	};
+	return (
+		<article className="community-post-card">
+			<div className="community-post-image">
+				<Link href={href} aria-label={article.articleTitle} tabIndex={-1}>
+					{portrait && failedImage !== portrait ? (
+						<Image
+							fill
+							unoptimized
+							sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw"
+							src={portrait}
+							alt=""
+							onError={() => setFailedImage(portrait)}
+						/>
+					) : (
+						<span className="community-post-placeholder">
+							<ForumOutlinedIcon />
+						</span>
+					)}
+				</Link>
+				<span className="community-post-category">
+					{t(communityCategories.find((item) => item.value === article.articleCategory)?.label || 'Community')}
+				</span>
+			</div>
+			<div className="community-post-content">
+				<h2>
+					<Link href={href} title={article.articleTitle}>
+						{article.articleTitle}
+					</Link>
+				</h2>
+				<p className="community-post-excerpt">{excerpt || t('Read the discussion')}</p>
+				<footer className="community-post-footer">
+					<Link
+						className="community-post-author"
+						href={memberId === user._id ? '/mypage' : { pathname: '/member', query: { memberId } }}
+					>
+						{avatar && failedAvatar !== avatar ? (
+							<Image width={32} height={32} unoptimized src={avatar} alt="" onError={() => setFailedAvatar(avatar)} />
+						) : (
+							<span className="community-author-avatar" aria-hidden="true">
+								{Array.from(article.memberData?.memberNick || author || '')
+									.slice(0, 2)
+									.join('')
+									.toLocaleUpperCase()}
+							</span>
+						)}
+						<span>
+							<strong>{author}</strong>
+							{!Number.isNaN(date.getTime()) && (
+								<time dateTime={article.createdAt}>
+									{new Intl.DateTimeFormat(locale, { month: 'short', day: 'numeric', year: 'numeric' }).format(date)}
+								</time>
+							)}
+						</span>
+					</Link>
+					<div className="community-post-stats">
+						<span aria-label={`${t('Views')}: ${article.articleViews}`} title={t('Views')}>
+							<RemoveRedEyeIcon />
+							{new Intl.NumberFormat(locale, { notation: 'compact' }).format(article.articleViews)}
+						</span>
+						<IconButton
+							aria-label={t(liked ? 'Unlike post' : 'Like post')}
+							aria-pressed={liked}
+							disabled={pending || !likeArticleHandler}
+							onClick={(event) => void toggleLike(event)}
+						>
+							{liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+							<span>{new Intl.NumberFormat(locale, { notation: 'compact' }).format(article.articleLikes)}</span>
+						</IconButton>
+						<span aria-label={`${t('Comments')}: ${article.articleComments}`} title={t('Comments')}>
+							<ChatBubbleOutlineRoundedIcon />
+							{new Intl.NumberFormat(locale, { notation: 'compact' }).format(article.articleComments)}
+						</span>
+					</div>
+				</footer>
+			</div>
+		</article>
+	);
+};
 
 const CommunityCard = (props: CommunityCardProps) => {
 	const { boardArticle, size = 'normal', likeArticleHandler } = props;
@@ -45,6 +162,7 @@ const CommunityCard = (props: CommunityCardProps) => {
 		else router.push(`/member?memberId=${id}`);
 	};
 
+	if (props.browse) return <BrowseCommunityCard {...props} />;
 	if (device === 'mobile') {
 		return <div>COMMUNITY CARD MOBILE</div>;
 	} else {

@@ -25,6 +25,7 @@ const withLayoutBasic = (Component: any) => {
 		const authHeader = router.pathname === '/account/join';
 		const marketplaceHeader = router.pathname === '/car' || router.pathname === '/agent';
 		const agentDetail = router.pathname === '/agent/detail';
+		const communityHeader = router.pathname === '/community';
 		const user = useReactiveVar(userVar);
 
 		const memoizedValues = useMemo(() => {
@@ -114,6 +115,19 @@ const withLayoutBasic = (Component: any) => {
 
 						<Stack id={'main'}>
 							{marketplaceHeader && marketplaceHero}
+							{communityHeader && (
+								<Stack
+									className="header-basic cars-hero"
+									style={{
+										backgroundImage: `linear-gradient(90deg, rgba(24, 26, 32, 0.68), rgba(24, 26, 32, 0.1)), url(${memoizedValues.bgImage})`,
+									}}
+								>
+									<Stack className="container">
+										<strong>{t(memoizedValues.title)}</strong>
+										<span>{t(memoizedValues.desc)}</span>
+									</Stack>
+								</Stack>
+							)}
 							<Component {...props} />
 						</Stack>
 

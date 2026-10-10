@@ -26,7 +26,7 @@ const Top = () => {
 	const isHomepage = router.pathname === '/';
 	const isCarsPage = router.pathname === '/car';
 	const isAgentsPage = router.pathname === '/agent' || router.pathname === '/agent/detail';
-	const isMarketplacePage = isHomepage || isCarsPage || isAgentsPage;
+	const isMarketplacePage = isHomepage || isCarsPage || isAgentsPage || router.pathname === '/community';
 	const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
 	const [lang, setLang] = useState<string | null>('en');
 	const drop = Boolean(anchorEl2);
@@ -190,7 +190,7 @@ const Top = () => {
 							<Link href={'/agent'}>
 								<div> {t('Agents')} </div>
 							</Link>
-							<Link href={'/community?articleCategory=FREE'}>
+							<Link href={'/community'} aria-current={router.pathname === '/community' ? 'page' : undefined}>
 								<div> {t('Community')} </div>
 							</Link>
 							{user?._id && (
