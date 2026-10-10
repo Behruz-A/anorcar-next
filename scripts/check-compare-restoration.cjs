@@ -10,7 +10,7 @@ const { InMemoryCache } = require('@apollo/client');
 const { formatCarPrice } = require('../libs/carCompare.ts');
 const ids = ['0123456789abcdef01234567','1123456789abcdef01234567','2123456789abcdef01234567'];
 const car = (id, extra = {}) => ({ __typename:'Car', _id:id, carStatus:'ACTIVE', carFuelType:'GASOLINE', carCondition:'USED',
- carModel:'Test car', carYear:2024, carMileage:0, carLocation:'SEOUL', carAddress:'Seoul', carTransmission:'AVTOMATIC',
+ carModel:'Test car', carYear:2024, carMileage:0, carLocation:'SEOUL', carAddress:'Seoul', carTransmission:'AUTOMATIC',
  carTitle:'Test car', carPrice:25900, carColor:'White', carViews:0, carLikes:0, carComments:0, carRank:0,
  carImages:[], brandId:ids[2], carDesc:null, carBarter:false, carRent:false, memberId:ids[2],
  soldAt:null, deletedAt:null, createdAt:'2026-10-09', updatedAt:'2026-10-09',

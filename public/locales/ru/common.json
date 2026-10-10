@@ -489,5 +489,20 @@
   "Rank": "Рейтинг",
   "Ascending": "По возрастанию",
   "Descending": "По убыванию",
-  "Choosing a model replaces your search.": "При выборе модели текущий поисковый запрос будет заменён."
+  "Choosing a model replaces your search.": "При выборе модели текущий поисковый запрос будет заменён.",
+  "Search agents": "Поиск агентов",
+  "Search agents by nickname": "Поиск агентов по никнейму...",
+  "Sort agents": "Сортировка агентов",
+  "All Agents": "Все агенты",
+  "Agents found": "Найдено агентов: {{count}}",
+  "Unable to load agents": "Не удалось загрузить агентов. Повторите попытку.",
+  "No Agents found!": "Агенты не найдены",
+  "Try another agent nickname": "Попробуйте другой никнейм или просмотрите всех агентов.",
+  "Car Agent": "Автомобильный агент",
+  "Location not provided": "Местоположение не указано",
+  "Agent cars listed": "Автомобилей: {{count}}",
+  "View Profile": "Посмотреть профиль",
+  "Like agent": "Нравится агент",
+  "Unlike agent": "Убрать отметку «Нравится»",
+  "Daejeon": "Тэджон"
 }

@@ -489,5 +489,20 @@
   "Rank": "Rank",
   "Ascending": "Ascending",
   "Descending": "Descending",
-  "Choosing a model replaces your search.": "Choosing a model replaces your search."
+  "Choosing a model replaces your search.": "Choosing a model replaces your search.",
+  "Search agents": "Search agents",
+  "Search agents by nickname": "Search agents by nickname...",
+  "Sort agents": "Sort agents",
+  "All Agents": "All Agents",
+  "Agents found": "{{count}} agents found",
+  "Unable to load agents": "Unable to load agents. Please try again.",
+  "No Agents found!": "No agents found",
+  "Try another agent nickname": "Try another nickname or browse all agents.",
+  "Car Agent": "Car Agent",
+  "Location not provided": "Location not provided",
+  "Agent cars listed": "{{count}} Cars Listed",
+  "View Profile": "View Profile",
+  "Like agent": "Like agent",
+  "Unlike agent": "Unlike agent",
+  "Daejeon": "Daejeon"
 }

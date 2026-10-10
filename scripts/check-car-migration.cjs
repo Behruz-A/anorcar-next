@@ -13,11 +13,11 @@ const { maxCarYear, imageUrl, REACT_APP_API_URL } = require('../libs/config.ts')
 const { CarTransmission, CarLocation } = require('../libs/enums/car.enum.ts');
 const { Direction } = require('../libs/enums/common.enum.ts');
 const { MemberType } = require('../libs/enums/member.enum.ts');
-assert.deepEqual(Object.values(CarTransmission), ['AVTOMATIC', 'MANUAL']);
-assert.deepEqual(Object.values(CarLocation), ['SEOUL', 'BUSAN', 'INCHEON', 'DAEGU', 'GYEONGJU', 'GWANGJU', 'CHONJU', 'DAEJON', 'JEJU']);
+assert.deepEqual(Object.values(CarTransmission), ['AUTOMATIC', 'MANUAL']);
+assert.deepEqual(Object.values(CarLocation), ['SEOUL', 'BUSAN', 'INCHEON', 'DAEGU', 'GYEONGJU', 'GWANGJU', 'CHONJU', 'DAEJEON', 'JEJU']);
 assert.deepEqual(Object.values(MemberType).sort(), ['ADMIN', 'AGENT', 'USER']);
-assert.equal(JSON.stringify({ direction: Direction.ASC, transmission: CarTransmission.AVTOMATIC, locations: [CarLocation.CHONJU, CarLocation.DAEJON] }),
- '{"direction":"ASC","transmission":"AVTOMATIC","locations":["CHONJU","DAEJON"]}');
+assert.equal(JSON.stringify({ direction: Direction.ASC, transmission: CarTransmission.AUTOMATIC, locations: [CarLocation.CHONJU, CarLocation.DAEJEON] }),
+ '{"direction":"ASC","transmission":"AUTOMATIC","locations":["CHONJU","DAEJEON"]}');
 const invalid = ['{', 'null', '[]', '42'];
 for (const value of invalid) assert.deepEqual(parseCarsInquiry(value).search, {});
 const input = parseCarsInquiry(JSON.stringify({
@@ -32,14 +32,17 @@ const valid = {
  brandId: '0123456789abcdef01234567', carTitle: 'Electric city car', carPrice: 12000,
  carModel: 'Model 3', carYear: 2024, carColor: 'White', carLocation: 'SEOUL',
  carAddress: 'Seoul showroom', carFuelType: 'ELECTRIC', carCondition: 'USED',
- carTransmission: 'AVTOMATIC', carImages: ['uploads/car/example.jpg'],
+ carTransmission: 'AUTOMATIC', carImages: ['uploads/car/example.jpg'],
 };
 assert.equal(validateCarInput(valid), undefined);
 for (const change of [{ carPrice: NaN }, { carYear: maxCarYear + 1 }, { carImages: [] },
- { carTransmission: 'AUTOMATIC' }, { brandId: 'invalid' }, { carDesc: 'abc' }]) {
+ { carTransmission: 'AVTOMATIC' }, { carLocation: 'DAEJON' }, { brandId: 'invalid' }, { carDesc: 'abc' }]) {
  assert.ok(validateCarInput({ ...valid, ...change }));
 }
-assert.equal(carLabel('AVTOMATIC'), 'Automatic');
+assert.equal(carLabel('AUTOMATIC'), 'Automatic');
+assert.equal(carLabel('DAEJEON'), 'Daejeon');
+assert.deepEqual(parseCarsInquiry({ search: { transmissions: ['AVTOMATIC', 'AUTOMATIC'], locations: ['DAEJON', 'DAEJEON'] } }).search,
+ { transmissions: ['AUTOMATIC'], locations: ['DAEJEON'] });
 assert.equal(imageUrl('uploads/car/a.jpg'), `${REACT_APP_API_URL}/uploads/car/a.jpg`);
 assert.equal(imageUrl('https://example.com/a.jpg'), 'https://example.com/a.jpg');
 assert.equal(imageUrl(undefined), '/img/car/placeholder.svg');
@@ -66,9 +69,9 @@ for (const group of [CommentGroup, LikeGroup, ViewGroup, NotificationGroup]) {
 assert.equal(imageUrl('/uploads/car/a.jpg'), `${REACT_APP_API_URL}/uploads/car/a.jpg`);
 assert.equal(imageUrl('/img/profile/defaultUser.svg'), '/img/profile/defaultUser.svg');
 assert.deepEqual(parseCarsInquiry({ page: 2, limit: 6, sort: 'carPrice', direction: 'ASC', search: {
- brandIds: ['0123456789abcdef01234567'], transmissions: ['AVTOMATIC'], options: ['carRent'],
+ brandIds: ['0123456789abcdef01234567'], transmissions: ['AUTOMATIC'], options: ['carRent'],
 } }), { page: 2, limit: 6, sort: 'carPrice', direction: 'ASC', search: {
- brandIds: ['0123456789abcdef01234567'], transmissions: ['AVTOMATIC'], options: ['carRent'],
+ brandIds: ['0123456789abcdef01234567'], transmissions: ['AUTOMATIC'], options: ['carRent'],
 } });
 for (const change of [{ carYear: 1885 }, { carYear: 2024.5 }, { carPrice: Infinity }, { carTitle: 'ab' },
  { carModel: '' }, { carAddress: 'ab' }, { carColor: '' }, { carDesc: 'a'.repeat(501) }]) {

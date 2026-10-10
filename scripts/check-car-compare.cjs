@@ -33,7 +33,7 @@ const valid = {
 	brandId: '0123456789abcdef01234567', carTitle: 'Electric city car', carPrice: 12000,
 	carModel: 'Model 3', carYear: 2024, carColor: 'White', carLocation: 'SEOUL',
 	carAddress: 'Seoul showroom', carFuelType: 'ELECTRIC', carCondition: 'USED',
-	carTransmission: 'AVTOMATIC', carImages: ['uploads/car/example.jpg'],
+	carTransmission: 'AUTOMATIC', carImages: ['uploads/car/example.jpg'],
 };
 for (const carMileage of [undefined, null, 0, 28000, 2147483647]) assert.equal(validateCarInput({ ...valid, carMileage }), undefined);
 for (const carMileage of [-1, 1.5, NaN, Infinity, 2147483648, '28000']) assert.ok(validateCarInput({ ...valid, carMileage }));

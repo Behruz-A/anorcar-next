@@ -20,7 +20,7 @@ const { formatCarMileage } = require('../libs/carCompare.ts');
 const cars = [0, null, 28000].map((carMileage, index) => ({
 	_id: `${index}123456789abcdef01234567`, carMileage, carPrice: 20000 + index,
 	carYear: 2024, carModel: `Model ${index}`, carTitle: `Car ${index}`, carImages: [],
-	carCondition: 'USED', carFuelType: 'GASOLINE', carTransmission: 'AVTOMATIC',
+	carCondition: 'USED', carFuelType: 'GASOLINE', carTransmission: 'AUTOMATIC',
 	carLocation: 'SEOUL', carColor: 'White', carBarter: false, carRent: false,
 }));
 for (const count of [2, 3]) {

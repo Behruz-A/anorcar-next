@@ -5,7 +5,7 @@ import { maxCarYear } from './config';
 
 export const carSorts: CarSort[] = ['createdAt', 'carLikes', 'carViews', 'carRank', 'carPrice', 'carYear'];
 export const defaultCarsInquiry: CarsInquiry = { page: 1, limit: 9, sort: 'createdAt', direction: Direction.DESC, search: {} };
-export const carLabel = (value: string) => value === CarTransmission.AVTOMATIC ? 'Automatic' :
+export const carLabel = (value: string) => value === CarTransmission.AUTOMATIC ? 'Automatic' :
  value.charAt(0) + value.slice(1).toLowerCase();
 const record = (value: unknown): Record<string, unknown> =>
  value !== null && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : {};
@@ -22,7 +22,10 @@ export function parseCarsInquiry(value: unknown): CarsInquiry {
   for (const [key, allowed] of Object.entries(enums)) {
    const list = raw[key];
    if (Array.isArray(list)) {
-    const valid = list.filter(item => typeof item === 'string' && (allowed as string[]).includes(item));
+    // Preserve filters from bookmarks made before the enum spelling correction.
+    const normalized = list.map(item => key === 'transmissions' && item === 'AVTOMATIC' ? 'AUTOMATIC' :
+     key === 'locations' && item === 'DAEJON' ? 'DAEJEON' : item);
+    const valid = normalized.filter(item => typeof item === 'string' && (allowed as string[]).includes(item));
     if (valid.length) Object.assign(search, { [key]: Array.from(new Set(valid)) });
    }
   }
