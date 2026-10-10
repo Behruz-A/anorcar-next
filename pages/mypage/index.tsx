@@ -148,7 +148,10 @@ const MyPage: NextPage = () => {
 							<span aria-hidden="true">›</span>
 							<span aria-current="page">{t(categoryLabels[String(category)] ?? 'My Profile')}</span>
 						</nav>
-						<h1>{t('My Account')}</h1>
+						<h1>{t(category === 'writeArticle' ? 'Write an Article' : 'My Account')}</h1>
+						{category === 'writeArticle' && (
+							<p>{t('Share your automotive experiences, tips, and stories with the ANORCAR community.')}</p>
+						)}
 					</header>
 					<Stack className={'my-page'}>
 						<Stack className={'back-frame'}>

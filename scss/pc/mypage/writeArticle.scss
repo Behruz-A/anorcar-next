@@ -1,81 +1,521 @@
-#pc-wrap {
-	#write-article-page {
+﻿#pc-wrap.account-shell #my-page.account-page,
+#mobile-wrap.account-shell #my-page.account-page {
+	.account-heading p {
+		margin-top: 8px;
+		max-width: 720px;
+	}
+	#write-article-page.account-article-card {
 		width: 100%;
-		height: auto;
-		.main-title-box {
-			width: auto;
-			height: auto;
-			flex-direction: row;
-			justify-content: space-between;
-			.right-box {
-				width: 315px;
-				.main-title {
-					color: #181a20;
-					font-family: $font;
-					font-size: 30px;
-					font-style: normal;
-					font-weight: 600;
-					line-height: normal;
-					letter-spacing: 0.6px;
-					text-transform: capitalize;
-				}
-				.sub-title {
-					color: #181a20;
-					font-family: $font;
-					font-size: 14px;
-					font-style: normal;
-					font-weight: 400;
-					line-height: 26px;
-				}
-			}
+		min-width: 0;
+		padding: 24px;
+		border: 1px solid #e4e7eb;
+		border-radius: 12px;
+		background: #fff;
+		box-shadow: 0 4px 20px rgba(24, 26, 32, 0.035);
+		font-family: $font;
+		.MuiTypography-root,
+		.MuiButton-root,
+		.MuiInputBase-root,
+		.MuiFormLabel-root {
+			font-family: inherit;
 		}
-		
-		.right-wrap {
-			width: 100%;
-			height: auto;
-			.cont_bd {
-				padding: 30px 0px;
-				.form_hd > div {
-					margin-bottom: 16px;
-				}
-			}
-			.flex-space {
-				.btn-next {
-					background: #87cdf9;
-					color: #000000;
-				}
-			}
-			.select {
-				width: 214px;
-				height: 40px;
-				font-size: 14px;
-			}
-			.input-tit {
-				font-size: 14px;
-				padding: 0 16px;
-				margin-top: 16px;
-				border: 1px solid #eee;
-				border-radius: 4px;
-			}
-			.btn-flex { margin-top: 40px; }
+		.article-card-heading {
+			align-items: center;
+			gap: 16px;
+			padding-bottom: 16px;
+			border-bottom: 1px solid #eef0f2;
 		}
-		.css-guvl2y-MuiButtonBase-root-MuiButton-root {
-			background: #87cdf9;
+		h2 {
+			margin: 0 0 4px;
+			color: #181a20;
+			font-size: 22px;
+			font-weight: 600;
+			line-height: 1.5;
+		}
+		.article-card-heading p {
+			color: #717782;
+			font-size: 14px;
+			line-height: 1.6;
+		}
+		.article-section-icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 44px;
+			height: 44px;
+			flex-shrink: 0;
+			border-radius: 12px;
+			color: #f04432;
+			background: #fff1ee;
 			svg {
-				fill: #000000;
+				font-size: 26px;
 			}
 		}
-		.toastui-editor-popup-body { padding: 20px; }
-		.youtube-input {
+		.article-form {
+			padding-top: 24px;
+		}
+		.article-information {
+			border: 0;
+			margin: 0;
+			padding: 0;
+			min-width: 0;
+			display: grid;
+			gap: 24px;
+		}
+		.article-field {
+			min-width: 0;
+			> label {
+				display: block;
+				margin-bottom: 8px;
+				font-size: 14px;
+				font-weight: 500;
+				color: #181a20;
+			}
+		}
+		.article-optional {
+			color: #667085;
+			font-size: 12px;
+			font-weight: 400;
+			margin-left: 8px;
+		}
+		.article-category-field {
+			max-width: 360px;
+		}
+		.MuiOutlinedInput-root {
+			height: 50px;
+			font-size: 14px;
+			border-radius: 8px;
+			color: #344054;
+			background: #fff;
+			fieldset {
+				border-color: #e4e7eb;
+			}
+			&.Mui-focused fieldset {
+				border-color: #f04432;
+				border-width: 1px;
+			}
+			&.Mui-focused {
+				box-shadow: 0 0 0 3px #fff1ef;
+			}
+			&.Mui-error fieldset {
+				border-color: #b42318;
+			}
+		}
+		.article-help {
+			margin: 6px 0 0;
+			color: #667085;
+			font-size: 12px;
+			line-height: 1.6;
+		}
+		.article-help.is-error,
+		.article-error {
+			color: #b42318;
+		}
+		.article-error {
+			margin: 16px 0 0;
+			font-size: 13px;
+			line-height: 1.6;
+		}
+		.article-cover {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+			padding: 16px;
+			border: 1px dashed #d9dee5;
+			border-radius: 8px;
+			background: #fafbfc;
+			> svg {
+				color: #98a2b3;
+				font-size: 32px;
+				flex-shrink: 0;
+			}
+			> img {
+				width: 100%;
+				max-height: 240px;
+				aspect-ratio: 16 / 6;
+				object-fit: cover;
+				border-radius: 6px;
+			}
+			&.has-image {
+				flex-direction: column;
+				align-items: stretch;
+			}
+		}
+		.article-cover-buttons {
+			gap: 8px;
+			flex-wrap: wrap;
+		}
+		.article-content-field {
+			margin-top: 24px;
+		}
+		.article-editor-wrap {
+			border: 1px solid #e4e7eb;
+			border-radius: 8px;
+			min-width: 0;
+			&:focus-within {
+				border-color: #f04432;
+				box-shadow: 0 0 0 3px #fff1ef;
+			}
+			&.has-error {
+				border-color: #b42318;
+			}
+			&.is-publishing {
+				pointer-events: none;
+				opacity: 0.65;
+			}
+		}
+		.toastui-editor-defaultUI {
+			border: 0;
+			border-radius: 8px;
+			font-family: inherit;
+		}
+		.toastui-editor-toolbar {
+			height: auto;
+			min-height: 50px;
+		}
+		.toastui-editor-defaultUI-toolbar {
+			height: auto;
+			min-height: 50px;
+			padding: 4px 8px;
+			flex-wrap: wrap;
+			background: #f7f8fa;
+			border-color: #e4e7eb;
+			border-radius: 8px 8px 0 0;
+		}
+		.toastui-editor-toolbar-group {
+			flex-wrap: wrap;
+		}
+		// Keep the editor's overflow items in the wrapping toolbar, using their original commands and tooltips.
+		.toastui-editor-defaultUI-toolbar > .toastui-editor-toolbar-group:has(.toastui-editor-dropdown-toolbar) {
+			display: contents !important;
+			> .more {
+				display: none;
+			}
+		}
+		.toastui-editor-dropdown-toolbar {
+			display: flex !important;
+			position: static;
+			flex-wrap: wrap;
+			max-width: 100%;
+			height: auto;
+			border: 0;
+			background: transparent;
+			box-shadow: none;
+		}
+		.toastui-editor-defaultUI-toolbar button {
+			position: relative;
+			width: 36px;
+			height: 36px;
+			margin: 2px;
+			border-radius: 6px;
+			border-color: transparent;
+			&:not(:disabled):hover {
+				background-color: #fff;
+				border-color: #d9dee5;
+			}
+			&.active {
+				border-color: #f04432;
+				background-color: #fff1ef;
+			}
+			&:focus-visible {
+				outline: 2px solid #f04432;
+				outline-offset: 2px;
+			}
+		}
+		.toastui-editor-defaultUI-toolbar .toastui-editor-toolbar-icons {
+			background-size: 0 0;
+			&::before {
+				content: '';
+				position: absolute;
+				width: 26px;
+				height: 26px;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				background-image: inherit;
+				background-position: inherit;
+				background-size: 466px 146px;
+				background-repeat: no-repeat;
+			}
+		}
+		.toastui-editor-toolbar-divider {
+			margin: 11px 8px;
+		}
+		.toastui-editor-contents,
+		.toastui-editor-md-container {
+			font-family: inherit;
+			font-size: 15px;
+			line-height: 1.6;
+		}
+		.toastui-editor-ww-container .toastui-editor-contents {
+			padding: 24px;
+		}
+		.toastui-editor-ww-container .ProseMirror,
+		.toastui-editor-md-container .ProseMirror {
+			min-height: 380px;
+		}
+		.toastui-editor-contents p {
+			margin: 0 0 12px;
+			line-height: 1.6;
+		}
+		.toastui-editor-md-container .toastui-editor {
+			padding: 24px;
+		}
+		.toastui-editor-mode-switch {
+			height: auto;
+			min-height: 44px;
+			padding: 6px 8px;
+			background: #f7f8fa;
+			border-color: #e4e7eb;
+			border-radius: 0 0 8px 8px;
+		}
+		.toastui-editor-mode-switch .tab-item {
+			height: 32px;
+			line-height: 32px;
+			border: 0;
+			border-radius: 6px;
+			background: transparent;
+			font-size: 13px;
+			color: #667085;
+			&.active {
+				background: #fff1ef;
+				color: #c33121;
+				font-weight: 600;
+			}
+		}
+		.toastui-editor-popup {
+			max-width: calc(100% - 16px);
+			border-radius: 8px;
+			border-color: #e4e7eb;
+			box-shadow: 0 8px 24px rgba(24, 26, 32, 0.1);
+		}
+		.toastui-editor-popup-body {
+			font-size: 13px;
+		}
+		.toastui-editor-popup-body input[type='text'] {
+			height: 40px;
+			border-radius: 6px;
+			font: inherit;
+			&:focus {
+				outline-color: #f04432;
+			}
+		}
+		.toastui-editor-ok-button {
+			background: #f04432;
+		}
+		.toastui-editor-popup-body button {
+			border-radius: 6px;
+		}
+		.toastui-editor-tooltip {
+			font-family: inherit;
+		}
+		.article-publish-actions {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			margin-top: 24px;
+			padding-top: 16px;
+			border-top: 1px solid #eef0f2;
+		}
+		.article-publish-buttons {
+			gap: 8px;
+			flex-shrink: 0;
+		}
+		.MuiButton-root {
+			min-height: 42px;
 			padding: 8px 16px;
-			border: 1px solid #ddd;
+			border-radius: 8px;
+			font-size: 14px;
+			text-transform: none;
+			box-shadow: none;
 		}
-		.youtube-div {
-			display:flex;
-			flex-direction: column;
+		.MuiButton-outlined {
+			border-color: #e4e7eb;
+			color: #344054;
+			&:hover {
+				background: #fafbfc;
+				border-color: #b9bec8;
+			}
 		}
-		.toastui-editor-defaultUI button {
-			padding: 4px;
+		.MuiButton-text {
+			color: #344054;
+		}
+		.MuiButton-contained {
+			background: #f04432;
+			color: #fff;
+			font-weight: 600;
+			&:hover {
+				background: #d93625;
+				box-shadow: none;
+			}
+		}
+		.MuiButton-contained.Mui-disabled {
+			background: #eef0f3;
+			color: #8a919c;
+		}
+		.MuiButton-root:focus-visible {
+			outline: 2px solid #f04432;
+			outline-offset: 3px;
+		}
+	}
+}
+.article-image-dialog {
+	.MuiDialog-paper {
+		border-radius: 12px;
+		font-family: $font;
+	}
+	.MuiTypography-root,
+	.MuiButton-root,
+	.MuiTab-root,
+	.MuiInputBase-root,
+	.MuiFormLabel-root {
+		font-family: inherit;
+	}
+	.MuiDialogTitle-root {
+		padding: 24px 24px 16px;
+		font-size: 21px;
+		font-weight: 600;
+	}
+	.MuiDialogContent-root {
+		padding: 0 24px 8px;
+	}
+	.MuiTabs-root {
+		margin-bottom: 24px;
+		border-bottom: 1px solid #e4e7eb;
+	}
+	.MuiTabs-indicator {
+		background: #f04432;
+	}
+	.MuiTab-root {
+		text-transform: none;
+		color: #667085;
+		font-size: 14px;
+		&.Mui-selected {
+			color: #c33121;
+		}
+	}
+	.article-image-upload {
+		padding: 16px;
+		border: 1px dashed #d9dee5;
+		background: #fafbfc;
+		border-radius: 8px;
+		label {
+			display: block;
+			margin-bottom: 12px;
+			font-size: 14px;
+		}
+		input {
+			width: 100%;
+			font: inherit;
+			font-size: 13px;
+		}
+		input::file-selector-button {
+			border: 1px solid #e4e7eb;
+			padding: 8px;
+			margin-right: 8px;
+			background: #fff;
+			color: #344054;
+			border-radius: 6px;
+			cursor: pointer;
+		}
+		p {
+			margin: 12px 0 0;
+			color: #667085;
+			font-size: 12px;
+			line-height: 1.6;
+		}
+	}
+	.article-image-description {
+		margin-top: 24px;
+	}
+	.MuiOutlinedInput-root {
+		font-size: 14px;
+		border-radius: 8px;
+		&.Mui-focused fieldset {
+			border-color: #f04432;
+		}
+	}
+	.MuiInputLabel-root.Mui-focused {
+		color: #c33121;
+	}
+	.article-error {
+		color: #b42318;
+		font-size: 13px;
+		margin-bottom: 0;
+	}
+	.MuiDialogActions-root {
+		padding: 16px 24px 24px;
+		gap: 8px;
+	}
+	.MuiButton-root {
+		min-height: 44px;
+		text-transform: none;
+		border-radius: 8px;
+		box-shadow: none;
+	}
+	.MuiButton-text {
+		color: #344054;
+	}
+	.MuiButton-contained {
+		background: #f04432;
+		&:hover {
+			background: #d93625;
+		}
+	}
+	.MuiButton-contained.Mui-disabled {
+		background: #eef0f3;
+		color: #8a919c;
+	}
+}
+@media (max-width: 767px) {
+	#pc-wrap.account-shell #my-page.account-page,
+	#mobile-wrap.account-shell #my-page.account-page {
+		#write-article-page.account-article-card {
+			padding: 20px;
+			h2 {
+				font-size: 21px;
+			}
+			.article-category-field {
+				max-width: none;
+			}
+			.toastui-editor-defaultUI-toolbar button {
+				width: 40px;
+				height: 40px;
+			}
+			.toastui-editor-toolbar-divider {
+				margin: 13px 4px;
+			}
+			.toastui-editor-ww-container .toastui-editor-contents,
+			.toastui-editor-md-container .toastui-editor {
+				padding: 16px;
+			}
+			.article-cover {
+				align-items: flex-start;
+				padding: 16px;
+				gap: 12px;
+				> svg {
+					display: none;
+				}
+			}
+			.article-publish-actions {
+				flex-direction: column;
+				align-items: stretch;
+				gap: 8px;
+				> .article-help:empty {
+					display: none;
+				}
+			}
+			.article-publish-buttons {
+				width: 100%;
+				.MuiButton-root {
+					min-height: 44px;
+					padding: 8px 12px;
+				}
+				.article-publish-button {
+					flex: 1;
+				}
+			}
 		}
 	}
 }
