@@ -114,6 +114,11 @@ async function screenshot(name) {
 			console.log('Checking detail', width, agent._id);
 			await navigate(width, agent._id);
 			assert.equal(await evaluate("document.querySelectorAll('.cars-listing-card').length"), 4);
+			assert.ok(await evaluate("(()=>{const r=document.querySelector('.agent-detail-portrait').getBoundingClientRect();return Math.abs(r.width-r.height)<1 && r.width<=251;})()"), 'compact square portrait');
+			assert.ok(await evaluate("document.querySelector('.agent-detail-initials')?.textContent.trim().length>0"), 'nickname initials');
+			assert.equal(await evaluate("document.querySelector('.agent-detail-initials').getAttribute('aria-label')"), agent.memberNick);
+			assert.ok(await evaluate("[...document.querySelectorAll('.cars-listing-title h2')].every(e=>e.getBoundingClientRect().height>=43 && getComputedStyle(e).webkitLineClamp==='2')"), 'two-line titles');
+			assert.ok(await evaluate("(()=>{const cards=[...document.querySelectorAll('.cars-listing-card')];return cards.every(a=>cards.filter(b=>Math.abs(a.getBoundingClientRect().top-b.getBoundingClientRect().top)<1).every(b=>Math.abs(a.getBoundingClientRect().height-b.getBoundingClientRect().height)<1&&Math.abs(a.querySelector('.cars-listing-price').getBoundingClientRect().top-b.querySelector('.cars-listing-price').getBoundingClientRect().top)<1));})()"), 'equal card heights and prices');
 			assert.ok(
 				await evaluate(
 					"[...document.querySelectorAll('.agent-detail-container,.agent-detail-portrait,.agent-profile-stats,.agent-detail-actions,.cars-listing-card')].every(e=>{const r=e.getBoundingClientRect();return r.left>=-1&&r.right<=innerWidth+1})",
@@ -169,6 +174,13 @@ async function screenshot(name) {
 			assert.ok(await evaluate("!!document.querySelector('.agent-detail-empty')"));
 			await until("document.querySelector('.agent-detail-portrait img').complete", 'portrait');
 			await screenshot('agent-detail-portrait');
+			const portraitUrl = await evaluate("document.querySelector('.agent-detail-portrait img').src");
+			await command('Network.setCacheDisabled', { cacheDisabled: true });
+			await command('Network.setBlockedURLs', { urls: [portraitUrl] });
+			await navigate(1440, photoAgent._id);
+			await until("!!document.querySelector('.agent-detail-initials')", 'broken portrait initials');
+			assert.equal(await evaluate("document.querySelector('.agent-detail-initials').getAttribute('aria-label')"), photoAgent.memberNick);
+			await command('Network.setBlockedURLs', { urls: [] });
 		}
 		for (const locale of ['kr', 'ru']) {
 			await navigate(390, agent._id, locale);

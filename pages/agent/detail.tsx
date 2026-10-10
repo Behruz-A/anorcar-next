@@ -50,6 +50,20 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 });
 
 type ProfileTab = 'listings' | 'about' | 'contact';
+const nicknameInitials = (nickname: string) => {
+	const parts = nickname
+		.trim()
+		.split(/[\s_.-]+/u)
+		.filter(Boolean);
+	const letters =
+		parts.length > 1
+			? `${Array.from(parts[0])[0]}${Array.from(parts[parts.length - 1])[0]}`
+			: Array.from(parts[0] || '')
+					.slice(0, 2)
+					.join('');
+	return letters.toLocaleUpperCase();
+};
+
 const AgentProfile = ({ agent, refresh }: { agent: Member; refresh: () => Promise<unknown> }) => {
 	const { t, i18n } = useTranslation('common');
 	const router = useRouter();
@@ -192,16 +206,22 @@ const AgentProfile = ({ agent, refresh }: { agent: Member; refresh: () => Promis
 			</nav>
 			<div className="agent-profile-overview">
 				<div className={`agent-detail-portrait${fallback ? ' agent-detail-avatar' : ''}`}>
-					<Image
-						src={fallback ? '/img/profile/defaultUser.svg' : portrait}
-						alt={name}
-						fill
-						unoptimized
-						sizes="(max-width: 700px) 100vw, 380px"
-						onError={() => {
-							if (!fallback) setFailedImage(portrait);
-						}}
-					/>
+					{fallback ? (
+						<span className="agent-detail-initials" role="img" aria-label={agent.memberNick}>
+							{nicknameInitials(agent.memberNick)}
+						</span>
+					) : (
+						<Image
+							src={portrait}
+							alt={name}
+							fill
+							unoptimized
+							sizes="250px"
+							onError={() => {
+								if (!fallback) setFailedImage(portrait);
+							}}
+						/>
+					)}
 					<IconButton
 						className="agent-portrait-like"
 						aria-label={t(liked ? 'Unlike agent' : 'Like agent')}
