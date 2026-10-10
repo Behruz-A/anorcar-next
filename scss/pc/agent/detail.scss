@@ -1,343 +1,604 @@
-#pc-wrap {
-	.agent-detail-page {
+﻿#pc-wrap.agent-detail-shell,
+#mobile-wrap.agent-detail-shell {
+	#top {
+		position: sticky;
+		top: 0;
+		z-index: 99;
+	}
+	#top .navbar.marketplace-nav .navbar-main {
 		position: relative;
-		padding: 133px 0 75px;
-		width: 100%;
-		height: auto;
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		.container {
+		background: #181a20;
+	}
+	.agent-detail-page {
+		@include car-listing-card;
+		font-family: $font;
+		color: #181a20;
+		background: #f8f9fb;
+		padding: 32px 0 72px;
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+		}
+		a {
+			color: inherit;
+		}
+		button {
+			font-family: inherit;
+			text-transform: none;
+		}
+		a:focus-visible,
+		button:focus-visible,
+		textarea:focus-visible {
+			outline: 3px solid #ff4931;
+			outline-offset: 4px;
+		}
+		h1,
+		h2,
+		h3,
+		p {
+			margin: 0;
+		}
+		.agent-detail-container {
+			width: min(1280px, calc(100% - 80px));
+			margin: auto;
+		}
+		.agent-detail-breadcrumbs {
+			display: flex;
+			align-items: center;
+			gap: 13px;
+			margin-bottom: 28px;
+			color: #717783;
+			font-size: 13px;
+			flex-wrap: wrap;
+			overflow-wrap: anywhere;
+			[aria-current] {
+				color: #181a20;
+				font-weight: 500;
+			}
+		}
+		.agent-profile-overview {
+			display: grid;
+			grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+			gap: 38px;
+			align-items: stretch;
+		}
+		.agent-detail-portrait {
+			position: relative;
+			min-height: 360px;
+			border-radius: 14px;
+			overflow: hidden;
+			background: #eef0f3;
+			img {
+				object-fit: cover;
+			}
+			&.agent-detail-avatar img {
+				object-fit: contain;
+				padding: 65px;
+			}
+		}
+		.agent-portrait-like {
+			position: absolute;
+			top: 14px;
+			right: 14px;
+			background: #181a204d;
+			color: white;
+			width: 42px;
+			height: 42px;
+			&[aria-pressed='true'] {
+				color: #ff4931;
+			}
+			&:hover {
+				background: #181a207d;
+			}
+		}
+		.agent-profile-content {
 			display: flex;
 			flex-direction: column;
+			min-width: 0;
+			padding: 6px 0 0;
+		}
+		.agent-profile-heading {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 16px;
+			flex-wrap: wrap;
+			> div:first-child {
+				min-width: 0;
+			}
+		}
+		.agent-detail-role {
+			display: inline-block;
+			padding: 5px 12px;
+			border-radius: 6px;
+			background: #eef0f3;
+			font-size: 12px;
+			color: #596171;
+		}
+		h1 {
+			font-size: clamp(28px, 3vw, 42px);
+			line-height: 1.2;
+			font-weight: 600;
+			letter-spacing: -1.3px;
+			margin-top: 12px;
+			overflow-wrap: anywhere;
+		}
+		.agent-detail-nickname {
+			display: block;
+			font-size: 12px;
+			color: #717783;
+			margin-top: 8px;
+			overflow-wrap: anywhere;
+		}
+		.agent-detail-actions {
+			display: flex;
+			gap: 10px;
 			align-items: center;
-			.agent-info {
-				margin-left: 58px;
-				width: 100%;
+			flex-wrap: wrap;
+			padding-top: 10px;
+			button {
+				min-height: 44px;
+				border-radius: 8px;
+				font-size: 12px;
+			}
+		}
+		.agent-contact-button {
+			background: #ed432e;
+			padding: 10px 18px;
+			box-shadow: none;
+			&:hover {
+				background: #cf3320;
+				box-shadow: none;
+			}
+		}
+		.agent-like-button {
+			border: 1px solid #f2b8af;
+			color: #db402c;
+			padding: 9px 14px;
+		}
+		.agent-share-button {
+			border: 1px solid #e3e6ea;
+			color: #343b46;
+			width: 44px;
+		}
+		.agent-detail-location {
+			display: flex;
+			align-items: center;
+			gap: 9px;
+			font-size: 15px;
+			margin-top: 24px;
+			color: #596171;
+			overflow-wrap: anywhere;
+			svg {
+				color: #ff4931;
+				flex-shrink: 0;
+			}
+		}
+		.agent-profile-bio {
+			margin: 18px 0 24px;
+			color: #69717d;
+			font-size: 14px;
+			line-height: 1.85;
+			white-space: pre-line;
+			overflow-wrap: anywhere;
+		}
+		.agent-profile-stats {
+			margin-top: auto;
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 12px;
+			> div {
 				display: flex;
-				flex-direction: row;
+				align-items: center;
+				gap: 12px;
+				padding: 20px 16px;
+				background: #fff;
+				border: 1px solid #edf0f3;
+				border-radius: 10px;
+				> svg {
+					color: #ff4931;
+					width: 29px;
+					height: 29px;
+					flex-shrink: 0;
+				}
+				> span {
+					display: flex;
+					flex-direction: column;
+					gap: 3px;
+					min-width: 0;
+				}
+				strong {
+					font-size: 25px;
+					line-height: 1.2;
+				}
+				span span {
+					color: #69717d;
+					font-size: 11px;
+				}
+			}
+		}
+		.agent-detail-notice {
+			margin-top: 24px;
+		}
+		.agent-detail-tabs {
+			margin: 40px 0 0;
+			border-bottom: 1px solid #e5e8ed;
+			.MuiTab-root {
+				font-family: inherit;
+				min-height: 64px;
+				font-size: 15px;
+				padding: 18px 24px;
+				color: #69717d;
+			}
+			.Mui-selected {
+				color: #e64731;
+				font-weight: 600;
+			}
+			.MuiTabs-indicator {
+				background: #ff4931;
+				height: 3px;
+			}
+		}
+		.agent-detail-panel {
+			padding-top: 32px;
+			&[hidden] {
+				display: none;
+			}
+			h2 {
+				font-size: 23px;
+				font-weight: 600;
+				line-height: 1.4;
+				overflow-wrap: anywhere;
+			}
+		}
+		.agent-listings-heading {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 16px;
+			margin-bottom: 24px;
+			p {
+				margin-top: 6px;
+				color: #717783;
+				font-size: 13px;
+			}
+		}
+		.agent-view-all,
+		.agent-member-link {
+			display: inline-flex;
+			justify-content: center;
+			padding: 11px 18px;
+			font-size: 12px;
+			font-weight: 600;
+			background: #fff;
+			border: 1px solid #e3e6ea;
+			border-radius: 8px;
+			flex-shrink: 0;
+		}
+		.agent-detail-cars {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 20px;
+			> .MuiAlert-root {
+				grid-column: 1 / -1;
+			}
+		}
+		.agent-detail-empty {
+			grid-column: 1 / -1;
+			text-align: center;
+			padding: 60px 20px;
+			background: #fff;
+			border: 1px solid #edf0f3;
+			border-radius: 12px;
+			svg {
+				color: #b4bbc5;
+				width: 45px;
+				height: 45px;
+			}
+			h3 {
+				margin: 12px 0;
+				font-size: 17px;
+			}
+			a {
+				font-size: 13px;
+				color: #d83d29;
+			}
+		}
+		.agent-car-skeleton {
+			padding: 12px;
+			border-radius: 10px;
+			background: #fff;
+		}
+		.agent-detail-pagination {
+			display: flex;
+			justify-content: center;
+			margin-top: 28px;
+		}
+		.agent-about-description,
+		.agent-contact-panel > p {
+			margin: 16px 0;
+			color: #69717d;
+			font-size: 14px;
+			line-height: 1.9;
+			white-space: pre-line;
+			overflow-wrap: anywhere;
+		}
+		.agent-joined {
+			color: #717783;
+			font-size: 12px;
+		}
+		.agent-reviews-heading {
+			display: flex;
+			gap: 18px;
+			align-items: center;
+			margin: 32px 0 16px;
+			span {
+				font-size: 12px;
+				color: #717783;
+			}
+		}
+		.agent-reviews {
+			background: #fff;
+			border-radius: 12px;
+			padding: 8px 24px;
+			border: 1px solid #edf0f3;
+			> p {
+				padding: 24px 0;
+				color: #717783;
+				font-size: 14px;
+			}
+		}
+		.review-card {
+			padding: 20px 0;
+			border-bottom: 1px solid #edf0f3;
+			&:last-child {
+				border: 0;
+			}
+			.review-card-info {
+				display: flex;
+				gap: 12px;
 				align-items: center;
 				img {
-					margin-right: 32px;
-					width: 135px;
-					height: 135px;
 					border-radius: 50%;
-					cursor: pointer;
 					object-fit: cover;
 				}
-				.info {
+				div {
 					display: flex;
 					flex-direction: column;
-					strong {
-						color: #181a20;
-						font-family: $font;
-						font-size: 24px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-						text-transform: capitalize;
-						cursor: pointer;
-					}
-					div {
-						margin-top: 13px;
-						display: flex;
-						flex-direction: row;
-						align-items: center;
-						img {
-							margin-right: 10px;
-							width: 16px;
-							height: 16px;
-						}
-						span {
-							color: #181a20;
-							font-family: $font;
-							font-size: 20px;
-							font-style: normal;
-							font-weight: 400;
-							line-height: 28px;
-						}
-					}
+					gap: 4px;
+				}
+				strong {
+					font-size: 14px;
+				}
+				time {
+					font-size: 11px;
+					color: #717783;
 				}
 			}
-			.agent-home-list {
-				position: relative;
+			p {
+				font-size: 13px;
+				line-height: 1.8;
+				margin-top: 12px;
+				white-space: pre-line;
+				overflow-wrap: anywhere;
+			}
+		}
+		.agent-review-form {
+			margin-top: 24px;
+			padding: 24px;
+			background: #fff;
+			border: 1px solid #edf0f3;
+			border-radius: 12px;
+			h3 {
+				font-size: 17px;
+				margin-bottom: 16px;
+			}
+			p {
+				margin-bottom: 16px;
+				font-size: 13px;
+				color: #69717d;
+			}
+			label {
+				display: block;
+				font-size: 13px;
+				margin-bottom: 8px;
+			}
+			textarea {
+				resize: vertical;
 				width: 100%;
-				margin-top: 33px;
-				padding: 0px 0 46px;
-				display: flex;
-				flex-direction: column;
-				border-radius: 12px;
-				background: #fff;
-				box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
-				.card-wrap {
-					position: relative;
-					margin-top: 35px;
-					width: 100%;
-					height: auto;
-					display: flex;
-					flex-direction: row;
-					flex-wrap: wrap;
-					.wrap-main {
-						margin-right: 0px;
-						margin-left: 5px;
-						display: flex;
-						flex-direction: row;
-						flex-wrap: wrap;
-					}
-					.agent-card {
-						position: relative;
-						margin-right: 27px;
-						margin-bottom: 34px;
-						display: flex;
-						flex-direction: column;
-						.agent-img {
-							border-radius: 12px;
-							width: 233px;
-							height: 273px;
-							background-size: cover;
-							cursor: pointer;
-							div {
-								position: absolute;
-								padding: 12px;
-								top: 12px;
-								left: 12px;
-								border-radius: 6px;
-								background: #eb6753;
-								color: #fff;
-								font-family: $font;
-								font-size: 12px;
-								font-style: normal;
-								font-weight: 600;
-								line-height: normal;
-							}
-						}
-						.agent-info {
-							margin-top: 23px;
-							display: flex;
-							flex-direction: column;
-							strong {
-								color: #181a20;
-								font-family: $font;
-								font-size: 15px;
-								font-style: normal;
-								font-weight: 600;
-								line-height: normal;
-								cursor: pointer;
-							}
-							span {
-								color: #181a20;
-								font-family: $font;
-								font-size: 15px;
-								font-style: normal;
-								font-weight: 400;
-								line-height: 28px;
-							}
-						}
-					}
-				}
-				.pagination {
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-					span {
-						margin-top: 20px;
-						color: #181a20;
-						font-family: $font;
-						font-size: 14px;
-						font-style: normal;
-						font-weight: 400;
-						line-height: 26px;
-					}
+				min-height: 120px;
+				padding: 14px;
+				font: inherit;
+				font-size: 14px;
+				border: 1px solid #dce0e6;
+				border-radius: 8px;
+				&:disabled {
+					background: #f6f7f9;
 				}
 			}
-			.review-box {
-				position: relative;
-				margin-top: 75px;
-				padding: 58px 19px;
-				width: 95%;
-				height: auto;
-				border-radius: 24px;
-				background: #f6f6f6;
-				.main-intro {
-					display: flex;
-					flex-direction: column;
-					span {
-						color: #181a20;
-						font-family: $font;
-						font-size: 30px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-						letter-spacing: 0.6px;
-						text-transform: capitalize;
-					}
-					p {
-						color: #181a20;
-						font-family: $font;
-						font-size: 14px;
-						font-style: normal;
-						font-weight: 400;
-						line-height: 26px;
-					}
+			> div {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-top: 12px;
+				gap: 12px;
+				span {
+					font-size: 12px;
+					color: #717783;
 				}
-				.review-wrap {
-					padding: 29px 25px;
-					margin-top: 57px;
-					display: flex;
-					flex-direction: column;
-					border-radius: 12px;
-					background: #fff;
-					box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
-					.title-box {
-						svg {
-							width: 10px;
-							height: 10px;
-						}
-						span {
-							margin-left: 8px;
-							color: #181a20;
-							font-family: $font;
-							font-size: 17px;
-							font-style: normal;
-							font-weight: 600;
-							line-height: normal;
-						}
-					}
-					.review-card {
-						margin-top: 20px;
-						display: flex;
-						flex-direction: column;
-						padding-bottom: 10px;
-						border-bottom: 1px solid #c4c4c4;
-						.info {
-							display: flex;
-							flex-direction: row;
-							justify-content: space-between;
-							.left {
-								display: flex;
-								flex-direction: row;
-								img {
-									width: 55px;
-									height: 59px;
-									border-radius: 50%;
-									object-fit: cover;
-								}
-								div {
-									margin-left: 8px;
-									display: flex;
-									flex-direction: column;
-									strong {
-										color: #181a20;
-										font-family: $font;
-										font-size: 15px;
-										font-style: normal;
-										font-weight: 600;
-										line-height: normal;
-									}
-									span {
-										margin-top: 4px;
-										color: #181a20;
-										font-family: $font;
-										font-size: 13px;
-										font-style: normal;
-										font-weight: 400;
-										line-height: normal;
-									}
-								}
-							}
-							.right {
-								display: flex;
-								flex-direction: row;
-								svg {
-									color: #edf023;
-								}
-							}
-						}
-						p {
-							margin-top: 10px;
-							color: #181a20;
-							font-family: $font;
-							font-size: 14px;
-							font-style: normal;
-							font-weight: 400;
-							line-height: 26px;
-						}
-					}
-					.pagination-box {
-						margin-top: 15px;
-						width: 100%;
-						height: auto;
-						display: flex;
-						justify-content: center;
-					}
-				}
-				.leave-review-config {
-					margin-top: 15px;
-					border-radius: 12px;
-					background: #fff;
-					box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
-					padding: 30px 38px;
-					.main-title {
-						color: #181a20;
-						font-family: $font;
-						font-size: 17px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-					}
-					.review-title {
-						margin-top: 20px;
-						color: #181a20;
-						font-family: $font;
-						font-size: 14px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-					}
-					textarea {
-						width: 100%;
-						height: 120px;
-						margin-top: 8px;
-						padding: 20px;
-						border-radius: 8px;
-						border: 1px solid #ddd;
-						color: #717171;
-						font-family: $font;
-						font-size: 14px;
-						font-style: normal;
-						font-weight: 400;
-						line-height: 26px;
-					}
-					.submit-btn {
-						width: 100%;
-						display: flex;
-						justify-content: flex-end;
-						button:disabled {
-							background: #dfdfdf;
-						}
-						.submit-review {
-							display: flex;
-							width: 256px;
-							margin-top: 30px;
-							padding: 16px 30px;
-							justify-content: center;
-							align-items: center;
-							gap: 10px;
-							border-radius: 12px;
-							border: 1px solid #c4c4c4;
-							cursor: pointer;
-							.title {
-								color: #181a20;
-								font-family: $font;
-								font-size: 15px;
-								font-style: normal;
-								font-weight: 600;
-								line-height: normal;
-							}
-						}
+				button {
+					background: #ed432e;
+					box-shadow: none;
+					&:disabled {
+						background: #e3e6ea;
 					}
 				}
 			}
 		}
+		.agent-contact-panel dl {
+			margin: 24px 0;
+			max-width: 650px;
+			border: 1px solid #edf0f3;
+			background: #fff;
+			border-radius: 12px;
+			padding: 6px 24px;
+			> div {
+				display: grid;
+				grid-template-columns: 120px minmax(0, 1fr);
+				padding: 18px 0;
+				gap: 12px;
+				&:not(:last-child) {
+					border-bottom: 1px solid #edf0f3;
+				}
+			}
+			dt {
+				color: #717783;
+				font-size: 13px;
+			}
+			dd {
+				margin: 0;
+				font-size: 14px;
+				overflow-wrap: anywhere;
+				a {
+					display: flex;
+					align-items: center;
+					gap: 8px;
+					color: #d83d29;
+				}
+			}
+		}
+		.agent-profile-loading {
+			display: grid;
+			grid-template-columns: 360px minmax(0, 1fr);
+			gap: 38px;
+			min-height: 550px;
+		}
+		.agent-profile-unavailable {
+			text-align: center;
+			padding: 100px 20px;
+			h1 {
+				font-size: 30px;
+			}
+			p {
+				margin: 16px 0;
+				color: #69717d;
+			}
+			a {
+				display: inline-block;
+				margin-top: 20px;
+				color: #d83d29;
+			}
+		}
 	}
+}
+@media (max-width: 1100px) {
+	#pc-wrap.agent-detail-shell,
+	#mobile-wrap.agent-detail-shell {
+		.agent-detail-page {
+			.agent-profile-overview {
+				grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+				gap: 26px;
+			}
+			.agent-profile-stats > div {
+				padding: 16px 12px;
+				gap: 8px;
+				> svg {
+					width: 24px;
+					height: 24px;
+				}
+			}
+			.agent-detail-cars {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+		}
+	}
+}
+@media (max-width: 700px) {
+	#pc-wrap.agent-detail-shell,
+	#mobile-wrap.agent-detail-shell {
+		.agent-detail-page {
+			padding-top: 24px;
+			.agent-detail-container {
+				width: calc(100% - 32px);
+			}
+			.agent-profile-overview,
+			.agent-profile-loading {
+				grid-template-columns: minmax(0, 1fr);
+				gap: 24px;
+			}
+			.agent-detail-portrait {
+				min-height: 0;
+				aspect-ratio: 1.05;
+			}
+			.agent-detail-breadcrumbs {
+				gap: 8px;
+				margin-bottom: 20px;
+				font-size: 12px;
+			}
+			.agent-profile-stats {
+				gap: 8px;
+				> div {
+					flex-direction: column;
+					align-items: flex-start;
+					padding: 14px 10px;
+					strong {
+						font-size: 23px;
+					}
+					span span {
+						font-size: 10px;
+					}
+				}
+			}
+			.agent-profile-heading {
+				gap: 6px;
+			}
+			.agent-detail-actions {
+				width: 100%;
+				.agent-contact-button {
+					flex: 1;
+				}
+			}
+			.agent-detail-tabs {
+				margin-top: 28px;
+				.MuiTab-root {
+					padding: 14px;
+					min-width: 84px;
+				}
+			}
+			.agent-detail-panel h2 {
+				font-size: 19px;
+			}
+			.agent-listings-heading {
+				align-items: flex-start;
+				.agent-view-all {
+					padding: 10px;
+				}
+			}
+			.agent-review-form {
+				padding: 18px;
+			}
+			.agent-contact-panel dl {
+				padding: 6px 18px;
+				> div {
+					grid-template-columns: 1fr;
+					gap: 8px;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 480px) {
+	#pc-wrap.agent-detail-shell,
+	#mobile-wrap.agent-detail-shell {
+		.agent-detail-page .agent-detail-cars {
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+}
+#pc-wrap.agent-detail-shell, #mobile-wrap.agent-detail-shell {
+ .agent-detail-page {
+  .agent-detail-actions .agent-contact-button { color: #fff; }
+  .agent-detail-panel .cars-listing-title h2 { font-size: 14px; line-height: 22px; }
+ }
 }

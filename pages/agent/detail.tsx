@@ -1,340 +1,534 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
-import { NextPage } from 'next';
-import useDeviceDetect from '../../libs/hooks/useDeviceDetect';
-import withLayoutBasic from '../../libs/components/layout/LayoutBasic';
-import CarBigCard from '../../libs/components/common/CarBigCard';
-import ReviewCard from '../../libs/components/agent/ReviewCard';
-import { Box, Button, Pagination, Stack, Typography } from '@mui/material';
-import StarIcon from '@mui/icons-material/Star';
+﻿import React, { useEffect, useRef, useState } from 'react';
+import { GetStaticProps, NextPage } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { Car } from '../../libs/types/car/car';
-import { Member } from '../../libs/types/member/member';
-import { userVar } from '../../apollo/store';
-import { CarsInquiry } from '../../libs/types/car/car.input';
-import { CommentInput, CommentsInquiry } from '../../libs/types/comment/comment.input';
-import { Comment } from '../../libs/types/comment/comment';
-import { CommentGroup } from '../../libs/enums/comment.enum';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
-import { CREATE_COMMENT } from '../../apollo/user/mutation';
-import { LIKE_TARGET_CAR } from '../../apollo/user/mutation';
-import { GET_CARS } from '../../apollo/user/query';
-import { GET_COMMENTS, GET_MEMBER } from '../../apollo/user/query';
-import { Messages, REACT_APP_API_URL } from '../../libs/config';
-import { sweetErrorHandling, sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
-import { T } from '../../libs/types/common';
+import {
+	Alert,
+	Button,
+	Dialog,
+	DialogContent,
+	DialogTitle,
+	IconButton,
+	Pagination,
+	Skeleton,
+	Tab,
+	Tabs,
+	TextField,
+} from '@mui/material';
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
+import DirectionsCarRoundedIcon from '@mui/icons-material/DirectionsCarRounded';
+import PeopleAltRoundedIcon from '@mui/icons-material/PeopleAltRounded';
+import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
+import ShareRoundedIcon from '@mui/icons-material/ShareRounded';
+import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import withLayoutBasic from '../../libs/components/layout/LayoutBasic';
+import CarCard from '../../libs/components/car/CarCard';
+import ReviewCard from '../../libs/components/agent/ReviewCard';
+import { Member } from '../../libs/types/member/member';
+import { MemberStatus, MemberType } from '../../libs/enums/member.enum';
+import { Cars } from '../../libs/types/car/car';
+import { CarsInquiry } from '../../libs/types/car/car.input';
+import { Comments } from '../../libs/types/comment/comment';
+import { CommentsInquiry } from '../../libs/types/comment/comment.input';
+import { CommentGroup } from '../../libs/enums/comment.enum';
+import { Direction } from '../../libs/enums/common.enum';
+import { userVar } from '../../apollo/store';
+import { GET_CARS, GET_COMMENTS, GET_MEMBER } from '../../apollo/user/query';
+import { CREATE_COMMENT, LIKE_TARGET_CAR, LIKE_TARGET_MEMBER } from '../../apollo/user/mutation';
+import { imageUrl } from '../../libs/config';
+import { sweetMixinErrorAlert } from '../../libs/sweetAlert';
 
-export const getStaticProps = async ({ locale }: any) => ({
-	props: {
-		...(await serverSideTranslations(locale, ['common'])),
-	},
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+	props: { ...(await serverSideTranslations(locale ?? 'en', ['common'])) },
 });
 
-const AgentDetail: NextPage = ({ initialInput, initialComment, ...props }: any) => {
-	const device = useDeviceDetect();
+type ProfileTab = 'listings' | 'about' | 'contact';
+const AgentProfile = ({ agent, refresh }: { agent: Member; refresh: () => Promise<unknown> }) => {
+	const { t, i18n } = useTranslation('common');
 	const router = useRouter();
 	const user = useReactiveVar(userVar);
-	const [mbId, setMbId] = useState<string | null>(null);
-	const [agentId, setAgentId] = useState<Member | null>(null);
-	const [searchFilter, setSearchFilter] = useState<CarsInquiry>(initialInput);
-	const [agentCars, setAgentCars] = useState<Car[]>([]);
-	const [carTotal, setCarTotal] = useState<number>(0);
-	const [commentInquiry, setCommentInquiry] = useState<CommentsInquiry>(initialComment);
-	const [agentComments, setAgentComments] = useState<Comment[]>([]);
-	const [commentTotal, setCommentTotal] = useState<number>(0);
-	const [insertCommentData, setInsertCommentData] = useState<CommentInput>({
-		commentGroup: CommentGroup.MEMBER,
-		commentContent: '',
-		commentRefId: '',
-	});
-
-	/** APOLLO REQUESTS **/
-	/** APOLLO REQUESTS **/
-	const [createComment] = useMutation(CREATE_COMMENT);
-	const [likeTargetCar] = useMutation(LIKE_TARGET_CAR);
-
-	const {
-		loading: getMemberLoading,
-		data: getMemberData,
-		error: getMemberError,
-		refetch: getMemberRefetch,
-	} = useQuery(GET_MEMBER, {
-		fetchPolicy: 'network-only',
-		variables: { input: mbId },
-		skip: !mbId,
-		onCompleted: (data: T) => {
-			setAgentId(data?.getMember);
-			setSearchFilter({
-				...searchFilter,
-				search: {
-					memberId: data?.getMember?._id,
-				},
-			});
-			setCommentInquiry({
-				...commentInquiry,
-				search: {
-					commentRefId: data?.getMember?._id,
-				},
-			});
-			setInsertCommentData({
-				...insertCommentData,
-				commentRefId: data?.getMember?._id,
-			});
-		},
-	});
-
-	const {
-		loading: getCarsLoading,
-		data: getCarsData,
-		error: getCarsError,
-		refetch: getCarsRefetch,
-	} = useQuery(GET_CARS, {
-		fetchPolicy: 'network-only',
-		variables: { input: searchFilter },
-		skip: !searchFilter.search.memberId,
-		notifyOnNetworkStatusChange: true,
-		onCompleted: (data: T) => {
-			setAgentCars(data?.getCars?.list);
-			setCarTotal(data?.getCars?.metaCounter[0]?.total ?? 0);
-		},
-	});
-
-	const {
-		loading: getCommentsLoading,
-		data: getCommentsData,
-		error: getCommentsError,
-		refetch: getCommentsRefetch,
-	} = useQuery(GET_COMMENTS, {
-		fetchPolicy: 'network-only',
-		variables: { input: commentInquiry },
-		skip: !commentInquiry.search.commentRefId,
-		notifyOnNetworkStatusChange: true,
-		onCompleted: (data: T) => {
-			setAgentComments(data?.getComments?.list);
-			setCommentTotal(data?.getComments?.metaCounter[0]?.total ?? 0);
-		},
-	});
-
-	/** LIFECYCLES **/
-	useEffect(() => {
-		if (router.query.agentId) setMbId(router.query.agentId as string);
-	}, [router.query.agentId]);
-
-	useEffect(() => {
-		if (searchFilter.search.memberId) {
-			getCarsRefetch({ input: searchFilter }).then();
-		}
-	}, [searchFilter]);
-
-	useEffect(() => {
-		if (commentInquiry.search.commentRefId) {
-			getCommentsRefetch({ input: commentInquiry }).then();
-		}
-	}, [commentInquiry]);
-
-	/** HANDLERS **/
-	const redirectToMemberPageHandler = async (memberId: string) => {
-		try {
-			if (memberId === user?._id) await router.push(`/mypage?memberId=${memberId}`);
-			else await router.push(`/member?memberId=${memberId}`);
-		} catch (error) {
-			await sweetErrorHandling(error);
-		}
+	const [tab, setTab] = useState<ProfileTab>('listings');
+	const [page, setPage] = useState(1);
+	const [commentPage, setCommentPage] = useState(1);
+	const [commentText, setCommentText] = useState('');
+	const [commentPending, setCommentPending] = useState(false);
+	const [likePending, setLikePending] = useState(false);
+	const [failedImage, setFailedImage] = useState<string | null>(null);
+	const [notice, setNotice] = useState('');
+	const [shareUrl, setShareUrl] = useState('');
+	const [contactFocus, setContactFocus] = useState(false);
+	const contactHeading = useRef<HTMLHeadingElement>(null);
+	const carsInput: CarsInquiry = {
+		page,
+		limit: 4,
+		sort: 'createdAt',
+		direction: Direction.DESC,
+		search: { memberId: agent._id },
 	};
-
-	const carPaginationChangeHandler = async (event: ChangeEvent<unknown>, value: number) => {
-		searchFilter.page = value;
-		setSearchFilter({ ...searchFilter });
-	};
-
-	const commentPaginationChangeHandler = async (event: ChangeEvent<unknown>, value: number) => {
-		commentInquiry.page = value;
-		setCommentInquiry({ ...commentInquiry });
-	};
-
-	const createCommentHandler = async () => {
-		try {
-			if (!user._id) throw new Error(Messages.error2);
-			if (user._id === agentId?._id) throw new Error('Cannot write a review for yourself');
-			await createComment({
-				variables: {
-					input: insertCommentData,
-				},
-			});
-
-			setInsertCommentData({ ...insertCommentData, commentContent: '' });
-
-			await getCommentsRefetch({ input: commentInquiry });
-		} catch (err: any) {
-			sweetErrorHandling(err).then();
-		}
-	};
-
-	const likeCarHandler = async (user: any, id: string) => {
-		try {
-			if (!id) return;
-			if (!user._id) throw new Error(Messages.error2);
-
-			await likeTargetCar({
-				variables: {
-					input: id,
-				},
-			});
-			await getCarsRefetch({ input: searchFilter });
-			await sweetTopSmallSuccessAlert('success', 800);
-		} catch (err: any) {
-			console.log('ERROR, likeCarHandler:', err.message);
-			sweetMixinErrorAlert(err.message).then();
-		}
-	};
-
-	if (device === 'mobile') {
-		return <div>AGENT DETAIL PAGE MOBILE</div>;
-	} else {
-		return (
-			<Stack className={'agent-detail-page'}>
-				<Stack className={'container'}>
-					<Stack className={'agent-info'}>
-						<img
-							src={
-								agentId?.memberImage ? `${REACT_APP_API_URL}/${agentId?.memberImage}` : '/img/profile/defaultUser.svg'
-							}
-							alt=""
-						/>
-						<Box
-							component={'div'}
-							className={'info'}
-							onClick={() => redirectToMemberPageHandler(agentId?._id as string)}
-						>
-							<strong>{agentId?.memberFullName ?? agentId?.memberNick}</strong>
-							<div>
-								<img src="/img/icons/call.svg" alt="" />
-								<span>{agentId?.memberPhone}</span>
-							</div>
-						</Box>
-					</Stack>
-					<Stack className={'agent-home-list'}>
-						<Stack className={'card-wrap'}>
-							{agentCars.map((car: Car) => {
-								return (
-									<div className={'wrap-main'} key={car?._id}>
-										<CarBigCard
-											car={car}
-											likeCarHandler={likeCarHandler}
-											key={car?._id}
-										/>
-									</div>
-								);
-							})}
-						</Stack>
-						<Stack className={'pagination'}>
-							{carTotal ? (
-								<>
-									<Stack className="pagination-box">
-										<Pagination
-											page={searchFilter.page}
-											count={Math.ceil(carTotal / searchFilter.limit) || 1}
-											onChange={carPaginationChangeHandler}
-											shape="circular"
-											color="primary"
-										/>
-									</Stack>
-									<span>
-										Total {carTotal} cars available
-									</span>
-								</>
-							) : (
-								<div className={'no-data'}>
-									<img src="/img/icons/icoAlert.svg" alt="" />
-									<p>No cars found!</p>
-								</div>
-							)}
-						</Stack>
-					</Stack>
-					<Stack className={'review-box'}>
-						<Stack className={'main-intro'}>
-							<span>Reviews</span>
-							<p>we are glad to see you again</p>
-						</Stack>
-						{commentTotal !== 0 && (
-							<Stack className={'review-wrap'}>
-								<Box component={'div'} className={'title-box'}>
-									<StarIcon />
-									<span>
-										{commentTotal} review{commentTotal > 1 ? 's' : ''}
-									</span>
-								</Box>
-								{agentComments?.map((comment: Comment) => {
-									return <ReviewCard comment={comment} key={comment?._id} />;
-								})}
-								<Box component={'div'} className={'pagination-box'}>
-									<Pagination
-										page={commentInquiry.page}
-										count={Math.ceil(commentTotal / commentInquiry.limit) || 1}
-										onChange={commentPaginationChangeHandler}
-										shape="circular"
-										color="primary"
-									/>
-								</Box>
-							</Stack>
-						)}
-
-						<Stack className={'leave-review-config'}>
-							<Typography className={'main-title'}>Leave A Review</Typography>
-							<Typography className={'review-title'}>Review</Typography>
-							<textarea
-								onChange={({ target: { value } }: any) => {
-									setInsertCommentData({ ...insertCommentData, commentContent: value });
-								}}
-								value={insertCommentData.commentContent}
-							></textarea>
-							<Box className={'submit-btn'} component={'div'}>
-								<Button
-									className={'submit-review'}
-									disabled={insertCommentData.commentContent === '' || user?._id === ''}
-									onClick={createCommentHandler}
-								>
-									<Typography className={'title'}>Submit Review</Typography>
-									<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-										<g clipPath="url(#clip0_6975_3642)">
-											<path
-												d="M16.1571 0.5H6.37936C6.1337 0.5 5.93491 0.698792 5.93491 0.944458C5.93491 1.19012 6.1337 1.38892 6.37936 1.38892H15.0842L0.731781 15.7413C0.558156 15.915 0.558156 16.1962 0.731781 16.3698C0.818573 16.4566 0.932323 16.5 1.04603 16.5C1.15974 16.5 1.27345 16.4566 1.36028 16.3698L15.7127 2.01737V10.7222C15.7127 10.9679 15.9115 11.1667 16.1572 11.1667C16.4028 11.1667 16.6016 10.9679 16.6016 10.7222V0.944458C16.6016 0.698792 16.4028 0.5 16.1571 0.5Z"
-												fill="#181A20"
-											/>
-										</g>
-										<defs>
-											<clipPath id="clip0_6975_3642">
-												<rect width="16" height="16" fill="white" transform="translate(0.601562 0.5)" />
-											</clipPath>
-										</defs>
-									</svg>
-								</Button>
-							</Box>
-						</Stack>
-					</Stack>
-				</Stack>
-			</Stack>
-		);
-	}
-};
-
-AgentDetail.defaultProps = {
-	initialInput: {
-		page: 1,
-		limit: 9,
-		search: {
-			memberId: '',
-		},
-	},
-	initialComment: {
-		page: 1,
+	const commentsInput: CommentsInquiry = {
+		page: commentPage,
 		limit: 5,
 		sort: 'createdAt',
-		direction: 'ASC',
-		search: {
-			commentRefId: '',
-		},
-	},
+		direction: Direction.DESC,
+		search: { commentRefId: agent._id },
+	};
+	const cars = useQuery<{ getCars: Cars }>(GET_CARS, {
+		variables: { input: carsInput },
+		fetchPolicy: 'network-only',
+		notifyOnNetworkStatusChange: true,
+	});
+	const comments = useQuery<{ getComments: Comments }>(GET_COMMENTS, {
+		variables: { input: commentsInput },
+		fetchPolicy: 'network-only',
+		notifyOnNetworkStatusChange: true,
+	});
+	const [likeMember] = useMutation(LIKE_TARGET_MEMBER);
+	const [likeCar] = useMutation(LIKE_TARGET_CAR);
+	const [createComment] = useMutation(CREATE_COMMENT);
+	const name = agent.memberFullName?.trim() || agent.memberNick;
+	const portrait = agent.memberImage ? imageUrl(agent.memberImage) : '';
+	const fallback = !portrait || failedImage === portrait;
+	const liked = Boolean(agent.meLiked?.[0]?.myFavorite);
+	const carTotal = cars.data?.getCars.metaCounter?.[0]?.total ?? 0;
+	const commentTotal = comments.data?.getComments.metaCounter?.[0]?.total ?? 0;
+	const phone = agent.memberPhone?.trim() ?? '';
+	const phoneHref = phone.replace(/[^\d+]/g, '');
+	const memberDate = new Date(agent.createdAt);
+	const joined = Number.isNaN(memberDate.getTime())
+		? ''
+		: new Intl.DateTimeFormat(i18n.language === 'kr' ? 'ko' : i18n.language, { month: 'long', year: 'numeric' }).format(
+				memberDate,
+		  );
+	const allCarsHref = { pathname: '/car', query: { input: JSON.stringify({ ...carsInput, page: 1, limit: 9 }) } };
+	useEffect(() => {
+		if (tab !== 'contact' || !contactFocus) return;
+		const frame = requestAnimationFrame(() => {
+			const element = contactHeading.current;
+			if (element) {
+				const navHeight = document.querySelector('#top')?.getBoundingClientRect().height ?? 0;
+				window.scrollTo({
+					top: element.getBoundingClientRect().top + window.scrollY - navHeight - 24,
+					behavior: 'auto',
+				});
+				element.focus({ preventScroll: true });
+			}
+			setContactFocus(false);
+		});
+		return () => cancelAnimationFrame(frame);
+	}, [contactFocus, tab]);
+	const toggleLike = async () => {
+		if (likePending) return;
+		if (!user._id) {
+			await sweetMixinErrorAlert(t('Please login first!'));
+			return;
+		}
+		setLikePending(true);
+		try {
+			await likeMember({ variables: { input: agent._id } });
+			await refresh();
+		} catch (error: unknown) {
+			await sweetMixinErrorAlert(error instanceof Error ? error.message : t('Something went wrong!'));
+		} finally {
+			setLikePending(false);
+		}
+	};
+	const likeCarHandler = async (viewer: { _id: string }, id: string) => {
+		try {
+			if (!viewer._id) throw new Error(t('Please login first!'));
+			await likeCar({ variables: { input: id } });
+			await cars.refetch({ input: carsInput });
+		} catch (error: unknown) {
+			await sweetMixinErrorAlert(error instanceof Error ? error.message : t('Something went wrong!'));
+		}
+	};
+	const share = async () => {
+		const url = new URL(window.location.href);
+		url.search = new URLSearchParams({ agentId: agent._id }).toString();
+		url.hash = '';
+		try {
+			if (navigator.share) await navigator.share({ title: name, url: url.href });
+			else if (navigator.clipboard?.writeText) {
+				await navigator.clipboard.writeText(url.href);
+				setNotice('Profile link copied');
+			} else setShareUrl(url.href);
+		} catch (error: unknown) {
+			if (!(error instanceof Error && error.name === 'AbortError')) setShareUrl(url.href);
+		}
+	};
+	const submitComment = async (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		const content = commentText.trim();
+		if (!user._id || user._id === agent._id || !content || content.length > 100 || commentPending) return;
+		setCommentPending(true);
+		try {
+			await createComment({
+				variables: { input: { commentGroup: CommentGroup.MEMBER, commentContent: content, commentRefId: agent._id } },
+			});
+			setCommentText('');
+			setCommentPage(1);
+			await comments.refetch({ input: { ...commentsInput, page: 1 } });
+			setNotice('Review submitted');
+		} catch (error: unknown) {
+			await sweetMixinErrorAlert(error instanceof Error ? error.message : t('Something went wrong!'));
+		} finally {
+			setCommentPending(false);
+		}
+	};
+	return (
+		<>
+			<nav className="agent-detail-breadcrumbs" aria-label={t('Breadcrumb')}>
+				<Link href="/">{t('Home')}</Link>
+				<span aria-hidden="true">›</span>
+				<Link href="/agent">{t('Agents')}</Link>
+				<span aria-hidden="true">›</span>
+				<span aria-current="page">{name}</span>
+			</nav>
+			<div className="agent-profile-overview">
+				<div className={`agent-detail-portrait${fallback ? ' agent-detail-avatar' : ''}`}>
+					<Image
+						src={fallback ? '/img/profile/defaultUser.svg' : portrait}
+						alt={name}
+						fill
+						unoptimized
+						sizes="(max-width: 700px) 100vw, 380px"
+						onError={() => {
+							if (!fallback) setFailedImage(portrait);
+						}}
+					/>
+					<IconButton
+						className="agent-portrait-like"
+						aria-label={t(liked ? 'Unlike agent' : 'Like agent')}
+						aria-pressed={liked}
+						disabled={likePending}
+						onClick={() => void toggleLike()}
+					>
+						{liked ? <FavoriteRoundedIcon /> : <FavoriteBorderRoundedIcon />}
+					</IconButton>
+				</div>
+				<div className="agent-profile-content">
+					<div className="agent-profile-heading">
+						<div>
+							<span className="agent-detail-role">{t('Car Agent')}</span>
+							<h1>{name}</h1>
+							<span className="agent-detail-nickname">@{agent.memberNick}</span>
+						</div>
+						<div className="agent-detail-actions">
+							<Button
+								className="agent-contact-button"
+								variant="contained"
+								onClick={() => {
+									setTab('contact');
+									setContactFocus(true);
+								}}
+							>
+								{t('Contact Agent')}
+							</Button>
+							<Button
+								className="agent-like-button"
+								aria-pressed={liked}
+								disabled={likePending}
+								startIcon={liked ? <FavoriteRoundedIcon /> : <FavoriteBorderRoundedIcon />}
+								onClick={() => void toggleLike()}
+							>
+								{t(liked ? 'Liked' : 'Like')}
+							</Button>
+							<IconButton className="agent-share-button" aria-label={t('Share profile')} onClick={() => void share()}>
+								<ShareRoundedIcon />
+							</IconButton>
+						</div>
+					</div>
+					<div className="agent-detail-location">
+						<LocationOnRoundedIcon />
+						<span>{agent.memberAddress?.trim() || t('Location not provided')}</span>
+					</div>
+					<p className="agent-profile-bio">{agent.memberDesc?.trim() || t('No description provided')}</p>
+					<div className="agent-profile-stats">
+						<div>
+							<DirectionsCarRoundedIcon />
+							<span>
+								<strong>{cars.loading || cars.error ? '—' : carTotal}</strong>
+								<span>{t('Cars Listed')}</span>
+							</span>
+						</div>
+						<div>
+							<PeopleAltRoundedIcon />
+							<span>
+								<strong>{agent.memberFollowers}</strong>
+								<span>{t('Followers')}</span>
+							</span>
+						</div>
+						<div>
+							<VisibilityRoundedIcon />
+							<span>
+								<strong>{agent.memberViews}</strong>
+								<span>{t('Profile views')}</span>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			{notice && (
+				<Alert className="agent-detail-notice" severity="success" onClose={() => setNotice('')}>
+					{t(notice)}
+				</Alert>
+			)}
+			<Tabs
+				className="agent-detail-tabs"
+				value={tab}
+				onChange={(_, value: ProfileTab) => setTab(value)}
+				aria-label={t('Agent information')}
+				variant="scrollable"
+				scrollButtons="auto"
+			>
+				{(['listings', 'about', 'contact'] as const).map((value, index) => (
+					<Tab
+						key={value}
+						value={value}
+						label={t(['Listings', 'About', 'Contact'][index])}
+						id={`agent-tab-${value}`}
+						aria-controls={`agent-panel-${value}`}
+					/>
+				))}
+			</Tabs>
+			<section
+				className="agent-detail-panel"
+				role="tabpanel"
+				id="agent-panel-listings"
+				aria-labelledby="agent-tab-listings"
+				hidden={tab !== 'listings'}
+				tabIndex={0}
+			>
+				<div className="agent-listings-heading">
+					<div>
+						<h2>{t('Cars by agent', { name })}</h2>
+						<p>{cars.loading ? t('Updating cars') : cars.error ? '' : t('Cars available', { count: carTotal })}</p>
+					</div>
+					<Link className="agent-view-all" href={allCarsHref}>
+						{t('View All')}
+					</Link>
+				</div>
+				<div className="agent-detail-cars" aria-busy={cars.loading}>
+					{cars.loading ? (
+						Array.from({ length: 4 }, (_, index) => (
+							<div className="agent-car-skeleton" key={index}>
+								<Skeleton variant="rectangular" height={190} />
+								<Skeleton height={32} />
+								<Skeleton height={80} />
+							</div>
+						))
+					) : cars.error ? (
+						<Alert severity="error" action={<Button onClick={() => void cars.refetch()}>{t('Retry')}</Button>}>
+							{t('Cars could not be loaded')}
+						</Alert>
+					) : cars.data?.getCars.list.length ? (
+						cars.data.getCars.list.map((car) => (
+							<CarCard browse car={car} key={car._id} likeCarHandler={likeCarHandler} />
+						))
+					) : (
+						<div className="agent-detail-empty">
+							<DirectionsCarRoundedIcon />
+							<h3>{t('No active cars from this agent')}</h3>
+							<Link href="/car">{t('Browse all cars')}</Link>
+						</div>
+					)}
+				</div>
+				{!cars.loading && !cars.error && carTotal > 4 && (
+					<Pagination
+						className="agent-detail-pagination"
+						page={page}
+						count={Math.ceil(carTotal / 4)}
+						onChange={(_, value) => setPage(value)}
+					/>
+				)}
+			</section>
+			<section
+				className="agent-detail-panel agent-about-panel"
+				role="tabpanel"
+				id="agent-panel-about"
+				aria-labelledby="agent-tab-about"
+				hidden={tab !== 'about'}
+				tabIndex={0}
+			>
+				<h2>{t('About agent', { name })}</h2>
+				<p className="agent-about-description">{agent.memberDesc?.trim() || t('No description provided')}</p>
+				{joined && <p className="agent-joined">{t('Member since', { date: joined })}</p>}
+				<div className="agent-reviews-heading">
+					<h2>{t('Reviews')}</h2>
+					<span>
+						{comments.loading ? '…' : comments.error ? '' : t('Agent reviews count', { count: commentTotal })}
+					</span>
+				</div>
+				<div className="agent-reviews" aria-busy={comments.loading}>
+					{comments.loading ? (
+						<Skeleton height={120} />
+					) : comments.error ? (
+						<Alert severity="error" action={<Button onClick={() => void comments.refetch()}>{t('Retry')}</Button>}>
+							{t('Reviews could not be loaded')}
+						</Alert>
+					) : comments.data?.getComments.list.length ? (
+						comments.data.getComments.list.map((comment) => <ReviewCard comment={comment} key={comment._id} />)
+					) : (
+						<p>{t('No reviews yet')}</p>
+					)}
+				</div>
+				{!comments.loading && !comments.error && commentTotal > 5 && (
+					<Pagination
+						className="agent-detail-pagination"
+						page={commentPage}
+						count={Math.ceil(commentTotal / 5)}
+						onChange={(_, value) => setCommentPage(value)}
+					/>
+				)}
+				<form className="agent-review-form" onSubmit={submitComment}>
+					<h3>{t('Leave A Review')}</h3>
+					{!user._id ? (
+						<p>
+							<Link href="/account/join">{t('Login to leave a review')}</Link>
+						</p>
+					) : user._id === agent._id ? (
+						<p>{t('Cannot write a review for yourself')}</p>
+					) : null}
+					<label htmlFor="agent-review-content">{t('Review')}</label>
+					<textarea
+						id="agent-review-content"
+						maxLength={100}
+						value={commentText}
+						onChange={(event) => setCommentText(event.target.value)}
+						disabled={!user._id || user._id === agent._id || commentPending}
+					/>
+					<div>
+						<span>{commentText.length}/100</span>
+						<Button
+							type="submit"
+							variant="contained"
+							disabled={!user._id || user._id === agent._id || !commentText.trim() || commentPending}
+						>
+							{t(commentPending ? 'Submitting review' : 'Submit Review')}
+						</Button>
+					</div>
+				</form>
+			</section>
+			<section
+				className="agent-detail-panel agent-contact-panel"
+				role="tabpanel"
+				id="agent-panel-contact"
+				aria-labelledby="agent-tab-contact"
+				hidden={tab !== 'contact'}
+			>
+				<h2 ref={contactHeading} tabIndex={-1}>
+					{t('Contact Agent')}
+				</h2>
+				<p>{t('Contact agent directly')}</p>
+				<dl>
+					<div>
+						<dt>{t('Phone')}</dt>
+						<dd>
+							{phoneHref.length >= 3 ? (
+								<a href={`tel:${phoneHref}`}>
+									<PhoneRoundedIcon />
+									{phone}
+								</a>
+							) : (
+								t('Phone not provided')
+							)}
+						</dd>
+					</div>
+					<div>
+						<dt>{t('Location')}</dt>
+						<dd>{agent.memberAddress?.trim() || t('Location not provided')}</dd>
+					</div>
+				</dl>
+				<Link
+					className="agent-member-link"
+					href={{ pathname: user._id === agent._id ? '/mypage' : '/member', query: { memberId: agent._id } }}
+				>
+					{t('View member profile')}
+				</Link>
+			</section>
+			<Dialog
+				open={Boolean(shareUrl)}
+				onClose={() => setShareUrl('')}
+				fullWidth
+				maxWidth="sm"
+				aria-labelledby="agent-share-title"
+			>
+				<DialogTitle id="agent-share-title">
+					{t('Share profile')}
+					<IconButton aria-label={t('Close')} onClick={() => setShareUrl('')} sx={{ float: 'right' }}>
+						<CloseRoundedIcon />
+					</IconButton>
+				</DialogTitle>
+				<DialogContent>
+					<p>{t('Copy this profile link')}</p>
+					<TextField
+						autoFocus
+						fullWidth
+						value={shareUrl}
+						inputProps={{ readOnly: true, 'aria-label': t('Profile link') }}
+						onFocus={(event) => event.target.select()}
+					/>
+				</DialogContent>
+			</Dialog>
+		</>
+	);
 };
 
+const AgentDetail: NextPage = () => {
+	const router = useRouter();
+	const { t } = useTranslation('common');
+	const [ready, setReady] = useState(false);
+	useEffect(() => setReady(true), []);
+	const rawId = router.query.agentId;
+	const agentId = typeof rawId === 'string' && /^[a-f\d]{24}$/i.test(rawId) ? rawId : '';
+	const profile = useQuery<{ getMember: Member }>(GET_MEMBER, {
+		variables: { input: agentId },
+		skip: !ready || !router.isReady || !agentId,
+		fetchPolicy: 'network-only',
+		notifyOnNetworkStatusChange: true,
+	});
+	const agent = profile.data?.getMember;
+	const pending = !ready || !router.isReady || (profile.loading && agent?._id !== agentId);
+	return (
+		<main className="agent-detail-page">
+			<div className="agent-detail-container">
+				{pending ? (
+					<div className="agent-profile-loading" aria-label={t('Loading agents')} aria-busy="true">
+						<Skeleton variant="rectangular" height={360} />
+						<div>
+							<Skeleton height={75} />
+							<Skeleton height={120} />
+							<Skeleton height={90} />
+						</div>
+					</div>
+				) : !agentId ? (
+					<div className="agent-profile-unavailable">
+						<h1>{t('Agent profile unavailable')}</h1>
+						<p>{t('Choose an agent to view their profile')}</p>
+						<Link href="/agent">{t('Browse agents')}</Link>
+					</div>
+				) : profile.error ? (
+					<Alert severity="error" action={<Button onClick={() => void profile.refetch()}>{t('Retry')}</Button>}>
+						{t('Agent profile could not be loaded')} <Link href="/agent">{t('Browse agents')}</Link>
+					</Alert>
+				) : agent?._id === agentId &&
+				  agent.memberType === MemberType.AGENT &&
+				  agent.memberStatus === MemberStatus.ACTIVE ? (
+					<AgentProfile key={agentId} agent={agent} refresh={() => profile.refetch()} />
+				) : (
+					<div className="agent-profile-unavailable">
+						<h1>{t('Agent profile unavailable')}</h1>
+						<Link href="/agent">{t('Browse agents')}</Link>
+					</div>
+				)}
+			</div>
+		</main>
+	);
+};
 export default withLayoutBasic(AgentDetail);

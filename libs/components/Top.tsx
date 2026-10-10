@@ -25,7 +25,7 @@ const Top = () => {
 	const router = useRouter();
 	const isHomepage = router.pathname === '/';
 	const isCarsPage = router.pathname === '/car';
-	const isAgentsPage = router.pathname === '/agent';
+	const isAgentsPage = router.pathname === '/agent' || router.pathname === '/agent/detail';
 	const isMarketplacePage = isHomepage || isCarsPage || isAgentsPage;
 	const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
 	const [lang, setLang] = useState<string | null>('en');

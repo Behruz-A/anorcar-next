@@ -24,6 +24,7 @@ const withLayoutBasic = (Component: any) => {
 		const device = useDeviceDetect();
 		const authHeader = router.pathname === '/account/join';
 		const marketplaceHeader = router.pathname === '/car' || router.pathname === '/agent';
+		const agentDetail = router.pathname === '/agent/detail';
 		const user = useReactiveVar(userVar);
 
 		const memoizedValues = useMemo(() => {
@@ -106,7 +107,7 @@ const withLayoutBasic = (Component: any) => {
 						<title>ANORCAR</title>
 						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="mobile-wrap">
+					<Stack id="mobile-wrap" className={agentDetail ? 'agent-detail-shell' : undefined}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>
@@ -129,12 +130,12 @@ const withLayoutBasic = (Component: any) => {
 						<title>ANORCAR</title>
 						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="pc-wrap">
+					<Stack id="pc-wrap" className={agentDetail ? 'agent-detail-shell' : undefined}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>
 
-						{marketplaceHeader ? (
+						{agentDetail ? null : marketplaceHeader ? (
 							marketplaceHero
 						) : (
 							<Stack
