@@ -116,7 +116,7 @@ const CS: NextPage = () => {
 						<p>{t('Find the right answer or reach out to our team.')}</p>
 					</div>
 					<div className="cs-support-actions">
-						<button type="button" className="cs-support-primary" disabled title={t('AI assistant is coming soon.')}>
+						<button type="button" className="cs-support-primary" onClick={() => window.dispatchEvent(new Event('anorcar:open-ai'))}>
 							{t('Ask AI Assistant')}
 							<EastRounded fontSize="small" />
 						</button>

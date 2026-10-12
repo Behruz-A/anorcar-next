@@ -1,5 +1,11 @@
 import { gql } from '@apollo/client';
 
+export const ASK_AI_ASSISTANT = gql`
+	mutation AskAiAssistant($input: AiChatInput!) {
+		askAiAssistant(input: $input) { answer }
+	}
+`;
+
 export const REFRESH_ACCESS_TOKEN = gql`
 	mutation RefreshAccessToken {
 		refreshAccessToken { accessToken }

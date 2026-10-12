@@ -10,6 +10,7 @@ import '../scss/app.scss';
 import '../scss/pc/main.scss';
 import '../scss/mobile/main.scss';
 import '../scss/car.scss';
+import '../scss/support-chat.scss';
 
 const App = ({ Component, pageProps }: AppProps) => {
 	// @ts-ignore

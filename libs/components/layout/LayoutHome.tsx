@@ -10,7 +10,7 @@ import Hero from '../homepage/Hero';
 import { userVar } from '../../../apollo/store';
 import { useReactiveVar } from '@apollo/client';
 import { hydrateUser } from '../../auth';
-import Chat from '../Chat';
+import SupportChat from '../SupportChat';
 //@ts-ignore
 import 'swiper/css';
 //@ts-ignore
@@ -50,6 +50,8 @@ const withLayoutMain = (Component: any) => {
 							<Component {...props} />
 						</Stack>
 
+						<SupportChat />
+
 						<Stack id={'footer'}>
 							<Footer />
 						</Stack>
@@ -77,7 +79,7 @@ const withLayoutMain = (Component: any) => {
 							<Component {...props} />
 						</Stack>
 
-						<Chat />
+						<SupportChat />
 
 						<Stack id={'footer'}>
 							<Footer />

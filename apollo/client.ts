@@ -163,6 +163,8 @@ function createIsomorphicLink() {
 				});
 			}
 			if (networkError instanceof SessionExpiredError || networkError instanceof SessionChangedError) return;
+			// The AI panel presents its own short, localized inline errors.
+			if (operation.operationName === 'AskAiAssistant') return;
 			if (graphQLErrors) {
 				graphQLErrors.map(({ message, locations, path, extensions }) => {
 					console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`);

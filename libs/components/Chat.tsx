@@ -13,6 +13,8 @@ import { Member } from '../types/member/member';
 import { Messages, REACT_APP_API_URL } from '../config';
 import { sweetErrorAlert } from '../sweetAlert';
 import { getValidJwtToken } from '../auth';
+import { useTranslation } from 'next-i18next';
+import CloseIcon from '@mui/icons-material/Close';
 
 const NewMessage = (type: any) => {
 	if (type === 'right') {
@@ -51,13 +53,16 @@ interface InfoPayload {
 	action: string;
 }
 
-const Chat = () => {
+const Chat = ({ open: controlledOpen, onOpenChange, hideLauncher = false }: { open?: boolean; onOpenChange?: (open: boolean) => void; hideLauncher?: boolean } = {}) => {
+	const { t: translate } = useTranslation('common');
+	const t = (key: string) => translate(key, { lng: router.locale ?? 'en' });
 	const chatContentRef = useRef<HTMLDivElement>(null);
 	const [messagesList, setMessagesList] = useState<MessagePayload[]>([]);
 	const [onlineUsers, setOnlineUsers] = useState<number>(4);
 
 	const [messageInput, setMessageInput] = useState<string>('');
-	const [open, setOpen] = useState(false);
+	const [localOpen, setOpen] = useState(false);
+	const open = controlledOpen ?? localOpen;
 	const [openButton, setOpenButton] = useState(false);
 	const router = useRouter();
 	const user = useReactiveVar(userVar);
@@ -66,6 +71,7 @@ const Chat = () => {
 	/** LIFECYCLES **/
 
 	useEffect(() => {
+		if (!socket) return;
 		socket.onmessage = (msg) => {
 			const data = JSON.parse(msg.data);
 			console.log('WebSocket Message:', data);
@@ -101,7 +107,8 @@ const Chat = () => {
 
 	/** HANDLERS **/
 	const handleOpenChat = () => {
-		setOpen((prevState) => !prevState);
+		if (onOpenChange) onOpenChange(!open);
+		else setOpen((prevState) => !prevState);
 	};
 
 	const getInputMessageHandler = useCallback(
@@ -143,21 +150,22 @@ const Chat = () => {
 
 	return (
 		<Stack className="chatting">
-			{openButton ? (
+			{openButton && !hideLauncher ? (
 				<button className="chat-button" onClick={handleOpenChat}>
 					{open ? <CloseFullscreenIcon /> : <MarkChatUnreadIcon />}
 				</button>
 			) : null}
-			<Stack className={`chat-frame ${open ? 'open' : ''}`}>
+			<Stack id="anorcar-live-panel" role="dialog" aria-label={t('Live Chat')} aria-hidden={!open} className={`chat-frame ${open ? 'open' : ''}`}>
 				<Box className={'chat-top'} component={'div'}>
-					<div style={{ fontFamily: 'Nunito' }}>Online Chat</div>
+					<div style={{ fontFamily: 'Nunito' }}>{t('Live Chat')}</div>
 					<RippleBadge style={{ margin: '-18px 0 0 21px' }} badgeContent={onlineUsers} />
+					{hideLauncher && <button type="button" className="live-chat-close" aria-label={t('Close Live Chat')} onClick={handleOpenChat}><CloseIcon /></button>}
 				</Box>
 				<Box className={'chat-content'} id="chat-content" ref={chatContentRef} component={'div'}>
 					<ScrollableFeed>
 						<Stack className={'chat-main'}>
 							<Box flexDirection={'row'} style={{ display: 'flex' }} sx={{ m: '10px 0px' }} component={'div'}>
-								<div className={'welcome'}>Welcome to Live chat!</div>
+								<div className={'welcome'}>{t('Welcome to Live chat!')}</div>
 							</Box>
 							{messagesList.map((ele: MessagePayload) => {
 								const { text, memberData } = ele;
@@ -191,12 +199,13 @@ const Chat = () => {
 						type={'text'}
 						name={'message'}
 						className={'msg-input'}
-						placeholder={'Type message'}
+						placeholder={t('Type message')}
+						aria-label={t('Live Chat message')}
 						value={messageInput}
 						onChange={getInputMessageHandler}
 						onKeyDown={getKeyHandler}
 					/>
-					<button className={'send-msg-btn'} onClick={onClickHandler}>
+					<button type="button" aria-label={t('Send Live Chat message')} className={'send-msg-btn'} onClick={onClickHandler}>
 						<SendIcon style={{ color: '#fff' }} />
 					</button>
 				</Box>
