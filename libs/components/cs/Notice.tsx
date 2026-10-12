@@ -10,6 +10,7 @@ import { BoardArticles } from '../../types/board-article/board-article';
 import { BoardArticleCategory } from '../../enums/board-article.enum';
 import { Direction } from '../../enums/common.enum';
 import { articleExcerpt } from '../../community';
+import { imageUrl } from '../../config';
 
 const Notice = () => {
 	const { t, i18n } = useTranslation('common');
@@ -31,8 +32,8 @@ const Notice = () => {
 		<section className="cs-updates" id="cs-updates" aria-labelledby="cs-updates-heading">
 			<div className="cs-section-heading">
 				<div>
-					<h2 id="cs-updates-heading">{t('From the community')}</h2>
-					<p>{t('The latest news shared by ANORCAR members.')}</p>
+					<h2 id="cs-updates-heading">{t('Latest from ANORCAR')}</h2>
+					<p>{t('Updates, insights, and stories from our community.')}</p>
 				</div>
 				<Link className="cs-answer-link" href="/community?articleCategory=NEWS">
 					{t('View all news')}
@@ -81,26 +82,39 @@ const Notice = () => {
 									query: { id: article._id, articleCategory: article.articleCategory },
 								}}
 							>
-								<div className="cs-update-meta">
-									<span>{t('Community news')}</span>
-									<time dateTime={article.createdAt}>
-										{Number.isNaN(Date.parse(article.createdAt))
-											? ''
-											: new Date(article.createdAt).toLocaleDateString(
-													i18n.language === 'kr' ? 'ko-KR' : i18n.language === 'ru' ? 'ru-RU' : 'en-US',
-													{ timeZone: 'Asia/Seoul', year: 'numeric', month: 'short', day: 'numeric' },
-											  )}
-									</time>
+								<div className="cs-update-image">
+									<img
+										src={article.articleImage ? imageUrl(article.articleImage) : '/img/car/hero.svg'}
+										alt={article.articleTitle}
+										loading="lazy"
+										onError={(event) => {
+											if (!event.currentTarget.src.endsWith('/img/car/hero.svg'))
+												event.currentTarget.src = '/img/car/hero.svg';
+										}}
+									/>
 								</div>
-								<h3>{article.articleTitle}</h3>
-								<p>
-									{articleExcerpt(article.articleContent) ||
-										t('Read the latest post and join the conversation with our community.')}
-								</p>
-								<span className="cs-topic-action">
-									{t('Read post')}
-									<EastRounded fontSize="small" />
-								</span>
+								<div className="cs-update-copy">
+									<div className="cs-update-meta">
+										<span>{t('Community news')}</span>
+										<time dateTime={article.createdAt}>
+											{Number.isNaN(Date.parse(article.createdAt))
+												? ''
+												: new Date(article.createdAt).toLocaleDateString(
+														i18n.language === 'kr' ? 'ko-KR' : i18n.language === 'ru' ? 'ru-RU' : 'en-US',
+														{ timeZone: 'Asia/Seoul', year: 'numeric', month: 'short', day: 'numeric' },
+												  )}
+										</time>
+									</div>
+									<h3>{article.articleTitle}</h3>
+									<p>
+										{articleExcerpt(article.articleContent) ||
+											t('Read the latest post and join the conversation with our community.')}
+									</p>
+									<span className="cs-topic-action">
+										{t('Read post')}
+										<EastRounded fontSize="small" />
+									</span>
+								</div>
 							</Link>
 						))}
 					</div>

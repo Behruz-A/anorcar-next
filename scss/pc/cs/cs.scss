@@ -37,10 +37,9 @@
 		cursor: pointer;
 	}
 	.cs-page a:focus-visible,
-	.cs-page button:focus-visible,
-	.cs-page input:focus-visible {
-		outline: 3px solid #f04432;
-		outline-offset: 4px;
+	.cs-page button:focus-visible {
+		outline: 2px solid #171a20;
+		outline-offset: 3px;
 	}
 	.cs-hero {
 		position: relative;
@@ -432,7 +431,13 @@
 		.cs-hero {
 			padding: 180px 0 48px;
 			background-position: 65% center;
-			background-image: linear-gradient(90deg, rgba(24, 26, 32, 0.82) 0%, rgba(24, 26, 32, 0.7) 55%, rgba(24, 26, 32, 0.42) 100%), url('/img/car/helphero1.png');
+			background-image: linear-gradient(
+					90deg,
+					rgba(24, 26, 32, 0.82) 0%,
+					rgba(24, 26, 32, 0.7) 55%,
+					rgba(24, 26, 32, 0.42) 100%
+				),
+				url('/img/car/helphero1.png');
 			text-align: center;
 		}
 		.cs-popular {
@@ -530,5 +535,597 @@
 		.cs-hero {
 			padding-top: 205px;
 		}
+	}
+}
+// Reference refinement is limited to the content below the existing hero.
+#pc-wrap.cs-shell .cs-body,
+#mobile-wrap.cs-shell .cs-body {
+	padding-top: 34px;
+	.cs-section-heading {
+		margin-bottom: 20px;
+	}
+	h2 {
+		font-size: 28px;
+	}
+	.cs-topics {
+		padding-bottom: 30px;
+	}
+	.cs-topic-grid {
+		gap: 20px;
+	}
+	.cs-topic-card {
+		padding: 24px 28px;
+		min-height: 200px;
+		box-shadow: 0 3px 16px rgba(24, 26, 32, 0.035);
+	}
+	.cs-topic-card:hover {
+		border-color: #f04432;
+	}
+	.cs-topic-icon {
+		margin-bottom: 14px;
+		width: 44px;
+		height: 44px;
+	}
+	.cs-topic-card p {
+		margin-bottom: 20px;
+	}
+	.cs-faq {
+		margin: 8px 0 28px;
+		padding: 30px;
+		background: #fff;
+		border: 1px solid #e4e7ec;
+		border-radius: 16px;
+		grid-template-columns: 280px minmax(0, 1fr);
+		gap: 36px;
+	}
+	.cs-faq-aside > p {
+		margin-top: 10px;
+	}
+	.cs-contact-card {
+		background: #f7f8fa;
+		border: 0;
+		padding: 24px;
+		margin-top: 22px;
+	}
+	.cs-contact-card > svg {
+		color: #f04432;
+		background: #ffe9e5;
+		width: 48px;
+		height: 48px;
+		padding: 10px;
+	}
+	.cs-contact-card h3 {
+		font-size: 15px;
+	}
+	.cs-contact-card p {
+		margin-bottom: 18px;
+	}
+	.cs-contact-button {
+		color: #181a20;
+		background: #fff;
+		border: 1px solid #e1e4ea;
+	}
+	.cs-contact-button:hover {
+		border-color: #f04432;
+		background: #fff;
+	}
+	.cs-category-filters {
+		gap: 6px;
+		margin-bottom: 14px;
+	}
+	.cs-category-filters button {
+		font-size: 12px;
+		padding: 8px 11px;
+		min-height: 36px;
+	}
+	.cs-faq-list {
+		gap: 9px;
+	}
+	.cs-faq-list .MuiAccordionSummary-root {
+		min-height: 50px;
+	}
+	.cs-faq-list .MuiAccordionSummary-content {
+		margin: 10px 0;
+		font-size: 14px;
+	}
+	.cs-view-questions {
+		margin-top: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		width: 100%;
+		padding: 14px;
+		border: 0;
+		border-radius: 7px;
+		color: #d73727;
+		font-size: 13px;
+		background: #f7f8fa;
+	}
+	.cs-view-questions:hover {
+		background: #ffe9e5;
+	}
+	.cs-support-banner {
+		display: flex;
+		align-items: center;
+		gap: 22px;
+		padding: 30px 32px;
+		border-radius: 14px;
+		background: #181a20;
+		color: #fff;
+		margin-top: 0;
+		box-shadow: 0 8px 20px rgba(24, 26, 32, 0.08);
+	}
+	.cs-support-symbol {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 64px;
+		height: 64px;
+		flex-shrink: 0;
+		border-radius: 14px;
+		background: #f04432;
+	}
+	.cs-support-symbol svg {
+		width: 32px;
+		height: 32px;
+	}
+	.cs-support-banner h2 {
+		font-size: 26px;
+	}
+	.cs-support-banner p {
+		margin-top: 6px;
+		color: #d7d9df;
+		font-size: 13px;
+		line-height: 1.7;
+	}
+	.cs-support-actions {
+		margin-left: auto;
+		display: flex;
+		gap: 14px;
+		flex-shrink: 0;
+	}
+	.cs-support-actions a,
+	.cs-support-actions button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		min-height: 48px;
+		padding: 12px 22px;
+		font-size: 13px;
+		font-weight: 500;
+		border-radius: 8px;
+		color: #fff;
+	}
+	.cs-support-primary {
+		background: #f04432;
+		border: 1px solid #f04432;
+	}
+	.cs-support-primary:hover {
+		background: #d63222;
+	}
+	.cs-support-primary:disabled {
+		cursor: default;
+		opacity: 0.75;
+	}
+	.cs-support-primary:disabled:hover {
+		background: #f04432;
+	}
+	.cs-support-secondary {
+		border: 1px solid #7e828b;
+	}
+	.cs-support-secondary:hover {
+		border-color: #fff;
+	}
+	.cs-updates {
+		padding-top: 36px;
+	}
+	.cs-update-card {
+		padding: 0;
+		overflow: hidden;
+	}
+	.cs-update-image {
+		height: 180px;
+		overflow: hidden;
+		background: #e8ebef;
+	}
+	.cs-update-image img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.cs-update-copy {
+		padding: 20px;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	.cs-update-meta {
+		margin-bottom: 12px;
+	}
+	.cs-update-card h3 {
+		font-size: 16px;
+		min-height: 48px;
+	}
+	.cs-update-card p {
+		margin: 8px 0 20px;
+		-webkit-line-clamp: 2;
+		min-height: 46px;
+	}
+	.cs-inquiry {
+		margin-top: 36px;
+		padding-top: 36px;
+		border-top: 1px solid #e4e7ec;
+		scroll-margin-top: 140px;
+	}
+	.cs-contact-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+		gap: 48px;
+	}
+	.cs-contact-info > p {
+		margin-top: 8px;
+		color: #656a74;
+		line-height: 1.7;
+		font-size: 14px;
+	}
+	.cs-contact-detail {
+		display: flex;
+		align-items: flex-start;
+		gap: 16px;
+		margin-top: 22px;
+	}
+	.cs-contact-detail > span {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		flex-shrink: 0;
+		border-radius: 10px;
+		background: #fff;
+		color: #f04432;
+		border: 1px solid #edf0f4;
+	}
+	.cs-contact-detail h3 {
+		font-size: 15px;
+	}
+	.cs-contact-detail p,
+	.cs-contact-detail a {
+		margin-top: 3px;
+		font-size: 13px;
+		line-height: 1.7;
+		color: #656a74;
+		display: block;
+	}
+	.cs-contact-detail a:hover {
+		color: #d73727;
+	}
+	.cs-message-form {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		padding: 26px;
+		border: 1px solid #e4e7ec;
+		border-radius: 12px;
+		background: #fff;
+		box-shadow: 0 4px 18px rgba(24, 26, 32, 0.035);
+	}
+	.cs-message-form h3 {
+		font-size: 16px;
+	}
+	.cs-form-row {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 14px;
+	}
+	.cs-message-form .MuiFormControl-root {
+		width: 100%;
+		min-width: 0;
+	}
+	.cs-message-form .MuiInputBase-root {
+		font-family: inherit;
+		font-size: 14px;
+		border-radius: 7px;
+	}
+	.cs-message-form .MuiInputLabel-root {
+		font-family: inherit;
+		font-size: 13px;
+	}
+	.cs-message-form .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+		border-color: #171a20;
+		border-width: 1px;
+	}
+	.cs-message-form .MuiInputLabel-root.Mui-focused {
+		color: #171a20;
+	}
+	.cs-message-form .cs-send-button {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		background: #f04432;
+		color: #fff;
+		min-height: 44px;
+		border-radius: 7px;
+		text-transform: none;
+		font-weight: 600;
+	}
+	.cs-message-form .cs-send-button:hover {
+		background: #d63222;
+	}
+	.cs-form-note {
+		font-size: 11px;
+		color: #777c86;
+		line-height: 1.6;
+	}
+	.cs-location {
+		display: grid;
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+		gap: 48px;
+		margin-top: 34px;
+		align-items: start;
+	}
+	.cs-location-info > p {
+		font-size: 13px;
+		line-height: 1.7;
+		color: #656a74;
+		margin: 10px 0;
+	}
+	.cs-location-info h3 {
+		margin-top: 18px;
+		font-size: 15px;
+	}
+	.cs-location-note {
+		font-size: 11px;
+		display: block;
+		color: #777c86;
+		line-height: 1.7;
+		margin-top: 12px;
+	}
+	.cs-map {
+		position: relative;
+		height: 280px;
+		border-radius: 12px;
+		overflow: hidden;
+		background: #e3e9e8;
+		border: 1px solid #dfe5e4;
+	}
+	.cs-map iframe {
+		width: 100%;
+		height: 100%;
+		border: 0;
+		display: block;
+	}
+	.cs-map-pin {
+		position: absolute;
+		top: 16px;
+		left: 16px;
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		background: #fff;
+		padding: 12px 16px;
+		border-radius: 10px;
+		box-shadow: 0 4px 18px rgba(24, 26, 32, 0.1);
+		color: #181a20;
+	}
+	.cs-map-pin > svg:first-child {
+		color: #f04432;
+	}
+	.cs-map-pin strong {
+		font-size: 13px;
+		display: block;
+	}
+	.cs-map-pin small {
+		font-size: 11px;
+		color: #777c86;
+	}
+	@media (max-width: 1100px) {
+		.cs-faq {
+			grid-template-columns: 240px minmax(0, 1fr);
+			gap: 24px;
+			padding: 24px;
+		}
+		.cs-support-banner {
+			flex-wrap: wrap;
+		}
+		.cs-support-actions {
+			margin-left: 86px;
+		}
+		.cs-contact-grid {
+			gap: 32px;
+		}
+		.cs-location {
+			gap: 32px;
+		}
+	}
+	@media (max-width: 700px) {
+		padding-top: 28px;
+		h2 {
+			font-size: 24px;
+		}
+		.cs-topic-card {
+			padding: 18px;
+			min-height: 190px;
+		}
+		.cs-topic-card p {
+			margin-bottom: 14px;
+		}
+		.cs-faq,
+		.cs-location {
+			grid-template-columns: 1fr;
+			gap: 22px;
+			padding-top: 18px;
+		}
+		.cs-faq {
+			padding: 24px 18px;
+			margin-bottom: 24px;
+		}
+		.cs-faq-list .MuiAccordionSummary-content {
+			font-size: 13px;
+		}
+		.cs-faq-aside {
+			display: block;
+		}
+		.cs-contact-card {
+			padding: 20px;
+			margin-top: 16px;
+		}
+		.cs-contact-grid {
+			grid-template-columns: 1fr;
+			gap: 28px;
+		}
+		.cs-support-banner {
+			gap: 14px;
+			padding: 22px;
+		}
+		.cs-support-symbol {
+			width: 48px;
+			height: 48px;
+		}
+		.cs-support-banner > div:not(.cs-support-actions) {
+			flex: 1;
+			min-width: 0;
+		}
+		.cs-support-banner h2 {
+			font-size: 22px;
+		}
+		.cs-support-actions {
+			width: 100%;
+			margin-left: 0;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+		.cs-support-actions a,
+		.cs-support-actions button {
+			flex: 1;
+			padding: 12px;
+			font-size: 12px;
+		}
+		.cs-update-image {
+			height: 190px;
+		}
+		.cs-message-form {
+			padding: 20px;
+		}
+		.cs-form-row {
+			grid-template-columns: 1fr;
+		}
+		.cs-map {
+			height: 260px;
+		}
+		.cs-inquiry {
+			padding-top: 28px;
+			scroll-margin-top: 160px;
+		}
+		.cs-location {
+			padding-top: 0;
+		}
+	}
+}
+// One control border per field; these rules apply only inside the /cs page.
+#pc-wrap.cs-shell .cs-page,
+#mobile-wrap.cs-shell .cs-page {
+	.cs-message-form {
+		.MuiOutlinedInput-root {
+			border: 0;
+			outline: none;
+			box-shadow: none;
+			background: #fff;
+		}
+		.MuiOutlinedInput-notchedOutline {
+			border: 1px solid #e5e7eb;
+		}
+		.MuiOutlinedInput-root:hover:not(.Mui-error) .MuiOutlinedInput-notchedOutline {
+			border-color: #cbd5e1;
+		}
+		.MuiOutlinedInput-root.Mui-focused:not(.Mui-error) .MuiOutlinedInput-notchedOutline {
+			border-color: #171a20;
+			border-width: 1px;
+		}
+		.MuiInputBase-input,
+		.MuiInputBase-input:focus,
+		.MuiSelect-select:focus {
+			border: 0;
+			outline: none;
+			box-shadow: none;
+			background-color: transparent;
+		}
+		.MuiInputLabel-root.Mui-focused:not(.Mui-error) {
+			color: #171a20;
+		}
+		.MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline,
+		.MuiOutlinedInput-root:has(input:user-invalid, textarea:user-invalid) .MuiOutlinedInput-notchedOutline {
+			border-color: #f04432;
+			border-width: 1px;
+		}
+		.MuiInputLabel-root.Mui-error {
+			color: #f04432;
+		}
+		input:autofill,
+		input:-webkit-autofill {
+			-webkit-box-shadow: 0 0 0 1000px #fff inset;
+			box-shadow: 0 0 0 1000px #fff inset;
+			-webkit-text-fill-color: #171a20;
+			caret-color: #171a20;
+			border: 0;
+			outline: none;
+		}
+	}
+	.cs-topic-card,
+	.cs-update-card,
+	.cs-contact-button {
+		border-color: #e5e7eb;
+	}
+	.cs-topic-card:hover,
+	.cs-update-card:hover,
+	.cs-contact-button:hover {
+		border-color: #cbd5e1;
+	}
+	.cs-topic-card:focus-visible,
+	.cs-update-card:focus-visible,
+	.cs-contact-button:focus-visible {
+		border-color: #171a20;
+		outline: none;
+	}
+	.cs-category-filters button:not([aria-pressed='true']) {
+		border-color: #e5e7eb;
+	}
+	.cs-category-filters button:hover {
+		border-color: #cbd5e1;
+	}
+	.cs-category-filters button:focus-visible {
+		border-color: #171a20;
+		outline: none;
+		box-shadow: none;
+	}
+	.cs-faq-list .MuiAccordion-root,
+	.cs-faq-list .MuiAccordion-root.Mui-expanded {
+		border-color: #e5e7eb;
+	}
+	.cs-faq-list .MuiAccordion-root:hover {
+		border-color: #cbd5e1;
+	}
+	.cs-faq-list
+		.MuiAccordion-root:has(.MuiAccordionSummary-root:focus-visible, .MuiAccordionSummary-root.Mui-focusVisible) {
+		border-color: #171a20;
+	}
+	.cs-faq-list .MuiAccordionSummary-root:focus-visible,
+	.cs-faq-list .MuiAccordionSummary-root.Mui-focusVisible {
+		outline: none;
+		box-shadow: none;
+		background: #f9fafb;
+	}
+	.cs-view-questions:focus-visible,
+	.cs-send-button.Mui-focusVisible {
+		outline: 2px solid #171a20;
+		outline-offset: 3px;
+		box-shadow: none;
+	}
+	.cs-support-banner a:focus-visible,
+	.cs-support-banner button:focus-visible {
+		outline-color: #fff;
 	}
 }

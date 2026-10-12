@@ -48,3 +48,25 @@ No backend code/schema/data changes, dependency/lockfile changes, commit or depl
 
 - Updated subtitle and metadata to “Find answers, explore guides, and get the support you need.” with KR/RU translations. Preserved the strong left gradient; reduced right-side opacity to 0.26 at 70% and 0.16 at the edge so the support agent remains brighter. Mobile keeps sufficient text contrast with a directional gradient.
 - Repaired encoding corruption in the recently added short KR/RU topic/support strings. Yarn typecheck and the existing CS browser suite passed; refreshed desktop/mobile previews.
+
+## Below-hero reference layout — 2026-10-12
+
+- Updated only the content below the existing hero. Hero markup/styles, navbar and footer were preserved. Reused the existing CS page, Faq, Notice and formerly placeholder Inquiry in the NESTAR-derived Pages Router/layout/MUI/SCSS/Apollo architecture; no new dependency or backend operation.
+- Refined six topic cards, compact six-question FAQ preview with View all/Show fewer controls, existing category/legacy query behavior, contact card and dark support banner. Browse FAQ replaces the reference's unsupported AI assistant action.
+- Latest from ANORCAR shows three real NEWS articles via the existing Apollo query, with actual images, titles, dates, safe excerpts and detail links. Missing/broken images use the existing car illustration fallback. No fabricated tips, releases or posts.
+- Added responsive Get in touch form with name/email/topic/message validation and an Open email draft action. It prepares a mailto draft for the existing info@anorcar.com address; the user reviews/sends it in their email app. No direct-send API, invented support hours or response-time promise. Form values remain after draft preparation.
+- Google map shows Seoul City Hall, with an external map link and a clear reference-location label rather than an office claim. Address verified against [Seoul Metropolitan Government](https://english.seoul.go.kr/city-hall/overview-city-hall/). Map preview: docs/screenshots/cs-help-1440-map.png and cs-help-390-map.png. Chrome's full-page captures can omit the offscreen cross-origin map; the separate visible map captures show the actual map.
+- EN/KR/RU, keyboard labels/focus, responsive grid/form/banner/map. Browser suite passed at 1440/1024/768/390/320px: FAQ preview/expansion/categories/links, no overflow, actual article IDs/loaded images, legacy query/reset, hero controls/border unchanged, blank-message validation, subject selection and safely encoded email drafts. Draft opening was intercepted in the browser; no real messages or backend writes occurred. KR/RU and API outage/Retry passed without runtime exceptions. Desktop/mobile and map previews visually reviewed.
+- Yarn phase/final typechecks, migration/auth and live 42-operation GraphQL/three-upload/enum checks passed. Production build passed with 91 pages and lint warnings.
+- Resolved two concurrent frontend dev servers (3000/3001) using the same dev cache by restarting one server on 3000. API stayed on 3007. No backend source/schema/data, dependencies/lockfiles, commit or deployment changes.
+
+## AI action label — 2026-10-12
+
+- Replaced Browse FAQ in the support banner with Ask AI Assistant as requested. The button is disabled with a coming-soon title until an AI service is connected; Contact support remains available. Added EN/KR/RU labels and preserved responsive sizing.
+
+## Below-hero design polish — 2026-10-12
+
+- Refined only existing below-hero styles: consistent minimum topic-card heights, smaller icon tiles, white bordered FAQ panel, clearer category/question type, lighter support card, balanced banner spacing and aligned two-line article title/excerpt areas.
+- Aligned contact form and map columns, increased form text size and refined responsive FAQ padding. Open map now uses Google Maps consistently with the embed. Hero, navbar, routes, Apollo/data and form behavior remain.
+- Yarn typecheck and 91-page production build passed with lint warnings. Existing read-only browser suite passed at five widths and three locales, including FAQ expansion/categories, legacy queries, article images/IDs, form validation/encoded draft interception and Retry. Refreshed previews visually reviewed.
+- Two concurrent frontend dev servers again caused cache/404 interference; restarted a single server on port 3000. No backend, dependencies, commit or deployment changes.

@@ -16,6 +16,7 @@ interface FaqProps {
 const Faq = ({ category, search, onCategoryChange, onReset }: FaqProps) => {
 	const { t, i18n } = useTranslation('common');
 	const [expanded, setExpanded] = useState<string | false>(false);
+	const [showAll, setShowAll] = useState(false);
 	const query = search.trim().toLocaleLowerCase(i18n.language);
 	const questions = helpQuestions.filter(
 		(item) =>
@@ -29,20 +30,21 @@ const Faq = ({ category, search, onCategoryChange, onReset }: FaqProps) => {
 	const firstQuestion = questions[0]?.id ?? false;
 	useEffect(() => {
 		setExpanded(query ? firstQuestion : false);
+		setShowAll(false);
 	}, [firstQuestion, category, query]);
 	return (
 		<section className="cs-faq" id="cs-faq" aria-labelledby="cs-faq-heading">
 			<aside className="cs-faq-aside">
 				<h2 id="cs-faq-heading">{t('Frequently asked questions')}</h2>
+				<p>{t('Everything you need to know about ANORCAR.')}</p>
 				<div className="cs-contact-card">
 					<HeadsetMicOutlined />
-					<h3>{t('Still need a hand?')}</h3>
-					<p>{t('Contact our team for more help.')}</p>
-					<a href="mailto:info@anorcar.com" className="cs-contact-button">
-						{t('Email support')}
+					<h3>{t("Can't find what you're looking for?")}</h3>
+					<p>{t('Our support team is ready to help.')}</p>
+					<a href="#cs-contact" className="cs-contact-button">
+						{t('Contact support')}
 						<EastRounded fontSize="small" />
 					</a>
-					<span>info@anorcar.com</span>
 				</div>
 			</aside>
 			<div className="cs-faq-main">
@@ -70,7 +72,7 @@ const Faq = ({ category, search, onCategoryChange, onReset }: FaqProps) => {
 					</div>
 				)}
 				<div className="cs-faq-list">
-					{questions.map((item) => (
+					{(showAll || query ? questions : questions.slice(0, 6)).map((item) => (
 						<Accordion
 							key={item.id}
 							disableGutters
@@ -105,6 +107,17 @@ const Faq = ({ category, search, onCategoryChange, onReset }: FaqProps) => {
 						</Accordion>
 					))}
 				</div>
+				{questions.length > 6 && !query && (
+					<button
+						type="button"
+						className="cs-view-questions"
+						aria-expanded={showAll}
+						onClick={() => setShowAll(!showAll)}
+					>
+						{t(showAll ? 'Show fewer questions' : 'View all questions')}
+						<EastRounded fontSize="small" />
+					</button>
+				)}
 				{questions.length === 0 && (
 					<div className="cs-empty" role="status">
 						<h3>{t('No matching answers')}</h3>

@@ -16,6 +16,9 @@ import withLayoutBasic from '../../libs/components/layout/LayoutBasic';
 import Faq from '../../libs/components/cs/Faq';
 import Notice from '../../libs/components/cs/Notice';
 import { helpTopics, HelpCategory } from '../../libs/components/cs/helpContent';
+import Inquiry from '../../libs/components/cs/Inquiry';
+import HeadsetMicOutlined from '@mui/icons-material/HeadsetMicOutlined';
+import MailOutlineRounded from '@mui/icons-material/MailOutlineRounded';
 
 export const getStaticProps = async ({ locale }: { locale?: string }) => ({
 	props: { ...(await serverSideTranslations(locale ?? 'en', ['common'])) },
@@ -76,6 +79,7 @@ const CS: NextPage = () => {
 					<div className="cs-section-heading">
 						<div>
 							<h2 id="cs-topics-heading">{t('Explore help topics')}</h2>
+							<p>{t('A little guidance for every step of your car journey.')}</p>
 						</div>
 					</div>
 					<div className="cs-topic-grid">
@@ -103,7 +107,27 @@ const CS: NextPage = () => {
 					onCategoryChange={(value) => chooseHelp(value)}
 					onReset={() => chooseHelp('all', '')}
 				/>
+				<section className="cs-support-banner" aria-labelledby="cs-support-heading">
+					<span className="cs-support-symbol">
+						<HeadsetMicOutlined />
+					</span>
+					<div>
+						<h2 id="cs-support-heading">{t('Still need a hand?')}</h2>
+						<p>{t('Find the right answer or reach out to our team.')}</p>
+					</div>
+					<div className="cs-support-actions">
+						<button type="button" className="cs-support-primary" disabled title={t('AI assistant is coming soon.')}>
+							{t('Ask AI Assistant')}
+							<EastRounded fontSize="small" />
+						</button>
+						<a href="#cs-contact" className="cs-support-secondary">
+							<MailOutlineRounded fontSize="small" />
+							{t('Contact support')}
+						</a>
+					</div>
+				</section>
 				<Notice />
+				<Inquiry />
 			</div>
 		</Stack>
 	);

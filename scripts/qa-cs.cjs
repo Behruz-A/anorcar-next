@@ -46,7 +46,7 @@ async function until(expression, label) {
 			' ' +
 			JSON.stringify(
 				await evaluate(
-					"({url:location.href,input:document.querySelector('.cs-search input')?.value,active:document.activeElement?.outerHTML,summary:document.querySelector('.cs-search-summary')?.textContent})",
+					"({url:location.href,active:document.activeElement?.tagName,summary:document.querySelector('.cs-message-form .MuiAlert-root')?.textContent})",
 				),
 			),
 	);
@@ -74,6 +74,29 @@ async function navigate(width, locale = 'en', query = '') {
 	await delay(500);
 }
 async function screenshot(name) {
+	await evaluate(
+		"(async()=>{for(const e of document.querySelectorAll('.cs-update-image img,.cs-map')){e.scrollIntoView({block:'center'});await new Promise(r=>setTimeout(r,250));}})()",
+	);
+	await until(
+		"[...document.querySelectorAll('.cs-update-image img')].every(i=>i.complete&&i.naturalWidth>0)",
+		'news images',
+	);
+	await delay(1200);
+	console.log(
+		'Map frames',
+		(await command('Page.getFrameTree')).frameTree.childFrames?.map((f) => ({
+			url: f.frame.url,
+			unreachable: f.frame.unreachableUrl,
+		})),
+	);
+	const mapShot = await command('Page.captureScreenshot', {
+		format: 'png',
+		captureBeyondViewport: true,
+		clip: await evaluate(
+			"(()=>{const r=document.querySelector('.cs-map').getBoundingClientRect();return{x:r.left+scrollX,y:r.top+scrollY,width:r.width,height:r.height,scale:1};})()",
+		),
+	});
+	fs.writeFileSync('docs/screenshots/' + name + '-map.png', Buffer.from(mapShot.data, 'base64'));
 	await evaluate('scrollTo(0,0)');
 	const r = await command('Page.captureScreenshot', {
 		format: 'png',
@@ -82,6 +105,77 @@ async function screenshot(name) {
 	});
 	fs.mkdirSync('docs/screenshots', { recursive: true });
 	fs.writeFileSync('docs/screenshots/' + name + '.png', Buffer.from(r.data, 'base64'));
+}
+async function controlStyles() {
+	await command('Page.bringToFront');
+	await command('DOM.enable');
+	await command('CSS.enable');
+	const { root } = await command('DOM.getDocument');
+	for (const name of ['name', 'email', 'subject', 'message']) {
+		const wrapper = `.cs-message-form .MuiFormControl-root:has([name="${name}"]) .MuiOutlinedInput-root`;
+		const target = name === 'subject' ? '.cs-message-form .MuiSelect-select' : `.cs-message-form [name="${name}"]`;
+		const { nodeId } = await command('DOM.querySelector', { nodeId: root.nodeId, selector: wrapper });
+		const field = () =>
+			evaluate(
+				`(()=>{const e=document.querySelector(${JSON.stringify(
+					wrapper,
+				)}),f=e.querySelector('fieldset'),i=document.querySelector(${JSON.stringify(
+					target,
+				)});return {border:getComputedStyle(f).borderTopColor,width:getComputedStyle(f).borderTopWidth,rootBorder:getComputedStyle(e).borderTopWidth,shadow:getComputedStyle(e).boxShadow,outline:getComputedStyle(i).outlineStyle};})()`,
+			);
+		assert.equal((await field()).border, 'rgb(229, 231, 235)', 'default ' + name);
+		await command('CSS.forcePseudoState', { nodeId, forcedPseudoClasses: ['hover'] });
+		assert.equal((await field()).border, 'rgb(203, 213, 225)', 'hover ' + name);
+		await command('CSS.forcePseudoState', { nodeId, forcedPseudoClasses: [] });
+		await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(target)});e.scrollIntoView({block:'center'});e.focus();})()`);
+		await delay(50);
+		const focused = await field();
+		assert.equal(focused.border, 'rgb(23, 26, 32)', 'focus ' + name);
+		assert.equal(focused.width, '1px', 'single fieldset ' + name);
+		assert.equal(focused.rootBorder, '0px', 'no second border ' + name);
+		assert.equal(focused.outline, 'none', 'no inner outline ' + name);
+		assert.equal(focused.shadow, 'none', 'no root shadow ' + name);
+		await evaluate('document.activeElement.blur()');
+	}
+	const emailNode = await command('DOM.querySelector', {
+		nodeId: root.nodeId,
+		selector: '.cs-message-form input[name=email]',
+	});
+	await command('CSS.forcePseudoState', { nodeId: emailNode.nodeId, forcedPseudoClasses: ['autofill'] });
+	assert.ok(
+		await evaluate(
+			"getComputedStyle(document.querySelector('input[name=email]')).boxShadow.includes('rgb(255, 255, 255)')",
+		),
+		'neutral autofill mask',
+	);
+	await command('CSS.forcePseudoState', { nodeId: emailNode.nodeId, forcedPseudoClasses: [] });
+	await command('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 });
+	await command('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 });
+	for (const selector of [
+		'.cs-topic-card',
+		'.cs-category-filters button',
+		'#cs-question-search',
+		'.cs-view-questions',
+		'.cs-send-button',
+		'.cs-support-secondary',
+	]) {
+		await evaluate(`document.querySelector(${JSON.stringify(selector)}).focus()`);
+		await delay(50);
+		const cue = await evaluate(
+			`(()=>{const e=document.querySelector(${JSON.stringify(
+				selector,
+			)}),s=getComputedStyle(e);return {visible:e.matches(':focus-visible')||e.classList.contains('Mui-focusVisible'),outline:s.outlineStyle,outlineColor:s.outlineColor,border:s.borderTopColor,parentBorder:e.closest('.MuiAccordion-root')?getComputedStyle(e.closest('.MuiAccordion-root')).borderTopColor:null};})()`,
+		);
+		assert.ok(cue.visible, 'keyboard focus ' + selector);
+		assert.ok(
+			cue.border === 'rgb(23, 26, 32)' ||
+				cue.parentBorder === 'rgb(23, 26, 32)' ||
+				(cue.outline !== 'none' && ['rgb(23, 26, 32)', 'rgb(255, 255, 255)'].includes(cue.outlineColor)),
+			'neutral visible focus ' + selector,
+		);
+	}
+	await evaluate('document.activeElement.blur()');
+	console.log('PASS control default/hover/focus, neutral autofill CSS and keyboard indicators');
 }
 (async () => {
 	try {
@@ -119,7 +213,10 @@ async function screenshot(name) {
 		for (const width of [1440, 1024, 768, 390, 320]) {
 			await navigate(width);
 			assert.equal(await evaluate("document.querySelectorAll('.cs-topic-card').length"), 6);
+			assert.equal(await evaluate("document.querySelectorAll('.cs-faq-list .MuiAccordion-root').length"), 6);
+			await evaluate("document.querySelector('.cs-view-questions').click()");
 			assert.equal(await evaluate("document.querySelectorAll('.cs-faq-list .MuiAccordion-root').length"), 13);
+			await evaluate("document.querySelector('.cs-view-questions').click()");
 			assert.ok(
 				await evaluate('document.documentElement.scrollWidth <= innerWidth+1 && innerWidth <= ' + (width + 1)),
 				'overflow ' +
@@ -141,11 +238,50 @@ async function screenshot(name) {
 				await evaluate("document.querySelector('.router-box a[href$=\"/cs\"]')?.getAttribute('aria-current')==='page'"),
 			);
 			if (width === 1440 || width === 390) await screenshot('cs-help-' + width);
+			assert.ok(await evaluate("document.querySelector('.cs-map iframe').src.includes('maps.google.com')"));
+			assert.equal(
+				await evaluate("document.querySelector('.cs-map-pin').textContent.includes('Seoul City Hall')"),
+				true,
+			);
+			if (width === 1440 || width === 390) {
+				await controlStyles();
+				await evaluate('window.__draft=null;window.open=(url)=>{window.__draft=url;return null;}');
+				assert.equal(await evaluate("document.querySelector('.cs-message-form').checkValidity()"), false);
+				await evaluate("document.querySelector('input[name=email]').focus()");
+				await command('Input.insertText', { text: 'invalid-email' });
+				await evaluate("document.querySelector('.cs-message-form').requestSubmit()");
+				assert.ok(await evaluate("document.querySelector('input[name=email]').matches(':user-invalid')"), 'genuine invalid email');
+				assert.equal(await evaluate("getComputedStyle(document.querySelector('.MuiFormControl-root:has(input[name=email]) fieldset')).borderTopColor"), 'rgb(240, 68, 50)', 'error border only for invalid field');
+				await evaluate(
+					"(()=>{const set=(name,value)=>{const el=document.querySelector('[name='+name+']');Object.getOwnPropertyDescriptor(el.tagName==='TEXTAREA'?HTMLTextAreaElement.prototype:HTMLInputElement.prototype,'value').set.call(el,value);el.dispatchEvent(new Event('input',{bubbles:true}));};set('name','QA Visitor');set('email','reviewer@example.test');set('message','   ');})()",
+				);
+				await evaluate(
+					"document.querySelector('.cs-message-form .MuiSelect-select').dispatchEvent(new MouseEvent('mousedown',{bubbles:true,button:0}))",
+				);
+				await until('!!document.querySelector(\'[data-value="Technical support"]\')', 'contact subject');
+				await evaluate("document.querySelector('[data-value=\"Technical support\"]').focus()");
+				await command('Input.dispatchKeyEvent', { type: 'keyDown', key: 'ArrowDown', code: 'ArrowDown', windowsVirtualKeyCode: 40 });
+				await command('Input.dispatchKeyEvent', { type: 'keyUp', key: 'ArrowDown', code: 'ArrowDown', windowsVirtualKeyCode: 40 });
+				assert.ok(await evaluate("getComputedStyle(document.activeElement).outlineColor==='rgb(23, 26, 32)' && getComputedStyle(document.activeElement).outlineStyle==='solid'"), 'dropdown keyboard focus');
+				await evaluate('document.querySelector(\'[data-value="Technical support"]\').click()');
+				await evaluate("document.querySelector('.cs-send-button').click()");
+				await until("!!document.querySelector('.cs-message-form .MuiAlert-standardError')", 'blank-message validation');
+				await evaluate(
+					"(()=>{const el=document.querySelector('textarea[name=message]');Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype,'value').set.call(el,'Question & model <A>');el.dispatchEvent(new Event('input',{bubbles:true}));})()",
+				);
+				await evaluate("document.querySelector('.cs-send-button').click()");
+				await until('!!window.__draft', 'email draft');
+				const draft = await evaluate('window.__draft');
+				assert.ok(draft.startsWith('mailto:info@anorcar.com?'));
+				assert.equal(await evaluate("getComputedStyle(document.querySelector('.MuiFormControl-root:has(input[name=email]) fieldset')).borderTopColor"), 'rgb(229, 231, 235)', 'valid email loses error highlighting');
+				assert.ok(new URL(draft).searchParams.get('body').includes('Question & model <A>'));
+				assert.ok(await evaluate("!!document.querySelector('.cs-message-form .MuiAlert-standardInfo')"));
+			}
 			await evaluate("document.querySelectorAll('.cs-topic-card')[1].click()");
 			await until("document.querySelectorAll('.cs-faq-list .MuiAccordion-root').length===2", 'selling filter');
 			await until("location.search.includes('topic=selling')", 'selling URL');
 			await evaluate("document.querySelector('.cs-category-filters button').click()");
-			await until("document.querySelectorAll('.cs-faq-list .MuiAccordion-root').length===13", 'reset category');
+			await until("document.querySelectorAll('.cs-faq-list .MuiAccordion-root').length===6", 'reset category');
 			await evaluate("document.querySelector('#cs-question-compare').click()");
 			assert.ok(
 				await evaluate("document.querySelector('#cs-question-compare').getAttribute('aria-expanded')==='true'"),
@@ -158,7 +294,7 @@ async function screenshot(name) {
 		await navigate(1440, 'en', '?q=zzzznomatch');
 		assert.ok(await evaluate("!!document.querySelector('.cs-faq-main .cs-empty')"));
 		await evaluate("document.querySelector('.cs-empty button').click()");
-		await until("document.querySelectorAll('.cs-faq-list .MuiAccordion-root').length===13", 'clear search');
+		await until("document.querySelectorAll('.cs-faq-list .MuiAccordion-root').length===6", 'clear search');
 		assert.equal(await evaluate("document.querySelectorAll('.cs-search').length"), 0);
 		assert.equal(await evaluate("document.querySelectorAll('.cs-hero a, .cs-hero button, .cs-hero input').length"), 0);
 		assert.equal(await evaluate("getComputedStyle(document.querySelector('.cs-hero')).borderBottomWidth"), '0px');
