@@ -1,209 +1,121 @@
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
-import React, { SyntheticEvent, useState } from 'react';
-import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
-import { AccordionDetails, Box, Stack, Typography } from '@mui/material';
-import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/AccordionSummary';
-import { useRouter } from 'next/router';
-import { styled } from '@mui/material/styles';
-import useDeviceDetect from '../../hooks/useDeviceDetect';
-import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+import { Accordion, AccordionDetails, AccordionSummary, Button } from '@mui/material';
+import AddRounded from '@mui/icons-material/AddRounded';
+import EastRounded from '@mui/icons-material/EastRounded';
+import HeadsetMicOutlined from '@mui/icons-material/HeadsetMicOutlined';
+import { helpQuestions, helpTopics, HelpCategory } from './helpContent';
 
-const Accordion = styled((props: AccordionProps) => <MuiAccordion disableGutters elevation={0} square {...props} />)(
-	({ theme }) => ({
-		border: `1px solid ${theme.palette.divider}`,
-		'&:not(:last-child)': {
-			borderBottom: 0,
-		},
-		'&:before': {
-			display: 'none',
-		},
-	}),
-);
-const AccordionSummary = styled((props: AccordionSummaryProps) => (
-	<MuiAccordionSummary expandIcon={<KeyboardArrowDownRoundedIcon sx={{ fontSize: '1.4rem' }} />} {...props} />
-))(({ theme }) => ({
-	backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, .05)' : '#fff',
-	'& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-		transform: 'rotate(180deg)',
-	},
-	'& .MuiAccordionSummary-content': {
-		marginLeft: theme.spacing(1),
-	},
-}));
-
-const Faq = () => {
- const { t } = useTranslation('common');
-	const device = useDeviceDetect();
-	const router = useRouter();
-	const [category, setCategory] = useState<string>('cars');
-	const [expanded, setExpanded] = useState<string | false>('panel1');
-
-	/** APOLLO REQUESTS **/
-	/** LIFECYCLES **/
-	
-	/** HANDLERS **/
-	const changeCategoryHandler = (category: string) => {
-		setCategory(category);
-	};
-
-	const handleChange = (panel: string) => (event: SyntheticEvent, newExpanded: boolean) => {
-		setExpanded(newExpanded ? panel : false);
-	};
-
-	const data: any = {
-  "cars": [
-    {
-      "id": "cars-0",
-      "subject": "How can I search for cars?",
-      "content": "Search by brand, model, year, fuel, transmission, condition, location, and price."
-    },
-    {
-      "id": "cars-1",
-      "subject": "How can I contact a seller?",
-      "content": "Open a car listing to view the seller profile and phone number."
-    }
-  ],
-  "payment": [
-    {
-      "id": "payment-0",
-      "subject": "Does ANORCAR process vehicle payments?",
-      "content": "Payment and rental terms are arranged directly with the seller."
-    }
-  ],
-  "buyers": [
-    {
-      "id": "buyers-0",
-      "subject": "How can I save a car?",
-      "content": "Sign in and use the heart button to add or remove favorites."
-    },
-    {
-      "id": "buyers-1",
-      "subject": "Where can I find recently viewed cars?",
-      "content": "Sign in and open Recently visited from your account."
-    }
-  ],
-  "agents": [
-    {
-      "id": "agents-0",
-      "subject": "How can I publish a car?",
-      "content": "Register as a seller and open Add car in your account. Choose an active brand and upload photos."
-    },
-    {
-      "id": "agents-1",
-      "subject": "How can I manage my inventory?",
-      "content": "Open My cars to edit active listings or mark them sold or deleted."
-    }
-  ],
-  "membership": [
-    {
-      "id": "membership-0",
-      "subject": "Which account type should I choose?",
-      "content": "Choose User to browse and save cars, or Seller to publish listings."
-    }
-  ],
-  "community": [
-    {
-      "id": "community-0",
-      "subject": "How can I join the community?",
-      "content": "Sign in to publish articles, leave comments, and follow members."
-    }
-  ],
-  "other": [
-    {
-      "id": "other-0",
-      "subject": "Where can I get help?",
-      "content": "Visit the customer support section for notices and frequently asked questions."
-    }
-  ]
+interface FaqProps {
+	category: HelpCategory;
+	search: string;
+	onCategoryChange: (category: HelpCategory) => void;
+	onReset: () => void;
+}
+const Faq = ({ category, search, onCategoryChange, onReset }: FaqProps) => {
+	const { t, i18n } = useTranslation('common');
+	const [expanded, setExpanded] = useState<string | false>('search');
+	const query = search.trim().toLocaleLowerCase(i18n.language);
+	const questions = helpQuestions.filter(
+		(item) =>
+			(category === 'all' || item.category === category) &&
+			(!query ||
+				[t(item.question), t(item.answer), t(helpTopics.find((topic) => topic.id === item.category)?.title ?? '')]
+					.join(' ')
+					.toLocaleLowerCase(i18n.language)
+					.includes(query)),
+	);
+	const firstQuestion = questions[0]?.id ?? false;
+	useEffect(() => {
+		setExpanded(firstQuestion);
+	}, [firstQuestion, category, query]);
+	return (
+		<section className="cs-faq" id="cs-faq" aria-labelledby="cs-faq-heading">
+			<aside className="cs-faq-aside">
+				<span className="cs-kicker">{t('Answers at a glance')}</span>
+				<h2 id="cs-faq-heading">{t('Frequently asked questions')}</h2>
+				<p>{t('Practical answers to help you keep moving.')}</p>
+				<div className="cs-contact-card">
+					<HeadsetMicOutlined />
+					<h3>{t('Still need a hand?')}</h3>
+					<p>{t('Tell us what happened and include the page address. Our team can help you find the next step.')}</p>
+					<a href="mailto:info@anorcar.com" className="cs-contact-button">
+						{t('Email support')}
+						<EastRounded fontSize="small" />
+					</a>
+					<span>info@anorcar.com</span>
+				</div>
+			</aside>
+			<div className="cs-faq-main">
+				<div className="cs-category-filters" role="group" aria-label={t('Help categories')}>
+					<button type="button" aria-pressed={category === 'all'} onClick={() => onCategoryChange('all')}>
+						{t('All questions')}
+					</button>
+					{helpTopics.map((topic) => (
+						<button
+							type="button"
+							key={topic.id}
+							aria-pressed={category === topic.id}
+							onClick={() => onCategoryChange(topic.id)}
+						>
+							{t(topic.title)}
+						</button>
+					))}
+				</div>
+				{search && (
+					<div className="cs-search-summary" role="status">
+						<span>
+							{t('Results for')} “{search}” ({questions.length})
+						</span>
+						<Button onClick={onReset}>{t('Clear search')}</Button>
+					</div>
+				)}
+				<div className="cs-faq-list">
+					{questions.map((item) => (
+						<Accordion
+							key={item.id}
+							disableGutters
+							elevation={0}
+							expanded={expanded === item.id}
+							onChange={(_event, value) => setExpanded(value ? item.id : false)}
+						>
+							<AccordionSummary
+								expandIcon={<AddRounded />}
+								id={`cs-question-${item.id}`}
+								aria-controls={`cs-answer-${item.id}`}
+							>
+								<span className="cs-question-mark" aria-hidden="true">
+									?
+								</span>
+								<span>{t(item.question)}</span>
+							</AccordionSummary>
+							<AccordionDetails id={`cs-answer-${item.id}`}>
+								<p>{t(item.answer)}</p>
+								{item.href.startsWith('mailto:') ? (
+									<a className="cs-answer-link" href={item.href}>
+										{t(item.action)}
+										<EastRounded fontSize="small" />
+									</a>
+								) : (
+									<Link className="cs-answer-link" href={item.href}>
+										{t(item.action)}
+										<EastRounded fontSize="small" />
+									</Link>
+								)}
+							</AccordionDetails>
+						</Accordion>
+					))}
+				</div>
+				{questions.length === 0 && (
+					<div className="cs-empty" role="status">
+						<h3>{t('No matching answers')}</h3>
+						<p>{t('Try another keyword or browse all help topics.')}</p>
+						<Button onClick={onReset}>{t('Show all questions')}</Button>
+					</div>
+				)}
+			</div>
+		</section>
+	);
 };
-
-	if (device === 'mobile') {
-		return <div>FAQ MOBILE</div>;
-	} else {
-		return (
-			<Stack className={'faq-content'}>
-				<Box className={'categories'} component={'div'}>
-					<div
-						className={category === 'cars' ? 'active' : ''}
-						onClick={() => {
-							changeCategoryHandler('cars');
-						}}
-					>
-						Cars
-					</div>
-					<div
-						className={category === 'payment' ? 'active' : ''}
-						onClick={() => {
-							changeCategoryHandler('payment');
-						}}
-					>
-						Payment
-					</div>
-					<div
-						className={category === 'buyers' ? 'active' : ''}
-						onClick={() => {
-							changeCategoryHandler('buyers');
-						}}
-					>
-						For buyers
-					</div>
-					<div
-						className={category === 'agents' ? 'active' : ''}
-						onClick={() => {
-							changeCategoryHandler('agents');
-						}}
-					>
-						For sellers
-					</div>
-					<div
-						className={category === 'membership' ? 'active' : ''}
-						onClick={() => {
-							changeCategoryHandler('membership');
-						}}
-					>
-						Membership
-					</div>
-					<div
-						className={category === 'community' ? 'active' : ''}
-						onClick={() => {
-							changeCategoryHandler('community');
-						}}
-					>
-						Community
-					</div>
-					<div
-						className={category === 'other' ? 'active' : ''}
-						onClick={() => {
-							changeCategoryHandler('other');
-						}}
-					>
-						Other
-					</div>
-				</Box>
-				<Box className={'wrap'} component={'div'}>
-					{data[category] &&
-						data[category].map((ele: any) => (
-							<Accordion expanded={expanded === ele?.id} onChange={handleChange(ele?.id)} key={t(ele?.subject)}>
-								<AccordionSummary id="panel1d-header" className="question" aria-controls="panel1d-content">
-									<Typography className="badge" variant={'h4'}>
-										Q
-									</Typography>
-									<Typography> {ele?.subject}</Typography>
-								</AccordionSummary>
-								<AccordionDetails>
-									<Stack className={'answer flex-box'}>
-										<Typography className="badge" variant={'h4'} color={'primary'}>
-											A
-										</Typography>
-										<Typography> {t(ele?.content)}</Typography>
-									</Stack>
-								</AccordionDetails>
-							</Accordion>
-						))}
-				</Box>
-			</Stack>
-		);
-	}
-};
-
 export default Faq;

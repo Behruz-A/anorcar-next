@@ -25,6 +25,7 @@ const withLayoutBasic = (Component: any) => {
 		const authHeader = router.pathname === '/account/join';
 		const marketplaceHeader = router.pathname === '/car' || router.pathname === '/agent' || router.pathname === '/mypage';
 		const agentDetail = router.pathname === '/agent/detail';
+		const helpCenter = router.pathname === '/cs';
 		const accountPage = router.pathname === '/mypage';
 		const communityHeader = router.pathname === '/community';
 		const user = useReactiveVar(userVar);
@@ -109,7 +110,7 @@ const withLayoutBasic = (Component: any) => {
 						<title>ANORCAR</title>
 						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="mobile-wrap" className={accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : undefined}>
+					<Stack id="mobile-wrap" className={helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : undefined}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>
@@ -145,12 +146,12 @@ const withLayoutBasic = (Component: any) => {
 						<title>ANORCAR</title>
 						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="pc-wrap" className={accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : undefined}>
+					<Stack id="pc-wrap" className={helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : undefined}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>
 
-						{agentDetail ? null : marketplaceHeader ? (
+						{agentDetail || helpCenter ? null : marketplaceHeader ? (
 							marketplaceHero
 						) : (
 							<Stack
