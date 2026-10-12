@@ -13,7 +13,7 @@ async function main() {
  const result = await response.json();
  if (!response.ok || result.errors) throw new Error(JSON.stringify(result.errors || result));
  const schema = buildClientSchema(result.data);
- for (const file of ['car', 'brand', 'member', 'common', 'comment', 'like', 'view', 'notification', 'board-article']) {
+ for (const file of ['car', 'brand', 'member', 'common', 'comment', 'like', 'view', 'notification', 'board-article', 'inquiry']) {
   for (const [name, values] of Object.entries(require('../libs/enums/' + file + '.enum.ts'))) {
    const backend = schema.getType(name);
    if (!backend?.getValues) continue;

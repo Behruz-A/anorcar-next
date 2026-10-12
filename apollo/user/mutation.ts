@@ -1,5 +1,15 @@
 import { gql } from '@apollo/client';
 
+export const CREATE_INQUIRY = gql`
+	mutation CreateInquiry($input: InquiryInput!) {
+		createInquiry(input: $input) {
+			_id
+			inquiryStatus
+			createdAt
+		}
+	}
+`;
+
 /**************************
  *         MEMBER         *
  *************************/

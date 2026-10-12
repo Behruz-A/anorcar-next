@@ -111,6 +111,7 @@ const AdminMenuList = (props: any) => {
 		Community: [{ title: 'List', url: '/_admin/community' }],
 		Cs: [
 			{ title: 'FAQ', url: '/_admin/cs/faq' },
+			{ title: '1:1 Inquiry', url: '/_admin/cs/inquiry' },
 			{ title: 'Notice', url: '/_admin/cs/notice' },
 		],
 	};

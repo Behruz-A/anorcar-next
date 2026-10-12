@@ -127,7 +127,11 @@ async function controlStyles() {
 		await command('CSS.forcePseudoState', { nodeId, forcedPseudoClasses: ['hover'] });
 		assert.equal((await field()).border, 'rgb(203, 213, 225)', 'hover ' + name);
 		await command('CSS.forcePseudoState', { nodeId, forcedPseudoClasses: [] });
-		await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(target)});e.scrollIntoView({block:'center'});e.focus();})()`);
+		await evaluate(
+			`(()=>{const e=document.querySelector(${JSON.stringify(
+				target,
+			)});e.scrollIntoView({block:'center'});e.focus();})()`,
+		);
 		await delay(50);
 		const focused = await field();
 		assert.equal(focused.border, 'rgb(23, 26, 32)', 'focus ' + name);
@@ -250,32 +254,74 @@ async function controlStyles() {
 				await evaluate("document.querySelector('input[name=email]').focus()");
 				await command('Input.insertText', { text: 'invalid-email' });
 				await evaluate("document.querySelector('.cs-message-form').requestSubmit()");
-				assert.ok(await evaluate("document.querySelector('input[name=email]').matches(':user-invalid')"), 'genuine invalid email');
-				assert.equal(await evaluate("getComputedStyle(document.querySelector('.MuiFormControl-root:has(input[name=email]) fieldset')).borderTopColor"), 'rgb(240, 68, 50)', 'error border only for invalid field');
+				assert.ok(
+					await evaluate("document.querySelector('input[name=email]').matches(':user-invalid')"),
+					'genuine invalid email',
+				);
+				assert.equal(
+					await evaluate(
+						"getComputedStyle(document.querySelector('.MuiFormControl-root:has(input[name=email]) fieldset')).borderTopColor",
+					),
+					'rgb(240, 68, 50)',
+					'error border only for invalid field',
+				);
 				await evaluate(
 					"(()=>{const set=(name,value)=>{const el=document.querySelector('[name='+name+']');Object.getOwnPropertyDescriptor(el.tagName==='TEXTAREA'?HTMLTextAreaElement.prototype:HTMLInputElement.prototype,'value').set.call(el,value);el.dispatchEvent(new Event('input',{bubbles:true}));};set('name','QA Visitor');set('email','reviewer@example.test');set('message','   ');})()",
 				);
 				await evaluate(
 					"document.querySelector('.cs-message-form .MuiSelect-select').dispatchEvent(new MouseEvent('mousedown',{bubbles:true,button:0}))",
 				);
-				await until('!!document.querySelector(\'[data-value="Technical support"]\')', 'contact subject');
-				await evaluate("document.querySelector('[data-value=\"Technical support\"]').focus()");
-				await command('Input.dispatchKeyEvent', { type: 'keyDown', key: 'ArrowDown', code: 'ArrowDown', windowsVirtualKeyCode: 40 });
-				await command('Input.dispatchKeyEvent', { type: 'keyUp', key: 'ArrowDown', code: 'ArrowDown', windowsVirtualKeyCode: 40 });
-				assert.ok(await evaluate("getComputedStyle(document.activeElement).outlineColor==='rgb(23, 26, 32)' && getComputedStyle(document.activeElement).outlineStyle==='solid'"), 'dropdown keyboard focus');
-				await evaluate('document.querySelector(\'[data-value="Technical support"]\').click()');
+				await until('!!document.querySelector(\'[data-value="TECHNICAL_SUPPORT"]\')', 'contact subject');
+				await evaluate('document.querySelector(\'[data-value="TECHNICAL_SUPPORT"]\').focus()');
+				await command('Input.dispatchKeyEvent', {
+					type: 'keyDown',
+					key: 'ArrowDown',
+					code: 'ArrowDown',
+					windowsVirtualKeyCode: 40,
+				});
+				await command('Input.dispatchKeyEvent', {
+					type: 'keyUp',
+					key: 'ArrowDown',
+					code: 'ArrowDown',
+					windowsVirtualKeyCode: 40,
+				});
+				assert.ok(
+					await evaluate(
+						"getComputedStyle(document.activeElement).outlineColor==='rgb(23, 26, 32)' && getComputedStyle(document.activeElement).outlineStyle==='solid'",
+					),
+					'dropdown keyboard focus',
+				);
+				await evaluate('document.querySelector(\'[data-value="TECHNICAL_SUPPORT"]\').click()');
 				await evaluate("document.querySelector('.cs-send-button').click()");
 				await until("!!document.querySelector('.cs-message-form .MuiAlert-standardError')", 'blank-message validation');
 				await evaluate(
 					"(()=>{const el=document.querySelector('textarea[name=message]');Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype,'value').set.call(el,'Question & model <A>');el.dispatchEvent(new Event('input',{bubbles:true}));})()",
 				);
+				await evaluate("document.querySelector('textarea[name=message]').focus()");
+				await delay(200);
+				assert.ok(
+					await evaluate(
+						"(()=>{const t=document.querySelector('textarea[name=message]'),r=t.closest('.MuiOutlinedInput-root'),l=r.closest('.MuiFormControl-root').querySelector('label');return r.getBoundingClientRect().height>=104 && l.getBoundingClientRect().bottom<t.getBoundingClientRect().top && l.getAttribute('data-shrink')==='true';})()",
+					),
+					'message label clears typed text',
+				);
+				const messageShot = await command('Page.captureScreenshot', {
+					format: 'png',
+					captureBeyondViewport: true,
+					clip: await evaluate(
+						"(()=>{const r=document.querySelector('textarea[name=message]').closest('.MuiFormControl-root').getBoundingClientRect();return{x:r.left+scrollX-4,y:r.top+scrollY-12,width:r.width+8,height:r.height+16,scale:1};})()",
+					),
+				});
+				fs.writeFileSync('docs/screenshots/cs-message-' + width + '.png', Buffer.from(messageShot.data, 'base64'));
 				await evaluate("document.querySelector('.cs-send-button').click()");
-				await until('!!window.__draft', 'email draft');
-				const draft = await evaluate('window.__draft');
-				assert.ok(draft.startsWith('mailto:info@anorcar.com?'));
-				assert.equal(await evaluate("getComputedStyle(document.querySelector('.MuiFormControl-root:has(input[name=email]) fieldset')).borderTopColor"), 'rgb(229, 231, 235)', 'valid email loses error highlighting');
-				assert.ok(new URL(draft).searchParams.get('body').includes('Question & model <A>'));
-				assert.ok(await evaluate("!!document.querySelector('.cs-message-form .MuiAlert-standardInfo')"));
+				await until("!!document.querySelector('.cs-message-form .MuiAlert-standardInfo')", 'guest login prompt');
+				assert.ok(await evaluate('!!document.querySelector(\'.cs-message-form a[href="/account/join"]\')'));
+				assert.equal(await evaluate('window.__draft'), null, 'no email app launch');
+				assert.equal(
+					await evaluate("document.querySelector('textarea[name=message]').value"),
+					'Question & model <A>',
+					'guest message preserved',
+				);
 			}
 			await evaluate("document.querySelectorAll('.cs-topic-card')[1].click()");
 			await until("document.querySelectorAll('.cs-faq-list .MuiAccordion-root').length===2", 'selling filter');

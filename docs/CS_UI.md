@@ -70,3 +70,8 @@ No backend code/schema/data changes, dependency/lockfile changes, commit or depl
 - Aligned contact form and map columns, increased form text size and refined responsive FAQ padding. Open map now uses Google Maps consistently with the embed. Hero, navbar, routes, Apollo/data and form behavior remain.
 - Yarn typecheck and 91-page production build passed with lint warnings. Existing read-only browser suite passed at five widths and three locales, including FAQ expansion/categories, legacy queries, article images/IDs, form validation/encoded draft interception and Retry. Refreshed previews visually reviewed.
 - Two concurrent frontend dev servers again caused cache/404 interference; restarted a single server on port 3000. No backend, dependencies, commit or deployment changes.
+
+
+## Direct admin inquiries - 2026-10-12
+
+The contact form now sends authenticated messages to the Nest backend and stores them for Admin -> CS -> 1:1 Inquiry. This supersedes the earlier email-draft behavior. See [CS_INQUIRIES.md](CS_INQUIRIES.md) for contract, scope and verification. No email delivery, Telegram or notifications are added.

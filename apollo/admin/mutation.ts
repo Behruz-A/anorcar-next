@@ -1,5 +1,15 @@
 import { gql } from '@apollo/client';
 
+export const UPDATE_INQUIRY_BY_ADMIN = gql`
+	mutation UpdateInquiryByAdmin($input: InquiryUpdate!) {
+		updateInquiryByAdmin(input: $input) {
+			_id
+			inquiryStatus
+			updatedAt
+		}
+	}
+`;
+
 /**************************
  *         MEMBER         *
  *************************/

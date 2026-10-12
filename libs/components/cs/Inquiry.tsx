@@ -1,41 +1,63 @@
-﻿import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useRef, useState } from 'react';
+import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { Alert, Button, TextField, MenuItem } from '@mui/material';
+import { useMutation, useReactiveVar } from '@apollo/client';
+import { CREATE_INQUIRY } from '../../../apollo/user/mutation';
+import { userVar } from '../../../apollo/store';
+import { InquirySubject, inquirySubjectLabels } from '../../enums/inquiry.enum';
+import { InquiryInput } from '../../types/inquiry/inquiry';
 import MailOutlineRounded from '@mui/icons-material/MailOutlineRounded';
 import LocationOnOutlined from '@mui/icons-material/LocationOnOutlined';
 import HelpOutlineRounded from '@mui/icons-material/HelpOutlineRounded';
 import EastRounded from '@mui/icons-material/EastRounded';
 
-const subjects = ['Buying a car', 'Selling a car', 'My account', 'Technical support', 'Community'];
+const subjects = Object.values(InquirySubject);
 const mapHref =
 	'https://www.google.com/maps/search/?api=1&query=Seoul%20City%20Hall%2C%20110%20Sejong-daero%2C%20Seoul';
 const Inquiry = () => {
 	const { t } = useTranslation('common');
-	const [status, setStatus] = useState(false);
-	const [error, setError] = useState(false);
-	const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+	const user = useReactiveVar(userVar);
+	const [createInquiry, { loading }] = useMutation<{ createInquiry: { _id: string } }, { input: InquiryInput }>(
+		CREATE_INQUIRY,
+	);
+	const inFlight = useRef(false);
+	const [subject, setSubject] = useState<InquirySubject | ''>('');
+	const [status, setStatus] = useState<'success' | 'error' | 'login' | 'validation' | null>(null);
+	const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
+		if (inFlight.current) return;
 		const form = event.currentTarget;
 		if (!form.reportValidity()) return;
 		const fields = new FormData(form);
 		const name = String(fields.get('name') ?? '').trim();
 		const email = String(fields.get('email') ?? '').trim();
-		const subject = String(fields.get('subject') ?? '');
 		const message = String(fields.get('message') ?? '').trim();
-		if (!name || !message || !subjects.includes(subject)) {
-			setError(true);
+		if (!name || !message || !subject || !subjects.includes(subject)) {
+			setStatus('validation');
 			return;
 		}
-		setError(false);
-		const body = name + ' <' + email + '>\n\n' + message;
-		window.open(
-			'mailto:info@anorcar.com?subject=' +
-				encodeURIComponent('ANORCAR: ' + t(subject)) +
-				'&body=' +
-				encodeURIComponent(body),
-			'_self',
-		);
-		setStatus(true);
+		if (!user._id) {
+			setStatus('login');
+			return;
+		}
+		inFlight.current = true;
+		setStatus(null);
+		try {
+			const result = await createInquiry({
+				variables: {
+					input: { inquiryName: name, inquiryEmail: email, inquirySubject: subject, inquiryMessage: message },
+				},
+			});
+			if (!result.data?.createInquiry._id) throw new Error('Missing inquiry receipt');
+			form.reset();
+			setSubject('');
+			setStatus('success');
+		} catch {
+			setStatus('error');
+		} finally {
+			inFlight.current = false;
+		}
 	};
 	return (
 		<section className="cs-inquiry" id="cs-contact" aria-labelledby="cs-contact-heading">
@@ -75,14 +97,14 @@ const Inquiry = () => {
 					className="cs-message-form"
 					onSubmit={submitHandler}
 					onChange={() => {
-						setStatus(false);
-						setError(false);
+						setStatus(null);
 					}}
 				>
 					<h3>{t('Send us a message')}</h3>
 					<div className="cs-form-row">
 						<TextField
 							name="name"
+							disabled={loading}
 							label={t('Your name')}
 							autoComplete="name"
 							required
@@ -91,6 +113,7 @@ const Inquiry = () => {
 						/>
 						<TextField
 							name="email"
+							disabled={loading}
 							label={t('Your email')}
 							type="email"
 							autoComplete="email"
@@ -103,7 +126,9 @@ const Inquiry = () => {
 						name="subject"
 						label={t('Subject')}
 						select
-						defaultValue=""
+						value={subject}
+						onChange={(event) => setSubject(event.target.value as InquirySubject)}
+						disabled={loading}
 						required
 						size="small"
 						SelectProps={{
@@ -124,12 +149,13 @@ const Inquiry = () => {
 					>
 						{subjects.map((subject) => (
 							<MenuItem key={subject} value={subject}>
-								{t(subject)}
+								{t(inquirySubjectLabels[subject])}
 							</MenuItem>
 						))}
 					</TextField>
 					<TextField
 						name="message"
+						disabled={loading}
 						label={t('How can we help?')}
 						multiline
 						minRows={3}
@@ -137,15 +163,21 @@ const Inquiry = () => {
 						size="small"
 						inputProps={{ maxLength: 1500 }}
 					/>
-					<Button type="submit" className="cs-send-button">
-						{t('Open email draft')}
+					<Button type="submit" className="cs-send-button" disabled={loading}>
+						{t(loading ? 'Sending...' : 'Send message')}
 						<EastRounded fontSize="small" />
 					</Button>
-					<p className="cs-form-note">{t('Review and send the draft in your email app.')}</p>
-					{error && <Alert severity="error">{t('Choose a subject and write your message.')}</Alert>}
-					{status && (
+					<p className="cs-form-note">{t('Your message goes directly to our support team.')}</p>
+					{status === 'validation' && <Alert severity="error">{t('Choose a subject and write your message.')}</Alert>}
+					{status === 'error' && (
+						<Alert severity="error">{t('Your message could not be sent. Please try again.')}</Alert>
+					)}
+					{status === 'success' && (
+						<Alert severity="success">{t('Your message has been sent to our support team.')}</Alert>
+					)}
+					{status === 'login' && (
 						<Alert severity="info">
-							{t('Your email app can open the draft. If it does not, email info@anorcar.com directly.')}
+							{t('Please log in to send a message.')} <Link href="/account/join">{t('Login / Register')}</Link>
 						</Alert>
 					)}
 				</form>

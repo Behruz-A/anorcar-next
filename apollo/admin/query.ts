@@ -1,5 +1,24 @@
 import { gql } from '@apollo/client';
 
+export const GET_ALL_INQUIRIES_BY_ADMIN = gql`
+	query GetAllInquiriesByAdmin($input: AllInquiriesInquiry!) {
+		getAllInquiriesByAdmin(input: $input) {
+			list {
+				_id
+				memberId
+				inquiryName
+				inquiryEmail
+				inquirySubject
+				inquiryMessage
+				inquiryStatus
+				createdAt
+				updatedAt
+			}
+			metaCounter { total }
+		}
+	}
+`;
+
 /**************************
  *         MEMBER         *
  *************************/
