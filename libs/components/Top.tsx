@@ -26,7 +26,7 @@ const Top = () => {
 	const isHomepage = router.pathname === '/';
 	const isCarsPage = router.pathname === '/car';
 	const isAgentsPage = router.pathname === '/agent' || router.pathname === '/agent/detail';
-	const isMarketplacePage = isHomepage || isCarsPage || isAgentsPage || router.pathname === '/community' || router.pathname === '/mypage' || router.pathname === '/cs';
+	const isMarketplacePage = isHomepage || isCarsPage || isAgentsPage || router.pathname === '/community' || router.pathname === '/mypage' || router.pathname === '/cs' || router.pathname === '/account/join';
 	const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
 	const [lang, setLang] = useState<string | null>('en');
 	const drop = Boolean(anchorEl2);

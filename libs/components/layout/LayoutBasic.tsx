@@ -110,7 +110,7 @@ const withLayoutBasic = (Component: any) => {
 						<title>ANORCAR</title>
 						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="mobile-wrap" className={helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : undefined}>
+					<Stack id="mobile-wrap" className={authHeader ? 'auth-shell' : helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : undefined}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>
@@ -146,12 +146,12 @@ const withLayoutBasic = (Component: any) => {
 						<title>ANORCAR</title>
 						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="pc-wrap" className={helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : undefined}>
+					<Stack id="pc-wrap" className={authHeader ? 'auth-shell' : helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : undefined}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>
 
-						{agentDetail || helpCenter ? null : marketplaceHeader ? (
+						{authHeader || agentDetail || helpCenter ? null : marketplaceHeader ? (
 							marketplaceHero
 						) : (
 							<Stack
