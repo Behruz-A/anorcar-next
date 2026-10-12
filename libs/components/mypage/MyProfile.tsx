@@ -13,7 +13,7 @@ import {
 import { useTranslation } from 'next-i18next';
 import axios from 'axios';
 import { imageUrl, REACT_APP_API_GRAPHQL_URL } from '../../config';
-import { getJwtToken, updateStorage, updateUserInfo } from '../../auth';
+import { getValidJwtToken, updateStorage, updateUserInfo } from '../../auth';
 import { useMutation, useReactiveVar } from '@apollo/client';
 import { userVar } from '../../../apollo/store';
 import { MemberUpdate } from '../../types/member/member.update';
@@ -92,7 +92,7 @@ const MyProfile = () => {
 			formData.append('map', JSON.stringify({ '0': ['variables.file'] }));
 			formData.append('0', image);
 			const response = await axios.post<UploadResponse>(REACT_APP_API_GRAPHQL_URL, formData, {
-				headers: { 'apollo-require-preflight': 'true', Authorization: `Bearer ${getJwtToken()}` },
+				headers: { 'apollo-require-preflight': 'true', Authorization: `Bearer ${await getValidJwtToken()}` },
 			});
 			const uploadedImage = response.data.data?.imageUploader;
 			if (response.data.errors?.length || !uploadedImage)

@@ -15,7 +15,7 @@ import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import { hydrateUser, logOut } from '../../auth';
 import { useReactiveVar } from '@apollo/client';
-import { userVar } from '../../../apollo/store';
+import { userVar, authReadyVar } from '../../../apollo/store';
 import { REACT_APP_API_URL } from '../../config';
 import { MemberType } from '../../enums/member.enum';
 const drawerWidth = 280;
@@ -24,6 +24,7 @@ const withAdminLayout = (Component: ComponentType) => {
 	return function AdminLayout(props: object) {
 		const router = useRouter();
 		const user = useReactiveVar(userVar);
+		const authReady = useReactiveVar(authReadyVar);
 		const [settingsState, setSettingsStateState] = useState(false);
 		const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 		const [openMenu, setOpenMenu] = useState(false);
@@ -38,10 +39,10 @@ const withAdminLayout = (Component: ComponentType) => {
 		}, []);
 
 		useEffect(() => {
-			if (!loading && user.memberType !== MemberType.ADMIN) {
+			if (!loading && authReady && user.memberType !== MemberType.ADMIN) {
 				router.push('/').then();
 			}
-		}, [loading, user, router]);
+		}, [loading, authReady, user, router]);
 
 		/** HANDLERS **/
 		const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {

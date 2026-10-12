@@ -12,6 +12,7 @@ import { socketVar, userVar } from '../../apollo/store';
 import { Member } from '../types/member/member';
 import { Messages, REACT_APP_API_URL } from '../config';
 import { sweetErrorAlert } from '../sweetAlert';
+import { getValidJwtToken } from '../auth';
 
 const NewMessage = (type: any) => {
 	if (type === 'right') {
@@ -121,11 +122,22 @@ const Chat = () => {
 		}
 	};
 
-	const onClickHandler = () => {
+	const onClickHandler = async () => {
 		if (!messageInput) sweetErrorAlert(Messages.error4);
 		else {
-			socket.send(JSON.stringify({ event: 'message', data: messageInput }));
-			setMessageInput('');
+			try {
+				if (user._id) await getValidJwtToken();
+				const currentSocket = socketVar();
+				if (currentSocket.readyState === WebSocket.CONNECTING) {
+					await new Promise<void>((resolve, reject) => {
+						const timer = setTimeout(() => reject(new Error('Chat connection unavailable')), 10000);
+						currentSocket.addEventListener('open', () => { clearTimeout(timer); resolve(); }, { once: true });
+						currentSocket.addEventListener('error', () => { clearTimeout(timer); reject(new Error('Chat connection unavailable')); }, { once: true });
+					});
+				}
+				currentSocket.send(JSON.stringify({ event: 'message', data: messageInput }));
+				setMessageInput('');
+			} catch { /* Preserve the message for retry if authentication/network is unavailable. */ }
 		}
 	};
 

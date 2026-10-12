@@ -31,10 +31,12 @@ module.exports = async function checkAuth() {
  const source = ts.transpileModule(fs.readFileSync(filename, 'utf8'), {
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2019, esModuleInterop: true },
  }).outputText;
- const context = { exports: {}, localStorage: storage, window: { localStorage: storage, location: { reload() { reloads++; } } },
+ class SessionExpiredError extends Error {}
+ const context = { sessionExpiredError: SessionExpiredError, exports: {}, localStorage: storage, window: { localStorage: storage, location: { reload() { reloads++; } } },
   console: { log() {}, warn() {} }, require(name) {
    const modules = { 'jwt-decode': decodeJWT, '../../apollo/client': { initializeApollo: () => client },
     '../../apollo/store': { userVar, authReadyVar }, '../enums/common.enum': { Message }, '../enums/member.enum': { MemberType },
+    './session': { SessionExpiredError, isAccessTokenCurrent(value) { try { const payload=decodeJWT(value);return Boolean(payload._id&&Object.values(MemberType).includes(payload.memberType)&&payload.exp>Date.now()/1000+10); } catch { return false; } }, async prepareSessionChange() {}, async refreshAccessToken() { throw new context.sessionExpiredError(); }, async revokeRefreshSession() { storage.removeItem('logoutPending'); } },
     '../../apollo/user/mutation': { LOGIN: 'login', SIGN_UP: 'signup' }, '../../apollo/user/query': { GET_MEMBER: 'getMember' } };
    if (!(name in modules)) throw new Error('Unexpected auth dependency: ' + name);
    return modules[name];
@@ -42,28 +44,28 @@ module.exports = async function checkAuth() {
  vm.runInNewContext(source, context, { filename });
  const auth = context.exports;
 
- auth.hydrateUser();
+ await auth.hydrateUser();
  assert.equal(authReadyVar(), true);
  assert.equal(userVar()._id, '');
  for (const role of ['USER', 'AGENT', 'ADMIN']) {
-  authReadyVar(false); storage.setItem('accessToken', token({ ...claims, memberType: role })); auth.hydrateUser();
+  authReadyVar(false); storage.setItem('accessToken', token({ ...claims, memberType: role })); await auth.hydrateUser();
   assert.equal(userVar().memberType, role);
   assert.equal(userVar().memberCars, 3);
   assert.equal(userVar().memberFollowers, 2);
   assert.equal(userVar().memberComments, 4);
  }
  const previous = userVar();
- storage.setItem('accessToken', 'malformed'); auth.hydrateUser();
+ storage.setItem('accessToken', 'malformed'); await auth.hydrateUser();
  assert.equal(userVar(), previous, 'Hydration runs once across multiple layouts');
  for (const value of ['malformed', token({ ...claims, exp: 1 }), token({ ...claims, memberType: 'SELLER' })]) {
-  authReadyVar(false); storage.setItem('accessToken', value); auth.hydrateUser();
+  authReadyVar(false); storage.setItem('accessToken', value); await auth.hydrateUser();
   assert.equal(storage.getItem('accessToken'), null);
   assert.equal(userVar()._id, '');
   assert.equal(userVar().memberCars, 0);
   assert.equal(authReadyVar(), true);
  }
  const browserWindow = context.window;
- delete context.window; authReadyVar(false); auth.hydrateUser();
+ delete context.window; authReadyVar(false); await auth.hydrateUser();
  assert.equal(authReadyVar(), false, 'SSR does not access browser storage'); context.window = browserWindow;
 
  for (const message of [Message.WRONG_PASSWORD, Message.BLOCKED_USER, Message.NO_MEMBER_NICK]) {
@@ -97,7 +99,7 @@ module.exports = async function checkAuth() {
  userVar({ ...userVar(), _id: 'another-member', memberCars: 1 });
  resolveQuery({ data: { getMember: { memberCars: 99 } } }); await stale;
  assert.equal(userVar().memberCars, 1, 'Late requests do not update another session');
- auth.logOut();
+ await auth.logOut();
  assert.equal(storage.getItem('accessToken'), null);
  assert.equal(userVar()._id, '');
  assert.equal(reloads, 1);

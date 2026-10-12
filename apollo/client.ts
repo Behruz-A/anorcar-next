@@ -1,10 +1,24 @@
 import { useMemo } from 'react';
-import { ApolloClient, ApolloLink, InMemoryCache, split, from, NormalizedCacheObject } from '@apollo/client';
+import {
+	ApolloClient,
+	ApolloLink,
+	InMemoryCache,
+	split,
+	from,
+	NormalizedCacheObject,
+	Observable,
+} from '@apollo/client';
 import createUploadLink from 'apollo-upload-client/public/createUploadLink.js';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { onError } from '@apollo/client/link/error';
 import { getJwtToken } from '../libs/auth';
+import {
+	isAccessTokenCurrent,
+	refreshAccessToken,
+	SessionChangedError,
+	SessionExpiredError,
+} from '../libs/auth/session';
 import { TokenRefreshLink } from 'apollo-link-token-refresh';
 import { sweetErrorAlert } from '../libs/sweetAlert';
 import { socketVar } from './store';
@@ -19,23 +33,59 @@ function getHeaders() {
 	return headers;
 }
 
+let refreshError: Error | null = null;
 const tokenRefreshLink = new TokenRefreshLink({
 	accessTokenField: 'accessToken',
-	isTokenValidOrUndefined: () => {
-		return true;
-	}, // @ts-ignore
-	fetchAccessToken: () => {
-		// execute refresh token
-		return null;
+	isTokenValidOrUndefined: (operation) => {
+		if (['Login', 'Signup'].includes(operation.operationName)) return true;
+		const token = getJwtToken();
+		const waiting = Boolean(token && !isAccessTokenCurrent(token));
+		operation.setContext({ waitingForRefresh: waiting });
+		return !waiting;
 	},
+	fetchAccessToken: async () => {
+		refreshError = null;
+		return new Response(JSON.stringify({ accessToken: await refreshAccessToken() }), {
+			headers: { 'Content-Type': 'application/json' },
+		});
+	},
+	handleFetch: () => {
+		refreshError = null;
+	},
+	handleError: (error) => {
+		refreshError = error;
+	},
+});
+
+// The installed TokenRefreshLink drains its queue even after failure. Keep failed
+// authenticated requests out of the transport rather than forwarding stale tokens.
+const refreshResultLink = new ApolloLink((operation, forward) => {
+	if (operation.getContext().waitingForRefresh && refreshError)
+		return new Observable((observer) => observer.error(refreshError));
+	return forward(operation);
 });
 
 // Custom Websocket client
 class LoggingWebSocket {
 	private socket: WebSocket;
+	private token = '';
+	private readonly authChanged = () => {
+		const token = isAccessTokenCurrent() ? getJwtToken() : '';
+		if (token === this.token) return;
+		this.socket.close();
+		this.connect(token);
+	};
 
-	constructor(url: string) {
-		this.socket = new WebSocket(`${url}?token=${getJwtToken()}`);
+	constructor(private readonly url: string) {
+		this.socket = new WebSocket(`${url}?token=${isAccessTokenCurrent() ? getJwtToken() : ''}`);
+		this.token = isAccessTokenCurrent() ? getJwtToken() : '';
+		window.addEventListener('anorcar:auth-changed', this.authChanged);
+		socketVar(this.socket);
+	}
+
+	private connect(token: string) {
+		this.token = token;
+		this.socket = new WebSocket(`${this.url}?token=${token}`);
 		socketVar(this.socket);
 
 		this.socket.onopen = () => {
@@ -55,6 +105,7 @@ class LoggingWebSocket {
 		this.socket.send(data as string | Blob | ArrayBuffer);
 	}
 	close() {
+		window.removeEventListener('anorcar:auth-changed', this.authChanged);
 		this.socket.close();
 	}
 }
@@ -68,13 +119,14 @@ function createIsomorphicLink() {
 					...getHeaders(),
 				},
 			}));
-			console.warn('requesting.. ', operation);
 			return forward(operation);
 		});
 
 		// @ts-ignore
 		const link = new createUploadLink({
 			uri: REACT_APP_API_GRAPHQL_URL,
+			credentials: 'include',
+			headers: { 'X-Anorcar-Client': 'web' },
 		});
 
 		/* WEBSOCKET SUBSCRIPTION LINK */
@@ -90,7 +142,27 @@ function createIsomorphicLink() {
 			webSocketImpl: LoggingWebSocket,
 		});
 
-		const errorLink = onError(({ graphQLErrors, networkError, response }) => {
+		const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) => {
+			if (graphQLErrors?.some((error) => error.message === 'ACCESS_TOKEN_EXPIRED')) {
+				if (operation.getContext().refreshRetried) return;
+				operation.setContext({ refreshRetried: true });
+				return new Observable((observer) => {
+					let cancelled = false;
+					let subscription: { unsubscribe: () => void } | undefined;
+					refreshAccessToken(true)
+						.then(() => {
+							if (!cancelled) subscription = forward(operation).subscribe(observer);
+						})
+						.catch((error) => {
+							if (!cancelled) observer.error(error);
+						});
+					return () => {
+						cancelled = true;
+						subscription?.unsubscribe();
+					};
+				});
+			}
+			if (networkError instanceof SessionExpiredError || networkError instanceof SessionChangedError) return;
 			if (graphQLErrors) {
 				graphQLErrors.map(({ message, locations, path, extensions }) => {
 					console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`);
@@ -112,7 +184,7 @@ function createIsomorphicLink() {
 			authLink.concat(link),
 		);
 
-		return from([errorLink, tokenRefreshLink, splitLink]);
+		return from([errorLink, tokenRefreshLink, refreshResultLink, splitLink]);
 	}
 }
 

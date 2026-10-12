@@ -22,7 +22,7 @@ import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/i18n/ko-kr';
 import '@toast-ui/editor/dist/i18n/ru-ru';
 import '@toast-ui/editor/dist/toastui-editor.css';
-import { getJwtToken } from '../../auth';
+import { getJwtToken, getValidJwtToken } from '../../auth';
 import { imageUrl, REACT_APP_API_GRAPHQL_URL } from '../../config';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -147,7 +147,7 @@ const TuiEditor = () => {
 			formData.append('0', file);
 			const response = await axios.post(REACT_APP_API_GRAPHQL_URL, formData, {
 				signal: controller.signal,
-				headers: { 'apollo-require-preflight': 'true', Authorization: `Bearer ${getJwtToken()}` },
+				headers: { 'apollo-require-preflight': 'true', Authorization: `Bearer ${await getValidJwtToken()}` },
 			});
 			const path = response.data?.data?.imageUploader;
 			if (!path || response.data?.errors?.length)

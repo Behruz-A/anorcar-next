@@ -9,7 +9,7 @@ import { CREATE_CAR, UPDATE_CAR } from '../../../apollo/user/mutation';
 import { GET_CAR } from '../../../apollo/user/query';
 import { GET_BRANDS } from '../../../apollo/user/query';
 import { userVar } from '../../../apollo/store';
-import { getJwtToken, refreshMemberCars } from '../../auth';
+import { getValidJwtToken, refreshMemberCars } from '../../auth';
 import { CarCondition, CarFuelType, CarLocation, CarTransmission, CarStatus } from '../../enums/car.enum';
 import { MemberType } from '../../enums/member.enum';
 import { CarInput } from '../../types/car/car.input';
@@ -71,7 +71,7 @@ export default function AddCar() {
    form.append('map', JSON.stringify(Object.fromEntries(compressed.map((_, index) => [String(index), [`variables.files.${index}`]]))));
    compressed.forEach((file, index) => form.append(String(index), file, files[index].name));
    const response = await axios.post(REACT_APP_API_GRAPHQL_URL, form, { headers: {
-    'apollo-require-preflight': 'true', Authorization: `Bearer ${getJwtToken()}`,
+    'apollo-require-preflight': 'true', Authorization: `Bearer ${await getValidJwtToken()}`,
    } });
    if (response.data.errors?.length) throw new Error(response.data.errors[0].message);
    const images = response.data.data?.imagesUploader;

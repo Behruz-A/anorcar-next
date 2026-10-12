@@ -6,19 +6,30 @@ import { Message } from '../enums/common.enum';
 import { MemberType } from '../enums/member.enum';
 import { LOGIN, SIGN_UP } from '../../apollo/user/mutation';
 import { GET_MEMBER } from '../../apollo/user/query';
+import {
+	isAccessTokenCurrent,
+	prepareSessionChange,
+	refreshAccessToken,
+	revokeRefreshSession,
+	SessionExpiredError,
+} from './session';
+export { getValidJwtToken } from './session';
 
-export function getJwtToken(): any {
+export function getJwtToken(): string {
 	if (typeof window !== 'undefined') {
 		return localStorage.getItem('accessToken') ?? '';
 	}
+	return '';
 }
 
 export function setJwtToken(token: string) {
 	localStorage.setItem('accessToken', token);
+	window.dispatchEvent?.(new Event('anorcar:auth-changed'));
 }
 
 export const logIn = async (nick: string, password: string): Promise<void> => {
 	try {
+		await prepareSessionChange();
 		const { jwtToken } = await requestJwtToken({ nick, password });
 
 		if (jwtToken) {
@@ -60,6 +71,7 @@ const requestJwtToken = async ({
 
 export const signUp = async (nick: string, password: string, phone: string, type: string): Promise<void> => {
 	try {
+		await prepareSessionChange();
 		const { jwtToken } = await requestSignUpJwtToken({ nick, password, phone, type });
 
 		if (jwtToken) {
@@ -108,10 +120,12 @@ const requestSignUpJwtToken = async ({
 
 export const updateStorage = ({ jwtToken }: { jwtToken: any }) => {
 	setJwtToken(jwtToken);
+	window.localStorage.setItem('authSession', 'cookie');
+	window.localStorage.removeItem('logoutPending');
 	window.localStorage.setItem('login', Date.now().toString());
 };
 
-export const updateUserInfo = (jwtToken: any) => {
+export const updateUserInfo = (jwtToken: string, ready = true) => {
 	if (!jwtToken) return false;
 
 	const claims = decodeJWT<CustomJwtPayload>(jwtToken);
@@ -144,18 +158,29 @@ export const updateUserInfo = (jwtToken: any) => {
 		memberWarnings: claims.memberWarnings ?? 0,
 		memberBlocks: claims.memberBlocks ?? 0,
 	});
-	authReadyVar(true);
+	if (ready) authReadyVar(true);
 };
 
-export const logOut = () => {
+export const logOut = async () => {
+	localStorage.setItem('logoutPending', '1');
+	const changing = prepareSessionChange();
 	deleteStorage();
 	deleteUserInfo();
+	authReadyVar(true);
+	await changing;
+	try {
+		await revokeRefreshSession();
+	} catch {
+		/* Retry server revocation on next hydration; never restore this session. */
+	}
 	window.location.reload();
 };
 
-const deleteStorage = () => {
+const deleteStorage = (broadcast = true) => {
 	localStorage.removeItem('accessToken');
-	window.localStorage.setItem('logout', Date.now().toString());
+	localStorage.removeItem('authSession');
+	window.dispatchEvent?.(new Event('anorcar:auth-changed'));
+	if (broadcast) window.localStorage.setItem('logout', Date.now().toString());
 };
 
 const deleteUserInfo = () => {
@@ -184,25 +209,71 @@ const deleteUserInfo = () => {
 	});
 };
 
-export function hydrateUser() {
- if (typeof window === 'undefined' || authReadyVar()) return;
- try {
-  const token = getJwtToken();
-  if (token) {
-   const claims = decodeJWT<CustomJwtPayload>(token);
-   if (claims.exp && claims.exp * 1000 <= Date.now()) throw new Error('Session expired');
-   updateUserInfo(token);
-  }
- } catch {
-  localStorage.removeItem('accessToken');
-  deleteUserInfo();
- } finally { authReadyVar(true); }
+export function clearUserSession(broadcast = true) {
+	deleteStorage(broadcast);
+	deleteUserInfo();
+	authReadyVar(true);
+}
+
+let hydration: Promise<void> | null = null;
+let listening = false;
+export async function hydrateUser(): Promise<void> {
+	if (typeof window === 'undefined' || authReadyVar()) return;
+	if (hydration) return hydration;
+	if (!listening && window.addEventListener) {
+		listening = true;
+		window.addEventListener('storage', (event) => {
+			if (event.key === 'logout' || (event.key === 'logoutPending' && event.newValue)) {
+				void prepareSessionChange();
+				clearUserSession(false);
+			} else if (event.key === 'accessToken' && event.newValue && isAccessTokenCurrent(event.newValue)) {
+				updateUserInfo(event.newValue);
+				window.dispatchEvent(new Event('anorcar:auth-changed'));
+			}
+		});
+	}
+	if (localStorage.getItem('logoutPending')) {
+		clearUserSession();
+		await revokeRefreshSession().catch(() => undefined);
+		return;
+	}
+	const token = getJwtToken();
+	if (isAccessTokenCurrent(token)) {
+		updateUserInfo(token);
+		return;
+	}
+	if (!token && !localStorage.getItem('authSession')) {
+		authReadyVar(true);
+		return;
+	}
+	try {
+		if (token) updateUserInfo(token, false);
+	} catch {
+		clearUserSession();
+	}
+	authReadyVar(false);
+	hydration = refreshAccessToken()
+		.then(() => undefined)
+		.catch((error) => {
+			if (error instanceof SessionExpiredError) clearUserSession();
+			// A temporary network error retains the known user; the next request retries.
+		})
+		.finally(() => {
+			authReadyVar(true);
+			hydration = null;
+		});
+	return hydration;
 }
 
 export async function refreshMemberCars() {
- const user = userVar();
- if (!user._id) return;
- const client = initializeApollo();
- const { data } = await client.query({ query: GET_MEMBER, variables: { input: user._id }, fetchPolicy: 'network-only' });
- if (userVar()._id === user._id && data?.getMember) userVar({ ...userVar(), memberCars: data.getMember.memberCars ?? 0 });
+	const user = userVar();
+	if (!user._id) return;
+	const client = initializeApollo();
+	const { data } = await client.query({
+		query: GET_MEMBER,
+		variables: { input: user._id },
+		fetchPolicy: 'network-only',
+	});
+	if (userVar()._id === user._id && data?.getMember)
+		userVar({ ...userVar(), memberCars: data.getMember.memberCars ?? 0 });
 }
