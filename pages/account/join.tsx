@@ -102,11 +102,11 @@ const Join: NextPage = () => {
    <Head><title>{`${t(signup ? 'Create account' : 'Log in')} | ANORCAR`}</title></Head>
    <div className="auth-frame">
     <aside className="auth-visual">
-     <img className="auth-photo" src="/img/car/home-hero.png" alt="" />
+     <img className="auth-photo" src="/img/car/loginpageimg.png" alt="" />
      <Link href="/" className="auth-wordmark"><img src="/img/logo/anorcar-white.svg" alt="ANORCAR" /></Link>
      <div className="auth-visual-copy">
-      <h2>{t('Your next car starts here.')}</h2>
-      <p>{t('Save your favorites, connect with sellers and share your journey.')}</p>
+      <h2>{t('Find your next car.')}</h2>
+      <p>{t('Buy, sell and explore with ANORCAR.')}</p>
      </div>
     </aside>
     <div className="auth-panel">
@@ -145,7 +145,7 @@ const Join: NextPage = () => {
         </div>
         <fieldset className="auth-roles">
          <legend>{t('How will you use ANORCAR?')}</legend>
-         {[{ value: MemberType.USER, label: 'Buyer', description: 'Find and save cars' }, { value: MemberType.AGENT, label: 'Seller', description: 'List and sell cars' }].map(role => (
+         {[{ value: MemberType.USER, label: 'User', description: 'Find and save cars' }, { value: MemberType.AGENT, label: 'Agent', description: 'List and sell cars' }].map(role => (
           <label key={role.value} className={input.type === role.value ? 'selected' : ''}>
            <input type="radio" name="memberType" value={role.value} checked={input.type === role.value} onChange={() => change('type', role.value)} />
            <span><strong>{t(role.label)}</strong><small>{t(role.description)}</small></span>
