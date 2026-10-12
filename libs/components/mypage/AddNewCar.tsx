@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next';
-import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
+import { AddPhotoAlternateOutlined, Close } from '@mui/icons-material';
 import { Alert, Button, Checkbox, CircularProgress, FormControlLabel, MenuItem, Stack, TextField, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
@@ -35,6 +36,7 @@ export default function AddCar() {
  const [draft, setDraft] = useState<Draft>(emptyDraft);
  const [uploading, setUploading] = useState(false);
  const [message, setMessage] = useState('');
+ const photoInput = useRef<HTMLInputElement>(null);
  const { data: brandsData, loading: brandsLoading, error: brandsError } = useQuery<{ getBrands: Brand[] }>(GET_BRANDS);
  const { data, loading, error } = useQuery<{ getCar: Car }>(GET_CAR, { variables: { input: carId }, skip: !carId, fetchPolicy: 'network-only' });
  const [createCar, { loading: creating }] = useMutation(CREATE_CAR);
@@ -144,13 +146,22 @@ export default function AddCar() {
      <TextField multiline minRows={4} label={t("Description (optional)")} value={draft.carDesc ?? ''} inputProps={{ maxLength: 500 }} onChange={e => set('carDesc', e.target.value)} />
      <Stack direction="row"><FormControlLabel label={t("Available for barter")} control={<Checkbox checked={draft.carBarter ?? false} onChange={e => set('carBarter', e.target.checked)} />} />
       <FormControlLabel label={t("Available for rent")} control={<Checkbox checked={draft.carRent ?? false} onChange={e => set('carRent', e.target.checked)} />} /></Stack>
-     <Typography>{t("Car photos (up to 5)")}</Typography>
-     <input aria-label={t("Upload car photos")} type="file" multiple accept="image/jpeg,image/png" onChange={upload} disabled={busy || draft.carImages.length >= 5} />
+     <div className="car-photo-section">
+      <div className="car-photo-heading"><Typography>{t("Car photos (up to 5)")}</Typography><span>{draft.carImages.length}/5</span></div>
+      <input ref={photoInput} hidden aria-label={t("Upload car photos")} type="file" multiple accept="image/jpeg,image/png" onChange={upload} disabled={busy || draft.carImages.length >= 5} />
+      <div className="car-photo-slots">
+       {draft.carImages.map((image, index) => <div className="car-photo-slot" key={`${image}-${index}`}>
+        <img src={imageUrl(image)} alt={`${t('Car photo')} ${index + 1}`} />
+        <button type="button" className="car-photo-remove" disabled={busy} aria-label={`${t('Remove photo')} ${index + 1}`} onClick={() => set('carImages', draft.carImages.filter((_, photoIndex) => photoIndex !== index))}><Close fontSize="small" /></button>
+       </div>)}
+       {Array.from({ length: Math.max(0, 5 - draft.carImages.length) }, (_, index) => <button
+        key={`empty-${index}`} type="button" className="car-photo-add" disabled={busy}
+        aria-label={`${t('Add photo')} ${draft.carImages.length + index + 1}`} onClick={() => photoInput.current?.click()}>
+        <AddPhotoAlternateOutlined /><span>{t('Add photo')}</span>
+       </button>)}
+      </div>
+     </div>
      {uploading && <Typography role="status">{t("Uploading photos…")}</Typography>}
-     <Stack className="car-photo-previews" direction="row" spacing={2}>
-      {draft.carImages.map(image => <Stack key={image}><img src={imageUrl(image)} alt="Car photo" width={140} height={100} style={{ objectFit: 'cover' }} />
-       <Button disabled={busy} onClick={() => set('carImages', draft.carImages.filter(item => item !== image))}>{t("Remove photo")}</Button></Stack>)}
-     </Stack>
      <Button type="submit" variant="contained" disabled={busy || !brands.length || !!brandsError}>{creating || updating ? t('Saving…') : t(carId ? 'Save changes' : 'Create car')}</Button>
     </Stack>
    </fieldset>

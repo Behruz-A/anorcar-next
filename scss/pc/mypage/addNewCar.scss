@@ -587,3 +587,21 @@
 		}
 	}
 }
+
+// Compact, persistent upload slots for the existing create/edit car form.
+#pc-wrap #add-car-page, #mobile-wrap #add-car-page {
+ .car-photo-section { width: 100%; min-width: 0; }
+ .car-photo-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+ .car-photo-heading > span { color: #667085; font-size: 13px; }
+ .car-photo-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 112px)); gap: 10px; }
+ .car-photo-slot, .car-photo-add { position: relative; width: 100%; height: 90px; border-radius: 10px; overflow: hidden; }
+ .car-photo-slot { border: 1px solid #e5e7eb; background: #fff; }
+ .car-photo-slot > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+ .car-photo-add { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border: 1px dashed #aeb7c4; background: #fff; color: #667085; font: inherit; cursor: pointer; }
+ .car-photo-add > svg { width: 26px; height: 26px; color: #d54c38; }
+ .car-photo-add > span { font-size: 11px; line-height: 1.3; padding: 0 4px; }
+ .car-photo-add:hover:not(:disabled) { border-color: #eb6753; background: #fff7f5; }
+ .car-photo-remove { position: absolute; top: 4px; right: 4px; width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid #e5e7eb; border-radius: 50%; color: #181a20; background: #fff; cursor: pointer; }
+ .car-photo-add:focus-visible, .car-photo-remove:focus-visible { outline: 2px solid #eb6753; outline-offset: 2px; }
+ .car-photo-add:disabled, .car-photo-remove:disabled { cursor: wait; opacity: .55; }
+}
