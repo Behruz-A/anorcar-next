@@ -15,7 +15,7 @@ interface FaqProps {
 }
 const Faq = ({ category, search, onCategoryChange, onReset }: FaqProps) => {
 	const { t, i18n } = useTranslation('common');
-	const [expanded, setExpanded] = useState<string | false>('search');
+	const [expanded, setExpanded] = useState<string | false>(false);
 	const query = search.trim().toLocaleLowerCase(i18n.language);
 	const questions = helpQuestions.filter(
 		(item) =>
@@ -28,18 +28,16 @@ const Faq = ({ category, search, onCategoryChange, onReset }: FaqProps) => {
 	);
 	const firstQuestion = questions[0]?.id ?? false;
 	useEffect(() => {
-		setExpanded(firstQuestion);
+		setExpanded(query ? firstQuestion : false);
 	}, [firstQuestion, category, query]);
 	return (
 		<section className="cs-faq" id="cs-faq" aria-labelledby="cs-faq-heading">
 			<aside className="cs-faq-aside">
-				<span className="cs-kicker">{t('Answers at a glance')}</span>
 				<h2 id="cs-faq-heading">{t('Frequently asked questions')}</h2>
-				<p>{t('Practical answers to help you keep moving.')}</p>
 				<div className="cs-contact-card">
 					<HeadsetMicOutlined />
 					<h3>{t('Still need a hand?')}</h3>
-					<p>{t('Tell us what happened and include the page address. Our team can help you find the next step.')}</p>
+					<p>{t('Contact our team for more help.')}</p>
 					<a href="mailto:info@anorcar.com" className="cs-contact-button">
 						{t('Email support')}
 						<EastRounded fontSize="small" />

@@ -40,7 +40,16 @@ async function until(expression, label) {
 		if (await evaluate(expression)) return;
 		await delay(200);
 	}
-	throw new Error('Timeout ' + label + ' ' + JSON.stringify(await evaluate("({url:location.href,input:document.querySelector('.cs-search input')?.value,active:document.activeElement?.outerHTML,summary:document.querySelector('.cs-search-summary')?.textContent})")));
+	throw new Error(
+		'Timeout ' +
+			label +
+			' ' +
+			JSON.stringify(
+				await evaluate(
+					"({url:location.href,input:document.querySelector('.cs-search input')?.value,active:document.activeElement?.outerHTML,summary:document.querySelector('.cs-search-summary')?.textContent})",
+				),
+			),
+	);
 }
 async function navigate(width, locale = 'en', query = '') {
 	await command('Emulation.setDeviceMetricsOverride', {
@@ -150,25 +159,9 @@ async function screenshot(name) {
 		assert.ok(await evaluate("!!document.querySelector('.cs-faq-main .cs-empty')"));
 		await evaluate("document.querySelector('.cs-empty button').click()");
 		await until("document.querySelectorAll('.cs-faq-list .MuiAccordion-root').length===13", 'clear search');
-		await until("!location.search.includes('q=')", 'reset URL');
-		await navigate(1440);
-		await command('Page.bringToFront');
-		await evaluate("document.querySelector('.cs-search input').focus()");
-		await delay(100);
-		await command('Input.insertText', { text: 'profile' });
-		await delay(250);
-		assert.equal(await evaluate("document.querySelector('.cs-search input').value"), 'profile');
-		await command('Input.dispatchKeyEvent', {
-			type: 'keyDown',
-			key: 'Enter',
-			code: 'Enter',
-			text: '\r',
-			unmodifiedText: '\r',
-			windowsVirtualKeyCode: 13,
-		});
-		await command('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 });
-		await until("location.search.includes('q=profile')", 'search submit');
-		assert.ok(await evaluate("document.querySelectorAll('.cs-faq-list .MuiAccordion-root').length<13"));
+		assert.equal(await evaluate("document.querySelectorAll('.cs-search').length"), 0);
+		assert.equal(await evaluate("document.querySelectorAll('.cs-hero a, .cs-hero button, .cs-hero input').length"), 0);
+		assert.equal(await evaluate("getComputedStyle(document.querySelector('.cs-hero')).borderBottomWidth"), '0px');
 		for (const locale of ['kr', 'ru']) {
 			await navigate(390, locale);
 			assert.notEqual(await evaluate("document.querySelector('h1').textContent"), 'How can we help you?');
@@ -183,7 +176,7 @@ async function screenshot(name) {
 		await until("document.querySelectorAll('.cs-update-card').length===3", 'retry');
 		assert.deepEqual(exceptions, []);
 		console.log(
-			'PASS CS search, topics, accordion, deep links, real news, mobile, locales, retry; no runtime exceptions.',
+			'PASS CS topic navigation, accordion, legacy search links, real news, mobile, locales, retry; no runtime exceptions.',
 		);
 	} finally {
 		if (socket) socket.close();

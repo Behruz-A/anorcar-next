@@ -1,11 +1,10 @@
-import React, { FormEvent, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { Button, Stack } from '@mui/material';
-import SearchRounded from '@mui/icons-material/SearchRounded';
+import { Stack } from '@mui/material';
 import EastRounded from '@mui/icons-material/EastRounded';
 import DirectionsCarOutlined from '@mui/icons-material/DirectionsCarOutlined';
 import SellOutlined from '@mui/icons-material/SellOutlined';
@@ -32,7 +31,6 @@ const topicIcons = [
 const CS: NextPage = () => {
 	const { t } = useTranslation('common');
 	const router = useRouter();
-	const [draft, setDraft] = useState('');
 	const [search, setSearch] = useState('');
 	const [category, setCategory] = useState<HelpCategory>('all');
 	const restored = useRef(false);
@@ -40,7 +38,6 @@ const CS: NextPage = () => {
 		if (!router.isReady) return;
 		const value = typeof router.query.q === 'string' ? router.query.q.slice(0, 160) : '';
 		const selected = helpTopics.find((topic) => topic.id === router.query.topic)?.id ?? 'all';
-		setDraft(value);
 		setSearch(value);
 		setCategory(selected);
 		if (!restored.current) {
@@ -53,7 +50,6 @@ const CS: NextPage = () => {
 	const chooseHelp = (topic: HelpCategory, value = search) => {
 		setCategory(topic);
 		setSearch(value);
-		setDraft(value);
 		void router.replace(
 			{ pathname: '/cs', query: { tab: 'faq', ...(topic !== 'all' ? { topic } : {}), ...(value ? { q: value } : {}) } },
 			undefined,
@@ -63,53 +59,24 @@ const CS: NextPage = () => {
 			.getElementById('cs-faq')
 			?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
 	};
-	const searchHandler = (event: FormEvent) => {
-		event.preventDefault();
-		chooseHelp('all', draft.trim());
-	};
 	return (
 		<Stack component="main" className="cs-page" id="cs-help-center">
 			<Head>
 				<title>{`${t('Help Center')} | ANORCAR`}</title>
-				<meta name="description" content={t('Find answers, explore helpful guides, and get the support you need.')} />
+				<meta name="description" content={t('Find answers, explore guides, and get the support you need.')} />
 			</Head>
 			<section className="cs-hero" aria-labelledby="cs-title">
 				<div className="cs-container">
-					<span className="cs-hero-label">ANORCAR / {t('Help Center')}</span>
-					<h1 id="cs-title">{t('How can we help you?')}</h1>
-					<p>{t('Find answers, explore helpful guides, and get the support you need.')}</p>
-					<form className="cs-search" onSubmit={searchHandler} role="search">
-						<SearchRounded aria-hidden="true" />
-						<input
-							value={draft}
-							onChange={(event) => setDraft(event.target.value)}
-							maxLength={160}
-							aria-label={t('Search help topics')}
-							placeholder={t('Search questions, topics, or keywords')}
-						/>
-						<Button type="submit" className="cs-search-button">
-							{t('Search')}
-							<EastRounded fontSize="small" />
-						</Button>
-					</form>
-					<div className="cs-popular">
-						<span>{t('Popular topics')}</span>
-						{helpTopics.slice(0, 4).map((topic) => (
-							<button type="button" key={topic.id} onClick={() => chooseHelp(topic.id, '')}>
-								{t(topic.title)}
-							</button>
-						))}
-					</div>
+					<h1 id="cs-title">{t('Help Center')}</h1>
+					<p>{t('Find answers, explore guides, and get the support you need.')}</p>
 				</div>
 			</section>
 			<div className="cs-container cs-body">
-				<section className="cs-topics" aria-labelledby="cs-topics-heading">
+				<section className="cs-topics" id="cs-topics" aria-labelledby="cs-topics-heading">
 					<div className="cs-section-heading">
 						<div>
 							<h2 id="cs-topics-heading">{t('Explore help topics')}</h2>
-							<p>{t('A little guidance for every step of your car journey.')}</p>
 						</div>
-						<span className="cs-section-note">{t('Made for the ANORCAR community')}</span>
 					</div>
 					<div className="cs-topic-grid">
 						{helpTopics.map((topic, index) => {

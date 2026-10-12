@@ -3,24 +3,24 @@ export const helpTopics: { id: Exclude<HelpCategory, 'all'>; title: string; desc
 	{
 		id: 'cars',
 		title: 'Buying a car',
-		description: 'Find your next car, compare listings, and keep your favorites close.',
+		description: 'Search, compare, and save cars.',
 	},
-	{ id: 'selling', title: 'Selling a car', description: 'Learn how to publish, edit, and manage your car listings.' },
-	{ id: 'account', title: 'My account', description: 'Manage your profile, photo, and saved cars in one place.' },
+	{ id: 'selling', title: 'Selling a car', description: 'Publish and manage your listings.' },
+	{ id: 'account', title: 'My account', description: 'Profile settings and saved cars.' },
 	{
 		id: 'agents',
 		title: 'Agents & dealerships',
-		description: 'Explore agent profiles, their listings, and contact details.',
+		description: 'Find agents and contact details.',
 	},
 	{
 		id: 'community',
 		title: 'Community',
-		description: 'Share stories, join discussions, and connect with other members.',
+		description: 'Posts, discussions, and members.',
 	},
 	{
 		id: 'technical',
 		title: 'Technical support',
-		description: 'Get help with sign-in, image uploads, and page loading.',
+		description: 'Sign-in, uploads, and loading issues.',
 	},
 ];
 export interface HelpQuestion {

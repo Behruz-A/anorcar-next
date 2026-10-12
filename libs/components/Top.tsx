@@ -154,7 +154,7 @@ const Top = () => {
 					<div> {t('Community')} </div>
 				</Link>
 				<Link href={'/cs'}>
-					<div> {t('CS')} </div>
+					<div> {t('FAQ')} </div>
 				</Link>
 			</Stack>
 		);
@@ -199,7 +199,7 @@ const Top = () => {
 								</Link>
 							)}
 							<Link href={'/cs'} className={router.pathname === '/cs' ? 'active' : undefined} aria-current={router.pathname === '/cs' ? 'page' : undefined}>
-								<div> {t('CS')} </div>
+								<div> {t('FAQ')} </div>
 							</Link>
 						</Box>
 						<Box component={'div'} className={'user-box'}>
