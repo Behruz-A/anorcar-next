@@ -1,44 +1,18 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Avatar, Box, Stack } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import Badge from '@mui/material/Badge';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import MarkChatUnreadIcon from '@mui/icons-material/MarkChatUnread';
 import { useRouter } from 'next/router';
 import ScrollableFeed from 'react-scrollable-feed';
-import { RippleBadge } from '../../scss/MaterialTheme/styled';
 import { useReactiveVar } from '@apollo/client';
 import { socketVar, userVar } from '../../apollo/store';
 import { Member } from '../types/member/member';
-import { Messages, REACT_APP_API_URL } from '../config';
+import { Messages, imageUrl } from '../config';
 import { sweetErrorAlert } from '../sweetAlert';
 import { getValidJwtToken } from '../auth';
 import { useTranslation } from 'next-i18next';
 import CloseIcon from '@mui/icons-material/Close';
-
-const NewMessage = (type: any) => {
-	if (type === 'right') {
-		return (
-			<Box
-				component={'div'}
-				flexDirection={'row'}
-				style={{ display: 'flex' }}
-				alignItems={'flex-end'}
-				justifyContent={'flex-end'}
-				sx={{ m: '10px 0px' }}
-			>
-				<div className={'msg_right'}></div>
-			</Box>
-		);
-	} else {
-		return (
-			<Box flexDirection={'row'} style={{ display: 'flex' }} sx={{ m: '10px 0px' }} component={'div'}>
-				<Avatar alt={'jonik'} src={'/img/profile/defaultUser.svg'} />
-				<div className={'msg_left'}></div>
-			</Box>
-		);
-	}
-};
 
 interface MessagePayload {
 	event: string;
@@ -46,19 +20,12 @@ interface MessagePayload {
 	memberData: Member | null;
 }
 
-interface InfoPayload {
-	event: string;
-	totalClients: number;
-	memberData: Member | null;
-	action: string;
-}
-
 const Chat = ({ open: controlledOpen, onOpenChange, hideLauncher = false }: { open?: boolean; onOpenChange?: (open: boolean) => void; hideLauncher?: boolean } = {}) => {
 	const { t: translate } = useTranslation('common');
 	const t = (key: string) => translate(key, { lng: router.locale ?? 'en' });
 	const chatContentRef = useRef<HTMLDivElement>(null);
 	const [messagesList, setMessagesList] = useState<MessagePayload[]>([]);
-	const [onlineUsers, setOnlineUsers] = useState<number>(4);
+	const [onlineUsers, setOnlineUsers] = useState<number | null>(null);
 
 	const [messageInput, setMessageInput] = useState<string>('');
 	const [localOpen, setOpen] = useState(false);
@@ -71,28 +38,26 @@ const Chat = ({ open: controlledOpen, onOpenChange, hideLauncher = false }: { op
 	/** LIFECYCLES **/
 
 	useEffect(() => {
+		setOnlineUsers(null);
 		if (!socket) return;
-		socket.onmessage = (msg) => {
-			const data = JSON.parse(msg.data);
-			console.log('WebSocket Message:', data);
-
-			switch (data.event) {
+		const receiveMessage = (msg: MessageEvent) => {
+			let data: { event?: string; totalClients?: number; list?: MessagePayload[]; text?: string; memberData?: Member | null };
+			try { data = JSON.parse(msg.data); } catch { return; }
+			switch (data?.event) {
 				case 'info':
-					const newInfo: InfoPayload = data;
-					setOnlineUsers(newInfo.totalClients);
+					if (typeof data.totalClients === 'number' && Number.isInteger(data.totalClients) && data.totalClients >= 0) setOnlineUsers(data.totalClients);
 					break;
 				case 'getMessages':
-					const list: MessagePayload[] = data.list;
-					setMessagesList(list);
+					if (Array.isArray(data.list)) setMessagesList(data.list);
 					break;
 				case 'message':
-					const newMessage: MessagePayload = data;
-					messagesList.push(newMessage);
-					setMessagesList([...messagesList]); // yangi xabarlarni olish
+					setMessagesList((previous) => [...previous, data as MessagePayload]);
 					break;
 			}
 		};
-	}, [socket, messagesList]);
+		socket.addEventListener('message', receiveMessage);
+		return () => socket.removeEventListener('message', receiveMessage);
+	}, [socket]);
 
 	useEffect(() => {
 		const timeoutId = setTimeout(() => {
@@ -157,9 +122,12 @@ const Chat = ({ open: controlledOpen, onOpenChange, hideLauncher = false }: { op
 			) : null}
 			<Stack id="anorcar-live-panel" role="dialog" aria-label={t('Live Chat')} aria-hidden={!open} className={`chat-frame ${open ? 'open' : ''}`}>
 				<Box className={'chat-top'} component={'div'}>
-					<div style={{ fontFamily: 'Nunito' }}>{t('Live Chat')}</div>
-					<RippleBadge style={{ margin: '-18px 0 0 21px' }} badgeContent={onlineUsers} />
-					{hideLauncher && <button type="button" className="live-chat-close" aria-label={t('Close Live Chat')} onClick={handleOpenChat}><CloseIcon /></button>}
+					<span className="live-chat-icon"><MarkChatUnreadIcon /></span>
+					<div className="live-chat-title"><h2>{t('Live Chat')}</h2><p>{t('Community chat')}</p></div>
+					<span className="live-online" role="status" aria-label={`${t('Online connections')}: ${onlineUsers ?? '—'}`} title={`${t('Online connections')}: ${onlineUsers ?? '—'}`}>
+						<span className="live-online-dot" />{onlineUsers === null ? '—' : onlineUsers > 30 ? '30+' : onlineUsers}
+					</span>
+					<button type="button" className="live-chat-close" aria-label={t('Close Live Chat')} onClick={handleOpenChat}><CloseIcon /></button>
 				</Box>
 				<Box className={'chat-content'} id="chat-content" ref={chatContentRef} component={'div'}>
 					<ScrollableFeed>
@@ -167,28 +135,14 @@ const Chat = ({ open: controlledOpen, onOpenChange, hideLauncher = false }: { op
 							<Box flexDirection={'row'} style={{ display: 'flex' }} sx={{ m: '10px 0px' }} component={'div'}>
 								<div className={'welcome'}>{t('Welcome to Live chat!')}</div>
 							</Box>
-							{messagesList.map((ele: MessagePayload) => {
-								const { text, memberData } = ele;
-								const memberImage = memberData?.memberImage
-									? `${REACT_APP_API_URL}/${memberData.memberImage}`
-									: '/img/profile/defaultUser.svg';
-
-								return memberData?._id === user?._id ? (
-									<Box
-										component={'div'}
-										flexDirection={'row'}
-										style={{ display: 'flex' }}
-										alignItems={'flex-end'}
-										justifyContent={'flex-end'}
-										sx={{ m: '10px 0px' }}
-									>
-										<div className={'msg-right'}>{text}</div>
-									</Box>
-								) : (
-									<Box flexDirection={'row'} style={{ display: 'flex' }} sx={{ m: '10px 0px' }} component={'div'}>
-										<Avatar alt={'jonik'} src={memberImage} />
-										<div className={'msg-left'}>{text}</div>
-									</Box>
+							{messagesList.map(({ text, memberData }, index) => {
+								const own = Boolean(user?._id && memberData?._id === user._id);
+								const name = own ? t('You') : memberData?.memberNick || t('Guest');
+								return (
+									<div key={index} className={`live-message-row ${own ? 'live-message-own' : ''}`}>
+										{!own && <Avatar alt={name} src={memberData?.memberImage ? imageUrl(memberData.memberImage) : '/img/profile/defaultUser.svg'} />}
+										<div className="live-message-body"><span className="live-message-name">{name}</span><div className={own ? 'msg-right' : 'msg-left'}>{text}</div></div>
+									</div>
 								);
 							})}
 						</Stack>
@@ -215,6 +169,3 @@ const Chat = ({ open: controlledOpen, onOpenChange, hideLauncher = false }: { op
 };
 
 export default Chat;
-function msg(this: WebSocket, ev: MessageEvent<any>) {
-	throw new Error('Function not implemented.');
-}

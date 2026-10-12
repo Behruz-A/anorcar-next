@@ -42,14 +42,14 @@ async function until(expression, label) {
 	throw Error('Timeout: ' + label + ' ' + JSON.stringify(await evaluate("({url:location.href,ready:document.readyState,button:document.querySelector('.auth-submit')?.outerHTML,next:window.__NEXT_DATA__?.query,text:document.body.innerText.slice(0,600)})")) + ' exceptions: ' + JSON.stringify(exceptions));
 }
 
-const base='http://localhost:3000';
+const base=process.env.QA_BASE_URL || 'http://localhost:3000';
 const fixture=`(()=>{
  if(location.origin!==${JSON.stringify(base)})return;
- localStorage.clear();window.__aiCalls=[];window.__liveSent=[];window.__mode='success';
+ localStorage.clear();window.__aiCalls=[];window.__liveSent=[];window.__liveSockets=[];window.__emitLive=(data)=>window.__liveSockets.filter(s=>s.readyState===1).forEach(s=>s.dispatchEvent(new MessageEvent('message',{data:JSON.stringify(data)})));window.__mode='success';
  class FixtureSocket extends EventTarget {
   static CONNECTING=0;static OPEN=1;static CLOSING=2;static CLOSED=3;
   readyState=0;bufferedAmount=0;protocol='';extensions='';binaryType='blob';
-  constructor(url){super();this.url=url;setTimeout(()=>{this.readyState=1;const event=new Event('open');this.dispatchEvent(event);this.onopen?.(event);},50);}
+  constructor(url){super();this.url=url;window.__liveSockets.push(this);setTimeout(()=>{this.readyState=1;const event=new Event('open');this.dispatchEvent(event);this.onopen?.(event);},50);}
   send(data){window.__liveSent.push(data);if(JSON.parse(data).event==='message'){const msg=new MessageEvent('message',{data:JSON.stringify({event:'message',text:JSON.parse(data).data,memberData:null})});this.dispatchEvent(msg);this.onmessage?.(msg);}}
   close(){this.readyState=3;const event=new CloseEvent('close');this.dispatchEvent(event);this.onclose?.(event);}
  }
@@ -88,6 +88,22 @@ const press=async(key,code,modifiers=0)=>{await command('Input.dispatchKeyEvent'
  socket.on('message',raw=>{const m=JSON.parse(raw);if(m.id){const p=pending.get(m.id);pending.delete(m.id);m.error?p.reject(Error(JSON.stringify(m.error))):p.resolve(m.result);}if(m.method==='Runtime.exceptionThrown')exceptions.push(m.params.exceptionDetails);});
  await command('Runtime.enable');await command('Page.enable');await command('Page.addScriptToEvaluateOnNewDocument',{source:fixture});
  for(const width of (process.env.QA_LOCALES_ONLY ? [] : [320,390,768,1440])){
+  await navigate(width);
+  await evaluate("document.querySelector('.support-live-button').click()");
+  assert.equal(await evaluate("document.querySelector('.live-online').textContent"),'\u2014');
+  for(const count of [0,1,4,29,30,31,100]){
+   await evaluate(`window.__emitLive({event:'info',totalClients:${count}})`);
+   await until(`document.querySelector('.live-online').textContent===${JSON.stringify(count>30?'30+':String(count))}`,'online count');
+   assert.equal(await evaluate("document.querySelector('.live-online').getAttribute('aria-label')"),'Online connections: '+count);
+  }
+  await evaluate("window.__emitLive({event:'info',totalClients:-1})");
+  assert.equal(await evaluate("document.querySelector('.live-online').textContent"),'30+');
+  await evaluate("window.__emitLive({event:'getMessages',list:[]});for(let i=0;i<5;i++)window.__emitLive({event:'message',text:'Message '+i,memberData:{_id:'fixture',memberNick:'Alex',memberImage:'/img/profile/defaultUser.svg'}})");
+  await until("document.querySelectorAll('.live-message-row').length===5",'rapid message arrivals');
+  assert.ok(await evaluate("(()=>{const p=document.querySelector('.chat-frame').getBoundingClientRect();return p.left>=0&&p.right<=innerWidth&&p.top>=0&&p.bottom<=innerHeight})()"));
+  if(width===390||width===1440)await shot('live-chat-'+width);
+  console.log('PASS live online 0-30/30+, rapid messages and responsive layout',width);
+
   await navigate(width);await evaluate("document.querySelector('.support-ai-button').click()");
   assert.equal(await evaluate("document.activeElement.id"),'anorcar-ai-message');
   assert.equal(await evaluate("document.querySelectorAll('.ai-suggestions button').length"),4);

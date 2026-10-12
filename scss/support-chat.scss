@@ -32,13 +32,29 @@
 	.ai-note { margin: 0; padding: 0 12px 12px; color: #667085; font-size: 10px; line-height: 1.5; text-align: center; flex-shrink: 0; }
 	.ai-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 	.chatting .chat-frame.open { right: 24px; }
-	.chatting .chat-frame .chat-top { position: relative; height: 68px; flex-shrink: 0; font-size: 20px; }
-	.live-chat-close { position: absolute; right: 10px; top: 14px; width: 38px; height: 38px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; cursor: pointer; }
-	.chatting .chat-frame .chat-content { min-height: 0; flex: 1; overflow: auto; padding: 16px; }
+	.chatting .chat-frame .chat-top { height: 76px; padding: 14px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; background: #fff; border-bottom: 1px solid #e5e7eb; line-height: 1.4; }
+	.live-chat-icon { display: grid; place-items: center; width: 36px; height: 36px; flex-shrink: 0; border-radius: 10px; background: #fff0ec; color: #c74734; }
+	.live-chat-title { flex: 1; min-width: 0; text-align: left; }
+	.live-chat-title h2 { margin: 0; font: inherit; font-size: 15px; font-weight: 600; color: #181a20; }
+	.live-chat-title p { margin: 3px 0 0; font-size: 11px; color: #667085; }
+	.live-online { display: flex; align-items: center; gap: 5px; padding: 5px 8px; border: 1px solid #d9eadd; border-radius: 20px; background: #f2faf4; color: #287541; font-size: 12px; font-weight: 600; white-space: nowrap; }
+	.live-online-dot { width: 6px; height: 6px; border-radius: 50%; background: #319657; }
+	.live-chat-close { width: 32px; height: 32px; flex-shrink: 0; display: grid; place-items: center; border: 0; border-radius: 8px; color: #667085; background: transparent; cursor: pointer; }
+	.live-chat-close:hover { background: #f2f4f7; }
+	.chatting .chat-frame .chat-content { min-height: 0; flex: 1; overflow: auto; padding: 16px; background: #f8f9fb; overscroll-behavior: contain; }
+	.live-message-row { display: flex; align-items: flex-start; gap: 8px; margin: 8px 0; }
+	.live-message-row .MuiAvatar-root { width: 28px; height: 28px; margin-top: 18px; }
+	.live-message-body { min-width: 0; max-width: 82%; }
+	.live-message-name { display: block; margin: 0 0 4px 2px; color: #667085; font-size: 10px; line-height: 1.4; overflow-wrap: anywhere; }
+	.live-message-own { justify-content: flex-end; }
+	.live-message-own .live-message-name { text-align: right; }
 	.chatting .chat-frame .chat-bott { height: 78px; padding: 12px; display: flex; flex-direction: row; align-items: center; flex-shrink: 0; border-top: 1px solid #e5e7eb; }
 	.chatting .chat-frame .chat-bott .msg-input { min-width: 0; width: auto; flex: 1; height: 48px; padding: 12px; border: 1px solid #d0d5dd; border-radius: 12px; font: inherit; font-size: 16px; }
-	.chatting .chat-frame .chat-bott .send-msg-btn { margin-left: 8px; width: 44px; height: 44px; flex-shrink: 0; border: 0; border-radius: 50%; background: #33c1c1; display: grid; place-items: center; }
-	.chatting .chat-frame .chat-content .chat-main .welcome, .chatting .chat-frame .msg-left, .chatting .chat-frame .msg-right { padding: 9px; background: #edf2f7; border-radius: 10px; font-size: 13px; line-height: 1.6; color: #181a20; overflow-wrap: anywhere; }
+	.chatting .chat-frame .chat-bott .msg-input:focus-visible { outline: 2px solid #eb6753; outline-offset: 2px; }
+	.chatting .chat-frame .chat-bott .send-msg-btn { margin-left: 8px; width: 44px; height: 44px; flex-shrink: 0; border: 0; border-radius: 12px; background: #c74734; display: grid; place-items: center; cursor: pointer; }
+	.chatting .chat-frame .chat-bott .send-msg-btn:hover { background: #a93b2b; }
+	.chatting .chat-frame .chat-content .chat-main .welcome, .chatting .chat-frame .chat-content .chat-main .msg-left, .chatting .chat-frame .chat-content .chat-main .msg-right { margin: 0; padding: 10px 12px; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px 12px 12px 3px; font-size: 13px; line-height: 1.6; color: #181a20; overflow-wrap: anywhere; white-space: pre-wrap; }
+	.chatting .chat-frame .chat-content .chat-main .msg-right { background: #fff0ec; border-color: #fff0ec; color: #632519; border-radius: 12px 12px 3px 12px; }
 	@media (max-width: 500px) {
 		.support-launchers { right: 16px; gap: 10px; }
 		.ai-panel, .chatting .chat-frame, .chatting .chat-frame.open { right: 16px; }
