@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button, IconButton } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
@@ -17,11 +18,13 @@ const CompareCarCard = ({
 	onRemove,
 	onReplace,
 	compact = false,
+	showDetails = false,
 }: {
 	car: Car;
 	onRemove: () => void;
 	onReplace?: () => void;
 	compact?: boolean;
+	showDetails?: boolean;
 }) => {
 	const { t, i18n } = useTranslation('common');
 	const [imageFailed, setImageFailed] = useState(false);
@@ -78,6 +81,11 @@ const CompareCarCard = ({
 						aria-label={t('Replace {{car}}', { car: car.carTitle })}
 					>
 						{t('Replace car')}
+					</Button>
+				)}
+				{showDetails && (
+					<Button component={Link} href={`/car/detail?id=${car._id}`} className="compare-card-details">
+						{t('View full details')}
 					</Button>
 				)}
 			</div>

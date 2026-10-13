@@ -16,6 +16,7 @@ Module._load = function (name, ...args) {
 	return load.call(this, name, ...args);
 };
 const Table = require('../libs/components/car/CarComparisonTable.tsx').default;
+const Highlights = require('../libs/components/car/CompareHighlights.tsx').default;
 const { formatCarMileage } = require('../libs/carCompare.ts');
 const cars = [0, null, 28000].map((carMileage, index) => ({
 	_id: `${index}123456789abcdef01234567`, carMileage, carPrice: 20000 + index,
@@ -34,6 +35,17 @@ for (const count of [2, 3]) {
 	assert.ok(mileage.includes('>\u2014</td>'), 'Missing mileage uses an em dash');
 	if (count === 3) assert.ok(mileage.includes('>28,000 km</td>'));
 	cars.slice(0, count).forEach(car => assert.ok(html.includes(`/car/detail?id=${car._id}`), 'Correct listing detail URL'));
+	const detailed = renderToStaticMarkup(React.createElement(Table, { cars: cars.slice(0, count), onRemove: () => {}, detailed: true }));
+	assert.equal((detailed.match(/<tbody>/g) || []).length, 4, 'Four supported specification groups');
+	assert.equal((detailed.match(/<tbody>.*?<\/tbody>/gs) || []).flatMap(body => body.match(/<tr\b/g) || []).length, 12);
+	assert.equal((detailed.match(/aria-expanded="true"/g) || []).length, 4);
+	const filtered = renderToStaticMarkup(React.createElement(Table, { cars: cars.slice(0, count), onRemove: () => {}, detailed: true, differences: true, highlight: false }));
+	assert.ok(!filtered.includes('class="compare-different"'), 'Highlight switch can be disabled independently');
 }
+const unknownMileage = renderToStaticMarkup(React.createElement(Highlights, { cars: cars.slice(0, 2) }));
+assert.ok(unknownMileage.includes('Not provided'), 'One reported mileage does not imply a difference');
+const summary = renderToStaticMarkup(React.createElement(Highlights, { cars }));
+assert.ok(summary.includes('28,000 km'), 'Mileage difference includes legitimate zero mileage');
+assert.ok(summary.includes('₩2'), 'Summary uses the actual KRW price gap');
 assert.equal(formatCarMileage({ carMileage: undefined }, 'en'), undefined, 'Shared homepage formatter stays unchanged');
 console.log('Results checks passed: two/three columns, twelve fields, missing/zero/nonzero mileage and detail URLs.');

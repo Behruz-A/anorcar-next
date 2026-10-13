@@ -25,8 +25,9 @@ const Top = () => {
 	const router = useRouter();
 	const isHomepage = router.pathname === '/';
 	const isCarsPage = router.pathname === '/car';
+	const isComparePage = router.pathname === '/car/compare';
 	const isAgentsPage = router.pathname === '/agent' || router.pathname === '/agent/detail';
-	const isMarketplacePage = isHomepage || isCarsPage || isAgentsPage || router.pathname === '/community' || router.pathname === '/mypage' || router.pathname === '/cs' || router.pathname === '/account/join';
+	const isMarketplacePage = isHomepage || isCarsPage || isComparePage || isAgentsPage || router.pathname === '/community' || router.pathname === '/mypage' || router.pathname === '/cs' || router.pathname === '/account/join';
 	const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
 	const [lang, setLang] = useState<string | null>('en');
 	const drop = Boolean(anchorEl2);
@@ -147,6 +148,9 @@ const Top = () => {
 				<Link href={'/car'}>
 					<div>{t('Cars')}</div>
 				</Link>
+				<Link href={'/car/compare'} aria-current={isComparePage ? 'page' : undefined}>
+					<div>{t('Compare')}</div>
+				</Link>
 				<Link href={'/agent'}>
 					<div> {t('Agents')} </div>
 				</Link>
@@ -186,6 +190,9 @@ const Top = () => {
 								aria-current={isCarsPage ? 'page' : undefined}
 							>
 								<div>{t('Cars')}</div>
+							</Link>
+							<Link href={'/car/compare'} className={isComparePage ? 'active' : undefined} aria-current={isComparePage ? 'page' : undefined}>
+								<div>{t('Compare')}</div>
 							</Link>
 							<Link href={'/agent'}>
 								<div> {t('Agents')} </div>

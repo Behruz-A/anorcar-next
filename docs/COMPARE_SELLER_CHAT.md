@@ -1,0 +1,15 @@
+# In-page comparison seller chat - 2026-10-13
+
+Replaced comparison seller telephone/profile navigation with `Message seller`. Clicking it opens the existing private Firebase Live Chat on the same page for that listing's agent, with the selected car title above the chat. No message is sent automatically. The optional `Show phone number` / `Hide phone number` control displays the advertised number inline without opening a telephone application.
+
+The existing shared support widget is now enabled on `/car/compare`. Its `anorcar:contact-agent` event supports optional bounded, validated listing context. Context is display-only and is never written as conversation membership or sent as an extra message field. Backend-authorized customer/agent conversations, custom-token sign-in/renewal, realtime history and logout cleanup remain unchanged. Guest users see the existing sign-in link; seller messaging is limited to customer accounts, matching backend permissions. Repeated contact requests can select the intended thread again. Listing context is cleared when the ANORCAR account changes and hidden when another thread is selected.
+
+Closing chat returns focus to the seller action that opened it; ordinary AI/live launchers retain their own focus behavior. Shared profile contact events without listing context still work. Gemini and community chat remain separate.
+
+Changed: `pages/car/compare.tsx`, `libs/components/{Chat,FirebaseChat,SupportChat}.tsx`, `scss/support-chat.scss`, `scss/pc/homepage/compare-results.scss`, EN/KR/RU translations and `scripts/qa-compare-page.cjs`.
+
+Phase TypeScript and existing Firebase lifecycle fixtures passed. The browser suite was extended to check same-page chat opening, the correct car title, guest login, inline phone show/hide and unchanged URL. Final build/browser results are recorded below. No actual messages, accounts, backend schema/data changes, commit or deployment.
+
+Final verification: production build passed with 91 pages and existing lint/Browserslist warnings. Isolated browser tests passed at 1440/768/390/320px and KR/RU: seller button opens the chat with the correct listing title and retains the comparison URL, guest sign-in is offered, phone controls show/hide inline, and existing compare selection/toggles/share/refresh behavior passes. Firebase lifecycle fixtures passed. Authenticated live message exchange was not performed in this change.
+
+Eligibility feedback follow-up: removed the disabled comparison seller button for AGENT/ADMIN/own listings. It now opens the panel for every account; the panel explains customer-only initiation and self-contact restrictions. Signed-in ineligible users are not incorrectly told to sign in again. No conversation-creation attempt is made for these roles/self-contact; agents may still select and reply in authorized inbox threads. A fresh contact request clears the previous thread before opening the requested seller. Final typecheck, Firebase lifecycle checks and isolated four-width/three-locale browser checks passed, including AGENT own/other listings and ADMIN other listings with no forbidden conversation mutation.
