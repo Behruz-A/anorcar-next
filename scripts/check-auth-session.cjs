@@ -63,6 +63,7 @@ function createSession(values = new Map([['accessToken', expired]])) {
 			return { ok: true, status: 200, json: async () => ({ data: { refreshAccessToken: { accessToken: fresh } } }) };
 		},
 		require(name) {
+			if (name === '../firebase/client') return { endChatFirebaseSession: async () => {} };
 			const modules = {
 				'jwt-decode': decodeJWT,
 				graphql: { print },

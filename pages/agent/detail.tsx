@@ -446,6 +446,7 @@ const AgentProfile = ({ agent, refresh }: { agent: Member; refresh: () => Promis
 					{t('Contact Agent')}
 				</h2>
 				<p>{t('Contact agent directly')}</p>
+				<button type="button" className="agent-contact-button" onClick={() => window.dispatchEvent(new CustomEvent('anorcar:contact-agent', { detail: { agentId: agent._id } }))}>{t('Live Chat')}</button>
 				<dl>
 					<div>
 						<dt>{t('Phone')}</dt>

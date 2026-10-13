@@ -832,5 +832,21 @@
   "Send Live Chat message": "Send Live Chat message",
   "Community chat": "Community chat",
   "Online connections": "Online connections",
-  "Guest": "Guest"
+  "Guest": "Guest",
+  "Agent chat": "Agent chat",
+  "Sign in to chat with an agent": "Sign in to chat with an agent",
+  "Conversations": "Conversations",
+  "Loading conversations": "Loading conversations",
+  "Connected": "Connected",
+  "Reconnecting": "Reconnecting",
+  "Connecting": "Connecting",
+  "Select a conversation or contact an agent.": "Select a conversation or contact an agent.",
+  "Select agent": "Select agent",
+  "Loading messages": "Loading messages",
+  "No messages yet": "No messages yet",
+  "Load older messages": "Load older messages",
+  "Chat access unavailable. Please retry.": "Chat access unavailable. Please retry.",
+  "Unable to open conversation. Please retry.": "Unable to open conversation. Please retry.",
+  "Unable to load messages. Please retry.": "Unable to load messages. Please retry.",
+  "Unable to send message. Please retry.": "Unable to send message. Please retry."
 }

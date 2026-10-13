@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import {
 	ApolloClient,
 	ApolloLink,
-	InMemoryCache,
 	split,
 	from,
 	NormalizedCacheObject,
@@ -23,6 +22,7 @@ import { TokenRefreshLink } from 'apollo-link-token-refresh';
 import { sweetErrorAlert } from '../libs/sweetAlert';
 import { socketVar } from './store';
 import { REACT_APP_API_GRAPHQL_URL, REACT_APP_API_WS } from '../libs/config';
+import { createApolloCache } from './cache';
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 function getHeaders() {
@@ -164,7 +164,7 @@ function createIsomorphicLink() {
 			}
 			if (networkError instanceof SessionExpiredError || networkError instanceof SessionChangedError) return;
 			// The AI panel presents its own short, localized inline errors.
-			if (operation.operationName === 'AskAiAssistant') return;
+			if (operation.operationName === 'AskAiAssistant' || operation.getContext().skipGlobalError) return;
 			if (graphQLErrors) {
 				graphQLErrors.map(({ message, locations, path, extensions }) => {
 					console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`);
@@ -194,7 +194,7 @@ function createApolloClient() {
 	return new ApolloClient({
 		ssrMode: typeof window === 'undefined',
 		link: createIsomorphicLink(),
-		cache: new InMemoryCache(),
+		cache: createApolloCache(),
 		resolvers: {},
 	});
 }

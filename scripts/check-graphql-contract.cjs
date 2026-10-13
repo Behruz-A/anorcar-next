@@ -21,7 +21,7 @@ async function main() {
   }
  }
  let count = 0;
- for (const file of ['../apollo/user/query.ts', '../apollo/user/mutation.ts', '../apollo/admin/query.ts', '../apollo/admin/mutation.ts']) {
+ for (const file of ['../apollo/user/query.ts', '../apollo/user/mutation.ts', '../apollo/user/firebaseChat.ts', '../apollo/admin/query.ts', '../apollo/admin/mutation.ts']) {
   for (const [name, document] of Object.entries(require(file))) {
    if (!document.definitions.some(definition => definition.kind === Kind.OPERATION_DEFINITION)) continue;
    const errors = validate(schema, document);

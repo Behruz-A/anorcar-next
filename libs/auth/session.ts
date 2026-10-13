@@ -115,6 +115,11 @@ export async function getValidJwtToken(): Promise<string> {
 
 export async function prepareSessionChange(): Promise<void> {
 	sessionVersion++;
+	if (typeof window !== 'undefined') {
+		window.dispatchEvent?.(new Event('anorcar:session-changing'));
+		const { endChatFirebaseSession } = await import('../firebase/client');
+		await endChatFirebaseSession();
+	}
 	await refreshPromise?.catch(() => undefined);
 }
 

@@ -80,7 +80,7 @@ async function navigate(width,locale='en',route='/account/join'){
  await until("document.readyState==='complete'&&document.querySelectorAll('.support-launchers button').length===2",'launchers');await delay(500);
 }
 async function fill(text){await until("!document.getElementById('anorcar-ai-message').disabled",'ready input');await evaluate(`(()=>{const e=document.getElementById('anorcar-ai-message');e.focus();Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype,'value').set.call(e,${JSON.stringify(text)});e.dispatchEvent(new Event('input',{bubbles:true}));})()`);}
-async function shot(name){await delay(400);const r=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});fs.mkdirSync('docs/screenshots',{recursive:true});fs.writeFileSync('docs/screenshots/'+name+'.png',Buffer.from(r.data,'base64'));}
+async function shot(name){await delay(400);const r=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});const directory=process.env.QA_SCREENSHOT_DIR || 'docs/screenshots';fs.mkdirSync(directory,{recursive:true});fs.writeFileSync(path.join(directory,name+'.png'),Buffer.from(r.data,'base64'));}
 const press=async(key,code,modifiers=0)=>{await command('Input.dispatchKeyEvent',{type:'keyDown',key,code,modifiers,...(key==='Enter'?{text:'\r',unmodifiedText:'\r',windowsVirtualKeyCode:13}:{windowsVirtualKeyCode:27})});await command('Input.dispatchKeyEvent',{type:'keyUp',key,code,modifiers});};
 (async()=>{try{
  const active=path.join(profile,'DevToolsActivePort');for(let n=0;n<100&&!fs.existsSync(active);n++)await delay(100);
@@ -90,6 +90,7 @@ const press=async(key,code,modifiers=0)=>{await command('Input.dispatchKeyEvent'
  for(const width of (process.env.QA_LOCALES_ONLY ? [] : [320,390,768,1440])){
   await navigate(width);
   await evaluate("document.querySelector('.support-live-button').click()");
+  await evaluate("document.querySelectorAll('.private-chat-tabs button')[1].click()");
   assert.equal(await evaluate("document.querySelector('.live-online').textContent"),'\u2014');
   for(const count of [0,1,4,29,30,31,100]){
    await evaluate(`window.__emitLive({event:'info',totalClients:${count}})`);
@@ -112,6 +113,7 @@ const press=async(key,code,modifiers=0)=>{await command('Input.dispatchKeyEvent'
   if(width===1440||width===390)await shot('ai-welcome-'+width);
   await evaluate("document.querySelector('.support-live-button').click()");
   assert.ok(await evaluate("document.querySelector('.ai-panel').hidden"));assert.equal(await evaluate("document.querySelector('.chat-frame').classList.contains('open')"),true);
+  await evaluate("document.querySelectorAll('.private-chat-tabs button')[1].click()");
   await evaluate("(()=>{const e=document.querySelector('.msg-input');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'Fixture Live Chat');e.dispatchEvent(new Event('input',{bubbles:true}));})()");
   await evaluate("document.querySelector('.send-msg-btn').click()");await until("window.__liveSent.some(s=>JSON.parse(s).data==='Fixture Live Chat')",'existing websocket send');
   await evaluate("document.querySelector('.support-ai-button').click()");await fill('How do I buy a car?');

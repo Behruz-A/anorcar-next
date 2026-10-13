@@ -20,8 +20,10 @@ export default function SupportChat() {
 	useEffect(() => { if (panel === 'live') root.current?.querySelector<HTMLInputElement>('.msg-input')?.focus(); }, [panel]);
 	useEffect(() => {
 		const openAi = () => setPanel('ai');
+		const contactAgent = () => setPanel('live');
 		window.addEventListener('anorcar:open-ai', openAi);
-		return () => window.removeEventListener('anorcar:open-ai', openAi);
+		window.addEventListener('anorcar:contact-agent', contactAgent);
+		return () => { window.removeEventListener('anorcar:open-ai', openAi); window.removeEventListener('anorcar:contact-agent', contactAgent); };
 	}, []);
 
 	return <div ref={root} className="support-widget" onKeyDown={(event) => { if (event.key === 'Escape' && panel) { event.stopPropagation(); close(); } }}>

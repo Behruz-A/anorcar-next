@@ -41,6 +41,14 @@
 	.live-online-dot { width: 6px; height: 6px; border-radius: 50%; background: #319657; }
 	.live-chat-close { width: 32px; height: 32px; flex-shrink: 0; display: grid; place-items: center; border: 0; border-radius: 8px; color: #667085; background: transparent; cursor: pointer; }
 	.live-chat-close:hover { background: #f2f4f7; }
+	.private-chat-tabs, .private-chat-controls { display: flex; gap: 8px; padding: 8px 12px; flex-shrink: 0; align-items: center; border-bottom: 1px solid #e5e7eb; font-size: 11px; }
+	.private-chat-controls { flex-wrap: wrap; }
+	.private-chat-tabs button, .private-chat-error button, .private-agent-pages button, .chat-main > button { border: 1px solid #edc6bf; border-radius: 8px; background: #fff; padding: 6px 8px; color: #632519; cursor: pointer; }
+	.private-chat-tabs button[aria-pressed=true] { background: #fff0ec; }
+	.private-chat-controls select, .chat-main > select { width: 100%; min-width: 0; padding: 8px; border: 1px solid #d0d5dd; border-radius: 8px; background: #fff; }
+	.private-chat-error { padding: 8px 12px; color: #a93b2b; font-size: 12px; }
+	.private-agent-pages { display: flex; gap: 8px; margin-top: 8px; }
+	.chatting .chat-frame button:disabled { opacity: .5; cursor: default; }
 	.chatting .chat-frame .chat-content { min-height: 0; flex: 1; overflow: auto; padding: 16px; background: #f8f9fb; overscroll-behavior: contain; }
 	.live-message-row { display: flex; align-items: flex-start; gap: 8px; margin: 8px 0; }
 	.live-message-row .MuiAvatar-root { width: 28px; height: 28px; margin-top: 18px; }

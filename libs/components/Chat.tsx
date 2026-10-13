@@ -13,6 +13,7 @@ import { sweetErrorAlert } from '../sweetAlert';
 import { getValidJwtToken } from '../auth';
 import { useTranslation } from 'next-i18next';
 import CloseIcon from '@mui/icons-material/Close';
+import FirebaseChat from './FirebaseChat';
 
 interface MessagePayload {
 	event: string;
@@ -34,6 +35,19 @@ const Chat = ({ open: controlledOpen, onOpenChange, hideLauncher = false }: { op
 	const router = useRouter();
 	const user = useReactiveVar(userVar);
 	const socket = useReactiveVar(socketVar); // loyihani istalgan. joyida socketni ishlastsa buladi
+	const [chatMode, setChatMode] = useState<'private' | 'community'>('private');
+	const [agentId, setAgentId] = useState('');
+	useEffect(() => {
+		const contact = (event: Event) => {
+			const id = (event as CustomEvent).detail?.agentId;
+			if (typeof id !== 'string' || !/^[a-fA-F0-9]{24}$/.test(id)) return;
+			setChatMode('private'); setAgentId(id.toLowerCase());
+			if (!onOpenChange) setOpen(true);
+		};
+		window.addEventListener('anorcar:contact-agent', contact);
+		return () => window.removeEventListener('anorcar:contact-agent', contact);
+	}, [onOpenChange]);
+	useEffect(() => { setAgentId(''); }, [user._id]);
 
 	/** LIFECYCLES **/
 
@@ -123,12 +137,17 @@ const Chat = ({ open: controlledOpen, onOpenChange, hideLauncher = false }: { op
 			<Stack id="anorcar-live-panel" role="dialog" aria-label={t('Live Chat')} aria-hidden={!open} className={`chat-frame ${open ? 'open' : ''}`}>
 				<Box className={'chat-top'} component={'div'}>
 					<span className="live-chat-icon"><MarkChatUnreadIcon /></span>
-					<div className="live-chat-title"><h2>{t('Live Chat')}</h2><p>{t('Community chat')}</p></div>
-					<span className="live-online" role="status" aria-label={`${t('Online connections')}: ${onlineUsers ?? '—'}`} title={`${t('Online connections')}: ${onlineUsers ?? '—'}`}>
+					<div className="live-chat-title"><h2>{t('Live Chat')}</h2><p>{t(chatMode === 'private' ? 'Agent chat' : 'Community chat')}</p></div>
+					{chatMode === 'community' && <span className="live-online" role="status" aria-label={`${t('Online connections')}: ${onlineUsers ?? '—'}`} title={`${t('Online connections')}: ${onlineUsers ?? '—'}`}>
 						<span className="live-online-dot" />{onlineUsers === null ? '—' : onlineUsers > 30 ? '30+' : onlineUsers}
-					</span>
+					</span>}
 					<button type="button" className="live-chat-close" aria-label={t('Close Live Chat')} onClick={handleOpenChat}><CloseIcon /></button>
 				</Box>
+				<div className="private-chat-tabs">
+					<button type="button" aria-pressed={chatMode === 'private'} onClick={() => setChatMode('private')}>{t('Agent chat')}</button>
+					<button type="button" aria-pressed={chatMode === 'community'} onClick={() => setChatMode('community')}>{t('Community chat')}</button>
+				</div>
+				{chatMode === 'private' ? <FirebaseChat open={open} agentId={agentId} /> : <>
 				<Box className={'chat-content'} id="chat-content" ref={chatContentRef} component={'div'}>
 					<ScrollableFeed>
 						<Stack className={'chat-main'}>
@@ -163,6 +182,7 @@ const Chat = ({ open: controlledOpen, onOpenChange, hideLauncher = false }: { op
 						<SendIcon style={{ color: '#fff' }} />
 					</button>
 				</Box>
+				</>}
 			</Stack>
 		</Stack>
 	);

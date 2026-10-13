@@ -832,5 +832,21 @@
   "Send Live Chat message": "Отправить сообщение в онлайн-чат",
   "Community chat": "Чат сообщества",
   "Online connections": "Подключения онлайн",
-  "Guest": "Гость"
+  "Guest": "Гость",
+  "Agent chat": "Чат с агентом",
+  "Sign in to chat with an agent": "Войдите, чтобы связаться с агентом",
+  "Conversations": "Диалоги",
+  "Loading conversations": "Загрузка диалогов",
+  "Connected": "Подключено",
+  "Reconnecting": "Переподключение",
+  "Connecting": "Подключение",
+  "Select a conversation or contact an agent.": "Выберите диалог или свяжитесь с агентом.",
+  "Select agent": "Выберите агента",
+  "Loading messages": "Загрузка сообщений",
+  "No messages yet": "Сообщений пока нет",
+  "Load older messages": "Загрузить предыдущие сообщения",
+  "Chat access unavailable. Please retry.": "Чат недоступен. Повторите попытку.",
+  "Unable to open conversation. Please retry.": "Не удалось открыть диалог. Повторите попытку.",
+  "Unable to load messages. Please retry.": "Не удалось загрузить сообщения. Повторите попытку.",
+  "Unable to send message. Please retry.": "Не удалось отправить сообщение. Повторите попытку."
 }
