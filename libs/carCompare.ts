@@ -1,3 +1,4 @@
+import { formatPrice } from './currency';
 import { Car } from './types/car/car';
 
 export const MAX_COMPARE_CARS = 3;
@@ -24,7 +25,7 @@ export function selectCompareCar(slots: (Car | null)[], car: Car, index: number)
 }
 
 export const formatCarPrice = (price: number, locale: string) =>
-	new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(price);
+	formatPrice(price, locale);
 
 export const formatCarMileage = (car: Car, locale: string): string | undefined =>
 	car.carMileage != null && Number.isInteger(car.carMileage) && car.carMileage >= 0

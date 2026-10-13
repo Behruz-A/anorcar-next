@@ -1,3 +1,4 @@
+import { formatPrice } from '../../currency';
 import { useTranslation } from 'next-i18next';
 import { carLabel } from '../../car';
 import React from 'react';
@@ -45,7 +46,7 @@ const CarBigCard = (props: CarBigCardProps) => {
 						</div>
 					)}
 
-					<div className={'price'}>${formatterStr(car?.carPrice)}</div>
+					<div className={'price'}>{formatPrice(car?.carPrice)}</div>
 				</Box>
 				<Box component={'div'} className={'info'}>
 					<strong className={'title'}>{car?.carTitle}</strong>

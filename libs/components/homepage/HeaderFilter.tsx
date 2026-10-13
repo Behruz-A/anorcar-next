@@ -1,3 +1,4 @@
+import { formatPrice } from '../../currency';
 import React, { useMemo, useState } from 'react';
 import { Autocomplete, Box, Button, InputAdornment, MenuItem, Stack, TextField, Typography } from '@mui/material';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -116,7 +117,7 @@ const HeaderFilter = ({ initialInput = initialValues, compact = false }: HeaderF
 					SelectProps={{ displayEmpty: true, MenuProps, SelectDisplayProps: { 'aria-label': t('Price') } }} InputLabelProps={{ shrink: true }}
 					onChange={(event) => updateSearch({ pricesRange: event.target.value ? { start: 0, end: Number(event.target.value) } : undefined })}>
 					<MenuItem value="">{t('Any Price')}</MenuItem>
-					{priceOptions.map((price) => <MenuItem key={price} value={price}>{t('Up to')} ${price.toLocaleString('en-US')}</MenuItem>)}
+					{priceOptions.map((price) => <MenuItem key={price} value={price}>{t('Up to')} {formatPrice(price)}</MenuItem>)}
 				</TextField>
 				<Button className="model-search-button" variant="contained" type="submit" startIcon={<SearchOutlinedIcon />}>{t('Search')}</Button>
 			</Stack>
@@ -134,7 +135,7 @@ const HeaderFilter = ({ initialInput = initialValues, compact = false }: HeaderF
 					})}
 					<Button type="button" aria-pressed={searchFilter.search.pricesRange?.end === 20000}
 						className={searchFilter.search.pricesRange?.end === 20000 ? 'selected' : ''}
-						onClick={() => updateSearch({ pricesRange: searchFilter.search.pricesRange?.end === 20000 ? undefined : { start: 0, end: 20000 } })}>{t('Up to $20,000')}</Button>
+						onClick={() => updateSearch({ pricesRange: searchFilter.search.pricesRange?.end === 20000 ? undefined : { start: 0, end: 20000 } })}>{t('Up to ₩20,000')}</Button>
 					{[CarFuelType.ELECTRIC, CarFuelType.HYBRID].map((fuel) => {
 						const active = searchFilter.search.fuelTypes?.includes(fuel) ?? false;
 						return <Button key={fuel} type="button" aria-pressed={active} className={active ? 'selected' : ''}

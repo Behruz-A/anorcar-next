@@ -20,7 +20,10 @@ const tick = () => new Promise(resolve => setTimeout(resolve,0));
 async function main() {
  assert.deepEqual(parseCompareSlots([ids[0],ids[0].toUpperCase(),ids[1]]), [ids[0],null,ids[1]]);
  assert.deepEqual(parseCompareSlots('invalid'), [null,null,null]);
- assert.equal(formatCarPrice(25900,'en'), '$25,900');
+ assert.equal(formatCarPrice(25900,'en'), '₩25,900');
+ assert.equal(formatCarPrice(0,'en'), '₩0');
+ assert.equal(formatCarPrice(25900,'kr'), '₩25,900');
+ assert.ok(formatCarPrice(25900,'ru').includes('₩'));
  const original=[car(ids[0]),null,null];
  assert.equal(replaceCompareCar(original,car(ids[1],{carStatus:'SOLD'}),0),original);
  assert.equal(replaceCompareCar(original,car(ids[0]),1),original);
@@ -75,6 +78,6 @@ async function main() {
  const first=load(ids[1]); const second=createCompareCarLoader(client)(ids[1]);
  assert.equal(network,1,'Concurrent loaders share one uncached GET_CAR');
  pending.resolve({data:{getCar:car(ids[1])}}); await Promise.all([first,second]);
- console.log('Restoration tests passed: generations/revisions, clear/remove/replace/unmount races, Strict Mode deduplication, out-of-order responses, failures/retry, unavailable cars, cache reuse and unchanged USD.');
+ console.log('Restoration tests passed: generations/revisions, clear/remove/replace/unmount races, Strict Mode deduplication, out-of-order responses, failures/retry, unavailable cars, cache reuse and KRW display with unchanged numeric prices.');
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});

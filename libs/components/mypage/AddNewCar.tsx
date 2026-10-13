@@ -133,7 +133,7 @@ export default function AddCar() {
       onChange={e => set(key, e.target.value)} />)}
      <Stack direction="row" spacing={2}>
       <TextField type="number" required label={t("Model year")} value={draft.carYear || ''} inputProps={{ min: 1886, max: maxCarYear, step: 1 }} onChange={e => set('carYear', Number(e.target.value))} />
-      <TextField type="number" required label={t("Price")} value={draft.carPrice || ''} inputProps={{ min: 1, step: 'any' }} onChange={e => set('carPrice', Number(e.target.value))} />
+      <TextField type="number" required label={t("Price (KRW)")} value={draft.carPrice || ''} inputProps={{ min: 1, step: 'any' }} onChange={e => set('carPrice', Number(e.target.value))} />
      </Stack>
      <TextField type="number" label={t('Mileage (km)')} value={draft.carMileage ?? ''}
       inputProps={{ min: 0, max: 2147483647, step: 1 }} helperText={t('Leave empty if mileage is not known.')}

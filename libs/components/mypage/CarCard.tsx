@@ -1,3 +1,4 @@
+import { formatPrice } from '../../currency';
 import { useTranslation } from 'next-i18next';
 import { imageUrl } from '../../config';
 import { Menu, MenuItem, Stack, Typography } from '@mui/material';
@@ -62,7 +63,7 @@ export const CarCard = (props: CarCardProps) => {
 					<Typography className="name">{car.carTitle}</Typography>
 					<Typography className="address">{car.carAddress}</Typography>
 					<Typography className="price">
-						<strong>${formatterStr(car?.carPrice)}</strong>
+						<strong>{formatPrice(car?.carPrice)}</strong>
 					</Typography>
 				</Stack>
 				<Stack className="date-box">

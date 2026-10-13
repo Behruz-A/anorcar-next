@@ -97,7 +97,7 @@ async function navigate(width, locale='en', query='') {
    }
    const columns=await evaluate("document.querySelectorAll('.cars-listing-card').length > 1 ? (()=>{ const cards=[...document.querySelectorAll('.cars-listing-card')]; const top=cards[0].getBoundingClientRect().top; return cards.filter(c=>Math.abs(c.getBoundingClientRect().top-top)<2).length; })() : 1");
    assert.equal(columns,width>=1200?3:width>480?2:1, `columns at ${width}px`);
-   assert.ok(await evaluate("[...document.querySelectorAll('.cars-listing-price')].every(el=>el.textContent.startsWith('$'))"));
+   assert.ok(await evaluate("[...document.querySelectorAll('.cars-listing-price')].every(el=>el.textContent.startsWith('₩'))"));
    if(width===1440 || width===390) await screenshot(`cars-browse-${width===1440?'desktop':'mobile'}`);
   }
   console.log('Responsive cards and drawer accessibility passed.');
@@ -205,6 +205,6 @@ async function navigate(width, locale='en', query='') {
    assert.equal(await evaluate("document.querySelector('.car-browse-toolbar h1').textContent"),labels['Cars for Sale']);
   }
   assert.equal(exceptions.length,0,exceptions[0]?.exception?.description?.slice(0,300));
-  console.log('Cars refinement QA passed: real inventory, responsive bounds/equal heights, Poppins/USD, grid/list, model/location filters, independent bounds, validation, draft retention, refresh/Back/Forward, pagination scroll, literal/empty/Clear Filters, delayed loading, simulated outage/retry, drawer focus/Escape/drafts/apply and EN/KR/RU.');
+  console.log('Cars refinement QA passed: real inventory, responsive bounds/equal heights, Poppins/KRW, grid/list, model/location filters, independent bounds, validation, draft retention, refresh/Back/Forward, pagination scroll, literal/empty/Clear Filters, delayed loading, simulated outage/retry, drawer focus/Escape/drafts/apply and EN/KR/RU.');
  } finally { if(socket) socket.close(); chrome.kill(); }
 })().catch(error=>{ console.error(error); process.exitCode=1; });

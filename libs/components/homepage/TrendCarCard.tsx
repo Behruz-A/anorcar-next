@@ -1,3 +1,4 @@
+import { formatPrice } from '../../currency';
 import { useTranslation } from 'next-i18next';
 import { imageUrl } from '../../config';
 import { carLabel } from '../../car';
@@ -42,7 +43,7 @@ const TrendCarCard = ({ car, likeCarHandler }: TrendCarCardProps) => {
     <Image src={imageUrl(car.carImages[0])} alt={car.carTitle} fill
      sizes="(max-width: 600px) 280px, (max-width: 1200px) 320px, 360px" unoptimized />
     <span className="trending-top"><BoltIcon fontSize="small" />{t('TOP')}</span>
-    <span className="trending-price">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(car.carPrice)}</span>
+    <span className="trending-price">{formatPrice(car.carPrice)}</span>
    </Link>
    <div className="info">
     {car.brandData && <div className="trending-brand">

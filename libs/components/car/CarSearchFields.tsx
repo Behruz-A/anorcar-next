@@ -35,7 +35,7 @@ export default function CarSearchFields({ search, onChange }: Props) {
   </TextField>)}
   {(['yearsRange', 'pricesRange'] as const).map(key => <Stack key={key} direction="row" spacing={1}>
    {(['start', 'end'] as const).map(part => <TextField key={part} type="number" size="small"
-    label={t(key === 'yearsRange' ? (part === 'start' ? 'Year from' : 'Year to') : (part === 'start' ? 'Price from' : 'Price to'))}
+    label={t(key === 'yearsRange' ? (part === 'start' ? 'Year from' : 'Year to') : (part === 'start' ? 'Price from (KRW)' : 'Price to (KRW)'))}
     value={search[key]?.[part] ?? ''}
     inputProps={{ min: key === 'yearsRange' ? 1886 : 0, max: key === 'yearsRange' ? maxCarYear : 2147483647, step: 1 }}
     onChange={e => {

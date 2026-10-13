@@ -1,3 +1,4 @@
+import { formatPrice } from '../../../currency';
 import { imageUrl } from '../../../config';
 import React from 'react';
 import { useTranslation } from 'next-i18next';
@@ -180,7 +181,7 @@ export const CarPanelList = (props: CarPanelListType) => {
 												</Stack>
 											)}
 										</TableCell>
-										<TableCell align="center">{car.carPrice}</TableCell>
+										<TableCell align="center">{formatPrice(car.carPrice)}</TableCell>
 										<TableCell align="center">{car.memberData?.memberNick}</TableCell>
 										<TableCell align="center">{car.carLocation}</TableCell>
 										<TableCell align="center">{car.carModel}</TableCell>

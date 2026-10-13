@@ -10,15 +10,15 @@ import { useTranslation } from 'next-i18next';
 import { CarsInquiry } from '../../types/car/car.input';
 import { Direction } from '../../enums/common.enum';
 
-// Navigation categories, not inventory records. Prices are USD, confirmed by the user.
+// Navigation categories, not inventory records. Prices are KRW; stored numeric thresholds are unchanged.
 const budgets = [
-	{ label: 'Under $10K', maxPrice: 10000, image: 'budget-blue' },
-	{ label: 'Under $20K', maxPrice: 20000, image: 'budget-orange' },
-	{ label: 'Under $30K', maxPrice: 30000, image: 'budget-red' },
-	{ label: 'Under $40K', maxPrice: 40000, image: 'budget-green' },
-	{ label: 'Under $50K', maxPrice: 50000, image: 'budget-slate' },
-	{ label: 'Under $75K', maxPrice: 75000, image: 'budget-yellow' },
-	{ label: 'Under $100K', maxPrice: 100000, image: 'budget-white' },
+	{ label: 'Under ₩10K', maxPrice: 10000, image: 'budget-blue' },
+	{ label: 'Under ₩20K', maxPrice: 20000, image: 'budget-orange' },
+	{ label: 'Under ₩30K', maxPrice: 30000, image: 'budget-red' },
+	{ label: 'Under ₩40K', maxPrice: 40000, image: 'budget-green' },
+	{ label: 'Under ₩50K', maxPrice: 50000, image: 'budget-slate' },
+	{ label: 'Under ₩75K', maxPrice: 75000, image: 'budget-yellow' },
+	{ label: 'Under ₩100K', maxPrice: 100000, image: 'budget-white' },
 	{ label: 'Any Budget', maxPrice: undefined, image: 'budget-silver' },
 ];
 

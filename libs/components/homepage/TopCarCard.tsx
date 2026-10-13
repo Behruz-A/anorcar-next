@@ -1,3 +1,4 @@
+import { formatPrice } from '../../currency';
 import { useTranslation } from 'next-i18next';
 import { imageUrl } from '../../config';
 import { carLabel } from '../../car';
@@ -41,7 +42,7 @@ const TopCarCard = (props: TopCarCardProps) => {
 					style={{ backgroundImage: `url(${imageUrl(car?.carImages[0])})` }}
 					onClick={() => pushDetailHandler(String(car?._id))}
 				>
-					<div>${car?.carPrice}</div>
+					<div>{formatPrice(car?.carPrice)}</div>
 				</Box>
 				<Box component={'div'} className={'info'}>
 					<strong className={'title'} onClick={() => pushDetailHandler(String(car?._id))}>
@@ -96,7 +97,7 @@ const TopCarCard = (props: TopCarCardProps) => {
 					style={{ backgroundImage: `url(${imageUrl(car?.carImages[0])})` }}
 					onClick={() => pushDetailHandler(String(car?._id))}
 				>
-					<div>${car?.carPrice}</div>
+					<div>{formatPrice(car?.carPrice)}</div>
 				</Box>
 				<Box component={'div'} className={'info'}>
 					<strong className={'title'} onClick={() => pushDetailHandler(String(car?._id))}>

@@ -1,3 +1,4 @@
+import { formatPrice } from '../../currency';
 import { useTranslation } from 'next-i18next';
 import { imageUrl } from '../../config';
 import { carLabel } from '../../car';
@@ -48,7 +49,7 @@ const PopularCarCard = (props: PopularCarCardProps) => {
 						''
 					)}
 
-					<div className={'price'}>${car.carPrice}</div>
+					<div className={'price'}>{formatPrice(car.carPrice)}</div>
 				</Box>
 				<Box component={'div'} className={'info'}>
 					<strong className={'title'} onClick={() => pushDetailHandler(String(car?._id))}>
@@ -100,7 +101,7 @@ const PopularCarCard = (props: PopularCarCardProps) => {
 						''
 					)}
 
-					<div className={'price'}>${car.carPrice}</div>
+					<div className={'price'}>{formatPrice(car.carPrice)}</div>
 				</Box>
 				<Box component={'div'} className={'info'}>
 					<strong className={'title'} onClick={() => pushDetailHandler(String(car?._id))}>

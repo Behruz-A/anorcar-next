@@ -99,7 +99,7 @@ export default function BrowseSearchFields({ search, onChange, ranges, onRangesC
 		const bounds = rangeBounds(key);
 		return (
 			<div className="cars-filter-group">
-				<Typography component="h3">{t(key === 'yearsRange' ? 'Year' : 'Price range (USD)')}</Typography>
+				<Typography component="h3">{t(key === 'yearsRange' ? 'Year' : 'Price range (KRW)')}</Typography>
 				<Stack direction="row" spacing={1}>
 					{(['start', 'end'] as const).map((part) => (
 						<TextField

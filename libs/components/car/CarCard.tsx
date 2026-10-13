@@ -1,3 +1,4 @@
+import { formatPrice } from '../../currency';
 import { useTranslation } from 'next-i18next';
 import { imageUrl } from '../../config';
 import { carLabel } from '../../car';
@@ -93,7 +94,7 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 						<span>{t(carLabel(car.carTransmission))}</span>
 						{car.carMileage != null && <span>{formatterStr(car.carMileage)} km</span>}
 					</div>
-					<Typography className="cars-listing-price">${formatterStr(car.carPrice)}</Typography>
+					<Typography className="cars-listing-price">{formatPrice(car.carPrice)}</Typography>
 					<div className="cars-listing-stats">
 						<span>
 							<RemoveRedEyeIcon />
@@ -128,7 +129,7 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 						</Box>
 					)}
 					<Box component={'div'} className={'price-box'}>
-						<Typography>${formatterStr(car?.carPrice)}</Typography>
+						<Typography>{formatPrice(car?.carPrice)}</Typography>
 					</Box>
 				</Stack>
 				<Stack className="bottom">

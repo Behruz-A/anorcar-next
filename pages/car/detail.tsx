@@ -1,3 +1,4 @@
+import { formatPrice } from '../../libs/currency';
 import { useTranslation } from 'next-i18next';
 import { imageUrl } from '../../libs/config';
 import { carLabel } from '../../libs/car';
@@ -301,7 +302,7 @@ const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
 											<Typography>{car?.carLikes}</Typography>
 										</Stack>
 									</Stack>
-									<Typography>${formatterStr(car?.carPrice)}</Typography>
+									<Typography>{formatPrice(car?.carPrice)}</Typography>
 								</Stack>
 							</Stack>
 							<Stack className={'images'}>
@@ -374,7 +375,7 @@ const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
 											<Stack className={'left'}>
 												<Box component={'div'} className={'info'}>
 													<Typography className={'title'}>{t("Price")}</Typography>
-													<Typography className={'data'}>${formatterStr(car?.carPrice)}</Typography>
+													<Typography className={'data'}>{formatPrice(car?.carPrice)}</Typography>
 												</Box>
 												<Box component={'div'} className={'info'}>
 													<Typography className={'title'}>{t("Transmission")}</Typography>

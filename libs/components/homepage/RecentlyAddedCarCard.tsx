@@ -1,3 +1,4 @@
+import { formatPrice } from '../../currency';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -29,7 +30,7 @@ const RecentlyAddedCarCard = ({ car }: { car: Car }) => {
 					{car.brandData && <span>{car.brandData.brandName}</span>}
 				</div>
 				<h3>{modelName}</h3>
-				<strong className="recent-price">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(car.carPrice)}</strong>
+				<strong className="recent-price">{formatPrice(car.carPrice)}</strong>
 				<div className="recent-specs">
 					<span><CalendarMonthOutlinedIcon /><span>{car.carYear}</span></span>
 					<span><LocalGasStationOutlinedIcon /><span>{t(carLabel(car.carFuelType))}</span></span>
