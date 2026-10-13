@@ -2,9 +2,9 @@ import { NextPage } from 'next';
 import useDeviceDetect from '../libs/hooks/useDeviceDetect';
 import withLayoutMain from '../libs/components/layout/LayoutHome';
 import CommunityBoards from '../libs/components/homepage/CommunityBoards';
-import CompareCars from '../libs/components/homepage/CompareCars';
 import TopAgents from '../libs/components/homepage/TopAgents';
 import RecentlyAddedCars from '../libs/components/homepage/RecentlyAddedCars';
+import SellerShowcase from '../libs/components/homepage/SellerShowcase';
 import BrowseByBudget from '../libs/components/homepage/BrowseByBudget';
 import TrendCars from '../libs/components/homepage/TrendCars';
 import { Stack } from '@mui/material';
@@ -25,8 +25,8 @@ const Home: NextPage = () => {
 				<BrowseByBudget />
 				<TrendCars />
 				<TopAgents />
+				<SellerShowcase />
 				<RecentlyAddedCars />
-				<CompareCars />
 				<CommunityBoards />
 			</Stack>
 		);
@@ -36,8 +36,8 @@ const Home: NextPage = () => {
 				<BrowseByBudget />
 				<TrendCars />
 				<TopAgents />
+				<SellerShowcase />
 				<RecentlyAddedCars />
-				<CompareCars />
 				<CommunityBoards />
 			</Stack>
 		);

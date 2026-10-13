@@ -1184,7 +1184,7 @@
 }
 .homepage-shell#pc-wrap, .homepage-shell#mobile-wrap {
  .home-page .top-agents.agents-showcase {
-  width: 100%; height: auto; min-height: 816px; box-sizing: border-box; padding: 132px 0 94px; background: #15171b; color: #fff; font-family: $font;
+  width: 100%; height: auto; min-height: 0; box-sizing: border-box; padding: 132px 0 64px; background: #15171b; color: #fff; font-family: $font;
   .container { width: calc(100% - 160px); max-width: 1416px; padding: 0; margin: 0 auto; min-width: 0; align-items: stretch; flex-direction: column; }
   .info-box { width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 30px; }
   .agents-eyebrow { margin: 0 0 10px; display: flex; align-items: center; gap: 16px; color: #b2b3b6; font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;

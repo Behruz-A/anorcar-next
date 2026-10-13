@@ -1,5 +1,13 @@
 import { gql } from '@apollo/client';
 
+export const GET_MARKETPLACE_OVERVIEW = gql`
+	query GetMarketplaceOverview($cars: CarsInquiry!, $agents: AgentsInquiry!) {
+		getCars(input: $cars) { metaCounter { total } }
+		getAgents(input: $agents) { metaCounter { total } }
+		getBrands { _id }
+	}
+`;
+
 /**************************
  *         MEMBER         *
  *************************/
