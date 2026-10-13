@@ -56,7 +56,12 @@ export function validateCarInput(input: CarInput): string | undefined {
  if (!Object.values(CarFuelType).includes(input.carFuelType) || !Object.values(CarCondition).includes(input.carCondition) ||
   !Object.values(CarTransmission).includes(input.carTransmission) || !Object.values(CarLocation).includes(input.carLocation))
   return 'Select fuel, condition, transmission, and location.';
- if (!/^[a-f\d]{24}$/i.test(input.brandId)) return 'Select a brand.';
+ if (input.brandName != null) {
+  if (typeof input.brandName !== 'string') return 'Enter a brand name.';
+  const name = input.brandName.trim();
+  if (!name || name.length > 60) return 'Brand must contain 1-60 characters.';
+  if (input.brandId) return 'Provide either brandId or brandName.';
+ } else if (!/^[a-f\d]{24}$/i.test(input.brandId ?? '')) return 'Enter a brand name.';
  if (!Number.isInteger(input.carYear) || input.carYear < 1886 || input.carYear > maxCarYear) return 'Enter a valid model year.';
  if (!Number.isFinite(input.carPrice) || input.carPrice < 1) return 'Price must be greater than zero.';
  if (input.carMileage != null && (!Number.isInteger(input.carMileage) || input.carMileage < 0 || input.carMileage > 2147483647))

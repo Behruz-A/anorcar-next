@@ -1,0 +1,27 @@
+﻿const assert=require('assert/strict'),fs=require('fs'),Module=require('module'),ts=require('typescript');
+const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
+for(const ext of ['.ts','.tsx'])require.extensions[ext]=(module,filename)=>module._compile(ts.transpileModule(fs.readFileSync(filename,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2019,jsx:ts.JsxEmit.React,esModuleInterop:true}}).outputText,filename);
+let user={_id:'fixture-agent',memberType:'AGENT'};
+const load=Module._load;
+Module._load=function(name,...args){
+ if(name==='next-i18next')return{useTranslation:()=>({t:key=>key})};
+ if(name==='next/router')return{useRouter:()=>({query:{},push:async()=>true})};
+ if(name==='@mui/icons-material')return {AddPhotoAlternateOutlined:load.call(this,'@mui/icons-material/AddPhotoAlternateOutlined',...args).default,Close:load.call(this,'@mui/icons-material/Close',...args).default};
+ if(name==='@apollo/client')return{...load.call(this,name,...args),useReactiveVar:()=>user,useQuery:(_query,options)=>{assert.equal(options.skip,true,'Creation form only skips getCar; no catalog dependency');return{};},useMutation:()=>[async()=>{throw Error('No live mutations');},{}]};
+ if(args[0]?.filename.endsWith('AddNewCar.tsx')&&name==='../../auth')return{getValidJwtToken:async()=>'',refreshMemberCars:async()=>{}};
+ if(args[0]?.filename.endsWith('AddNewCar.tsx')&&name==='../../sweetAlert')return{sweetErrorHandling:async()=>{},sweetMixinSuccessAlert:async()=>{}};
+ return load.call(this,name,...args);
+};
+const {validateCarInput}=require('../libs/car.ts');
+const valid={carFuelType:'GASOLINE',carCondition:'USED',carTransmission:'AUTOMATIC',carLocation:'SEOUL',carTitle:'Clean city car',carModel:'Model',carColor:'Blue',carAddress:'Seoul Korea',carYear:2024,carPrice:20000,carImages:['/img/carimg21.png'],brandName:'BMW'};
+for(const brandName of ['BMW','Toyota','Mercedes-Benz','A+B (Cars)',' 현대 '])assert.equal(validateCarInput({...valid,brandName}),undefined);
+for(const brandName of ['', '   ', 'a'.repeat(61), 12])assert.ok(validateCarInput({...valid,brandName}));
+assert.ok(validateCarInput({...valid,brandId:'0123456789abcdef01234567'}),'Ambiguous names and IDs are rejected');
+assert.equal(validateCarInput({...valid,brandName:undefined,brandId:'0123456789abcdef01234567'}),undefined,'Legacy IDs still work');
+const AddCar=require('../libs/components/mypage/AddNewCar.tsx').default;
+const html=renderToStaticMarkup(React.createElement(AddCar));
+const input=html.match(/<input\b[^>]*name="brandName"[^>]*>/)?.[0];
+assert.ok(input,'Brand is a native editable text input');assert.ok(input.includes('type="text"'));assert.ok(input.includes('maxLength="60"'));assert.ok(!input.includes('disabled'));
+const submit=html.match(/<button\b[^>]*type="submit"[^>]*>/)?.[0];assert.ok(submit&&!submit.includes('disabled'),'Save is not blocked by missing catalog');
+user={_id:'fixture-user',memberType:'USER'};assert.ok(renderToStaticMarkup(React.createElement(AddCar)).includes('Sign in as a seller to manage cars.'));
+console.log('Free-text brand checks passed: editable input, no catalog dependency, role guard, name/ID validation and enabled save.');

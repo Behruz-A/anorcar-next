@@ -14,7 +14,8 @@ export interface CarInput {
  carPrice: number;
  carColor: string;
  carImages: string[];
- brandId: string;
+ brandId?: string;
+ brandName?: string;
  carDesc?: string | null;
  carBarter?: boolean | null;
  carRent?: boolean | null;

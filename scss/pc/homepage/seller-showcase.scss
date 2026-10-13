@@ -17,22 +17,27 @@
 		width: 100%;
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		min-height: clamp(650px, 38vw, 750px);
+		align-items: stretch;
+		min-height: clamp(620px, 35vw, 680px);
 	}
 	.seller-showcase-media {
 		position: relative;
+		width: 100%;
 		min-width: 0;
+		// Let wide panels grow from the source ratio instead of cropping the mountain tops.
+		aspect-ratio: 1756 / 896;
 		overflow: hidden;
 		background: #f7f8fa;
-		img { object-fit: cover; object-position: 50% 75%; }
+		// Keep the road and entire vehicle visible when longer copy expands the row.
+		img { object-fit: cover; object-position: 50% 100%; }
 	}
 	.seller-showcase-play {
 		position: absolute;
-		top: 50%;
+		top: 42%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		width: 92px;
-		height: 92px;
+		width: 84px;
+		height: 84px;
 		display: grid;
 		place-items: center;
 		border: 0;
@@ -50,23 +55,23 @@
 		align-items: center;
 		justify-content: center;
 		min-width: 0;
-		padding: 56px clamp(64px, 4.6vw, 88px);
+		padding: 48px clamp(56px, 4.2vw, 80px);
 		background: #f7f8fa;
 	}
 	.seller-showcase-copy-inner {
 		width: 100%;
-		max-width: 560px;
+		max-width: 540px;
 		h2 {
 			font-family: $font;
-			margin: 0 0 22px;
-			font-size: clamp(44px, 2.7vw, 52px);
+			margin: 0 0 20px;
+			font-size: clamp(44px, 2.6vw, 50px);
 			font-weight: 600;
 			line-height: 1.2;
 			letter-spacing: -1px;
 		}
 		> p { margin: 0; color: #596170; font-size: 18px; line-height: 1.65; }
-		ul { list-style: none; margin: 34px 0 38px; padding: 0; display: grid; gap: 18px; }
-		li { display: flex; align-items: flex-start; gap: 12px; font-size: 17px; line-height: 1.6; }
+		ul { list-style: none; margin: 28px 0 32px; padding: 0; display: grid; gap: 16px; }
+		li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; line-height: 1.6; }
 		li > span {
 			display: grid;
 			place-items: center;
@@ -94,7 +99,7 @@
 	.seller-showcase-eyebrow { display: block; margin-bottom: 18px; color: #596170; font-size: 13px; font-weight: 600; line-height: 20px; letter-spacing: 1.2px; }
 	.seller-showcase-metrics {
 		margin: 0;
-		padding: 72px 0;
+		padding: 68px 0;
 		display: grid;
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 		border-bottom: 1px solid #e5e7eb;
@@ -114,38 +119,38 @@
 		button { border: 0; background: transparent; color: #d63727; font: inherit; cursor: pointer; }
 	}
 	.seller-showcase-benefits {
-		padding: 72px 0 84px;
+		&.seller-showcase-container { max-width: 1416px; padding: 64px 0 72px; }
 		> h2 { font-family: $font; margin: 0 0 48px; font-size: 44px; font-weight: 600; line-height: 1.25; letter-spacing: -.8px; }
 	}
 	.seller-showcase-benefit-grid {
 		display: grid;
 		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 40px;
+		column-gap: 52px;
+		row-gap: 36px;
 		article { min-width: 0; }
 		article > svg { width: 52px; height: 52px; color: #f04432; margin-bottom: 24px; }
-		h3 { margin: 0 0 14px; font-size: 21px; font-weight: 600; line-height: 1.4; }
+		h3 { margin: 0 0 14px; min-height: 2.8em; font-size: 21px; font-weight: 600; line-height: 1.4; }
 		p { margin: 0; color: #596170; font-size: 16px; line-height: 1.65; }
 	}
 	button:focus-visible, a:focus-visible { outline: 3px solid #171a20; outline-offset: 5px; }
+	.seller-showcase-play:focus-visible { outline-color: #fff; box-shadow: 0 0 0 3px #171a20; }
 	@media (max-width: 1200px) {
 		.seller-showcase-split { min-height: 580px; }
 		.seller-showcase-copy { padding: 44px 36px; }
 		.seller-showcase-copy-inner { h2 { font-size: 36px; } > p { font-size: 17px; } li { font-size: 16px; } }
 		.seller-showcase-metrics { padding: 56px 0; dd { font-size: 44px; } dt { font-size: 13px; } }
-		.seller-showcase-benefits { padding: 56px 0 64px; > h2 { font-size: 38px; } }
-		.seller-showcase-benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+		.seller-showcase-benefits.seller-showcase-container { padding: 56px 0 64px; > h2 { font-size: 38px; } }
+		.seller-showcase-benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 40px; h3 { min-height: 0; } }
 	}
 	@media (max-width: 800px) {
 		.seller-showcase-container { width: calc(100% - 40px); }
 		.seller-showcase-split { grid-template-columns: 1fr; min-height: 0; }
-		.seller-showcase-media { aspect-ratio: 1.8; }
 		.seller-showcase-copy { padding: 44px 40px; }
 		.seller-showcase-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 16px; }
 	}
 	@media (max-width: 600px) {
 		.seller-showcase-container { width: calc(100% - 40px); }
-		.seller-showcase-media { aspect-ratio: 1.7; }
-		.seller-showcase-play { width: 80px; height: 80px; svg { width: 34px; height: 34px; } }
+		.seller-showcase-play { top: 40%; width: 76px; height: 76px; svg { width: 32px; height: 32px; } }
 		.seller-showcase-copy { padding: 36px 24px; }
 		.seller-showcase-copy-inner {
 			h2 { font-size: 32px; }
@@ -156,7 +161,7 @@
 		}
 		.seller-showcase-eyebrow { font-size: 12px; margin-bottom: 14px; }
 		.seller-showcase-metrics { padding: 40px 0; gap: 28px 12px; dd { font-size: 40px; } dt { font-size: 12px; line-height: 20px; } }
-		.seller-showcase-benefits { padding: 40px 0 48px; > h2 { font-size: 32px; margin-bottom: 32px; } }
+		.seller-showcase-benefits.seller-showcase-container { padding: 40px 0 48px; > h2 { font-size: 32px; margin-bottom: 32px; } }
 		.seller-showcase-benefit-grid {
 			grid-template-columns: 1fr;
 			gap: 32px;

@@ -1,0 +1,27 @@
+[
+  {
+    "path": "apps/anorcar-api/src/libs/dto/car/car.input.ts",
+    "file": "apps__anorcar-api__src__libs__dto__car__car.input.ts"
+  },
+  {
+    "path": "apps/anorcar-api/src/libs/dto/car/car.update.ts",
+    "file": "apps__anorcar-api__src__libs__dto__car__car.update.ts"
+  },
+  {
+    "path": "apps/anorcar-api/src/components/car/car.service.ts",
+    "file": "apps__anorcar-api__src__components__car__car.service.ts"
+  },
+  {
+    "path": "apps/anorcar-api/src/components/brand/brand.service.ts",
+    "file": "apps__anorcar-api__src__components__brand__brand.service.ts"
+  },
+  {
+    "path": "apps/anorcar-api/src/libs/dto/car/car.input.spec.ts",
+    "file": "apps__anorcar-api__src__libs__dto__car__car.input.spec.ts"
+  },
+  {
+    "path": "apps/anorcar-api/src/components/brand/brand-listing.spec.ts",
+    "file": "apps__anorcar-api__src__components__brand__brand-listing.spec.ts",
+    "new": true
+  }
+]

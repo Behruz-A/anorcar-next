@@ -176,17 +176,17 @@ export default function SellerShowcase() {
 						</button>
 					</div>
 				)}
-				<div className="seller-showcase-benefits">
-					<h2>{t('Why Choose ANORCAR?')}</h2>
-					<div className="seller-showcase-benefit-grid">
-						{features.map(({ title, text, icon: Icon }) => (
-							<article key={title}>
-								<Icon aria-hidden="true" />
-								<h3>{t(title)}</h3>
-								<p>{t(text)}</p>
-							</article>
-						))}
-					</div>
+			</div>
+			<div className="container seller-showcase-container seller-showcase-benefits">
+				<h2>{t('Why Choose ANORCAR?')}</h2>
+				<div className="seller-showcase-benefit-grid">
+					{features.map(({ title, text, icon: Icon }) => (
+						<article key={title}>
+							<Icon aria-hidden="true" />
+							<h3>{t(title)}</h3>
+							<p>{t(text)}</p>
+						</article>
+					))}
 				</div>
 			</div>
 			{videoId && (

@@ -4,6 +4,8 @@ const fs = require('fs'), os = require('os'), path = require('path');
 const { spawn } = require('child_process');
 const WebSocket = require('ws');
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const imageFile=fs.readFileSync('public/img/carimg21.png');
+const sourceDimensions={width:imageFile.readUInt32BE(16),height:imageFile.readUInt32BE(20)};
 const base = process.env.QA_BASE_URL || 'http://localhost:3000';
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'anorcar-showcase-'));
 const chrome = spawn(process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', ['--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profile}`, '--no-first-run', '--disable-gpu', 'about:blank'], { windowsHide: true, stdio: 'ignore' });
@@ -19,7 +21,7 @@ const fixture=`(()=>{const nativeFetch=fetch.bind(window);window.__overviewMode=
  return nativeFetch(resource,options);};})();`;
 async function click(selector){assert.ok(await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});if(!e||e.disabled)return false;e.click();return true;})()`),selector);}
 async function navigate(width,locale='en'){
- await command('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<600});
+ await command('Emulation.setDeviceMetricsOverride',{width,height:Number(process.env.QA_HEIGHT || 1000),deviceScaleFactor:1,mobile:width<600});
  await command('Network.setUserAgentOverride',{userAgent:width<600?'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'});
  await command('Page.navigate',{url:base+(locale==='en'?'/':'/'+locale)});
  await until(width<600?"document.querySelector('#mobile-wrap')":"document.querySelector('#pc-wrap')",'device layout');
@@ -28,13 +30,19 @@ async function navigate(width,locale='en'){
  await until("(()=>{document.querySelector('.seller-showcase').scrollIntoView({block:'start'});window.scrollBy(0,-110);return document.querySelector('.seller-showcase-metrics dd').textContent==='53'})()",'overview counts');
  await until("document.querySelector('.seller-showcase-media img').complete && document.querySelector('.seller-showcase-media img').naturalWidth>0",'supplied image');
 }
-async function shot(name){await delay(250);const clip=await evaluate("(()=>{const r=document.querySelector('.seller-showcase').getBoundingClientRect();return{x:r.left+scrollX,y:r.top+scrollY,width:r.width,height:r.height,scale:1}})()");const result=await command('Page.captureScreenshot',{format:'png',clip,captureBeyondViewport:true});fs.mkdirSync('docs/screenshots',{recursive:true});fs.writeFileSync('docs/screenshots/'+name+'.png',Buffer.from(result.data,'base64'));}
+async function shot(name){
+ // Isolate the requested sections in exported previews; shared launchers stay unchanged in the app and other checks.
+ await evaluate("(()=>{const s=document.createElement('style');s.id='qa-showcase-preview';s.textContent='.support-launchers{visibility:hidden!important}';document.head.appendChild(s)})()");
+ try {await delay(250);const clip=await evaluate("(()=>{const r=document.querySelector('.seller-showcase').getBoundingClientRect();return{x:r.left+scrollX,y:r.top+scrollY,width:r.width,height:r.height,scale:1}})()");const result=await command('Page.captureScreenshot',{format:'png',clip,captureBeyondViewport:true});fs.mkdirSync('docs/screenshots',{recursive:true});fs.writeFileSync('docs/screenshots/'+name+'.png',Buffer.from(result.data,'base64'));}
+ finally {await evaluate("document.getElementById('qa-showcase-preview')?.remove()");}
+}
+
 (async()=>{try{
  const active=path.join(profile,'DevToolsActivePort');for(let i=0;i<100&&!fs.existsSync(active);i++)await delay(100);
  const port=fs.readFileSync(active,'utf8').split('\n')[0];const targets=await(await fetch('http://127.0.0.1:'+port+'/json/list')).json();socket=new WebSocket(targets.find(target=>target.type==='page').webSocketDebuggerUrl);await new Promise(resolve=>socket.once('open',resolve));
  socket.on('message',raw=>{const value=JSON.parse(raw);if(value.id){const handler=pending.get(value.id);pending.delete(value.id);value.error?handler.reject(Error(JSON.stringify(value.error))):handler.resolve(value.result);}if(value.method==='Runtime.exceptionThrown')exceptions.push(value.params.exceptionDetails);});
  await command('Runtime.enable');await command('Page.enable');await command('Network.enable');await command('Network.setBlockedURLs',{urls:['*youtube-nocookie.com*','*googlevideo.com*']});await command('Page.addScriptToEvaluateOnNewDocument',{source:fixture});
- for(const width of (process.env.QA_WIDTHS || '1920,1440,1024,768,390,320').split(',').map(Number)){
+ for(const width of (process.env.QA_WIDTHS || '3440,2560,1920,1440,1280,1024,768,390,375,320').split(',').map(Number)){
   await navigate(width);
   assert.ok(await evaluate("(()=>{const e=document.querySelector('.seller-showcase');return !!(e.previousElementSibling?.classList.contains('top-agents') && e.nextElementSibling?.classList.contains('recently-added-cars'))})()"),'section order');
   assert.ok(await evaluate("document.documentElement.scrollWidth<=innerWidth+1"),'page overflow '+width);
@@ -45,12 +53,30 @@ async function shot(name){await delay(250);const clip=await evaluate("(()=>{cons
   assert.equal(await evaluate("document.querySelectorAll('.seller-showcase-play').length"),1);
   assert.equal(await evaluate("document.querySelectorAll('.seller-showcase-video-label').length"),0);
   assert.equal(await evaluate("document.querySelectorAll('.seller-showcase-copy li').length"),3);
-  const layout=await evaluate("(()=>{const media=document.querySelector('.seller-showcase-media'),copy=document.querySelector('.seller-showcase-copy'),split=document.querySelector('.seller-showcase-split');const r=split.getBoundingClientRect(),prev=document.querySelector('.top-agents');return {width:r.width,left:r.left,gap:r.top-prev.getBoundingClientRect().bottom,minAgentHeight:getComputedStyle(prev).minHeight,mediaWidth:media.offsetWidth,media:media.offsetHeight,copy:copy.offsetHeight,split:split.offsetHeight,position:getComputedStyle(media.querySelector('img')).objectPosition}})()");
-  assert.ok(Math.abs(layout.width-await evaluate('document.documentElement.clientWidth'))<=1,'full viewport width'); assert.equal(layout.left,0); assert.ok(Math.abs(layout.gap)<=1,'no gap between sections'); assert.equal(layout.minAgentHeight,'0px');
+  const layout=await evaluate("(()=>{const media=document.querySelector('.seller-showcase-media'),copy=document.querySelector('.seller-showcase-copy'),split=document.querySelector('.seller-showcase-split');const r=split.getBoundingClientRect(),prev=document.querySelector('.top-agents');return {width:r.width,left:r.left,topAligned:Math.abs(media.getBoundingClientRect().top-copy.getBoundingClientRect().top)<=1,sideGap:copy.getBoundingClientRect().left-media.getBoundingClientRect().right,gap:r.top-prev.getBoundingClientRect().bottom,minAgentHeight:getComputedStyle(prev).minHeight,mediaWidth:media.offsetWidth,media:media.offsetHeight,copy:copy.offsetHeight,split:split.offsetHeight,position:getComputedStyle(media.querySelector('img')).objectPosition}})()");
+  assert.ok(Math.abs(layout.width-await evaluate('document.documentElement.clientWidth'))<=1,'full viewport width'); assert.equal(layout.left,0); if(width>800){assert.ok(layout.topAligned,'panel tops match');assert.ok(Math.abs(layout.sideGap)<=1,'no horizontal gap');} assert.ok(Math.abs(layout.gap)<=1,'no gap between sections'); assert.equal(layout.minAgentHeight,'0px');
   if(width>800){assert.equal(layout.media,layout.copy,'aligned panels');assert.ok(Math.abs(layout.mediaWidth-layout.width/2)<=1,'50/50 split');}
-  if(width>=1440)assert.ok(layout.split>=650&&layout.split<=750,'large desktop height '+JSON.stringify(layout));
-  assert.equal(layout.position,'50% 75%');
-  if(width===1920||width===1440||width===390)await shot('home-seller-showcase-'+width);
+  if(process.env.QA_DIAG)console.log('LAYOUT',width,await evaluate(`(()=>{const selectors=['#top','.navbar-main','#main','.home-page','.top-agents','.top-agents .wrapper','.seller-showcase','.seller-showcase-split','.seller-showcase-media','.seller-showcase-copy'];return selectors.map(s=>{const e=document.querySelector(s);if(!e)return{s};const r=e.getBoundingClientRect(),c=getComputedStyle(e);return{s,rect:r.toJSON(),padding:c.padding,margin:c.margin,height:c.height,position:c.position,overflow:c.overflow,transform:c.transform}})})()`));
+  if(width>=1440&&width<=1920)assert.ok(layout.split>=620&&layout.split<=680,'large desktop height '+JSON.stringify(layout));
+  assert.equal(layout.position,'50% 100%');
+  const composition=await evaluate(`(()=>{
+   const image=document.querySelector('.seller-showcase-media img'),media=image.getBoundingClientRect(),button=document.querySelector('.seller-showcase-play').getBoundingClientRect();
+   const sourceWidth=${sourceDimensions.width},sourceHeight=${sourceDimensions.height};
+   const scale=Math.max(media.width/sourceWidth,media.height/sourceHeight),offsetX=(media.width-sourceWidth*scale)*.5,offsetY=media.height-sourceHeight*scale;
+   // Conservative vehicle bounds in the unchanged 1756x896 source, inspected visually.
+   const vehicle={left:offsetX+710*scale,top:offsetY+660*scale,right:offsetX+1040*scale,bottom:offsetY+810*scale};
+   const grid=getComputedStyle(document.querySelector('.seller-showcase-benefit-grid'));
+   return {vehicle,media:{width:media.width,height:media.height},source:{width:sourceWidth,height:sourceHeight},play:{left:button.left-media.left,top:button.top-media.top,right:button.right-media.left,bottom:button.bottom-media.top,width:button.width},verticalCrop:Math.max(0,sourceHeight*scale-media.height),columns:grid.gridTemplateColumns.split(' ').length,gap:parseFloat(grid.columnGap)};
+  })()`);
+  assert.deepEqual(composition.source,{width:1756,height:896}); assert.ok(composition.verticalCrop<=1,'mountain top is not cropped '+JSON.stringify(composition));
+  const {vehicle,media,play}=composition;
+  assert.ok(vehicle.left>=0&&vehicle.top>=0&&vehicle.right<=media.width&&vehicle.bottom<=media.height,'entire vehicle within photo '+JSON.stringify(composition));
+  assert.ok(play.bottom<vehicle.top||play.top>vehicle.bottom||play.right<vehicle.left||play.left>vehicle.right,'play does not cover car');
+  assert.ok(play.width>=76&&play.width<=88,'play diameter');
+  assert.equal(composition.columns,width>1200?4:width>600?2:1,'benefit columns');
+  if(width>1200)assert.ok(composition.gap>=40&&composition.gap<=56,'spacious feature gaps');
+  if(width<=800)assert.ok(Math.abs(media.width/media.height-1756/896)<.01,'mobile photo preserves whole frame');
+  if(width===3440||width===1920||width===1440||width===390)await shot('home-seller-showcase-'+width);
   await click('.seller-showcase-play');await until("document.querySelector('.seller-showcase-video-dialog iframe')",'video dialog');
   assert.ok(await evaluate("document.querySelector('.seller-showcase-video-dialog iframe').src.includes('youtube-nocookie.com/embed/Cdh5Taq7H6A?autoplay=1')"));
   assert.ok(await evaluate("document.querySelector('.seller-showcase-video-dialog a').href.includes('youtube.com/watch?v=Cdh5Taq7H6A')"));

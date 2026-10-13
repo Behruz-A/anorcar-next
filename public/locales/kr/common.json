@@ -936,5 +936,10 @@
   "Explore available vehicles by brand, price, model year, and location.": "브랜드, 가격, 연식, 지역별로 판매 중인 차량을 찾아보세요.",
   "Compare vehicle prices and specifications side by side before making a decision.": "결정하기 전에 차량 가격과 사양을 나란히 비교해 보세요.",
   "Browse vehicle prices in Korean won and find options that match your budget.": "원화로 차량 가격을 살펴보고 예산에 맞는 차량을 찾아보세요.",
-  "Contact agents directly through ANORCAR's existing private messaging experience.": "ANORCAR의 기존 개인 메시지 기능으로 판매자에게 직접 연락하세요."
+  "Contact agents directly through ANORCAR's existing private messaging experience.": "ANORCAR의 기존 개인 메시지 기능으로 판매자에게 직접 연락하세요.",
+  "Enter a brand name, e.g. BMW or Toyota": "브랜드명을 입력하세요. 예: BMW, Toyota",
+  "Brand must contain 1-60 characters.": "브랜드명은 1~60자여야 합니다.",
+  "Enter a brand name.": "브랜드명을 입력하세요.",
+  "This brand is unavailable.": "이 브랜드는 사용할 수 없습니다.",
+  "Provide either brandId or brandName.": "브랜드명 또는 기존 브랜드 중 하나를 선택하세요."
 }

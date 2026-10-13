@@ -936,5 +936,10 @@
   "Explore available vehicles by brand, price, model year, and location.": "Explore available vehicles by brand, price, model year, and location.",
   "Compare vehicle prices and specifications side by side before making a decision.": "Compare vehicle prices and specifications side by side before making a decision.",
   "Browse vehicle prices in Korean won and find options that match your budget.": "Browse vehicle prices in Korean won and find options that match your budget.",
-  "Contact agents directly through ANORCAR's existing private messaging experience.": "Contact agents directly through ANORCAR's existing private messaging experience."
+  "Contact agents directly through ANORCAR's existing private messaging experience.": "Contact agents directly through ANORCAR's existing private messaging experience.",
+  "Enter a brand name, e.g. BMW or Toyota": "Enter a brand name, e.g. BMW or Toyota",
+  "Brand must contain 1-60 characters.": "Brand must contain 1-60 characters.",
+  "Enter a brand name.": "Enter a brand name.",
+  "This brand is unavailable.": "This brand is unavailable.",
+  "Provide either brandId or brandName.": "Provide either brandId or brandName."
 }

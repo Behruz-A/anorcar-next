@@ -936,5 +936,10 @@
   "Explore available vehicles by brand, price, model year, and location.": "Изучайте доступные автомобили по марке, цене, году выпуска и местоположению.",
   "Compare vehicle prices and specifications side by side before making a decision.": "Сравнивайте цены и характеристики автомобилей, прежде чем принять решение.",
   "Browse vehicle prices in Korean won and find options that match your budget.": "Изучайте цены в корейских вонах и находите варианты по вашему бюджету.",
-  "Contact agents directly through ANORCAR's existing private messaging experience.": "Связывайтесь с продавцами напрямую через личные сообщения ANORCAR."
+  "Contact agents directly through ANORCAR's existing private messaging experience.": "Связывайтесь с продавцами напрямую через личные сообщения ANORCAR.",
+  "Enter a brand name, e.g. BMW or Toyota": "Введите марку, например BMW или Toyota",
+  "Brand must contain 1-60 characters.": "Название марки должно содержать от 1 до 60 символов.",
+  "Enter a brand name.": "Введите название марки.",
+  "This brand is unavailable.": "Эта марка недоступна.",
+  "Provide either brandId or brandName.": "Укажите название марки или существующую марку."
 }
