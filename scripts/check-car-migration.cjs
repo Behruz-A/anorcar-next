@@ -1,6 +1,20 @@
 const assert = require('assert/strict');
 const fs = require('fs');
 const ts = require('typescript');
+// Both the GraphQL skip guard and the page guard must accept real MongoDB IDs.
+const detailSource = ts.createSourceFile('detail.tsx', fs.readFileSync('pages/car/detail.tsx', 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+let detailIdGuards = 0;
+function checkDetailIdGuards(node) {
+ if (node.kind === ts.SyntaxKind.RegularExpressionLiteral && node.getText(detailSource).includes('[a-f')) {
+  const expression = require('vm').runInNewContext(node.getText(detailSource));
+  for (const id of ['6ac73865e8ca66a84a682d97', '0123456789abcdef01234567', 'ABCDEF0123456789ABCDEF01']) assert.equal(expression.test(id), true);
+  for (const id of ['invalid', 'g'.repeat(24), '\\'.repeat(24), '0123456789abcdef0123456']) assert.equal(expression.test(id), false);
+  detailIdGuards++;
+ }
+ ts.forEachChild(node, checkDetailIdGuards);
+}
+checkDetailIdGuards(detailSource);
+assert.equal(detailIdGuards, 2);
 // Load client TypeScript in memory without producing build files.
 require.extensions['.ts'] = (module, filename) => {
  const compiled = ts.transpileModule(fs.readFileSync(filename, 'utf8'), {

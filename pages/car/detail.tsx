@@ -203,7 +203,7 @@ const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
 		}
 	};
 
-	if (router.isReady && (typeof router.query.id !== 'string' || !/^[a-f\\d]{24}$/i.test(router.query.id)))
+	if (router.isReady && (typeof router.query.id !== 'string' || !/^[a-f\d]{24}$/i.test(router.query.id)))
   return <Typography role="alert">{t("This car is unavailable.")}</Typography>;
  if (getCarLoading) {
 		return (
