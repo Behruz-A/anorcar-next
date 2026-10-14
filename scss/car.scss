@@ -10,7 +10,9 @@
 #pc-wrap .header-main > .container { position: relative; }
 .car-filter { padding: 24px; border-radius: 12px; background: #fff; }
 .car-form { width: 100%; max-width: 760px; padding: 24px 0; }
-.car-form fieldset { border: 0; min-width: 0; padding: 0; margin: 0; }
+.car-form > fieldset { border: 0; min-width: 0; padding: 0; margin: 0; }
+// Multiline inputs must grow with MUI's textarea autosizing, beyond the theme's 48px input height.
+.car-form .MuiInputBase-root.MuiInputBase-multiline { height: auto; align-items: flex-start; }
 .car-photo-previews { flex-wrap: wrap; gap: 12px; }
 #pc-wrap #car-list-page > .container { flex-direction: column; }
 #pc-wrap #car-list-page .car-page { padding-top: 24px; }
