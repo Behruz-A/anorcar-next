@@ -1,0 +1,532 @@
+{
+  "date": "2026-10-14T05:31:41.797Z",
+  "purpose": "User-authorized development catalog engagement through agent accounts",
+  "before": {
+    "list": [
+      {
+        "_id": "6aced0b4c98aa26ea0c34c14",
+        "carTitle": "Hyundai Kona 2024",
+        "carLikes": 1,
+        "carViews": 0,
+        "memberId": "6ace1c4f206b7e8e8eedb945",
+        "carImages": [
+          "uploads/car/c78ec130-1ee1-43b6-82e4-a39c7ca34684.jpg"
+        ]
+      }
+    ],
+    "metaCounter": [
+      {
+        "total": 90
+      }
+    ]
+  },
+  "actions": [
+    {
+      "agent": "Khan",
+      "carId": "6aced0abc98aa26ea0c34b66",
+      "title": "Tesla Model Y 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Khan",
+      "carId": "6aced0afc98aa26ea0c34bb3",
+      "title": "Genesis GV80 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Khan",
+      "carId": "6aced0b2c98aa26ea0c34bec",
+      "title": "Hyundai IONIQ 5 N 2024",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Kevin",
+      "carId": "6aced09ec98aa26ea0c34a84",
+      "title": "Genesis GV70 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Kevin",
+      "carId": "6aced0abc98aa26ea0c34b66",
+      "title": "Tesla Model Y 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Kevin",
+      "carId": "6aced0afc98aa26ea0c34bb3",
+      "title": "Genesis GV80 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Kevin",
+      "carId": "6aced0b2c98aa26ea0c34bec",
+      "title": "Hyundai IONIQ 5 N 2024",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Kevin",
+      "carId": "6aced0b0c98aa26ea0c34bb8",
+      "title": "Mercedes-Benz GLC 2023",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Angel",
+      "carId": "6aced09ec98aa26ea0c34a84",
+      "title": "Genesis GV70 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Angel",
+      "carId": "6aced0a3c98aa26ea0c34ad9",
+      "title": "Hyundai IONIQ 5 2026",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Angel",
+      "carId": "6aced0abc98aa26ea0c34b66",
+      "title": "Tesla Model Y 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Angel",
+      "carId": "6aced0afc98aa26ea0c34bb3",
+      "title": "Genesis GV80 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Angel",
+      "carId": "6aced0b2c98aa26ea0c34bec",
+      "title": "Hyundai IONIQ 5 N 2024",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Angel",
+      "carId": "6aced0b0c98aa26ea0c34bb8",
+      "title": "Mercedes-Benz GLC 2023",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Nathan",
+      "carId": "6aced09ec98aa26ea0c34a84",
+      "title": "Genesis GV70 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Nathan",
+      "carId": "6aced0a3c98aa26ea0c34ad9",
+      "title": "Hyundai IONIQ 5 2026",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Nathan",
+      "carId": "6aced0a8c98aa26ea0c34b2d",
+      "title": "Hyundai Santa Fe 2024",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Nathan",
+      "carId": "6aced0b0c98aa26ea0c34bb8",
+      "title": "Mercedes-Benz GLC 2023",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Nathan",
+      "carId": "6aced0a2c98aa26ea0c34acd",
+      "title": "Kia EV6 GT 2023",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Leo",
+      "carId": "6aced09ec98aa26ea0c34a84",
+      "title": "Genesis GV70 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Leo",
+      "carId": "6aced0a3c98aa26ea0c34ad9",
+      "title": "Hyundai IONIQ 5 2026",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Leo",
+      "carId": "6aced0a8c98aa26ea0c34b2d",
+      "title": "Hyundai Santa Fe 2024",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Leo",
+      "carId": "6aced0abc98aa26ea0c34b66",
+      "title": "Tesla Model Y 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Leo",
+      "carId": "6aced0a2c98aa26ea0c34acd",
+      "title": "Kia EV6 GT 2023",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Adam",
+      "carId": "6aced09ec98aa26ea0c34a84",
+      "title": "Genesis GV70 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Adam",
+      "carId": "6aced0a3c98aa26ea0c34ad9",
+      "title": "Hyundai IONIQ 5 2026",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Adam",
+      "carId": "6aced0a8c98aa26ea0c34b2d",
+      "title": "Hyundai Santa Fe 2024",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Adam",
+      "carId": "6aced0abc98aa26ea0c34b66",
+      "title": "Tesla Model Y 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Adam",
+      "carId": "6aced0afc98aa26ea0c34bb3",
+      "title": "Genesis GV80 2025",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Adam",
+      "carId": "6aced0b0c98aa26ea0c34bb8",
+      "title": "Mercedes-Benz GLC 2023",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Adam",
+      "carId": "6aced0a2c98aa26ea0c34acd",
+      "title": "Kia EV6 GT 2023",
+      "opened": true,
+      "likeAdded": true
+    }
+  ],
+  "targets": [
+    {
+      "carId": "6aced09ec98aa26ea0c34a84",
+      "title": "Genesis GV70 2025",
+      "owner": "Khan",
+      "agents": [
+        "Kevin",
+        "Angel",
+        "Nathan",
+        "Leo",
+        "Adam"
+      ]
+    },
+    {
+      "carId": "6aced0a3c98aa26ea0c34ad9",
+      "title": "Hyundai IONIQ 5 2026",
+      "owner": "Kevin",
+      "agents": [
+        "Angel",
+        "Nathan",
+        "Leo",
+        "Adam"
+      ]
+    },
+    {
+      "carId": "6aced0a8c98aa26ea0c34b2d",
+      "title": "Hyundai Santa Fe 2024",
+      "owner": "Angel",
+      "agents": [
+        "Nathan",
+        "Leo",
+        "Adam"
+      ]
+    },
+    {
+      "carId": "6aced0abc98aa26ea0c34b66",
+      "title": "Tesla Model Y 2025",
+      "owner": "Nathan",
+      "agents": [
+        "Leo",
+        "Adam",
+        "Khan",
+        "Kevin",
+        "Angel"
+      ]
+    },
+    {
+      "carId": "6aced0afc98aa26ea0c34bb3",
+      "title": "Genesis GV80 2025",
+      "owner": "Leo",
+      "agents": [
+        "Adam",
+        "Khan",
+        "Kevin",
+        "Angel"
+      ]
+    },
+    {
+      "carId": "6aced0b2c98aa26ea0c34bec",
+      "title": "Hyundai IONIQ 5 N 2024",
+      "owner": "Adam",
+      "agents": [
+        "Khan",
+        "Kevin",
+        "Angel"
+      ]
+    },
+    {
+      "carId": "6aced0b0c98aa26ea0c34bb8",
+      "title": "Mercedes-Benz GLC 2023",
+      "owner": "Leo",
+      "agents": [
+        "Kevin",
+        "Angel",
+        "Nathan",
+        "Adam"
+      ]
+    },
+    {
+      "carId": "6aced0a2c98aa26ea0c34acd",
+      "title": "Kia EV6 GT 2023",
+      "owner": "Khan",
+      "agents": [
+        "Nathan",
+        "Leo",
+        "Adam"
+      ]
+    }
+  ],
+  "after": {
+    "list": [
+      {
+        "_id": "6aced09ec98aa26ea0c34a84",
+        "carTitle": "Genesis GV70 2025",
+        "carLikes": 5,
+        "carViews": 5,
+        "memberId": "6ace17f9206b7e8e8eedb8f3",
+        "carImages": [
+          "uploads/car/f1687374-8514-4a12-bdd2-5609155331c4.jpg"
+        ]
+      },
+      {
+        "_id": "6aced0abc98aa26ea0c34b66",
+        "carTitle": "Tesla Model Y 2025",
+        "carLikes": 5,
+        "carViews": 5,
+        "memberId": "6ace1b3d206b7e8e8eedb92b",
+        "carImages": [
+          "uploads/car/5548e318-75fe-473b-8045-62b400191ad3.jpg"
+        ]
+      },
+      {
+        "_id": "6aced0a3c98aa26ea0c34ad9",
+        "carTitle": "Hyundai IONIQ 5 2026",
+        "carLikes": 4,
+        "carViews": 4,
+        "memberId": "6ace1a06206b7e8e8eedb911",
+        "carImages": [
+          "uploads/car/714c99e4-b1a5-4864-a13e-eb6be1ef69f9.jpg"
+        ]
+      },
+      {
+        "_id": "6aced0b0c98aa26ea0c34bb8",
+        "carTitle": "Mercedes-Benz GLC 2023",
+        "carLikes": 4,
+        "carViews": 4,
+        "memberId": "6ace1b0a206b7e8e8eedb91e",
+        "carImages": [
+          "uploads/car/affc8167-7ec6-476c-b30b-055a3fd35e73.jpg"
+        ]
+      },
+      {
+        "_id": "6aced0afc98aa26ea0c34bb3",
+        "carTitle": "Genesis GV80 2025",
+        "carLikes": 4,
+        "carViews": 4,
+        "memberId": "6ace1b0a206b7e8e8eedb91e",
+        "carImages": [
+          "uploads/car/6bcfab6a-a271-42c8-ac49-140973a3d068.jpg"
+        ]
+      },
+      {
+        "_id": "6aced0a8c98aa26ea0c34b2d",
+        "carTitle": "Hyundai Santa Fe 2024",
+        "carLikes": 3,
+        "carViews": 3,
+        "memberId": "6ace1d04206b7e8e8eedb95c",
+        "carImages": [
+          "uploads/car/29075227-78d5-4388-8030-f516685412a9.jpg"
+        ]
+      },
+      {
+        "_id": "6aced0b2c98aa26ea0c34bec",
+        "carTitle": "Hyundai IONIQ 5 N 2024",
+        "carLikes": 3,
+        "carViews": 3,
+        "memberId": "6ace1c4f206b7e8e8eedb945",
+        "carImages": [
+          "uploads/car/d59b7b22-4cce-4c71-8f70-7fa5f5e1aa7d.jpg"
+        ]
+      },
+      {
+        "_id": "6aced0a2c98aa26ea0c34acd",
+        "carTitle": "Kia EV6 GT 2023",
+        "carLikes": 3,
+        "carViews": 3,
+        "memberId": "6ace17f9206b7e8e8eedb8f3",
+        "carImages": [
+          "uploads/car/25c2c639-db63-41c6-82b0-7e9aeafd0c55.jpg"
+        ]
+      }
+    ],
+    "metaCounter": [
+      {
+        "total": 90
+      }
+    ]
+  },
+  "eligible": [
+    {
+      "_id": "6aced09ec98aa26ea0c34a84",
+      "carTitle": "Genesis GV70 2025",
+      "carLikes": 5,
+      "carViews": 5,
+      "memberId": "6ace17f9206b7e8e8eedb8f3",
+      "carImages": [
+        "uploads/car/f1687374-8514-4a12-bdd2-5609155331c4.jpg"
+      ]
+    },
+    {
+      "_id": "6aced0abc98aa26ea0c34b66",
+      "carTitle": "Tesla Model Y 2025",
+      "carLikes": 5,
+      "carViews": 5,
+      "memberId": "6ace1b3d206b7e8e8eedb92b",
+      "carImages": [
+        "uploads/car/5548e318-75fe-473b-8045-62b400191ad3.jpg"
+      ]
+    },
+    {
+      "_id": "6aced0a3c98aa26ea0c34ad9",
+      "carTitle": "Hyundai IONIQ 5 2026",
+      "carLikes": 4,
+      "carViews": 4,
+      "memberId": "6ace1a06206b7e8e8eedb911",
+      "carImages": [
+        "uploads/car/714c99e4-b1a5-4864-a13e-eb6be1ef69f9.jpg"
+      ]
+    },
+    {
+      "_id": "6aced0b0c98aa26ea0c34bb8",
+      "carTitle": "Mercedes-Benz GLC 2023",
+      "carLikes": 4,
+      "carViews": 4,
+      "memberId": "6ace1b0a206b7e8e8eedb91e",
+      "carImages": [
+        "uploads/car/affc8167-7ec6-476c-b30b-055a3fd35e73.jpg"
+      ]
+    },
+    {
+      "_id": "6aced0afc98aa26ea0c34bb3",
+      "carTitle": "Genesis GV80 2025",
+      "carLikes": 4,
+      "carViews": 4,
+      "memberId": "6ace1b0a206b7e8e8eedb91e",
+      "carImages": [
+        "uploads/car/6bcfab6a-a271-42c8-ac49-140973a3d068.jpg"
+      ]
+    },
+    {
+      "_id": "6aced0a8c98aa26ea0c34b2d",
+      "carTitle": "Hyundai Santa Fe 2024",
+      "carLikes": 3,
+      "carViews": 3,
+      "memberId": "6ace1d04206b7e8e8eedb95c",
+      "carImages": [
+        "uploads/car/29075227-78d5-4388-8030-f516685412a9.jpg"
+      ]
+    },
+    {
+      "_id": "6aced0b2c98aa26ea0c34bec",
+      "carTitle": "Hyundai IONIQ 5 N 2024",
+      "carLikes": 3,
+      "carViews": 3,
+      "memberId": "6ace1c4f206b7e8e8eedb945",
+      "carImages": [
+        "uploads/car/d59b7b22-4cce-4c71-8f70-7fa5f5e1aa7d.jpg"
+      ]
+    },
+    {
+      "_id": "6aced0a2c98aa26ea0c34acd",
+      "carTitle": "Kia EV6 GT 2023",
+      "carLikes": 3,
+      "carViews": 3,
+      "memberId": "6ace17f9206b7e8e8eedb8f3",
+      "carImages": [
+        "uploads/car/25c2c639-db63-41c6-82b0-7e9aeafd0c55.jpg"
+      ]
+    }
+  ],
+  "browser": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "cards": [
+        "6aced09ec98aa26ea0c34a84",
+        "6aced0abc98aa26ea0c34b66",
+        "6aced0a3c98aa26ea0c34ad9",
+        "6aced0b0c98aa26ea0c34bb8",
+        "6aced0afc98aa26ea0c34bb3",
+        "6aced0a8c98aa26ea0c34b2d",
+        "6aced0b2c98aa26ea0c34bec",
+        "6aced0a2c98aa26ea0c34acd"
+      ]
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "cards": [
+        "6aced09ec98aa26ea0c34a84",
+        "6aced0abc98aa26ea0c34b66",
+        "6aced0a3c98aa26ea0c34ad9",
+        "6aced0b0c98aa26ea0c34bb8",
+        "6aced0afc98aa26ea0c34bb3",
+        "6aced0a8c98aa26ea0c34b2d",
+        "6aced0b2c98aa26ea0c34bec",
+        "6aced0a2c98aa26ea0c34acd"
+      ]
+    }
+  ]
+}

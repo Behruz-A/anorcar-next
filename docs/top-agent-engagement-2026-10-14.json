@@ -1,0 +1,683 @@
+{
+  "date": "2026-10-14T06:19:58.698Z",
+  "purpose": "User-authorized development engagement for visually consistent studio portraits",
+  "ranking": "Existing memberRank DESC and updatedAt tie-break unchanged; no direct rank edits",
+  "before": [
+    {
+      "_id": "6acf1747faee0f504cdcfecf",
+      "memberNick": "maya.ellis",
+      "memberFullName": "Maya Ellis",
+      "memberImage": "uploads/member/59b2d0a8-9453-4a0b-aa55-b9727ad61c60.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:46:47.528Z"
+    },
+    {
+      "_id": "6acf1749faee0f504cdcff07",
+      "memberNick": "ella.stone",
+      "memberFullName": "Ella Stone",
+      "memberImage": "uploads/member/e23596ec-8678-475a-9724-49a11be3535c.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:46:49.791Z"
+    },
+    {
+      "_id": "6acf1749faee0f504cdcff00",
+      "memberNick": "leon.carter",
+      "memberFullName": "Leon Carter",
+      "memberImage": "uploads/member/eb022b02-21ce-48d3-a9d4-0f719db085af.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:46:49.530Z"
+    },
+    {
+      "_id": "6acf1749faee0f504cdcfef9",
+      "memberNick": "amira.wilson",
+      "memberFullName": "Amira Wilson",
+      "memberImage": "uploads/member/2074ad00-dfc4-4aea-a537-3c2cb60a5ddb.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:46:49.233Z"
+    },
+    {
+      "_id": "6acf1748faee0f504cdcfef2",
+      "memberNick": "ethan.miles",
+      "memberFullName": "Ethan Miles",
+      "memberImage": "uploads/member/eab478e1-426d-4841-99cd-979f0237edab.jpg",
+      "memberLikes": 1,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:48:16.141Z"
+    },
+    {
+      "_id": "6acf1748faee0f504cdcfeeb",
+      "memberNick": "nora.bennett",
+      "memberFullName": "Nora Bennett",
+      "memberImage": "uploads/member/f9819fb4-e626-4876-812d-9af503daf39b.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:46:48.612Z"
+    },
+    {
+      "_id": "6acf1748faee0f504cdcfee4",
+      "memberNick": "lucas.brooks",
+      "memberFullName": "Lucas Brooks",
+      "memberImage": "uploads/member/a78adebb-dcc5-4e21-bd07-ca561c43ec45.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:46:48.337Z"
+    },
+    {
+      "_id": "6acf1747faee0f504cdcfedd",
+      "memberNick": "clara.morgan",
+      "memberFullName": "Clara Morgan",
+      "memberImage": "uploads/member/9a0378d3-5042-4462-a5a8-e48f32b1a090.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:46:48.075Z"
+    },
+    {
+      "_id": "6acf1747faee0f504cdcfed6",
+      "memberNick": "victor.hayes",
+      "memberFullName": "Victor Hayes",
+      "memberImage": "uploads/member/f04f0774-5566-4a9a-9b69-9de006857f63.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:46:47.814Z"
+    },
+    {
+      "_id": "6ac37a9db2df2e3a5d3ec427",
+      "memberNick": "Martin",
+      "memberFullName": null,
+      "memberImage": "uploads/member/ef522268-9128-4d6e-828f-89ffd95f6cfe.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 1,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-12T16:11:51.639Z"
+    },
+    {
+      "_id": "6acf1747faee0f504cdcfec8",
+      "memberNick": "oliver.reed",
+      "memberFullName": "Oliver Reed",
+      "memberImage": "uploads/member/1d08f291-8d75-435b-87fc-1a64fb396626.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:46:47.267Z"
+    },
+    {
+      "_id": "6ace1d04206b7e8e8eedb95c",
+      "memberNick": "Angel",
+      "memberFullName": null,
+      "memberImage": "uploads/member/4974b595-1459-406e-bb7e-ffa295191a59.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 13,
+      "memberArticles": 4,
+      "updatedAt": "2026-10-14T02:25:59.020Z"
+    },
+    {
+      "_id": "6ace1c4f206b7e8e8eedb945",
+      "memberNick": "Adam",
+      "memberFullName": null,
+      "memberImage": "uploads/member/af26329c-eeec-49ed-a369-c007b7f08c17.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 9,
+      "memberArticles": 4,
+      "updatedAt": "2026-10-14T02:26:02.434Z"
+    },
+    {
+      "_id": "6ace1b8e206b7e8e8eedb938",
+      "memberNick": "Ray",
+      "memberFullName": null,
+      "memberImage": "uploads/member/a0fc3095-1dfe-4dbe-9626-826e2a678e45.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-13T11:55:04.989Z"
+    },
+    {
+      "_id": "6ace1b3d206b7e8e8eedb92b",
+      "memberNick": "Nathan",
+      "memberFullName": null,
+      "memberImage": "uploads/member/ebc93a3e-f143-4c80-85df-9094dd7e47bb.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 14,
+      "memberArticles": 4,
+      "updatedAt": "2026-10-14T02:26:00.200Z"
+    },
+    {
+      "_id": "6ace1b0a206b7e8e8eedb91e",
+      "memberNick": "Leo",
+      "memberFullName": null,
+      "memberImage": "uploads/member/56d579d3-cb87-4b1e-aad7-25dae7528bdf.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 10,
+      "memberArticles": 4,
+      "updatedAt": "2026-10-14T02:26:01.318Z"
+    },
+    {
+      "_id": "6ace1a06206b7e8e8eedb911",
+      "memberNick": "Kevin",
+      "memberFullName": null,
+      "memberImage": "uploads/member/c8633e0e-1ce5-4a12-bad2-0bdc7f040643.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 12,
+      "memberArticles": 4,
+      "updatedAt": "2026-10-14T02:25:57.846Z"
+    },
+    {
+      "_id": "6ace17f9206b7e8e8eedb8f3",
+      "memberNick": "Khan",
+      "memberFullName": null,
+      "memberImage": "uploads/member/f63cb7f0-5500-4686-8fac-0f2af1eff35b.jpg",
+      "memberLikes": 0,
+      "memberViews": 1,
+      "memberRank": 0,
+      "memberCars": 17,
+      "memberArticles": 4,
+      "updatedAt": "2026-10-14T02:25:56.669Z"
+    }
+  ],
+  "targets": [
+    {
+      "id": "6acf1747faee0f504cdcfedd",
+      "name": "Clara Morgan",
+      "username": "clara.morgan"
+    },
+    {
+      "id": "6acf1748faee0f504cdcfee4",
+      "name": "Lucas Brooks",
+      "username": "lucas.brooks"
+    },
+    {
+      "id": "6acf1748faee0f504cdcfef2",
+      "name": "Ethan Miles",
+      "username": "ethan.miles"
+    },
+    {
+      "id": "6acf1748faee0f504cdcfeeb",
+      "name": "Nora Bennett",
+      "username": "nora.bennett"
+    },
+    {
+      "id": "6acf1747faee0f504cdcfed6",
+      "name": "Victor Hayes",
+      "username": "victor.hayes"
+    }
+  ],
+  "actions": [
+    {
+      "agent": "Khan",
+      "targetId": "6acf1747faee0f504cdcfedd",
+      "name": "Clara Morgan",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Khan",
+      "targetId": "6acf1748faee0f504cdcfee4",
+      "name": "Lucas Brooks",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Khan",
+      "targetId": "6acf1748faee0f504cdcfef2",
+      "name": "Ethan Miles",
+      "opened": true,
+      "likeAdded": false
+    },
+    {
+      "agent": "Khan",
+      "targetId": "6acf1748faee0f504cdcfeeb",
+      "name": "Nora Bennett",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Khan",
+      "targetId": "6acf1747faee0f504cdcfed6",
+      "name": "Victor Hayes",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Kevin",
+      "targetId": "6acf1747faee0f504cdcfedd",
+      "name": "Clara Morgan",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Kevin",
+      "targetId": "6acf1748faee0f504cdcfee4",
+      "name": "Lucas Brooks",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Kevin",
+      "targetId": "6acf1748faee0f504cdcfef2",
+      "name": "Ethan Miles",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Kevin",
+      "targetId": "6acf1748faee0f504cdcfeeb",
+      "name": "Nora Bennett",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Kevin",
+      "targetId": "6acf1747faee0f504cdcfed6",
+      "name": "Victor Hayes",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Angel",
+      "targetId": "6acf1747faee0f504cdcfedd",
+      "name": "Clara Morgan",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Angel",
+      "targetId": "6acf1748faee0f504cdcfee4",
+      "name": "Lucas Brooks",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Angel",
+      "targetId": "6acf1748faee0f504cdcfef2",
+      "name": "Ethan Miles",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Angel",
+      "targetId": "6acf1748faee0f504cdcfeeb",
+      "name": "Nora Bennett",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Angel",
+      "targetId": "6acf1747faee0f504cdcfed6",
+      "name": "Victor Hayes",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Nathan",
+      "targetId": "6acf1747faee0f504cdcfedd",
+      "name": "Clara Morgan",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Nathan",
+      "targetId": "6acf1748faee0f504cdcfee4",
+      "name": "Lucas Brooks",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Nathan",
+      "targetId": "6acf1748faee0f504cdcfef2",
+      "name": "Ethan Miles",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Nathan",
+      "targetId": "6acf1748faee0f504cdcfeeb",
+      "name": "Nora Bennett",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Nathan",
+      "targetId": "6acf1747faee0f504cdcfed6",
+      "name": "Victor Hayes",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Leo",
+      "targetId": "6acf1747faee0f504cdcfedd",
+      "name": "Clara Morgan",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Leo",
+      "targetId": "6acf1748faee0f504cdcfee4",
+      "name": "Lucas Brooks",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Leo",
+      "targetId": "6acf1748faee0f504cdcfef2",
+      "name": "Ethan Miles",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Leo",
+      "targetId": "6acf1748faee0f504cdcfeeb",
+      "name": "Nora Bennett",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Leo",
+      "targetId": "6acf1747faee0f504cdcfed6",
+      "name": "Victor Hayes",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Adam",
+      "targetId": "6acf1747faee0f504cdcfedd",
+      "name": "Clara Morgan",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Adam",
+      "targetId": "6acf1748faee0f504cdcfee4",
+      "name": "Lucas Brooks",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Adam",
+      "targetId": "6acf1748faee0f504cdcfef2",
+      "name": "Ethan Miles",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Adam",
+      "targetId": "6acf1748faee0f504cdcfeeb",
+      "name": "Nora Bennett",
+      "opened": true,
+      "likeAdded": true
+    },
+    {
+      "agent": "Adam",
+      "targetId": "6acf1747faee0f504cdcfed6",
+      "name": "Victor Hayes",
+      "opened": true,
+      "likeAdded": true
+    }
+  ],
+  "after": [
+    {
+      "_id": "6acf1747faee0f504cdcfecf",
+      "memberNick": "maya.ellis",
+      "memberFullName": "Maya Ellis",
+      "memberImage": "uploads/member/59b2d0a8-9453-4a0b-aa55-b9727ad61c60.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:46:47.528Z"
+    },
+    {
+      "_id": "6acf1749faee0f504cdcff07",
+      "memberNick": "ella.stone",
+      "memberFullName": "Ella Stone",
+      "memberImage": "uploads/member/e23596ec-8678-475a-9724-49a11be3535c.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:46:49.791Z"
+    },
+    {
+      "_id": "6acf1749faee0f504cdcff00",
+      "memberNick": "leon.carter",
+      "memberFullName": "Leon Carter",
+      "memberImage": "uploads/member/eb022b02-21ce-48d3-a9d4-0f719db085af.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:46:49.530Z"
+    },
+    {
+      "_id": "6acf1749faee0f504cdcfef9",
+      "memberNick": "amira.wilson",
+      "memberFullName": "Amira Wilson",
+      "memberImage": "uploads/member/2074ad00-dfc4-4aea-a537-3c2cb60a5ddb.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T05:46:49.233Z"
+    },
+    {
+      "_id": "6acf1748faee0f504cdcfef2",
+      "memberNick": "ethan.miles",
+      "memberFullName": "Ethan Miles",
+      "memberImage": "uploads/member/eab478e1-426d-4841-99cd-979f0237edab.jpg",
+      "memberLikes": 6,
+      "memberViews": 6,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T06:20:16.146Z"
+    },
+    {
+      "_id": "6acf1748faee0f504cdcfeeb",
+      "memberNick": "nora.bennett",
+      "memberFullName": "Nora Bennett",
+      "memberImage": "uploads/member/f9819fb4-e626-4876-812d-9af503daf39b.jpg",
+      "memberLikes": 6,
+      "memberViews": 6,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T06:20:16.643Z"
+    },
+    {
+      "_id": "6acf1748faee0f504cdcfee4",
+      "memberNick": "lucas.brooks",
+      "memberFullName": "Lucas Brooks",
+      "memberImage": "uploads/member/a78adebb-dcc5-4e21-bd07-ca561c43ec45.jpg",
+      "memberLikes": 6,
+      "memberViews": 6,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T06:20:15.570Z"
+    },
+    {
+      "_id": "6acf1747faee0f504cdcfedd",
+      "memberNick": "clara.morgan",
+      "memberFullName": "Clara Morgan",
+      "memberImage": "uploads/member/9a0378d3-5042-4462-a5a8-e48f32b1a090.jpg",
+      "memberLikes": 6,
+      "memberViews": 6,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T06:20:14.998Z"
+    },
+    {
+      "_id": "6acf1747faee0f504cdcfed6",
+      "memberNick": "victor.hayes",
+      "memberFullName": "Victor Hayes",
+      "memberImage": "uploads/member/f04f0774-5566-4a9a-9b69-9de006857f63.jpg",
+      "memberLikes": 6,
+      "memberViews": 6,
+      "memberRank": 0,
+      "memberCars": 0,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-14T06:20:17.204Z"
+    },
+    {
+      "_id": "6ac37a9db2df2e3a5d3ec427",
+      "memberNick": "Martin",
+      "memberFullName": null,
+      "memberImage": "uploads/member/ef522268-9128-4d6e-828f-89ffd95f6cfe.jpg",
+      "memberLikes": 0,
+      "memberViews": 0,
+      "memberRank": 0,
+      "memberCars": 1,
+      "memberArticles": 0,
+      "updatedAt": "2026-10-12T16:11:51.639Z"
+    }
+  ],
+  "homepageOrder": [
+    {
+      "_id": "6acf1747faee0f504cdcfed6",
+      "name": "Victor Hayes",
+      "rank": 0,
+      "likes": 6,
+      "views": 6
+    },
+    {
+      "_id": "6acf1748faee0f504cdcfeeb",
+      "name": "Nora Bennett",
+      "rank": 0,
+      "likes": 6,
+      "views": 6
+    },
+    {
+      "_id": "6acf1748faee0f504cdcfef2",
+      "name": "Ethan Miles",
+      "rank": 0,
+      "likes": 6,
+      "views": 6
+    },
+    {
+      "_id": "6acf1748faee0f504cdcfee4",
+      "name": "Lucas Brooks",
+      "rank": 0,
+      "likes": 6,
+      "views": 6
+    },
+    {
+      "_id": "6acf1747faee0f504cdcfedd",
+      "name": "Clara Morgan",
+      "rank": 0,
+      "likes": 6,
+      "views": 6
+    },
+    {
+      "_id": "6acf1749faee0f504cdcff07",
+      "name": "Ella Stone",
+      "rank": 0,
+      "likes": 0,
+      "views": 0
+    },
+    {
+      "_id": "6acf1749faee0f504cdcff00",
+      "name": "Leon Carter",
+      "rank": 0,
+      "likes": 0,
+      "views": 0
+    },
+    {
+      "_id": "6acf1749faee0f504cdcfef9",
+      "name": "Amira Wilson",
+      "rank": 0,
+      "likes": 0,
+      "views": 0
+    },
+    {
+      "_id": "6acf1747faee0f504cdcfecf",
+      "name": "Maya Ellis",
+      "rank": 0,
+      "likes": 0,
+      "views": 0
+    },
+    {
+      "_id": "6ac37a9db2df2e3a5d3ec427",
+      "name": "Martin",
+      "rank": 0,
+      "likes": 0,
+      "views": 0
+    }
+  ],
+  "browser": [
+    {
+      "width": 1440,
+      "firstFive": [
+        "6acf1747faee0f504cdcfed6",
+        "6acf1748faee0f504cdcfeeb",
+        "6acf1748faee0f504cdcfef2",
+        "6acf1748faee0f504cdcfee4",
+        "6acf1747faee0f504cdcfedd"
+      ],
+      "imagesLoaded": true,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "firstFive": [
+        "6acf1747faee0f504cdcfed6",
+        "6acf1748faee0f504cdcfeeb",
+        "6acf1748faee0f504cdcfef2",
+        "6acf1748faee0f504cdcfee4",
+        "6acf1747faee0f504cdcfedd"
+      ],
+      "imagesLoaded": true,
+      "overflow": false
+    }
+  ],
+  "likesAdded": 29
+}

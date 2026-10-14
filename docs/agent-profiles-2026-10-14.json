@@ -1,0 +1,254 @@
+{
+  "date": "2026-10-14T05:46:47.079Z",
+  "oldProfiles": [
+    {
+      "_id": "6ac74926e8ca66a84a682f1a",
+      "memberNick": "agent12605f",
+      "memberPhone": "+82demod71884668c",
+      "memberType": "AGENT",
+      "memberStatus": "ACTIVE",
+      "memberDesc": "Fictional development demo agent with an AI-generated portrait. Not a real agent or certification claim."
+    },
+    {
+      "_id": "6ac74925e8ca66a84a682f17",
+      "memberNick": "agent8e6fcf",
+      "memberPhone": "+82demo03b961056f",
+      "memberType": "AGENT",
+      "memberStatus": "ACTIVE",
+      "memberDesc": "Fictional development demo agent with an AI-generated portrait. Not a real agent or certification claim."
+    },
+    {
+      "_id": "6ac74925e8ca66a84a682f14",
+      "memberNick": "agenta40a57",
+      "memberPhone": "+82demof249f5d89f",
+      "memberType": "AGENT",
+      "memberStatus": "ACTIVE",
+      "memberDesc": "Fictional development demo agent with an AI-generated portrait. Not a real agent or certification claim."
+    },
+    {
+      "_id": "6ac74200e8ca66a84a682e4a",
+      "memberNick": "agentc4fd2a",
+      "memberPhone": "+82demof2ff3cde4b",
+      "memberType": "AGENT",
+      "memberStatus": "ACTIVE",
+      "memberDesc": "Fictional development demo agent with an AI-generated portrait. Not a real agent or certification claim."
+    },
+    {
+      "_id": "6ac74200e8ca66a84a682e47",
+      "memberNick": "agent2d9e23",
+      "memberPhone": "+82demo858289f863",
+      "memberType": "AGENT",
+      "memberStatus": "ACTIVE",
+      "memberDesc": "Fictional development demo agent with an AI-generated portrait. Not a real agent or certification claim."
+    },
+    {
+      "_id": "6ac74200e8ca66a84a682e44",
+      "memberNick": "agent1ad67b",
+      "memberPhone": "+82demo900359b797",
+      "memberType": "AGENT",
+      "memberStatus": "ACTIVE",
+      "memberDesc": "Fictional development demo agent with an AI-generated portrait. Not a real agent or certification claim."
+    },
+    {
+      "_id": "6ac74200e8ca66a84a682e41",
+      "memberNick": "agent2d1361",
+      "memberPhone": "+82demodc9afd5b04",
+      "memberType": "AGENT",
+      "memberStatus": "ACTIVE",
+      "memberDesc": "Fictional development demo agent with an AI-generated portrait. Not a real agent or certification claim."
+    }
+  ],
+  "newProfiles": [
+    {
+      "slug": "oliver-reed",
+      "name": "Oliver Reed",
+      "id": 30004315,
+      "author": "Daniel & Hannah Snipes",
+      "page": "professional-headshot-of-smiling-businessman",
+      "source": "https://www.pexels.com/photo/professional-headshot-of-smiling-businessman-30004315/",
+      "download": "https://images.pexels.com/photos/30004315/pexels-photo-30004315.jpeg?auto=compress&cs=tinysrgb&w=1000",
+      "path": "public/img/agents/stock/oliver-reed.jpg",
+      "license": "https://www.pexels.com/license/",
+      "username": "oliver.reed",
+      "memberId": "6acf1747faee0f504cdcfec8",
+      "phone": "01099000001",
+      "completed": true,
+      "memberImage": "uploads/member/1d08f291-8d75-435b-87fc-1a64fb396626.jpg"
+    },
+    {
+      "slug": "maya-ellis",
+      "name": "Maya Ellis",
+      "id": 13375849,
+      "author": "Sandro Tavares",
+      "page": "portrait-of-smiling-businesswoman",
+      "source": "https://www.pexels.com/photo/portrait-of-smiling-businesswoman-13375849/",
+      "download": "https://images.pexels.com/photos/13375849/pexels-photo-13375849.jpeg?auto=compress&cs=tinysrgb&w=1000",
+      "path": "public/img/agents/stock/maya-ellis.jpg",
+      "license": "https://www.pexels.com/license/",
+      "username": "maya.ellis",
+      "memberId": "6acf1747faee0f504cdcfecf",
+      "phone": "01099000002",
+      "completed": true,
+      "memberImage": "uploads/member/59b2d0a8-9453-4a0b-aa55-b9727ad61c60.jpg"
+    },
+    {
+      "slug": "victor-hayes",
+      "name": "Victor Hayes",
+      "id": 35503892,
+      "author": "Dunmarx Photography",
+      "page": "professional-portrait-of-smiling-businessman",
+      "source": "https://www.pexels.com/photo/professional-portrait-of-smiling-businessman-35503892/",
+      "download": "https://images.pexels.com/photos/35503892/pexels-photo-35503892.jpeg?auto=compress&cs=tinysrgb&w=1000",
+      "path": "public/img/agents/stock/victor-hayes.jpg",
+      "license": "https://www.pexels.com/license/",
+      "username": "victor.hayes",
+      "memberId": "6acf1747faee0f504cdcfed6",
+      "phone": "01099000003",
+      "completed": true,
+      "memberImage": "uploads/member/f04f0774-5566-4a9a-9b69-9de006857f63.jpg"
+    },
+    {
+      "slug": "clara-morgan",
+      "name": "Clara Morgan",
+      "id": 37302655,
+      "author": "Erick Ortega",
+      "page": "portrait-of-smiling-professional-woman-in-office-wear",
+      "source": "https://www.pexels.com/photo/portrait-of-smiling-professional-woman-in-office-wear-37302655/",
+      "download": "https://images.pexels.com/photos/37302655/pexels-photo-37302655.jpeg?auto=compress&cs=tinysrgb&w=1000",
+      "path": "public/img/agents/stock/clara-morgan.jpg",
+      "license": "https://www.pexels.com/license/",
+      "username": "clara.morgan",
+      "memberId": "6acf1747faee0f504cdcfedd",
+      "phone": "01099000004",
+      "completed": true,
+      "memberImage": "uploads/member/9a0378d3-5042-4462-a5a8-e48f32b1a090.jpg"
+    },
+    {
+      "slug": "lucas-brooks",
+      "name": "Lucas Brooks",
+      "id": 20243869,
+      "author": "Helmy Zairy",
+      "page": "smiling-businessman-in-a-suit",
+      "source": "https://www.pexels.com/photo/smiling-businessman-in-a-suit-20243869/",
+      "download": "https://images.pexels.com/photos/20243869/pexels-photo-20243869.jpeg?auto=compress&cs=tinysrgb&w=1000",
+      "path": "public/img/agents/stock/lucas-brooks.jpg",
+      "license": "https://www.pexels.com/license/",
+      "username": "lucas.brooks",
+      "memberId": "6acf1748faee0f504cdcfee4",
+      "phone": "01099000005",
+      "completed": true,
+      "memberImage": "uploads/member/a78adebb-dcc5-4e21-bd07-ca561c43ec45.jpg"
+    },
+    {
+      "slug": "nora-bennett",
+      "name": "Nora Bennett",
+      "id": 34381970,
+      "author": "Zoe Galarza",
+      "page": "professional-portrait-of-smiling-businesswoman",
+      "source": "https://www.pexels.com/photo/professional-portrait-of-smiling-businesswoman-34381970/",
+      "download": "https://images.pexels.com/photos/34381970/pexels-photo-34381970.jpeg?auto=compress&cs=tinysrgb&w=1000",
+      "path": "public/img/agents/stock/nora-bennett.jpg",
+      "license": "https://www.pexels.com/license/",
+      "username": "nora.bennett",
+      "memberId": "6acf1748faee0f504cdcfeeb",
+      "phone": "01099000006",
+      "completed": true,
+      "memberImage": "uploads/member/f9819fb4-e626-4876-812d-9af503daf39b.jpg"
+    },
+    {
+      "slug": "ethan-miles",
+      "name": "Ethan Miles",
+      "id": 17049766,
+      "author": "Tran Nhu Tuan",
+      "page": "portrait-of-businessman",
+      "source": "https://www.pexels.com/photo/portrait-of-businessman-17049766/",
+      "download": "https://images.pexels.com/photos/17049766/pexels-photo-17049766.jpeg?auto=compress&cs=tinysrgb&w=1000",
+      "path": "public/img/agents/stock/ethan-miles.jpg",
+      "license": "https://www.pexels.com/license/",
+      "username": "ethan.miles",
+      "memberId": "6acf1748faee0f504cdcfef2",
+      "phone": "01099000007",
+      "completed": true,
+      "memberImage": "uploads/member/eab478e1-426d-4841-99cd-979f0237edab.jpg"
+    },
+    {
+      "slug": "amira-wilson",
+      "name": "Amira Wilson",
+      "id": 33871730,
+      "author": "Makrufin Muhammad",
+      "page": "professional-portrait-of-smiling-businesswoman-indoors",
+      "source": "https://www.pexels.com/photo/professional-portrait-of-smiling-businesswoman-indoors-33871730/",
+      "download": "https://images.pexels.com/photos/33871730/pexels-photo-33871730.jpeg?auto=compress&cs=tinysrgb&w=1000",
+      "path": "public/img/agents/stock/amira-wilson.jpg",
+      "license": "https://www.pexels.com/license/",
+      "username": "amira.wilson",
+      "memberId": "6acf1749faee0f504cdcfef9",
+      "phone": "01099000008",
+      "completed": true,
+      "memberImage": "uploads/member/2074ad00-dfc4-4aea-a537-3c2cb60a5ddb.jpg"
+    },
+    {
+      "slug": "leon-carter",
+      "name": "Leon Carter",
+      "id": 16673310,
+      "author": "Murat ISIK",
+      "page": "smiling-man-in-suit-with-tie",
+      "source": "https://www.pexels.com/photo/smiling-man-in-suit-with-tie-16673310/",
+      "download": "https://images.pexels.com/photos/16673310/pexels-photo-16673310.jpeg?auto=compress&cs=tinysrgb&w=1000",
+      "path": "public/img/agents/stock/leon-carter.jpg",
+      "license": "https://www.pexels.com/license/",
+      "username": "leon.carter",
+      "memberId": "6acf1749faee0f504cdcff00",
+      "phone": "01099000009",
+      "completed": true,
+      "memberImage": "uploads/member/eb022b02-21ce-48d3-a9d4-0f719db085af.jpg"
+    },
+    {
+      "slug": "ella-stone",
+      "name": "Ella Stone",
+      "id": 15583830,
+      "author": "Marian Chrzan",
+      "page": "portrait-of-a-businesswoman",
+      "source": "https://www.pexels.com/photo/portrait-of-a-businesswoman-15583830/",
+      "download": "https://images.pexels.com/photos/15583830/pexels-photo-15583830.jpeg?auto=compress&cs=tinysrgb&w=1000",
+      "path": "public/img/agents/stock/ella-stone.jpg",
+      "license": "https://www.pexels.com/license/",
+      "username": "ella.stone",
+      "memberId": "6acf1749faee0f504cdcff07",
+      "phone": "01099000010",
+      "completed": true,
+      "memberImage": "uploads/member/e23596ec-8678-475a-9724-49a11be3535c.jpg"
+    }
+  ],
+  "deleted": [
+    {
+      "_id": "6ac74926e8ca66a84a682f1a",
+      "memberStatus": "DELETE"
+    },
+    {
+      "_id": "6ac74925e8ca66a84a682f17",
+      "memberStatus": "DELETE"
+    },
+    {
+      "_id": "6ac74925e8ca66a84a682f14",
+      "memberStatus": "DELETE"
+    },
+    {
+      "_id": "6ac74200e8ca66a84a682e4a",
+      "memberStatus": "DELETE"
+    },
+    {
+      "_id": "6ac74200e8ca66a84a682e47",
+      "memberStatus": "DELETE"
+    },
+    {
+      "_id": "6ac74200e8ca66a84a682e44",
+      "memberStatus": "DELETE"
+    },
+    {
+      "_id": "6ac74200e8ca66a84a682e41",
+      "memberStatus": "DELETE"
+    }
+  ],
+  "activeTotal": 18
+}
