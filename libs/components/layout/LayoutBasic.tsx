@@ -27,7 +27,8 @@ const withLayoutBasic = (Component: any) => {
 		const agentDetail = router.pathname === '/agent/detail';
 		const helpCenter = router.pathname === '/cs';
 		const accountPage = router.pathname === '/mypage';
-		const communityHeader = router.pathname === '/community';
+		const communityHeader = router.pathname === '/community' || router.pathname === '/community/detail';
+		const communityDetail = router.pathname === '/community/detail';
 		const user = useReactiveVar(userVar);
 
 		const memoizedValues = useMemo(() => {
@@ -62,9 +63,9 @@ const withLayoutBasic = (Component: any) => {
 					bgImage = '/img/hero7.png';
 					break;
 				case '/community/detail':
-					title = 'Community Detail';
-					desc = 'Find your car';
-					bgImage = '/img/banner/header2.svg';
+					title = 'Community';
+					desc = 'Stories, ideas, and conversations about cars.';
+					bgImage = '/img/hero7.png';
 					break;
 				case '/cs':
 					title = 'CS';
@@ -110,7 +111,7 @@ const withLayoutBasic = (Component: any) => {
 						<title>ANORCAR</title>
 						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="mobile-wrap" className={authHeader ? 'auth-shell' : helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : undefined}>
+					<Stack id="mobile-wrap" className={authHeader ? 'auth-shell' : helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : communityDetail ? 'community-detail-shell' : undefined}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>
@@ -148,7 +149,7 @@ const withLayoutBasic = (Component: any) => {
 						<title>ANORCAR</title>
 						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
-					<Stack id="pc-wrap" className={authHeader ? 'auth-shell' : helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : undefined}>
+					<Stack id="pc-wrap" className={authHeader ? 'auth-shell' : helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : communityDetail ? 'community-detail-shell' : undefined}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>
@@ -157,10 +158,10 @@ const withLayoutBasic = (Component: any) => {
 							marketplaceHero
 						) : (
 							<Stack
-								className={`header-basic ${authHeader && 'auth'}`}
+								className={`header-basic${communityDetail ? ' cars-hero' : ''}${authHeader ? ' auth' : ''}`}
 								style={{
 									backgroundImage:
-										router.pathname === '/community'
+										communityHeader
 											? `linear-gradient(90deg, rgba(24, 26, 32, 0.68) 0%, rgba(24, 26, 32, 0.5) 45%, rgba(24, 26, 32, 0.1) 100%), url(${memoizedValues.bgImage})`
 											: `url(${memoizedValues.bgImage})`,
 									backgroundSize: 'cover',
