@@ -129,3 +129,12 @@
 }
 
 @import './pc/car/browse.scss';
+
+// Homepage wrappers reuse the marketplace card mixin, after legacy home/mobile rules.
+.homepage-shell#pc-wrap, .homepage-shell#mobile-wrap {
+ .home-page .recently-added-cars, .home-page .trend-cars.trending-cars-section {
+  @include car-listing-card;
+ }
+ .home-page .recently-added-cars .recent-grid { grid-auto-rows: auto; gap: 24px; }
+ .home-page .trend-cars.trending-cars-section .trend-car-slide { height: auto; }
+}

@@ -941,5 +941,8 @@
   "Brand must contain 1-60 characters.": "브랜드명은 1~60자여야 합니다.",
   "Enter a brand name.": "브랜드명을 입력하세요.",
   "This brand is unavailable.": "이 브랜드는 사용할 수 없습니다.",
-  "Provide either brandId or brandName.": "브랜드명 또는 기존 브랜드 중 하나를 선택하세요."
+  "Provide either brandId or brandName.": "브랜드명 또는 기존 브랜드 중 하나를 선택하세요.",
+  "Deleted": "삭제됨",
+  "Views": "조회",
+  "Likes": "좋아요"
 }

@@ -941,5 +941,8 @@
   "Brand must contain 1-60 characters.": "Brand must contain 1-60 characters.",
   "Enter a brand name.": "Enter a brand name.",
   "This brand is unavailable.": "This brand is unavailable.",
-  "Provide either brandId or brandName.": "Provide either brandId or brandName."
+  "Provide either brandId or brandName.": "Provide either brandId or brandName.",
+  "Deleted": "Deleted",
+  "Views": "Views",
+  "Likes": "Likes"
 }

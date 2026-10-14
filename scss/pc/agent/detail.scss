@@ -254,7 +254,7 @@
 			&[hidden] {
 				display: none;
 			}
-			h2 {
+			h2:not(.MuiTypography-root) {
 				font-size: 23px;
 				font-weight: 600;
 				line-height: 1.4;
@@ -575,7 +575,7 @@
 					min-width: 84px;
 				}
 			}
-			.agent-detail-panel h2 {
+			.agent-detail-panel h2:not(.MuiTypography-root) {
 				font-size: 19px;
 			}
 			.agent-listings-heading {
@@ -610,44 +610,6 @@
 	.agent-detail-page {
 		.agent-detail-actions .agent-contact-button {
 			color: #fff;
-		}
-		.agent-detail-panel .cars-listing-title h2 {
-			font-size: 14px;
-			line-height: 22px;
-			min-height: 44px;
-		}
-		.cars-listing-card {
-			display: flex;
-			flex-direction: column;
-			&:hover,
-			&:focus-within {
-				border-color: #d7dce3;
-				box-shadow: 0 4px 14px #181a2008;
-			}
-		}
-		.cars-listing-content {
-			padding: 14px 16px;
-		}
-		.cars-listing-title {
-			min-height: 44px;
-			margin-bottom: 8px;
-		}
-		.cars-listing-type {
-			border-radius: 5px;
-			padding: 3px 8px;
-			line-height: 18px;
-			text-align: center;
-		}
-		.cars-listing-location {
-			min-height: 20px;
-		}
-		.cars-listing-specs {
-			min-height: 40px;
-			margin: 4px 0 10px;
-		}
-		.cars-listing-price {
-			font-size: 22px;
-			line-height: 30px;
 		}
 		.agent-profile-loading > .MuiSkeleton-root {
 			border-radius: 12px;

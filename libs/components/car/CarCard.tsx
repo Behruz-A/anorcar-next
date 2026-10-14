@@ -4,106 +4,95 @@ import { imageUrl } from '../../config';
 import { carLabel } from '../../car';
 import React from 'react';
 import { Stack, Typography, Box } from '@mui/material';
-import useDeviceDetect from '../../hooks/useDeviceDetect';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Car } from '../../types/car/car';
 import Link from 'next/link';
-import { formatterStr } from '../../utils';
-import { REACT_APP_API_URL, topCarRank } from '../../config';
+import { topCarRank } from '../../config';
 import { useReactiveVar } from '@apollo/client';
 import { userVar } from '../../../apollo/store';
 import IconButton from '@mui/material/IconButton';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhotoCameraOutlinedIcon from '@mui/icons-material/PhotoCameraOutlined';
+import LocalGasStationOutlinedIcon from '@mui/icons-material/LocalGasStationOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import SpeedOutlinedIcon from '@mui/icons-material/SpeedOutlined';
+import { CustomJwtPayload } from '../../types/customJwtPayload';
+import { CarStatus, CarCondition } from '../../enums/car.enum';
 
 interface CarCardType {
 	browse?: boolean;
+	variant?: 'recent' | 'trending';
 	car: Car;
-	likeCarHandler?: any;
+	likeCarHandler?: (user: CustomJwtPayload, id: string) => void | Promise<void>;
 	myFavorites?: boolean;
 	recentlyVisited?: boolean;
 }
 
 type BrowseCarCardType = Omit<CarCardType, 'browse' | 'likeCarHandler'> & {
 	browse: true;
-	likeCarHandler?: (user: { _id: string }, id: string) => void | Promise<void>;
+	likeCarHandler?: CarCardType['likeCarHandler'];
 };
 
 const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) => {
 	const { t } = useTranslation('common');
-	const { car, likeCarHandler, myFavorites, recentlyVisited, browse } = props;
-	const device = useDeviceDetect();
+	const { car, likeCarHandler, myFavorites, recentlyVisited, browse, variant } = props;
 	const user = useReactiveVar(userVar);
-	const imagePath: string = car?.carImages[0] ? imageUrl(car?.carImages[0]) : '/img/car/hero.svg';
+	const imagePath: string = car?.carImages?.[0] ? imageUrl(car?.carImages?.[0]) : '/img/car/hero.svg';
 	const [favoritePending, setFavoritePending] = React.useState(false);
-	if (browse) {
+	const [imageFailed, setImageFailed] = React.useState(false);
+	if (browse || variant) {
 		const liked = Boolean(myFavorites || car.meLiked?.[0]?.myFavorite);
 		const href = { pathname: '/car/detail', query: { id: car._id } };
-		const toggleFavorite = async () => {
+		const brand = car.brandData?.brandName?.trim();
+		const model = car.carModel?.trim();
+		const name = model ? [brand && !model.toLowerCase().startsWith(brand.toLowerCase()) ? brand : '', model].filter(Boolean).join(' ') : car.carTitle;
+		const badge = car.carStatus === CarStatus.SOLD ? 'Sold' : car.carStatus === CarStatus.DELETE ? 'Deleted' :
+			[CarCondition.NEW, CarCondition.USED].includes(car.carCondition) ? carLabel(car.carCondition) : undefined;
+		const toggleFavorite = async (event: React.MouseEvent) => {
+			event.preventDefault();
+			event.stopPropagation();
 			if (!likeCarHandler || favoritePending) return;
 			setFavoritePending(true);
 			try { await likeCarHandler(user, car._id); } finally { setFavoritePending(false); }
 		};
 		return (
-			<Stack component="article" className="cars-listing-card">
-				<div className="cars-listing-photo">
-					<Link href={href} aria-label={car.carTitle}>
-						<img
-							src={imagePath}
-							alt={car.carTitle}
-							onError={(e) => {
-								if (!e.currentTarget.src.endsWith('/img/car/hero.svg')) e.currentTarget.src = '/img/car/hero.svg';
-							}}
-						/>
+			<Stack component="article" className={`cars-listing-card vehicle-card${variant ? ` vehicle-card--${variant}` : ''}${variant === 'recent' ? ' recent-car-card' : ''}`}>
+				<div className={`cars-listing-photo${variant === 'recent' ? ' recent-car-image' : ''}`}>
+					<Link href={href} tabIndex={-1} aria-label={name}>
+						<img src={imageFailed ? imageUrl(null) : imageUrl(car.carImages?.[0])} alt={name} loading="lazy"
+							onError={() => setImageFailed(true)} />
 					</Link>
-					<IconButton
-						className="cars-listing-favorite"
-						aria-label={t(liked ? 'Remove favorite' : 'Add favorite')}
-						aria-pressed={liked}
-						disabled={!likeCarHandler || favoritePending}
-						aria-busy={favoritePending}
-						onClick={() => void toggleFavorite()}
-					>
+					{badge && <span className="cars-listing-badge">{t(badge)}</span>}
+					{likeCarHandler && <IconButton className="cars-listing-favorite"
+						aria-label={t(liked ? 'Remove favorite' : 'Add favorite')} aria-pressed={liked}
+						disabled={favoritePending} aria-busy={favoritePending} onClick={event => void toggleFavorite(event)}>
 						{liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-					</IconButton>
-					<span className="cars-photo-count" aria-label={`${t('Photos')}: ${car.carImages.length}`}>
-						<PhotoCameraOutlinedIcon />
-						{car.carImages.length}
-					</span>
+					</IconButton>}
+					{!variant && car.carImages?.length > 0 && <span className="cars-photo-count" aria-label={`${t('Photos')}: ${car.carImages.length}`}>
+						<PhotoCameraOutlinedIcon />{car.carImages.length}
+					</span>}
 				</div>
 				<div className="cars-listing-content">
 					<div className="cars-listing-title">
-						<Link href={href} title={car.carTitle}>
-							<Typography component="h2">{car.carTitle}</Typography>
-						</Link>
-						<span className="cars-listing-type">
-							{[car.carRent && t('Rent'), car.carBarter && t('Barter')].filter(Boolean).join(' / ') || t('Sale')}
-						</span>
+						<Link href={href} title={name}><Typography component={variant ? 'h3' : 'h2'}>{name}</Typography></Link>
 					</div>
-					<div className="cars-listing-location">
-						<LocationOnIcon />
-						<span>
-							{t(carLabel(car.carLocation))}, {t('Korea')}
-						</span>
-					</div>
-					<div className="cars-listing-specs">
-						<span>{car.carYear}</span>
-						<span>{t(carLabel(car.carFuelType))}</span>
-						<span>{t(carLabel(car.carTransmission))}</span>
-						{car.carMileage != null && <span>{formatterStr(car.carMileage)} km</span>}
-					</div>
+					{car.carYear > 0 && <span className="cars-listing-year">{car.carYear}</span>}
 					<Typography className="cars-listing-price">{formatPrice(car.carPrice)}</Typography>
-					<div className="cars-listing-stats">
-						<span>
-							<RemoveRedEyeIcon />
-							{formatterStr(car.carViews)}
-						</span>
-						<span>
-							<FavoriteBorderIcon />
-							{formatterStr(car.carLikes)}
-						</span>
+					<div className="cars-listing-specs">
+						{car.carFuelType && <span title={t('Fuel')}><LocalGasStationOutlinedIcon />{t(carLabel(car.carFuelType))}</span>}
+						{car.carTransmission && <span title={t('Transmission')}><SettingsOutlinedIcon />{t(carLabel(car.carTransmission))}</span>}
+						{car.carMileage != null && <span title={t('Mileage')}><SpeedOutlinedIcon />{car.carMileage.toLocaleString('en-US')} km</span>}
+						{(car.carRent || car.carBarter) && <span className="cars-listing-type">{[car.carRent && t('Rent'), car.carBarter && t('Barter')].filter(Boolean).join(' / ')}</span>}
+					</div>
+					<div className="cars-listing-footer">
+						{car.carLocation && <div className="cars-listing-location"><LocationOnIcon /><span>{t(carLabel(car.carLocation))}</span></div>}
+						{variant === 'recent' ? <span className="cars-listing-details" aria-hidden="true">{t('View full details')}</span> :
+							<div className="cars-listing-stats">
+								<span title={t('Views')}><RemoveRedEyeIcon />{car.carViews.toLocaleString('en-US')}</span>
+								<span title={t('Likes')}><FavoriteBorderIcon />{car.carLikes.toLocaleString('en-US')}</span>
+							</div>}
 					</div>
 				</div>
 			</Stack>

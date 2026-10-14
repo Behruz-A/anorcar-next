@@ -941,5 +941,8 @@
   "Brand must contain 1-60 characters.": "Название марки должно содержать от 1 до 60 символов.",
   "Enter a brand name.": "Введите название марки.",
   "This brand is unavailable.": "Эта марка недоступна.",
-  "Provide either brandId or brandName.": "Укажите название марки или существующую марку."
+  "Provide either brandId or brandName.": "Укажите название марки или существующую марку.",
+  "Deleted": "Удалено",
+  "Views": "Просмотры",
+  "Likes": "Отметки нравится"
 }
