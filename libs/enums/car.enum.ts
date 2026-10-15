@@ -14,6 +14,11 @@ export enum CarCondition {
 	USED = 'USED',
 	NEW = 'NEW',
 }
+export enum CarBodyType {
+ SEDAN = 'SEDAN', SUV = 'SUV', HATCHBACK = 'HATCHBACK', TRUCK = 'TRUCK',
+ VAN = 'VAN', CONVERTIBLE = 'CONVERTIBLE', COUPE = 'COUPE', WAGON = 'WAGON', OTHER = 'OTHER',
+}
+export enum CarSegment { STANDARD = 'STANDARD', LUXURY = 'LUXURY' }
 // Canonical backend GraphQL values.
 export enum CarTransmission {
 	AUTOMATIC = 'AUTOMATIC',

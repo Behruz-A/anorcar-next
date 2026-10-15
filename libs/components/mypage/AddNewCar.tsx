@@ -10,7 +10,7 @@ import { CREATE_CAR, UPDATE_CAR } from '../../../apollo/user/mutation';
 import { GET_CAR } from '../../../apollo/user/query';
 import { userVar } from '../../../apollo/store';
 import { getValidJwtToken, refreshMemberCars } from '../../auth';
-import { CarCondition, CarFuelType, CarLocation, CarTransmission, CarStatus } from '../../enums/car.enum';
+import { CarBodyType, CarSegment, CarCondition, CarFuelType, CarLocation, CarTransmission, CarStatus } from '../../enums/car.enum';
 import { MemberType } from '../../enums/member.enum';
 import { CarInput } from '../../types/car/car.input';
 import { Car } from '../../types/car/car';
@@ -48,6 +48,7 @@ export default function AddCar() {
    carTransmission: car.carTransmission, brandName: car.brandData?.brandName ?? '', carModel: car.carModel,
    carYear: car.carYear, carTitle: car.carTitle, carPrice: car.carPrice, carColor: car.carColor,
    carMileage: car.carMileage ?? null,
+   carBodyType: car.carBodyType ?? null, carSegment: car.carSegment ?? null,
    carAddress: car.carAddress, carImages: car.carImages, carDesc: car.carDesc ?? '',
    carBarter: car.carBarter, carRent: car.carRent,
   });
@@ -129,6 +130,16 @@ export default function AddCar() {
      <TextField type="number" label={t('Mileage (km)')} value={draft.carMileage ?? ''}
       inputProps={{ min: 0, max: 2147483647, step: 1 }} helperText={t('Leave empty if mileage is not known.')}
       onChange={e => set('carMileage', e.target.value === '' ? null : Number(e.target.value))} />
+     <TextField select label={t('Body type')} value={draft.carBodyType ?? ''}
+      onChange={e => set('carBodyType', e.target.value ? e.target.value as CarBodyType : null)}>
+      <MenuItem value="">{t('Not specified')}</MenuItem>
+      {Object.values(CarBodyType).map(value => <MenuItem key={value} value={value}>{t(carLabel(value))}</MenuItem>)}
+     </TextField>
+     <TextField select label={t('Segment')} value={draft.carSegment ?? ''}
+      onChange={e => set('carSegment', e.target.value ? e.target.value as CarSegment : null)}>
+      <MenuItem value="">{t('Not specified')}</MenuItem>
+      {Object.values(CarSegment).map(value => <MenuItem key={value} value={value}>{t(carLabel(value))}</MenuItem>)}
+     </TextField>
      {selects.map(({ key, label, values }) => <TextField key={key} select required label={t(label)} value={draft[key]}
       onChange={e => setDraft(current => ({ ...current, [key]: e.target.value }))}>
       <MenuItem value="" disabled>{t('Select an option')}</MenuItem>

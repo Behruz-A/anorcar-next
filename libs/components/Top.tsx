@@ -13,6 +13,8 @@ import { CaretDown } from 'phosphor-react';
 import useDeviceDetect from '../hooks/useDeviceDetect';
 import Link from 'next/link';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { useReactiveVar } from '@apollo/client';
 import { userVar } from '../../apollo/store';
 import { Logout } from '@mui/icons-material';
@@ -27,7 +29,7 @@ const Top = () => {
 	const isCarsPage = router.pathname === '/car';
 	const isComparePage = router.pathname === '/car/compare';
 	const isAgentsPage = router.pathname === '/agent' || router.pathname === '/agent/detail';
-	const isMarketplacePage = isHomepage || isCarsPage || isComparePage || isAgentsPage || router.pathname.startsWith('/community') || router.pathname === '/mypage' || router.pathname === '/cs' || router.pathname === '/account/join';
+	const isMarketplacePage = !router.pathname.startsWith('/_admin');
 	const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
 	const [lang, setLang] = useState<string | null>('en');
 	const drop = Boolean(anchorEl2);
@@ -164,7 +166,7 @@ const Top = () => {
 		);
 	} else {
 		return (
-			<Stack className={`navbar ${isMarketplacePage ? 'marketplace-nav' : ''}`}>
+			<Stack className={`navbar ${isMarketplacePage ? 'marketplace-nav shared-navbar' : ''}`}>
 				<Stack className={`navbar-main ${colorChange ? 'transparent' : ''} ${bgColor ? 'transparent' : ''}`}>
 					<Stack className={'container'}>
 						<Box component={'div'} className={'logo-box'}>
@@ -194,7 +196,7 @@ const Top = () => {
 							<Link href={'/car/compare'} className={isComparePage ? 'active' : undefined} aria-current={isComparePage ? 'page' : undefined}>
 								<div>{t('Compare')}</div>
 							</Link>
-							<Link href={'/agent'}>
+							<Link href={'/agent'} className={isAgentsPage ? 'active' : undefined} aria-current={isAgentsPage ? 'page' : undefined}>
 								<div> {t('Agents')} </div>
 							</Link>
 							<Link href={'/community'} className={router.pathname.startsWith('/community') ? 'active' : undefined} aria-current={router.pathname.startsWith('/community') ? 'page' : undefined}>
@@ -210,6 +212,11 @@ const Top = () => {
 							</Link>
 						</Box>
 						<Box component={'div'} className={'user-box'}>
+							{isMarketplacePage && <div className="nav-shortcuts">
+								<Link href="/car" aria-label={t('Search cars')}><SearchOutlinedIcon /></Link>
+								<Link href={user?._id ? '/mypage?category=myFavorites' : '/account/join'} aria-label={t('My Favorites')}><FavoriteBorderOutlinedIcon /></Link>
+								{user?._id && <NotificationsOutlinedIcon className="notification-icon" />}
+							</div>}
 							{user?._id ? (
 								<>
 									<Box
@@ -268,7 +275,7 @@ const Top = () => {
 							)}
 
 							<div className={'lan-box'}>
-								{user?._id && <NotificationsOutlinedIcon className={'notification-icon'} />}
+								{user?._id && !isMarketplacePage && <NotificationsOutlinedIcon className={'notification-icon'} />}
 								<Button
 									disableRipple
 									className="btn-lang"
@@ -278,13 +285,13 @@ const Top = () => {
 									onClick={langClick}
 									endIcon={<CaretDown size={14} color={isMarketplacePage ? 'currentColor' : '#616161'} weight="fill" />}
 								>
-									<Box component={'div'} className={'flag'}>
+									{isMarketplacePage ? <span className="nav-language-code">{(lang ?? 'en').toUpperCase()}</span> : <Box component={'div'} className={'flag'}>
 										{lang !== null ? (
 											<img src={`/img/flag/lang${lang}.png`} alt={'usaFlag'} />
 										) : (
 											<img src={`/img/flag/langen.png`} alt={'usaFlag'} />
 										)}
-									</Box>
+									</Box>}
 								</Button>
 
 								<StyledMenu anchorEl={anchorEl2} open={drop} onClose={langClose} sx={{ position: 'absolute' }}>

@@ -1,7 +1,9 @@
-import { CarLocation, CarStatus, CarFuelType, CarCondition, CarTransmission } from '../../enums/car.enum';
+import { CarBodyType, CarSegment, CarLocation, CarStatus, CarFuelType, CarCondition, CarTransmission } from '../../enums/car.enum';
 import { Direction } from '../../enums/common.enum';
 import { CarMileage } from './car-mileage';
 export interface CarInput {
+ carBodyType?: CarBodyType | null;
+ carSegment?: CarSegment | null;
  carFuelType: CarFuelType;
  carCondition: CarCondition;
  carModel: string;
@@ -23,6 +25,8 @@ export interface CarInput {
 export interface NumberRange { start: number; end: number; }
 export type CarSort = 'createdAt' | 'carLikes' | 'carViews' | 'carRank' | 'carPrice' | 'carYear';
 export interface CarSearch {
+ bodyTypes?: CarBodyType[];
+ segments?: CarSegment[];
  memberId?: string;
  brandIds?: string[];
  locations?: CarLocation[];

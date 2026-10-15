@@ -115,6 +115,8 @@ mutation UpdateCarByAdmin($input: CarUpdate!) {
   updateCarByAdmin(input: $input) {
     _id
     carStatus
+    carBodyType
+    carSegment
     carFuelType
     carCondition
     carModel
@@ -178,6 +180,8 @@ mutation RemoveCarByAdmin($input: String!) {
   removeCarByAdmin(carId: $input) {
     _id
     carStatus
+    carBodyType
+    carSegment
     carFuelType
     carCondition
     carModel

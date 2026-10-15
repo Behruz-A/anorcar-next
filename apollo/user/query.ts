@@ -365,6 +365,8 @@ query GetCar($input: String!) {
   getCar(carId: $input) {
     _id
     carStatus
+    carBodyType
+    carSegment
     carFuelType
     carCondition
     carModel
@@ -430,6 +432,8 @@ query GetCars($input: CarsInquiry!) {
     list {
       _id
       carStatus
+      carBodyType
+      carSegment
       carFuelType
       carCondition
       carModel
@@ -499,6 +503,8 @@ query GetAgentCars($input: AgentCarsInquiry!) {
     list {
       _id
       carStatus
+      carBodyType
+      carSegment
       carFuelType
       carCondition
       carModel
@@ -568,6 +574,8 @@ query GetFavorites($input: OrdinaryInquiry!) {
     list {
       _id
       carStatus
+      carBodyType
+      carSegment
       carFuelType
       carCondition
       carModel
@@ -637,6 +645,8 @@ query GetVisited($input: OrdinaryInquiry!) {
     list {
       _id
       carStatus
+      carBodyType
+      carSegment
       carFuelType
       carCondition
       carModel

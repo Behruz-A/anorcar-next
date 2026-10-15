@@ -1,12 +1,13 @@
 import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
-import { Stack, Alert, CircularProgress } from '@mui/material';
-import useDeviceDetect from '../../hooks/useDeviceDetect';
+import { Stack, Alert, CircularProgress, IconButton } from '@mui/material';
 import Link from 'next/link';
 import { Direction } from '../../enums/common.enum';
 import EastIcon from '@mui/icons-material/East';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { A11y, Keyboard } from 'swiper';
+import { A11y, Keyboard, Navigation } from 'swiper';
 import { Car } from '../../types/car/car';
 import { CarsInquiry } from '../../types/car/car.input';
 import TrendCarCard from './TrendCarCard';
@@ -24,7 +25,6 @@ interface TrendCarsProps {
 const TrendCars = (props: TrendCarsProps) => {
  const { t } = useTranslation('common');
 	const { initialInput } = props;
-	const device = useDeviceDetect();
 	const [trendCars, setTrendCars] = useState<Car[]>([]);
 
 	/** APOLLO REQUESTS **/
@@ -69,18 +69,27 @@ const TrendCars = (props: TrendCarsProps) => {
     <Stack className="info-box">
      <div className="left">
       <h2 id="trending-cars-heading">{t('Most Loved Cars')}</h2>
-      <p>{t('Trend is based on likes')}</p>
+      <p>{t('Discover the cars our community loves')}</p>
      </div>
+     <div className="loved-actions">
      <Link className="trending-view-all" href={{ pathname: '/car', query: { input: JSON.stringify({ ...initialInput, page: 1, limit: 9 }) } }}>
       {t('View All')} <EastIcon fontSize="small" />
      </Link>
+      <div className="loved-controls">
+       <IconButton className="swiper-loved-prev" aria-label={t('Previous cars')} disabled={!trendCars.length || !!getCarsError}><ArrowBackIosNewIcon /></IconButton>
+       <IconButton className="swiper-loved-next" aria-label={t('Next cars')} disabled={!trendCars.length || !!getCarsError}><ArrowForwardIosIcon /></IconButton>
+      </div>
+     </div>
     </Stack>
     <Stack className="card-box">
      {getCarsLoading && !getCarsData ? <CircularProgress aria-label={t('Loading cars')} /> :
       getCarsError ? <Alert severity="error">{t('Cars could not be loaded. Please try again.')}</Alert> :
       trendCars.length === 0 ? <div className="empty-list">{t('No trending cars yet.')}</div> :
-      <Swiper className="trend-car-swiper" slidesPerView="auto" spaceBetween={device === 'mobile' ? 16 : 24}
-       modules={[Keyboard, A11y]} keyboard={{ enabled: true, onlyInViewport: true }}>
+      <Swiper className="trend-car-swiper" slidesPerView={1.15} spaceBetween={16}
+       breakpoints={{ 600: { slidesPerView: 2, spaceBetween: 20 }, 1440: { slidesPerView: 4, spaceBetween: 24 } }}
+       navigation={{ prevEl: '.swiper-loved-prev', nextEl: '.swiper-loved-next' }} watchOverflow
+       modules={[Navigation, Keyboard, A11y]} keyboard={{ enabled: true, onlyInViewport: true }}
+       a11y={{ prevSlideMessage: t('Previous cars'), nextSlideMessage: t('Next cars') }}>
        {trendCars.map((car) => (
         <SwiperSlide key={car._id} className="trend-car-slide">
          <TrendCarCard car={car} likeCarHandler={likeCarHandler} />

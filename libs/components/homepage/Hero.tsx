@@ -7,7 +7,7 @@ import PauseIcon from '@mui/icons-material/Pause';
 import { useTranslation } from 'next-i18next';
 
 const slides = [
-	{ title: 'Your Next Journey', description: 'Find the car that takes you there.' },
+	{ title: 'Find Your Next Car', description: 'Explore new and used cars. Compare your favorites and connect with agents.' },
 	{ title: 'Find Your Car', description: 'Search by make, model, year, and price.' },
 	{ title: 'Electric & Hybrid', description: 'Explore a new way to drive.' },
 ];
@@ -33,8 +33,8 @@ const Hero = ({ compact = false }: { compact?: boolean }) => {
 			<Stack className="homepage-hero">
 				<Stack className="container hero-container">
 					<div className="hero-copy">
-						<Typography component="h1">{t('Find Your Car')}</Typography>
-						<Typography className="hero-description">{t('Find the car that takes you there.')}</Typography>
+						<Typography component="h1">{t('Find Your Next Car')}</Typography>
+						<Typography className="hero-description">{t('Explore new and used cars. Compare your favorites and connect with agents.')}</Typography>
 					</div>
 				</Stack>
 			</Stack>

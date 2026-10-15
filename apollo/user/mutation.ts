@@ -278,6 +278,8 @@ mutation CreateCar($input: CarInput!) {
   createCar(input: $input) {
     _id
     carStatus
+    carBodyType
+    carSegment
     carFuelType
     carCondition
     carModel
@@ -341,6 +343,8 @@ mutation UpdateCar($input: CarUpdate!) {
   updateCar(input: $input) {
     _id
     carStatus
+    carBodyType
+    carSegment
     carFuelType
     carCondition
     carModel
@@ -404,6 +408,8 @@ mutation LikeTargetCar($input: String!) {
   likeTargetCar(carId: $input) {
     _id
     carStatus
+    carBodyType
+    carSegment
     carFuelType
     carCondition
     carModel

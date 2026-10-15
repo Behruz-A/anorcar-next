@@ -1,4 +1,4 @@
-import { CarCondition, CarFuelType, CarLocation, CarTransmission } from './enums/car.enum';
+import { CarBodyType, CarSegment, CarCondition, CarFuelType, CarLocation, CarTransmission } from './enums/car.enum';
 import { Direction } from './enums/common.enum';
 import { CarsInquiry, CarSort, CarInput, CarSearch } from './types/car/car.input';
 import { maxCarYear } from './config';
@@ -6,6 +6,7 @@ import { maxCarYear } from './config';
 export const carSorts: CarSort[] = ['createdAt', 'carLikes', 'carViews', 'carRank', 'carPrice', 'carYear'];
 export const defaultCarsInquiry: CarsInquiry = { page: 1, limit: 9, sort: 'createdAt', direction: Direction.DESC, search: {} };
 export const carLabel = (value: string) => value === CarTransmission.AUTOMATIC ? 'Automatic' :
+ value === CarBodyType.SUV ? 'SUV' :
  value.charAt(0) + value.slice(1).toLowerCase();
 const record = (value: unknown): Record<string, unknown> =>
  value !== null && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : {};
@@ -16,7 +17,7 @@ export function parseCarsInquiry(value: unknown): CarsInquiry {
   const input = record(typeof value === 'string' ? JSON.parse(value) : value);
   const raw = record(input.search);
   const search: CarSearch = {};
-  const enums = { locations: Object.values(CarLocation), fuelTypes: Object.values(CarFuelType),
+  const enums = { bodyTypes: Object.values(CarBodyType), segments: Object.values(CarSegment), locations: Object.values(CarLocation), fuelTypes: Object.values(CarFuelType),
    conditions: Object.values(CarCondition), transmissions: Object.values(CarTransmission),
    options: ['carBarter', 'carRent'] };
   for (const [key, allowed] of Object.entries(enums)) {
@@ -53,6 +54,8 @@ export function parseCarsInquiry(value: unknown): CarsInquiry {
 }
 
 export function validateCarInput(input: CarInput): string | undefined {
+ if ((input.carBodyType != null && !Object.values(CarBodyType).includes(input.carBodyType)) ||
+  (input.carSegment != null && !Object.values(CarSegment).includes(input.carSegment))) return 'Select a valid body type and segment.';
  if (!Object.values(CarFuelType).includes(input.carFuelType) || !Object.values(CarCondition).includes(input.carCondition) ||
   !Object.values(CarTransmission).includes(input.carTransmission) || !Object.values(CarLocation).includes(input.carLocation))
   return 'Select fuel, condition, transmission, and location.';

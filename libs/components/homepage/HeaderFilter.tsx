@@ -9,6 +9,14 @@ import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import ElectricCarOutlinedIcon from '@mui/icons-material/ElectricCarOutlined';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
+import Filter from '../car/Filter';
+import CarTypeCategories from './CarTypeCategories';
+import { applyCarCategory } from '../../carCategories';
+import { carBudgets } from '../../carBudgets';
+import { carLabel, parseCarsInquiry } from '../../car';
+import { escapeSearchText } from '../car/browseFilter';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -16,15 +24,15 @@ import { GET_BRANDS, GET_CARS } from '../../../apollo/user/query';
 import { Brand } from '../../types/brand/brand';
 import { Cars } from '../../types/car/car';
 import { CarsInquiry, CarSearch } from '../../types/car/car.input';
-import { CarCondition, CarFuelType } from '../../enums/car.enum';
+import { CarCondition, CarFuelType, CarLocation } from '../../enums/car.enum';
 import { Direction } from '../../enums/common.enum';
 import { maxCarYear } from '../../config';
 
 interface HeaderFilterProps { initialInput?: CarsInquiry; compact?: boolean; }
 const initialValues: CarsInquiry = { page: 1, limit: 9, sort: 'createdAt', direction: Direction.DESC, search: {} };
-const priceOptions = [10000, 20000, 30000, 50000, 100000];
+const priceOptions = carBudgets.flatMap(budget => budget.maxPrice === undefined ? [] : [budget.maxPrice]);
 const categories = [
-	{ label: 'Cars' },
+	{ label: 'All Cars' },
 	{ label: 'Used Cars', condition: CarCondition.USED },
 	{ label: 'New Cars', condition: CarCondition.NEW },
 	{ label: 'Electric Cars', fuel: CarFuelType.ELECTRIC },
@@ -39,6 +47,7 @@ const HeaderFilter = ({ initialInput = initialValues, compact = false }: HeaderF
 	const [searchFilter, setSearchFilter] = useState<CarsInquiry>(initialInput);
 	const [totalCars, setTotalCars] = useState<number | null>(null);
 	const [brands, setBrands] = useState<Brand[]>([]);
+	const [filtersOpen, setFiltersOpen] = useState(false);
 
 	/** APOLLO REQUESTS **/
 	const { error: brandsError, refetch: refetchBrands } = useQuery<{ getBrands: Brand[] }>(GET_BRANDS, {
@@ -58,6 +67,10 @@ const HeaderFilter = ({ initialInput = initialValues, compact = false }: HeaderF
 	const searchText = searchFilter.search.text ?? '';
 
 	/** HANDLERS **/
+	const navigateToCars = (input: CarsInquiry) => {
+		const search = { ...input.search, text: input.search.text?.trim() ? escapeSearchText(input.search.text.trim()) : undefined };
+		void router.push({ pathname: '/car', query: { input: JSON.stringify(parseCarsInquiry({ ...input, page: 1, search })) } });
+	};
 	const updateSearch = (fields: Partial<CarSearch>) => {
 		setSearchFilter((previous) => ({ ...previous, search: { ...previous.search, ...fields } }));
 	};
@@ -66,10 +79,12 @@ const HeaderFilter = ({ initialInput = initialValues, compact = false }: HeaderF
 		const input = { ...searchFilter, page: 1, search: { ...searchFilter.search } };
 		if (input.search.text?.trim()) input.search.text = input.search.text.trim();
 		else delete input.search.text;
-		void router.push({ pathname: '/car', query: { input: JSON.stringify(input) } });
+		navigateToCars(input);
 	};
 
 	return (
+		<>
+		<div className={compact ? 'homepage-search-dock' : undefined}>
 		<Box component="form" className={`model-search ${compact ? 'compact-search' : ''}`} aria-label={t('Model Search')} onSubmit={searchHandler}>
 			{compact && <Stack className="search-categories" role="group" aria-label={t('Cars')}>
 				{categories.map((category) => {
@@ -119,8 +134,16 @@ const HeaderFilter = ({ initialInput = initialValues, compact = false }: HeaderF
 					<MenuItem value="">{t('Any Price')}</MenuItem>
 					{priceOptions.map((price) => <MenuItem key={price} value={price}>{t('Up to')} {formatPrice(price)}</MenuItem>)}
 				</TextField>
-				<Button className="model-search-button" variant="contained" type="submit" startIcon={<SearchOutlinedIcon />}>{t('Search')}</Button>
+				{compact && <TextField select label={t('Location')} value={searchFilter.search.locations?.[0] ?? ''}
+					InputProps={{ startAdornment: <InputAdornment position="start"><LocationOnOutlinedIcon /></InputAdornment> }}
+					SelectProps={{ displayEmpty: true, MenuProps, SelectDisplayProps: { 'aria-label': t('Location') } }} InputLabelProps={{ shrink: true }}
+					onChange={event => updateSearch({ locations: event.target.value ? [event.target.value as CarLocation] : undefined })}>
+					<MenuItem value="">{t('Any Region')}</MenuItem>
+					{Object.values(CarLocation).map(location => <MenuItem key={location} value={location}>{t(carLabel(location))}</MenuItem>)}
+				</TextField>}
+				<Button className="model-search-button" variant="contained" type="submit" startIcon={<SearchOutlinedIcon />}>{t('Search cars')}</Button>
 			</Stack>
+			{compact && <Button className="home-more-filters" type="button" startIcon={<TuneOutlinedIcon />} onClick={() => setFiltersOpen(true)}>{t('More Filters')}</Button>}
 			{!compact && <Stack className="search-recommendations">
 				<TextField className="keyword-search" type="search" value={searchText} placeholder={t('Please enter a search term.')}
 					onChange={(event) => updateSearch({ text: event.target.value || undefined })}
@@ -145,6 +168,15 @@ const HeaderFilter = ({ initialInput = initialValues, compact = false }: HeaderF
 			</Stack>}
 			{brandsError && <Button className="makes-retry" type="button" onClick={() => { void refetchBrands(); }}>{t('Unable to load makes. Try again.')}</Button>}
 		</Box>
+		{compact && <CarTypeCategories search={searchFilter.search} onSelect={category => {
+			const input = { ...searchFilter, page: 1, search: applyCarCategory(searchFilter.search, category) };
+			setSearchFilter(input); navigateToCars(input);
+		}} />}
+		</div>
+		{compact && <Filter compact browse searchFilter={{ ...searchFilter, search: { ...searchFilter.search,
+			text: searchText.trim() ? escapeSearchText(searchText.trim()) : undefined } }} open={filtersOpen} onClose={() => setFiltersOpen(false)}
+			onApply={input => { setSearchFilter(input); setFiltersOpen(false); void router.push({ pathname: '/car', query: { input: JSON.stringify(input) } }); }} />}
+		</>
 	);
 };
 

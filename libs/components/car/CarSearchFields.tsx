@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import { GET_BRANDS } from '../../../apollo/user/query';
 import { Brand } from '../../types/brand/brand';
 import { CarSearch } from '../../types/car/car.input';
-import { CarCondition, CarFuelType, CarLocation, CarTransmission } from '../../enums/car.enum';
+import { CarBodyType, CarSegment, CarCondition, CarFuelType, CarLocation, CarTransmission } from '../../enums/car.enum';
 import { carLabel } from '../../car';
 import { maxCarYear } from '../../config';
 
@@ -15,6 +15,8 @@ export default function CarSearchFields({ search, onChange }: Props) {
  const { data, loading, error } = useQuery<{ getBrands: Brand[] }>(GET_BRANDS);
  const setList = (key: keyof CarSearch, value: string) => onChange({ ...search, [key]: value ? [value] : undefined });
  const selections = [
+  { key: 'bodyTypes', label: 'Body type', values: Object.values(CarBodyType) },
+  { key: 'segments', label: 'Segment', values: Object.values(CarSegment) },
   { key: 'locations', label: 'Location', values: Object.values(CarLocation) },
   { key: 'fuelTypes', label: 'Fuel', values: Object.values(CarFuelType) },
   { key: 'conditions', label: 'Condition', values: Object.values(CarCondition) },

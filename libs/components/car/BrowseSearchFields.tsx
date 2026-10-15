@@ -19,7 +19,7 @@ import { GET_BRANDS, GET_CARS } from '../../../apollo/user/query';
 import { Brand } from '../../types/brand/brand';
 import { Cars } from '../../types/car/car';
 import { CarSearch } from '../../types/car/car.input';
-import { CarCondition, CarFuelType, CarLocation, CarTransmission } from '../../enums/car.enum';
+import { CarBodyType, CarSegment, CarCondition, CarFuelType, CarLocation, CarTransmission } from '../../enums/car.enum';
 import { carLabel } from '../../car';
 import { Direction } from '../../enums/common.enum';
 import { rangeBounds, RangeDrafts, RangeKey, validateRange } from './browseFilter';
@@ -64,6 +64,8 @@ export default function BrowseSearchFields({ search, onChange, ranges, onRangesC
 		{ key: 'fuelTypes', label: 'Fuel type', values: Object.values(CarFuelType) },
 		{ key: 'transmissions', label: 'Transmission', values: Object.values(CarTransmission) },
 		{ key: 'conditions', label: 'Condition', values: Object.values(CarCondition) },
+		{ key: 'bodyTypes', label: 'Body type', values: Object.values(CarBodyType) },
+		{ key: 'segments', label: 'Segment', values: Object.values(CarSegment) },
 	] as const;
 	const group = (index: number) => {
 		const { key, label, values } = groups[index];
@@ -230,6 +232,8 @@ export default function BrowseSearchFields({ search, onChange, ranges, onRangesC
 			{group(1)}
 			{group(2)}
 			{group(3)}
+			{group(4)}
+			{group(5)}
 			{rangeFields('pricesRange')}
 			<div className="cars-checkboxes cars-checkboxes-columns">
 				{(['carRent', 'carBarter'] as const).map((option) => (

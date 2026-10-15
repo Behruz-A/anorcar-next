@@ -167,6 +167,8 @@ query GetAllCarsByAdmin($input: AllCarsInquiry!) {
     list {
       _id
       carStatus
+      carBodyType
+      carSegment
       carFuelType
       carCondition
       carModel

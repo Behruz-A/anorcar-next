@@ -107,6 +107,91 @@
 // Let the hero image show behind the navigation on mobile as well.
 #mobile-wrap #top .navbar.marketplace-nav .navbar-main { position: absolute; }
 
+// Preserve Nestar's fixed navigation over the existing homepage header.
+#pc-wrap.homepage-shell #top,
+#mobile-wrap.homepage-shell #top { position: static; padding: 0; background: transparent; }
+
+#pc-wrap.homepage-shell #top .navbar-main,
+#mobile-wrap.homepage-shell #top .navbar-main { position: fixed; top: 0; left: 0; }
+
+// One presentation for every public page; layouts retain their positioning rules.
+#pc-wrap #top .navbar.marketplace-nav.shared-navbar,
+#mobile-wrap #top .navbar.marketplace-nav.shared-navbar {
+	.navbar-main {
+		height: 84px;
+		min-height: 0;
+		padding: 0;
+		background: #181a20;
+		border: 0;
+		border-bottom: 1px solid rgba(255, 255, 255, .08);
+		border-radius: 0;
+		&.transparent { background: #181a20; }
+		.container {
+			width: calc(100% - 64px);
+			max-width: 1360px;
+			height: 100%;
+			display: grid;
+			grid-template-columns: auto minmax(0, 1fr) auto;
+			gap: 48px;
+			.logo-box img { width: 148px; }
+			.router-box {
+				justify-content: flex-start;
+				gap: clamp(12px, 1.5vw, 26px);
+				a {
+					min-height: 44px;
+					padding: 0 5px;
+					border-radius: 6px;
+					div { color: #e5ebf2; font-size: 14px; font-weight: 500; }
+					&:hover { background: rgba(255, 255, 255, .08); }
+					&:hover div { color: #fff; }
+					&.active div { color: #ff4828; }
+					&.active::after { left: 5px; right: 5px; bottom: 4px; width: auto; height: 2px; background: #ff4828; transform: none; }
+				}
+			}
+			.user-box {
+				gap: 16px;
+				padding-left: 0;
+				border-left: 0;
+				.nav-shortcuts { display: flex; align-items: center; gap: 18px; color: #e5ebf2;
+					a { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 40px; border-radius: 8px; color: inherit; &:hover { color: #fff; background: rgba(255,255,255,.08); } }
+					svg { width: 24px; height: 24px; }
+				}
+				.login-user { padding: 0; border: 0; img { width: 36px; height: 36px; } }
+				.nav-language-code { font-family: $font; font-size: 13px; font-weight: 500; }
+				.join-box { height: 40px; border-radius: 8px; padding: 0 12px; span { font-size: 13px; } }
+				.lan-box { gap: 10px; .notification-icon { width: 22px; height: 22px; } }
+				.lan-box .btn-lang { border-radius: 8px; &:hover { background: rgba(255, 255, 255, .08); } }
+			}
+		}
+	}
+	@media (max-width: 1200px) {
+		.navbar-main {
+			height: auto;
+			padding: 12px 0 8px;
+			.container {
+				width: calc(100% - 40px);
+				grid-template-columns: minmax(0, 1fr) auto;
+				gap: 8px 16px;
+				.router-box { grid-column: 1 / -1; order: 3; flex-wrap: nowrap; justify-content: safe center; gap: 20px; overflow-x: auto; scrollbar-width: none; &::-webkit-scrollbar { display: none; } }
+				.router-box a { flex-shrink: 0; min-height: 36px; }
+				.user-box { padding-left: 16px; }
+			}
+		}
+	}
+	@media (max-width: 500px) {
+		.navbar-main .container {
+			.logo-box img { width: 120px; }
+			.router-box { gap: 12px; }
+			.router-box a div { font-size: 13px; }
+			.user-box { gap: 8px; padding-left: 0; border-left: 0; }
+			.user-box .nav-shortcuts { display: none; }
+			.user-box .join-box { width: 36px; height: 36px; padding: 0; }
+			.user-box .login-user img { width: 30px; height: 30px; }
+			.user-box .lan-box { gap: 6px; }
+		}
+	}
+}
+
 #pc-wrap .header-basic.cars-hero,
 #mobile-wrap .header-basic.cars-hero {
 	position: relative;

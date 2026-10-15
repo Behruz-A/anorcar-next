@@ -1,6 +1,8 @@
 const assert = require('assert/strict');
 const fs = require('fs');
 const ts = require('typescript');
+require('./check-loved-carousel.cjs');
+require('./check-home-car-search.cjs');
 require('./check-member-cars.cjs');
 // Both the GraphQL skip guard and the page guard must accept real MongoDB IDs.
 const detailSource = ts.createSourceFile('detail.tsx', fs.readFileSync('pages/car/detail.tsx', 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
