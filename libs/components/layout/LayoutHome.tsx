@@ -34,8 +34,8 @@ const withLayoutMain = (Component: any) => {
 			return (
 				<>
 					<Head>
-						<title>ANORCAR</title>
-						<meta name={'title'} content={`ANORCAR`} />
+						<title>Anorcar</title>
+						<meta name={'title'} content={`Anorcar`} />
 					</Head>
 					<Stack id="mobile-wrap" className="homepage-shell">
 						<Stack id={'top'}>
@@ -62,8 +62,8 @@ const withLayoutMain = (Component: any) => {
 			return (
 				<>
 					<Head>
-						<title>ANORCAR</title>
-						<meta name={'title'} content={`ANORCAR`} />
+						<title>Anorcar</title>
+						<meta name={'title'} content={`Anorcar`} />
 					</Head>
 					<Stack id="pc-wrap" className="homepage-shell">
 						<Stack id={'top'}>

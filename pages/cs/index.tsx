@@ -65,7 +65,7 @@ const CS: NextPage = () => {
 	return (
 		<Stack component="main" className="cs-page" id="cs-help-center">
 			<Head>
-				<title>{`${t('Help Center')} | ANORCAR`}</title>
+				<title>{`${t('Help Center')} | Anorcar`}</title>
 				<meta name="description" content={t('Find answers, explore guides, and get the support you need.')} />
 			</Head>
 			<section className="cs-hero" aria-labelledby="cs-title">

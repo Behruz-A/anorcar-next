@@ -108,8 +108,8 @@ const withLayoutBasic = (Component: any) => {
 			return (
 				<>
 					<Head>
-						<title>ANORCAR</title>
-						<meta name={'title'} content={`ANORCAR`} />
+						<title>Anorcar</title>
+						<meta name={'title'} content={`Anorcar`} />
 					</Head>
 					<Stack id="mobile-wrap" className={authHeader ? 'auth-shell' : helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : communityDetail ? 'community-detail-shell' : undefined}>
 						<Stack id={'top'}>
@@ -146,8 +146,8 @@ const withLayoutBasic = (Component: any) => {
 			return (
 				<>
 					<Head>
-						<title>ANORCAR</title>
-						<meta name={'title'} content={`ANORCAR`} />
+						<title>Anorcar</title>
+						<meta name={'title'} content={`Anorcar`} />
 					</Head>
 					<Stack id="pc-wrap" className={authHeader ? 'auth-shell' : helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : communityDetail ? 'community-detail-shell' : undefined}>
 						<Stack id={'top'}>
