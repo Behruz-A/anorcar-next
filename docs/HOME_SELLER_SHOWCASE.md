@@ -1,4 +1,18 @@
-# ANORCAR full-width homepage promotion, statistics and benefits
+# ANORCAR homepage promotion, statistics and benefits
+
+## Current layout refinement - 2026-10-14
+
+Latest size correction: the user found the bounded card too small and requested the original large scale with only small top/side gaps. The promotion now spans the available width minus 24px per desktop side, 20px per tablet side and 14px per mobile side, without the 1416px maximum. Top separation is 32/24/16px respectively. Desktop copy padding is restored to 48px vertically, with a responsive 38-46px heading and 18px description. Image visibility/contain fit and the 60/40 desktop split remain; metrics/benefits retain the narrower reading container and previous alignment/type refinements. No arbitrary minimum row height or clipping was reintroduced. The earlier bounded-card description below records the superseded pass.
+
+The latest request supersedes the earlier full-bleed/zero-gap design described in the history below. The section now has 64px desktop, 48px tablet and 32px mobile top padding, separating it from Top Agents. Promotion, statistics and benefits use the same centered, 1416px-bounded container and responsive gutters as the agent content. The promotional card has a subtle border and rounded outer corners.
+
+Root cause was measured before editing: at 1440px the old media panel was 712.5px wide and 620px tall. Cover fit enlarged the panoramic 1756x896 source to approximately 1215px wide, cutting roughly 251px from each side. The section itself also began at the viewport's left edge with no gap after Agents. The new grid gives the image 60% of the card width, removes the arbitrary minimum row height and uses centered contain fit. Both desktop panels still stretch to the same row and begin at the same position; the full photograph remains visible when copy grows. Source/content proportions can produce neutral dark padding around the image. No negative margins, viewport-width hacks or layout transforms were introduced.
+
+At 1200px and below the image stacks above copy at its source aspect ratio. Copy padding/type are more compact, and the benefits heading matches existing homepage section typography (34px desktop/25px mobile). Existing carimg21 image, video configuration/dialog/keyboard focus restoration, role-aware CTA, observer loading, Apollo overview counts, localized copy, metrics and features remain. No backend, authorization, dependency or architecture changes.
+
+Validation: Yarn typecheck, component/configuration checks and browser checks cover balanced/inset edges, explicit section separation, aligned promotion/metrics/benefits, no horizontal or vertical photo crop, full vehicle bounds, non-overlapping play control, panel alignment, responsive stacking, real/zero/error count rendering, CTA, lazy modal open/close/Escape/unmount/focus and Korean/Russian text. Fixture screenshot figures are not production counts. Current screenshots: home-seller-showcase-1440.png, home-seller-showcase-1920.png, home-seller-showcase-3440.png and home-seller-showcase-390.png. No database writes, commit or deployment.
+
+## Earlier implementation history
 
 Inspired by the scale of https://boxcar-nextjs.vercel.app/ while retaining ANORCAR colors, content, permissions and the Nestar-derived architecture.
 

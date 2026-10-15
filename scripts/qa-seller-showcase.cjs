@@ -54,28 +54,33 @@ async function shot(name){
   assert.equal(await evaluate("document.querySelectorAll('.seller-showcase-video-label').length"),0);
   assert.equal(await evaluate("document.querySelectorAll('.seller-showcase-copy li').length"),3);
   const layout=await evaluate("(()=>{const media=document.querySelector('.seller-showcase-media'),copy=document.querySelector('.seller-showcase-copy'),split=document.querySelector('.seller-showcase-split');const r=split.getBoundingClientRect(),prev=document.querySelector('.top-agents');return {width:r.width,left:r.left,topAligned:Math.abs(media.getBoundingClientRect().top-copy.getBoundingClientRect().top)<=1,sideGap:copy.getBoundingClientRect().left-media.getBoundingClientRect().right,gap:r.top-prev.getBoundingClientRect().bottom,minAgentHeight:getComputedStyle(prev).minHeight,mediaWidth:media.offsetWidth,media:media.offsetHeight,copy:copy.offsetHeight,split:split.offsetHeight,position:getComputedStyle(media.querySelector('img')).objectPosition}})()");
-  assert.ok(Math.abs(layout.width-await evaluate('document.documentElement.clientWidth'))<=1,'full viewport width'); assert.equal(layout.left,0); if(width>800){assert.ok(layout.topAligned,'panel tops match');assert.ok(Math.abs(layout.sideGap)<=1,'no horizontal gap');} assert.ok(Math.abs(layout.gap)<=1,'no gap between sections'); assert.equal(layout.minAgentHeight,'0px');
-  if(width>800){assert.equal(layout.media,layout.copy,'aligned panels');assert.ok(Math.abs(layout.mediaWidth-layout.width/2)<=1,'50/50 split');}
+  const viewport=await evaluate('document.documentElement.clientWidth');
+  const gutter=width>1200?24:width>600?20:14;
+  assert.ok(Math.abs(layout.left-gutter)<=1,'small card side gutter');assert.ok(Math.abs(layout.left-(viewport-layout.left-layout.width))<=1,'balanced horizontal spacing');assert.ok(Math.abs(layout.width-(viewport-gutter*2))<=1,'near-full-width card');
+  const expectedGap=width>1200?32:width>600?24:16;assert.ok(Math.abs(layout.gap-expectedGap)<=1,'small intentional gap after agents');assert.equal(layout.minAgentHeight,'0px');
+  assert.ok(await evaluate("(()=>{const frames=Array.from(document.querySelectorAll('.seller-showcase-container:not(.seller-showcase-split)')).map(e=>e.getBoundingClientRect());return frames.every(r=>Math.abs(r.left-frames[0].left)<=1&&Math.abs(r.right-frames[0].right)<=1)})()"),'metrics and benefits keep reading-column alignment');
+  if(width>1200){assert.ok(layout.topAligned,'panel tops match');assert.ok(Math.abs(layout.sideGap)<=1,'no horizontal panel gap');assert.equal(layout.media,layout.copy,'equal panel heights');assert.ok(Math.abs(layout.mediaWidth-(layout.width-2)*.6)<=2,'wider image panel');}
+  else assert.ok(await evaluate("(()=>{const media=document.querySelector('.seller-showcase-media').getBoundingClientRect(),copy=document.querySelector('.seller-showcase-copy').getBoundingClientRect();return Math.abs(copy.top-media.bottom)<=1})()"),'stacked panels touch without overlap');
   if(process.env.QA_DIAG)console.log('LAYOUT',width,await evaluate(`(()=>{const selectors=['#top','.navbar-main','#main','.home-page','.top-agents','.top-agents .wrapper','.seller-showcase','.seller-showcase-split','.seller-showcase-media','.seller-showcase-copy'];return selectors.map(s=>{const e=document.querySelector(s);if(!e)return{s};const r=e.getBoundingClientRect(),c=getComputedStyle(e);return{s,rect:r.toJSON(),padding:c.padding,margin:c.margin,height:c.height,position:c.position,overflow:c.overflow,transform:c.transform}})})()`));
-  if(width>=1440&&width<=1920)assert.ok(layout.split>=620&&layout.split<=680,'large desktop height '+JSON.stringify(layout));
-  assert.equal(layout.position,'50% 100%');
+  assert.equal(layout.position,'50% 50%');
+  assert.equal(await evaluate("getComputedStyle(document.querySelector('.seller-showcase-media img')).objectFit"),'contain');
   const composition=await evaluate(`(()=>{
    const image=document.querySelector('.seller-showcase-media img'),media=image.getBoundingClientRect(),button=document.querySelector('.seller-showcase-play').getBoundingClientRect();
    const sourceWidth=${sourceDimensions.width},sourceHeight=${sourceDimensions.height};
-   const scale=Math.max(media.width/sourceWidth,media.height/sourceHeight),offsetX=(media.width-sourceWidth*scale)*.5,offsetY=media.height-sourceHeight*scale;
+   const scale=Math.min(media.width/sourceWidth,media.height/sourceHeight),offsetX=(media.width-sourceWidth*scale)*.5,offsetY=(media.height-sourceHeight*scale)*.5;
    // Conservative vehicle bounds in the unchanged 1756x896 source, inspected visually.
    const vehicle={left:offsetX+710*scale,top:offsetY+660*scale,right:offsetX+1040*scale,bottom:offsetY+810*scale};
    const grid=getComputedStyle(document.querySelector('.seller-showcase-benefit-grid'));
-   return {vehicle,media:{width:media.width,height:media.height},source:{width:sourceWidth,height:sourceHeight},play:{left:button.left-media.left,top:button.top-media.top,right:button.right-media.left,bottom:button.bottom-media.top,width:button.width},verticalCrop:Math.max(0,sourceHeight*scale-media.height),columns:grid.gridTemplateColumns.split(' ').length,gap:parseFloat(grid.columnGap)};
+   return {vehicle,media:{width:media.width,height:media.height},source:{width:sourceWidth,height:sourceHeight},play:{left:button.left-media.left,top:button.top-media.top,right:button.right-media.left,bottom:button.bottom-media.top,width:button.width},horizontalCrop:Math.max(0,sourceWidth*scale-media.width),verticalCrop:Math.max(0,sourceHeight*scale-media.height),columns:grid.gridTemplateColumns.split(' ').length,gap:parseFloat(grid.columnGap)};
   })()`);
-  assert.deepEqual(composition.source,{width:1756,height:896}); assert.ok(composition.verticalCrop<=1,'mountain top is not cropped '+JSON.stringify(composition));
+  assert.deepEqual(composition.source,{width:1756,height:896});assert.ok(composition.horizontalCrop<=1&&composition.verticalCrop<=1,'whole photograph visible on both axes '+JSON.stringify(composition));
   const {vehicle,media,play}=composition;
   assert.ok(vehicle.left>=0&&vehicle.top>=0&&vehicle.right<=media.width&&vehicle.bottom<=media.height,'entire vehicle within photo '+JSON.stringify(composition));
   assert.ok(play.bottom<vehicle.top||play.top>vehicle.bottom||play.right<vehicle.left||play.left>vehicle.right,'play does not cover car');
   assert.ok(play.width>=76&&play.width<=88,'play diameter');
   assert.equal(composition.columns,width>1200?4:width>600?2:1,'benefit columns');
   if(width>1200)assert.ok(composition.gap>=40&&composition.gap<=56,'spacious feature gaps');
-  if(width<=800)assert.ok(Math.abs(media.width/media.height-1756/896)<.01,'mobile photo preserves whole frame');
+  if(width<=1200)assert.ok(Math.abs(media.width/media.height-1756/896)<.01,'stacked photo preserves source frame');
   if(width===3440||width===1920||width===1440||width===390)await shot('home-seller-showcase-'+width);
   await click('.seller-showcase-play');await until("document.querySelector('.seller-showcase-video-dialog iframe')",'video dialog');
   assert.ok(await evaluate("document.querySelector('.seller-showcase-video-dialog iframe').src.includes('youtube-nocookie.com/embed/Cdh5Taq7H6A?autoplay=1')"));
@@ -84,7 +89,7 @@ async function shot(name){
   else {await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});await command('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});}
   await until("!document.querySelector('.seller-showcase-video-dialog iframe')",'video unmounted');
   await until("document.activeElement.classList.contains('seller-showcase-play')",'play focus restored');
-  console.log('PASS showcase full-width/image/order/metrics/CTA/video/responsive',width);
+  console.log('PASS showcase centered/spacing/full-image/order/metrics/CTA/video/responsive',width);
  }
  for(const locale of ['kr','ru']){await navigate(390,locale);const heading=await evaluate("document.querySelector('#seller-showcase-heading').textContent");assert.notEqual(heading,'Find a Car That Moves You.');assert.ok(!heading.includes('???'),'translated Unicode');assert.ok(await evaluate("document.documentElement.scrollWidth<=innerWidth+1"));console.log('PASS showcase locale',locale);}
  await navigate(1440);await click('.seller-showcase-copy a');await until("location.pathname.replace(/\\/$/,'')==='/car'",'CTA navigation to Cars');console.log('PASS Explore Cars navigation');

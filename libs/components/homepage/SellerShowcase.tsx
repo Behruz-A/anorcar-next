@@ -109,14 +109,14 @@ export default function SellerShowcase() {
 		: ['Explore cars that match your needs', 'Compare prices and specifications', 'Contact sellers directly'];
 	return (
 		<section ref={root} className="seller-showcase" aria-labelledby="seller-showcase-heading">
-			<div className="seller-showcase-split">
+			<div className="seller-showcase-container seller-showcase-split">
 				<div className="seller-showcase-media">
 					<Image
 						src="/img/carimg21.png"
 						alt={t('A sports car on a scenic road')}
 						fill
 						loading={visible ? 'eager' : 'lazy'}
-						sizes="(max-width: 800px) 100vw, 50vw"
+						sizes="(max-width: 1200px) 100vw, 60vw"
 					/>
 					{videoId && (
 						<button
