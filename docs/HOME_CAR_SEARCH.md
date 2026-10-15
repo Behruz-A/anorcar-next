@@ -42,6 +42,16 @@ Deploy backend before frontend because frontend selections include the new nulla
 - Only a selected type uses the orange fill/border; mouse hover on another type uses neutral gray, and touch devices do not receive persistent hover decoration.
 - Typecheck, migration checks and the 91-page production build passed, including numeric budget-label agreement and URL round trips. Read-only EN/KR/RU HTTP checks verified the new section order and all eight rendered budget URLs. Browser surfaces remain unavailable, so no new visual-browser QA is claimed.
 
+## Browse by Budget layout refinement — 2026-10-15
+
+- Budget now shares `--home-wide-width` with search and Most Loved Cars, keeping identical side gutters. Other sections retain their current widths.
+- Existing Swiper navigation buttons moved into the heading row, with outlined circles and a visible disabled state; side-overlay arrows were removed. Navigation/keyboard/A11y modules and numeric KRW search links remain unchanged.
+- Added “Find a car that fits your budget.” in English, Korean and Russian. Desktop cards retain six visible budgets, with larger aspect-ratio image frames and separate price strips. Tablet/mobile retain swipeable fixed-width cards.
+- White section spacing increased to 88/96px desktop, 64/72px tablet and 48/56px mobile. Existing Nestar component/SCSS structure remains; no backend, Apollo or dependency changes.
+- Yarn typecheck and migration regressions passed. No browser visual verification is claimed.
+
+Follow-up: budget cards now use a 4:5 frame with the existing image covering the entire card, aligned left so the front/rear half of each vehicle is enlarged and cropped like the user's reference. The price sits at the bottom over the studio background. Shared data already contains seven ceilings through ₩100M followed by Any Budget; carousel arrows reveal the last two options. Header controls, shared gutters and numeric search bounds remain unchanged.
+
 ## Category image asset
 
 `public/img/car/category-cars.png` was generated with the built-in image tool (`transparent_background: true`), copied into the project and displayed as ten SVG viewports of the same raster sprite. The output was visually inspected. No extra image dependency or image modification pipeline is needed.

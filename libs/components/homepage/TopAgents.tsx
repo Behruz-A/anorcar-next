@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Stack, Alert, CircularProgress, IconButton } from '@mui/material';
 import EastIcon from '@mui/icons-material/East';
@@ -11,7 +12,10 @@ import TopAgentCard from './TopAgentCard';
 import { Member } from '../../types/member/member';
 import { AgentsInquiry } from '../../types/member/member.input';
 import { Direction } from '../../enums/common.enum';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
+import { userVar } from '../../../apollo/store';
+import { LIKE_TARGET_MEMBER, SUBSCRIBE, UNSUBSCRIBE } from '../../../apollo/user/mutation';
+import { sweetErrorHandling } from '../../sweetAlert';
 import { GET_AGENTS } from '../../../apollo/user/query';
 import { T } from '../../types/common';
 
@@ -20,9 +24,14 @@ interface TopAgentsProps { initialInput: AgentsInquiry; }
 const TopAgents = ({ initialInput }: TopAgentsProps) => {
  const { t } = useTranslation('common');
  const [topAgents, setTopAgents] = useState<Member[]>([]);
+ const user = useReactiveVar(userVar);
+ const router = useRouter();
+ const [subscribe] = useMutation(SUBSCRIBE);
+ const [unsubscribe] = useMutation(UNSUBSCRIBE);
+ const [likeMember] = useMutation(LIKE_TARGET_MEMBER);
 
  /** APOLLO REQUESTS **/
- const { loading: getAgentsLoading, data: getAgentsData, error: getAgentsError } = useQuery(GET_AGENTS, {
+ const { loading: getAgentsLoading, data: getAgentsData, error: getAgentsError, refetch } = useQuery(GET_AGENTS, {
   fetchPolicy: 'cache-and-network',
   variables: { input: initialInput },
   notifyOnNetworkStatusChange: true,
@@ -35,6 +44,18 @@ const TopAgents = ({ initialInput }: TopAgentsProps) => {
    setTopAgents(list);
   },
  });
+
+ useEffect(() => { refetch().catch(() => undefined); }, [user._id, refetch]);
+
+ const interact = async (agent: Member, action: 'follow' | 'like') => {
+  if (!user._id) { await router.push('/account/join'); return; }
+  if (user._id === agent._id) return;
+  try {
+   const mutate = action === 'like' ? likeMember : agent.meFollowed?.[0]?.myFollowing ? unsubscribe : subscribe;
+   await mutate({ variables: { input: agent._id } });
+   await refetch();
+  } catch (error) { await sweetErrorHandling(error); }
+ };
 
  return (
   <Stack component="section" className="top-agents agents-showcase" aria-labelledby="top-agents-heading">
@@ -52,14 +73,14 @@ const TopAgents = ({ initialInput }: TopAgentsProps) => {
       getAgentsError ? <Alert severity="error">{t('Agents could not be loaded. Please try again.')}</Alert> :
       topAgents.length === 0 ? <p className="agents-empty">{t('No agents yet.')}</p> :
       <>
-      <Swiper className="top-agents-swiper" slidesPerView="auto" spaceBetween={16}
-       breakpoints={{ 0: { slidesPerGroup: 1, spaceBetween: 16 }, 601: { slidesPerGroup: 1, spaceBetween: 22 }, 1201: { slidesPerGroup: 5, spaceBetween: 22 } }}
+      <Swiper className="top-agents-swiper" slidesPerView={1.15} spaceBetween={16} watchOverflow
+       breakpoints={{ 600: { slidesPerView: 2, slidesPerGroup: 1, spaceBetween: 20 }, 1440: { slidesPerView: 4, slidesPerGroup: 1, spaceBetween: 24 } }}
        modules={[Keyboard, A11y, Navigation]} keyboard={{ enabled: true, onlyInViewport: true }}
        navigation={{ prevEl: '.swiper-agents-prev', nextEl: '.swiper-agents-next' }}
        a11y={{ prevSlideMessage: t('Previous agents'), nextSlideMessage: t('Next agents') }}>
        {topAgents.map((agent) => (
         <SwiperSlide className="top-agents-slide" key={agent._id}>
-         <TopAgentCard agent={agent} />
+         <TopAgentCard agent={agent} isSelf={user._id === agent._id} onInteract={interact} />
         </SwiperSlide>
        ))}
       </Swiper>

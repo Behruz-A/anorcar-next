@@ -37,6 +37,11 @@ export const GET_AGENTS = gql`
 				createdAt
 				updatedAt
 				accessToken
+				meFollowed {
+					followingId
+					followerId
+					myFollowing
+				}
 				meLiked {
 					memberId
 					likeRefId

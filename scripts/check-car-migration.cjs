@@ -2,6 +2,7 @@ const assert = require('assert/strict');
 const fs = require('fs');
 const ts = require('typescript');
 require('./check-loved-carousel.cjs');
+require('./check-top-agent-cards.cjs');
 require('./check-home-car-search.cjs');
 require('./check-member-cars.cjs');
 // Both the GraphQL skip guard and the page guard must accept real MongoDB IDs.
