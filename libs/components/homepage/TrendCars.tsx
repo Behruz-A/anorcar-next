@@ -68,7 +68,7 @@ const TrendCars = (props: TrendCarsProps) => {
    <Stack className="container">
     <Stack className="info-box">
      <div className="left">
-      <h2 id="trending-cars-heading">{t('Trending Cars')}</h2>
+      <h2 id="trending-cars-heading">{t('Most Loved Cars')}</h2>
       <p>{t('Trend is based on likes')}</p>
      </div>
      <Link className="trending-view-all" href={{ pathname: '/car', query: { input: JSON.stringify({ ...initialInput, page: 1, limit: 9 }) } }}>
