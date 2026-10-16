@@ -15,6 +15,7 @@ import {
 	DirectionsCarOutlined,
 	MenuOutlined,
 	ExpandMore,
+	AdminPanelSettingsOutlined,
 } from '@mui/icons-material';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
@@ -111,6 +112,10 @@ const MyMenu = () => {
 				className={`account-navigation${menuOpen ? ' is-expanded' : ''}`}
 				aria-label={t('My Account')}
 			>
+				{user.memberType === 'ADMIN' && <div className="account-nav-group">
+					<Typography className="account-nav-title">{t('Admin')}</Typography>
+					<Link href="/_admin/users" className="account-nav-link"><AdminPanelSettingsOutlined /><span>Admin Console</span><ChevronRight className="account-nav-arrow" /></Link>
+				</div>}
 				{groups.map((group) => (
 					<div className="account-nav-group" key={group.title}>
 						<Typography className="account-nav-title">{t(group.title)}</Typography>

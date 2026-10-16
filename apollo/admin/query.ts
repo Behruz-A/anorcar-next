@@ -1,5 +1,14 @@
 import { gql } from '@apollo/client';
 
+export const GET_ADMIN_MEMBER_OVERVIEW = gql`
+	query GetAdminMemberOverview {
+		total: getAllMembersByAdmin(input: { page: 1, limit: 1, search: {} }) { metaCounter { total } }
+		agents: getAllMembersByAdmin(input: { page: 1, limit: 1, search: { memberType: AGENT } }) { metaCounter { total } }
+		active: getAllMembersByAdmin(input: { page: 1, limit: 1, search: { memberStatus: ACTIVE } }) { metaCounter { total } }
+		blocked: getAllMembersByAdmin(input: { page: 1, limit: 1, search: { memberStatus: BLOCK } }) { metaCounter { total } }
+	}
+`;
+
 export const GET_ALL_INQUIRIES_BY_ADMIN = gql`
 	query GetAllInquiriesByAdmin($input: AllInquiriesInquiry!) {
 		getAllInquiriesByAdmin(input: $input) {

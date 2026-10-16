@@ -1,4 +1,4 @@
-﻿import React, { FormEvent, useEffect, useRef, useState } from 'react';
+import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -99,7 +99,7 @@ const Join: NextPage = () => {
 
  return (
   <section className="auth-page">
-   <Head><title>{`${t(signup ? 'Create account' : 'Log in')} | Anorcar`}</title></Head>
+   <Head><title>{`${t(signup ? 'Create account' : 'Log in')} | ANORCAR`}</title></Head>
    <div className="auth-frame">
     <aside className="auth-visual">
      <img className="auth-photo" src="/img/car/loginpageimg.png" alt="" />

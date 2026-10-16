@@ -1,0 +1,5 @@
+Source: https://github.com/vehiclespecs/brand-logos
+Commit: 3f0929e70e0a9a2a502063edc4b3e5c0146cba74
+Original brand marks; trademarks belong to their respective owners.
+Downloaded to Desktop/CARIMG/brand-logos first, then copied unchanged to public/img/brands.
+Kia override: current official mark from https://www.kia.com/us/content/dam/kia/us/common/kia_logo_black.svg (replaces repository's older oval logo).

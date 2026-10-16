@@ -33,8 +33,8 @@ const withLayoutFull = (Component: any, options: { showChat?: boolean; className
 			return (
 				<>
 					<Head>
-						<title>Anorcar</title>
-						<meta name={'title'} content={`Anorcar`} />
+						<title>ANORCAR</title>
+						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
 					<Stack id="mobile-wrap" className={options.className}>
 						<Stack id={'top'}>
@@ -57,8 +57,8 @@ const withLayoutFull = (Component: any, options: { showChat?: boolean; className
 			return (
 				<>
 					<Head>
-						<title>Anorcar</title>
-						<meta name={'title'} content={`Anorcar`} />
+						<title>ANORCAR</title>
+						<meta name={'title'} content={`ANORCAR`} />
 					</Head>
 					<Stack id="pc-wrap" className={options.className}>
 						<Stack id={'top'}>

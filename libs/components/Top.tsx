@@ -257,6 +257,7 @@ const Top = () => {
 										}}
 										sx={{ mt: '5px' }}
 									>
+										{user.memberType === 'ADMIN' && <MenuItem component={Link} href="/_admin/users" onClick={() => setLogoutAnchor(null)}>Admin Console</MenuItem>}
 										<MenuItem onClick={() => logOut()}>
 											<Logout fontSize="small" style={{ color: 'blue', marginRight: '10px' }} />
 											Logout

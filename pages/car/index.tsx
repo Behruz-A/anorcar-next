@@ -33,7 +33,7 @@ import ViewListOutlinedIcon from '@mui/icons-material/ViewListOutlined';
 import TuneIcon from '@mui/icons-material/Tune';
 import { GET_BRANDS } from '../../apollo/user/query';
 import { Brand } from '../../libs/types/brand/brand';
-import { imageUrl } from '../../libs/config';
+import { brandLogoUrl } from '../../libs/config';
 import { CarSort } from '../../libs/types/car/car.input';
 export const getStaticProps = async ({ locale }: any) => ({
 	props: { ...(await serverSideTranslations(locale, ['common'])) },
@@ -236,9 +236,9 @@ const CarList: NextPage = () => {
 									aria-pressed={input.search.brandIds?.includes(brand._id) ?? false}
 									onClick={() => apply({ ...input, page: 1, search: { ...input.search, brandIds: [brand._id] } })}
 								>
-									{brand.brandLogo && (
+									{(brand.brandLogo || brandLogoUrl(brand.brandName) !== '/img/car/placeholder.svg') && (
 										<img
-											src={imageUrl(brand.brandLogo)}
+											src={brandLogoUrl(brand.brandName, brand.brandLogo)}
 											alt=""
 											onError={(e) => {
 												e.currentTarget.style.display = 'none';

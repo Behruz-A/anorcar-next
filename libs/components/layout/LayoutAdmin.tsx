@@ -1,11 +1,15 @@
 import type { ComponentType } from 'react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Head from 'next/head';
 import MenuList from '../admin/AdminMenuList';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import { Menu, MenuItem } from '@mui/material';
+import { Button, Menu, MenuItem, useMediaQuery } from '@mui/material';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import OpenInNewOutlinedIcon from '@mui/icons-material/OpenInNewOutlined';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
 import Avatar from '@mui/material/Avatar';
@@ -16,7 +20,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { hydrateUser, logOut } from '../../auth';
 import { useReactiveVar } from '@apollo/client';
 import { userVar, authReadyVar } from '../../../apollo/store';
-import { REACT_APP_API_URL } from '../../config';
+import { imageUrl } from '../../config';
 import { MemberType } from '../../enums/member.enum';
 const drawerWidth = 280;
 
@@ -31,6 +35,21 @@ const withAdminLayout = (Component: ComponentType) => {
 		const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
 		const [title, setTitle] = useState('admin');
 		const [loading, setLoading] = useState(true);
+		const mobile = useMediaQuery('(max-width: 900px)');
+		const pageTitle = router.pathname.includes('/users')
+			? router.query.memberType === 'AGENT'
+				? 'Agents'
+				: 'Members'
+			: router.pathname.includes('/cars')
+			? 'Cars'
+			: router.pathname.includes('/brands')
+			? 'Brands'
+			: router.pathname.includes('/community')
+			? 'Community'
+			: 'Customer Service';
+		useEffect(() => {
+			setOpenMenu(false);
+		}, [router.asPath]);
 
 		/** LIFECYCLES **/
 		useEffect(() => {
@@ -58,28 +77,40 @@ const withAdminLayout = (Component: ComponentType) => {
 			router.push('/').then();
 		};
 
-		if (!user || user?.memberType !== MemberType.ADMIN) return null;
+		if (!authReady || loading || !user || user?.memberType !== MemberType.ADMIN) return null;
 
 		return (
 			<main id="pc-wrap" className="admin">
+				<Head><title>ANORCAR</title></Head>
 				<Box component={'div'} sx={{ display: 'flex' }}>
 					<AppBar
 						position="fixed"
 						sx={{
-							width: `calc(100% - ${drawerWidth}px)`,
-							ml: `${drawerWidth}px`,
+							width: mobile ? '100%' : `calc(100% - ${drawerWidth}px)`,
+							ml: mobile ? 0 : `${drawerWidth}px`,
 							boxShadow: 'rgb(100 116 139 / 12%) 0px 1px 4px',
-							background: 'none',
+							background: '#ffffff',
 						}}
 					>
-						<Toolbar>
+						<Toolbar className="admin-toolbar">
+							{mobile && (
+								<IconButton
+									aria-label="Open admin navigation"
+									aria-expanded={openMenu}
+									onClick={() => setOpenMenu(true)}
+								>
+									<MenuOutlinedIcon />
+								</IconButton>
+							)}
+							<Typography className="admin-breadcrumbs">
+								Admin Console <span>/</span> {pageTitle}
+							</Typography>
+							<Button component={Link} href="/" className="admin-view-site" startIcon={<OpenInNewOutlinedIcon />}>
+								View site
+							</Button>
 							<Tooltip title="Open settings">
 								<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-									<Avatar
-										src={
-											user?.memberImage ? `${REACT_APP_API_URL}/${user?.memberImage}` : '/img/profile/defaultUser.svg'
-										}
-									/>
+									<Avatar src={imageUrl(user?.memberImage || '/img/profile/defaultUser.svg')} />
 								</IconButton>
 							</Tooltip>
 							<Menu
@@ -129,20 +160,26 @@ const withAdminLayout = (Component: ComponentType) => {
 
 					<Drawer
 						sx={{
-							width: drawerWidth,
+							width: mobile ? 0 : drawerWidth,
 							flexShrink: 0,
 							'& .MuiDrawer-paper': {
 								width: drawerWidth,
 								boxSizing: 'border-box',
 							},
 						}}
-						variant="permanent"
+						variant={mobile ? 'temporary' : 'permanent'}
+						ModalProps={{ keepMounted: true, disablePortal: true }}
+						open={!mobile || openMenu}
+						onClose={() => setOpenMenu(false)}
 						anchor="left"
 						className="aside"
 					>
-						<Toolbar sx={{ flexDirection: 'column', alignItems: 'flexStart' }}>
+						<Toolbar sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
 							<Stack className={'logo-box'}>
-								<img src={'/img/logo/anorcar.svg'} alt={'logo'} />
+								<Link href="/_admin/users">
+									<img src={'/img/logo/anorcar.svg'} alt={'ANORCAR'} />
+								</Link>
+								<Typography className="admin-console-label">Admin Console</Typography>
 							</Stack>
 
 							<Stack
@@ -156,12 +193,10 @@ const withAdminLayout = (Component: ComponentType) => {
 									py: '11px',
 								}}
 							>
-								<Avatar
-									src={user?.memberImage ? `${REACT_APP_API_URL}/${user?.memberImage}` : '/img/profile/defaultUser.svg'}
-								/>
+								<Avatar src={imageUrl(user?.memberImage || '/img/profile/defaultUser.svg')} />
 								<Typography variant={'body2'} p={1} ml={1}>
 									{user?.memberNick} <br />
-									{user?.memberPhone}
+									Admin
 								</Typography>
 							</Stack>
 						</Toolbar>
@@ -169,6 +204,15 @@ const withAdminLayout = (Component: ComponentType) => {
 						<Divider />
 
 						<MenuList />
+						<Stack className="admin-sidebar-footer">
+							<Button component={Link} href="/">
+								Back to the site
+							</Button>
+							<Button component={Link} href="/mypage?category=myProfile">
+								My profile
+							</Button>
+							<Button onClick={logoutHandler}>Logout</Button>
+						</Stack>
 					</Drawer>
 
 					<Box component={'div'} id="bunker" sx={{ flexGrow: 1 }}>

@@ -126,7 +126,7 @@ const CarComparePage = () => {
 	return (
 		<div className="compare-results-page" ref={pageRef}>
 			<Head>
-				<title>{t('Compare Cars')} | Anorcar</title>
+				<title>{t('Compare Cars')} | ANORCAR</title>
 			</Head>
 			<section className="compare-cars" aria-labelledby="compare-cars-heading">
 				<div className="compare-container">

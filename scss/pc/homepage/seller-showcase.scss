@@ -4,7 +4,7 @@
 	padding: 64px 0 72px;
 	border-top: 96px solid #fff;
 	border-bottom: 96px solid #fff;
-	background: #f8f9fc;
+	background: #fff;
 	font-family: $font;
 	color: #171a20;
 	.seller-showcase-container {
@@ -32,7 +32,7 @@
 		aspect-ratio: 1756 / 896;
 		overflow: hidden;
 		border-radius: 16px;
-		background: #f8f9fc;
+		background: #fff;
 		// Keep both sides, the mountain landscape and car visible at any row height.
 		img { object-fit: contain; object-position: center; }
 	}

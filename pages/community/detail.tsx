@@ -184,7 +184,7 @@ const CommunityDetail: NextPage = () => {
 	return (
 		<div id="community-detail-page">
 			<Head>
-				<title>{article ? `${article.articleTitle} | Anorcar` : `${t('Community')} | Anorcar`}</title>
+				<title>{article ? `${article.articleTitle} | ANORCAR` : `${t('Community')} | ANORCAR`}</title>
 			</Head>
 			<div className="article-container">
 				<div className="article-toolbar">

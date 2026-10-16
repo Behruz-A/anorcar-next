@@ -5,6 +5,7 @@ require('./check-loved-carousel.cjs');
 require('./check-recent-carousel.cjs');
 require('./check-top-agent-cards.cjs');
 require('./check-home-car-search.cjs');
+require('./check-home-community.cjs');
 require('./check-member-cars.cjs');
 // Both the GraphQL skip guard and the page guard must accept real MongoDB IDs.
 const detailSource = ts.createSourceFile('detail.tsx', fs.readFileSync('pages/car/detail.tsx', 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);

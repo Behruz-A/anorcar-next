@@ -35,3 +35,12 @@ export function imageUrl(path?: string | null): string {
  if (/^https?:\/\//i.test(path) || path.startsWith('/img/')) return path;
  return `${REACT_APP_API_URL.replace(/\/$/, '')}/${path.replace(/^\/+/, '')}`;
 }
+
+export function brandLogoUrl(name: string, path?: string | null): string {
+ const key = name.trim().toLowerCase().replace(/[\s_-]+/g, '');
+ const logos: Record<string, string> = {
+  audi: 'audi', bmw: 'bmw', genesis: 'genesis', hyundai: 'hyundai', kia: 'kia',
+  mercedes: 'mercedes-benz', mercedesbenz: 'mercedes-benz', tesla: 'tesla',
+ };
+ return logos[key] ? `/img/brands/${logos[key]}-logo.svg` : imageUrl(path);
+}

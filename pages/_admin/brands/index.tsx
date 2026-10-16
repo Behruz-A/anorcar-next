@@ -10,7 +10,7 @@ import { BrandInput } from '../../../libs/types/brand/brand.input';
 import { BrandStatus } from '../../../libs/enums/brand.enum';
 import { MemberType } from '../../../libs/enums/member.enum';
 import { userVar } from '../../../apollo/store';
-import { imageUrl } from '../../../libs/config';
+import { brandLogoUrl } from '../../../libs/config';
 import { sweetConfirmAlert, sweetErrorHandling } from '../../../libs/sweetAlert';
 
 function AdminBrands() {
@@ -54,7 +54,7 @@ function AdminBrands() {
   {error && <Alert severity="error">{t("Brands could not be loaded.")}</Alert>}
   <Table><TableHead><TableRow><TableCell>{t("Logo")}</TableCell><TableCell>{t("Name")}</TableCell><TableCell>{t("Status")}</TableCell><TableCell>{t("Actions")}</TableCell></TableRow></TableHead>
    <TableBody>{data?.getAllBrandsByAdmin.map(brand => <TableRow key={brand._id}>
-    <TableCell><img src={imageUrl(brand.brandLogo)} alt={brand.brandName} width={50} height={40} style={{ objectFit: 'contain' }} /></TableCell>
+    <TableCell><img src={brandLogoUrl(brand.brandName, brand.brandLogo)} alt={brand.brandName} width={50} height={40} style={{ objectFit: 'contain' }} /></TableCell>
     <TableCell>{brand.brandName}</TableCell><TableCell>{brand.brandStatus}</TableCell>
     <TableCell><Button disabled={busy} onClick={() => edit(brand)}>{t("Edit")}</Button>
      {brand.brandStatus === BrandStatus.ACTIVE ? <Button disabled={busy} onClick={() => deactivate(brand)}>{t("Deactivate")}</Button> :
