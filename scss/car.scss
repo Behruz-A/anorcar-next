@@ -136,5 +136,42 @@
   @include car-listing-card;
  }
  .home-page .recently-added-cars .recent-grid { grid-auto-rows: auto; gap: 24px; }
+ .home-page .recently-added-cars .vehicle-card--recent {
+  &:focus-within { border-color: #e5e8ec; outline: none; }
+  .cars-listing-photo { height: 245px; aspect-ratio: auto; img { object-fit: cover; } }
+  .recent-photo-frame { display: block; width: 100%; height: 100%; cursor: default; }
+  .recent-photo-badges { position: absolute; z-index: 3; top: 16px; left: 16px; right: 64px; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; pointer-events: none; }
+  .cars-listing-badge { position: static; padding: 7px 18px; border-radius: 24px; font-size: 13px; }
+  .recent-electric-badge { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 24px; background: rgba(24,26,32,.75); color: #fff; font: 500 13px/20px $font; svg { width: 16px; height: 16px; } }
+  .cars-listing-photo .cars-listing-favorite { width: 40px; height: 40px; top: 16px; right: 16px; color: #fff; background: rgba(24,26,32,.65); &[aria-pressed='true'] { color: #f04432; } }
+  .cars-photo-count { left: 16px; right: auto; bottom: 12px; border-radius: 20px; padding: 5px 9px; }
+  .recent-photo-controls { position: absolute; z-index: 3; bottom: 12px; right: 16px; display: flex; gap: 6px;
+   button { width: 34px; height: 34px; border: 1px solid #dce0e6; background: #fff; color: #5d646b; padding: 4px; &:hover { background: #fff3ee; color: #e03a18; } }
+   button:focus-visible { outline: 2px solid #d93818; outline-offset: 2px; }
+  }
+  .cars-listing-title a::after { display: none; }
+  .cars-listing-title h3 { min-height: 28px; font: 600 20px/28px $font; }
+  .cars-listing-content { padding: 18px; }
+  .recent-car-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 8px; }
+  .cars-listing-year { margin: 0; }
+  .cars-listing-price { margin: 8px 0 12px; font-size: 28px; line-height: 34px; color: #181a20; }
+  .recent-spec-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; min-height: 78px; padding: 8px 0; margin: auto 0 0; box-sizing: border-box; border-radius: 12px; background: #f8f9fc;
+   > div { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-width: 0; padding: 0 6px; }
+   > div + div { border-left: 1px solid #e9edf2; }
+   dt { order: 1; font: 400 11px/14px $font; color: #778291; }
+   dd { display: flex; flex-direction: column; align-items: center; gap: 2px; margin: 0; width: 100%; font: 500 12px/18px $font; color: #344054; overflow-wrap: anywhere; }
+   svg { width: 20px; height: 20px; }
+   dd span { min-height: 18px; display: flex; align-items: center; justify-content: center; }
+  }
+  .recent-card-actions { display: grid; grid-template-columns: 1fr 1.05fr; gap: 12px; margin-top: 12px;
+   a, > span { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px; box-sizing: border-box; border-radius: 12px; font: 500 14px/20px $font; white-space: normal; text-align: center; }
+   svg { width: 20px; height: 20px; flex-shrink: 0; }
+   .recent-compare { border: 1px solid #e0e5ed; background: #fff; color: #344054; &[aria-disabled='true'] { color: #98a2b3; } }
+   .recent-details { background: #d93818; color: #fff; }
+   @media (hover: hover) and (pointer: fine) { .recent-compare:hover { background: #f8f9fc; } .recent-details:hover { background: #bd2e12; } }
+  }
+  @media (max-width: 1439px) { .cars-listing-photo { height: 225px; } }
+  @media (max-width: 600px) { .cars-listing-photo { height: 220px; } .cars-listing-content { padding: 16px; } .cars-listing-price { font-size: 26px; line-height: 34px; } .recent-card-actions { gap: 8px; a, > span { padding: 10px 8px; font-size: 13px; } } }
+ }
  .home-page .trend-cars.trending-cars-section .trend-car-slide { height: auto; }
 }

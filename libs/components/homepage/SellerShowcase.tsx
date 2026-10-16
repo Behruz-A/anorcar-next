@@ -6,11 +6,6 @@ import { Button, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/mat
 import PlayArrowRounded from '@mui/icons-material/PlayArrowRounded';
 import CloseRounded from '@mui/icons-material/CloseRounded';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
-import CheckRounded from '@mui/icons-material/CheckRounded';
-import CompareArrowsRounded from '@mui/icons-material/CompareArrowsRounded';
-import PriceCheckRounded from '@mui/icons-material/PriceCheckRounded';
-import ForumOutlined from '@mui/icons-material/ForumOutlined';
-import DirectionsCarOutlined from '@mui/icons-material/DirectionsCarOutlined';
 import { useTranslation } from 'next-i18next';
 import { userVar } from '../../../apollo/store';
 import { GET_MARKETPLACE_OVERVIEW } from '../../../apollo/user/query';
@@ -31,24 +26,19 @@ interface Overview {
 }
 const features = [
 	{
-		title: 'Find Your Next Car',
-		text: 'Explore available vehicles by brand, price, model year, and location.',
-		icon: DirectionsCarOutlined,
+		title: 'Wide Selection',
+		text: 'Explore cars by brand, model, price and location.',
+		icon: 'car',
 	},
 	{
-		title: 'Compare with Confidence',
-		text: 'Compare vehicle prices and specifications side by side before making a decision.',
-		icon: CompareArrowsRounded,
+		title: 'Compare Easily',
+		text: 'Compare vehicles and find the best option for your needs.',
+		icon: 'compare',
 	},
 	{
-		title: 'Explore Prices in KRW',
-		text: 'Browse vehicle prices in Korean won and find options that match your budget.',
-		icon: PriceCheckRounded,
-	},
-	{
-		title: 'Connect with Sellers',
-		text: "Contact agents directly through ANORCAR's existing private messaging experience.",
-		icon: ForumOutlined,
+		title: 'Connect with Agents',
+		text: 'Contact agents directly and get more information.',
+		icon: 'chat',
 	},
 ];
 
@@ -93,20 +83,19 @@ export default function SellerShowcase() {
 		{
 			value: count(data?.getCars.metaCounter?.length === 0 ? 0 : data?.getCars.metaCounter?.[0]?.total),
 			label: 'Cars for sale',
+			icon: 'car',
 		},
 		{
 			value: count(data?.getAgents.metaCounter?.length === 0 ? 0 : data?.getAgents.metaCounter?.[0]?.total),
 			label: 'Active agents',
+			icon: 'agents',
 		},
-		{ value: count(data?.getBrands.length), label: 'Car brands' },
-		{ value: localeConfig.locales.length.toLocaleString(locale), label: 'Languages supported' },
+		{ value: count(data?.getBrands.length), label: 'Car brands', icon: 'brand' },
+		{ value: localeConfig.locales.length.toLocaleString(locale), label: 'Languages supported', icon: 'language' },
 	];
 	const isAgent = Boolean(user._id) && user.memberType === MemberType.AGENT;
 	const ctaHref = isAgent ? '/mypage?category=addCar' : '/car';
 	const ctaText = isAgent ? 'List Your Car' : 'Explore Cars';
-	const benefits = isAgent
-		? ['Create a detailed vehicle listing', 'Connect with interested buyers', 'Manage your listings in one place']
-		: ['Explore cars that match your needs', 'Compare prices and specifications', 'Contact sellers directly'];
 	return (
 		<section ref={root} className="seller-showcase" aria-labelledby="seller-showcase-heading">
 			<div className="seller-showcase-container seller-showcase-split">
@@ -116,7 +105,7 @@ export default function SellerShowcase() {
 						alt={t('A sports car on a scenic road')}
 						fill
 						loading={visible ? 'eager' : 'lazy'}
-						sizes="(max-width: 1200px) 100vw, 60vw"
+						sizes="(max-width: 600px) calc(100vw - 28px), (max-width: 1200px) calc(100vw - 64px), (max-width: 1808px) calc(60vw - 76.8px), 1008px"
 					/>
 					{videoId && (
 						<button
@@ -132,24 +121,21 @@ export default function SellerShowcase() {
 				</div>
 				<div className="seller-showcase-copy">
 					<div className="seller-showcase-copy-inner">
-						<span className="seller-showcase-eyebrow">{t(isAgent ? 'SELL WITH ANORCAR' : 'DISCOVER ANORCAR')}</span>
+						<span className="seller-showcase-eyebrow">{t('Explore ANORCAR')}</span>
 						<h2 id="seller-showcase-heading">
-							{t(isAgent ? 'Your Car. Your Next Buyer.' : 'Find a Car That Moves You.')}
+							{t('Find Your Next Car')}
+							<span>{t('With Confidence.')}</span>
 						</h2>
 						<p>
-							{t(
-								isAgent
-									? 'Create a detailed listing, showcase your vehicle, and connect with interested buyers.'
-									: 'Explore vehicles, compare your options, and connect with sellers to find your next car.',
-							)}
+							{t('Discover cars from agents, compare your favorite vehicles, explore prices in Korean won, and connect directly with agents — all in one place.')}
 						</p>
 						<ul>
-							{benefits.map((text) => (
-								<li key={text}>
-									<span aria-hidden="true">
-										<CheckRounded />
+							{features.map(({ title, text, icon }) => (
+								<li key={title}>
+									<span className="seller-showcase-icon" aria-hidden="true">
+										<Image src={`/img/showcase/${icon}.svg`} alt="" width={28} height={28} />
 									</span>
-									{t(text)}
+									<div><h3>{t(title)}</h3><p>{t(text)}</p></div>
 								</li>
 							))}
 						</ul>
@@ -164,7 +150,10 @@ export default function SellerShowcase() {
 					{metrics.map((metric) => (
 						<div key={metric.label}>
 							<dt>{t(metric.label)}</dt>
-							<dd>{metric.value}</dd>
+							<dd>
+								<span className="seller-showcase-icon" aria-hidden="true"><Image src={`/img/showcase/${metric.icon}.svg`} alt="" width={30} height={30} /></span>
+								<span className="seller-showcase-value">{metric.value}</span>
+							</dd>
 						</div>
 					))}
 				</dl>
@@ -176,18 +165,6 @@ export default function SellerShowcase() {
 						</button>
 					</div>
 				)}
-			</div>
-			<div className="container seller-showcase-container seller-showcase-benefits">
-				<h2>{t('Why Choose ANORCAR?')}</h2>
-				<div className="seller-showcase-benefit-grid">
-					{features.map(({ title, text, icon: Icon }) => (
-						<article key={title}>
-							<Icon aria-hidden="true" />
-							<h3>{t(title)}</h3>
-							<p>{t(text)}</p>
-						</article>
-					))}
-				</div>
 			</div>
 			{videoId && (
 				<Dialog

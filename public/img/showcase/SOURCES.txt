@@ -1,0 +1,1 @@
+SVG paths exported from installed @mui/icons-material v5. Material Icons designs: Google, Apache-2.0. @mui/icons-material package and export code: MIT, see MUI-LICENSE.txt. No remote asset links; the existing video and public/img/carimg21.png cover are unchanged.

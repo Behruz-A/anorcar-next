@@ -66,7 +66,7 @@ const TopAgentCard = ({ agent, isSelf, onInteract }: TopAgentProps) => {
       {t(following ? 'Following' : 'Follow')}
      </Button>}
     </div>
-    <p className="agent-location">{agent.memberAddress?.trim() || t('Car Agent')}</p>
+    <p className="agent-location">{agent.memberAddress?.trim() || t('Location not provided')}</p>
     <div className="agent-stats">
      <span>{t('Agent cars listed', { count: agent.memberCars })}</span>
      <span className="agent-views"><VisibilityOutlinedIcon />{agent.memberViews}</span>

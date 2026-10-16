@@ -16,12 +16,18 @@ const Showcase = require('../libs/components/homepage/SellerShowcase.tsx').defau
 const render = () => renderToStaticMarkup(React.createElement(Showcase));
 let html = render();
 assert.ok(html.includes('carimg21.png')); assert.ok(!html.includes('<iframe'), 'Video stays unmounted before Play');
-assert.ok(html.includes('href="/car"')); assert.ok(html.includes('Find a Car That Moves You.')); assert.ok(!html.includes('Lamborghini')); assert.ok(html.includes('seller-showcase-play')); assert.ok(html.includes('aria-label="Play video"')); assert.ok(html.includes('<dd>53</dd>'));
-user = { _id: 'agent', memberType: 'AGENT' }; assert.ok(render().includes('/mypage?category=addCar')); assert.ok(render().includes('Your Car. Your Next Buyer.'));
+assert.ok(html.includes('href="/car"')); assert.ok(html.includes('With Confidence.')); assert.ok(!html.includes('Lamborghini')); assert.ok(html.includes('seller-showcase-play')); assert.ok(html.includes('aria-label="Play video"')); assert.ok(html.includes('class="seller-showcase-value">53</span>'));
+for (const name of ['car', 'compare', 'chat', 'agents', 'brand', 'language']) {
+ assert.ok(html.includes(`/img/showcase/${name}.svg`));
+ assert.ok(fs.existsSync(`public/img/showcase/${name}.svg`));
+}
+assert.equal((html.match(/<li>/g) || []).length, 3);
+assert.ok(!html.includes('seller-showcase-benefit-grid'), 'Features belong beside the video without a duplicate lower grid');
+user = { _id: 'agent', memberType: 'AGENT' }; assert.ok(render().includes('/mypage?category=addCar')); assert.ok(render().includes('With Confidence.'));
 user = { _id: 'buyer', memberType: 'USER' }; assert.ok(render().includes('href="/car"'));
 user = { _id: 'admin', memberType: 'ADMIN' }; assert.ok(render().includes('href="/car"')); assert.ok(!render().includes('category=addCar'));
 overview.data = { getCars: { metaCounter: [] }, getAgents: { metaCounter: [] }, getBrands: [] };
-assert.equal((render().match(/<dd>0<\/dd>/g) || []).length, 3, 'Empty counts are real zeroes');
+assert.equal((render().match(/class="seller-showcase-value">0<\/span>/g) || []).length, 3, 'Empty counts are real zeroes');
 overview.error = Error('Fixture outage');
 assert.ok(render().includes('Marketplace figures could not be loaded.')); assert.ok(render().includes('Try again'));
 const source = fs.readFileSync('pages/index.tsx', 'utf8');

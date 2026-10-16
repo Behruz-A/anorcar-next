@@ -18,8 +18,14 @@ import PhotoCameraOutlinedIcon from '@mui/icons-material/PhotoCameraOutlined';
 import LocalGasStationOutlinedIcon from '@mui/icons-material/LocalGasStationOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import SpeedOutlinedIcon from '@mui/icons-material/SpeedOutlined';
+import EastIcon from '@mui/icons-material/East';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import BalanceOutlinedIcon from '@mui/icons-material/BalanceOutlined';
+import ElectricBoltOutlinedIcon from '@mui/icons-material/ElectricBoltOutlined';
+import { availableCompareCar } from '../../compareSelection';
 import { CustomJwtPayload } from '../../types/customJwtPayload';
-import { CarStatus, CarCondition } from '../../enums/car.enum';
+import { CarStatus, CarCondition, CarFuelType } from '../../enums/car.enum';
 
 interface CarCardType {
 	browse?: boolean;
@@ -42,6 +48,8 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 	const imagePath: string = car?.carImages?.[0] ? imageUrl(car?.carImages?.[0]) : '/img/car/hero.svg';
 	const [favoritePending, setFavoritePending] = React.useState(false);
 	const [imageFailed, setImageFailed] = React.useState(false);
+	const [photoIndex, setPhotoIndex] = React.useState(0);
+	React.useEffect(() => { setPhotoIndex(0); setImageFailed(false); }, [car._id]);
 	if (browse || variant) {
 		const liked = Boolean(myFavorites || car.meLiked?.[0]?.myFavorite);
 		const href = { pathname: '/car/detail', query: { id: car._id } };
@@ -57,9 +65,55 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 			setFavoritePending(true);
 			try { await likeCarHandler(user, car._id); } finally { setFavoritePending(false); }
 		};
+		if (variant === 'recent') {
+			const images = car.carImages ?? [];
+			const currentPhoto = photoIndex % Math.max(images.length, 1);
+			const changePhoto = (step: number) => {
+				setPhotoIndex((index) => (index + step + images.length) % images.length);
+				setImageFailed(false);
+			};
+			const specs = [
+				{ label: 'Mileage', value: car.carMileage != null ? `${car.carMileage.toLocaleString('en-US')} km` : t('Not provided'), icon: <SpeedOutlinedIcon /> },
+				{ label: 'Fuel', value: car.carFuelType ? t(carLabel(car.carFuelType)) : t('Not provided'), icon: car.carFuelType === CarFuelType.ELECTRIC ? <ElectricBoltOutlinedIcon /> : <LocalGasStationOutlinedIcon /> },
+				{ label: 'Transmission', value: car.carTransmission ? t(carLabel(car.carTransmission)) : t('Not provided'), icon: <SettingsOutlinedIcon /> },
+			];
+			return (
+				<Stack component="article" className="cars-listing-card vehicle-card vehicle-card--recent recent-car-card">
+					<div className="cars-listing-photo recent-car-image">
+						<div className="recent-photo-frame">
+							<img key={images[currentPhoto]} src={imageFailed ? imageUrl(null) : imageUrl(images[currentPhoto])} alt={name} loading="lazy" onError={() => setImageFailed(true)} />
+						</div>
+						<div className="recent-photo-badges">
+							{badge && <span className="cars-listing-badge">{t(badge)}</span>}
+							{car.carFuelType === CarFuelType.ELECTRIC && <span className="recent-electric-badge"><ElectricBoltOutlinedIcon />{t(carLabel(car.carFuelType))}</span>}
+						</div>
+						{likeCarHandler && <IconButton className="cars-listing-favorite" aria-label={t(liked ? 'Remove favorite' : 'Add favorite')} aria-pressed={liked}
+							disabled={favoritePending} aria-busy={favoritePending} onClick={event => void toggleFavorite(event)}>{liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}</IconButton>}
+						{images.length > 0 && <span className="cars-photo-count" aria-label={`${t('Photos')}: ${currentPhoto + 1} / ${images.length}`}><PhotoCameraOutlinedIcon />{currentPhoto + 1} / {images.length}</span>}
+						{images.length > 1 && <div className="recent-photo-controls swiper-no-swiping" onClick={event => event.stopPropagation()}>
+							<IconButton aria-label={t('Previous photo for {{car}}', { car: name })} onClick={() => changePhoto(-1)}><ChevronLeftIcon /></IconButton>
+							<IconButton aria-label={t('Next photo for {{car}}', { car: name })} onClick={() => changePhoto(1)}><ChevronRightIcon /></IconButton>
+						</div>}
+					</div>
+					<div className="cars-listing-content">
+						<div className="cars-listing-title"><Typography component="h3">{name}</Typography></div>
+						<div className="recent-car-meta">
+							<span className="cars-listing-year">{car.carYear > 0 ? car.carYear : t('Not provided')}</span>
+							{car.carLocation && <span className="cars-listing-location"><LocationOnIcon />{t(carLabel(car.carLocation))}</span>}
+						</div>
+						<Typography className="cars-listing-price">{formatPrice(car.carPrice)}</Typography>
+						<dl className="recent-spec-grid">{specs.map(({ label, value, icon }) => <div key={label}><dt>{t(label)}</dt><dd>{icon}<span>{value}</span></dd></div>)}</dl>
+						<div className="recent-card-actions">
+							{availableCompareCar(car) ? <Link className="recent-compare" href={{ pathname: '/car/compare', query: { ids: car._id } }} aria-label={t('Add {{car}} to comparison', { car: name })}><BalanceOutlinedIcon />{t('Compare')}</Link> : <span className="recent-compare" aria-disabled="true"><BalanceOutlinedIcon />{t('Compare')}</span>}
+							<Link className="recent-details" href={href}>{t('View Details')}<EastIcon /></Link>
+						</div>
+					</div>
+				</Stack>
+			);
+		}
 		return (
-			<Stack component="article" className={`cars-listing-card vehicle-card${variant ? ` vehicle-card--${variant}` : ''}${variant === 'recent' ? ' recent-car-card' : ''}`}>
-				<div className={`cars-listing-photo${variant === 'recent' ? ' recent-car-image' : ''}`}>
+			<Stack component="article" className={`cars-listing-card vehicle-card${variant ? ` vehicle-card--${variant}` : ''}`}>
+				<div className="cars-listing-photo">
 					<Link href={href} tabIndex={-1} aria-label={name}>
 						<img src={imageFailed ? imageUrl(null) : imageUrl(car.carImages?.[0])} alt={name} loading="lazy"
 							onError={() => setImageFailed(true)} />
@@ -70,7 +124,7 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 						disabled={favoritePending} aria-busy={favoritePending} onClick={event => void toggleFavorite(event)}>
 						{liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
 					</IconButton>}
-					{!variant && car.carImages?.length > 0 && <span className="cars-photo-count" aria-label={`${t('Photos')}: ${car.carImages.length}`}>
+					{variant !== 'trending' && car.carImages?.length > 0 && <span className="cars-photo-count" aria-label={`${t('Photos')}: ${car.carImages.length}`}>
 						<PhotoCameraOutlinedIcon />{car.carImages.length}
 					</span>}
 				</div>
@@ -83,16 +137,15 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 					<div className="cars-listing-specs">
 						{car.carFuelType && <span title={t('Fuel')}><LocalGasStationOutlinedIcon />{t(carLabel(car.carFuelType))}</span>}
 						{car.carTransmission && <span title={t('Transmission')}><SettingsOutlinedIcon />{t(carLabel(car.carTransmission))}</span>}
-						{car.carMileage != null && <span title={t('Mileage')}><SpeedOutlinedIcon />{car.carMileage.toLocaleString('en-US')} km</span>}
+						{car.carMileage != null && <span className="cars-spec-mileage" title={t('Mileage')}><SpeedOutlinedIcon />{car.carMileage.toLocaleString('en-US')} km</span>}
 						{(car.carRent || car.carBarter) && <span className="cars-listing-type">{[car.carRent && t('Rent'), car.carBarter && t('Barter')].filter(Boolean).join(' / ')}</span>}
 					</div>
 					<div className="cars-listing-footer">
 						{car.carLocation && <div className="cars-listing-location"><LocationOnIcon /><span>{t(carLabel(car.carLocation))}</span></div>}
-						{variant === 'recent' ? <span className="cars-listing-details" aria-hidden="true">{t('View full details')}</span> :
-							<div className="cars-listing-stats">
+						<div className="cars-listing-stats">
 								<span title={t('Views')}><RemoveRedEyeIcon />{car.carViews.toLocaleString('en-US')}</span>
 								<span title={t('Likes')}><FavoriteBorderIcon />{car.carLikes.toLocaleString('en-US')}</span>
-							</div>}
+							</div>
 					</div>
 				</div>
 			</Stack>
