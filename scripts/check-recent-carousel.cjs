@@ -9,7 +9,7 @@ let carousel, query, mutationOptions, states = [], cursor = 0;
 const cars = Array.from({ length: 9 }, (_, index) => ({ _id: String(index).padStart(24, '0') }));
 const div = ({ children, className, component }) => React.createElement(component || 'div', { className }, children);
 const image = ({ unoptimized, ...props }) => React.createElement('img', props);
-const button = ({ children, ...props }) => React.createElement('button', props, children);
+const button = ({ children, disableRipple, ...props }) => React.createElement('button', props, children);
 function load(relative, overrides) {
  const filename = path.resolve(__dirname, '..', relative), loaded = new Module(filename, module);
  loaded.filename = filename;
@@ -21,7 +21,7 @@ function load(relative, overrides) {
  return loaded.exports.default;
 }
 function shared(id) {
- if (id === 'react') return { ...React, useEffect: () => {}, useState: initial => {
+ if (id === 'react') return { ...React, useEffect: () => {}, useRef: value => ({ current: value }), useState: initial => {
   const slot = cursor++; if (!(slot in states)) states[slot] = initial;
   return [states[slot], value => { states[slot] = typeof value === 'function' ? value(states[slot]) : value; }];
  } };
@@ -90,7 +90,9 @@ function all(node) { return !React.isValidElement(node) ? [] : [node, ...React.C
  assert.deepEqual(compare.props.href, { pathname: '/car/compare', query: { ids: car._id } });
  assert.deepEqual(find(node => node.props.className === 'recent-details').props.href, { pathname: '/car/detail', query: { id: car._id } });
  assert.equal(all(tree).filter(node => node.props.href?.pathname === '/car/detail').length, 1, 'Only View Details may open the detail page');
- await find(node => node.props['aria-label'] === 'Add favorite').props.onClick({ preventDefault() {}, stopPropagation() {} });
+ const favoriteClick = find(node => node.props['aria-label'] === 'Add favorite').props.onClick;
+ favoriteClick({ preventDefault() {}, stopPropagation() {} });
+ favoriteClick({ preventDefault() {}, stopPropagation() {} });
  await Promise.resolve();
  assert.equal(favoriteCalls, 1);
  const cardHtml = renderToStaticMarkup(tree);

@@ -25,8 +25,8 @@ const RecentlyAddedCars = ({ initialInput }: RecentlyAddedCarsProps) => {
 
 	/** APOLLO REQUESTS **/
 	// Like returns an unpopulated Car; keep its null joins out of listing cache.
-	const [likeTargetCar] = useMutation(LIKE_TARGET_CAR, { fetchPolicy: 'no-cache' });
-	const { loading, data, error, refetch } = useQuery<{ getCars: Cars }>(GET_CARS, {
+	const [likeTargetCar] = useMutation(LIKE_TARGET_CAR, { fetchPolicy: 'no-cache', ignoreResults: true });
+	const { loading, data, error } = useQuery<{ getCars: Cars }>(GET_CARS, {
 		fetchPolicy: 'cache-and-network',
 		variables: { input: initialInput },
 		notifyOnNetworkStatusChange: true,
@@ -36,7 +36,6 @@ const RecentlyAddedCars = ({ initialInput }: RecentlyAddedCarsProps) => {
 		try {
 			if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
 			await likeTargetCar({ variables: { input: id } });
-			await refetch();
 		} catch (err: any) { await sweetMixinErrorAlert(err.message); }
 	};
 

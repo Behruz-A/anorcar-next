@@ -1,5 +1,5 @@
 import NextImage from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { Pagination, Stack, Typography } from '@mui/material';
@@ -11,7 +11,7 @@ import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import { LIKE_TARGET_BOARD_ARTICLE } from '../../../apollo/user/mutation';
 import { GET_BOARD_ARTICLES } from '../../../apollo/user/query';
 import { Messages } from '../../config';
-import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../sweetAlert';
+import { sweetMixinErrorAlert } from '../../sweetAlert';
 
 const MyArticles: NextPage = ({ initialInput }: T) => {
 	const device = useDeviceDetect();
@@ -24,10 +24,10 @@ const MyArticles: NextPage = ({ initialInput }: T) => {
 	const [totalCount, setTotalCount] = useState<number>(0);
 
 	/** APOLLO REQUESTS **/
-	const [likeTargetBoardArticle] = useMutation(LIKE_TARGET_BOARD_ARTICLE);
+	const [likeTargetBoardArticle] = useMutation(LIKE_TARGET_BOARD_ARTICLE, { fetchPolicy: 'no-cache', ignoreResults: true });
 
 	const {
-		refetch: boardArticlesRefetch,
+		data: articleData,
 	} = useQuery(GET_BOARD_ARTICLES, {
 		fetchPolicy: 'network-only',
 		variables: {
@@ -39,6 +39,12 @@ const MyArticles: NextPage = ({ initialInput }: T) => {
 			setTotalCount(data?.getBoardArticles?.metaCounter[0]?.total);
 		},
 	});
+
+	useEffect(() => {
+		if (!articleData?.getBoardArticles) return;
+		setBoardArticles(articleData.getBoardArticles.list);
+		setTotalCount(articleData.getBoardArticles.metaCounter?.[0]?.total ?? 0);
+	}, [articleData]);
 
 	/** HANDLERS **/
 	const paginationHandler = (_e: T, value: number) => {
@@ -56,9 +62,9 @@ const MyArticles: NextPage = ({ initialInput }: T) => {
 					input: id,
 				},
 			});
-			await boardArticlesRefetch({ input: searchCommunity });
+			
 
-			await sweetTopSmallSuccessAlert('Success!', 750);
+			
 		} catch (err: any) {
 
 			sweetMixinErrorAlert(err.message).then();

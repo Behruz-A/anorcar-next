@@ -166,9 +166,9 @@
   .recent-card-actions { display: grid; grid-template-columns: 1fr 1.05fr; gap: 12px; margin-top: 12px;
    a, > span { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px; box-sizing: border-box; border-radius: 12px; font: 500 14px/20px $font; white-space: normal; text-align: center; }
    svg { width: 20px; height: 20px; flex-shrink: 0; }
-   .recent-compare { border: 1px solid #e0e5ed; background: #fff; color: #344054; &[aria-disabled='true'] { color: #98a2b3; } }
-   .recent-details { background: #d93818; color: #fff; }
-   @media (hover: hover) and (pointer: fine) { .recent-compare:hover { background: #f8f9fc; } .recent-details:hover { background: #bd2e12; } }
+   .recent-compare { border: 1px solid #0b1f33; background: #fff; color: #0b1f33; &[aria-disabled='true'] { color: #98a2b3; } }
+   .recent-details { background: #0b1f33; color: #fff; }
+   @media (hover: hover) and (pointer: fine) { .recent-compare:hover { background: #f8f9fc; } .recent-details:hover { background: #163a59; } }
   }
   @media (max-width: 1439px) { .cars-listing-photo { height: 225px; } }
   @media (max-width: 600px) { .cars-listing-photo { height: 220px; } .cars-listing-content { padding: 16px; } .cars-listing-price { font-size: 26px; line-height: 34px; } .recent-card-actions { gap: 8px; a, > span { padding: 10px 8px; font-size: 13px; } } }

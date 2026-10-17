@@ -152,11 +152,12 @@
 			}
 		}
 		.agent-contact-button {
-			background: #ed432e;
+			background: #0b1f33;
+			color: #fff;
 			padding: 10px 18px;
 			box-shadow: none;
 			&:hover {
-				background: #cf3320;
+				background: #163a59;
 				box-shadow: none;
 			}
 		}
@@ -438,7 +439,8 @@
 					color: #717783;
 				}
 				button {
-					background: #ed432e;
+					background: #0b1f33;
+			color: #fff;
 					box-shadow: none;
 					&:disabled {
 						background: #e3e6ea;

@@ -24,7 +24,7 @@ const shared = id => {
  if (id === 'next-i18next') return { useTranslation: () => ({ t: value => value }) };
  if (id.startsWith('@mui/icons-material/')) return () => React.createElement('svg');
  if (id === '@mui/material') return { Stack: div, Alert: div, CircularProgress: div,
-  IconButton: ({ children, ...props }) => React.createElement('button', props, children),
+  IconButton: ({ children, disableRipple, ...props }) => React.createElement('button', props, children),
   Button: ({ children, startIcon, variant, ...props }) => React.createElement('button', props, startIcon, children) };
  if (id === 'next/link') return ({ children, href, ...props }) => React.createElement('a', { ...props, href: typeof href === 'string' ? href : `${href.pathname}?agentId=${href.query.agentId}` }, children);
 };
@@ -60,7 +60,7 @@ const Card = load('libs/components/homepage/TopAgentCard.tsx', id => {
  await interact({ ...agent, meFollowed: [{ myFollowing: true }] }, 'follow');
  assert.deepEqual(calls.splice(0), [['unsubscribe', 'agent'], 'refetch']);
  await interact(agent, 'like');
- assert.deepEqual(calls.splice(0), [['like', 'agent'], 'refetch']);
+ assert.deepEqual(calls.splice(0), [['like', 'agent']]);
  await interact({ ...agent, _id: 'viewer' }, 'follow');
  assert.equal(calls.length, 0);
  user = { _id: '' };

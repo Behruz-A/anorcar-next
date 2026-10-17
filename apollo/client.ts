@@ -13,9 +13,9 @@ import {
 } from '../libs/auth/session';
 import { TokenRefreshLink } from 'apollo-link-token-refresh';
 import { sweetErrorAlert } from '../libs/sweetAlert';
-import { socketVar } from './store';
+import { socketVar, userVar } from './store';
 import { REACT_APP_API_GRAPHQL_URL, REACT_APP_API_WS } from '../libs/config';
-import { createApolloCache } from './cache';
+import { createApolloCache, updateLikeCache } from './cache';
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 function getHeaders() {
@@ -172,6 +172,9 @@ function createApolloClient() {
 		ssrMode: typeof window === 'undefined',
 		link: createIsomorphicLink(),
 		cache: createApolloCache(),
+		defaultOptions: {
+			mutate: { update: (cache, result) => updateLikeCache(cache, result, userVar()._id) },
+		},
 		resolvers: {},
 	});
 }

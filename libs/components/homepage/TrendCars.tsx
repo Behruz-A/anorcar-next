@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Stack, Alert, CircularProgress, IconButton } from '@mui/material';
 import Link from 'next/link';
 import { Direction } from '../../enums/common.enum';
@@ -15,7 +15,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { GET_CARS } from '../../../apollo/user/query';
 import { T } from '../../types/common';
 import { LIKE_TARGET_CAR } from '../../../apollo/user/mutation';
-import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../sweetAlert';
+import { sweetMixinErrorAlert } from '../../sweetAlert';
 import { Message } from '../../enums/common.enum';
 
 interface TrendCarsProps {
@@ -28,13 +28,12 @@ const TrendCars = (props: TrendCarsProps) => {
 	const [trendCars, setTrendCars] = useState<Car[]>([]);
 
 	/** APOLLO REQUESTS **/
-	const [likeTargetCar] = useMutation(LIKE_TARGET_CAR);
+	const [likeTargetCar] = useMutation(LIKE_TARGET_CAR, { fetchPolicy: 'no-cache', ignoreResults: true });
 
 	const {
 		loading: getCarsLoading,
 		data: getCarsData,
 		error: getCarsError,
-		refetch: getCarsRefetch,
 	} = useQuery(GET_CARS, {
 		fetchPolicy: 'cache-and-network',
 		variables: { input: initialInput },
@@ -43,6 +42,10 @@ const TrendCars = (props: TrendCarsProps) => {
 			setTrendCars((data?.getCars?.list ?? []).filter((car: Car) => car.carLikes >= 1 && car.carViews >= 2));
 		},
 	});
+useEffect(() => {
+		if (!getCarsData?.getCars?.list) return;
+		setTrendCars((previous) => previous.map((car) => getCarsData.getCars.list.find((item: Car) => item._id === car._id) ?? car));
+	}, [getCarsData]);
 /** HANDLERS **/
 	const likeCarHandler = async (user: T, id: string) => {
 		try {
@@ -53,10 +56,7 @@ const TrendCars = (props: TrendCarsProps) => {
 			await likeTargetCar({
 				variables: { input: id },
 			});
-			await getCarsRefetch({ input: initialInput });
-			// execute getCarsRefetch
 
-			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
 
 			sweetMixinErrorAlert(err.message).then();

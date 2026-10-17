@@ -409,6 +409,7 @@
 		}
 		.agents-like {
 			color: #fff;
+			&:focus-visible { outline: 2px solid #0b1f33; outline-offset: 3px; }
 			&[aria-pressed='true'] {
 				background: #fff;
 				color: #f04432;
@@ -461,8 +462,8 @@
 		margin-top: 14px;
 		.agents-follow {
 			min-height: 38px;
-			border-color: #f13b18;
-			color: #e03a18;
+			border-color: #0b1f33;
+			color: #0b1f33;
 			font-family: $font;
 			text-transform: none;
 			font-size: 12px;
@@ -477,9 +478,9 @@
 		.agents-profile-link {
 			gap: 8px;
 			margin: 0 0 0 auto;
-			background: #edf1f5;
-			color: #13213a;
-			border-color: #edf1f5;
+			background: #0b1f33;
+			color: #fff;
+			border-color: #0b1f33;
 			min-height: 38px;
 			font-size: 12px;
 			svg {
@@ -487,9 +488,9 @@
 				height: 17px;
 			}
 			&:hover {
-				background: #e1e7ef;
-				color: #13213a;
-				border-color: #e1e7ef;
+				background: #163a59;
+				color: #fff;
+				border-color: #163a59;
 			}
 		}
 	}
@@ -611,11 +612,11 @@
 	}
 	.MuiButton-contained {
 		min-height: 42px;
-		background: #f13b18;
+		background: #0b1f33;
 		color: #fff;
 		box-shadow: none;
 		&:hover {
-			background: #d93213;
+			background: #163a59;
 		}
 	}
 }

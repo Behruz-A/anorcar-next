@@ -28,7 +28,7 @@ const TopAgents = ({ initialInput }: TopAgentsProps) => {
  const router = useRouter();
  const [subscribe] = useMutation(SUBSCRIBE);
  const [unsubscribe] = useMutation(UNSUBSCRIBE);
- const [likeMember] = useMutation(LIKE_TARGET_MEMBER);
+ const [likeMember] = useMutation(LIKE_TARGET_MEMBER, { fetchPolicy: 'no-cache', ignoreResults: true });
 
  /** APOLLO REQUESTS **/
  const { loading: getAgentsLoading, data: getAgentsData, error: getAgentsError, refetch } = useQuery(GET_AGENTS, {
@@ -47,13 +47,18 @@ const TopAgents = ({ initialInput }: TopAgentsProps) => {
 
  useEffect(() => { refetch().catch(() => undefined); }, [user._id, refetch]);
 
+ useEffect(() => {
+  if (!getAgentsData?.getAgents?.list) return;
+  setTopAgents(previous => previous.map(agent => getAgentsData.getAgents.list.find((item: Member) => item._id === agent._id) ?? agent));
+ }, [getAgentsData]);
+
  const interact = async (agent: Member, action: 'follow' | 'like') => {
   if (!user._id) { await router.push('/account/join'); return; }
   if (user._id === agent._id) return;
   try {
    const mutate = action === 'like' ? likeMember : agent.meFollowed?.[0]?.myFollowing ? unsubscribe : subscribe;
    await mutate({ variables: { input: agent._id } });
-   await refetch();
+   if (action === 'follow') await refetch();
   } catch (error) { await sweetErrorHandling(error); }
  };
 

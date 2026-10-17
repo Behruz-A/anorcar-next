@@ -37,7 +37,7 @@ import { CustomJwtPayload } from '../../libs/types/customJwtPayload';
 import { Direction } from '../../libs/enums/common.enum';
 import { GET_AGENTS } from '../../apollo/user/query';
 import { LIKE_TARGET_MEMBER, SUBSCRIBE, UNSUBSCRIBE } from '../../apollo/user/mutation';
-import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
+import { sweetMixinErrorAlert } from '../../libs/sweetAlert';
 import { Messages } from '../../libs/config';
 
 const SORTS = [
@@ -106,7 +106,7 @@ const AgentList: NextPage = () => {
 	const [filtersOpen, setFiltersOpen] = useState(false);
 	const [moreLanguages, setMoreLanguages] = useState(false);
 	const compact = useMediaQuery('(max-width: 900px)');
-	const [likeTargetMember] = useMutation(LIKE_TARGET_MEMBER, { fetchPolicy: 'no-cache' });
+	const [likeTargetMember] = useMutation(LIKE_TARGET_MEMBER, { fetchPolicy: 'no-cache', ignoreResults: true });
 	const [subscribe] = useMutation(SUBSCRIBE);
 	const [unsubscribe] = useMutation(UNSUBSCRIBE);
 	useEffect(() => {
@@ -140,8 +140,6 @@ const AgentList: NextPage = () => {
 		try {
 			if (!user._id) throw new Error(Messages.error2);
 			await likeTargetMember({ variables: { input: id } });
-			await refetch({ input });
-			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: unknown) {
 			await sweetMixinErrorAlert(err instanceof Error ? err.message : 'Unable to like agent');
 		}

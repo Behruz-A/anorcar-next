@@ -53,7 +53,7 @@ const TopAgentCard = ({ agent, isSelf, onInteract }: TopAgentProps) => {
       onError={() => setFailedImage(agentImage)} />
     )}
    </Link>
-   {!isSelf && <IconButton className="agent-like" aria-label={`${t(liked ? 'Unlike agent' : 'Like agent')}: ${name}`}
+   {!isSelf && <IconButton className="agent-like" disableRipple aria-label={`${t(liked ? 'Unlike agent' : 'Like agent')}: ${name}`}
     aria-pressed={liked} disabled={pending} onClick={() => handleAction('like')}>
     {liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
    </IconButton>}

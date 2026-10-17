@@ -46,14 +46,17 @@ const BrowseCommunityCard = ({ boardArticle: article, likeArticleHandler }: Comm
 	const href = { pathname: '/community/detail', query: { articleCategory: article.articleCategory, id: article._id } };
 	const memberId = article.memberData?._id || article.memberId;
 	const excerpt = articleExcerpt(article.articleContent);
+	const likeLock = React.useRef(false);
 	const toggleLike = async (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
 		event.stopPropagation();
-		if (!likeArticleHandler || pending) return;
+		if (!likeArticleHandler || likeLock.current) return;
+		likeLock.current = true;
 		setPending(true);
 		try {
 			await likeArticleHandler(event, user, article._id);
 		} finally {
+			likeLock.current = false;
 			setPending(false);
 		}
 	};
@@ -116,7 +119,7 @@ const BrowseCommunityCard = ({ boardArticle: article, likeArticleHandler }: Comm
 							<RemoveRedEyeIcon />
 							{new Intl.NumberFormat(locale, { notation: 'compact' }).format(article.articleViews)}
 						</span>
-						<IconButton
+						<IconButton disableRipple
 							aria-label={t(liked ? 'Unlike post' : 'Like post')}
 							aria-pressed={liked}
 							disabled={pending || !likeArticleHandler}

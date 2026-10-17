@@ -62,7 +62,7 @@ const MyPage: NextPage = () => {
 	/** APOLLO REQUESTS **/
 	const [subscribe] = useMutation(SUBSCRIBE);
 	const [unsubscribe] = useMutation(UNSUBSCRIBE);
-	const [likeTargetMember] = useMutation(LIKE_TARGET_MEMBER);
+	const [likeTargetMember] = useMutation(LIKE_TARGET_MEMBER, { fetchPolicy: 'no-cache', ignoreResults: true });
 
 	/** LIFECYCLES **/
 	useEffect(() => {
@@ -107,7 +107,7 @@ const MyPage: NextPage = () => {
 		}
 	};
 
-	const likeMemberHandler = async (id: string, refetch: any, query: any) => {
+	const likeMemberHandler = async (id: string, _refetch: any, _query: any) => {
 		try {
 			if (!id) return;
 			if (!user._id) throw new Error(Messages.error2);
@@ -118,8 +118,6 @@ const MyPage: NextPage = () => {
 				},
 			});
 
-			await sweetTopSmallSuccessAlert('Success!', 800);
-			await refetch({ input: query });
 		} catch (err: any) {
 
 			sweetMixinErrorAlert(err.message).then();

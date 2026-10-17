@@ -66,7 +66,7 @@ const Community: NextPage = () => {
 		fetchPolicy: 'network-only',
 		notifyOnNetworkStatusChange: true,
 	});
-	const [likeArticle] = useMutation(LIKE_TARGET_BOARD_ARTICLE);
+	const [likeArticle] = useMutation(LIKE_TARGET_BOARD_ARTICLE, { fetchPolicy: 'no-cache', ignoreResults: true });
 	const articles = data?.getBoardArticles.list ?? [];
 	const total = data?.getBoardArticles.metaCounter?.[0]?.total ?? 0;
 	const busy = !mounted || !router.isReady || loading;
@@ -94,7 +94,6 @@ const Community: NextPage = () => {
 		try {
 			if (!viewer._id) throw new Error(t('Please login first!'));
 			await likeArticle({ variables: { input: id } });
-			await refetch({ input });
 		} catch (error: unknown) {
 			await sweetMixinErrorAlert(error instanceof Error ? error.message : t('Something went wrong!'));
 		}

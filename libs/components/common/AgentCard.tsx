@@ -75,7 +75,7 @@ const AgentCard = ({ agent, likeMemberHandler, followMemberHandler }: AgentCardP
 					/>
 				</Link>
 				<IconButton
-					className="agents-like"
+					className="agents-like" disableRipple
 					aria-label={`${t(liked ? 'Unlike agent' : 'Like agent')}: ${name}`}
 					aria-pressed={liked}
 					disabled={pending || isSelf}

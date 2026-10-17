@@ -6,6 +6,7 @@ import React from 'react';
 import { Stack, Box, Divider, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Car } from '../../types/car/car';
 import { imageUrl, topCarRank } from '../../config';
 import { useReactiveVar } from '@apollo/client';
@@ -24,6 +25,8 @@ const CarBigCard = (props: CarBigCardProps) => {
 
 	const user = useReactiveVar(userVar);
 	const router = useRouter();
+	const likeLock = React.useRef(false);
+	const [likePending, setLikePending] = React.useState(false);
 
 	/** HANDLERS ***/
 	const goCarDetatilPage = (carId: string) => {
@@ -75,17 +78,24 @@ const CarBigCard = (props: CarBigCardProps) => {
 								<RemoveRedEyeIcon />
 							</IconButton>
 							<Typography className="view-cnt">{car?.carViews}</Typography>
-							<IconButton
+							<IconButton disableRipple disabled={likePending || !likeCarHandler}
+								aria-label={t(car.meLiked?.[0]?.myFavorite ? 'Remove favorite' : 'Add favorite')}
+								aria-pressed={Boolean(car.meLiked?.[0]?.myFavorite)}
 								color={'default'}
-								onClick={(e: any) => {
+								onClick={async (e) => {
+									e.preventDefault();
 									e.stopPropagation();
-									likeCarHandler?.(user, car?._id);
+									if (likeLock.current || !likeCarHandler) return;
+									likeLock.current = true;
+									setLikePending(true);
+									try { await likeCarHandler(user, car._id); }
+									finally { likeLock.current = false; setLikePending(false); }
 								}}
 							>
 								{car?.meLiked && car?.meLiked[0]?.myFavorite ? (
-									<FavoriteIcon style={{ color: 'red' }} />
+									<FavoriteIcon color="primary" />
 								) : (
-									<FavoriteIcon />
+									<FavoriteBorderIcon />
 								)}
 							</IconButton>
 							<Typography className="view-cnt">{car?.carLikes}</Typography>

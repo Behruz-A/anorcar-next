@@ -98,7 +98,7 @@ const CommunityDetail: NextPage = () => {
 	const total = commentsQuery.data?.getComments.metaCounter?.[0]?.total ?? article?.articleComments ?? 0;
 	const category = communityCategories.find((item) => item.value === article?.articleCategory);
 	const backHref = { pathname: '/community', query: category ? { articleCategory: category.value } : {} };
-	const [likeArticle] = useMutation(LIKE_TARGET_BOARD_ARTICLE);
+	const [likeArticle] = useMutation(LIKE_TARGET_BOARD_ARTICLE, { fetchPolicy: 'no-cache', ignoreResults: true });
 	const [createComment] = useMutation(CREATE_COMMENT);
 	const [updateComment] = useMutation(UPDATE_COMMENT);
 	const errorText = (error: unknown) => (error instanceof Error ? error.message : t('Something went wrong!'));
@@ -115,7 +115,6 @@ const CommunityDetail: NextPage = () => {
 		setMessage('');
 		try {
 			await likeArticle({ variables: { input: articleId } });
-			await articleQuery.refetch();
 		} catch (error: unknown) {
 			setMessage(errorText(error));
 		} finally {

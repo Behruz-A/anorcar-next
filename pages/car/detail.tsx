@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { imageUrl } from '../../libs/config';
 import { carLabel } from '../../libs/car';
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { Box, Button, CircularProgress, Stack, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
 import withLayoutFull from '../../libs/components/layout/LayoutFull';
 import { GetServerSideProps, NextPage } from 'next';
 import Review from '../../libs/components/car/Review';
@@ -37,7 +37,7 @@ import { T } from '../../libs/types/common';
 import { Direction, Message } from '../../libs/enums/common.enum';
 import { CREATE_COMMENT } from '../../apollo/user/mutation';
 import { LIKE_TARGET_CAR } from '../../apollo/user/mutation';
-import { sweetErrorHandling, sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
+import { sweetErrorHandling, sweetMixinErrorAlert } from '../../libs/sweetAlert';
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => detailSeoProps('car')(context);
@@ -48,6 +48,7 @@ const CarDetail: NextPage = ({ initialComment }: any) => {
 	const router = useRouter();
 	const user = useReactiveVar(userVar);
 	const [carId, setCarId] = useState<string | null>(null);
+	const likeLock = React.useRef(false);
 	const [car, setCar] = useState<Car | null>(null);
 	const [slideImage, setSlideImage] = useState<string>('');
 	const [destinationCars, setDestinationCars] = useState<Car[]>([]);
@@ -61,10 +62,11 @@ const CarDetail: NextPage = ({ initialComment }: any) => {
 	});
 
 	/** APOLLO REQUESTS **/
-	const [likeTargetCar] = useMutation(LIKE_TARGET_CAR);
+	const [likeTargetCar] = useMutation(LIKE_TARGET_CAR, { fetchPolicy: 'no-cache', ignoreResults: true });
 	const [createComment, { loading: creatingComment }] = useMutation(CREATE_COMMENT);
 
 	const {
+		data: carData,
 		loading: getCarLoading,
 		error: getCarError,
 		refetch: getCarRefetch,
@@ -81,7 +83,7 @@ const CarDetail: NextPage = ({ initialComment }: any) => {
 	});
 
 	const {
-		refetch: getCarsRefetch,
+		data: relatedCarsData,
 	} = useQuery(GET_CARS, {
 		fetchPolicy: 'cache-and-network',
 		variables: {
@@ -145,29 +147,25 @@ const CarDetail: NextPage = ({ initialComment }: any) => {
 		setSlideImage(image);
 	};
 
+	useEffect(() => {
+		if (carData?.getCar?._id === carId) setCar(carData.getCar);
+	}, [carData, carId]);
+	useEffect(() => {
+		if (relatedCarsData?.getCars?.list) setDestinationCars(relatedCarsData.getCars.list.filter((item: Car) => item._id !== carId));
+	}, [relatedCarsData, carId]);
+
 	const likeCarHandler = async (user: T, id: string) => {
+		if (likeLock.current) return;
+		likeLock.current = true;
 		try {
 			if (!id) return;
 			if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
 			// execute likeTargetCar Mutation
 			await likeTargetCar({ variables: { input: id } });
-			await getCarRefetch({ input: carId });
-			await getCarsRefetch({
-				input: {
-					page: 1,
-					limit: 4,
-					sort: 'createdAt',
-					direction: Direction.DESC,
-					search: {
-						locations: [car?.carLocation],
-					},
-				},
-			});
-			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
 
 			sweetMixinErrorAlert(err.message).then();
-		}
+		} finally { likeLock.current = false; }
 	};
 
 	const commentPaginationChangeHandler = async (_event: ChangeEvent<unknown>, value: number) => {
@@ -276,15 +274,12 @@ const CarDetail: NextPage = ({ initialComment }: any) => {
 											<Typography>{car?.carViews}</Typography>
 										</Stack>
 										<Stack className="button-box">
-											{car?.meLiked && car?.meLiked[0]?.myFavorite ? (
-												<FavoriteIcon color="primary" fontSize={'medium'} onClick={() => likeCarHandler(user, car._id)} />
-											) : (
-												<FavoriteBorderIcon
-													fontSize={'medium'}
-													// @ts-ignore
-													onClick={() => likeCarHandler(user, car?._id)}
-												/>
-											)}
+											<IconButton disableRipple
+												aria-label={t(car?.meLiked?.[0]?.myFavorite ? 'Remove favorite' : 'Add favorite')}
+												aria-pressed={Boolean(car?.meLiked?.[0]?.myFavorite)}
+												onClick={() => void likeCarHandler(user, car._id)}>
+												{car?.meLiked?.[0]?.myFavorite ? <FavoriteIcon color="primary" /> : <FavoriteBorderIcon />}
+											</IconButton>
 											<Typography>{car?.carLikes}</Typography>
 										</Stack>
 									</Stack>

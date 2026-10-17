@@ -67,7 +67,7 @@ const CarList: NextPage = () => {
 		notifyOnNetworkStatusChange: true,
 		fetchPolicy: 'network-only',
 	});
-	const [likeCar] = useMutation(LIKE_TARGET_CAR);
+	const [likeCar] = useMutation(LIKE_TARGET_CAR, { fetchPolicy: 'no-cache', ignoreResults: true });
 	const apply = (next: CarsInquiry, scroll = false) => {
 		scrollPage.current = scroll ? next.page : null;
 		void router
@@ -84,7 +84,6 @@ const CarList: NextPage = () => {
 		try {
 			if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
 			await likeCar({ variables: { input: id } });
-			await refetch();
 		} catch (error: unknown) {
 			await sweetMixinErrorAlert(
 				error instanceof Error ? error.message : t('Cars could not be loaded. Please try again.'),

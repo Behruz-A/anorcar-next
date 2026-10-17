@@ -12,7 +12,7 @@ import { LIKE_TARGET_BOARD_ARTICLE } from '../../../apollo/user/mutation';
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_BOARD_ARTICLES } from '../../../apollo/user/query';
 import { Messages } from '../../config';
-import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../sweetAlert';
+import { sweetMixinErrorAlert } from '../../sweetAlert';
 
 const MemberArticles: NextPage = ({ initialInput }: any) => {
 	const device = useDeviceDetect();
@@ -23,10 +23,10 @@ const MemberArticles: NextPage = ({ initialInput }: any) => {
 	const [memberBoArticles, setMemberBoArticles] = useState<BoardArticle[]>([]);
 
 	/** APOLLO REQUESTS **/
-	const [likeTargetBoardArticle] = useMutation(LIKE_TARGET_BOARD_ARTICLE);
+	const [likeTargetBoardArticle] = useMutation(LIKE_TARGET_BOARD_ARTICLE, { fetchPolicy: 'no-cache', ignoreResults: true });
 
 	const {
-		refetch: boardArticlesRefetch,
+		data: articleData,
 	} = useQuery(GET_BOARD_ARTICLES, {
 		fetchPolicy: 'network-only',
 		variables: { input: searchFilter },
@@ -42,6 +42,12 @@ const MemberArticles: NextPage = ({ initialInput }: any) => {
 		if (typeof memberId === 'string') setSearchFilter((previous) => ({ ...previous, page: 1, search: { memberId } }));
 	}, [memberId]);
 
+	useEffect(() => {
+		if (!articleData?.getBoardArticles) return;
+		setMemberBoArticles(articleData.getBoardArticles.list);
+		setTotal(articleData.getBoardArticles.metaCounter?.[0]?.total ?? 0);
+	}, [articleData]);
+
 	/** HANDLERS **/
 	const paginationHandler = (_e: T, value: number) => {
 		setSearchFilter({ ...searchFilter, page: value });
@@ -53,8 +59,6 @@ const MemberArticles: NextPage = ({ initialInput }: any) => {
 			if (!id) return;
 			if (!user._id) throw new Error(Messages.error2);
 			await likeTargetBoardArticle({ variables: { input: id } });
-			await boardArticlesRefetch({ input: searchFilter });
-			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
 
 			sweetMixinErrorAlert(err.message).then();

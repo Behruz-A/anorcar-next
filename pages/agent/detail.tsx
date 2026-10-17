@@ -62,7 +62,7 @@ const nicknameInitials = (nickname: string) => {
 	return letters.toLocaleUpperCase();
 };
 
-const AgentProfile = ({ agent, refresh }: { agent: Member; refresh: () => Promise<unknown> }) => {
+const AgentProfile = ({ agent }: { agent: Member }) => {
 	const { t, i18n } = useTranslation('common');
 	const user = useReactiveVar(userVar);
 	const [tab, setTab] = useState<ProfileTab>('listings');
@@ -71,6 +71,7 @@ const AgentProfile = ({ agent, refresh }: { agent: Member; refresh: () => Promis
 	const [commentText, setCommentText] = useState('');
 	const [commentPending, setCommentPending] = useState(false);
 	const [likePending, setLikePending] = useState(false);
+	const likeLock = useRef(false);
 	const [failedImage, setFailedImage] = useState<string | null>(null);
 	const [notice, setNotice] = useState('');
 	const [shareUrl, setShareUrl] = useState('');
@@ -100,8 +101,8 @@ const AgentProfile = ({ agent, refresh }: { agent: Member; refresh: () => Promis
 		fetchPolicy: 'network-only',
 		notifyOnNetworkStatusChange: true,
 	});
-	const [likeMember] = useMutation(LIKE_TARGET_MEMBER);
-	const [likeCar] = useMutation(LIKE_TARGET_CAR);
+	const [likeMember] = useMutation(LIKE_TARGET_MEMBER, { fetchPolicy: 'no-cache', ignoreResults: true });
+	const [likeCar] = useMutation(LIKE_TARGET_CAR, { fetchPolicy: 'no-cache', ignoreResults: true });
 	const [createComment] = useMutation(CREATE_COMMENT);
 	const name = agent.memberFullName?.trim() || agent.memberNick;
 	const portrait = agent.memberImage ? imageUrl(agent.memberImage) : '';
@@ -135,18 +136,19 @@ const AgentProfile = ({ agent, refresh }: { agent: Member; refresh: () => Promis
 		return () => cancelAnimationFrame(frame);
 	}, [contactFocus, tab]);
 	const toggleLike = async () => {
-		if (likePending) return;
+		if (likeLock.current) return;
 		if (!user._id) {
 			await sweetMixinErrorAlert(t('Please login first!'));
 			return;
 		}
+		likeLock.current = true;
 		setLikePending(true);
 		try {
 			await likeMember({ variables: { input: agent._id } });
-			await refresh();
 		} catch (error: unknown) {
 			await sweetMixinErrorAlert(error instanceof Error ? error.message : t('Something went wrong!'));
 		} finally {
+			likeLock.current = false;
 			setLikePending(false);
 		}
 	};
@@ -154,7 +156,6 @@ const AgentProfile = ({ agent, refresh }: { agent: Member; refresh: () => Promis
 		try {
 			if (!viewer._id) throw new Error(t('Please login first!'));
 			await likeCar({ variables: { input: id } });
-			await cars.refetch({ input: carsInput });
 		} catch (error: unknown) {
 			await sweetMixinErrorAlert(error instanceof Error ? error.message : t('Something went wrong!'));
 		}
@@ -538,7 +539,7 @@ const AgentDetail: NextPage = () => {
 				) : agent?._id === agentId &&
 				  agent.memberType === MemberType.AGENT &&
 				  agent.memberStatus === MemberStatus.ACTIVE ? (
-					<AgentProfile key={agentId} agent={agent} refresh={() => profile.refetch()} />
+					<AgentProfile key={agentId} agent={agent} />
 				) : (
 					<div className="agent-profile-unavailable">
 						<h1>{t('Agent profile unavailable')}</h1>

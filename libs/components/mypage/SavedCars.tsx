@@ -17,13 +17,14 @@ export default function SavedCars({ visited = false }: { visited?: boolean }) {
  const { data, loading, error, refetch } = useQuery<{ getFavorites?: Cars; getVisited?: Cars }>(visited ? GET_VISITED : GET_FAVORITES, {
   variables: { input }, skip: !ready || !user._id, fetchPolicy: 'network-only', notifyOnNetworkStatusChange: true,
  });
- const [likeCar, { loading: liking }] = useMutation(LIKE_TARGET_CAR);
+ const [likeCar, { loading: liking }] = useMutation(LIKE_TARGET_CAR, { fetchPolicy: 'no-cache' });
  const result = visited ? data?.getVisited : data?.getFavorites;
  const total = result?.metaCounter?.[0]?.total ?? 0;
  const toggleLike = async (_user: unknown, id: string) => {
   if (liking || !user._id) return;
   try {
    await likeCar({ variables: { input: id } });
+   if (visited) return;
    const next = await refetch();
    const count = next.data.getFavorites?.metaCounter?.[0]?.total ?? 0;
    if (input.page > 1 && (input.page - 1) * input.limit >= count) setInput({ ...input, page: input.page - 1 });
@@ -31,7 +32,7 @@ export default function SavedCars({ visited = false }: { visited?: boolean }) {
  };
  return <div id="my-favorites-page">
   <Typography variant="h4" sx={{ mb: 3 }}>{t(visited ? 'Recently visited' : 'My favorites')}</Typography>
-  {loading && <CircularProgress aria-label={t('Loading cars')} />}
+  {loading && !result && <CircularProgress aria-label={t('Loading cars')} />}
   {error && <Alert severity="error">{t('Cars could not be loaded. Please try again.')}</Alert>}
   {!loading && !error && !result?.list.length && <Typography>{t('No cars found.')}</Typography>}
   <Stack className="favorites-list-box">{result?.list.map(car => <CarCard key={car._id} car={car} recentlyVisited={visited} myFavorites={!visited} likeCarHandler={toggleLike} />)}</Stack>

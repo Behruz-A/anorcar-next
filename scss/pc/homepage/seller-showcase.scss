@@ -166,14 +166,14 @@
 		.MuiButton-root {
 			width: min(100%, 520px);
 			padding: 14px 28px;
-			border: 1px solid #dce0e6;
+			border: 1px solid #0b1f33;
 			border-radius: 8px;
-			background: #edf1f5;
-			color: #13213a;
+			background: #0b1f33;
+			color: #fff;
 			font: 500 15px/24px $font;
 			text-transform: none;
 			&:hover {
-				background: #e1e7ef;
+				background: #163a59;
 			}
 		}
 	}

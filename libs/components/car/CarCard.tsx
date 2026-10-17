@@ -48,9 +48,18 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 	const user = useReactiveVar(userVar);
 	const imagePath: string = car?.carImages?.[0] ? imageUrl(car?.carImages?.[0]) : '/img/car/hero.svg';
 	const [favoritePending, setFavoritePending] = React.useState(false);
+	const favoriteLock = React.useRef(false);
 	const [imageFailed, setImageFailed] = React.useState(false);
 	const [photoIndex, setPhotoIndex] = React.useState(0);
 	React.useEffect(() => { setPhotoIndex(0); setImageFailed(false); }, [car._id]);
+	const toggleFavorite = async (event: React.MouseEvent) => {
+		event.preventDefault();
+		event.stopPropagation();
+		if (!likeCarHandler || favoriteLock.current) return;
+		favoriteLock.current = true;
+		setFavoritePending(true);
+		try { await likeCarHandler(user, car._id); } finally { favoriteLock.current = false; setFavoritePending(false); }
+	};
 	if (browse || variant) {
 		const liked = Boolean(myFavorites || car.meLiked?.[0]?.myFavorite);
 		const href = { pathname: '/car/detail', query: { id: car._id } };
@@ -59,13 +68,6 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 		const name = model ? [brand && !model.toLowerCase().startsWith(brand.toLowerCase()) ? brand : '', model].filter(Boolean).join(' ') : car.carTitle;
 		const badge = car.carStatus === CarStatus.SOLD ? 'Sold' : car.carStatus === CarStatus.DELETE ? 'Deleted' :
 			[CarCondition.NEW, CarCondition.USED].includes(car.carCondition) ? carLabel(car.carCondition) : undefined;
-		const toggleFavorite = async (event: React.MouseEvent) => {
-			event.preventDefault();
-			event.stopPropagation();
-			if (!likeCarHandler || favoritePending) return;
-			setFavoritePending(true);
-			try { await likeCarHandler(user, car._id); } finally { setFavoritePending(false); }
-		};
 		if (variant === 'recent') {
 			const images = car.carImages ?? [];
 			const currentPhoto = photoIndex % Math.max(images.length, 1);
@@ -88,7 +90,7 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 							{badge && <span className="cars-listing-badge">{t(badge)}</span>}
 							{car.carFuelType === CarFuelType.ELECTRIC && <span className="recent-electric-badge"><ElectricBoltOutlinedIcon />{t(carLabel(car.carFuelType))}</span>}
 						</div>
-						{likeCarHandler && <IconButton className="cars-listing-favorite" aria-label={t(liked ? 'Remove favorite' : 'Add favorite')} aria-pressed={liked}
+						{likeCarHandler && <IconButton className="cars-listing-favorite" disableRipple aria-label={t(liked ? 'Remove favorite' : 'Add favorite')} aria-pressed={liked}
 							disabled={favoritePending} aria-busy={favoritePending} onClick={event => void toggleFavorite(event)}>{liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}</IconButton>}
 						{images.length > 0 && <span className="cars-photo-count" aria-label={`${t('Photos')}: ${currentPhoto + 1} / ${images.length}`}><PhotoCameraOutlinedIcon />{currentPhoto + 1} / {images.length}</span>}
 						{images.length > 1 && <div className="recent-photo-controls swiper-no-swiping" onClick={event => event.stopPropagation()}>
@@ -120,7 +122,7 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 							onError={() => setImageFailed(true)} />
 					</Link>
 					{badge && <span className="cars-listing-badge">{t(badge)}</span>}
-					{likeCarHandler && <IconButton className="cars-listing-favorite"
+					{likeCarHandler && <IconButton className="cars-listing-favorite" disableRipple
 						aria-label={t(liked ? 'Remove favorite' : 'Add favorite')} aria-pressed={liked}
 						disabled={favoritePending} aria-busy={favoritePending} onClick={event => void toggleFavorite(event)}>
 						{liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
@@ -224,8 +226,9 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 								<IconButton
 									color={'default'}
 									aria-label={t(myFavorites || car.meLiked?.[0]?.myFavorite ? 'Remove favorite' : 'Add favorite')}
-									disabled={!likeCarHandler}
-									onClick={() => likeCarHandler?.(user, car._id)}
+									disableRipple
+									disabled={!likeCarHandler || favoritePending}
+									onClick={event => void toggleFavorite(event)}
 								>
 									{myFavorites ? (
 										<FavoriteIcon color="primary" />

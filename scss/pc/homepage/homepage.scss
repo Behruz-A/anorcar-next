@@ -1107,9 +1107,9 @@
    .MuiAutocomplete-popupIndicator { color: #111b33; }
   }
   .model-search-button {
-   min-height: 60px; border-radius: 9px; background: #f13b18; color: #fff;
+   min-height: 60px; border-radius: 9px; background: #0b1f33; color: #fff;
    box-shadow: none; font-size: 16px; font-weight: 600; text-transform: none;
-   &:hover { background: #dc3211; box-shadow: none; }
+   &:hover { background: #163a59; box-shadow: none; }
   }
   .makes-retry { margin-top: 10px; color: #b32e14; text-transform: none; }
   .home-more-filters { display: flex; width: fit-content; min-height: 36px; margin: 8px 0 -6px auto; padding: 4px 8px;
@@ -1273,7 +1273,7 @@
    .agent-caption { padding: 20px 0 0; display: flex; flex-direction: column; min-width: 0; flex: 1; }
    .agent-name-row { display: flex; align-items: flex-start; gap: 10px; justify-content: space-between; }
    .agent-name { flex: 1; min-width: 0; color: #fff; font-size: 20px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
-   .agent-follow { flex-shrink: 0; border: 1px solid #d93818; border-radius: 20px; padding: 3px 10px; background: #d93818; color: #fff; font-family: inherit; font-size: 13px; line-height: 24px; text-transform: none; white-space: nowrap;
+   .agent-follow { flex-shrink: 0; border: 1px solid #0b1f33; border-radius: 20px; padding: 3px 10px; background: #0b1f33; color: #fff; font-family: inherit; font-size: 13px; line-height: 24px; text-transform: none; white-space: nowrap;
     .MuiButton-startIcon { margin-right: 4px; margin-left: 0; color: inherit; } svg { font-size: 17px; }
     &[aria-pressed='true'] { color: #e1e4e9; border-color: #535a65; background: #2a2e35; }
     @media (hover: hover) and (pointer: fine) {
@@ -1285,8 +1285,8 @@
    .agent-location { margin: 8px 0 20px; color: #b2b6be; font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
    .agent-stats { margin-top: auto; padding: 18px 0; border-top: 1px solid #363b44; display: flex; justify-content: space-between; gap: 12px; color: #c5c9d1; font-size: 14px; line-height: 22px; span { color: inherit; } }
    .agent-views { display: inline-flex; align-items: center; gap: 5px; svg { font-size: 18px; } }
-   .agent-view-profile { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px; border-radius: 12px; background: #2d323a; color: #fff; font-size: 15px; font-weight: 600; }
-   @media (hover: hover) and (pointer: fine) { .agent-view-profile:hover { background: #39342f; color: #ffad96; } }
+   .agent-view-profile { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px; border-radius: 12px; background: #0b1f33; color: #fff; font-size: 15px; font-weight: 600; }
+   @media (hover: hover) and (pointer: fine) { .agent-view-profile:hover { background: #163a59; color: #fff; } }
    a:focus-visible, button:focus-visible { outline: 2px solid #ff3b1f; outline-offset: 2px; }
   }
   @media (prefers-reduced-motion: reduce) { .wrapper .top-agents-swiper .top-agents-slide .top-agent-card, .agents-controls button { transition: none; } }

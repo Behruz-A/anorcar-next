@@ -110,6 +110,18 @@ export const light = {
 		},
 		MuiButton: {
 			styleOverrides: {
+				containedPrimary: {
+					backgroundColor: '#0B1F33',
+					color: '#ffffff',
+					'&:hover': { backgroundColor: '#163A59', boxShadow: 'none' },
+					'&.Mui-disabled': { backgroundColor: '#e6e8ec', color: '#767c87' },
+				},
+				outlinedPrimary: {
+					backgroundColor: '#ffffff',
+					color: '#0B1F33',
+					borderColor: '#0B1F33',
+					'&:hover': { backgroundColor: '#edf1f5', borderColor: '#163A59' },
+				},
 				root: {
 					color: '#212121',
 					minWidth: 'auto',

@@ -33,6 +33,7 @@ const MemberFollowings = (props: MemberFollowingsProps) => {
 
 	/** APOLLO REQUESTS **/
 	const {
+		data: followData,
 		refetch: getMemberFollowingsRefetch,
 	} = useQuery(GET_MEMBER_FOLLOWINGS, {
 		fetchPolicy: 'network-only',
@@ -44,6 +45,11 @@ const MemberFollowings = (props: MemberFollowingsProps) => {
 			setTotal(data?.getMemberFollowings?.metaCounter[0]?.total);
 		},
 	});
+
+	useEffect(() => {
+		if (!followData?.getMemberFollowings) return;
+		setMemberFollowings(followData.getMemberFollowings.list);
+	}, [followData]);
 
 	/** LIFECYCLES **/
 	useEffect(() => {

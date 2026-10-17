@@ -690,7 +690,8 @@
 							align-items: center;
 							gap: 10px;
 							border-radius: 12px;
-							background: #eb6753;
+							background: #0b1f33;
+							&:hover { background: #163a59; }
 							.title {
 								color: #fff;
 								font-family: $font;
