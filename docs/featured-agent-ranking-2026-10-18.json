@@ -1,0 +1,1993 @@
+{
+  "date": "2026-10-18",
+  "purpose": "User-requested local demonstration ranking data; not organic customer activity.",
+  "before": {
+    "list": [
+      {
+        "_id": "6acf1749faee0f504cdcff07",
+        "memberNick": "ella.stone",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 1,
+        "memberViews": 0,
+        "memberImage": "uploads/member/d54e62f5-ac84-424b-b5c3-02454e5a39b0.jpg"
+      },
+      {
+        "_id": "6ad39c3d8bfb03bb25d28e32",
+        "memberNick": "emily.shin",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/99b56e41-0c0b-444e-aaa9-f91befb88eb4.jpg"
+      },
+      {
+        "_id": "6ad39c3c8bfb03bb25d28e2c",
+        "memberNick": "julia.jang",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/d580c1bb-0286-49f5-988f-b5530f08a5cc.jpg"
+      },
+      {
+        "_id": "6ad39c3c8bfb03bb25d28e26",
+        "memberNick": "sarah.lim",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/1afa417d-457b-4f60-a69a-67c698328f50.jpg"
+      },
+      {
+        "_id": "6ad39c3c8bfb03bb25d28e20",
+        "memberNick": "hannah.yoon",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/8c58a8f2-419c-4ae2-b7d1-86840dc7f034.jpg"
+      },
+      {
+        "_id": "6ad39c3b8bfb03bb25d28e1a",
+        "memberNick": "chloe.park",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/4b99b21b-9091-4507-8a1e-f1df27e870a7.jpg"
+      },
+      {
+        "_id": "6ad39c3b8bfb03bb25d28e14",
+        "memberNick": "sophia.lee",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/e8582ee0-f601-4ac5-891c-a6c910c009cf.jpg"
+      },
+      {
+        "_id": "6ad39c3b8bfb03bb25d28e0e",
+        "memberNick": "olivia.kim",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/ede6a474-c8f0-4e7c-a7e9-03292c27515b.jpg"
+      },
+      {
+        "_id": "6ad39c3a8bfb03bb25d28e08",
+        "memberNick": "emma.cho",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/294bc592-03a5-447a-b81b-11be701764a7.jpg"
+      },
+      {
+        "_id": "6ad39c3a8bfb03bb25d28e02",
+        "memberNick": "david.kang",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/55f04d50-71f2-43ad-b9e5-79880838a56c.jpg"
+      },
+      {
+        "_id": "6ad39c3a8bfb03bb25d28dfc",
+        "memberNick": "marcus.jung",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/0f388cef-3b5a-410a-82e2-c3c7fa615206.jpg"
+      },
+      {
+        "_id": "6ad39c398bfb03bb25d28df6",
+        "memberNick": "adrian.kim",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/3860d879-1fd9-4faf-8cac-cb6e405b03e1.jpg"
+      },
+      {
+        "_id": "6ad39c398bfb03bb25d28df0",
+        "memberNick": "alex.han",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/f7433790-99f7-4901-9abf-b5c4a2bea607.jpg"
+      },
+      {
+        "_id": "6ad39c398bfb03bb25d28dea",
+        "memberNick": "eric.choi",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/0d7375c8-a2c5-4c3b-bb47-6f4a98050698.jpg"
+      },
+      {
+        "_id": "6ad39c388bfb03bb25d28de4",
+        "memberNick": "james.lee",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/096bed79-6c15-417c-a5c2-2a62a4f22f16.jpg"
+      },
+      {
+        "_id": "6ad39c388bfb03bb25d28dde",
+        "memberNick": "daniel.park",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/d65eb359-0965-4e8e-a8d1-d7705ce37180.jpg"
+      },
+      {
+        "_id": "6ac37a9db2df2e3a5d3ec427",
+        "memberNick": "Ryan",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 1,
+        "memberViews": 2,
+        "memberImage": "uploads/member/ef522268-9128-4d6e-828f-89ffd95f6cfe.jpg"
+      },
+      {
+        "_id": "6acf1749faee0f504cdcfef9",
+        "memberNick": "amira.wilson",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 1,
+        "memberViews": 1,
+        "memberImage": "uploads/member/2dec3b49-0169-437a-8c3d-2d5ad65133c5.jpg"
+      },
+      {
+        "_id": "6acf1748faee0f504cdcfef2",
+        "memberNick": "ethan.miles",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 5,
+        "memberViews": 7,
+        "memberImage": "uploads/member/02eed032-2ba5-4e4e-a82d-fcb8d5b82910.jpg"
+      },
+      {
+        "_id": "6acf1748faee0f504cdcfeeb",
+        "memberNick": "nora.bennett",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 6,
+        "memberViews": 6,
+        "memberImage": "uploads/member/b17dff77-ba89-4110-ae9b-e081151a3256.jpg"
+      },
+      {
+        "_id": "6acf1748faee0f504cdcfee4",
+        "memberNick": "lucas.brooks",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 6,
+        "memberViews": 6,
+        "memberImage": "uploads/member/047235c2-d0ea-4faa-ac0c-51ca318e9b87.jpg"
+      },
+      {
+        "_id": "6acf1747faee0f504cdcfed6",
+        "memberNick": "victor.hayes",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 6,
+        "memberViews": 6,
+        "memberImage": "uploads/member/b37620e6-375f-47f8-9d5d-d453953f77a3.jpg"
+      },
+      {
+        "_id": "6acf1747faee0f504cdcfecf",
+        "memberNick": "maya.ellis",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/700a069d-b3c1-48fa-83b5-5b4aff9988ce.jpg"
+      },
+      {
+        "_id": "6acf1747faee0f504cdcfec8",
+        "memberNick": "oliver.reed",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/818c82b8-278e-41b1-89a8-ad914dfd8d40.jpg"
+      },
+      {
+        "_id": "6ace1d04206b7e8e8eedb95c",
+        "memberNick": "Angel",
+        "memberRank": 0,
+        "memberCars": 28,
+        "memberArticles": 4,
+        "memberLikes": 1,
+        "memberViews": 0,
+        "memberImage": "uploads/member/4974b595-1459-406e-bb7e-ffa295191a59.jpg"
+      },
+      {
+        "_id": "6ace1c4f206b7e8e8eedb945",
+        "memberNick": "Adam",
+        "memberRank": 0,
+        "memberCars": 23,
+        "memberArticles": 4,
+        "memberLikes": 2,
+        "memberViews": 1,
+        "memberImage": "uploads/member/97335f90-cbb6-41a2-afba-c4d91bd844d7.jpg"
+      },
+      {
+        "_id": "6ace1b8e206b7e8e8eedb938",
+        "memberNick": "Ray",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 2,
+        "memberViews": 1,
+        "memberImage": "uploads/member/ed70b74d-2bbd-4486-bef1-7ca08ce43db8.jpg"
+      },
+      {
+        "_id": "6ace1b3d206b7e8e8eedb92b",
+        "memberNick": "Nathan",
+        "memberRank": 0,
+        "memberCars": 29,
+        "memberArticles": 4,
+        "memberLikes": 2,
+        "memberViews": 1,
+        "memberImage": "uploads/member/31ffb3ff-9c68-4a09-93c0-82994b8188fc.jpg"
+      },
+      {
+        "_id": "6ace1b0a206b7e8e8eedb91e",
+        "memberNick": "Leo",
+        "memberRank": 0,
+        "memberCars": 25,
+        "memberArticles": 4,
+        "memberLikes": 2,
+        "memberViews": 1,
+        "memberImage": "uploads/member/c67a6a17-bbfd-4c2f-b2d1-910c6a38d111.jpg"
+      },
+      {
+        "_id": "6ace1a06206b7e8e8eedb911",
+        "memberNick": "Kevin",
+        "memberRank": 0,
+        "memberCars": 27,
+        "memberArticles": 4,
+        "memberLikes": 1,
+        "memberViews": 1,
+        "memberImage": "uploads/member/b1b92a83-6583-4cd2-a8ec-ed2534a5b3a3.jpg"
+      },
+      {
+        "_id": "6ace17f9206b7e8e8eedb8f3",
+        "memberNick": "Khan",
+        "memberRank": 0,
+        "memberCars": 31,
+        "memberArticles": 4,
+        "memberLikes": 1,
+        "memberViews": 1,
+        "memberImage": "uploads/member/43cd03cf-f2f4-42e0-a3c2-b62b3da30d79.jpg"
+      }
+    ],
+    "metaCounter": [
+      {
+        "total": 31
+      }
+    ]
+  },
+  "portraits": [
+    {
+      "nick": "Khan",
+      "id": "6ace17f9206b7e8e8eedb8f3",
+      "filename": "khanagent.jpg",
+      "before": "uploads/member/43cd03cf-f2f4-42e0-a3c2-b62b3da30d79.jpg",
+      "source": "Desktop/CARIMG/khanagent.jpg",
+      "sha256": "907a90e42d84f2faba3b6f751bf3adafb78fc276764e7249722794941da12e6e",
+      "uploaded": "uploads/member/dbf42177-938e-4153-b06f-fe5063e4489d.jpg",
+      "complete": true
+    },
+    {
+      "nick": "Kevin",
+      "id": "6ace1a06206b7e8e8eedb911",
+      "filename": "KEVINIMG.jpg",
+      "before": "uploads/member/b1b92a83-6583-4cd2-a8ec-ed2534a5b3a3.jpg",
+      "source": "Desktop/CARIMG/KEVINIMG.jpg",
+      "sha256": "93c59608bb10b86ad0d702041cf8f708539de3b364d9f641bd21f7a81a32fb7c",
+      "uploaded": "uploads/member/9d57e12b-b187-4df7-952c-87ad896a8278.jpg",
+      "complete": true
+    },
+    {
+      "nick": "Nathan",
+      "id": "6ace1b3d206b7e8e8eedb92b",
+      "filename": "Nathan.jpg",
+      "before": "uploads/member/31ffb3ff-9c68-4a09-93c0-82994b8188fc.jpg",
+      "source": "Desktop/CARIMG/Nathan.jpg",
+      "sha256": "42c384719c5beca2e804a8596e45ee9c011295a0d4d5e01215361c0a68766c3e",
+      "uploaded": "uploads/member/b8d308af-6d19-464c-80b9-a3b953fc762e.jpg",
+      "complete": true
+    },
+    {
+      "nick": "Leo",
+      "id": "6ace1b0a206b7e8e8eedb91e",
+      "filename": "LEO.jpg",
+      "before": "uploads/member/c67a6a17-bbfd-4c2f-b2d1-910c6a38d111.jpg",
+      "source": "Desktop/CARIMG/LEO.jpg",
+      "sha256": "bc32806fa8dc9352893144a9cc576875169cf2b4a3377acf479d9c4245c2e401",
+      "uploaded": "uploads/member/daa35b72-1a5e-4b68-92bd-68371dd7a5ac.jpg",
+      "complete": true
+    },
+    {
+      "nick": "Adam",
+      "id": "6ace1c4f206b7e8e8eedb945",
+      "filename": "Adam.jpg",
+      "before": "uploads/member/97335f90-cbb6-41a2-afba-c4d91bd844d7.jpg",
+      "source": "Desktop/CARIMG/Adam.jpg",
+      "sha256": "8aaf68b8c64c21c0ede80b4bb23a16819936b5b703e14d7d816def63bba5d2b7",
+      "uploaded": "uploads/member/effaec2d-9930-4a7c-a169-60eec80dcdd4.jpg",
+      "complete": true
+    }
+  ],
+  "interactions": [
+    {
+      "actor": "daniel.park",
+      "actorId": "6ad39c388bfb03bb25d28dde",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "daniel.park",
+      "actorId": "6ad39c388bfb03bb25d28dde",
+      "target": "Khan",
+      "targetId": "6ace17f9206b7e8e8eedb8f3",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "daniel.park",
+      "actorId": "6ad39c388bfb03bb25d28dde",
+      "target": "Nathan",
+      "targetId": "6ace1b3d206b7e8e8eedb92b",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "daniel.park",
+      "actorId": "6ad39c388bfb03bb25d28dde",
+      "target": "Kevin",
+      "targetId": "6ace1a06206b7e8e8eedb911",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "daniel.park",
+      "actorId": "6ad39c388bfb03bb25d28dde",
+      "target": "Leo",
+      "targetId": "6ace1b0a206b7e8e8eedb91e",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "daniel.park",
+      "actorId": "6ad39c388bfb03bb25d28dde",
+      "target": "Adam",
+      "targetId": "6ace1c4f206b7e8e8eedb945",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "james.lee",
+      "actorId": "6ad39c388bfb03bb25d28de4",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "james.lee",
+      "actorId": "6ad39c388bfb03bb25d28de4",
+      "target": "Khan",
+      "targetId": "6ace17f9206b7e8e8eedb8f3",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "james.lee",
+      "actorId": "6ad39c388bfb03bb25d28de4",
+      "target": "Nathan",
+      "targetId": "6ace1b3d206b7e8e8eedb92b",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "james.lee",
+      "actorId": "6ad39c388bfb03bb25d28de4",
+      "target": "Kevin",
+      "targetId": "6ace1a06206b7e8e8eedb911",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "james.lee",
+      "actorId": "6ad39c388bfb03bb25d28de4",
+      "target": "Leo",
+      "targetId": "6ace1b0a206b7e8e8eedb91e",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "james.lee",
+      "actorId": "6ad39c388bfb03bb25d28de4",
+      "target": "Adam",
+      "targetId": "6ace1c4f206b7e8e8eedb945",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "eric.choi",
+      "actorId": "6ad39c398bfb03bb25d28dea",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "eric.choi",
+      "actorId": "6ad39c398bfb03bb25d28dea",
+      "target": "Khan",
+      "targetId": "6ace17f9206b7e8e8eedb8f3",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "eric.choi",
+      "actorId": "6ad39c398bfb03bb25d28dea",
+      "target": "Nathan",
+      "targetId": "6ace1b3d206b7e8e8eedb92b",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "eric.choi",
+      "actorId": "6ad39c398bfb03bb25d28dea",
+      "target": "Kevin",
+      "targetId": "6ace1a06206b7e8e8eedb911",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "eric.choi",
+      "actorId": "6ad39c398bfb03bb25d28dea",
+      "target": "Leo",
+      "targetId": "6ace1b0a206b7e8e8eedb91e",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "eric.choi",
+      "actorId": "6ad39c398bfb03bb25d28dea",
+      "target": "Adam",
+      "targetId": "6ace1c4f206b7e8e8eedb945",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "alex.han",
+      "actorId": "6ad39c398bfb03bb25d28df0",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "alex.han",
+      "actorId": "6ad39c398bfb03bb25d28df0",
+      "target": "Khan",
+      "targetId": "6ace17f9206b7e8e8eedb8f3",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "alex.han",
+      "actorId": "6ad39c398bfb03bb25d28df0",
+      "target": "Nathan",
+      "targetId": "6ace1b3d206b7e8e8eedb92b",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "alex.han",
+      "actorId": "6ad39c398bfb03bb25d28df0",
+      "target": "Kevin",
+      "targetId": "6ace1a06206b7e8e8eedb911",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "alex.han",
+      "actorId": "6ad39c398bfb03bb25d28df0",
+      "target": "Leo",
+      "targetId": "6ace1b0a206b7e8e8eedb91e",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "alex.han",
+      "actorId": "6ad39c398bfb03bb25d28df0",
+      "target": "Adam",
+      "targetId": "6ace1c4f206b7e8e8eedb945",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "adrian.kim",
+      "actorId": "6ad39c398bfb03bb25d28df6",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "adrian.kim",
+      "actorId": "6ad39c398bfb03bb25d28df6",
+      "target": "Khan",
+      "targetId": "6ace17f9206b7e8e8eedb8f3",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "adrian.kim",
+      "actorId": "6ad39c398bfb03bb25d28df6",
+      "target": "Nathan",
+      "targetId": "6ace1b3d206b7e8e8eedb92b",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "adrian.kim",
+      "actorId": "6ad39c398bfb03bb25d28df6",
+      "target": "Kevin",
+      "targetId": "6ace1a06206b7e8e8eedb911",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "adrian.kim",
+      "actorId": "6ad39c398bfb03bb25d28df6",
+      "target": "Leo",
+      "targetId": "6ace1b0a206b7e8e8eedb91e",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "adrian.kim",
+      "actorId": "6ad39c398bfb03bb25d28df6",
+      "target": "Adam",
+      "targetId": "6ace1c4f206b7e8e8eedb945",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "marcus.jung",
+      "actorId": "6ad39c3a8bfb03bb25d28dfc",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "marcus.jung",
+      "actorId": "6ad39c3a8bfb03bb25d28dfc",
+      "target": "Khan",
+      "targetId": "6ace17f9206b7e8e8eedb8f3",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "marcus.jung",
+      "actorId": "6ad39c3a8bfb03bb25d28dfc",
+      "target": "Nathan",
+      "targetId": "6ace1b3d206b7e8e8eedb92b",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "marcus.jung",
+      "actorId": "6ad39c3a8bfb03bb25d28dfc",
+      "target": "Kevin",
+      "targetId": "6ace1a06206b7e8e8eedb911",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "marcus.jung",
+      "actorId": "6ad39c3a8bfb03bb25d28dfc",
+      "target": "Leo",
+      "targetId": "6ace1b0a206b7e8e8eedb91e",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "marcus.jung",
+      "actorId": "6ad39c3a8bfb03bb25d28dfc",
+      "target": "Adam",
+      "targetId": "6ace1c4f206b7e8e8eedb945",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "david.kang",
+      "actorId": "6ad39c3a8bfb03bb25d28e02",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "david.kang",
+      "actorId": "6ad39c3a8bfb03bb25d28e02",
+      "target": "Khan",
+      "targetId": "6ace17f9206b7e8e8eedb8f3",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "david.kang",
+      "actorId": "6ad39c3a8bfb03bb25d28e02",
+      "target": "Nathan",
+      "targetId": "6ace1b3d206b7e8e8eedb92b",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "david.kang",
+      "actorId": "6ad39c3a8bfb03bb25d28e02",
+      "target": "Kevin",
+      "targetId": "6ace1a06206b7e8e8eedb911",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "david.kang",
+      "actorId": "6ad39c3a8bfb03bb25d28e02",
+      "target": "Leo",
+      "targetId": "6ace1b0a206b7e8e8eedb91e",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "david.kang",
+      "actorId": "6ad39c3a8bfb03bb25d28e02",
+      "target": "Adam",
+      "targetId": "6ace1c4f206b7e8e8eedb945",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "emma.cho",
+      "actorId": "6ad39c3a8bfb03bb25d28e08",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "emma.cho",
+      "actorId": "6ad39c3a8bfb03bb25d28e08",
+      "target": "Khan",
+      "targetId": "6ace17f9206b7e8e8eedb8f3",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "emma.cho",
+      "actorId": "6ad39c3a8bfb03bb25d28e08",
+      "target": "Nathan",
+      "targetId": "6ace1b3d206b7e8e8eedb92b",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "emma.cho",
+      "actorId": "6ad39c3a8bfb03bb25d28e08",
+      "target": "Kevin",
+      "targetId": "6ace1a06206b7e8e8eedb911",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "emma.cho",
+      "actorId": "6ad39c3a8bfb03bb25d28e08",
+      "target": "Leo",
+      "targetId": "6ace1b0a206b7e8e8eedb91e",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "emma.cho",
+      "actorId": "6ad39c3a8bfb03bb25d28e08",
+      "target": "Adam",
+      "targetId": "6ace1c4f206b7e8e8eedb945",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "olivia.kim",
+      "actorId": "6ad39c3b8bfb03bb25d28e0e",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "olivia.kim",
+      "actorId": "6ad39c3b8bfb03bb25d28e0e",
+      "target": "Khan",
+      "targetId": "6ace17f9206b7e8e8eedb8f3",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "olivia.kim",
+      "actorId": "6ad39c3b8bfb03bb25d28e0e",
+      "target": "Nathan",
+      "targetId": "6ace1b3d206b7e8e8eedb92b",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "olivia.kim",
+      "actorId": "6ad39c3b8bfb03bb25d28e0e",
+      "target": "Kevin",
+      "targetId": "6ace1a06206b7e8e8eedb911",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "olivia.kim",
+      "actorId": "6ad39c3b8bfb03bb25d28e0e",
+      "target": "Leo",
+      "targetId": "6ace1b0a206b7e8e8eedb91e",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "sophia.lee",
+      "actorId": "6ad39c3b8bfb03bb25d28e14",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "sophia.lee",
+      "actorId": "6ad39c3b8bfb03bb25d28e14",
+      "target": "Khan",
+      "targetId": "6ace17f9206b7e8e8eedb8f3",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "sophia.lee",
+      "actorId": "6ad39c3b8bfb03bb25d28e14",
+      "target": "Nathan",
+      "targetId": "6ace1b3d206b7e8e8eedb92b",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "sophia.lee",
+      "actorId": "6ad39c3b8bfb03bb25d28e14",
+      "target": "Kevin",
+      "targetId": "6ace1a06206b7e8e8eedb911",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "chloe.park",
+      "actorId": "6ad39c3b8bfb03bb25d28e1a",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "chloe.park",
+      "actorId": "6ad39c3b8bfb03bb25d28e1a",
+      "target": "Khan",
+      "targetId": "6ace17f9206b7e8e8eedb8f3",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "chloe.park",
+      "actorId": "6ad39c3b8bfb03bb25d28e1a",
+      "target": "Nathan",
+      "targetId": "6ace1b3d206b7e8e8eedb92b",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "hannah.yoon",
+      "actorId": "6ad39c3c8bfb03bb25d28e20",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "hannah.yoon",
+      "actorId": "6ad39c3c8bfb03bb25d28e20",
+      "target": "Khan",
+      "targetId": "6ace17f9206b7e8e8eedb8f3",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "sarah.lim",
+      "actorId": "6ad39c3c8bfb03bb25d28e26",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "sarah.lim",
+      "actorId": "6ad39c3c8bfb03bb25d28e26",
+      "target": "Khan",
+      "targetId": "6ace17f9206b7e8e8eedb8f3",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "julia.jang",
+      "actorId": "6ad39c3c8bfb03bb25d28e2c",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    },
+    {
+      "actor": "emily.shin",
+      "actorId": "6ad39c3d8bfb03bb25d28e32",
+      "target": "Angel",
+      "targetId": "6ace1d04206b7e8e8eedb95c",
+      "alreadyLiked": false,
+      "likeAdded": true,
+      "viewRecorded": true
+    }
+  ],
+  "afterEngagement": {
+    "list": [
+      {
+        "_id": "6acf1749faee0f504cdcff07",
+        "memberNick": "ella.stone",
+        "memberImage": "uploads/member/d54e62f5-ac84-424b-b5c3-02454e5a39b0.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 1,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c3d8bfb03bb25d28e32",
+        "memberNick": "emily.shin",
+        "memberImage": "uploads/member/99b56e41-0c0b-444e-aaa9-f91befb88eb4.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c3c8bfb03bb25d28e2c",
+        "memberNick": "julia.jang",
+        "memberImage": "uploads/member/d580c1bb-0286-49f5-988f-b5530f08a5cc.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c3c8bfb03bb25d28e26",
+        "memberNick": "sarah.lim",
+        "memberImage": "uploads/member/1afa417d-457b-4f60-a69a-67c698328f50.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c3c8bfb03bb25d28e20",
+        "memberNick": "hannah.yoon",
+        "memberImage": "uploads/member/8c58a8f2-419c-4ae2-b7d1-86840dc7f034.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c3b8bfb03bb25d28e1a",
+        "memberNick": "chloe.park",
+        "memberImage": "uploads/member/4b99b21b-9091-4507-8a1e-f1df27e870a7.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c3b8bfb03bb25d28e14",
+        "memberNick": "sophia.lee",
+        "memberImage": "uploads/member/e8582ee0-f601-4ac5-891c-a6c910c009cf.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c3b8bfb03bb25d28e0e",
+        "memberNick": "olivia.kim",
+        "memberImage": "uploads/member/ede6a474-c8f0-4e7c-a7e9-03292c27515b.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c3a8bfb03bb25d28e08",
+        "memberNick": "emma.cho",
+        "memberImage": "uploads/member/294bc592-03a5-447a-b81b-11be701764a7.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c3a8bfb03bb25d28e02",
+        "memberNick": "david.kang",
+        "memberImage": "uploads/member/55f04d50-71f2-43ad-b9e5-79880838a56c.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c3a8bfb03bb25d28dfc",
+        "memberNick": "marcus.jung",
+        "memberImage": "uploads/member/0f388cef-3b5a-410a-82e2-c3c7fa615206.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c398bfb03bb25d28df6",
+        "memberNick": "adrian.kim",
+        "memberImage": "uploads/member/3860d879-1fd9-4faf-8cac-cb6e405b03e1.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c398bfb03bb25d28df0",
+        "memberNick": "alex.han",
+        "memberImage": "uploads/member/f7433790-99f7-4901-9abf-b5c4a2bea607.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c398bfb03bb25d28dea",
+        "memberNick": "eric.choi",
+        "memberImage": "uploads/member/0d7375c8-a2c5-4c3b-bb47-6f4a98050698.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c388bfb03bb25d28de4",
+        "memberNick": "james.lee",
+        "memberImage": "uploads/member/096bed79-6c15-417c-a5c2-2a62a4f22f16.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ad39c388bfb03bb25d28dde",
+        "memberNick": "daniel.park",
+        "memberImage": "uploads/member/d65eb359-0965-4e8e-a8d1-d7705ce37180.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ac37a9db2df2e3a5d3ec427",
+        "memberNick": "Ryan",
+        "memberImage": "uploads/member/ef522268-9128-4d6e-828f-89ffd95f6cfe.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 1,
+        "memberViews": 2,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6acf1749faee0f504cdcfef9",
+        "memberNick": "amira.wilson",
+        "memberImage": "uploads/member/2dec3b49-0169-437a-8c3d-2d5ad65133c5.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 1,
+        "memberViews": 1,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6acf1748faee0f504cdcfef2",
+        "memberNick": "ethan.miles",
+        "memberImage": "uploads/member/02eed032-2ba5-4e4e-a82d-fcb8d5b82910.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 5,
+        "memberViews": 7,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6acf1748faee0f504cdcfeeb",
+        "memberNick": "nora.bennett",
+        "memberImage": "uploads/member/b17dff77-ba89-4110-ae9b-e081151a3256.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 6,
+        "memberViews": 6,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6acf1748faee0f504cdcfee4",
+        "memberNick": "lucas.brooks",
+        "memberImage": "uploads/member/047235c2-d0ea-4faa-ac0c-51ca318e9b87.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 6,
+        "memberViews": 6,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6acf1747faee0f504cdcfed6",
+        "memberNick": "victor.hayes",
+        "memberImage": "uploads/member/b37620e6-375f-47f8-9d5d-d453953f77a3.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 6,
+        "memberViews": 6,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6acf1747faee0f504cdcfecf",
+        "memberNick": "maya.ellis",
+        "memberImage": "uploads/member/700a069d-b3c1-48fa-83b5-5b4aff9988ce.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6acf1747faee0f504cdcfec8",
+        "memberNick": "oliver.reed",
+        "memberImage": "uploads/member/818c82b8-278e-41b1-89a8-ad914dfd8d40.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ace1d04206b7e8e8eedb95c",
+        "memberNick": "Angel",
+        "memberImage": "uploads/member/4974b595-1459-406e-bb7e-ffa295191a59.jpg",
+        "memberRank": 0,
+        "memberCars": 28,
+        "memberArticles": 4,
+        "memberLikes": 16,
+        "memberViews": 15,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ace1c4f206b7e8e8eedb945",
+        "memberNick": "Adam",
+        "memberImage": "uploads/member/effaec2d-9930-4a7c-a169-60eec80dcdd4.jpg",
+        "memberRank": 0,
+        "memberCars": 23,
+        "memberArticles": 4,
+        "memberLikes": 10,
+        "memberViews": 9,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ace1b8e206b7e8e8eedb938",
+        "memberNick": "Ray",
+        "memberImage": "uploads/member/ed70b74d-2bbd-4486-bef1-7ca08ce43db8.jpg",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 2,
+        "memberViews": 1,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ace1b3d206b7e8e8eedb92b",
+        "memberNick": "Nathan",
+        "memberImage": "uploads/member/b8d308af-6d19-464c-80b9-a3b953fc762e.jpg",
+        "memberRank": 0,
+        "memberCars": 29,
+        "memberArticles": 4,
+        "memberLikes": 13,
+        "memberViews": 12,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ace1b0a206b7e8e8eedb91e",
+        "memberNick": "Leo",
+        "memberImage": "uploads/member/daa35b72-1a5e-4b68-92bd-68371dd7a5ac.jpg",
+        "memberRank": 0,
+        "memberCars": 25,
+        "memberArticles": 4,
+        "memberLikes": 11,
+        "memberViews": 10,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ace1a06206b7e8e8eedb911",
+        "memberNick": "Kevin",
+        "memberImage": "uploads/member/9d57e12b-b187-4df7-952c-87ad896a8278.jpg",
+        "memberRank": 0,
+        "memberCars": 27,
+        "memberArticles": 4,
+        "memberLikes": 11,
+        "memberViews": 11,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      },
+      {
+        "_id": "6ace17f9206b7e8e8eedb8f3",
+        "memberNick": "Khan",
+        "memberImage": "uploads/member/dbf42177-938e-4153-b06f-fe5063e4489d.jpg",
+        "memberRank": 0,
+        "memberCars": 31,
+        "memberArticles": 4,
+        "memberLikes": 14,
+        "memberViews": 14,
+        "memberType": "AGENT",
+        "memberStatus": "ACTIVE"
+      }
+    ],
+    "metaCounter": [
+      {
+        "total": 31
+      }
+    ]
+  },
+  "beforeBatch": {
+    "list": [
+      {
+        "_id": "6acf1749faee0f504cdcff07",
+        "memberNick": "ella.stone",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 1,
+        "memberViews": 0,
+        "memberImage": "uploads/member/d54e62f5-ac84-424b-b5c3-02454e5a39b0.jpg"
+      },
+      {
+        "_id": "6ad39c3d8bfb03bb25d28e32",
+        "memberNick": "emily.shin",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/99b56e41-0c0b-444e-aaa9-f91befb88eb4.jpg"
+      },
+      {
+        "_id": "6ad39c3c8bfb03bb25d28e2c",
+        "memberNick": "julia.jang",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/d580c1bb-0286-49f5-988f-b5530f08a5cc.jpg"
+      },
+      {
+        "_id": "6ad39c3c8bfb03bb25d28e26",
+        "memberNick": "sarah.lim",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/1afa417d-457b-4f60-a69a-67c698328f50.jpg"
+      },
+      {
+        "_id": "6ad39c3c8bfb03bb25d28e20",
+        "memberNick": "hannah.yoon",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/8c58a8f2-419c-4ae2-b7d1-86840dc7f034.jpg"
+      },
+      {
+        "_id": "6ad39c3b8bfb03bb25d28e1a",
+        "memberNick": "chloe.park",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/4b99b21b-9091-4507-8a1e-f1df27e870a7.jpg"
+      },
+      {
+        "_id": "6ad39c3b8bfb03bb25d28e14",
+        "memberNick": "sophia.lee",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/e8582ee0-f601-4ac5-891c-a6c910c009cf.jpg"
+      },
+      {
+        "_id": "6ad39c3b8bfb03bb25d28e0e",
+        "memberNick": "olivia.kim",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/ede6a474-c8f0-4e7c-a7e9-03292c27515b.jpg"
+      },
+      {
+        "_id": "6ad39c3a8bfb03bb25d28e08",
+        "memberNick": "emma.cho",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/294bc592-03a5-447a-b81b-11be701764a7.jpg"
+      },
+      {
+        "_id": "6ad39c3a8bfb03bb25d28e02",
+        "memberNick": "david.kang",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/55f04d50-71f2-43ad-b9e5-79880838a56c.jpg"
+      },
+      {
+        "_id": "6ad39c3a8bfb03bb25d28dfc",
+        "memberNick": "marcus.jung",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/0f388cef-3b5a-410a-82e2-c3c7fa615206.jpg"
+      },
+      {
+        "_id": "6ad39c398bfb03bb25d28df6",
+        "memberNick": "adrian.kim",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/3860d879-1fd9-4faf-8cac-cb6e405b03e1.jpg"
+      },
+      {
+        "_id": "6ad39c398bfb03bb25d28df0",
+        "memberNick": "alex.han",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/f7433790-99f7-4901-9abf-b5c4a2bea607.jpg"
+      },
+      {
+        "_id": "6ad39c398bfb03bb25d28dea",
+        "memberNick": "eric.choi",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/0d7375c8-a2c5-4c3b-bb47-6f4a98050698.jpg"
+      },
+      {
+        "_id": "6ad39c388bfb03bb25d28de4",
+        "memberNick": "james.lee",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/096bed79-6c15-417c-a5c2-2a62a4f22f16.jpg"
+      },
+      {
+        "_id": "6ad39c388bfb03bb25d28dde",
+        "memberNick": "daniel.park",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/d65eb359-0965-4e8e-a8d1-d7705ce37180.jpg"
+      },
+      {
+        "_id": "6ac37a9db2df2e3a5d3ec427",
+        "memberNick": "Ryan",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 1,
+        "memberViews": 2,
+        "memberImage": "uploads/member/ef522268-9128-4d6e-828f-89ffd95f6cfe.jpg"
+      },
+      {
+        "_id": "6acf1749faee0f504cdcfef9",
+        "memberNick": "amira.wilson",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 1,
+        "memberViews": 1,
+        "memberImage": "uploads/member/2dec3b49-0169-437a-8c3d-2d5ad65133c5.jpg"
+      },
+      {
+        "_id": "6acf1748faee0f504cdcfef2",
+        "memberNick": "ethan.miles",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 5,
+        "memberViews": 7,
+        "memberImage": "uploads/member/02eed032-2ba5-4e4e-a82d-fcb8d5b82910.jpg"
+      },
+      {
+        "_id": "6acf1748faee0f504cdcfeeb",
+        "memberNick": "nora.bennett",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 6,
+        "memberViews": 6,
+        "memberImage": "uploads/member/b17dff77-ba89-4110-ae9b-e081151a3256.jpg"
+      },
+      {
+        "_id": "6acf1748faee0f504cdcfee4",
+        "memberNick": "lucas.brooks",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 6,
+        "memberViews": 6,
+        "memberImage": "uploads/member/047235c2-d0ea-4faa-ac0c-51ca318e9b87.jpg"
+      },
+      {
+        "_id": "6acf1747faee0f504cdcfed6",
+        "memberNick": "victor.hayes",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 6,
+        "memberViews": 6,
+        "memberImage": "uploads/member/b37620e6-375f-47f8-9d5d-d453953f77a3.jpg"
+      },
+      {
+        "_id": "6acf1747faee0f504cdcfecf",
+        "memberNick": "maya.ellis",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/700a069d-b3c1-48fa-83b5-5b4aff9988ce.jpg"
+      },
+      {
+        "_id": "6acf1747faee0f504cdcfec8",
+        "memberNick": "oliver.reed",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/818c82b8-278e-41b1-89a8-ad914dfd8d40.jpg"
+      },
+      {
+        "_id": "6ace1d04206b7e8e8eedb95c",
+        "memberNick": "Angel",
+        "memberRank": 0,
+        "memberCars": 28,
+        "memberArticles": 4,
+        "memberLikes": 16,
+        "memberViews": 15,
+        "memberImage": "uploads/member/4974b595-1459-406e-bb7e-ffa295191a59.jpg"
+      },
+      {
+        "_id": "6ace1c4f206b7e8e8eedb945",
+        "memberNick": "Adam",
+        "memberRank": 0,
+        "memberCars": 23,
+        "memberArticles": 4,
+        "memberLikes": 10,
+        "memberViews": 9,
+        "memberImage": "uploads/member/effaec2d-9930-4a7c-a169-60eec80dcdd4.jpg"
+      },
+      {
+        "_id": "6ace1b8e206b7e8e8eedb938",
+        "memberNick": "Ray",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 2,
+        "memberViews": 1,
+        "memberImage": "uploads/member/ed70b74d-2bbd-4486-bef1-7ca08ce43db8.jpg"
+      },
+      {
+        "_id": "6ace1b3d206b7e8e8eedb92b",
+        "memberNick": "Nathan",
+        "memberRank": 0,
+        "memberCars": 29,
+        "memberArticles": 4,
+        "memberLikes": 13,
+        "memberViews": 12,
+        "memberImage": "uploads/member/b8d308af-6d19-464c-80b9-a3b953fc762e.jpg"
+      },
+      {
+        "_id": "6ace1b0a206b7e8e8eedb91e",
+        "memberNick": "Leo",
+        "memberRank": 0,
+        "memberCars": 25,
+        "memberArticles": 4,
+        "memberLikes": 11,
+        "memberViews": 10,
+        "memberImage": "uploads/member/daa35b72-1a5e-4b68-92bd-68371dd7a5ac.jpg"
+      },
+      {
+        "_id": "6ace1a06206b7e8e8eedb911",
+        "memberNick": "Kevin",
+        "memberRank": 0,
+        "memberCars": 27,
+        "memberArticles": 4,
+        "memberLikes": 11,
+        "memberViews": 11,
+        "memberImage": "uploads/member/9d57e12b-b187-4df7-952c-87ad896a8278.jpg"
+      },
+      {
+        "_id": "6ace17f9206b7e8e8eedb8f3",
+        "memberNick": "Khan",
+        "memberRank": 0,
+        "memberCars": 31,
+        "memberArticles": 4,
+        "memberLikes": 14,
+        "memberViews": 14,
+        "memberImage": "uploads/member/dbf42177-938e-4153-b06f-fe5063e4489d.jpg"
+      }
+    ],
+    "metaCounter": [
+      {
+        "total": 31
+      }
+    ]
+  },
+  "after": {
+    "list": [
+      {
+        "_id": "6ace17f9206b7e8e8eedb8f3",
+        "memberNick": "Khan",
+        "memberRank": 209,
+        "memberCars": 31,
+        "memberArticles": 4,
+        "memberLikes": 14,
+        "memberViews": 14,
+        "memberImage": "uploads/member/dbf42177-938e-4153-b06f-fe5063e4489d.jpg"
+      },
+      {
+        "_id": "6ace1d04206b7e8e8eedb95c",
+        "memberNick": "Angel",
+        "memberRank": 199,
+        "memberCars": 28,
+        "memberArticles": 4,
+        "memberLikes": 16,
+        "memberViews": 15,
+        "memberImage": "uploads/member/4974b595-1459-406e-bb7e-ffa295191a59.jpg"
+      },
+      {
+        "_id": "6ace1b3d206b7e8e8eedb92b",
+        "memberNick": "Nathan",
+        "memberRank": 195,
+        "memberCars": 29,
+        "memberArticles": 4,
+        "memberLikes": 13,
+        "memberViews": 12,
+        "memberImage": "uploads/member/b8d308af-6d19-464c-80b9-a3b953fc762e.jpg"
+      },
+      {
+        "_id": "6ace1a06206b7e8e8eedb911",
+        "memberNick": "Kevin",
+        "memberRank": 180,
+        "memberCars": 27,
+        "memberArticles": 4,
+        "memberLikes": 11,
+        "memberViews": 11,
+        "memberImage": "uploads/member/9d57e12b-b187-4df7-952c-87ad896a8278.jpg"
+      },
+      {
+        "_id": "6ace1b0a206b7e8e8eedb91e",
+        "memberNick": "Leo",
+        "memberRank": 169,
+        "memberCars": 25,
+        "memberArticles": 4,
+        "memberLikes": 11,
+        "memberViews": 10,
+        "memberImage": "uploads/member/daa35b72-1a5e-4b68-92bd-68371dd7a5ac.jpg"
+      },
+      {
+        "_id": "6ace1c4f206b7e8e8eedb945",
+        "memberNick": "Adam",
+        "memberRank": 156,
+        "memberCars": 23,
+        "memberArticles": 4,
+        "memberLikes": 10,
+        "memberViews": 9,
+        "memberImage": "uploads/member/effaec2d-9930-4a7c-a169-60eec80dcdd4.jpg"
+      },
+      {
+        "_id": "6acf1747faee0f504cdcfed6",
+        "memberNick": "victor.hayes",
+        "memberRank": 18,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 6,
+        "memberViews": 6,
+        "memberImage": "uploads/member/b37620e6-375f-47f8-9d5d-d453953f77a3.jpg"
+      },
+      {
+        "_id": "6acf1748faee0f504cdcfee4",
+        "memberNick": "lucas.brooks",
+        "memberRank": 18,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 6,
+        "memberViews": 6,
+        "memberImage": "uploads/member/047235c2-d0ea-4faa-ac0c-51ca318e9b87.jpg"
+      },
+      {
+        "_id": "6acf1748faee0f504cdcfeeb",
+        "memberNick": "nora.bennett",
+        "memberRank": 18,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 6,
+        "memberViews": 6,
+        "memberImage": "uploads/member/b17dff77-ba89-4110-ae9b-e081151a3256.jpg"
+      },
+      {
+        "_id": "6acf1748faee0f504cdcfef2",
+        "memberNick": "ethan.miles",
+        "memberRank": 17,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 5,
+        "memberViews": 7,
+        "memberImage": "uploads/member/02eed032-2ba5-4e4e-a82d-fcb8d5b82910.jpg"
+      },
+      {
+        "_id": "6ace1b8e206b7e8e8eedb938",
+        "memberNick": "Ray",
+        "memberRank": 5,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 2,
+        "memberViews": 1,
+        "memberImage": "uploads/member/ed70b74d-2bbd-4486-bef1-7ca08ce43db8.jpg"
+      },
+      {
+        "_id": "6ac37a9db2df2e3a5d3ec427",
+        "memberNick": "Ryan",
+        "memberRank": 4,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 1,
+        "memberViews": 2,
+        "memberImage": "uploads/member/ef522268-9128-4d6e-828f-89ffd95f6cfe.jpg"
+      },
+      {
+        "_id": "6acf1749faee0f504cdcfef9",
+        "memberNick": "amira.wilson",
+        "memberRank": 3,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 1,
+        "memberViews": 1,
+        "memberImage": "uploads/member/2dec3b49-0169-437a-8c3d-2d5ad65133c5.jpg"
+      },
+      {
+        "_id": "6acf1749faee0f504cdcff07",
+        "memberNick": "ella.stone",
+        "memberRank": 2,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 1,
+        "memberViews": 0,
+        "memberImage": "uploads/member/d54e62f5-ac84-424b-b5c3-02454e5a39b0.jpg"
+      },
+      {
+        "_id": "6ad39c3a8bfb03bb25d28e02",
+        "memberNick": "david.kang",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/55f04d50-71f2-43ad-b9e5-79880838a56c.jpg"
+      },
+      {
+        "_id": "6ad39c3d8bfb03bb25d28e32",
+        "memberNick": "emily.shin",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/99b56e41-0c0b-444e-aaa9-f91befb88eb4.jpg"
+      },
+      {
+        "_id": "6ad39c3c8bfb03bb25d28e2c",
+        "memberNick": "julia.jang",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/d580c1bb-0286-49f5-988f-b5530f08a5cc.jpg"
+      },
+      {
+        "_id": "6ad39c3c8bfb03bb25d28e26",
+        "memberNick": "sarah.lim",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/1afa417d-457b-4f60-a69a-67c698328f50.jpg"
+      },
+      {
+        "_id": "6ad39c3c8bfb03bb25d28e20",
+        "memberNick": "hannah.yoon",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/8c58a8f2-419c-4ae2-b7d1-86840dc7f034.jpg"
+      },
+      {
+        "_id": "6ad39c3b8bfb03bb25d28e1a",
+        "memberNick": "chloe.park",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/4b99b21b-9091-4507-8a1e-f1df27e870a7.jpg"
+      },
+      {
+        "_id": "6ad39c3b8bfb03bb25d28e14",
+        "memberNick": "sophia.lee",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/e8582ee0-f601-4ac5-891c-a6c910c009cf.jpg"
+      },
+      {
+        "_id": "6ad39c3b8bfb03bb25d28e0e",
+        "memberNick": "olivia.kim",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/ede6a474-c8f0-4e7c-a7e9-03292c27515b.jpg"
+      },
+      {
+        "_id": "6ad39c3a8bfb03bb25d28e08",
+        "memberNick": "emma.cho",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/294bc592-03a5-447a-b81b-11be701764a7.jpg"
+      },
+      {
+        "_id": "6acf1747faee0f504cdcfecf",
+        "memberNick": "maya.ellis",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/700a069d-b3c1-48fa-83b5-5b4aff9988ce.jpg"
+      },
+      {
+        "_id": "6ad39c3a8bfb03bb25d28dfc",
+        "memberNick": "marcus.jung",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/0f388cef-3b5a-410a-82e2-c3c7fa615206.jpg"
+      },
+      {
+        "_id": "6ad39c398bfb03bb25d28df6",
+        "memberNick": "adrian.kim",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/3860d879-1fd9-4faf-8cac-cb6e405b03e1.jpg"
+      },
+      {
+        "_id": "6ad39c398bfb03bb25d28df0",
+        "memberNick": "alex.han",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/f7433790-99f7-4901-9abf-b5c4a2bea607.jpg"
+      },
+      {
+        "_id": "6ad39c398bfb03bb25d28dea",
+        "memberNick": "eric.choi",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/0d7375c8-a2c5-4c3b-bb47-6f4a98050698.jpg"
+      },
+      {
+        "_id": "6ad39c388bfb03bb25d28de4",
+        "memberNick": "james.lee",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/096bed79-6c15-417c-a5c2-2a62a4f22f16.jpg"
+      },
+      {
+        "_id": "6ad39c388bfb03bb25d28dde",
+        "memberNick": "daniel.park",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/d65eb359-0965-4e8e-a8d1-d7705ce37180.jpg"
+      },
+      {
+        "_id": "6acf1747faee0f504cdcfec8",
+        "memberNick": "oliver.reed",
+        "memberRank": 0,
+        "memberCars": 0,
+        "memberArticles": 0,
+        "memberLikes": 0,
+        "memberViews": 0,
+        "memberImage": "uploads/member/818c82b8-278e-41b1-89a8-ad914dfd8d40.jpg"
+      }
+    ],
+    "metaCounter": [
+      {
+        "total": 31
+      }
+    ]
+  },
+  "rankFormula": "memberCars * 5 + memberArticles * 3 + memberLikes * 2 + memberViews",
+  "batchMethod": "Existing BatchService.batchTopAgents(), no rollback or car rank changes",
+  "verified": true
+}

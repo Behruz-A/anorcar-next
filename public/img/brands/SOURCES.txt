@@ -3,3 +3,6 @@ Commit: 3f0929e70e0a9a2a502063edc4b3e5c0146cba74
 Original brand marks; trademarks belong to their respective owners.
 Downloaded to Desktop/CARIMG/brand-logos first, then copied unchanged to public/img/brands.
 Kia override: current official mark from https://www.kia.com/us/content/dam/kia/us/common/kia_logo_black.svg (replaces repository's older oval logo).
+2026-10-18: Extended coverage to all 22 active catalog brands using the same pinned source.
+SVG/PNG formats follow the source files. Raster assets were decoded and saved as valid PNG without redesigning the marks.
+Per-brand source URLs are listed in sources.json. All assets were staged in CARIMG/brand-logos before copying into this folder.

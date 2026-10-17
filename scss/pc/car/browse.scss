@@ -440,10 +440,9 @@
 	}
 	.cars-brand-strip {
 		gap: 9px;
-		overflow-x: auto;
+		overflow: hidden;
 		padding: 0 0 8px;
 		margin-bottom: 20px;
-		scrollbar-width: thin;
 		.MuiButton-root {
 			flex: 0 0 auto;
 			min-height: 40px;
@@ -456,6 +455,8 @@
 			font-size: 12px;
 			text-transform: none;
 			gap: 6px;
+			white-space: nowrap;
+			&[hidden] { display: none; }
 		}
 		.is-active {
 			border-color: #ff4931;

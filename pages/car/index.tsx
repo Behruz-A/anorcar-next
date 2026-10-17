@@ -51,12 +51,35 @@ const CarList: NextPage = () => {
 	const headingRef = useRef<HTMLHeadingElement>(null);
 	const filterTriggerRef = useRef<HTMLButtonElement>(null);
 	const scrollPage = useRef<number | null>(null);
+	const brandStripRef = useRef<HTMLDivElement>(null);
 	const {
 		data: brandData,
 		loading: brandsLoading,
 		error: brandsError,
 		refetch: refetchBrands,
 	} = useQuery<{ getBrands: Brand[] }>(GET_BRANDS);
+	useEffect(() => {
+		const strip = brandStripRef.current;
+		if (!strip) return;
+		let active = true;
+		const fitBrands = () => {
+			if (!active || !strip.clientWidth) return;
+			const buttons = Array.from(strip.querySelectorAll('button'));
+			buttons.forEach((button) => { button.hidden = false; });
+			const gap = parseFloat(getComputedStyle(strip).columnGap) || 0;
+			let used = 0;
+			buttons.forEach((button, index) => {
+				used += button.getBoundingClientRect().width + (index ? gap : 0);
+				button.hidden = index > 0 && used > strip.clientWidth;
+				if (button.hidden && document.activeElement === button) buttons[0]?.focus({ preventScroll: true });
+			});
+		};
+		fitBrands();
+		const observer = new ResizeObserver(fitBrands);
+		observer.observe(strip);
+		void document.fonts.ready.then(fitBrands);
+		return () => { active = false; observer.disconnect(); };
+	}, [brandData, t]);
 	useEffect(() => {
 		if (router.isReady) { setInput(parseCarsInquiry(router.query.input)); setReady(true); }
 	}, [router.isReady, router.query.input]);
@@ -220,7 +243,7 @@ const CarList: NextPage = () => {
 								</IconButton>
 							</Stack>
 						</Stack>
-						<Stack className="cars-brand-strip" direction="row" role="group" aria-label={t('Brand')}>
+						<Stack ref={brandStripRef} className="cars-brand-strip" direction="row" role="group" aria-label={t('Brand')}>
 							<Button
 								className={!input.search.brandIds?.length ? 'is-active' : ''}
 								aria-pressed={!input.search.brandIds?.length}

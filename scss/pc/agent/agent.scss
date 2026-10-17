@@ -137,11 +137,12 @@
 			display: block;
 			width: 100%;
 			height: 100%;
-			object-fit: contain;
-			object-position: center;
+			object-fit: cover;
+			object-position: center top;
 		}
 		&.agents-photo-fallback img {
 			object-fit: contain;
+			object-position: center;
 			padding: 32px;
 		}
 		.agents-like {
@@ -404,8 +405,8 @@
 		overflow: hidden;
 		background: #f2f3f5;
 		img {
-			object-fit: contain;
-			object-position: center;
+			object-fit: cover;
+			object-position: center top;
 		}
 		.agents-like {
 			color: #fff;

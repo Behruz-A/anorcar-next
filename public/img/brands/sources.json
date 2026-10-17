@@ -1,0 +1,117 @@
+{
+  "commit": "3f0929e70e0a9a2a502063edc4b3e5c0146cba74",
+  "stagedFirst": "C:\\Users\\behru\\Desktop\\CARIMG\\brand-logos",
+  "sources": [
+    {
+      "brand": "audi",
+      "file": "audi-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/audi-logo.svg"
+    },
+    {
+      "brand": "bentley",
+      "file": "bentley-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/bentley-logo.svg"
+    },
+    {
+      "brand": "bmw",
+      "file": "bmw-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/bmw-logo.svg"
+    },
+    {
+      "brand": "chevrolet",
+      "file": "chevrolet-logo.png",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/chevrolet-logo.png"
+    },
+    {
+      "brand": "ford",
+      "file": "ford-logo.png",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/ford-logo.png"
+    },
+    {
+      "brand": "genesis",
+      "file": "genesis-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/genesis-logo.svg"
+    },
+    {
+      "brand": "hyundai",
+      "file": "hyundai-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/hyundai-logo.svg"
+    },
+    {
+      "brand": "jaguar",
+      "file": "jaguar-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/jaguar-logo.svg"
+    },
+    {
+      "brand": "kia",
+      "file": "kia-logo.svg",
+      "url": "https://www.kia.com/us/content/dam/kia/us/common/kia_logo_black.svg"
+    },
+    {
+      "brand": "lexus",
+      "file": "lexus-logo.png",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/lexus-logo.png"
+    },
+    {
+      "brand": "maserati",
+      "file": "maserati-logo.png",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/maserati-logo.png"
+    },
+    {
+      "brand": "mazda",
+      "file": "mazda-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/mazda-logo.svg"
+    },
+    {
+      "brand": "mercedes-benz",
+      "file": "mercedes-benz-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/mercedes-benz-logo.svg"
+    },
+    {
+      "brand": "mini",
+      "file": "mini-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/mini-logo.svg"
+    },
+    {
+      "brand": "mitsubishi",
+      "file": "mitsubishi-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/mitsubishi-logo.svg"
+    },
+    {
+      "brand": "nissan",
+      "file": "nissan-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/nissan-logo.svg"
+    },
+    {
+      "brand": "porsche",
+      "file": "porsche-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/porsche-logo.svg"
+    },
+    {
+      "brand": "rolls-royce",
+      "file": "rolls-royce-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/rolls-royce-logo.svg"
+    },
+    {
+      "brand": "ssangyong",
+      "file": "ssangyong-logo.png",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/ssangyong-logo.png"
+    },
+    {
+      "brand": "tesla",
+      "file": "tesla-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/tesla-logo.svg"
+    },
+    {
+      "brand": "toyota",
+      "file": "toyota-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/toyota-logo.svg"
+    },
+    {
+      "brand": "volkswagen",
+      "file": "volkswagen-logo.svg",
+      "url": "https://raw.githubusercontent.com/vehiclespecs/brand-logos/3f0929e70e0a9a2a502063edc4b3e5c0146cba74/volkswagen-logo.svg"
+    }
+  ],
+  "trademarks": "Brand marks belong to their respective owners."
+}

@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-18",
+  "source": "Existing user-provided professional portraits from Desktop/CARIMG. Original files copied without pixel editing.",
+  "portraits": [
+    {
+      "nick": "Khan",
+      "id": "6ace17f9206b7e8e8eedb8f3",
+      "filename": "khanagent.jpg",
+      "before": "uploads/member/43cd03cf-f2f4-42e0-a3c2-b62b3da30d79.jpg",
+      "source": "Desktop/CARIMG/khanagent.jpg",
+      "sha256": "907a90e42d84f2faba3b6f751bf3adafb78fc276764e7249722794941da12e6e",
+      "uploaded": "uploads/member/dbf42177-938e-4153-b06f-fe5063e4489d.jpg",
+      "complete": true
+    },
+    {
+      "nick": "Kevin",
+      "id": "6ace1a06206b7e8e8eedb911",
+      "filename": "KEVINIMG.jpg",
+      "before": "uploads/member/b1b92a83-6583-4cd2-a8ec-ed2534a5b3a3.jpg",
+      "source": "Desktop/CARIMG/KEVINIMG.jpg",
+      "sha256": "93c59608bb10b86ad0d702041cf8f708539de3b364d9f641bd21f7a81a32fb7c",
+      "uploaded": "uploads/member/9d57e12b-b187-4df7-952c-87ad896a8278.jpg",
+      "complete": true
+    },
+    {
+      "nick": "Nathan",
+      "id": "6ace1b3d206b7e8e8eedb92b",
+      "filename": "Nathan.jpg",
+      "before": "uploads/member/31ffb3ff-9c68-4a09-93c0-82994b8188fc.jpg",
+      "source": "Desktop/CARIMG/Nathan.jpg",
+      "sha256": "42c384719c5beca2e804a8596e45ee9c011295a0d4d5e01215361c0a68766c3e",
+      "uploaded": "uploads/member/b8d308af-6d19-464c-80b9-a3b953fc762e.jpg",
+      "complete": true
+    },
+    {
+      "nick": "Leo",
+      "id": "6ace1b0a206b7e8e8eedb91e",
+      "filename": "LEO.jpg",
+      "before": "uploads/member/c67a6a17-bbfd-4c2f-b2d1-910c6a38d111.jpg",
+      "source": "Desktop/CARIMG/LEO.jpg",
+      "sha256": "bc32806fa8dc9352893144a9cc576875169cf2b4a3377acf479d9c4245c2e401",
+      "uploaded": "uploads/member/daa35b72-1a5e-4b68-92bd-68371dd7a5ac.jpg",
+      "complete": true
+    },
+    {
+      "nick": "Adam",
+      "id": "6ace1c4f206b7e8e8eedb945",
+      "filename": "Adam.jpg",
+      "before": "uploads/member/97335f90-cbb6-41a2-afba-c4d91bd844d7.jpg",
+      "source": "Desktop/CARIMG/Adam.jpg",
+      "sha256": "8aaf68b8c64c21c0ede80b4bb23a16819936b5b703e14d7d816def63bba5d2b7",
+      "uploaded": "uploads/member/effaec2d-9930-4a7c-a169-60eec80dcdd4.jpg",
+      "complete": true
+    }
+  ]
+}

@@ -1264,7 +1264,7 @@
    display: flex; flex-direction: column; align-items: stretch; width: 100%; min-width: 0; height: 100%; padding: 20px; box-sizing: border-box; background: #202328; border: 1px solid #2c3036; border-radius: 24px; overflow: hidden; color: #fff;
    .agent-photo-wrap { position: relative; }
    .agent-portrait { display: block; position: relative; width: 100%; aspect-ratio: 1; flex-shrink: 0; background: #f2f3f5; border-radius: 18px; overflow: hidden;
-    img { width: 100%; height: 100%; border-radius: 0; object-fit: contain; object-position: center; }
+    img { width: 100%; height: 100%; border-radius: 0; object-fit: cover; object-position: center top; }
    }
    .agent-portrait-fallback { display: flex; align-items: center; justify-content: center; background: #f2f3f5;
     img.agent-avatar { width: 50%; max-width: 144px; height: auto; aspect-ratio: 1; object-fit: contain; object-position: center; border-radius: 50%; }

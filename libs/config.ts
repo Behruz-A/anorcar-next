@@ -24,14 +24,29 @@ export function brandLogoUrl(name: string, path?: string | null): string {
 		.toLowerCase()
 		.replace(/[\s_-]+/g, '');
 	const logos: Record<string, string> = {
-		audi: 'audi',
-		bmw: 'bmw',
-		genesis: 'genesis',
-		hyundai: 'hyundai',
-		kia: 'kia',
-		mercedes: 'mercedes-benz',
-		mercedesbenz: 'mercedes-benz',
-		tesla: 'tesla',
+		audi: 'audi-logo.svg',
+		bentley: 'bentley-logo.svg',
+		bmw: 'bmw-logo.svg',
+		chevrolet: 'chevrolet-logo.png',
+		ford: 'ford-logo.png',
+		genesis: 'genesis-logo.svg',
+		hyundai: 'hyundai-logo.svg',
+		jaguar: 'jaguar-logo.svg',
+		kia: 'kia-logo.svg',
+		lexus: 'lexus-logo.png',
+		maserati: 'maserati-logo.png',
+		mazda: 'mazda-logo.svg',
+		mercedes: 'mercedes-benz-logo.svg',
+		mercedesbenz: 'mercedes-benz-logo.svg',
+		mini: 'mini-logo.svg',
+		mitsubishi: 'mitsubishi-logo.svg',
+		nissan: 'nissan-logo.svg',
+		porsche: 'porsche-logo.svg',
+		rollsroyce: 'rolls-royce-logo.svg',
+		ssangyong: 'ssangyong-logo.png',
+		tesla: 'tesla-logo.svg',
+		toyota: 'toyota-logo.svg',
+		volkswagen: 'volkswagen-logo.svg',
 	};
-	return logos[key] ? `/img/brands/${logos[key]}-logo.svg` : imageUrl(path);
+	return logos[key] ? `/img/brands/${logos[key]}` : imageUrl(path);
 }
