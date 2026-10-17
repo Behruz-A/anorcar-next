@@ -173,7 +173,7 @@ const CommunityCard = (props: CommunityCardProps) => {
 				onClick={() => chooseArticleHandler(boardArticle)}
 			>
 				<Stack className="image-box">
-					<img src={imagePath} alt="" className="card-img" />
+					<Image width={640} height={400} unoptimized src={imagePath} alt="" className="card-img" />
 				</Stack>
 				<Stack className="desc-box" sx={{ marginTop: '-20px' }}>
 					<Stack>

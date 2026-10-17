@@ -123,7 +123,7 @@ const Chat = ({
 			const text = e.target.value;
 			setMessageInput(text);
 		},
-		[messageInput],
+		[],
 	);
 
 	const getKeyHandler = (e: any) => {
@@ -132,7 +132,7 @@ const Chat = ({
 				onClickHandler();
 			}
 		} catch (err: any) {
-			console.log(err);
+
 		}
 	};
 

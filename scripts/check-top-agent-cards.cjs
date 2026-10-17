@@ -37,7 +37,7 @@ const TopAgents = load('libs/components/homepage/TopAgents.tsx', id => {
   useQuery: () => ({ data: {}, refetch: async () => calls.push('refetch') }),
  };
  if (id === './TopAgentCard') return props => { interact = props.onInteract; return React.createElement('article'); };
- if (id === 'swiper') return { Navigation: 'Navigation', Keyboard: 'Keyboard', A11y: 'A11y' };
+ if ((id === 'swiper' || id === 'swiper/modules')) return { Navigation: 'Navigation', Keyboard: 'Keyboard', A11y: 'A11y' };
  if (id === 'swiper/react') return { Swiper: props => { carousel = props; return div(props); }, SwiperSlide: div };
  if (id === '../../../apollo/user/mutation') return { SUBSCRIBE: 'subscribe', UNSUBSCRIBE: 'unsubscribe', LIKE_TARGET_MEMBER: 'like' };
  if (id === '../../../apollo/store' || id === '../../../apollo/user/query') return {};

@@ -1,13 +1,5 @@
 import { gql } from '@apollo/client';
 
-export const GET_MARKETPLACE_OVERVIEW = gql`
-	query GetMarketplaceOverview($cars: CarsInquiry!, $agents: AgentsInquiry!) {
-		getCars(input: $cars) { metaCounter { total } }
-		getAgents(input: $agents) { metaCounter { total } }
-		getBrands { _id }
-	}
-`;
-
 /**************************
  *         MEMBER         *
  *************************/
@@ -25,6 +17,8 @@ export const GET_AGENTS = gql`
 				memberFullName
 				memberImage
 				memberAddress
+				agentType
+				agentLanguages
 				memberDesc
 				memberWarnings
 				memberBlocks
@@ -430,6 +424,22 @@ query GetCar($input: String!) {
 /**************************
  * CAR
  *************************/
+
+export const GET_CAR_BUDGET_COUNTS = gql`
+query GetCarBudgetCounts(
+  $under10: CarsInquiry!, $under20: CarsInquiry!, $under30: CarsInquiry!, $under40: CarsInquiry!,
+  $under50: CarsInquiry!, $under75: CarsInquiry!, $under100: CarsInquiry!, $anyBudget: CarsInquiry!
+) {
+  under10: getCars(input: $under10) { metaCounter { total } }
+  under20: getCars(input: $under20) { metaCounter { total } }
+  under30: getCars(input: $under30) { metaCounter { total } }
+  under40: getCars(input: $under40) { metaCounter { total } }
+  under50: getCars(input: $under50) { metaCounter { total } }
+  under75: getCars(input: $under75) { metaCounter { total } }
+  under100: getCars(input: $under100) { metaCounter { total } }
+  anyBudget: getCars(input: $anyBudget) { metaCounter { total } }
+}
+`;
 
 export const GET_CARS = gql`
 query GetCars($input: CarsInquiry!) {

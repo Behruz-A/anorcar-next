@@ -1,38 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ANORCAR frontend
 
-## Getting Started
+Next.js Pages Router, React 18, TypeScript, Apollo/GraphQL, MUI and SCSS, retaining the original Nestar folder/component patterns. The matching API is in the sibling `anorcar` repository. Migration decisions and completed backend work are documented in `../anorcar/docs`.
 
-First, run the development server:
+## Local development
 
-```bash
-npm run dev
-# or
+Use Yarn Classic and a supported Node.js release (Node 22 is recommended).
+
+```powershell
+yarn install --frozen-lockfile
+Copy-Item .env.example .env.local
 yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Set local variables before starting. The default frontend is `http://localhost:3000`; the local backend is `http://localhost:3007/graphql`. Development output is isolated in `.next-dev`; production builds use `.next`.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Checks
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```powershell
+yarn check:release
+yarn check:graphql
+yarn build
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+`check:release` runs strict TypeScript including unused declarations, ESLint and the existing auth/homepage/agent/chat/cache/compare and article-sanitizer regressions. `check:graphql` is read-only and requires the matching API; it validates frontend operations, upload documents and registered enums. More focused admin and listing checks are in `scripts/check-*.cjs`. Some `qa-*.cjs` scripts require a separately configured browser session; they are not part of the automatic release gate.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Production
 
-## Learn More
+1. Configure `REACT_APP_API_URL` and `REACT_APP_API_GRAPHQL_URL` with the public **HTTPS** API. Set `REACT_APP_API_WS` to **WSS** if it differs from the API origin. These are public build-time variables; rebuild after changing them. Never deploy with the example localhost addresses.
+2. Configure Firebase's public web values only after the matching backend token/conversation endpoints, database rules and authorized domains are configured. Backend secrets and service-account credentials must stay on the backend.
+3. Deploy the matching backend first; current frontend queries require the optional agent type/language fields and the completed Car/Brand contract.
+4. Install with `yarn install --frozen-lockfile`, run the checks above, then start the tested artifact with `yarn start`. Configure the hosting platform's port or pass `yarn start -p <port>`.
+5. On the deployed origin, check login/refresh/logout, image uploads, admin access, carousel/layout behavior and chat connectivity using test accounts. Local fixtures do not substitute for production configuration checks.
 
-To learn more about Next.js, take a look at the following resources:
+Legacy `/property` and admin property URLs intentionally redirect to Cars and preserve locale/query values. Keep these compatibility routes. Published FAQs are read-only; notices use real NEWS articles and are managed through existing admin Community controls.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Release-audit findings and exact validation results are recorded in `docs/DEPLOY_REVIEW.md`.

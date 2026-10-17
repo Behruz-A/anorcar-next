@@ -26,7 +26,7 @@ const Footer = () => {
     <div className="footer-brand">
      <Link passHref href="/" className="footer-logo" aria-label={t('Home')}><Image src="/img/logo/anorcar-footer.svg" alt="ANORCAR" width={260} height={46} /></Link>
      <p className="footer-description">{t('More than cars. A global community of passion, events, and exceptional experiences.')}</p>
-     <div className="footer-contact"><span><LocationOnOutlinedIcon />Tashkent, Uzbekistan</span><a href="mailto:info@anorcar.com"><MailOutlineIcon />info@anorcar.com</a></div>
+     <div className="footer-contact"><span><LocationOnOutlinedIcon />Seul, South Korea</span><a href="mailto:info@anorcar.com"><MailOutlineIcon />info@anorcar.com</a></div>
      <h3>{t('Follow Us')}</h3>
      <div className="footer-socials" aria-label={t('Follow Us')}>
       <span title="Instagram"><FaInstagram /></span><span title="YouTube"><FaYoutube /></span><span title="TikTok"><FaTiktok /></span><span title="Telegram"><FaTelegramPlane /></span><span title="LinkedIn"><FaLinkedinIn /></span>
@@ -35,8 +35,8 @@ const Footer = () => {
     <div className="footer-newsletter">
      <h3>{t("Stay in the driver's seat.")}</h3>
      <div className="footer-subscribe-box">
-      <input type="email" autoComplete="email" placeholder={t('Your email address')} aria-label={t('Your email address')} />
-      <Button type="button" className="footer-subscribe">{t('Subscribe')}</Button>
+      <input type="email" disabled placeholder={t('Your email address')} aria-label={t('Your email address')} />
+      <Button type="button" disabled className="footer-subscribe">{t('Subscribe')}</Button>
      </div>
     </div>
     <div className="footer-link-columns">

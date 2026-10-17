@@ -21,6 +21,7 @@ export default function FirebaseChat({
 	contactRequest?: number;
 }) {
 	const chat = useFirebaseChat(open);
+	const { select, startConversation } = chat;
 	const router = useRouter();
 	const { t: translate } = useTranslation('common');
 	const t = (key: string) => translate(key, { lng: router.locale ?? 'en' });
@@ -70,17 +71,17 @@ export default function FirebaseChat({
 			return;
 		}
 		if (!chat.isCustomer || chat.uid === agentId) {
-			chat.select('');
+			select('');
 			initiated.current = '';
 			return;
 		}
 		const request = `${agentId}:${contactRequest}`;
 		if (initiated.current !== request) {
 			initiated.current = request;
-			chat.select('');
-			void chat.startConversation(agentId);
+			select('');
+			void startConversation(agentId);
 		}
-	}, [agentId, chat.ready, contactRequest, chat.isCustomer, chat.uid]); // Backend checks the current role and agent status.
+	}, [agentId, chat.ready, contactRequest, chat.isCustomer, chat.uid, select, startConversation]); // Backend checks the current role and agent status.
 	useBrowserLayoutEffect(() => {
 		const element = content.current;
 		if (!element) return;

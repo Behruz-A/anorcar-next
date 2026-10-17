@@ -1,246 +1,112 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useQuery } from '@apollo/client';
 import {
-	TableCell,
-	TableHead,
-	TableBody,
-	TableRow,
-	Table,
-	TableContainer,
+	Alert,
 	Button,
-	Menu,
-	Fade,
-	MenuItem,
-	Box,
-	Checkbox,
-	Toolbar,
+	CircularProgress,
+	Table,
+	TableBody,
+	TableCell,
+	TableContainer,
+	TableHead,
+	TablePagination,
+	TableRow,
 } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
-import { IconButton, Tooltip } from '@mui/material';
-import Typography from '@mui/material/Typography';
-import { Stack } from '@mui/material';
-import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-import { NotePencil } from 'phosphor-react';
+import { GET_ALL_BOARD_ARTICLES_BY_ADMIN } from '../../../../apollo/admin/query';
+import { BoardArticles } from '../../../types/board-article/board-article';
+import { BoardArticleCategory } from '../../../enums/board-article.enum';
+import { Direction } from '../../../enums/common.enum';
 
-type Order = 'asc' | 'desc';
-
-interface Data {
-	category: string;
-	title: string;
-	id: string;
-	writer: string;
-	date: string;
-	view: number;
-	action: string;
-}
-interface HeadCell {
-	disablePadding: boolean;
-	id: keyof Data;
-	label: string;
-	numeric: boolean;
-}
-
-const headCells: readonly HeadCell[] = [
-	{
-		id: 'category',
-		numeric: true,
-		disablePadding: false,
-		label: 'Category',
-	},
-	{
-		id: 'title',
-		numeric: true,
-		disablePadding: false,
-		label: 'TITLE',
-	},
-	{
-		id: 'id',
-		numeric: true,
-		disablePadding: false,
-		label: 'ID',
-	},
-	{
-		id: 'writer',
-		numeric: true,
-		disablePadding: false,
-		label: 'WRITER',
-	},
-	{
-		id: 'date',
-		numeric: true,
-		disablePadding: false,
-		label: 'DATE',
-	},
-	{
-		id: 'view',
-		numeric: true,
-		disablePadding: false,
-		label: 'VIEW',
-	},
-	{
-		id: 'action',
-		numeric: false,
-		disablePadding: false,
-		label: 'ACTION',
-	},
-];
-
-interface EnhancedTableProps {
-	numSelected: number;
-	onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
-	onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
-	order: Order;
-	orderBy: string;
-	rowCount: number;
-}
-
-interface EnhancedTableToolbarProps {
-	numSelected: number;
-	onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
-	onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
-	order: Order;
-	orderBy: string;
-	rowCount: number;
-}
-
-const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
-	const [select, setSelect] = useState('');
-	const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
-
+export const NoticeList = () => {
+	const [page, setPage] = useState(0);
+	const [limit, setLimit] = useState(10);
+	const { data, loading, error, refetch } = useQuery<{ getAllBoardArticlesByAdmin: BoardArticles }>(
+		GET_ALL_BOARD_ARTICLES_BY_ADMIN,
+		{
+			variables: {
+				input: {
+					page: page + 1,
+					limit,
+					sort: 'createdAt',
+					direction: Direction.DESC,
+					search: { articleCategory: BoardArticleCategory.NEWS },
+				},
+			},
+			fetchPolicy: 'network-only',
+			notifyOnNetworkStatusChange: true,
+		},
+	);
+	if (error)
+		return (
+			<Alert severity="error" action={<Button onClick={() => void refetch().catch(() => undefined)}>Retry</Button>}>
+				News posts could not be loaded.
+			</Alert>
+		);
 	return (
 		<>
-			{numSelected > 0 ? (
-				<>
-					<Toolbar>
-						<Box component={'div'}>
-							<Box component={'div'} className="flex_box">
-								<Checkbox
-									color="primary"
-									indeterminate={numSelected > 0 && numSelected < rowCount}
-									checked={rowCount > 0 && numSelected === rowCount}
-									onChange={onSelectAllClick}
-									inputProps={{
-										'aria-label': 'select all',
-									}}
-								/>
-								<Typography sx={{ flex: '1 1 100%' }} color="inherit" variant="h6" component="div">
-									{numSelected} selected
-								</Typography>
-							</Box>
-							<Button variant={'text'} size={'large'}>
-								Delete
-							</Button>
-						</Box>
-					</Toolbar>
-				</>
-			) : (
-				<TableHead>
-					<TableRow>
-						<TableCell padding="checkbox">
-							<Checkbox
-								color="primary"
-								indeterminate={numSelected > 0 && numSelected < rowCount}
-								checked={rowCount > 0 && numSelected === rowCount}
-								onChange={onSelectAllClick}
-								inputProps={{
-									'aria-label': 'select all',
-								}}
-							/>
-						</TableCell>
-						{headCells.map((headCell) => (
-							<TableCell
-								key={headCell.id}
-								align={headCell.numeric ? 'left' : 'right'}
-								padding={headCell.disablePadding ? 'none' : 'normal'}
-							>
-								{headCell.label}
-							</TableCell>
-						))}
-					</TableRow>
-				</TableHead>
-			)}
-			{numSelected > 0 ? null : null}
-		</>
-	);
-};
-
-interface NoticeListType {
-	dense?: boolean;
-	membersData?: any;
-	searchMembers?: any;
-	anchorEl?: any;
-	handleMenuIconClick?: any;
-	handleMenuIconClose?: any;
-	generateMentorTypeHandle?: any;
-}
-
-export const NoticeList = (props: NoticeListType) => {
-	const {
-		dense,
-		membersData,
-		searchMembers,
-		anchorEl,
-		handleMenuIconClick,
-		handleMenuIconClose,
-		generateMentorTypeHandle,
-	} = props;
-	const router = useRouter();
-
-	/** APOLLO REQUESTS **/
-	/** LIFECYCLES **/
-	/** HANDLERS **/
-
-	return (
-		<Stack>
-			<TableContainer>
-				<Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size={dense ? 'small' : 'medium'}>
-					{/*@ts-ignore*/}
-					<EnhancedTableToolbar />
+			<TableContainer aria-busy={loading}>
+				<Table aria-label="News posts">
+					<TableHead>
+						<TableRow>
+							<TableCell>Title</TableCell>
+							<TableCell>Status</TableCell>
+							<TableCell>Views</TableCell>
+							<TableCell>Published</TableCell>
+						</TableRow>
+					</TableHead>
 					<TableBody>
-						{[1, 2, 3, 4, 5].map((ele: any, index: number) => {
-							const member_image = '/img/profile/defaultUser.svg';
-
-							return (
-								<TableRow hover key={'member._id'} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-									<TableCell padding="checkbox">
-										<Checkbox color="primary" />
-									</TableCell>
-									<TableCell align="left">mb id</TableCell>
-									<TableCell align="left">member.mb_full_name</TableCell>
-									<TableCell align="left">member.mb_phone</TableCell>
-									<TableCell align="left" className={'name'}>
-										<Stack direction={'row'}>
-											<Link href={`/_admin/users/detail?mb_id=$'{member._id'}`}>
-												<div>
-													<Avatar alt="Remy Sharp" src={member_image} sx={{ ml: '2px', mr: '10px' }} />
-												</div>
+						{loading ? (
+							<TableRow>
+								<TableCell colSpan={4}>
+									<CircularProgress size={24} aria-label="Loading news" />
+								</TableCell>
+							</TableRow>
+						) : (
+							(data?.getAllBoardArticlesByAdmin.list ?? []).map((article) => (
+								<TableRow key={article._id}>
+									<TableCell>
+										{article.articleStatus === 'ACTIVE' ? (
+											<Link
+												href={{
+													pathname: '/community/detail',
+													query: { id: article._id, articleCategory: article.articleCategory },
+												}}
+											>
+												{article.articleTitle}
 											</Link>
-											<Link href={`/_admin/users/detail?mb_id=${'member._id'}`}>
-												<div>member.mb_nick</div>
-											</Link>
-										</Stack>
+										) : (
+											article.articleTitle
+										)}
 									</TableCell>
-									<TableCell align="left">member.mb_phone</TableCell>
-									<TableCell align="left">member.mb_phone</TableCell>
-									<TableCell align="right">
-										<Tooltip title={'delete'}>
-											<IconButton>
-												<DeleteRoundedIcon />
-											</IconButton>
-										</Tooltip>
-										<Tooltip title="edit">
-											<IconButton onClick={() => router.push(`/_admin/cs/notice_create?id=notice._id`)}>
-												<NotePencil size={24} weight="fill" />
-											</IconButton>
-										</Tooltip>
+									<TableCell>{article.articleStatus}</TableCell>
+									<TableCell>{article.articleViews}</TableCell>
+									<TableCell>
+										{new Date(article.createdAt).toLocaleDateString('en-GB', { timeZone: 'Asia/Seoul' })}
 									</TableCell>
 								</TableRow>
-							);
-						})}
+							))
+						)}
+						{!loading && !data?.getAllBoardArticlesByAdmin.list.length && (
+							<TableRow>
+								<TableCell colSpan={4}>No news posts.</TableCell>
+							</TableRow>
+						)}
 					</TableBody>
 				</Table>
 			</TableContainer>
-		</Stack>
+			<TablePagination
+				component="div"
+				page={page}
+				rowsPerPage={limit}
+				rowsPerPageOptions={[10, 20, 50]}
+				count={data?.getAllBoardArticlesByAdmin.metaCounter?.[0]?.total ?? 0}
+				onPageChange={(_event, nextPage) => setPage(nextPage)}
+				onRowsPerPageChange={(event) => {
+					setLimit(Number(event.target.value));
+					setPage(0);
+				}}
+			/>
+		</>
 	);
 };

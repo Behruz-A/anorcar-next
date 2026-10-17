@@ -1,5 +1,7 @@
 # ANORCAR homepage promotion, statistics and benefits
 
+> Superseded on 2026-10-17 by the electric-car discovery reference. The existing component and SCSS file now render three electric discovery cards instead of the promotional video/overview. See [HOME_ELECTRIC_DISCOVERY.md](HOME_ELECTRIC_DISCOVERY.md) for the current behavior. The material below is historical.
+
 ## Current reference layout — 2026-10-16
 
 This supersedes the historical layouts below. The existing SellerShowcase component now places three icon/text features beside the unchanged `/img/carimg21.png` and configured video. Discovery copy follows the supplied reference, without claiming agent verification. The original role-aware CTA remains (AGENT lists a car; other visitors explore). The previous separate Why Choose grid was consolidated into these three features.

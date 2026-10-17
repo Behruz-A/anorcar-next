@@ -32,7 +32,7 @@ export const sweetContactAlert = async (msg: string, duration: number = 10000) =
 };
 
 export const sweetConfirmAlert = (msg: string) => {
-	return new Promise(async (resolve, reject) => {
+	return new Promise(async (resolve) => {
 		await Swal.fire({
 			icon: 'question',
 			text: msg,
@@ -51,7 +51,7 @@ export const sweetConfirmAlert = (msg: string) => {
 };
 
 export const sweetLoginConfirmAlert = (msg: string) => {
-	return new Promise(async (resolve, reject) => {
+	return new Promise(async (resolve) => {
 		await Swal.fire({
 			text: msg,
 			showCancelButton: true,
@@ -123,7 +123,7 @@ export const sweetTopSmallSuccessAlert = async (
 	Toast.fire({
 		icon: 'success',
 		title: msg,
-	}).then((data) => {
+	}).then(() => {
 		if (enable_forward) {
 			window.location.reload();
 		}

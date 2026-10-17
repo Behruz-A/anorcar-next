@@ -1,4 +1,4 @@
-import { MemberAuthType, MemberStatus, MemberType } from '../../enums/member.enum';
+import { AgentType, AgentLanguage, MemberAuthType, MemberStatus, MemberType } from '../../enums/member.enum';
 import { MeLiked, TotalCounter } from '../car/car';
 import { MeFollowed } from '../follow/follow';
 
@@ -14,6 +14,8 @@ export interface Member {
 	memberImage: string;
 	memberAddress?: string | null;
 	memberDesc?: string | null;
+	agentType?: AgentType | null;
+	agentLanguages?: AgentLanguage[] | null;
 	memberCars: number;
 	memberRank: number;
 	memberArticles: number;

@@ -19,7 +19,7 @@ import { MemberPanelList } from '../../../libs/components/admin/users/MemberList
 import { MembersInquiry } from '../../../libs/types/member/member.input';
 import { Members } from '../../../libs/types/member/member';
 import { MemberUpdate } from '../../../libs/types/member/member.update';
-import { MemberStatus, MemberType } from '../../../libs/enums/member.enum';
+import { MemberType } from '../../../libs/enums/member.enum';
 import { GET_ALL_MEMBERS_BY_ADMIN, GET_ADMIN_MEMBER_OVERVIEW } from '../../../apollo/admin/query';
 import { UPDATE_MEMBER_BY_ADMIN } from '../../../apollo/admin/mutation';
 import { userVar, authReadyVar } from '../../../apollo/store';

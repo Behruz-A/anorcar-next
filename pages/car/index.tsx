@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import { useTranslation } from 'next-i18next';
 import React, { useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
@@ -237,7 +238,7 @@ const CarList: NextPage = () => {
 									onClick={() => apply({ ...input, page: 1, search: { ...input.search, brandIds: [brand._id] } })}
 								>
 									{(brand.brandLogo || brandLogoUrl(brand.brandName) !== '/img/car/placeholder.svg') && (
-										<img
+										<NextImage width={32} height={32} unoptimized
 											src={brandLogoUrl(brand.brandName, brand.brandLogo)}
 											alt=""
 											onError={(e) => {

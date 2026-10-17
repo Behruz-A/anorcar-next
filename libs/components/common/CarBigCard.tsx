@@ -1,14 +1,13 @@
+import NextImage from 'next/image';
 import { formatPrice } from '../../currency';
 import { useTranslation } from 'next-i18next';
 import { carLabel } from '../../car';
 import React from 'react';
 import { Stack, Box, Divider, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import useDeviceDetect from '../../hooks/useDeviceDetect';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Car } from '../../types/car/car';
 import { imageUrl, topCarRank } from '../../config';
-import { formatterStr } from '../../utils';
 import { useReactiveVar } from '@apollo/client';
 import { userVar } from '../../../apollo/store';
 import { useRouter } from 'next/router';
@@ -22,7 +21,7 @@ interface CarBigCardProps {
 const CarBigCard = (props: CarBigCardProps) => {
  const { t } = useTranslation('common');
 	const { car, likeCarHandler } = props;
-	const device = useDeviceDetect();
+
 	const user = useReactiveVar(userVar);
 	const router = useRouter();
 
@@ -41,7 +40,7 @@ const CarBigCard = (props: CarBigCardProps) => {
 				>
 					{car?.carRank && car?.carRank >= topCarRank && (
 						<div className={'status'}>
-							<img src="/img/icons/electricity.svg" alt="" />
+							<NextImage width={16} height={14} unoptimized src="/img/icons/electricity.svg" alt="" />
 							<span>{t("top")}</span>
 						</div>
 					)}
@@ -53,15 +52,15 @@ const CarBigCard = (props: CarBigCardProps) => {
 					<p className={'desc'}>{car?.carAddress}</p>
 					<div className={'options'}>
 						<div>
-							<img src="/img/icons/car.svg" alt="" />
+							<NextImage width={32} height={32} unoptimized src="/img/icons/car.svg" alt="" />
 							<span>{car?.carYear} year</span>
 						</div>
 						<div>
-							<img src="/img/icons/fuel.svg" alt="" />
+							<NextImage width={32} height={32} unoptimized src="/img/icons/fuel.svg" alt="" />
 							<span>{t(carLabel(car?.carFuelType ?? ''))}</span>
 						</div>
 						<div>
-							<img src="/img/icons/transmission.svg" alt="" />
+							<NextImage width={32} height={32} unoptimized src="/img/icons/transmission.svg" alt="" />
 							<span>{t(carLabel(car?.carTransmission ?? ''))}</span>
 						</div>
 					</div>

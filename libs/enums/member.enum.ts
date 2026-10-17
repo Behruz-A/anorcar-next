@@ -15,3 +15,5 @@ export enum MemberAuthType {
 	EMAIL = 'EMAIL',
 	TELEGRAM = 'TELEGRAM',
 }
+export enum AgentType { DEALERSHIP = 'DEALERSHIP', INDEPENDENT = 'INDEPENDENT' }
+export enum AgentLanguage { ENGLISH = 'ENGLISH', KOREAN = 'KOREAN', RUSSIAN = 'RUSSIAN', UZBEK = 'UZBEK', CHINESE = 'CHINESE', JAPANESE = 'JAPANESE', ARABIC = 'ARABIC' }

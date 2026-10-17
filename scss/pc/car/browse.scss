@@ -104,80 +104,99 @@
 	}
 }
 
-// Let the hero image show behind the navigation on mobile as well.
-#mobile-wrap #top .navbar.marketplace-nav .navbar-main { position: absolute; }
+// Public headers reserve a stable row; only the homepage overlays its hero.
+#pc-wrap:not(.admin), #mobile-wrap:not(.admin) {
+ height: auto; min-height: 100vh;
+ --public-navbar-height: 80px;
+ #top { position: sticky; top: 0; z-index: 1100; flex-shrink: 0; height: var(--public-navbar-height); padding: 0; background: transparent; }
+ &.homepage-shell #top { height: 0; min-height: 0; }
+ &.homepage-shell .header-main.homepage-header { padding-top: calc(var(--public-navbar-height) + 32px); }
+ .header-basic.cars-hero > .container { margin-top: 0; }
+ #car-detail-page { padding-top: 0; }
+ @media (max-width: 1350px) { --public-navbar-height: 120px; }
+ @media (max-width: 600px) {
+  --public-navbar-height: 112px;
+  &.homepage-shell .header-main.homepage-header { padding-top: calc(var(--public-navbar-height) + 24px); }
+ }
+}
 
-// Preserve Nestar's fixed navigation over the existing homepage header.
-#pc-wrap.homepage-shell #top,
-#mobile-wrap.homepage-shell #top { position: static; padding: 0; background: transparent; }
-
-#pc-wrap.homepage-shell #top .navbar-main,
-#mobile-wrap.homepage-shell #top .navbar-main { position: fixed; top: 0; left: 0; }
-
-// One presentation for every public page; layouts retain their positioning rules.
+// Shared Deep Navy navigation; dropdowns remain in MUI portals above the header.
 #pc-wrap #top .navbar.marketplace-nav.shared-navbar,
 #mobile-wrap #top .navbar.marketplace-nav.shared-navbar {
+	flex-shrink: 0;
 	.navbar-main {
-		height: 84px;
+		position: relative; top: auto; left: auto;
+		height: var(--public-navbar-height);
 		min-height: 0;
 		padding: 0;
-		background: #181a20;
+		background: rgba(11, 31, 51, 0.78);
+		color: #fff;
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
 		border: 0;
-		border-bottom: 1px solid rgba(255, 255, 255, .08);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 		border-radius: 0;
-		&.transparent { background: #181a20; }
+		box-shadow: 0 2px 10px rgba(11,31,51,.08);
+		transition: background-color .25s ease, box-shadow .25s ease;
 		.container {
-			width: calc(100% - 64px);
-			max-width: 1360px;
+			width: min(1680px, calc(100% - 128px));
+			max-width: none;
 			height: 100%;
 			display: grid;
 			grid-template-columns: auto minmax(0, 1fr) auto;
-			gap: 48px;
-			.logo-box img { width: 148px; }
+			gap: clamp(24px, 3vw, 64px);
+			.logo-box img { width: 180px; }
 			.router-box {
 				justify-content: flex-start;
+				overflow-x: auto; scrollbar-width: none; &::-webkit-scrollbar { display: none; }
 				gap: clamp(12px, 1.5vw, 26px);
 				a {
-					min-height: 44px;
+					min-height: 44px; flex-shrink: 0;
 					padding: 0 5px;
 					border-radius: 6px;
-					div { color: #e5ebf2; font-size: 14px; font-weight: 500; }
-					&:hover { background: rgba(255, 255, 255, .08); }
-					&:hover div { color: #fff; }
-					&.active div { color: #ff4828; }
-					&.active::after { left: 5px; right: 5px; bottom: 4px; width: auto; height: 2px; background: #ff4828; transform: none; }
+					div { color: #fff; font-size: 15px; font-weight: 600; }
+					&:hover { background: rgba(255,255,255,.08); }
+					&:hover div, &.active div { color: #F04428; }
+					&:focus-visible { outline-offset: -2px; }
+					&.active::after { left: 5px; right: 5px; bottom: 4px; width: auto; height: 2px; background: #F04428; transform: none; }
 				}
 			}
 			.user-box {
 				gap: 16px;
 				padding-left: 0;
 				border-left: 0;
-				.nav-shortcuts { display: flex; align-items: center; gap: 18px; color: #e5ebf2;
-					a { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 40px; border-radius: 8px; color: inherit; &:hover { color: #fff; background: rgba(255,255,255,.08); } }
+				.nav-shortcuts { display: flex; align-items: center; gap: 18px; color: #fff;
+					a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 8px; color: inherit; &:hover { color: #F04428; background: rgba(255,255,255,.08); } }
 					svg { width: 24px; height: 24px; }
+					.notification-icon { color: #fff; }
 				}
-				.login-user { padding: 0; border: 0; img { width: 36px; height: 36px; } }
+				.login-user { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 0 0 22px; border: 0; border-left: 1px solid rgba(255,255,255,.18); border-radius: 0; color: #fff; img { width: 40px; height: 40px; } }
 				.nav-language-code { font-family: $font; font-size: 13px; font-weight: 500; }
-				.join-box { height: 40px; border-radius: 8px; padding: 0 12px; span { font-size: 13px; } }
-				.lan-box { gap: 10px; .notification-icon { width: 22px; height: 22px; } }
-				.lan-box .btn-lang { border-radius: 8px; &:hover { background: rgba(255, 255, 255, .08); } }
+				.join-box { height: 44px; border: 1px solid rgba(255,255,255,.28); border-radius: 8px; padding: 0 12px; svg { color: #fff; } span { color: #fff; font-size: 13px; } }
+				.lan-box { gap: 10px; .notification-icon { width: 22px; height: 22px; color: #fff; } }
+				.lan-box .btn-lang { border-radius: 8px; color: #fff; &:hover { background: rgba(255,255,255,.08); } }
 			}
+			a:focus-visible, button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 		}
 	}
-	@media (max-width: 1200px) {
+	&.is-scrolled .navbar-main { background: rgba(11,31,51,.96); box-shadow: 0 6px 24px rgba(11,31,51,.18); }
+	@media (max-width: 1350px) {
 		.navbar-main {
-			height: auto;
-			padding: 12px 0 8px;
+			height: var(--public-navbar-height);
+			padding: 12px 0;
 			.container {
 				width: calc(100% - 40px);
 				grid-template-columns: minmax(0, 1fr) auto;
-				gap: 8px 16px;
+				grid-template-rows: 44px 44px;
+				gap: 7px 16px;
 				.router-box { grid-column: 1 / -1; order: 3; flex-wrap: nowrap; justify-content: safe center; gap: 20px; overflow-x: auto; scrollbar-width: none; &::-webkit-scrollbar { display: none; } }
-				.router-box a { flex-shrink: 0; min-height: 36px; }
+				.router-box a { flex-shrink: 0; min-height: 44px; }
 				.user-box { padding-left: 16px; }
 			}
 		}
 	}
+	@media (prefers-reduced-motion: reduce) { .navbar-main { transition: none; } }
+	@media (max-width: 600px) { .navbar-main { padding: 8px 0; } }
 	@media (max-width: 500px) {
 		.navbar-main .container {
 			.logo-box img { width: 120px; }
@@ -185,7 +204,7 @@
 			.router-box a div { font-size: 13px; }
 			.user-box { gap: 8px; padding-left: 0; border-left: 0; }
 			.user-box .nav-shortcuts { display: none; }
-			.user-box .join-box { width: 36px; height: 36px; padding: 0; }
+			.user-box .join-box { width: 44px; height: 44px; padding: 0; }
 			.user-box .login-user img { width: 30px; height: 30px; }
 			.user-box .lan-box { gap: 6px; }
 		}
@@ -829,4 +848,23 @@
 			animation: none;
 		}
 	}
+}
+
+// MUI Popover is portalled outside the page wrapper; keep its styles scoped here.
+.navbar-search-popover {
+ .MuiPopover-paper { width: 480px; max-width: calc(100vw - 32px); margin-top: 14px; border: 1px solid #e6e9ef; border-radius: 18px; box-shadow: 0 18px 60px rgba(15,23,42,.2); background: #fff; color: #181a20; }
+ .navbar-search-content { padding: 20px 22px; max-height: calc(100dvh - 130px); overflow-y: auto; font-family: $font; }
+ .MuiOutlinedInput-root { border-radius: 8px; font-family: $font; font-size: 14px; .MuiOutlinedInput-notchedOutline { border-color: #bcc4d1; } &.Mui-focused .MuiOutlinedInput-notchedOutline { border-color: #e03a18; border-width: 1px; } }
+ .MuiInputAdornment-root { color: #3c475a; svg { width: 20px; height: 20px; } }
+ .navbar-search-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 20px 0 10px; h2 { margin: 0; color: #596477; font: 500 13px/22px $font; } .MuiButton-root { min-width: 0; padding: 2px 0; color: #596477; font: 500 13px/22px $font; text-transform: none; } }
+ .navbar-search-brands { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; button { display: flex; flex-direction: column; align-items: center; min-width: 0; gap: 5px; border: 0; background: transparent; color: #374151; font-family: $font; cursor: pointer; } span { display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 1; border: 1px solid #e0e5ec; border-radius: 10px; background: #fff; } img { width: 34px; height: 28px; object-fit: contain; } small { max-width: 100%; font-size: 10px; line-height: 16px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; } button:hover span, button[aria-pressed='true'] span { border-color: #f13b18; background: #fff8f6; } }
+ .navbar-search-models { min-height: 64px; > .MuiCircularProgress-root { display: block; margin: 24px auto; } a { display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 6px 0; color: #181a20; border-radius: 8px; white-space: normal; &:hover { background: #f8f9fc; } > img { width: 72px; height: 46px; flex-shrink: 0; object-fit: cover; border-radius: 6px; } > span { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; } strong { font-size: 14px; line-height: 20px; font-weight: 600; overflow-wrap: anywhere; } small { color: #778194; font-size: 12px; line-height: 18px; } > svg { width: 20px; height: 20px; color: #596477; flex-shrink: 0; } } }
+ .navbar-search-empty { color: #778194; font: 400 13px/22px $font; padding: 12px 0; }
+ a:focus-visible, button:focus-visible { outline: 2px solid #f13b18; outline-offset: 3px; }
+ @media (max-width: 500px) { .navbar-search-content { padding: 16px; max-height: calc(100dvh - 160px); } .navbar-search-brands { gap: 7px; img { width: 28px; } } }
+}
+#pc-wrap #top .navbar.marketplace-nav.shared-navbar,
+#mobile-wrap #top .navbar.marketplace-nav.shared-navbar {
+ .nav-shortcuts .nav-search-trigger { width: 44px; height: 44px; padding: 8px; border: 1px solid transparent; border-radius: 50%; color: inherit; &:hover, &.is-open { color: #F04428; background: rgba(255,255,255,.08); border-color: #F04428; } }
+ @media (max-width: 500px) { .navbar-main .container { .logo-box img { width: 110px; } .user-box { .login-user { padding-left: 0; border-left: 0; gap: 6px; } .nav-shortcuts { display: flex; gap: 0; > a, > .notification-icon { display: none; } } } } }
 }

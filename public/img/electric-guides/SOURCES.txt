@@ -1,0 +1,8 @@
+EV discovery images
+Downloaded 2026-10-17. Archived first in Desktop/CARIMG/electric-guides, then copied to public/img/electric-guides. Runtime uses local files only.
+
+explore.webp: https://dmassets.hyundai.com/is/image/hyundaiautoever/_MG_3626-1?wid=1200&fmt=webp
+charging.webp: https://dmassets.hyundai.com/is/image/hyundaiautoever/_MG_6092-1?wid=1200&fmt=webp
+Hyundai image source page: https://oneweb-www.hyundai.com/eu/en/electrification/owning-an-electric-vehicle/reasons-why/charging.html
+Hyundai photos remain copyright Hyundai; copying does not grant a separate license.
+compare-ev6.jpg: existing supplied Desktop/CARIMG/ANORCAR-2026-10-14/Kia-EV6-2023-156956807.jpg, archived as Desktop/CARIMG/electric-guides/compare.jpg. Uses a distinct runtime filename to avoid an earlier cached exhibition image.

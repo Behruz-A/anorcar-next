@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import { useTranslation } from 'next-i18next';
 import React, { FormEvent, useState } from 'react';
 import { Alert, Box, Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, Stack, Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography } from '@mui/material';
@@ -54,7 +55,7 @@ function AdminBrands() {
   {error && <Alert severity="error">{t("Brands could not be loaded.")}</Alert>}
   <Table><TableHead><TableRow><TableCell>{t("Logo")}</TableCell><TableCell>{t("Name")}</TableCell><TableCell>{t("Status")}</TableCell><TableCell>{t("Actions")}</TableCell></TableRow></TableHead>
    <TableBody>{data?.getAllBrandsByAdmin.map(brand => <TableRow key={brand._id}>
-    <TableCell><img src={brandLogoUrl(brand.brandName, brand.brandLogo)} alt={brand.brandName} width={50} height={40} style={{ objectFit: 'contain' }} /></TableCell>
+    <TableCell><NextImage unoptimized src={brandLogoUrl(brand.brandName, brand.brandLogo)} alt={brand.brandName} width={50} height={40} style={{ objectFit: 'contain' }} /></TableCell>
     <TableCell>{brand.brandName}</TableCell><TableCell>{brand.brandStatus}</TableCell>
     <TableCell><Button disabled={busy} onClick={() => edit(brand)}>{t("Edit")}</Button>
      {brand.brandStatus === BrandStatus.ACTIVE ? <Button disabled={busy} onClick={() => deactivate(brand)}>{t("Deactivate")}</Button> :

@@ -1,5 +1,7 @@
+import NextImage from 'next/image';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Checkbox, FormControlLabel, FormGroup, MenuItem, Stack, TextField, Typography } from '@mui/material';
+import { AgentType, AgentLanguage } from '../../enums/member.enum';
 import {
 	CameraAltOutlined,
 	FileUploadOutlined,
@@ -23,7 +25,7 @@ import { sweetErrorHandling, sweetMixinSuccessAlert } from '../../sweetAlert';
 
 type ProfileDraft = Required<
 	Pick<MemberUpdate, '_id' | 'memberNick' | 'memberPhone' | 'memberAddress' | 'memberImage'>
->;
+> & { agentType: AgentType | ''; agentLanguages: AgentLanguage[] };
 type UploadResponse = { data?: { imageUploader?: string }; errors?: { message: string }[] };
 const fallbackPhoto = '/img/profile/defaultUser.svg';
 
@@ -36,9 +38,19 @@ const MyProfile = () => {
 			memberNick: user.memberNick,
 			memberPhone: user.memberPhone,
 			memberAddress: user.memberAddress || '',
+			agentType: user.agentType || '',
+			agentLanguages: user.agentLanguages || [],
 			memberImage: user.memberImage === fallbackPhoto ? '' : user.memberImage || '',
 		}),
-		[user._id, user.memberNick, user.memberPhone, user.memberAddress, user.memberImage],
+		[
+			user._id,
+			user.memberNick,
+			user.memberPhone,
+			user.memberAddress,
+			user.memberImage,
+			user.agentType,
+			user.agentLanguages,
+		],
 	);
 	const [updateData, setUpdateData] = useState(initialValues);
 	const [uploading, setUploading] = useState(false);
@@ -62,7 +74,9 @@ const MyProfile = () => {
 	}, []);
 	const busy = uploading || saving;
 	const dirty = Object.keys(initialValues).some(
-		(key) => updateData[key as keyof ProfileDraft] !== initialValues[key as keyof ProfileDraft],
+		(key) =>
+			JSON.stringify(updateData[key as keyof ProfileDraft]) !==
+			JSON.stringify(initialValues[key as keyof ProfileDraft]),
 	);
 	const validUsername = updateData.memberNick.trim().length >= 3 && updateData.memberNick.trim().length <= 12;
 	const validPhone = !!updateData.memberPhone.trim();
@@ -121,6 +135,8 @@ const MyProfile = () => {
 				variables: {
 					input: {
 						...updateData,
+						agentType: user.memberType === 'AGENT' ? updateData.agentType || null : undefined,
+						agentLanguages: user.memberType === 'AGENT' ? updateData.agentLanguages : undefined,
 						_id: memberId,
 						memberNick: updateData.memberNick.trim(),
 						memberPhone: updateData.memberPhone.trim(),
@@ -163,7 +179,7 @@ const MyProfile = () => {
 						</Typography>
 						<Stack className="account-photo-row">
 							<div className="account-photo-preview">
-								<img
+								<NextImage width={128} height={128} unoptimized
 									src={imageUrl(updateData.memberImage || fallbackPhoto)}
 									alt={t('Profile Photo')}
 									onError={(event) => {
@@ -279,6 +295,46 @@ const MyProfile = () => {
 							</div>
 						</div>
 					</div>
+					{user.memberType === 'AGENT' && (
+						<section className="account-agent-fields">
+							<TextField
+								select
+								disabled={busy}
+								fullWidth
+								size="small"
+								label={t('Agent Type')}
+								value={updateData.agentType}
+								onChange={(event) => setUpdateData({ ...updateData, agentType: event.target.value as AgentType | '' })}
+							>
+								<MenuItem value="">{t('Not provided')}</MenuItem>
+								<MenuItem value={AgentType.DEALERSHIP}>{t('Dealership')}</MenuItem>
+								<MenuItem value={AgentType.INDEPENDENT}>{t('Independent Agent')}</MenuItem>
+							</TextField>
+							<Typography className="account-field-label">{t('Languages')}</Typography>
+							<FormGroup row>
+								{Object.values(AgentLanguage).map((language) => (
+									<FormControlLabel
+										key={language}
+										label={t(language.charAt(0) + language.slice(1).toLowerCase())}
+										control={
+											<Checkbox
+												disabled={busy}
+												checked={updateData.agentLanguages.includes(language)}
+												onChange={(event) =>
+													setUpdateData({
+														...updateData,
+														agentLanguages: event.target.checked
+															? [...updateData.agentLanguages, language]
+															: updateData.agentLanguages.filter((value) => value !== language),
+													})
+												}
+											/>
+										}
+									/>
+								))}
+							</FormGroup>
+						</section>
+					)}
 				</fieldset>
 				{error && (
 					<p role="alert" className="account-profile-error">

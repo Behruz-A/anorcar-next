@@ -1,6 +1,6 @@
+import NextImage from 'next/image';
 import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -99,11 +99,11 @@ const Join: NextPage = () => {
 
  return (
   <section className="auth-page">
-   <Head><title>{`${t(signup ? 'Create account' : 'Log in')} | ANORCAR`}</title></Head>
+
    <div className="auth-frame">
     <aside className="auth-visual">
-     <img className="auth-photo" src="/img/car/loginpageimg.png" alt="" />
-     <Link href="/" className="auth-wordmark"><img src="/img/logo/anorcar-white.svg" alt="ANORCAR" /></Link>
+     <NextImage width={1462} height={984} unoptimized className="auth-photo" src="/img/car/loginpageimg.png" alt="" />
+     <Link href="/" className="auth-wordmark"><NextImage width={258} height={46} unoptimized src="/img/logo/anorcar-white.svg" alt="ANORCAR" /></Link>
      <div className="auth-visual-copy">
       <h2>{t('Find your next car.')}</h2>
       <p>{t('Buy, sell and explore with ANORCAR.')}</p>

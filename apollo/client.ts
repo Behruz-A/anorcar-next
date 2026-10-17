@@ -1,12 +1,5 @@
 import { useMemo } from 'react';
-import {
-	ApolloClient,
-	ApolloLink,
-	split,
-	from,
-	NormalizedCacheObject,
-	Observable,
-} from '@apollo/client';
+import { ApolloClient, ApolloLink, split, from, NormalizedCacheObject, Observable } from '@apollo/client';
 import createUploadLink from 'apollo-upload-client/public/createUploadLink.js';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
@@ -87,18 +80,6 @@ class LoggingWebSocket {
 		this.token = token;
 		this.socket = new WebSocket(`${this.url}?token=${token}`);
 		socketVar(this.socket);
-
-		this.socket.onopen = () => {
-			console.log('WebSocket connection');
-		};
-
-		this.socket.onmessage = (msg) => {
-			console.log('WebSocket message:', msg.data);
-		};
-
-		this.socket.onerror = (error) => {
-			console.log('WebSocket error:', error);
-		};
 	}
 
 	send(data: string | ArrayBuffer | SharedArrayBuffer | Blob | ArrayBufferView) {
@@ -166,14 +147,9 @@ function createIsomorphicLink() {
 			// The AI panel presents its own short, localized inline errors.
 			if (operation.operationName === 'AskAiAssistant' || operation.getContext().skipGlobalError) return;
 			if (graphQLErrors) {
-				graphQLErrors.map(({ message, locations, path, extensions }) => {
-					console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`);
+				graphQLErrors.forEach(({ message }) => {
 					if (!message.includes('input')) sweetErrorAlert(message);
 				});
-			}
-			if (networkError) console.log(`[Network error]: ${networkError}`);
-			// @ts-ignore
-			if (networkError?.statusCode === 401) {
 			}
 		});
 
@@ -188,6 +164,7 @@ function createIsomorphicLink() {
 
 		return from([errorLink, tokenRefreshLink, refreshResultLink, splitLink]);
 	}
+	return ApolloLink.empty();
 }
 
 function createApolloClient() {
@@ -211,20 +188,3 @@ export function initializeApollo(initialState = null) {
 export function useApollo(initialState: any) {
 	return useMemo(() => initializeApollo(initialState), [initialState]);
 }
-
-/**
-import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
-
-// No Subscription required for develop process
-
-const httpLink = createHttpLink({
-  uri: "http://localhost:3007/graphql",
-});
-
-const client = new ApolloClient({
-  link: httpLink,
-  cache: new InMemoryCache(),
-});
-
-export default client;
-*/

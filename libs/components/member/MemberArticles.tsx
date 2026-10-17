@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import { Pagination, Stack, Typography } from '@mui/material';
@@ -9,11 +10,11 @@ import { BoardArticle } from '../../types/board-article/board-article';
 import { BoardArticlesInquiry } from '../../types/board-article/board-article.input';
 import { LIKE_TARGET_BOARD_ARTICLE } from '../../../apollo/user/mutation';
 import { useMutation, useQuery } from '@apollo/client';
-import { GET_BOARD_ARTICLE, GET_BOARD_ARTICLES } from '../../../apollo/user/query';
+import { GET_BOARD_ARTICLES } from '../../../apollo/user/query';
 import { Messages } from '../../config';
 import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../sweetAlert';
 
-const MemberArticles: NextPage = ({ initialInput, ...props }: any) => {
+const MemberArticles: NextPage = ({ initialInput }: any) => {
 	const device = useDeviceDetect();
 	const router = useRouter();
 	const [total, setTotal] = useState<number>(0);
@@ -25,9 +26,6 @@ const MemberArticles: NextPage = ({ initialInput, ...props }: any) => {
 	const [likeTargetBoardArticle] = useMutation(LIKE_TARGET_BOARD_ARTICLE);
 
 	const {
-		loading: boardArticlesLoading,
-		data: boardArticles,
-		error: boardArticlesError,
 		refetch: boardArticlesRefetch,
 	} = useQuery(GET_BOARD_ARTICLES, {
 		fetchPolicy: 'network-only',
@@ -41,11 +39,11 @@ const MemberArticles: NextPage = ({ initialInput, ...props }: any) => {
 
 	/** LIFECYCLES **/
 	useEffect(() => {
-		if (memberId) setSearchFilter({ ...initialInput, search: { memberId: memberId } });
+		if (typeof memberId === 'string') setSearchFilter((previous) => ({ ...previous, page: 1, search: { memberId } }));
 	}, [memberId]);
 
 	/** HANDLERS **/
-	const paginationHandler = (e: T, value: number) => {
+	const paginationHandler = (_e: T, value: number) => {
 		setSearchFilter({ ...searchFilter, page: value });
 	};
 
@@ -58,7 +56,7 @@ const MemberArticles: NextPage = ({ initialInput, ...props }: any) => {
 			await boardArticlesRefetch({ input: searchFilter });
 			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
-			console.log('ERROR, likePropertyHandler:', err.message);
+
 			sweetMixinErrorAlert(err.message).then();
 		}
 	};
@@ -76,7 +74,7 @@ const MemberArticles: NextPage = ({ initialInput, ...props }: any) => {
 				<Stack className="articles-list-box">
 					{memberBoArticles?.length === 0 && (
 						<div className={'no-data'}>
-							<img src="/img/icons/icoAlert.svg" alt="" />
+							<NextImage width={86} height={86} unoptimized src="/img/icons/icoAlert.svg" alt="" />
 							<p>No Articles found!</p>
 						</div>
 					)}

@@ -1,15 +1,15 @@
+import NextImage from 'next/image';
 import { formatPrice } from '../../libs/currency';
 import { useTranslation } from 'next-i18next';
 import { imageUrl } from '../../libs/config';
 import { carLabel } from '../../libs/car';
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { Box, Button, Checkbox, CircularProgress, Stack, Typography } from '@mui/material';
-import useDeviceDetect from '../../libs/hooks/useDeviceDetect';
+import { Box, Button, CircularProgress, Stack, Typography } from '@mui/material';
 import withLayoutFull from '../../libs/components/layout/LayoutFull';
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import Review from '../../libs/components/car/Review';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import CarBigCard from '../../libs/components/common/CarBigCard';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -19,8 +19,6 @@ import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { Car } from '../../libs/types/car/car';
 import moment from 'moment';
-import { formatterStr } from '../../libs/utils';
-import { REACT_APP_API_URL } from '../../libs/config';
 import { userVar } from '../../apollo/store';
 import { CommentInput, CommentsInquiry } from '../../libs/types/comment/comment.input';
 import { Comment } from '../../libs/types/comment/comment';
@@ -28,7 +26,7 @@ import { CommentGroup } from '../../libs/enums/comment.enum';
 import { Pagination as MuiPagination } from '@mui/material';
 import Link from 'next/link';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { detailSeoProps } from '../../libs/seo.server';
 // @ts-ignore
 import 'swiper/css';
 // @ts-ignore
@@ -41,17 +39,12 @@ import { CREATE_COMMENT } from '../../apollo/user/mutation';
 import { LIKE_TARGET_CAR } from '../../apollo/user/mutation';
 import { sweetErrorHandling, sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
 
-SwiperCore.use([Autoplay, Navigation, Pagination]);
 
-export const getStaticProps = async ({ locale }: any) => ({
-	props: {
-		...(await serverSideTranslations(locale, ['common'])),
-	},
-});
+export const getServerSideProps: GetServerSideProps = async (context) => detailSeoProps('car')(context);
 
-const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
+const CarDetail: NextPage = ({ initialComment }: any) => {
  const { t } = useTranslation('common');
-	const device = useDeviceDetect();
+
 	const router = useRouter();
 	const user = useReactiveVar(userVar);
 	const [carId, setCarId] = useState<string | null>(null);
@@ -73,7 +66,6 @@ const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
 
 	const {
 		loading: getCarLoading,
-		data: getCarData,
 		error: getCarError,
 		refetch: getCarRefetch,
 	} = useQuery(GET_CAR, {
@@ -89,9 +81,6 @@ const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
 	});
 
 	const {
-		loading: getCarsLoading,
-		data: getCarsData,
-		error: getCarsError,
 		refetch: getCarsRefetch,
 	} = useQuery(GET_CARS, {
 		fetchPolicy: 'cache-and-network',
@@ -114,9 +103,6 @@ const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
 	});
 
 	const {
-		loading: getCommentsLoading,
-		data: getCommentsData,
-		error: getCommentsError,
 		refetch: getCommentsRefetch,
 	} = useQuery(GET_COMMENTS, {
 		fetchPolicy: 'cache-and-network',
@@ -138,17 +124,17 @@ const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
 			setCarComments([]);
 			setCommentTotal(0);
 			setCarId(router.query.id as string);
-			setCommentInquiry({
-				...commentInquiry,
+			setCommentInquiry((previous) => ({
+				...previous,
 				page: 1,
 				search: {
 					commentRefId: router.query.id as string,
 				},
-			});
-			setInsertCommentData({
-				...insertCommentData,
+			}));
+			setInsertCommentData((previous) => ({
+				...previous,
 				commentRefId: router.query.id as string,
-			});
+			}));
 		}
 	}, [router.query.id]);
 
@@ -179,12 +165,12 @@ const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
 			});
 			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
-			console.log('ERROR, likeCarHandler:', err.message);
+
 			sweetMixinErrorAlert(err.message).then();
 		}
 	};
 
-	const commentPaginationChangeHandler = async (event: ChangeEvent<unknown>, value: number) => {
+	const commentPaginationChangeHandler = async (_event: ChangeEvent<unknown>, value: number) => {
 		commentInquiry.page = value;
 		setCommentInquiry({ ...commentInquiry });
 	};
@@ -273,13 +259,13 @@ const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
 									</Stack>
 									<Stack className={'bottom-box'}>
 										<Stack className="option">
-											<img src="/img/icons/car.svg" alt="" /> <Typography>{car?.carYear} {t('Year')}</Typography>
+											<NextImage width={32} height={32} unoptimized src="/img/icons/car.svg" alt="" /> <Typography>{car?.carYear} {t('Year')}</Typography>
 										</Stack>
 										<Stack className="option">
-											<img src="/img/icons/fuel.svg" alt="" /> <Typography>{t(carLabel(car?.carFuelType ?? ''))}</Typography>
+											<NextImage width={32} height={32} unoptimized src="/img/icons/fuel.svg" alt="" /> <Typography>{t(carLabel(car?.carFuelType ?? ''))}</Typography>
 										</Stack>
 										<Stack className="option">
-											<img src="/img/icons/transmission.svg" alt="" /> <Typography>{t(carLabel(car?.carTransmission ?? ''))}</Typography>
+											<NextImage width={32} height={32} unoptimized src="/img/icons/transmission.svg" alt="" /> <Typography>{t(carLabel(car?.carTransmission ?? ''))}</Typography>
 										</Stack>
 									</Stack>
 								</Stack>
@@ -307,7 +293,7 @@ const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
 							</Stack>
 							<Stack className={'images'}>
 								<Stack className={'main-image'}>
-									<img
+									<NextImage width={640} height={400} unoptimized
 										src={slideImage ? imageUrl(slideImage) : '/img/car/placeholder.svg'}
 										alt={'main-image'}
 									/>
@@ -317,7 +303,7 @@ const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
 										const imagePath: string = imageUrl(subImg);
 										return (
 											<Stack className={'sub-img-box'} onClick={() => changeImageHandler(subImg)} key={subImg}>
-												<img src={imagePath} alt={'sub-image'} />
+												<NextImage width={640} height={400} unoptimized src={imagePath} alt={'sub-image'} />
 											</Stack>
 										);
 									})}
@@ -329,35 +315,35 @@ const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
 								<Typography variant="h6">{car.brandData?.brandName} {car.carModel} · {car.carColor}</Typography>
 								<Stack className={'options-config'}>
 									<Stack className={'option'}>
-										<Stack className={'svg-box'}><img src="/img/icons/car.svg" alt="" /></Stack>
+										<Stack className={'svg-box'}><NextImage width={32} height={32} unoptimized src="/img/icons/car.svg" alt="" /></Stack>
 										<Stack className={'option-includes'}>
 											<Typography className={'title'}>{t("Year")}</Typography>
 											<Typography className={'option-data'}>{car?.carYear}</Typography>
 										</Stack>
 									</Stack>
 									<Stack className={'option'}>
-										<Stack className={'svg-box'}><img src="/img/icons/car.svg" alt="" /></Stack>
+										<Stack className={'svg-box'}><NextImage width={32} height={32} unoptimized src="/img/icons/car.svg" alt="" /></Stack>
 										<Stack className={'option-includes'}>
 											<Typography className={'title'}>{t("Fuel")}</Typography>
 											<Typography className={'option-data'}>{t(carLabel(car?.carFuelType ?? ''))}</Typography>
 										</Stack>
 									</Stack>
 									<Stack className={'option'}>
-										<Stack className={'svg-box'}><img src="/img/icons/car.svg" alt="" /></Stack>
+										<Stack className={'svg-box'}><NextImage width={32} height={32} unoptimized src="/img/icons/car.svg" alt="" /></Stack>
 										<Stack className={'option-includes'}>
 											<Typography className={'title'}>{t("Model year")}</Typography>
 											<Typography className={'option-data'}>{car?.carYear}</Typography>
 										</Stack>
 									</Stack>
 									<Stack className={'option'}>
-										<Stack className={'svg-box'}><img src="/img/icons/car.svg" alt="" /></Stack>
+										<Stack className={'svg-box'}><NextImage width={32} height={32} unoptimized src="/img/icons/car.svg" alt="" /></Stack>
 										<Stack className={'option-includes'}>
 											<Typography className={'title'}>{t("Transmission")}</Typography>
 											<Typography className={'option-data'}>{t(carLabel(car?.carTransmission ?? ''))}</Typography>
 										</Stack>
 									</Stack>
 									<Stack className={'option'}>
-										<Stack className={'svg-box'}><img src="/img/icons/car.svg" alt="" /></Stack>
+										<Stack className={'svg-box'}><NextImage width={32} height={32} unoptimized src="/img/icons/car.svg" alt="" /></Stack>
 										<Stack className={'option-includes'}>
 											<Typography className={'title'}>{t("Condition")}</Typography>
 											<Typography className={'option-data'}>{car?.carCondition}</Typography>
@@ -487,8 +473,9 @@ const CarDetail: NextPage = ({ initialComment, ...props }: any) => {
 								<Stack className={'info-box'}>
 									<Typography className={'main-title'}>{t("Get More Information")}</Typography>
 									<Stack className={'image-info'}>
-										<img
+										<NextImage width={128} height={128} unoptimized
 											className={'member-image'}
+											alt={car?.memberData?.memberNick || t('Car Agent')}
 											src={
 												car?.memberData?.memberImage
 													? imageUrl(car?.memberData?.memberImage)

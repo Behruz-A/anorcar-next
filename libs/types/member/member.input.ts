@@ -1,4 +1,4 @@
-import { MemberAuthType, MemberStatus, MemberType } from '../../enums/member.enum';
+import { AgentType, AgentLanguage, MemberAuthType, MemberStatus, MemberType } from '../../enums/member.enum';
 import { Direction } from '../../enums/common.enum';
 
 export interface MemberInput {
@@ -16,6 +16,11 @@ export interface LoginInput {
 
 interface AISearch {
 	text?: string;
+	location?: string;
+	agentTypes?: AgentType[];
+	languages?: AgentLanguage[];
+	minCars?: number;
+	maxCars?: number;
 }
 
 export interface AgentsInquiry {

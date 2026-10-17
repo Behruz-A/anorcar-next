@@ -1,8 +1,8 @@
+import NextImage from 'next/image';
 import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Stack, Typography, Box, List, ListItem, Button } from '@mui/material';
-import useDeviceDetect from '../../hooks/useDeviceDetect';
 import Link from 'next/link';
 import { Member } from '../../types/member/member';
 import { REACT_APP_API_URL } from '../../config';
@@ -18,7 +18,7 @@ interface MemberMenuProps {
 const MemberMenu = (props: MemberMenuProps) => {
  const { t } = useTranslation('common');
 	const { subscribeHandler, unsubscribeHandler } = props;
-	const device = useDeviceDetect();
+
 	const router = useRouter();
 	const category: any = router.query?.category;
 	const [member, setMember] = useState<Member | null>(null);
@@ -26,9 +26,6 @@ const MemberMenu = (props: MemberMenuProps) => {
 
 	/** APOLLO REQUESTS **/
 	const {
-		loading: getMemberLoading,
-		data: getMemberData,
-		error: getMemberError,
 		refetch: getMemberRefetch,
 	} = useQuery(GET_MEMBER, {
 		fetchPolicy: 'network-only',
@@ -45,7 +42,7 @@ const MemberMenu = (props: MemberMenuProps) => {
 			<Stack width={'100%'} padding={'30px 24px'}>
 				<Stack className={'profile'}>
 					<Box component={'div'} className={'profile-img'}>
-						<img
+						<NextImage width={128} height={128} unoptimized
 							src={member?.memberImage ? `${REACT_APP_API_URL}/${member?.memberImage}` : '/img/profile/defaultUser.svg'}
 							alt={'member-photo'}
 						/>
@@ -53,7 +50,7 @@ const MemberMenu = (props: MemberMenuProps) => {
 					<Stack className={'user-info'}>
 						<Typography className={'user-name'}>{member?.memberNick}</Typography>
 						<Box component={'div'} className={'user-phone'}>
-							<img src={'/img/icons/call.svg'} alt={'icon'} />
+							<NextImage width={17} height={17} unoptimized src={'/img/icons/call.svg'} alt={'icon'} />
 							<Typography className={'p-number'}>{member?.memberPhone}</Typography>
 						</Box>
 						<Typography className={'view-list'}>{member?.memberType}</Typography>
@@ -93,9 +90,9 @@ const MemberMenu = (props: MemberMenuProps) => {
 									>
 										<div className={'flex-box'}>
 											{category === 'cars' ? (
-												<img className={'com-icon'} src={'/img/icons/homeWhite.svg'} alt={'com-icon'} />
+												<NextImage width={18} height={20} unoptimized className={'com-icon'} src={'/img/icons/homeWhite.svg'} alt={'com-icon'} />
 											) : (
-												<img className={'com-icon'} src={'/img/icons/home.svg'} alt={'com-icon'} />
+												<NextImage width={18} height={20} unoptimized className={'com-icon'} src={'/img/icons/home.svg'} alt={'com-icon'} />
 											)}
 											<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("Cars")}</Typography>
 											<Typography className="count-title" variant="subtitle1">
@@ -220,9 +217,9 @@ const MemberMenu = (props: MemberMenuProps) => {
 									>
 										<div className={'flex-box'}>
 											{category === 'articles' ? (
-												<img className={'com-icon'} src={'/img/icons/discoveryWhite.svg'} alt={'com-icon'} />
+												<NextImage width={20} height={20} unoptimized className={'com-icon'} src={'/img/icons/discoveryWhite.svg'} alt={'com-icon'} />
 											) : (
-												<img className={'com-icon'} src={'/img/icons/discovery.svg'} alt={'com-icon'} />
+												<NextImage width={22} height={22} unoptimized className={'com-icon'} src={'/img/icons/discovery.svg'} alt={'com-icon'} />
 											)}
 
 											<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>{t("Articles")}</Typography>

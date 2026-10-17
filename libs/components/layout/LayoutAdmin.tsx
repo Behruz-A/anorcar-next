@@ -1,8 +1,8 @@
+import NextImage from 'next/image';
 import type { ComponentType } from 'react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Head from 'next/head';
 import MenuList from '../admin/AdminMenuList';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
@@ -29,11 +29,10 @@ const withAdminLayout = (Component: ComponentType) => {
 		const router = useRouter();
 		const user = useReactiveVar(userVar);
 		const authReady = useReactiveVar(authReadyVar);
-		const [settingsState, setSettingsStateState] = useState(false);
 		const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 		const [openMenu, setOpenMenu] = useState(false);
-		const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
-		const [title, setTitle] = useState('admin');
+		const [, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
+		const [, setTitle] = useState('admin');
 		const [loading, setLoading] = useState(true);
 		const mobile = useMediaQuery('(max-width: 900px)');
 		const pageTitle = router.pathname.includes('/users')
@@ -81,7 +80,7 @@ const withAdminLayout = (Component: ComponentType) => {
 
 		return (
 			<main id="pc-wrap" className="admin">
-				<Head><title>ANORCAR</title></Head>
+
 				<Box component={'div'} sx={{ display: 'flex' }}>
 					<AppBar
 						position="fixed"
@@ -177,7 +176,7 @@ const withAdminLayout = (Component: ComponentType) => {
 						<Toolbar sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
 							<Stack className={'logo-box'}>
 								<Link href="/_admin/users">
-									<img src={'/img/logo/anorcar.svg'} alt={'ANORCAR'} />
+									<NextImage width={258} height={46} unoptimized src={'/img/logo/anorcar.svg'} alt={'ANORCAR'} />
 								</Link>
 								<Typography className="admin-console-label">Admin Console</Typography>
 							</Stack>

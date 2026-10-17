@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import withAdminLayout from '../../../libs/components/layout/LayoutAdmin';
 import { Box, Stack, MenuItem } from '@mui/material';
@@ -19,7 +19,7 @@ import { REMOVE_BOARD_ARTICLE_BY_ADMIN, UPDATE_BOARD_ARTICLE_BY_ADMIN } from '..
 import { GET_ALL_BOARD_ARTICLES_BY_ADMIN } from '../../../apollo/admin/query';
 import { T } from '../../../libs/types/common';
 
-const AdminCommunity: NextPage = ({ initialInquiry, ...props }: any) => {
+const AdminCommunity: NextPage = ({ initialInquiry }: any) => {
 	const [anchorEl, setAnchorEl] = useState<any>([]);
 	const [communityInquiry, setCommunityInquiry] = useState<AllBoardArticlesInquiry>(initialInquiry);
 	const [articles, setArticles] = useState<BoardArticle[]>([]);
@@ -34,9 +34,6 @@ const AdminCommunity: NextPage = ({ initialInquiry, ...props }: any) => {
 	const [removeBoardArticleByAdmin] = useMutation(REMOVE_BOARD_ARTICLE_BY_ADMIN);
 
 	const {
-		loading: getAllBoardArticlesByAdminLoading,
-		data: getAllBoardArticlesByAdminData,
-		error: getAllBoardArticlesByAdminError,
 		refetch: getAllBoardArticlesByAdminRefetch,
 	} = useQuery(GET_ALL_BOARD_ARTICLES_BY_ADMIN, {
 		fetchPolicy: 'network-only',
@@ -48,13 +45,9 @@ const AdminCommunity: NextPage = ({ initialInquiry, ...props }: any) => {
 		},
 	});
 
-	/** LIFECYCLES **/
-	useEffect(() => {
-		getAllBoardArticlesByAdminRefetch({ input: communityInquiry }).then();
-	}, [communityInquiry]);
 
 	/** HANDLERS **/
-	const changePageHandler = async (event: unknown, newPage: number) => {
+	const changePageHandler = async (_event: unknown, newPage: number) => {
 		communityInquiry.page = newPage + 1;
 		await getAllBoardArticlesByAdminRefetch({ input: communityInquiry });
 		setCommunityInquiry({ ...communityInquiry });
@@ -77,7 +70,7 @@ const AdminCommunity: NextPage = ({ initialInquiry, ...props }: any) => {
 		setAnchorEl([]);
 	};
 
-	const tabChangeHandler = async (event: any, newValue: string) => {
+	const tabChangeHandler = async (_event: any, newValue: string) => {
 		setValue(newValue);
 
 		setCommunityInquiry({ ...communityInquiry, page: 1, sort: 'createdAt' });
@@ -115,13 +108,13 @@ const AdminCommunity: NextPage = ({ initialInquiry, ...props }: any) => {
 				setCommunityInquiry({ ...communityInquiry });
 			}
 		} catch (err: any) {
-			console.log('searchTypeHandler: ', err.message);
+
 		}
 	};
 
 	const updateArticleHandler = async (updateData: BoardArticleUpdate) => {
 		try {
-			console.log('+updateData: ', updateData);
+
 			await updateBoardArticleByAdmin({
 				variables: {
 					input: updateData,
@@ -151,8 +144,8 @@ const AdminCommunity: NextPage = ({ initialInquiry, ...props }: any) => {
 		}
 	};
 
-	console.log('+communityInquiry', communityInquiry);
-	console.log('+articles', articles);
+
+
 
 	return (
 		<Box component={'div'} className={'content'}>

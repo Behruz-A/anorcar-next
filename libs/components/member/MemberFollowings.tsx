@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Box, Button, Pagination, Stack, Typography } from '@mui/material';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
@@ -32,9 +33,6 @@ const MemberFollowings = (props: MemberFollowingsProps) => {
 
 	/** APOLLO REQUESTS **/
 	const {
-		loading: getMemberFollowingsLoading,
-		data: getMemberFollowingsData,
-		error: getMemberFollowingsError,
 		refetch: getMemberFollowingsRefetch,
 	} = useQuery(GET_MEMBER_FOLLOWINGS, {
 		fetchPolicy: 'network-only',
@@ -49,17 +47,12 @@ const MemberFollowings = (props: MemberFollowingsProps) => {
 
 	/** LIFECYCLES **/
 	useEffect(() => {
-		if (router.query.memberId)
-			setFollowInquiry({ ...followInquiry, search: { followerId: router.query.memberId as string } });
-		else setFollowInquiry({ ...followInquiry, search: { followerId: user?._id } });
-	}, [router]);
-
-	useEffect(() => {
-		getMemberFollowingsRefetch({ input: followInquiry }).then();
-	}, [followInquiry]);
+		const memberId = typeof router.query.memberId === 'string' ? router.query.memberId : user._id;
+		setFollowInquiry((previous) => ({ ...previous, page: 1, search: { followerId: memberId } }));
+	}, [router.query.memberId, user._id]);
 
 	/** HANDLERS **/
-	const paginationHandler = async (event: ChangeEvent<unknown>, value: number) => {
+	const paginationHandler = async (_event: ChangeEvent<unknown>, value: number) => {
 		followInquiry.page = value;
 		setFollowInquiry({ ...followInquiry });
 	};
@@ -82,7 +75,7 @@ const MemberFollowings = (props: MemberFollowingsProps) => {
 					</Stack>
 					{memberFollowings?.length === 0 && (
 						<div className={'no-data'}>
-							<img src="/img/icons/icoAlert.svg" alt="" />
+							<NextImage width={86} height={86} unoptimized src="/img/icons/icoAlert.svg" alt="" />
 							<p>No Followings yet!</p>
 						</div>
 					)}
@@ -94,7 +87,7 @@ const MemberFollowings = (props: MemberFollowingsProps) => {
 							<Stack className="follows-card-box" key={follower._id}>
 								<Stack className={'info'} onClick={() => redirectToMemberPageHandler(follower?.followingData?._id)}>
 									<Stack className="image-box">
-										<img src={imagePath} alt="" />
+										<NextImage width={640} height={400} unoptimized src={imagePath} alt="" />
 									</Stack>
 									<Stack className="information-box">
 										<Typography className="name">{follower?.followingData?.memberNick}</Typography>

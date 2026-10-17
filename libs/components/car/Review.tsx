@@ -1,7 +1,6 @@
-import { useTranslation } from 'next-i18next';
+import NextImage from 'next/image';
 import React from 'react';
 import { Stack, Typography } from '@mui/material';
-import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { Comment } from '../../types/comment/comment';
 import { imageUrl } from '../../config';
 import Moment from 'react-moment';
@@ -14,12 +13,11 @@ interface ReviewProps {
 }
 
 const Review = (props: ReviewProps) => {
- const { t } = useTranslation('common');
+
 	const { comment } = props;
-	const device = useDeviceDetect();
+
 	const router = useRouter();
 	const user = useReactiveVar(userVar);
-	const [value, setValue] = React.useState<number | null>(2);
 	const imagePath: string = comment?.memberData?.memberImage
 		? imageUrl(comment?.memberData?.memberImage)
 		: '/img/profile/defaultUser.svg';
@@ -34,7 +32,7 @@ const Review = (props: ReviewProps) => {
 			<Stack className={'review-config'}>
 				<Stack className={'review-mb-info'}>
 					<Stack className={'img-name-box'}>
-						<img src={imagePath} alt="" className={'img-box'} />
+						<NextImage width={128} height={128} unoptimized src={imagePath} alt="" className={'img-box'} />
 						<Stack>
 							<Typography className={'name'} onClick={() => goMemberPage(comment?.memberData?._id as string)}>
 								{comment.memberData?.memberNick}

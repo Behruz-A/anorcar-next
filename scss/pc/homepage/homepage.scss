@@ -1007,7 +1007,7 @@
 		.budget-heading-copy p { margin: 0; color: #667085; font-family: $font; font-size: 16px; line-height: 1.6; }
 		.budget-cards { position: relative; width: 100%; display: flex; flex-direction: row; }
 		.budget-swiper { width: 100%; margin: 0; }
-		.budget-slide { width: calc((100% - 90px) / 6); height: auto; }
+		.budget-slide { width: calc((100% - 72px) / 5); height: auto; }
 		.budget-card {
 			display: flex; flex-direction: column; position: relative; aspect-ratio: 4 / 5; height: auto;
 			border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; background: #fff; color: #181a20; text-decoration: none;
@@ -1016,7 +1016,10 @@
 			.budget-image { position: absolute; inset: 0; overflow: hidden; background: #e0dfdd; }
 			img { object-fit: cover; object-position: left center; transform-origin: left center; transition: transform .35s ease; }
 			@media (hover: hover) and (pointer: fine) { &:hover .budget-image img { transform: scale(1.025); } }
-			span { position: relative; z-index: 1; display: flex; align-items: center; margin-top: auto; min-height: 72px; padding: 16px 20px; background: linear-gradient(transparent, rgba(224,223,221,.85)); font-family: $font; font-size: 22px; font-weight: 700; line-height: 1.3; }
+			span { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin-top: auto; min-height: 90px; padding: 16px 20px; background: linear-gradient(transparent, rgba(224,223,221,.95)); font-family: $font; font-size: 22px; font-weight: 700; line-height: 1.3;
+				strong { font: inherit; }
+				small { font-size: 14px; font-weight: 400; line-height: 22px; color: #465160; }
+			}
 			&:focus-visible { outline: 2px solid #f13b18; outline-offset: -3px; }
 			@media (prefers-reduced-motion: reduce) { &, img { transition: none; } }
 		}
@@ -1030,7 +1033,7 @@
 		}
 		@media (max-width: 1200px) {
 			padding: 64px 0 72px;
-			.budget-slide { width: 220px; }
+			.budget-slide { width: 245px; }
 			.budget-card span { font-size: 21px; }
 		}
 		@media (max-width: 600px) {
@@ -1038,8 +1041,8 @@
 			.budget-header { align-items: flex-start; gap: 12px; margin-bottom: 24px; }
 			h2 { font-size: 25px; }
 			.budget-heading-copy p { font-size: 14px; }
-			.budget-slide { width: 190px; }
-			.budget-card span { min-height: 64px; padding: 12px 14px; font-size: 20px; }
+			.budget-slide { width: 210px; }
+			.budget-card span { min-height: 82px; padding: 12px 14px; font-size: 20px; }
 			.budget-controls { gap: 8px; button { width: 36px; height: 36px; } svg { width: 16px; height: 16px; } }
 		}
 	}
@@ -1181,7 +1184,8 @@
    .vehicle-card--trending {
     height: 100%;
     .cars-listing-photo { aspect-ratio: 16 / 10; }
-    .cars-listing-specs { min-height: 52px; }
+    .cars-listing-price { margin: 8px 0; }
+    .cars-listing-specs { min-height: 52px; row-gap: 6px; margin-bottom: 12px; }
    }
    .trend-car-swiper .trend-car-slide .trend-card-box {
     width: 100%; height: 100%; border-radius: 9px; overflow: hidden; background: white; box-shadow: 0 2px 6px rgba(16,24,40,.06);

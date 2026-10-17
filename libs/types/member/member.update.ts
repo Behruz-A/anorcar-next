@@ -1,6 +1,8 @@
-import { MemberStatus, MemberType } from '../../enums/member.enum';
+import { AgentType, AgentLanguage, MemberStatus, MemberType } from '../../enums/member.enum';
 
 export interface MemberUpdate {
+	agentType?: AgentType | null;
+	agentLanguages?: AgentLanguage[] | null;
 	_id: string;
 	memberType?: MemberType;
 	memberStatus?: MemberStatus;

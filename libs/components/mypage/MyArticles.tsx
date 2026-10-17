@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import React, { useState } from 'react';
 import { NextPage } from 'next';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
@@ -12,7 +13,7 @@ import { GET_BOARD_ARTICLES } from '../../../apollo/user/query';
 import { Messages } from '../../config';
 import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../sweetAlert';
 
-const MyArticles: NextPage = ({ initialInput, ...props }: T) => {
+const MyArticles: NextPage = ({ initialInput }: T) => {
 	const device = useDeviceDetect();
 	const user = useReactiveVar(userVar);
 	const [searchCommunity, setSearchCommunity] = useState({
@@ -26,9 +27,6 @@ const MyArticles: NextPage = ({ initialInput, ...props }: T) => {
 	const [likeTargetBoardArticle] = useMutation(LIKE_TARGET_BOARD_ARTICLE);
 
 	const {
-		loading: boardArticlesLoading,
-		data: boardArticlesData,
-		error: getBoardArticlesError,
 		refetch: boardArticlesRefetch,
 	} = useQuery(GET_BOARD_ARTICLES, {
 		fetchPolicy: 'network-only',
@@ -43,7 +41,7 @@ const MyArticles: NextPage = ({ initialInput, ...props }: T) => {
 	});
 
 	/** HANDLERS **/
-	const paginationHandler = (e: T, value: number) => {
+	const paginationHandler = (_e: T, value: number) => {
 		setSearchCommunity({ ...searchCommunity, page: value });
 	};
 
@@ -62,7 +60,7 @@ const MyArticles: NextPage = ({ initialInput, ...props }: T) => {
 
 			await sweetTopSmallSuccessAlert('Success!', 750);
 		} catch (err: any) {
-			console.log('ERROR, likeBoArticleHandler:', err.message);
+
 			sweetMixinErrorAlert(err.message).then();
 		}
 	};
@@ -92,7 +90,7 @@ const MyArticles: NextPage = ({ initialInput, ...props }: T) => {
 						})
 					) : (
 						<div className={'no-data'}>
-							<img src="/img/icons/icoAlert.svg" alt="" />
+							<NextImage width={86} height={86} unoptimized src="/img/icons/icoAlert.svg" alt="" />
 							<p>No Articles found!</p>
 						</div>
 					)}

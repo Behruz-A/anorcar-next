@@ -58,13 +58,13 @@ const requestJwtToken = async ({
 			fetchPolicy: 'network-only',
 		});
 
-		console.log('---------- login ----------');
+
 		const { accessToken } = result?.data?.login;
 		if (!accessToken) throw new Error(Message.TOKEN_NOT_EXIST);
 
 		return { jwtToken: accessToken };
 	} catch (err: any) {
-		console.log('request token err', err.graphQLErrors);
+
 		throw new Error(err.graphQLErrors?.[0]?.message ?? err.message ?? Message.SOMETHING_WENT_WRONG);
 	}
 };
@@ -107,13 +107,13 @@ const requestSignUpJwtToken = async ({
 			fetchPolicy: 'network-only',
 		});
 
-		console.log('---------- login ----------');
+
 		const { accessToken } = result?.data?.signup;
 		if (!accessToken) throw new Error(Message.TOKEN_NOT_EXIST);
 
 		return { jwtToken: accessToken };
 	} catch (err: any) {
-		console.log('request token err', err.graphQLErrors);
+
 		throw new Error(err.graphQLErrors?.[0]?.message ?? err.message ?? Message.SOMETHING_WENT_WRONG);
 	}
 };
@@ -146,6 +146,8 @@ export const updateUserInfo = (jwtToken: string, ready = true) => {
 				: `${claims.memberImage}`,
 		memberAddress: claims.memberAddress ?? '',
 		memberDesc: claims.memberDesc ?? '',
+		agentType: claims.agentType ?? null,
+		agentLanguages: claims.agentLanguages ?? [],
 		memberCars: claims.memberCars ?? 0,
 		memberRank: claims.memberRank ?? 0,
 		memberArticles: claims.memberArticles ?? 0,

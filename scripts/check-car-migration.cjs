@@ -1,6 +1,9 @@
 const assert = require('assert/strict');
 const fs = require('fs');
 const ts = require('typescript');
+require('./check-navbar-search.cjs');
+require('./qa-seller-showcase.cjs');
+require('./check-agent-directory.cjs');
 require('./check-loved-carousel.cjs');
 require('./check-recent-carousel.cjs');
 require('./check-top-agent-cards.cjs');

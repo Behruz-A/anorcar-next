@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import { useTranslation } from 'next-i18next';
 import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { AddPhotoAlternateOutlined, Close } from '@mui/icons-material';
@@ -153,7 +154,7 @@ export default function AddCar() {
       <input ref={photoInput} hidden aria-label={t("Upload car photos")} type="file" multiple accept="image/jpeg,image/png" onChange={upload} disabled={busy || draft.carImages.length >= 5} />
       <div className="car-photo-slots">
        {draft.carImages.map((image, index) => <div className="car-photo-slot" key={`${image}-${index}`}>
-        <img src={imageUrl(image)} alt={`${t('Car photo')} ${index + 1}`} />
+        <NextImage width={640} height={400} unoptimized src={imageUrl(image)} alt={`${t('Car photo')} ${index + 1}`} />
         <button type="button" className="car-photo-remove" disabled={busy} aria-label={`${t('Remove photo')} ${index + 1}`} onClick={() => set('carImages', draft.carImages.filter((_, photoIndex) => photoIndex !== index))}><Close fontSize="small" /></button>
        </div>)}
        {Array.from({ length: Math.max(0, 5 - draft.carImages.length) }, (_, index) => <button

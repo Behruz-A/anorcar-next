@@ -1,10 +1,10 @@
-﻿import React, { useEffect, useRef, useState } from 'react';
-import { GetStaticProps, NextPage } from 'next';
+import React, { useEffect, useRef, useState } from 'react';
+import { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { detailSeoProps } from '../../libs/seo.server';
 import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import {
 	Alert,
@@ -45,9 +45,7 @@ import { CREATE_COMMENT, LIKE_TARGET_CAR, LIKE_TARGET_MEMBER } from '../../apoll
 import { imageUrl } from '../../libs/config';
 import { sweetMixinErrorAlert } from '../../libs/sweetAlert';
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => ({
-	props: { ...(await serverSideTranslations(locale ?? 'en', ['common'])) },
-});
+export const getServerSideProps: GetServerSideProps = async (context) => detailSeoProps('agent')(context);
 
 type ProfileTab = 'listings' | 'about' | 'contact';
 const nicknameInitials = (nickname: string) => {
@@ -66,7 +64,6 @@ const nicknameInitials = (nickname: string) => {
 
 const AgentProfile = ({ agent, refresh }: { agent: Member; refresh: () => Promise<unknown> }) => {
 	const { t, i18n } = useTranslation('common');
-	const router = useRouter();
 	const user = useReactiveVar(userVar);
 	const [tab, setTab] = useState<ProfileTab>('listings');
 	const [page, setPage] = useState(1);

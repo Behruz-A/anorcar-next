@@ -1,11 +1,11 @@
+import NextImage from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
-import { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
+import { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { detailSeoProps } from '../../libs/seo.server';
 import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import {
 	Alert,
@@ -43,9 +43,7 @@ import { sweetConfirmAlert, sweetMixinErrorAlert } from '../../libs/sweetAlert';
 import ArticleMember from '../../libs/components/community/ArticleMember';
 
 const ToastViewer = dynamic(() => import('../../libs/components/community/TViewer'), { ssr: false });
-export const getStaticProps: GetStaticProps = async ({ locale }) => ({
-	props: { ...(await serverSideTranslations(locale ?? 'en', ['common'])) },
-});
+export const getServerSideProps: GetServerSideProps = async (context) => detailSeoProps('article')(context);
 
 const CommunityDetail: NextPage = () => {
 	const router = useRouter();
@@ -183,9 +181,7 @@ const CommunityDetail: NextPage = () => {
 	const liked = Boolean(article?.meLiked?.[0]?.myFavorite);
 	return (
 		<div id="community-detail-page">
-			<Head>
-				<title>{article ? `${article.articleTitle} | ANORCAR` : `${t('Community')} | ANORCAR`}</title>
-			</Head>
+
 			<div className="article-container">
 				<div className="article-toolbar">
 					<Link href={backHref}>
@@ -253,7 +249,7 @@ const CommunityDetail: NextPage = () => {
 									</div>
 								</header>
 								{cover && failedCover !== cover && (
-									<img className="article-cover" src={cover} alt="" onError={() => setFailedCover(cover)} />
+									<NextImage width={640} height={400} unoptimized className="article-cover" src={cover} alt="" onError={() => setFailedCover(cover)} />
 								)}
 								<div className="article-body">
 									<ToastViewer key={article._id} markdown={article.articleContent} />

@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Stack, Typography, List, ListItem, Button } from '@mui/material';
@@ -75,7 +76,7 @@ const MyMenu = () => {
 	return (
 		<Stack className="account-menu">
 			<Stack className="account-user-card">
-				<img
+				<NextImage width={128} height={128} unoptimized
 					src={imageUrl(user.memberImage || '/img/profile/defaultUser.svg')}
 					alt={t('Profile Photo')}
 					onError={(event) => {

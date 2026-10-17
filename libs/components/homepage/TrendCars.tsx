@@ -7,7 +7,7 @@ import EastIcon from '@mui/icons-material/East';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { A11y, Keyboard, Navigation } from 'swiper';
+import { A11y, Keyboard, Navigation } from 'swiper/modules';
 import { Car } from '../../types/car/car';
 import { CarsInquiry } from '../../types/car/car.input';
 import TrendCarCard from './TrendCarCard';
@@ -58,7 +58,7 @@ const TrendCars = (props: TrendCarsProps) => {
 
 			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
-			console.log('ERROR, likeCarHandler:', err.message);
+
 			sweetMixinErrorAlert(err.message).then();
 		}
 	};

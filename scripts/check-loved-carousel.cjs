@@ -20,7 +20,7 @@ loaded.require = id => {
   IconButton: ({ children, ...props }) => React.createElement('button', props, children) };
  if (id.startsWith('@mui/icons-material/')) return () => React.createElement('svg');
  if (id === 'next/link') return ({ children }) => React.createElement('a', null, children);
- if (id === 'swiper') return { Navigation, Keyboard, A11y };
+ if ((id === 'swiper' || id === 'swiper/modules')) return { Navigation, Keyboard, A11y };
  if (id === 'swiper/react') return {
   Swiper: props => { carousel = props; return div(props); }, SwiperSlide: div,
  };

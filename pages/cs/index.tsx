@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -64,10 +63,7 @@ const CS: NextPage = () => {
 	};
 	return (
 		<Stack component="main" className="cs-page" id="cs-help-center">
-			<Head>
-				<title>{`${t('Help Center')} | ANORCAR`}</title>
-				<meta name="description" content={t('Find answers, explore guides, and get the support you need.')} />
-			</Head>
+
 			<section className="cs-hero" aria-labelledby="cs-title">
 				<div className="cs-container">
 					<h1 id="cs-title">{t('Help Center')}</h1>

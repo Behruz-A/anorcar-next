@@ -43,7 +43,7 @@
 			line-height: 1.6;
 			color: #717782;
 		}
-		fieldset {
+		form > fieldset {
 			border: 0;
 			margin: 0;
 			padding: 0;
@@ -329,6 +329,29 @@
 					flex: 1;
 				}
 			}
+		}
+	}
+}
+
+#pc-wrap #my-profile-page,
+#mobile-wrap #my-profile-page {
+	.account-agent-fields {
+		margin-top: 24px;
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		.MuiFormControlLabel-label {
+			font-family: $font;
+			font-size: 13px;
+		}
+		.MuiCheckbox-root.Mui-checked {
+			color: #f13b18;
+		}
+		.MuiOutlinedInput-notchedOutline {
+			border: 1px solid #dce1e8;
+		}
+		.Mui-focused .MuiOutlinedInput-notchedOutline {
+			border-color: #f13b18;
 		}
 	}
 }

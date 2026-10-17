@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { NextPage } from 'next';
-import useDeviceDetect from '../../libs/hooks/useDeviceDetect';
 import withLayoutBasic from '../../libs/components/layout/LayoutBasic';
 import { Stack } from '@mui/material';
 import MemberMenu from '../../libs/components/member/MemberMenu';
@@ -23,7 +22,7 @@ export const getStaticProps = async ({ locale }: any) => ({
 });
 
 const MemberPage: NextPage = () => {
-	const device = useDeviceDetect();
+
 	const router = useRouter();
 	const category: any = router.query?.category;
 	const user = useReactiveVar(userVar);
@@ -51,7 +50,7 @@ const MemberPage: NextPage = () => {
 	/** HANDLERS **/
 	const subscribeHandler = async (id: string, refetch: any, query: any) => {
 		try {
-			console.log('id: ', id);
+
 			if (!id) throw new Error(Messages.error1);
 			if (!user._id) throw new Error(Messages.error2);
 
@@ -100,7 +99,7 @@ const MemberPage: NextPage = () => {
 			await sweetTopSmallSuccessAlert('Success!', 800);
 			await refetch({ input: query });
 		} catch (err: any) {
-			console.log('ERROR, likeMemberHandler:', err.message);
+
 			sweetMixinErrorAlert(err.message).then();
 		}
 	};

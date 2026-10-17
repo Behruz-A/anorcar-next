@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
-import Head from 'next/head';
 import Top from '../Top';
 import Footer from '../Footer';
 import { Stack } from '@mui/material';
 import { hydrateUser } from '../../auth';
 import SupportChat from '../SupportChat';
-import { useReactiveVar } from '@apollo/client';
-import { userVar } from '../../../apollo/store';
 //@ts-ignore
 import 'swiper/css';
 //@ts-ignore
@@ -18,9 +14,8 @@ import 'swiper/css/navigation';
 
 const withLayoutFull = (Component: any, options: { showChat?: boolean; className?: string } = {}) => {
 	return function FullLayout(props: any) {
-		const router = useRouter();
 		const device = useDeviceDetect();
-		const user = useReactiveVar(userVar);
+
 
 		/** LIFECYCLES **/
 		useEffect(() => {
@@ -32,10 +27,7 @@ const withLayoutFull = (Component: any, options: { showChat?: boolean; className
 		if (device == 'mobile') {
 			return (
 				<>
-					<Head>
-						<title>ANORCAR</title>
-						<meta name={'title'} content={`ANORCAR`} />
-					</Head>
+
 					<Stack id="mobile-wrap" className={options.className}>
 						<Stack id={'top'}>
 							<Top />
@@ -56,10 +48,7 @@ const withLayoutFull = (Component: any, options: { showChat?: boolean; className
 		} else {
 			return (
 				<>
-					<Head>
-						<title>ANORCAR</title>
-						<meta name={'title'} content={`ANORCAR`} />
-					</Head>
+
 					<Stack id="pc-wrap" className={options.className}>
 						<Stack id={'top'}>
 							<Top />

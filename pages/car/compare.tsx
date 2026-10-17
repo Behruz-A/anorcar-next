@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Breadcrumbs, Button, CircularProgress, FormControlLabel, Switch } from '@mui/material';
-import Head from 'next/head';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import IosShareRoundedIcon from '@mui/icons-material/IosShareRounded';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
@@ -125,9 +124,7 @@ const CarComparePage = () => {
 	};
 	return (
 		<div className="compare-results-page" ref={pageRef}>
-			<Head>
-				<title>{t('Compare Cars')} | ANORCAR</title>
-			</Head>
+
 			<section className="compare-cars" aria-labelledby="compare-cars-heading">
 				<div className="compare-container">
 					<header className="compare-heading compare-page-heading">

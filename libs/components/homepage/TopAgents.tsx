@@ -7,7 +7,7 @@ import EastIcon from '@mui/icons-material/East';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { A11y, Keyboard, Navigation } from 'swiper';
+import { A11y, Keyboard, Navigation } from 'swiper/modules';
 import TopAgentCard from './TopAgentCard';
 import { Member } from '../../types/member/member';
 import { AgentsInquiry } from '../../types/member/member.input';

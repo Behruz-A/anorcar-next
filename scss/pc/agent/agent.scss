@@ -331,3 +331,291 @@
 		}
 	}
 }
+
+// Reference directory layout, retaining the existing page and shared AgentCard.
+#pc-wrap .agent-list-page,
+#mobile-wrap .agent-list-page {
+	.agents-container {
+		display: grid;
+		grid-template-columns: 280px minmax(0, 1fr);
+		align-items: start;
+		gap: 24px;
+	}
+	.agents-main {
+		min-width: 0;
+	}
+	.agents-sidebar {
+		position: sticky;
+		top: 108px;
+	}
+	.agents-toolbar {
+		gap: 12px;
+	}
+	.agents-search,
+	.agents-sort {
+		height: 44px;
+	}
+	.agents-sort {
+		min-width: 155px;
+		flex-basis: 155px;
+		width: 155px;
+		font-size: 13px;
+	}
+	.agents-view {
+		border: 0;
+		padding: 0;
+		gap: 8px;
+		background: transparent;
+		button {
+			width: 42px;
+			height: 42px;
+			border: 1px solid #e1e4e8;
+			background: #fff;
+		}
+		button[aria-pressed='true'] {
+			background: #f13b18;
+			border-color: #f13b18;
+		}
+	}
+	.agents-summary {
+		margin: 14px 0;
+		.agents-all {
+			border: 0;
+			background: transparent;
+			padding: 0;
+			font-weight: 500;
+			font-size: 12px;
+		}
+	}
+	.agents-results {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 24px;
+	}
+	.agents-profile-card {
+		padding: 20px;
+		border-radius: 24px;
+		box-shadow: 0 2px 8px rgba(24, 26, 32, 0.035);
+	}
+	.agents-photo {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1;
+		border-radius: 18px;
+		overflow: hidden;
+		background: #f2f3f5;
+		img {
+			object-fit: contain;
+			object-position: center;
+		}
+		.agents-like {
+			color: #fff;
+			&[aria-pressed='true'] {
+				background: #fff;
+				color: #f04432;
+			}
+		}
+	}
+	.agents-card-content {
+		padding: 20px 0 0;
+	}
+	.agents-name {
+		font-size: 18px;
+		line-height: 26px;
+	}
+	.agents-role {
+		font-size: 12px;
+		line-height: 20px;
+	}
+	.agents-card-meta {
+		gap: 6px;
+		margin: 8px 0 12px;
+		> span:first-child svg {
+			color: #69727d;
+		}
+	}
+	.agents-card-stats {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 8px 14px;
+		padding-top: 12px;
+		border-top: 1px solid #eef0f3;
+		margin-top: auto;
+		color: #69727d;
+		font-size: 12px;
+		span {
+			display: inline-flex;
+			align-items: center;
+			gap: 5px;
+		}
+		svg {
+			width: 16px;
+			height: 16px;
+		}
+	}
+	.agents-card-actions {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+		margin-top: 14px;
+		.agents-follow {
+			min-height: 38px;
+			border-color: #f13b18;
+			color: #e03a18;
+			font-family: $font;
+			text-transform: none;
+			font-size: 12px;
+			&[aria-pressed='true'] {
+				color: #596477;
+				border-color: #cdd4df;
+			}
+			.MuiButton-startIcon {
+				margin-right: 4px;
+			}
+		}
+		.agents-profile-link {
+			gap: 8px;
+			margin: 0 0 0 auto;
+			background: #edf1f5;
+			color: #13213a;
+			border-color: #edf1f5;
+			min-height: 38px;
+			font-size: 12px;
+			svg {
+				width: 17px;
+				height: 17px;
+			}
+			&:hover {
+				background: #e1e7ef;
+				color: #13213a;
+				border-color: #e1e7ef;
+			}
+		}
+	}
+	.agents-results.agents-list {
+		grid-template-columns: 1fr;
+		.agents-profile-card {
+			grid-template-columns: 230px minmax(0, 1fr);
+		}
+		.agents-photo {
+			height: 100%;
+			aspect-ratio: auto;
+			min-height: 240px;
+		}
+	}
+	@media (max-width: 1200px) {
+		.agents-container {
+			grid-template-columns: 240px minmax(0, 1fr);
+			gap: 20px;
+		}
+		.agents-results {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		.agents-toolbar {
+			flex-wrap: wrap;
+		}
+		.agents-search {
+			flex-basis: 100%;
+		}
+	}
+	@media (max-width: 900px) {
+		.agents-container {
+			display: block;
+		}
+		.agents-results.agents-list .agents-profile-card {
+			grid-template-columns: 180px minmax(0, 1fr);
+		}
+	}
+	@media (max-width: 600px) {
+		.agents-results {
+			grid-template-columns: 1fr;
+		}
+		.agents-profile-card {
+			padding: 14px;
+			border-radius: 20px;
+		}
+		.agents-results.agents-list {
+			.agents-profile-card {
+				grid-template-columns: 1fr;
+			}
+			.agents-photo {
+				min-height: 0;
+				height: 210px;
+			}
+		}
+	}
+}
+.agents-filters {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	padding: 20px;
+	border: 1px solid #e3e8f0;
+	border-radius: 10px;
+	background: #f8fafc;
+	color: #181a20;
+	font-family: $font;
+	.agents-filters-heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 6px;
+		h2 {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin: 0;
+			font: 600 16px/24px $font;
+		}
+		h2 svg {
+			width: 20px;
+			color: #69727d;
+		}
+	}
+	> fieldset {
+		min-width: 0;
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+	> fieldset > legend {
+		margin-bottom: 8px;
+		padding: 0;
+		font: 600 14px/22px $font;
+	}
+	.MuiFormControlLabel-root {
+		margin: 0;
+		min-height: 30px;
+	}
+	.MuiFormControlLabel-label {
+		font: 400 13px/20px $font;
+		color: #69727d;
+	}
+	.MuiCheckbox-root,
+	.MuiRadio-root {
+		padding: 4px 10px 4px 0;
+		color: #b2bdcc;
+		&.Mui-checked {
+			color: #f13b18;
+		}
+	}
+	.MuiInputBase-root {
+		font: 400 13px/22px $font;
+		background: #fff;
+	}
+	.MuiButton-root {
+		font-family: $font;
+		text-transform: none;
+		font-size: 12px;
+	}
+	.MuiButton-contained {
+		min-height: 42px;
+		background: #f13b18;
+		color: #fff;
+		box-shadow: none;
+		&:hover {
+			background: #d93213;
+		}
+	}
+}

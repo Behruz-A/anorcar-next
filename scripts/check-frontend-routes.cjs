@@ -1,6 +1,6 @@
 // Read-only smoke checks against an already running production frontend.
 const origin = process.env.FRONTEND_ORIGIN || 'http://localhost:3010';
-const pages = ['/', '/car', '/car/detail?id=invalid', '/kr/car', '/ru/car',
+const pages = ['/', '/car', '/kr/car', '/ru/car',
  '/mypage?category=myCars', '/member?memberId=000000000000000000000001',
  '/account/join', '/community', '/_admin/cars', '/_admin/brands',
  '/img/car/hero.svg', '/img/car/placeholder.svg'];
@@ -15,6 +15,9 @@ async function main() {
   if (response.status !== 200) throw new Error(`${path}: expected 200, got ${response.status}`);
   console.log(`200 ${path}`);
  }
+ const missing = await fetch(origin + '/car/detail?id=invalid');
+ if (missing.status !== 404) throw new Error(`Invalid car detail: expected 404, got ${missing.status}`);
+ console.log('404 /car/detail?id=invalid');
  for (const [path, destination] of redirects) {
   const response = await fetch(origin + path, { redirect: 'manual' });
   const location = new URL(response.headers.get('location') || '/', origin);

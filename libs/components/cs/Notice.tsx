@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
@@ -83,7 +84,7 @@ const Notice = () => {
 								}}
 							>
 								<div className="cs-update-image">
-									<img
+									<NextImage width={640} height={400} unoptimized
 										src={article.articleImage ? imageUrl(article.articleImage) : '/img/car/hero.svg'}
 										alt={article.articleTitle}
 										loading="lazy"

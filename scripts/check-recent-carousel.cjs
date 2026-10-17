@@ -8,6 +8,7 @@ const { renderToStaticMarkup } = require('react-dom/server');
 let carousel, query, mutationOptions, states = [], cursor = 0;
 const cars = Array.from({ length: 9 }, (_, index) => ({ _id: String(index).padStart(24, '0') }));
 const div = ({ children, className, component }) => React.createElement(component || 'div', { className }, children);
+const image = ({ unoptimized, ...props }) => React.createElement('img', props);
 const button = ({ children, ...props }) => React.createElement('button', props, children);
 function load(relative, overrides) {
  const filename = path.resolve(__dirname, '..', relative), loaded = new Module(filename, module);
@@ -28,19 +29,20 @@ function shared(id) {
  if (id === '@mui/material') return { Stack: div, Typography: div, Box: div, Alert: div, Skeleton: div, IconButton: button };
  if (id === '@mui/material/IconButton') return button;
  if (id.startsWith('@mui/icons-material/')) return () => React.createElement('svg');
+ if (id === 'next/image') return image;
  if (id === 'next/link') return ({ children, href, ...props }) => React.createElement('a', { ...props, href: href.pathname + '?' + new URLSearchParams(href.query).toString() }, children);
  if (id.includes('/apollo/store')) return {};
  if (id === '../../enums/common.enum') return { Direction: { DESC: 'DESC' }, Message: { NOT_AUTHENTICATED: 'Login required' } };
  if (id === '../../enums/car.enum') return { CarStatus: { SOLD: 'SOLD', DELETE: 'DELETE' }, CarCondition: { NEW: 'NEW', USED: 'USED' }, CarFuelType: { ELECTRIC: 'ELECTRIC' } };
  if (id === '../../config') return { imageUrl: value => value ? '/assets/' + value : '/fallback.svg' };
  if (id === '../../car') return { carLabel: value => value };
- if (id === '../../currency') return { formatPrice: value => '₩' + value.toLocaleString('en-US') };
+ if (id === '../../currency') return { formatPrice: value => 'â‚©' + value.toLocaleString('en-US') };
  if (id === '../../compareSelection') return { availableCompareCar: car => car.carStatus === 'ACTIVE' && !car.soldAt && !car.deletedAt };
 }
 const Section = load('libs/components/homepage/RecentlyAddedCars.tsx', id => {
  if (id === '@apollo/client') return { useMutation: (_, options) => { mutationOptions = options; return [async () => {}]; }, useQuery: (_, options) => { query = options; return { data: { getCars: { list: cars } } }; } };
  if (id.includes('/apollo/user/') || id === '../../sweetAlert') return {};
- if (id === 'swiper') return { Navigation: 'Navigation', Pagination: 'Pagination', Keyboard: 'Keyboard', A11y: 'A11y' };
+ if ((id === 'swiper' || id === 'swiper/modules')) return { Navigation: 'Navigation', Pagination: 'Pagination', Keyboard: 'Keyboard', A11y: 'A11y' };
  if (id === 'swiper/react') return { Swiper: props => { carousel = props; return div(props); }, SwiperSlide: div };
  if (id === './RecentlyAddedCarCard') return () => React.createElement('article');
 });
@@ -74,16 +76,16 @@ function all(node) { return !React.isValidElement(node) ? [] : [node, ...React.C
  client.stop();
  let tree = render();
  const find = predicate => all(tree).find(predicate);
- assert.equal(find(node => node.type === 'img').props.src, '/assets/first.jpg');
+ assert.equal(find(node => node.type === image).props.src, '/assets/first.jpg');
  find(node => node.props['aria-label'] === 'Next photo for EV').props.onClick();
  tree = render();
- assert.equal(find(node => node.type === 'img').props.src, '/assets/second.jpg');
+ assert.equal(find(node => node.type === image).props.src, '/assets/second.jpg');
  find(node => node.props['aria-label'] === 'Next photo for EV').props.onClick();
  tree = render();
- assert.equal(find(node => node.type === 'img').props.src, '/assets/first.jpg');
+ assert.equal(find(node => node.type === image).props.src, '/assets/first.jpg');
  find(node => node.props['aria-label'] === 'Previous photo for EV').props.onClick();
  tree = render();
- assert.equal(find(node => node.type === 'img').props.src, '/assets/second.jpg');
+ assert.equal(find(node => node.type === image).props.src, '/assets/second.jpg');
  const compare = find(node => node.props.className === 'recent-compare');
  assert.deepEqual(compare.props.href, { pathname: '/car/compare', query: { ids: car._id } });
  assert.deepEqual(find(node => node.props.className === 'recent-details').props.href, { pathname: '/car/detail', query: { id: car._id } });

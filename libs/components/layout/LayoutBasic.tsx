@@ -1,14 +1,11 @@
 import React, { useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
-import Head from 'next/head';
 import Top from '../Top';
 import Footer from '../Footer';
 import { Stack } from '@mui/material';
 import { hydrateUser } from '../../auth';
 import SupportChat from '../SupportChat';
-import { useReactiveVar } from '@apollo/client';
-import { userVar } from '../../../apollo/store';
 import { useTranslation } from 'next-i18next';
 //@ts-ignore
 import 'swiper/css';
@@ -20,7 +17,7 @@ import 'swiper/css/navigation';
 const withLayoutBasic = (Component: any) => {
 	return function BasicLayout(props: any) {
 		const router = useRouter();
-		const { t, i18n } = useTranslation('common');
+		const { t } = useTranslation('common');
 		const device = useDeviceDetect();
 		const authHeader = router.pathname === '/account/join';
 		const marketplaceHeader = router.pathname === '/car' || router.pathname === '/agent' || router.pathname === '/mypage';
@@ -29,7 +26,7 @@ const withLayoutBasic = (Component: any) => {
 		const accountPage = router.pathname === '/mypage';
 		const communityHeader = router.pathname === '/community' || router.pathname === '/community/detail';
 		const communityDetail = router.pathname === '/community/detail';
-		const user = useReactiveVar(userVar);
+
 
 		const memoizedValues = useMemo(() => {
 			let title = '',
@@ -107,11 +104,8 @@ const withLayoutBasic = (Component: any) => {
 		if (device == 'mobile') {
 			return (
 				<>
-					<Head>
-						<title>ANORCAR</title>
-						<meta name={'title'} content={`ANORCAR`} />
-					</Head>
-					<Stack id="mobile-wrap" className={authHeader ? 'auth-shell' : helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : communityDetail ? 'community-detail-shell' : undefined}>
+
+					<Stack id="mobile-wrap" className={router.pathname === '/car' ? 'car-browse-shell' : authHeader ? 'auth-shell' : helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : communityDetail ? 'community-detail-shell' : undefined}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>
@@ -145,11 +139,8 @@ const withLayoutBasic = (Component: any) => {
 		} else {
 			return (
 				<>
-					<Head>
-						<title>ANORCAR</title>
-						<meta name={'title'} content={`ANORCAR`} />
-					</Head>
-					<Stack id="pc-wrap" className={authHeader ? 'auth-shell' : helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : communityDetail ? 'community-detail-shell' : undefined}>
+
+					<Stack id="pc-wrap" className={router.pathname === '/car' ? 'car-browse-shell' : authHeader ? 'auth-shell' : helpCenter ? 'cs-shell' : accountPage ? 'account-shell' : agentDetail ? 'agent-detail-shell' : communityDetail ? 'community-detail-shell' : undefined}>
 						<Stack id={'top'}>
 							<Top />
 						</Stack>

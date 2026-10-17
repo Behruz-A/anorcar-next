@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { Alert, CircularProgress, Pagination, Stack, Typography } from '@mui/material';
 import { useQuery } from '@apollo/client';
@@ -31,7 +32,7 @@ export default function MemberCars() {
   {loading && <CircularProgress aria-label={t('Loading cars')} />}
   {error && <Alert severity="error">{t('Cars could not be loaded. Please try again.')}</Alert>}
   {!loading && !error && data?.getCars.list.length === 0 && <div className="no-data">
-   <img src="/img/icons/icoAlert.svg" alt="" /><Typography>{t('No cars found.')}</Typography>
+   <NextImage width={86} height={86} unoptimized src="/img/icons/icoAlert.svg" alt="" /><Typography>{t('No cars found.')}</Typography>
   </div>}
   {!!data?.getCars.list.length && <Stack className="listing-title-box">
    {[t('Listings'), t('Date added'), t('Status'), t('Views')].map((title, index) => <Typography key={index} className="title-text">{title}</Typography>)}

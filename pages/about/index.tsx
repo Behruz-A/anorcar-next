@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import React from 'react';
 import { Stack, Typography, Button } from '@mui/material';
 import { useTranslation } from 'next-i18next';
@@ -10,7 +11,7 @@ function About() {
  return <Stack className="car-about" spacing={3}>
   <Typography variant="h3">{t('About ANORCAR')}</Typography>
   <Typography>{t('Find your next car and connect with sellers across South Korea.')}</Typography>
-  <img src="/img/car/hero.svg" alt={t('Cars')} style={{ width: '100%', borderRadius: 16 }} />
+  <NextImage width={1600} height={600} unoptimized src="/img/car/hero.svg" alt={t('Cars')} style={{ width: '100%', borderRadius: 16 }} />
   <Typography variant="h5">{t('Browse cars your way')}</Typography>
   <Typography>{t('Search by brand, model, year, fuel, transmission, condition, location, and price.')}</Typography>
   <Typography variant="h5">{t('Manage your listings')}</Typography>

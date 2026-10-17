@@ -101,7 +101,7 @@ interface EnhancedTableProps {
 	rowCount: number;
 }
 
-function EnhancedTableHead(props: EnhancedTableProps) {
+function EnhancedTableHead(_props: EnhancedTableProps) {
 	return (
 		<TableHead>
 			<TableRow>

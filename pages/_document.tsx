@@ -1,10 +1,16 @@
-import { Html, Head, Main, NextScript } from 'next/document';
-export default function Document() {
- return <Html><Head>
-  <meta name="robots" content="index,follow" />
-  <link rel="icon" type="image/png" href="/img/anorcar_logo_original.png" />
-  <link rel="apple-touch-icon" href="/img/anorcar_logo_original.png" />
-  <meta name="keywords" content="ANORCAR, cars, car marketplace, South Korea" />
-  <meta name="description" content="Find your next car on ANORCAR. Browse cars and connect with sellers across South Korea." />
- </Head><body><Main /><NextScript /></body></Html>;
+import { Html, Head, Main, NextScript, DocumentProps } from 'next/document';
+import { seoLocale, seoLocales } from '../libs/seo';
+export default function Document(props: DocumentProps) {
+	return (
+		<Html lang={seoLocales[seoLocale(props.__NEXT_DATA__.locale)].language}>
+			<Head>
+				<link rel="icon" type="image/png" href="/img/anorcar_logo_original.png" />
+				<link rel="apple-touch-icon" href="/img/anorcar_logo_original.png" />
+			</Head>
+			<body>
+				<Main />
+				<NextScript />
+			</body>
+		</Html>
+	);
 }

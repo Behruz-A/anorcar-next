@@ -1,14 +1,13 @@
+import NextImage from 'next/image';
 import { formatPrice } from '../../currency';
 import { useTranslation } from 'next-i18next';
 import { imageUrl } from '../../config';
 import { Menu, MenuItem, Stack, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import useDeviceDetect from '../../hooks/useDeviceDetect';
 import IconButton from '@mui/material/IconButton';
 import ModeIcon from '@mui/icons-material/Mode';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Car } from '../../types/car/car';
-import { formatterStr } from '../../utils';
 import Moment from 'react-moment';
 import { useRouter } from 'next/router';
 import { CarStatus } from '../../enums/car.enum';
@@ -23,14 +22,14 @@ interface CarCardProps {
 export const CarCard = (props: CarCardProps) => {
  const { t } = useTranslation('common');
 	const { car, deleteCarHandler, memberPage, updateCarHandler } = props;
-	const device = useDeviceDetect();
+
 	const router = useRouter();
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 
 	/** HANDLERS **/
 	const pushEditCar = async (id: string) => {
-		console.log('+pushEditCar: ', id);
+
 		await router.push({
 			pathname: '/mypage',
 			query: { category: 'addCar', carId: id },
@@ -57,7 +56,7 @@ export const CarCard = (props: CarCardProps) => {
 	return (
 			<Stack className="car-card-box">
 				<Stack className="image-box" onClick={() => pushCarDetail(car?._id)}>
-					<img src={imageUrl(car.carImages[0])} alt="" />
+					<NextImage width={640} height={400} unoptimized src={imageUrl(car.carImages[0])} alt="" />
 				</Stack>
 				<Stack className="information-box" onClick={() => pushCarDetail(car?._id)}>
 					<Typography className="name">{car.carTitle}</Typography>

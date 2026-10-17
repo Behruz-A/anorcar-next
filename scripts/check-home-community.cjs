@@ -62,4 +62,20 @@ assert(card.includes('/community/detail?articleCategory=NEWS&amp;id=post-0'));
 assert(card.includes('<time'));
 assert(card.includes('title="Views"'));
 assert(card.includes('title="Comments"'));
+const longUrl = 'https://www.example.com/very/long/article/path?tracking=' + 'x'.repeat(180);
+assert.equal(helper.articleExcerpt(`<p>Read ${longUrl}.</p>`, 160), 'Read example.com.');
+assert.equal(helper.articleExcerpt('Visit www.example.com/a/long/path', 160), 'Visit example.com');
+assert.equal(helper.articleExcerpt(`<p>${longUrl}</p>`), longUrl, 'Other excerpt consumers retain the full text');
+const longText = 'Useful advice for electric vehicle owners. '.repeat(12);
+const compact = helper.articleExcerpt(longText, 160);
+assert(Array.from(compact).length <= 160 && compact.endsWith('…'));
+assert(!helper.articleExcerpt('🚗'.repeat(170), 160).includes('\uFFFD'));
+const compactCard = renderToStaticMarkup(React.createElement(Card, { article: {
+ ...posts[0], articleTitle: longText, articleContent: `<p>Read ${longUrl}. ${longText}</p>`,
+} }));
+const visibleTitle = compactCard.match(/<h3[^>]*>(.*?)<\/h3>/)[1];
+const visibleExcerpt = compactCard.match(/class="community-post-excerpt">(.*?)<\/p>/)[1];
+assert(visibleTitle.length <= 90 && visibleTitle.endsWith('…'));
+assert(visibleExcerpt.length <= 160 && visibleExcerpt.includes('example.com.') && !visibleExcerpt.includes('tracking='));
+assert(compactCard.includes('aria-label="' + longText + '"'), 'Full article title remains accessible');
 console.log('Homepage Community passed: 3 real cards, All Posts/four filters, reset, safe excerpts, image fallback, date/counters and detail links.');

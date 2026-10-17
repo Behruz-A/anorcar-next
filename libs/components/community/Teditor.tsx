@@ -1,4 +1,5 @@
-﻿import React, { useEffect, useMemo, useRef, useState } from 'react';
+import NextImage from 'next/image';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
 	Button,
 	CircularProgress,
@@ -19,6 +20,7 @@ import UploadOutlinedIcon from '@mui/icons-material/UploadOutlined';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import { BoardArticleCategory } from '../../enums/board-article.enum';
 import { Editor } from '@toast-ui/react-editor';
+import { sanitizeArticleHtml } from '../../sanitizeArticle';
 import '@toast-ui/editor/dist/i18n/ko-kr';
 import '@toast-ui/editor/dist/i18n/ru-ru';
 import '@toast-ui/editor/dist/toastui-editor.css';
@@ -98,9 +100,10 @@ const TuiEditor = () => {
 
 	useEffect(() => {
 		mounted.current = true;
+		const pendingControllers = controllers.current;
 		return () => {
 			mounted.current = false;
-			controllers.current.forEach((controller) => controller.abort());
+			pendingControllers.forEach((controller) => controller.abort());
 		};
 	}, []);
 
@@ -305,7 +308,7 @@ const TuiEditor = () => {
 					</label>
 					<div className={`article-cover ${selectedCover ? 'has-image' : ''}`}>
 						{selectedCover ? (
-							<img src={imageUrl(selectedCover)} alt={t('Article cover preview')} />
+							<NextImage width={640} height={400} unoptimized src={imageUrl(selectedCover)} alt={t('Article cover preview')} />
 						) : (
 							<ImageOutlinedIcon aria-hidden="true" />
 						)}
@@ -350,6 +353,7 @@ const TuiEditor = () => {
 					aria-busy={publishing}
 				>
 					<ArticleEditor
+						customHTMLSanitizer={sanitizeArticleHtml}
 						key={locale}
 						ref={editorRef}
 						initialValue={editorRef.current?.getInstance()?.getMarkdown() ?? ''}

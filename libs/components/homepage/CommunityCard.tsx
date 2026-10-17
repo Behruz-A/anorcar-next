@@ -37,8 +37,8 @@ const CommunityCard = ({ article }: CommunityCardProps) => {
     <span className="community-category-badge">{categoryIcon}{t(categoryLabels[article.articleCategory])}</span>
    </div>
    <div className="community-post-caption">
-    <h3>{article.articleTitle}</h3>
-    <p className="community-post-excerpt">{articleExcerpt(article.articleContent) || t('Read the discussion')}</p>
+    <h3 title={article.articleTitle}>{articleExcerpt(article.articleTitle, 90)}</h3>
+    <p className="community-post-excerpt">{articleExcerpt(article.articleContent, 160) || t('Read the discussion')}</p>
     <div className="community-post-meta">
      <span><CalendarMonthOutlinedIcon /><time dateTime={article.createdAt}>{Number.isNaN(date.getTime()) ? '—' : new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' }).format(date)}</time></span>
      <span title={t('Views')}><VisibilityOutlinedIcon />{new Intl.NumberFormat(locale, { notation: 'compact', maximumFractionDigits: 1 }).format(article.articleViews)}</span>

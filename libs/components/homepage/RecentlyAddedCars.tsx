@@ -4,7 +4,7 @@ import { Stack, Alert, Skeleton, IconButton } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { A11y, Keyboard, Navigation, Pagination } from 'swiper';
+import { A11y, Keyboard, Navigation, Pagination } from 'swiper/modules';
 import EastIcon from '@mui/icons-material/East';
 import { useMutation, useQuery } from '@apollo/client';
 import { useTranslation } from 'next-i18next';

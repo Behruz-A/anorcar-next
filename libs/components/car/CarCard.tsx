@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import { formatPrice } from '../../currency';
 import { useTranslation } from 'next-i18next';
 import { imageUrl } from '../../config';
@@ -81,7 +82,7 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 				<Stack component="article" className="cars-listing-card vehicle-card vehicle-card--recent recent-car-card">
 					<div className="cars-listing-photo recent-car-image">
 						<div className="recent-photo-frame">
-							<img key={images[currentPhoto]} src={imageFailed ? imageUrl(null) : imageUrl(images[currentPhoto])} alt={name} loading="lazy" onError={() => setImageFailed(true)} />
+							<NextImage width={640} height={400} unoptimized key={images[currentPhoto]} src={imageFailed ? imageUrl(null) : imageUrl(images[currentPhoto])} alt={name} loading="lazy" onError={() => setImageFailed(true)} />
 						</div>
 						<div className="recent-photo-badges">
 							{badge && <span className="cars-listing-badge">{t(badge)}</span>}
@@ -115,7 +116,7 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 			<Stack component="article" className={`cars-listing-card vehicle-card${variant ? ` vehicle-card--${variant}` : ''}`}>
 				<div className="cars-listing-photo">
 					<Link href={href} tabIndex={-1} aria-label={name}>
-						<img src={imageFailed ? imageUrl(null) : imageUrl(car.carImages?.[0])} alt={name} loading="lazy"
+						<NextImage width={640} height={400} unoptimized src={imageFailed ? imageUrl(null) : imageUrl(car.carImages?.[0])} alt={name} loading="lazy"
 							onError={() => setImageFailed(true)} />
 					</Link>
 					{badge && <span className="cars-listing-badge">{t(badge)}</span>}
@@ -162,11 +163,11 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 							query: { id: car?._id },
 						}}
 					>
-						<img src={imagePath} alt="" />
+						<NextImage width={640} height={400} unoptimized src={imagePath} alt="" />
 					</Link>
 					{car && car?.carRank > topCarRank && (
 						<Box component={'div'} className={'top-badge'}>
-							<img src="/img/icons/electricity.svg" alt="" />
+							<NextImage width={16} height={14} unoptimized src="/img/icons/electricity.svg" alt="" />
 							<Typography>{t('TOP')}</Typography>
 						</Box>
 					)}
@@ -194,13 +195,13 @@ const CarCard = (props: (CarCardType & { browse?: false }) | BrowseCarCardType) 
 					</Stack>
 					<Stack className="options">
 						<Stack className="option">
-							<img src="/img/icons/car.svg" alt="" /> <Typography>{car.carYear} year</Typography>
+							<NextImage width={32} height={32} unoptimized src="/img/icons/car.svg" alt="" /> <Typography>{car.carYear} year</Typography>
 						</Stack>
 						<Stack className="option">
-							<img src="/img/icons/fuel.svg" alt="" /> <Typography>{t(carLabel(car.carFuelType ?? ''))}</Typography>
+							<NextImage width={32} height={32} unoptimized src="/img/icons/fuel.svg" alt="" /> <Typography>{t(carLabel(car.carFuelType ?? ''))}</Typography>
 						</Stack>
 						<Stack className="option">
-							<img src="/img/icons/transmission.svg" alt="" />{' '}
+							<NextImage width={32} height={32} unoptimized src="/img/icons/transmission.svg" alt="" />{' '}
 							<Typography>{t(carLabel(car.carTransmission ?? ''))}</Typography>
 						</Stack>
 					</Stack>
