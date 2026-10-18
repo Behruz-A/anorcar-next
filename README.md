@@ -18,11 +18,11 @@ Set local variables before starting. The default frontend is `http://localhost:3
 
 ```powershell
 yarn check:release
-yarn check:graphql
+yarn check:live
 yarn build
 ```
 
-`check:release` runs strict TypeScript including unused declarations, ESLint and the existing auth/homepage/agent/chat/cache/compare and article-sanitizer regressions. `check:graphql` is read-only and requires the matching API; it validates frontend operations, upload documents and registered enums. More focused admin and listing checks are in `scripts/check-*.cjs`. Some `qa-*.cjs` scripts require a separately configured browser session; they are not part of the automatic release gate.
+`check:release` runs strict TypeScript including unused declarations, zero-warning ESLint and the auth/homepage/agent/chat/cache/compare/article/SEO regressions, including `test:ui` for admin controls, car cards, comparison results, brand search and budget shortcuts. `check:live` requires the matching local API and performs read-only GraphQL contract, Cars range, budget pagination and canonical enum checks. Use `check:graphql` for the contract alone. Some `qa-*.cjs` scripts require a separately configured browser session; they are not part of the automatic release gate.
 
 ## Production
 
@@ -34,4 +34,4 @@ yarn build
 
 Legacy `/property` and admin property URLs intentionally redirect to Cars and preserve locale/query values. Keep these compatibility routes. Published FAQs are read-only; notices use real NEWS articles and are managed through existing admin Community controls.
 
-Release-audit findings and exact validation results are recorded in `docs/DEPLOY_REVIEW.md`.
+Release-audit findings are recorded in `docs/DEPLOY_REVIEW.md` and the latest `docs/RELEASE_CLEANUP_2026-10-18.md`. The latest report includes unresolved backend dependency advisories and production AI diagnostics; local test success does not resolve those production concerns.

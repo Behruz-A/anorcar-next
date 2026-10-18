@@ -18,7 +18,9 @@
 		"check:graphql": "node scripts/check-graphql-contract.cjs",
 		"test:articles": "node scripts/check-article-sanitizer.cjs",
 		"test:seo": "node scripts/check-seo.cjs",
-		"check:release": "yarn typecheck && yarn lint && yarn test:migration && yarn test:chat && yarn test:cache && yarn test:compare && yarn test:articles && yarn test:seo"
+		"test:ui": "node scripts/check-admin-console.cjs && node scripts/check-car-card.cjs && node scripts/check-compare-results.cjs && node scripts/check-free-text-brand.cjs && node scripts/check-budget-cards.cjs",
+		"check:live": "yarn check:graphql && node scripts/check-cars-browse.cjs && node scripts/check-budget-results.cjs && node scripts/check-car-enum-spelling.cjs",
+		"check:release": "yarn typecheck && yarn lint && yarn test:migration && yarn test:chat && yarn test:cache && yarn test:compare && yarn test:articles && yarn test:seo && yarn test:ui"
 	},
 	"dependencies": {
 		"@apollo/client": "3.8.3",

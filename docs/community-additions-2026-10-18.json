@@ -1,0 +1,2484 @@
+{
+  "batch": "community-2026-10-18",
+  "created": [
+    {
+      "key": "community-20261018-NEWS-1",
+      "author": "Khan",
+      "input": {
+        "articleCategory": "NEWS",
+        "articleTitle": "Kia Tasman on display at Seoul 2025",
+        "articleContent": "Show archive: Kia Tasman at the 2025 Seoul Mobility Show. A closer look at the pickup amid visitors.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163428229); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/c06eba09-0931-4b40-a76a-954f6bf2e25c.jpg"
+      },
+      "article": {
+        "_id": "6ad461a8611ae2b8f60124fa",
+        "articleCategory": "NEWS",
+        "articleTitle": "Kia Tasman on display at Seoul 2025",
+        "articleContent": "Show archive: Kia Tasman at the 2025 Seoul Mobility Show. A closer look at the pickup amid visitors.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163428229); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/c06eba09-0931-4b40-a76a-954f6bf2e25c.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace17f9206b7e8e8eedb8f3"
+      }
+    },
+    {
+      "key": "community-20261018-FREE-1",
+      "author": "Adam",
+      "input": {
+        "articleCategory": "FREE",
+        "articleTitle": "Your first stop at a motor show?",
+        "articleContent": "Two hours, a hall full of cars: which stand would you visit first, and why?\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163455969); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/1f34529b-0416-44b6-ad09-9c8ff19174f0.jpg"
+      },
+      "article": {
+        "_id": "6ad461a8611ae2b8f6012501",
+        "articleCategory": "FREE",
+        "articleTitle": "Your first stop at a motor show?",
+        "articleContent": "Two hours, a hall full of cars: which stand would you visit first, and why?\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163455969); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/1f34529b-0416-44b6-ad09-9c8ff19174f0.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1c4f206b7e8e8eedb945"
+      }
+    },
+    {
+      "key": "community-20261018-RECOMMEND-1",
+      "author": "Angel",
+      "input": {
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "At a show, sit in the car before deciding",
+        "articleContent": "If entry is allowed, try the seat and check sightlines before shortlisting a display car.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163455967); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/bae23000-912b-480b-81e3-b6e0e4f0a31f.jpg"
+      },
+      "article": {
+        "_id": "6ad461a8611ae2b8f6012508",
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "At a show, sit in the car before deciding",
+        "articleContent": "If entry is allowed, try the seat and check sightlines before shortlisting a display car.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163455967); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/bae23000-912b-480b-81e3-b6e0e4f0a31f.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1d04206b7e8e8eedb95c"
+      }
+    },
+    {
+      "key": "community-20261018-HUMOR-1",
+      "author": "Ray",
+      "input": {
+        "articleCategory": "HUMOR",
+        "articleTitle": "I came for one photo. My storage disagreed.",
+        "articleContent": "Show joke: one quick photo became 84. The phone has requested a larger garage.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163455959); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/2c73c420-d2e7-4a68-9fd5-68b2e0168b52.jpg"
+      },
+      "article": {
+        "_id": "6ad461a9611ae2b8f601250f",
+        "articleCategory": "HUMOR",
+        "articleTitle": "I came for one photo. My storage disagreed.",
+        "articleContent": "Show joke: one quick photo became 84. The phone has requested a larger garage.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163455959); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/2c73c420-d2e7-4a68-9fd5-68b2e0168b52.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1b8e206b7e8e8eedb938"
+      }
+    },
+    {
+      "key": "community-20261018-NEWS-2",
+      "author": "Kevin",
+      "input": {
+        "articleCategory": "NEWS",
+        "articleTitle": "Hyundai RN24: an open look at Seoul 2025",
+        "articleContent": "Show archive: Hyundai RN24 at Seoul Mobility Show 2025. The exposed structure makes this display stand out.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163454835); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/8157dc55-0be8-42dc-9542-186fa852627f.jpg"
+      },
+      "article": {
+        "_id": "6ad461a9611ae2b8f6012516",
+        "articleCategory": "NEWS",
+        "articleTitle": "Hyundai RN24: an open look at Seoul 2025",
+        "articleContent": "Show archive: Hyundai RN24 at Seoul Mobility Show 2025. The exposed structure makes this display stand out.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163454835); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/8157dc55-0be8-42dc-9542-186fa852627f.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1a06206b7e8e8eedb911"
+      }
+    },
+    {
+      "key": "community-20261018-FREE-2",
+      "author": "Leo",
+      "input": {
+        "articleCategory": "FREE",
+        "articleTitle": "What makes a car meet worth attending?",
+        "articleContent": "At a car meet, do you come for the rare cars or stay for the conversations?\n\nPhoto: [deejayqueue](https://commons.wikimedia.org/?curid=159901404); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/c0cba7f0-c7a4-4dcc-971d-7035fdd07da3.jpg"
+      },
+      "article": {
+        "_id": "6ad461aa611ae2b8f601251d",
+        "articleCategory": "FREE",
+        "articleTitle": "What makes a car meet worth attending?",
+        "articleContent": "At a car meet, do you come for the rare cars or stay for the conversations?\n\nPhoto: [deejayqueue](https://commons.wikimedia.org/?curid=159901404); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/c0cba7f0-c7a4-4dcc-971d-7035fdd07da3.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1b0a206b7e8e8eedb91e"
+      }
+    },
+    {
+      "key": "community-20261018-RECOMMEND-2",
+      "author": "Khan",
+      "input": {
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Make your next car-event visit more useful",
+        "articleContent": "At a viewing, try the door handle and entry space. Small details shape daily comfort.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163427512); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/4412d692-27f0-4391-836e-87fea7c2b4ee.jpg"
+      },
+      "article": {
+        "_id": "6ad461aa611ae2b8f6012520",
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Make your next car-event visit more useful",
+        "articleContent": "At a viewing, try the door handle and entry space. Small details shape daily comfort.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163427512); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/4412d692-27f0-4391-836e-87fea7c2b4ee.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace17f9206b7e8e8eedb8f3"
+      }
+    },
+    {
+      "key": "community-20261018-HUMOR-2",
+      "author": "Adam",
+      "input": {
+        "articleCategory": "HUMOR",
+        "articleTitle": "The shortest route visits every stand",
+        "articleContent": "Event joke: the shortest route to the exit somehow visits every stand.\n\nPhoto: [Ank Kumar](https://commons.wikimedia.org/?curid=123497431); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/065cf239-7446-4b90-8d4d-caea1c8b0db6.jpg"
+      },
+      "article": {
+        "_id": "6ad461aa611ae2b8f6012523",
+        "articleCategory": "HUMOR",
+        "articleTitle": "The shortest route visits every stand",
+        "articleContent": "Event joke: the shortest route to the exit somehow visits every stand.\n\nPhoto: [Ank Kumar](https://commons.wikimedia.org/?curid=123497431); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/065cf239-7446-4b90-8d4d-caea1c8b0db6.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1c4f206b7e8e8eedb945"
+      }
+    },
+    {
+      "key": "community-20261018-NEWS-3",
+      "author": "Angel",
+      "input": {
+        "articleCategory": "NEWS",
+        "articleTitle": "Audi Pop.Up Next above the Geneva show floor",
+        "articleContent": "Show archive: Audi Pop.Up Next at Geneva 2018. An unusual concept display with plenty to discuss.\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=67258147); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/9cc72c52-d843-430d-b072-1b2b0671aed5.jpg"
+      },
+      "article": {
+        "_id": "6ad461aa611ae2b8f6012526",
+        "articleCategory": "NEWS",
+        "articleTitle": "Audi Pop.Up Next above the Geneva show floor",
+        "articleContent": "Show archive: Audi Pop.Up Next at Geneva 2018. An unusual concept display with plenty to discuss.\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=67258147); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/9cc72c52-d843-430d-b072-1b2b0671aed5.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1d04206b7e8e8eedb95c"
+      }
+    },
+    {
+      "key": "community-20261018-FREE-3",
+      "author": "Ray",
+      "input": {
+        "articleCategory": "FREE",
+        "articleTitle": "The question you always ask at a display",
+        "articleContent": "What would you ask an owner that a brochure rarely answers?\n\nPhoto: [Peugeot 206](https://commons.wikimedia.org/?curid=198968761); Public domain; resized.",
+        "articleImage": "uploads/article/9788c345-7dad-4c6f-9985-bd8005b5c4d7.jpg"
+      },
+      "article": {
+        "_id": "6ad461aa611ae2b8f6012529",
+        "articleCategory": "FREE",
+        "articleTitle": "The question you always ask at a display",
+        "articleContent": "What would you ask an owner that a brochure rarely answers?\n\nPhoto: [Peugeot 206](https://commons.wikimedia.org/?curid=198968761); Public domain; resized.",
+        "articleImage": "uploads/article/9788c345-7dad-4c6f-9985-bd8005b5c4d7.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1b8e206b7e8e8eedb938"
+      }
+    },
+    {
+      "key": "community-20261018-RECOMMEND-3",
+      "author": "Kevin",
+      "input": {
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Check boot access, not just the quoted volume",
+        "articleContent": "Check the boot opening and loading lip, not just a headline luggage-volume figure.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163455962); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/6e1beda1-c0eb-48ad-8365-14b7b7c7c7fd.jpg"
+      },
+      "article": {
+        "_id": "6ad461aa611ae2b8f601252c",
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Check boot access, not just the quoted volume",
+        "articleContent": "Check the boot opening and loading lip, not just a headline luggage-volume figure.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163455962); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/6e1beda1-c0eb-48ad-8365-14b7b7c7c7fd.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1a06206b7e8e8eedb911"
+      }
+    },
+    {
+      "key": "community-20261018-HUMOR-3",
+      "author": "Leo",
+      "input": {
+        "articleCategory": "HUMOR",
+        "articleTitle": "Pack light. Bring the entire holiday house.",
+        "articleContent": "Road-trip joke: pack light, they said. Someone brought the entire tiny house.\n\nPhoto: [Fawaz.tairou](https://commons.wikimedia.org/?curid=182115396); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/2c0e27f3-087e-4d89-960f-fb9f67b83c64.jpg"
+      },
+      "article": {
+        "_id": "6ad461ab611ae2b8f601252f",
+        "articleCategory": "HUMOR",
+        "articleTitle": "Pack light. Bring the entire holiday house.",
+        "articleContent": "Road-trip joke: pack light, they said. Someone brought the entire tiny house.\n\nPhoto: [Fawaz.tairou](https://commons.wikimedia.org/?curid=182115396); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/2c0e27f3-087e-4d89-960f-fb9f67b83c64.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1b0a206b7e8e8eedb91e"
+      }
+    },
+    {
+      "key": "community-20261018-NEWS-4",
+      "author": "Khan",
+      "input": {
+        "articleCategory": "NEWS",
+        "articleTitle": "Geneva 2014: Pagani Huayra in the spotlight",
+        "articleContent": "Show archive: Pagani Huayra at Geneva 2014. Raised doors turn the display into a closer look at its cabin.\n\nPhoto: [Ank Kumar](https://commons.wikimedia.org/?curid=118974676); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/9169eeab-2aae-40e8-8eda-06e4ddaaee5f.jpg"
+      },
+      "article": {
+        "_id": "6ad461ab611ae2b8f6012532",
+        "articleCategory": "NEWS",
+        "articleTitle": "Geneva 2014: Pagani Huayra in the spotlight",
+        "articleContent": "Show archive: Pagani Huayra at Geneva 2014. Raised doors turn the display into a closer look at its cabin.\n\nPhoto: [Ank Kumar](https://commons.wikimedia.org/?curid=118974676); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/9169eeab-2aae-40e8-8eda-06e4ddaaee5f.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace17f9206b7e8e8eedb8f3"
+      }
+    },
+    {
+      "key": "community-20261018-FREE-4",
+      "author": "Adam",
+      "input": {
+        "articleCategory": "FREE",
+        "articleTitle": "Do you prefer a quiet meet or a busy show?",
+        "articleContent": "An outdoor gathering or a busy exhibition hall: where do you enjoy cars most?\n\nPhoto: [Peugeot 206](https://commons.wikimedia.org/?curid=198968759); Public domain; resized.",
+        "articleImage": "uploads/article/a33747a9-97dd-41ab-93f5-ad42bb415afc.jpg"
+      },
+      "article": {
+        "_id": "6ad461ab611ae2b8f6012535",
+        "articleCategory": "FREE",
+        "articleTitle": "Do you prefer a quiet meet or a busy show?",
+        "articleContent": "An outdoor gathering or a busy exhibition hall: where do you enjoy cars most?\n\nPhoto: [Peugeot 206](https://commons.wikimedia.org/?curid=198968759); Public domain; resized.",
+        "articleImage": "uploads/article/a33747a9-97dd-41ab-93f5-ad42bb415afc.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1c4f206b7e8e8eedb945"
+      }
+    },
+    {
+      "key": "community-20261018-RECOMMEND-4",
+      "author": "Angel",
+      "input": {
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "A good viewing includes the people using it",
+        "articleContent": "Concepts spark ideas; check the actual local model specifications before deciding.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163454841); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/e172940e-3932-4b9b-8cc5-a3ab75fdc81e.jpg"
+      },
+      "article": {
+        "_id": "6ad461ab611ae2b8f6012538",
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "A good viewing includes the people using it",
+        "articleContent": "Concepts spark ideas; check the actual local model specifications before deciding.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163454841); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/e172940e-3932-4b9b-8cc5-a3ab75fdc81e.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1d04206b7e8e8eedb95c"
+      }
+    },
+    {
+      "key": "community-20261018-HUMOR-4",
+      "author": "Ray",
+      "input": {
+        "articleCategory": "HUMOR",
+        "articleTitle": "Just browsing is a full-day activity",
+        "articleContent": "Show joke: just browsing has officially become a full-day occupation.\n\nPhoto: [deejayqueue](https://commons.wikimedia.org/?curid=159902161); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/8890325d-9101-44ff-bb86-b445890887f2.jpg"
+      },
+      "article": {
+        "_id": "6ad461ab611ae2b8f601253b",
+        "articleCategory": "HUMOR",
+        "articleTitle": "Just browsing is a full-day activity",
+        "articleContent": "Show joke: just browsing has officially become a full-day occupation.\n\nPhoto: [deejayqueue](https://commons.wikimedia.org/?curid=159902161); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/8890325d-9101-44ff-bb86-b445890887f2.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1b8e206b7e8e8eedb938"
+      }
+    },
+    {
+      "key": "community-20261018-NEWS-5",
+      "author": "Kevin",
+      "input": {
+        "articleCategory": "NEWS",
+        "articleTitle": "Tokyo 2009: Honda CR-Z on the show stand",
+        "articleContent": "Show archive: Honda CR-Z at Tokyo Motor Show 2009. A look back at the car in its exhibition setting.\n\nPhoto: [Motokoka](https://commons.wikimedia.org/?curid=80371638); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/b714deb8-5c14-483b-824e-1d08cff6bbcb.jpg"
+      },
+      "article": {
+        "_id": "6ad461ab611ae2b8f601253e",
+        "articleCategory": "NEWS",
+        "articleTitle": "Tokyo 2009: Honda CR-Z on the show stand",
+        "articleContent": "Show archive: Honda CR-Z at Tokyo Motor Show 2009. A look back at the car in its exhibition setting.\n\nPhoto: [Motokoka](https://commons.wikimedia.org/?curid=80371638); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/b714deb8-5c14-483b-824e-1d08cff6bbcb.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1a06206b7e8e8eedb911"
+      }
+    },
+    {
+      "key": "community-20261018-FREE-5",
+      "author": "Leo",
+      "input": {
+        "articleCategory": "FREE",
+        "articleTitle": "Which car detail starts the best conversation?",
+        "articleContent": "Which detail makes you stop at a display: paint, cabin design or clever storage?\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=62516937); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/ed7aad23-89a6-4fe4-aa91-c72373067341.jpg"
+      },
+      "article": {
+        "_id": "6ad461ac611ae2b8f6012541",
+        "articleCategory": "FREE",
+        "articleTitle": "Which car detail starts the best conversation?",
+        "articleContent": "Which detail makes you stop at a display: paint, cabin design or clever storage?\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=62516937); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/ed7aad23-89a6-4fe4-aa91-c72373067341.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1b0a206b7e8e8eedb91e"
+      }
+    },
+    {
+      "key": "community-20261018-RECOMMEND-5",
+      "author": "Khan",
+      "input": {
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Keep a simple shortlist after an exhibition",
+        "articleContent": "Save model names and unanswered questions. A show car may differ from local versions.\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=67241356); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/47eb0eac-3549-4993-b8c0-11375e036fc5.jpg"
+      },
+      "article": {
+        "_id": "6ad461ac611ae2b8f6012544",
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Keep a simple shortlist after an exhibition",
+        "articleContent": "Save model names and unanswered questions. A show car may differ from local versions.\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=67241356); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/47eb0eac-3549-4993-b8c0-11375e036fc5.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace17f9206b7e8e8eedb8f3"
+      }
+    },
+    {
+      "key": "community-20261018-HUMOR-5",
+      "author": "Adam",
+      "input": {
+        "articleCategory": "HUMOR",
+        "articleTitle": "The camera roll has chosen its favorite car",
+        "articleContent": "Event joke: 84 photos of one car and one blurry hall map. Priorities are clear.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=103414814); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/0f727d22-af20-4fe5-9e3f-ffa83c0e9123.jpg"
+      },
+      "article": {
+        "_id": "6ad461ac611ae2b8f6012547",
+        "articleCategory": "HUMOR",
+        "articleTitle": "The camera roll has chosen its favorite car",
+        "articleContent": "Event joke: 84 photos of one car and one blurry hall map. Priorities are clear.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=103414814); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/0f727d22-af20-4fe5-9e3f-ffa83c0e9123.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1c4f206b7e8e8eedb945"
+      }
+    },
+    {
+      "key": "community-20261018-NEWS-6",
+      "author": "Angel",
+      "input": {
+        "articleCategory": "NEWS",
+        "articleTitle": "Geneva 2018: BMW X4 takes the stage",
+        "articleContent": "Show archive: BMW X4 at Geneva 2018. Presentation lighting gives the red display car a dramatic setting.\n\nPhoto: [Alexander Migl](https://commons.wikimedia.org/?curid=67532798); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/fbfd1fc9-fd93-4249-a064-282fee81294e.jpg"
+      },
+      "article": {
+        "_id": "6ad461ac611ae2b8f601254a",
+        "articleCategory": "NEWS",
+        "articleTitle": "Geneva 2018: BMW X4 takes the stage",
+        "articleContent": "Show archive: BMW X4 at Geneva 2018. Presentation lighting gives the red display car a dramatic setting.\n\nPhoto: [Alexander Migl](https://commons.wikimedia.org/?curid=67532798); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/fbfd1fc9-fd93-4249-a064-282fee81294e.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1d04206b7e8e8eedb95c"
+      }
+    },
+    {
+      "key": "community-20261018-FREE-6",
+      "author": "Ray",
+      "input": {
+        "articleCategory": "FREE",
+        "articleTitle": "Bring a friend who sees cars differently",
+        "articleContent": "Who would you take to a car event, and what would they notice that you might miss?\n\nPhoto: [Retired electrician](https://commons.wikimedia.org/?curid=169807409); [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en); resized.",
+        "articleImage": "uploads/article/3f15616d-6bab-4dd6-952e-438da3f9a4f5.jpg"
+      },
+      "article": {
+        "_id": "6ad461ac611ae2b8f601254d",
+        "articleCategory": "FREE",
+        "articleTitle": "Bring a friend who sees cars differently",
+        "articleContent": "Who would you take to a car event, and what would they notice that you might miss?\n\nPhoto: [Retired electrician](https://commons.wikimedia.org/?curid=169807409); [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en); resized.",
+        "articleImage": "uploads/article/3f15616d-6bab-4dd6-952e-438da3f9a4f5.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1b8e206b7e8e8eedb938"
+      }
+    },
+    {
+      "key": "community-20261018-RECOMMEND-6",
+      "author": "Kevin",
+      "input": {
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Ask before photographing inside a display car",
+        "articleContent": "Ask staff before entering a display car or photographing its cabin.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=103414812); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/60c02c88-f8db-4f2e-8676-2b13bedfefe4.jpg"
+      },
+      "article": {
+        "_id": "6ad461ac611ae2b8f6012550",
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Ask before photographing inside a display car",
+        "articleContent": "Ask staff before entering a display car or photographing its cabin.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=103414812); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/60c02c88-f8db-4f2e-8676-2b13bedfefe4.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1a06206b7e8e8eedb911"
+      }
+    },
+    {
+      "key": "community-20261018-HUMOR-6",
+      "author": "Leo",
+      "input": {
+        "articleCategory": "HUMOR",
+        "articleTitle": "Every friend becomes a car critic at a show",
+        "articleContent": "Show joke: five friends, five car opinions. The only agreement is another coffee.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=115960015); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/3a876291-035a-4dee-b05d-82a8930c981f.jpg"
+      },
+      "article": {
+        "_id": "6ad461ac611ae2b8f6012553",
+        "articleCategory": "HUMOR",
+        "articleTitle": "Every friend becomes a car critic at a show",
+        "articleContent": "Show joke: five friends, five car opinions. The only agreement is another coffee.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=115960015); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/3a876291-035a-4dee-b05d-82a8930c981f.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1b0a206b7e8e8eedb91e"
+      }
+    },
+    {
+      "key": "community-20261018-NEWS-7",
+      "author": "Khan",
+      "input": {
+        "articleCategory": "NEWS",
+        "articleTitle": "IAA 2017: Kia addresses the press",
+        "articleContent": "Show archive: Kia press conference at IAA 2017. The presenter and stage tell the story around the car.\n\nPhoto: [MB-one](https://commons.wikimedia.org/?curid=62403000); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/a7a861b6-e078-44c7-b6d6-5fd29d719ce0.jpg"
+      },
+      "article": {
+        "_id": "6ad461ad611ae2b8f6012556",
+        "articleCategory": "NEWS",
+        "articleTitle": "IAA 2017: Kia addresses the press",
+        "articleContent": "Show archive: Kia press conference at IAA 2017. The presenter and stage tell the story around the car.\n\nPhoto: [MB-one](https://commons.wikimedia.org/?curid=62403000); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/a7a861b6-e078-44c7-b6d6-5fd29d719ce0.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace17f9206b7e8e8eedb8f3"
+      }
+    },
+    {
+      "key": "community-20261018-FREE-7",
+      "author": "Adam",
+      "input": {
+        "articleCategory": "FREE",
+        "articleTitle": "Your perfect automotive weekend",
+        "articleContent": "A relaxed car meet, a scenic drive or an exhibition: choose your ideal weekend.\n\nPhoto: [Retired electrician](https://commons.wikimedia.org/?curid=169807210); [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en); resized.",
+        "articleImage": "uploads/article/df3f48dc-7443-4200-9818-99c9aed70908.jpg"
+      },
+      "article": {
+        "_id": "6ad461ad611ae2b8f6012559",
+        "articleCategory": "FREE",
+        "articleTitle": "Your perfect automotive weekend",
+        "articleContent": "A relaxed car meet, a scenic drive or an exhibition: choose your ideal weekend.\n\nPhoto: [Retired electrician](https://commons.wikimedia.org/?curid=169807210); [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en); resized.",
+        "articleImage": "uploads/article/df3f48dc-7443-4200-9818-99c9aed70908.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1c4f206b7e8e8eedb945"
+      }
+    },
+    {
+      "key": "community-20261018-RECOMMEND-7",
+      "author": "Angel",
+      "input": {
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Give yourself time away from the busiest stand",
+        "articleContent": "Return when the stand is quieter to check access and controls without blocking visitors.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=103414554); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/782fdd3b-0cc8-433c-a113-aef901779f9f.jpg"
+      },
+      "article": {
+        "_id": "6ad461ad611ae2b8f601255c",
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Give yourself time away from the busiest stand",
+        "articleContent": "Return when the stand is quieter to check access and controls without blocking visitors.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=103414554); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/782fdd3b-0cc8-433c-a113-aef901779f9f.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1d04206b7e8e8eedb95c"
+      }
+    },
+    {
+      "key": "community-20261018-HUMOR-7",
+      "author": "Ray",
+      "input": {
+        "articleCategory": "HUMOR",
+        "articleTitle": "The boot test has become a family meeting",
+        "articleContent": "Event joke: we came to inspect the boot. Somehow it became a family picnic plan.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=115960013); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/68f6c57c-5106-4eb2-b7d4-c444ac11de64.jpg"
+      },
+      "article": {
+        "_id": "6ad461ad611ae2b8f601255f",
+        "articleCategory": "HUMOR",
+        "articleTitle": "The boot test has become a family meeting",
+        "articleContent": "Event joke: we came to inspect the boot. Somehow it became a family picnic plan.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=115960013); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/68f6c57c-5106-4eb2-b7d4-c444ac11de64.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1b8e206b7e8e8eedb938"
+      }
+    },
+    {
+      "key": "community-20261018-NEWS-8",
+      "author": "Kevin",
+      "input": {
+        "articleCategory": "NEWS",
+        "articleTitle": "Paris 2018: Skoda Vision RS meets the audience",
+        "articleContent": "Show archive: Skoda Vision RS at Paris Motor Show 2018. A concept viewed in the context of its stand.\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=73384995); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/7d82ef0f-4cf6-4e02-8a4e-79e42a659b79.jpg"
+      },
+      "article": {
+        "_id": "6ad461ad611ae2b8f6012562",
+        "articleCategory": "NEWS",
+        "articleTitle": "Paris 2018: Skoda Vision RS meets the audience",
+        "articleContent": "Show archive: Skoda Vision RS at Paris Motor Show 2018. A concept viewed in the context of its stand.\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=73384995); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/7d82ef0f-4cf6-4e02-8a4e-79e42a659b79.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1a06206b7e8e8eedb911"
+      }
+    },
+    {
+      "key": "community-20261018-FREE-8",
+      "author": "Leo",
+      "input": {
+        "articleCategory": "FREE",
+        "articleTitle": "What belongs in a community event photo?",
+        "articleContent": "People, place or a surprising moment: what makes a community car photo memorable?\n\nPhoto: [Chu](https://commons.wikimedia.org/?curid=33485989); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/777f81a4-97cf-4132-8d23-8274d9a3cf08.jpg"
+      },
+      "article": {
+        "_id": "6ad461ad611ae2b8f6012565",
+        "articleCategory": "FREE",
+        "articleTitle": "What belongs in a community event photo?",
+        "articleContent": "People, place or a surprising moment: what makes a community car photo memorable?\n\nPhoto: [Chu](https://commons.wikimedia.org/?curid=33485989); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/777f81a4-97cf-4132-8d23-8274d9a3cf08.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1b0a206b7e8e8eedb91e"
+      }
+    },
+    {
+      "key": "community-20261018-RECOMMEND-8",
+      "author": "Khan",
+      "input": {
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Compare real routines alongside the styling",
+        "articleContent": "Bring a short list of everyday needs to a show: passengers, parking and luggage.\n\nPhoto: [Ridking](https://commons.wikimedia.org/?curid=7421666); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/0fe3a968-3632-4cdc-a65b-d1c857a44648.jpg"
+      },
+      "article": {
+        "_id": "6ad461ae611ae2b8f6012568",
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Compare real routines alongside the styling",
+        "articleContent": "Bring a short list of everyday needs to a show: passengers, parking and luggage.\n\nPhoto: [Ridking](https://commons.wikimedia.org/?curid=7421666); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/0fe3a968-3632-4cdc-a65b-d1c857a44648.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace17f9206b7e8e8eedb8f3"
+      }
+    },
+    {
+      "key": "community-20261018-HUMOR-8",
+      "author": "Adam",
+      "input": {
+        "articleCategory": "HUMOR",
+        "articleTitle": "The garage meeting has moved under the car",
+        "articleContent": "Workshop joke: the team meeting now has one participant joining from under the bumper.\n\nPhoto: [T.Voekler](https://commons.wikimedia.org/?curid=20834908); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/6e85ed91-f82b-4925-8c90-8424d555bebe.jpg"
+      },
+      "article": {
+        "_id": "6ad461ae611ae2b8f601256b",
+        "articleCategory": "HUMOR",
+        "articleTitle": "The garage meeting has moved under the car",
+        "articleContent": "Workshop joke: the team meeting now has one participant joining from under the bumper.\n\nPhoto: [T.Voekler](https://commons.wikimedia.org/?curid=20834908); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/6e85ed91-f82b-4925-8c90-8424d555bebe.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1c4f206b7e8e8eedb945"
+      }
+    },
+    {
+      "key": "community-20261018-NEWS-9",
+      "author": "Angel",
+      "input": {
+        "articleCategory": "NEWS",
+        "articleTitle": "Geneva 2018: Volkswagen on the concept stage",
+        "articleContent": "Show archive: Volkswagen press conference at Geneva 2018, with a red concept and presenters on stage.\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=67213652); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/80dbc03a-0b9c-4833-bcaf-c68bbc4fa72e.jpg"
+      },
+      "article": {
+        "_id": "6ad461ae611ae2b8f601256e",
+        "articleCategory": "NEWS",
+        "articleTitle": "Geneva 2018: Volkswagen on the concept stage",
+        "articleContent": "Show archive: Volkswagen press conference at Geneva 2018, with a red concept and presenters on stage.\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=67213652); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/80dbc03a-0b9c-4833-bcaf-c68bbc4fa72e.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1d04206b7e8e8eedb95c"
+      }
+    },
+    {
+      "key": "community-20261018-FREE-9",
+      "author": "Ray",
+      "input": {
+        "articleCategory": "FREE",
+        "articleTitle": "One display, three very different opinions",
+        "articleContent": "Three friends, three favorites: does your group agree on design, comfort or practicality?\n\nPhoto: [hyolee2](https://commons.wikimedia.org/?curid=21011910); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/49d083f0-7577-4308-832e-9bbc24cf674b.jpg"
+      },
+      "article": {
+        "_id": "6ad461ae611ae2b8f6012571",
+        "articleCategory": "FREE",
+        "articleTitle": "One display, three very different opinions",
+        "articleContent": "Three friends, three favorites: does your group agree on design, comfort or practicality?\n\nPhoto: [hyolee2](https://commons.wikimedia.org/?curid=21011910); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/49d083f0-7577-4308-832e-9bbc24cf674b.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1b8e206b7e8e8eedb938"
+      }
+    },
+    {
+      "key": "community-20261018-RECOMMEND-9",
+      "author": "Kevin",
+      "input": {
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "A used-car viewing can include a diagnostic check",
+        "articleContent": "Ask an independent mechanic about diagnostics before deciding on a used car.\n\nPhoto: [Shixart1985](https://commons.wikimedia.org/?curid=194784616); [CC BY 2.0](https://creativecommons.org/licenses/by/2.0); resized.",
+        "articleImage": "uploads/article/a928d0d5-89a6-4427-bc2d-bc8406207c3a.jpg"
+      },
+      "article": {
+        "_id": "6ad461ae611ae2b8f6012574",
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "A used-car viewing can include a diagnostic check",
+        "articleContent": "Ask an independent mechanic about diagnostics before deciding on a used car.\n\nPhoto: [Shixart1985](https://commons.wikimedia.org/?curid=194784616); [CC BY 2.0](https://creativecommons.org/licenses/by/2.0); resized.",
+        "articleImage": "uploads/article/a928d0d5-89a6-4427-bc2d-bc8406207c3a.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1a06206b7e8e8eedb911"
+      }
+    },
+    {
+      "key": "community-20261018-HUMOR-9",
+      "author": "Leo",
+      "input": {
+        "articleCategory": "HUMOR",
+        "articleTitle": "The accessories list has escaped the brochure",
+        "articleContent": "Roadside joke: one small accessory became a souvenir collection.\n\nPhoto: [inkknife_2000 (7.5 million views +)](https://commons.wikimedia.org/?curid=57574161); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/b3c5321e-2c0e-4693-8527-dcbadeb45f6f.jpg"
+      },
+      "article": {
+        "_id": "6ad461ae611ae2b8f6012577",
+        "articleCategory": "HUMOR",
+        "articleTitle": "The accessories list has escaped the brochure",
+        "articleContent": "Roadside joke: one small accessory became a souvenir collection.\n\nPhoto: [inkknife_2000 (7.5 million views +)](https://commons.wikimedia.org/?curid=57574161); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+        "articleImage": "uploads/article/b3c5321e-2c0e-4693-8527-dcbadeb45f6f.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1b0a206b7e8e8eedb91e"
+      }
+    },
+    {
+      "key": "community-20261018-NEWS-10",
+      "author": "Khan",
+      "input": {
+        "articleCategory": "NEWS",
+        "articleTitle": "June 2014 archive: Kia Soul EV on display",
+        "articleContent": "Photo archive: Kia Soul EV on display in June 2014. The charging connection adds context to the scene.\n\nPhoto: [Chu](https://commons.wikimedia.org/?curid=33663675); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/2e7cc534-c61a-406e-a968-d8e458da8df0.jpg"
+      },
+      "article": {
+        "_id": "6ad461af611ae2b8f601257a",
+        "articleCategory": "NEWS",
+        "articleTitle": "June 2014 archive: Kia Soul EV on display",
+        "articleContent": "Photo archive: Kia Soul EV on display in June 2014. The charging connection adds context to the scene.\n\nPhoto: [Chu](https://commons.wikimedia.org/?curid=33663675); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/2e7cc534-c61a-406e-a968-d8e458da8df0.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace17f9206b7e8e8eedb8f3"
+      }
+    },
+    {
+      "key": "community-20261018-FREE-10",
+      "author": "Adam",
+      "input": {
+        "articleCategory": "FREE",
+        "articleTitle": "The car you would bring to a local meet",
+        "articleContent": "Which everyday car would you bring to a local meet, and what story would you share?\n\nPhoto: [CEFICEFI](https://commons.wikimedia.org/?curid=33210855); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/5264ca53-8e70-4cab-8feb-bbabd66884cf.jpg"
+      },
+      "article": {
+        "_id": "6ad461af611ae2b8f601257d",
+        "articleCategory": "FREE",
+        "articleTitle": "The car you would bring to a local meet",
+        "articleContent": "Which everyday car would you bring to a local meet, and what story would you share?\n\nPhoto: [CEFICEFI](https://commons.wikimedia.org/?curid=33210855); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/5264ca53-8e70-4cab-8feb-bbabd66884cf.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1c4f206b7e8e8eedb945"
+      }
+    },
+    {
+      "key": "community-20261018-RECOMMEND-10",
+      "author": "Angel",
+      "input": {
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Ask who will inspect the mechanical condition",
+        "articleContent": "Arrange an independent inspection. Discuss mechanical concerns with a qualified mechanic.\n\nPhoto: [Eugene Odanga masinde](https://commons.wikimedia.org/?curid=63786296); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/114c4b9a-2d74-48ed-ada1-0b18e030c820.jpg"
+      },
+      "article": {
+        "_id": "6ad461af611ae2b8f6012580",
+        "articleCategory": "RECOMMEND",
+        "articleTitle": "Ask who will inspect the mechanical condition",
+        "articleContent": "Arrange an independent inspection. Discuss mechanical concerns with a qualified mechanic.\n\nPhoto: [Eugene Odanga masinde](https://commons.wikimedia.org/?curid=63786296); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+        "articleImage": "uploads/article/114c4b9a-2d74-48ed-ada1-0b18e030c820.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1d04206b7e8e8eedb95c"
+      }
+    },
+    {
+      "key": "community-20261018-HUMOR-10",
+      "author": "Ray",
+      "input": {
+        "articleCategory": "HUMOR",
+        "articleTitle": "I remembered the car and forgot the stand",
+        "articleContent": "Show joke: perfect car photo, lovely color, no idea which hall. Photograph the sign too!\n\nPhoto: [Chu](https://commons.wikimedia.org/?curid=33485988); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/4585cd0a-ed3a-42d9-96f8-99c227f1493e.jpg"
+      },
+      "article": {
+        "_id": "6ad461af611ae2b8f6012583",
+        "articleCategory": "HUMOR",
+        "articleTitle": "I remembered the car and forgot the stand",
+        "articleContent": "Show joke: perfect car photo, lovely color, no idea which hall. Photograph the sign too!\n\nPhoto: [Chu](https://commons.wikimedia.org/?curid=33485988); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+        "articleImage": "uploads/article/4585cd0a-ed3a-42d9-96f8-99c227f1493e.jpg",
+        "articleStatus": "ACTIVE",
+        "memberId": "6ace1b8e206b7e8e8eedb938"
+      }
+    }
+  ],
+  "uploads": {
+    "community-20261018-NEWS-1": "uploads/article/c06eba09-0931-4b40-a76a-954f6bf2e25c.jpg",
+    "community-20261018-FREE-1": "uploads/article/1f34529b-0416-44b6-ad09-9c8ff19174f0.jpg",
+    "community-20261018-RECOMMEND-1": "uploads/article/bae23000-912b-480b-81e3-b6e0e4f0a31f.jpg",
+    "community-20261018-HUMOR-1": "uploads/article/2c73c420-d2e7-4a68-9fd5-68b2e0168b52.jpg",
+    "community-20261018-NEWS-2": "uploads/article/8157dc55-0be8-42dc-9542-186fa852627f.jpg",
+    "community-20261018-FREE-2": "uploads/article/c0cba7f0-c7a4-4dcc-971d-7035fdd07da3.jpg",
+    "community-20261018-RECOMMEND-2": "uploads/article/4412d692-27f0-4391-836e-87fea7c2b4ee.jpg",
+    "community-20261018-HUMOR-2": "uploads/article/065cf239-7446-4b90-8d4d-caea1c8b0db6.jpg",
+    "community-20261018-NEWS-3": "uploads/article/9cc72c52-d843-430d-b072-1b2b0671aed5.jpg",
+    "community-20261018-FREE-3": "uploads/article/9788c345-7dad-4c6f-9985-bd8005b5c4d7.jpg",
+    "community-20261018-RECOMMEND-3": "uploads/article/6e1beda1-c0eb-48ad-8365-14b7b7c7c7fd.jpg",
+    "community-20261018-HUMOR-3": "uploads/article/2c0e27f3-087e-4d89-960f-fb9f67b83c64.jpg",
+    "community-20261018-NEWS-4": "uploads/article/9169eeab-2aae-40e8-8eda-06e4ddaaee5f.jpg",
+    "community-20261018-FREE-4": "uploads/article/a33747a9-97dd-41ab-93f5-ad42bb415afc.jpg",
+    "community-20261018-RECOMMEND-4": "uploads/article/e172940e-3932-4b9b-8cc5-a3ab75fdc81e.jpg",
+    "community-20261018-HUMOR-4": "uploads/article/8890325d-9101-44ff-bb86-b445890887f2.jpg",
+    "community-20261018-NEWS-5": "uploads/article/b714deb8-5c14-483b-824e-1d08cff6bbcb.jpg",
+    "community-20261018-FREE-5": "uploads/article/ed7aad23-89a6-4fe4-aa91-c72373067341.jpg",
+    "community-20261018-RECOMMEND-5": "uploads/article/47eb0eac-3549-4993-b8c0-11375e036fc5.jpg",
+    "community-20261018-HUMOR-5": "uploads/article/0f727d22-af20-4fe5-9e3f-ffa83c0e9123.jpg",
+    "community-20261018-NEWS-6": "uploads/article/fbfd1fc9-fd93-4249-a064-282fee81294e.jpg",
+    "community-20261018-FREE-6": "uploads/article/3f15616d-6bab-4dd6-952e-438da3f9a4f5.jpg",
+    "community-20261018-RECOMMEND-6": "uploads/article/60c02c88-f8db-4f2e-8676-2b13bedfefe4.jpg",
+    "community-20261018-HUMOR-6": "uploads/article/3a876291-035a-4dee-b05d-82a8930c981f.jpg",
+    "community-20261018-NEWS-7": "uploads/article/a7a861b6-e078-44c7-b6d6-5fd29d719ce0.jpg",
+    "community-20261018-FREE-7": "uploads/article/df3f48dc-7443-4200-9818-99c9aed70908.jpg",
+    "community-20261018-RECOMMEND-7": "uploads/article/782fdd3b-0cc8-433c-a113-aef901779f9f.jpg",
+    "community-20261018-HUMOR-7": "uploads/article/68f6c57c-5106-4eb2-b7d4-c444ac11de64.jpg",
+    "community-20261018-NEWS-8": "uploads/article/7d82ef0f-4cf6-4e02-8a4e-79e42a659b79.jpg",
+    "community-20261018-FREE-8": "uploads/article/777f81a4-97cf-4132-8d23-8274d9a3cf08.jpg",
+    "community-20261018-RECOMMEND-8": "uploads/article/0fe3a968-3632-4cdc-a65b-d1c857a44648.jpg",
+    "community-20261018-HUMOR-8": "uploads/article/6e85ed91-f82b-4925-8c90-8424d555bebe.jpg",
+    "community-20261018-NEWS-9": "uploads/article/80dbc03a-0b9c-4833-bcaf-c68bbc4fa72e.jpg",
+    "community-20261018-FREE-9": "uploads/article/49d083f0-7577-4308-832e-9bbc24cf674b.jpg",
+    "community-20261018-RECOMMEND-9": "uploads/article/a928d0d5-89a6-4427-bc2d-bc8406207c3a.jpg",
+    "community-20261018-HUMOR-9": "uploads/article/b3c5321e-2c0e-4693-8527-dcbadeb45f6f.jpg",
+    "community-20261018-NEWS-10": "uploads/article/2e7cc534-c61a-406e-a968-d8e458da8df0.jpg",
+    "community-20261018-FREE-10": "uploads/article/5264ca53-8e70-4cab-8feb-bbabd66884cf.jpg",
+    "community-20261018-RECOMMEND-10": "uploads/article/114c4b9a-2d74-48ed-ada1-0b18e030c820.jpg",
+    "community-20261018-HUMOR-10": "uploads/article/4585cd0a-ed3a-42d9-96f8-99c227f1493e.jpg"
+  },
+  "before": {
+    "NEWS": {
+      "list": [
+        {
+          "_id": "6acee839c98aa26ea0c34d6c",
+          "articleCategory": "NEWS",
+          "articleTitle": "Fresh listings now appear on the homepage",
+          "articleContent": "Recently Added Cars brings the newest ANORCAR listings to the homepage, with direct links to full details.\n\nPhoto: Corqe (CC0); https://commons.wikimedia.org/?curid=151786037",
+          "articleImage": "uploads/car/8b233aa7-4702-4497-a4d2-23f987c9eb0a.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee838c98aa26ea0c34d57",
+          "articleCategory": "NEWS",
+          "articleTitle": "Seven brands, one ANORCAR marketplace",
+          "articleContent": "Explore Hyundai, Kia, Genesis, BMW, Audi, Tesla and Mercedes-Benz listings in the current ANORCAR catalog.\n\nPhoto: Kevauto; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=120088821",
+          "articleImage": "uploads/car/9e24186b-bbd9-496f-b684-563e37082eb1.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee837c98aa26ea0c34d42",
+          "articleCategory": "NEWS",
+          "articleTitle": "A clearer view of new and used listings",
+          "articleContent": "ANORCAR car cards now show listing condition, KRW price and key specifications in one compact view.\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=122713143",
+          "articleImage": "uploads/car/4dfb60c8-3486-47b2-aacf-7c13982577d0.jpg",
+          "memberId": "6ace1b3d206b7e8e8eedb92b",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee836c98aa26ea0c34d2d",
+          "articleCategory": "NEWS",
+          "articleTitle": "ANORCAR comparison puts three cars side by side",
+          "articleContent": "Compare up to three listings on ANORCAR. Review the same specifications together before narrowing your shortlist.\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=145529149",
+          "articleImage": "uploads/car/7395a1b4-3bcf-4dcd-8c5e-ee604b44ba83.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee835c98aa26ea0c34d18",
+          "articleCategory": "NEWS",
+          "articleTitle": "EV6: Europe's Car of the Year in 2022",
+          "articleContent": "The Kia EV6 won Europe's 2022 Car of the Year award. This retrospective links to the official result.\n\nSource: https://caroftheyear.org/award/edition-2022/",
+          "articleImage": "uploads/car/30aefe30-5cdb-45b5-bf60-ad582dd9f618.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee834c98aa26ea0c34d03",
+          "articleCategory": "NEWS",
+          "articleTitle": "IONIQ 5: a 2022 World Car Awards triple win",
+          "articleContent": "IONIQ 5 won the 2022 world car, electric vehicle and design awards. A milestone worth revisiting.\n\nSource: https://www.worldcarawards.com/web/2022_results.asp",
+          "articleImage": "uploads/car/714c99e4-b1a5-4864-a13e-eb6be1ef69f9.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        }
+      ],
+      "metaCounter": [
+        {
+          "total": 6
+        }
+      ]
+    },
+    "FREE": {
+      "list": [
+        {
+          "_id": "6acee83ac98aa26ea0c34d70",
+          "articleCategory": "FREE",
+          "articleTitle": "What makes a helpful seller conversation?",
+          "articleContent": "Ask about the exact car and arrange a viewing. What information would make that first conversation useful?\n\nPhoto: Corqe (CC0); https://commons.wikimedia.org/?curid=151815533",
+          "articleImage": "uploads/car/30aefe30-5cdb-45b5-bf60-ad582dd9f618.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee838c98aa26ea0c34d5b",
+          "articleCategory": "FREE",
+          "articleTitle": "The feature you would never give up",
+          "articleContent": "Practical storage, a comfortable seat or simple controls? Share one feature that earns its place every day.\n\nPhoto: Kevauto; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=169268690",
+          "articleImage": "uploads/car/8c7df53f-a31a-4929-9d48-1650c316a6a5.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee837c98aa26ea0c34d46",
+          "articleCategory": "FREE",
+          "articleTitle": "What belongs in a great listing description?",
+          "articleContent": "Clear photos and honest mileage are a start. Which questions should a seller answer before a viewing?\n\nPhoto: LuvsMG481; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=188340594",
+          "articleImage": "uploads/car/affc8167-7ec6-476c-b30b-055a3fd35e73.jpg",
+          "memberId": "6ace1b3d206b7e8e8eedb92b",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee836c98aa26ea0c34d31",
+          "articleCategory": "FREE",
+          "articleTitle": "Your ideal three-car comparison",
+          "articleContent": "Build a shortlist with three different models. Which specification would decide the final choice?\n\nPhoto: Cutlass (CC0); https://commons.wikimedia.org/?curid=195366065",
+          "articleImage": "uploads/car/714c99e4-b1a5-4864-a13e-eb6be1ef69f9.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee835c98aa26ea0c34d1c",
+          "articleCategory": "FREE",
+          "articleTitle": "City hatchback or family SUV?",
+          "articleContent": "Start with your actual passengers, luggage and parking space. What would make you choose a smaller car?\n\nPhoto: Corqe (CC0); https://commons.wikimedia.org/?curid=151786037",
+          "articleImage": "uploads/car/8b233aa7-4702-4497-a4d2-23f987c9eb0a.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee834c98aa26ea0c34d07",
+          "articleCategory": "FREE",
+          "articleTitle": "Which detail makes a car feel right?",
+          "articleContent": "A clear driving position, an easy-to-use cabin or useful cargo space: which detail matters most to you?\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=136501951",
+          "articleImage": "uploads/car/d79583c2-3b67-41c9-b837-20461a19500d.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        }
+      ],
+      "metaCounter": [
+        {
+          "total": 6
+        }
+      ]
+    },
+    "RECOMMEND": {
+      "list": [
+        {
+          "_id": "6acee83ac98aa26ea0c34d74",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Bring your real luggage to a car viewing",
+          "articleContent": "Check the space you actually use: bags, a stroller or sports gear. The right fit matters more than a photo.\n\nPhoto: Mr.choppers; CC BY-SA 3.0; https://creativecommons.org/licenses/by-sa/3.0; https://commons.wikimedia.org/?curid=147249434",
+          "articleImage": "uploads/car/29075227-78d5-4388-8030-f516685412a9.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee839c98aa26ea0c34d5f",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Plan your EV charging routine before shopping",
+          "articleContent": "Think about where you could charge and how it fits your week. Use that routine to shape your EV shortlist.\n\nPhoto: Corqe (CC0); https://commons.wikimedia.org/?curid=151815533",
+          "articleImage": "uploads/car/30aefe30-5cdb-45b5-bf60-ad582dd9f618.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee837c98aa26ea0c34d4a",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Treat unknown mileage as unknown",
+          "articleContent": "A blank mileage field does not mean zero. Ask the seller to confirm the odometer reading before comparing.\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=122713143",
+          "articleImage": "uploads/car/4dfb60c8-3486-47b2-aacf-7c13982577d0.jpg",
+          "memberId": "6ace1b3d206b7e8e8eedb92b",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee836c98aa26ea0c34d35",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Ask for photos that answer your questions",
+          "articleContent": "Request clear exterior and cabin views of the exact car. Reference photos cannot confirm its present condition.\n\nPhoto: Cutlass (CC0); https://commons.wikimedia.org/?curid=195366065",
+          "articleImage": "uploads/car/714c99e4-b1a5-4864-a13e-eb6be1ef69f9.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee835c98aa26ea0c34d20",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Compare the same fields, not just the price",
+          "articleContent": "Use the same year, mileage and condition fields for every car. A missing value is a question, not an assumption.\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=145529149",
+          "articleImage": "uploads/car/7395a1b4-3bcf-4dcd-8c5e-ee604b44ba83.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee834c98aa26ea0c34d0b",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Build a shortlist around everyday needs",
+          "articleContent": "Write down your passenger, luggage and parking needs first. Compare listings against that list, not just looks.\n\nPhoto: MercurySable99; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=167773851",
+          "articleImage": "uploads/car/6bcfab6a-a271-42c8-ac49-140973a3d068.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        }
+      ],
+      "metaCounter": [
+        {
+          "total": 6
+        }
+      ]
+    },
+    "HUMOR": {
+      "list": [
+        {
+          "_id": "6acee83ac98aa26ea0c34d78",
+          "articleCategory": "HUMOR",
+          "articleTitle": "The imaginary garage needs more space",
+          "articleContent": "A playful wishlist: a practical daily car, a family SUV, and a dream car. The garage is still a notebook page.\n\nPhoto: Corqe (CC0); https://commons.wikimedia.org/?curid=151786037",
+          "articleImage": "uploads/car/8b233aa7-4702-4497-a4d2-23f987c9eb0a.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee839c98aa26ea0c34d63",
+          "articleCategory": "HUMOR",
+          "articleTitle": "Every cup holder has a job description",
+          "articleContent": "A fictional family-car checklist: one cup holder for coffee, one for water, and one for everything but a cup.\n\nPhoto: Kevauto; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=169268690",
+          "articleImage": "uploads/car/8c7df53f-a31a-4929-9d48-1650c316a6a5.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee838c98aa26ea0c34d4e",
+          "articleCategory": "HUMOR",
+          "articleTitle": "The clean car and the surprise rain cloud",
+          "articleContent": "An imaginary forecast: clear skies until the final wipe of the bonnet. The cloud was waiting for its entrance.\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=122713143",
+          "articleImage": "uploads/car/4dfb60c8-3486-47b2-aacf-7c13982577d0.jpg",
+          "memberId": "6ace1b3d206b7e8e8eedb92b",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee836c98aa26ea0c34d39",
+          "articleCategory": "HUMOR",
+          "articleTitle": "The family meeting about paint colors",
+          "articleContent": "A fictional vote: white for practicality, blue for style, and one person insisting that \"shiny\" is a color.\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=145529149",
+          "articleImage": "uploads/car/7395a1b4-3bcf-4dcd-8c5e-ee604b44ba83.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee835c98aa26ea0c34d24",
+          "articleCategory": "HUMOR",
+          "articleTitle": "The weekend plan called car browsing",
+          "articleContent": "Fictional dialogue: \"Any plans?\" \"Just a quick look at cars.\" Three tabs later, the whole afternoon has a theme.\n\nPhoto: Corqe (CC0); https://commons.wikimedia.org/?curid=151815533",
+          "articleImage": "uploads/car/30aefe30-5cdb-45b5-bf60-ad582dd9f618.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee834c98aa26ea0c34d0f",
+          "articleCategory": "HUMOR",
+          "articleTitle": "When the shortlist refuses to stay short",
+          "articleContent": "A fictional car-shopping diary: \"I saved three sensible options. Then I found a fourth. And a fifth.\"\n\nPhoto: Cutlass (CC0); https://commons.wikimedia.org/?curid=195366065",
+          "articleImage": "uploads/car/714c99e4-b1a5-4864-a13e-eb6be1ef69f9.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        }
+      ],
+      "metaCounter": [
+        {
+          "total": 6
+        }
+      ]
+    }
+  },
+  "after": {
+    "NEWS": {
+      "list": [
+        {
+          "_id": "6ad461af611ae2b8f601257a",
+          "articleCategory": "NEWS",
+          "articleTitle": "June 2014 archive: Kia Soul EV on display",
+          "articleContent": "Photo archive: Kia Soul EV on display in June 2014. The charging connection adds context to the scene.\n\nPhoto: [Chu](https://commons.wikimedia.org/?curid=33663675); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+          "articleImage": "uploads/article/2e7cc534-c61a-406e-a968-d8e458da8df0.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ae611ae2b8f601256e",
+          "articleCategory": "NEWS",
+          "articleTitle": "Geneva 2018: Volkswagen on the concept stage",
+          "articleContent": "Show archive: Volkswagen press conference at Geneva 2018, with a red concept and presenters on stage.\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=67213652); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/80dbc03a-0b9c-4833-bcaf-c68bbc4fa72e.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ad611ae2b8f6012562",
+          "articleCategory": "NEWS",
+          "articleTitle": "Paris 2018: Skoda Vision RS meets the audience",
+          "articleContent": "Show archive: Skoda Vision RS at Paris Motor Show 2018. A concept viewed in the context of its stand.\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=73384995); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/7d82ef0f-4cf6-4e02-8a4e-79e42a659b79.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ad611ae2b8f6012556",
+          "articleCategory": "NEWS",
+          "articleTitle": "IAA 2017: Kia addresses the press",
+          "articleContent": "Show archive: Kia press conference at IAA 2017. The presenter and stage tell the story around the car.\n\nPhoto: [MB-one](https://commons.wikimedia.org/?curid=62403000); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/a7a861b6-e078-44c7-b6d6-5fd29d719ce0.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ac611ae2b8f601254a",
+          "articleCategory": "NEWS",
+          "articleTitle": "Geneva 2018: BMW X4 takes the stage",
+          "articleContent": "Show archive: BMW X4 at Geneva 2018. Presentation lighting gives the red display car a dramatic setting.\n\nPhoto: [Alexander Migl](https://commons.wikimedia.org/?curid=67532798); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/fbfd1fc9-fd93-4249-a064-282fee81294e.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ab611ae2b8f601253e",
+          "articleCategory": "NEWS",
+          "articleTitle": "Tokyo 2009: Honda CR-Z on the show stand",
+          "articleContent": "Show archive: Honda CR-Z at Tokyo Motor Show 2009. A look back at the car in its exhibition setting.\n\nPhoto: [Motokoka](https://commons.wikimedia.org/?curid=80371638); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/b714deb8-5c14-483b-824e-1d08cff6bbcb.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ab611ae2b8f6012532",
+          "articleCategory": "NEWS",
+          "articleTitle": "Geneva 2014: Pagani Huayra in the spotlight",
+          "articleContent": "Show archive: Pagani Huayra at Geneva 2014. Raised doors turn the display into a closer look at its cabin.\n\nPhoto: [Ank Kumar](https://commons.wikimedia.org/?curid=118974676); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/9169eeab-2aae-40e8-8eda-06e4ddaaee5f.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461aa611ae2b8f6012526",
+          "articleCategory": "NEWS",
+          "articleTitle": "Audi Pop.Up Next above the Geneva show floor",
+          "articleContent": "Show archive: Audi Pop.Up Next at Geneva 2018. An unusual concept display with plenty to discuss.\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=67258147); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/9cc72c52-d843-430d-b072-1b2b0671aed5.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461a9611ae2b8f6012516",
+          "articleCategory": "NEWS",
+          "articleTitle": "Hyundai RN24: an open look at Seoul 2025",
+          "articleContent": "Show archive: Hyundai RN24 at Seoul Mobility Show 2025. The exposed structure makes this display stand out.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163454835); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/8157dc55-0be8-42dc-9542-186fa852627f.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461a8611ae2b8f60124fa",
+          "articleCategory": "NEWS",
+          "articleTitle": "Kia Tasman on display at Seoul 2025",
+          "articleContent": "Show archive: Kia Tasman at the 2025 Seoul Mobility Show. A closer look at the pickup amid visitors.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163428229); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/c06eba09-0931-4b40-a76a-954f6bf2e25c.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee839c98aa26ea0c34d6c",
+          "articleCategory": "NEWS",
+          "articleTitle": "Fresh listings now appear on the homepage",
+          "articleContent": "Recently Added Cars brings the newest ANORCAR listings to the homepage, with direct links to full details.\n\nPhoto: Corqe (CC0); https://commons.wikimedia.org/?curid=151786037",
+          "articleImage": "uploads/car/8b233aa7-4702-4497-a4d2-23f987c9eb0a.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee838c98aa26ea0c34d57",
+          "articleCategory": "NEWS",
+          "articleTitle": "Seven brands, one ANORCAR marketplace",
+          "articleContent": "Explore Hyundai, Kia, Genesis, BMW, Audi, Tesla and Mercedes-Benz listings in the current ANORCAR catalog.\n\nPhoto: Kevauto; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=120088821",
+          "articleImage": "uploads/car/9e24186b-bbd9-496f-b684-563e37082eb1.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee837c98aa26ea0c34d42",
+          "articleCategory": "NEWS",
+          "articleTitle": "A clearer view of new and used listings",
+          "articleContent": "ANORCAR car cards now show listing condition, KRW price and key specifications in one compact view.\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=122713143",
+          "articleImage": "uploads/car/4dfb60c8-3486-47b2-aacf-7c13982577d0.jpg",
+          "memberId": "6ace1b3d206b7e8e8eedb92b",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee836c98aa26ea0c34d2d",
+          "articleCategory": "NEWS",
+          "articleTitle": "ANORCAR comparison puts three cars side by side",
+          "articleContent": "Compare up to three listings on ANORCAR. Review the same specifications together before narrowing your shortlist.\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=145529149",
+          "articleImage": "uploads/car/7395a1b4-3bcf-4dcd-8c5e-ee604b44ba83.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee835c98aa26ea0c34d18",
+          "articleCategory": "NEWS",
+          "articleTitle": "EV6: Europe's Car of the Year in 2022",
+          "articleContent": "The Kia EV6 won Europe's 2022 Car of the Year award. This retrospective links to the official result.\n\nSource: https://caroftheyear.org/award/edition-2022/",
+          "articleImage": "uploads/car/30aefe30-5cdb-45b5-bf60-ad582dd9f618.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee834c98aa26ea0c34d03",
+          "articleCategory": "NEWS",
+          "articleTitle": "IONIQ 5: a 2022 World Car Awards triple win",
+          "articleContent": "IONIQ 5 won the 2022 world car, electric vehicle and design awards. A milestone worth revisiting.\n\nSource: https://www.worldcarawards.com/web/2022_results.asp",
+          "articleImage": "uploads/car/714c99e4-b1a5-4864-a13e-eb6be1ef69f9.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        }
+      ],
+      "metaCounter": [
+        {
+          "total": 16
+        }
+      ]
+    },
+    "FREE": {
+      "list": [
+        {
+          "_id": "6ad461af611ae2b8f601257d",
+          "articleCategory": "FREE",
+          "articleTitle": "The car you would bring to a local meet",
+          "articleContent": "Which everyday car would you bring to a local meet, and what story would you share?\n\nPhoto: [CEFICEFI](https://commons.wikimedia.org/?curid=33210855); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+          "articleImage": "uploads/article/5264ca53-8e70-4cab-8feb-bbabd66884cf.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ae611ae2b8f6012571",
+          "articleCategory": "FREE",
+          "articleTitle": "One display, three very different opinions",
+          "articleContent": "Three friends, three favorites: does your group agree on design, comfort or practicality?\n\nPhoto: [hyolee2](https://commons.wikimedia.org/?curid=21011910); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+          "articleImage": "uploads/article/49d083f0-7577-4308-832e-9bbc24cf674b.jpg",
+          "memberId": "6ace1b8e206b7e8e8eedb938",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ad611ae2b8f6012565",
+          "articleCategory": "FREE",
+          "articleTitle": "What belongs in a community event photo?",
+          "articleContent": "People, place or a surprising moment: what makes a community car photo memorable?\n\nPhoto: [Chu](https://commons.wikimedia.org/?curid=33485989); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+          "articleImage": "uploads/article/777f81a4-97cf-4132-8d23-8274d9a3cf08.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ad611ae2b8f6012559",
+          "articleCategory": "FREE",
+          "articleTitle": "Your perfect automotive weekend",
+          "articleContent": "A relaxed car meet, a scenic drive or an exhibition: choose your ideal weekend.\n\nPhoto: [Retired electrician](https://commons.wikimedia.org/?curid=169807210); [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en); resized.",
+          "articleImage": "uploads/article/df3f48dc-7443-4200-9818-99c9aed70908.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ac611ae2b8f601254d",
+          "articleCategory": "FREE",
+          "articleTitle": "Bring a friend who sees cars differently",
+          "articleContent": "Who would you take to a car event, and what would they notice that you might miss?\n\nPhoto: [Retired electrician](https://commons.wikimedia.org/?curid=169807409); [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en); resized.",
+          "articleImage": "uploads/article/3f15616d-6bab-4dd6-952e-438da3f9a4f5.jpg",
+          "memberId": "6ace1b8e206b7e8e8eedb938",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ac611ae2b8f6012541",
+          "articleCategory": "FREE",
+          "articleTitle": "Which car detail starts the best conversation?",
+          "articleContent": "Which detail makes you stop at a display: paint, cabin design or clever storage?\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=62516937); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/ed7aad23-89a6-4fe4-aa91-c72373067341.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ab611ae2b8f6012535",
+          "articleCategory": "FREE",
+          "articleTitle": "Do you prefer a quiet meet or a busy show?",
+          "articleContent": "An outdoor gathering or a busy exhibition hall: where do you enjoy cars most?\n\nPhoto: [Peugeot 206](https://commons.wikimedia.org/?curid=198968759); Public domain; resized.",
+          "articleImage": "uploads/article/a33747a9-97dd-41ab-93f5-ad42bb415afc.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461aa611ae2b8f6012529",
+          "articleCategory": "FREE",
+          "articleTitle": "The question you always ask at a display",
+          "articleContent": "What would you ask an owner that a brochure rarely answers?\n\nPhoto: [Peugeot 206](https://commons.wikimedia.org/?curid=198968761); Public domain; resized.",
+          "articleImage": "uploads/article/9788c345-7dad-4c6f-9985-bd8005b5c4d7.jpg",
+          "memberId": "6ace1b8e206b7e8e8eedb938",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461aa611ae2b8f601251d",
+          "articleCategory": "FREE",
+          "articleTitle": "What makes a car meet worth attending?",
+          "articleContent": "At a car meet, do you come for the rare cars or stay for the conversations?\n\nPhoto: [deejayqueue](https://commons.wikimedia.org/?curid=159901404); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+          "articleImage": "uploads/article/c0cba7f0-c7a4-4dcc-971d-7035fdd07da3.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461a8611ae2b8f6012501",
+          "articleCategory": "FREE",
+          "articleTitle": "Your first stop at a motor show?",
+          "articleContent": "Two hours, a hall full of cars: which stand would you visit first, and why?\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163455969); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/1f34529b-0416-44b6-ad09-9c8ff19174f0.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee83ac98aa26ea0c34d70",
+          "articleCategory": "FREE",
+          "articleTitle": "What makes a helpful seller conversation?",
+          "articleContent": "Ask about the exact car and arrange a viewing. What information would make that first conversation useful?\n\nPhoto: Corqe (CC0); https://commons.wikimedia.org/?curid=151815533",
+          "articleImage": "uploads/car/30aefe30-5cdb-45b5-bf60-ad582dd9f618.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee838c98aa26ea0c34d5b",
+          "articleCategory": "FREE",
+          "articleTitle": "The feature you would never give up",
+          "articleContent": "Practical storage, a comfortable seat or simple controls? Share one feature that earns its place every day.\n\nPhoto: Kevauto; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=169268690",
+          "articleImage": "uploads/car/8c7df53f-a31a-4929-9d48-1650c316a6a5.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee837c98aa26ea0c34d46",
+          "articleCategory": "FREE",
+          "articleTitle": "What belongs in a great listing description?",
+          "articleContent": "Clear photos and honest mileage are a start. Which questions should a seller answer before a viewing?\n\nPhoto: LuvsMG481; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=188340594",
+          "articleImage": "uploads/car/affc8167-7ec6-476c-b30b-055a3fd35e73.jpg",
+          "memberId": "6ace1b3d206b7e8e8eedb92b",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee836c98aa26ea0c34d31",
+          "articleCategory": "FREE",
+          "articleTitle": "Your ideal three-car comparison",
+          "articleContent": "Build a shortlist with three different models. Which specification would decide the final choice?\n\nPhoto: Cutlass (CC0); https://commons.wikimedia.org/?curid=195366065",
+          "articleImage": "uploads/car/714c99e4-b1a5-4864-a13e-eb6be1ef69f9.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee835c98aa26ea0c34d1c",
+          "articleCategory": "FREE",
+          "articleTitle": "City hatchback or family SUV?",
+          "articleContent": "Start with your actual passengers, luggage and parking space. What would make you choose a smaller car?\n\nPhoto: Corqe (CC0); https://commons.wikimedia.org/?curid=151786037",
+          "articleImage": "uploads/car/8b233aa7-4702-4497-a4d2-23f987c9eb0a.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee834c98aa26ea0c34d07",
+          "articleCategory": "FREE",
+          "articleTitle": "Which detail makes a car feel right?",
+          "articleContent": "A clear driving position, an easy-to-use cabin or useful cargo space: which detail matters most to you?\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=136501951",
+          "articleImage": "uploads/car/d79583c2-3b67-41c9-b837-20461a19500d.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        }
+      ],
+      "metaCounter": [
+        {
+          "total": 16
+        }
+      ]
+    },
+    "RECOMMEND": {
+      "list": [
+        {
+          "_id": "6ad461af611ae2b8f6012580",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Ask who will inspect the mechanical condition",
+          "articleContent": "Arrange an independent inspection. Discuss mechanical concerns with a qualified mechanic.\n\nPhoto: [Eugene Odanga masinde](https://commons.wikimedia.org/?curid=63786296); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/114c4b9a-2d74-48ed-ada1-0b18e030c820.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ae611ae2b8f6012574",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "A used-car viewing can include a diagnostic check",
+          "articleContent": "Ask an independent mechanic about diagnostics before deciding on a used car.\n\nPhoto: [Shixart1985](https://commons.wikimedia.org/?curid=194784616); [CC BY 2.0](https://creativecommons.org/licenses/by/2.0); resized.",
+          "articleImage": "uploads/article/a928d0d5-89a6-4427-bc2d-bc8406207c3a.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ae611ae2b8f6012568",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Compare real routines alongside the styling",
+          "articleContent": "Bring a short list of everyday needs to a show: passengers, parking and luggage.\n\nPhoto: [Ridking](https://commons.wikimedia.org/?curid=7421666); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+          "articleImage": "uploads/article/0fe3a968-3632-4cdc-a65b-d1c857a44648.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ad611ae2b8f601255c",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Give yourself time away from the busiest stand",
+          "articleContent": "Return when the stand is quieter to check access and controls without blocking visitors.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=103414554); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+          "articleImage": "uploads/article/782fdd3b-0cc8-433c-a113-aef901779f9f.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ac611ae2b8f6012550",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Ask before photographing inside a display car",
+          "articleContent": "Ask staff before entering a display car or photographing its cabin.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=103414812); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+          "articleImage": "uploads/article/60c02c88-f8db-4f2e-8676-2b13bedfefe4.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ac611ae2b8f6012544",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Keep a simple shortlist after an exhibition",
+          "articleContent": "Save model names and unanswered questions. A show car may differ from local versions.\n\nPhoto: [Matti Blume](https://commons.wikimedia.org/?curid=67241356); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/47eb0eac-3549-4993-b8c0-11375e036fc5.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ab611ae2b8f6012538",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "A good viewing includes the people using it",
+          "articleContent": "Concepts spark ideas; check the actual local model specifications before deciding.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163454841); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/e172940e-3932-4b9b-8cc5-a3ab75fdc81e.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461aa611ae2b8f601252c",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Check boot access, not just the quoted volume",
+          "articleContent": "Check the boot opening and loading lip, not just a headline luggage-volume figure.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163455962); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/6e1beda1-c0eb-48ad-8365-14b7b7c7c7fd.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461aa611ae2b8f6012520",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Make your next car-event visit more useful",
+          "articleContent": "At a viewing, try the door handle and entry space. Small details shape daily comfort.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163427512); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/4412d692-27f0-4391-836e-87fea7c2b4ee.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461a8611ae2b8f6012508",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "At a show, sit in the car before deciding",
+          "articleContent": "If entry is allowed, try the seat and check sightlines before shortlisting a display car.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163455967); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/bae23000-912b-480b-81e3-b6e0e4f0a31f.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee83ac98aa26ea0c34d74",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Bring your real luggage to a car viewing",
+          "articleContent": "Check the space you actually use: bags, a stroller or sports gear. The right fit matters more than a photo.\n\nPhoto: Mr.choppers; CC BY-SA 3.0; https://creativecommons.org/licenses/by-sa/3.0; https://commons.wikimedia.org/?curid=147249434",
+          "articleImage": "uploads/car/29075227-78d5-4388-8030-f516685412a9.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee839c98aa26ea0c34d5f",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Plan your EV charging routine before shopping",
+          "articleContent": "Think about where you could charge and how it fits your week. Use that routine to shape your EV shortlist.\n\nPhoto: Corqe (CC0); https://commons.wikimedia.org/?curid=151815533",
+          "articleImage": "uploads/car/30aefe30-5cdb-45b5-bf60-ad582dd9f618.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee837c98aa26ea0c34d4a",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Treat unknown mileage as unknown",
+          "articleContent": "A blank mileage field does not mean zero. Ask the seller to confirm the odometer reading before comparing.\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=122713143",
+          "articleImage": "uploads/car/4dfb60c8-3486-47b2-aacf-7c13982577d0.jpg",
+          "memberId": "6ace1b3d206b7e8e8eedb92b",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee836c98aa26ea0c34d35",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Ask for photos that answer your questions",
+          "articleContent": "Request clear exterior and cabin views of the exact car. Reference photos cannot confirm its present condition.\n\nPhoto: Cutlass (CC0); https://commons.wikimedia.org/?curid=195366065",
+          "articleImage": "uploads/car/714c99e4-b1a5-4864-a13e-eb6be1ef69f9.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee835c98aa26ea0c34d20",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Compare the same fields, not just the price",
+          "articleContent": "Use the same year, mileage and condition fields for every car. A missing value is a question, not an assumption.\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=145529149",
+          "articleImage": "uploads/car/7395a1b4-3bcf-4dcd-8c5e-ee604b44ba83.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee834c98aa26ea0c34d0b",
+          "articleCategory": "RECOMMEND",
+          "articleTitle": "Build a shortlist around everyday needs",
+          "articleContent": "Write down your passenger, luggage and parking needs first. Compare listings against that list, not just looks.\n\nPhoto: MercurySable99; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=167773851",
+          "articleImage": "uploads/car/6bcfab6a-a271-42c8-ac49-140973a3d068.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        }
+      ],
+      "metaCounter": [
+        {
+          "total": 16
+        }
+      ]
+    },
+    "HUMOR": {
+      "list": [
+        {
+          "_id": "6ad461af611ae2b8f6012583",
+          "articleCategory": "HUMOR",
+          "articleTitle": "I remembered the car and forgot the stand",
+          "articleContent": "Show joke: perfect car photo, lovely color, no idea which hall. Photograph the sign too!\n\nPhoto: [Chu](https://commons.wikimedia.org/?curid=33485988); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+          "articleImage": "uploads/article/4585cd0a-ed3a-42d9-96f8-99c227f1493e.jpg",
+          "memberId": "6ace1b8e206b7e8e8eedb938",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ae611ae2b8f6012577",
+          "articleCategory": "HUMOR",
+          "articleTitle": "The accessories list has escaped the brochure",
+          "articleContent": "Roadside joke: one small accessory became a souvenir collection.\n\nPhoto: [inkknife_2000 (7.5 million views +)](https://commons.wikimedia.org/?curid=57574161); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+          "articleImage": "uploads/article/b3c5321e-2c0e-4693-8527-dcbadeb45f6f.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ae611ae2b8f601256b",
+          "articleCategory": "HUMOR",
+          "articleTitle": "The garage meeting has moved under the car",
+          "articleContent": "Workshop joke: the team meeting now has one participant joining from under the bumper.\n\nPhoto: [T.Voekler](https://commons.wikimedia.org/?curid=20834908); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0); resized.",
+          "articleImage": "uploads/article/6e85ed91-f82b-4925-8c90-8424d555bebe.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ad611ae2b8f601255f",
+          "articleCategory": "HUMOR",
+          "articleTitle": "The boot test has become a family meeting",
+          "articleContent": "Event joke: we came to inspect the boot. Somehow it became a family picnic plan.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=115960013); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+          "articleImage": "uploads/article/68f6c57c-5106-4eb2-b7d4-c444ac11de64.jpg",
+          "memberId": "6ace1b8e206b7e8e8eedb938",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ac611ae2b8f6012553",
+          "articleCategory": "HUMOR",
+          "articleTitle": "Every friend becomes a car critic at a show",
+          "articleContent": "Show joke: five friends, five car opinions. The only agreement is another coffee.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=115960015); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+          "articleImage": "uploads/article/3a876291-035a-4dee-b05d-82a8930c981f.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ac611ae2b8f6012547",
+          "articleCategory": "HUMOR",
+          "articleTitle": "The camera roll has chosen its favorite car",
+          "articleContent": "Event joke: 84 photos of one car and one blurry hall map. Priorities are clear.\n\nPhoto: [artistmac](https://commons.wikimedia.org/?curid=103414814); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+          "articleImage": "uploads/article/0f727d22-af20-4fe5-9e3f-ffa83c0e9123.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ab611ae2b8f601253b",
+          "articleCategory": "HUMOR",
+          "articleTitle": "Just browsing is a full-day activity",
+          "articleContent": "Show joke: just browsing has officially become a full-day occupation.\n\nPhoto: [deejayqueue](https://commons.wikimedia.org/?curid=159902161); [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0); resized.",
+          "articleImage": "uploads/article/8890325d-9101-44ff-bb86-b445890887f2.jpg",
+          "memberId": "6ace1b8e206b7e8e8eedb938",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461ab611ae2b8f601252f",
+          "articleCategory": "HUMOR",
+          "articleTitle": "Pack light. Bring the entire holiday house.",
+          "articleContent": "Road-trip joke: pack light, they said. Someone brought the entire tiny house.\n\nPhoto: [Fawaz.tairou](https://commons.wikimedia.org/?curid=182115396); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/2c0e27f3-087e-4d89-960f-fb9f67b83c64.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461aa611ae2b8f6012523",
+          "articleCategory": "HUMOR",
+          "articleTitle": "The shortest route visits every stand",
+          "articleContent": "Event joke: the shortest route to the exit somehow visits every stand.\n\nPhoto: [Ank Kumar](https://commons.wikimedia.org/?curid=123497431); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/065cf239-7446-4b90-8d4d-caea1c8b0db6.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6ad461a9611ae2b8f601250f",
+          "articleCategory": "HUMOR",
+          "articleTitle": "I came for one photo. My storage disagreed.",
+          "articleContent": "Show joke: one quick photo became 84. The phone has requested a larger garage.\n\nPhoto: [Treeinkr](https://commons.wikimedia.org/?curid=163455959); [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0); resized.",
+          "articleImage": "uploads/article/2c73c420-d2e7-4a68-9fd5-68b2e0168b52.jpg",
+          "memberId": "6ace1b8e206b7e8e8eedb938",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee83ac98aa26ea0c34d78",
+          "articleCategory": "HUMOR",
+          "articleTitle": "The imaginary garage needs more space",
+          "articleContent": "A playful wishlist: a practical daily car, a family SUV, and a dream car. The garage is still a notebook page.\n\nPhoto: Corqe (CC0); https://commons.wikimedia.org/?curid=151786037",
+          "articleImage": "uploads/car/8b233aa7-4702-4497-a4d2-23f987c9eb0a.jpg",
+          "memberId": "6ace1c4f206b7e8e8eedb945",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee839c98aa26ea0c34d63",
+          "articleCategory": "HUMOR",
+          "articleTitle": "Every cup holder has a job description",
+          "articleContent": "A fictional family-car checklist: one cup holder for coffee, one for water, and one for everything but a cup.\n\nPhoto: Kevauto; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=169268690",
+          "articleImage": "uploads/car/8c7df53f-a31a-4929-9d48-1650c316a6a5.jpg",
+          "memberId": "6ace1b0a206b7e8e8eedb91e",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee838c98aa26ea0c34d4e",
+          "articleCategory": "HUMOR",
+          "articleTitle": "The clean car and the surprise rain cloud",
+          "articleContent": "An imaginary forecast: clear skies until the final wipe of the bonnet. The cloud was waiting for its entrance.\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=122713143",
+          "articleImage": "uploads/car/4dfb60c8-3486-47b2-aacf-7c13982577d0.jpg",
+          "memberId": "6ace1b3d206b7e8e8eedb92b",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee836c98aa26ea0c34d39",
+          "articleCategory": "HUMOR",
+          "articleTitle": "The family meeting about paint colors",
+          "articleContent": "A fictional vote: white for practicality, blue for style, and one person insisting that \"shiny\" is a color.\n\nPhoto: Elise240SX; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0; https://commons.wikimedia.org/?curid=145529149",
+          "articleImage": "uploads/car/7395a1b4-3bcf-4dcd-8c5e-ee604b44ba83.jpg",
+          "memberId": "6ace1d04206b7e8e8eedb95c",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee835c98aa26ea0c34d24",
+          "articleCategory": "HUMOR",
+          "articleTitle": "The weekend plan called car browsing",
+          "articleContent": "Fictional dialogue: \"Any plans?\" \"Just a quick look at cars.\" Three tabs later, the whole afternoon has a theme.\n\nPhoto: Corqe (CC0); https://commons.wikimedia.org/?curid=151815533",
+          "articleImage": "uploads/car/30aefe30-5cdb-45b5-bf60-ad582dd9f618.jpg",
+          "memberId": "6ace1a06206b7e8e8eedb911",
+          "articleStatus": "ACTIVE"
+        },
+        {
+          "_id": "6acee834c98aa26ea0c34d0f",
+          "articleCategory": "HUMOR",
+          "articleTitle": "When the shortlist refuses to stay short",
+          "articleContent": "A fictional car-shopping diary: \"I saved three sensible options. Then I found a fourth. And a fifth.\"\n\nPhoto: Cutlass (CC0); https://commons.wikimedia.org/?curid=195366065",
+          "articleImage": "uploads/car/714c99e4-b1a5-4864-a13e-eb6be1ef69f9.jpg",
+          "memberId": "6ace17f9206b7e8e8eedb8f3",
+          "articleStatus": "ACTIVE"
+        }
+      ],
+      "metaCounter": [
+        {
+          "total": 16
+        }
+      ]
+    }
+  },
+  "photos": [
+    {
+      "key": "community-20261018-NEWS-1",
+      "id": 1,
+      "group": 0,
+      "pageid": 163428229,
+      "title": "File:Kia Tasman TK1 – Seoul Mobility Show 2025.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Kia_Tasman_TK1_%E2%80%93_Seoul_Mobility_Show_2025.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Kia_Tasman_TK1_%E2%80%93_Seoul_Mobility_Show_2025.jpg/1920px-Kia_Tasman_TK1_%E2%80%93_Seoul_Mobility_Show_2025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Treeinkr",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Kia Tasman TK1 at the Seoul Mobility Show 2025",
+      "width": 1600,
+      "height": 1067,
+      "filename": "news-01-163428229.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\news-01-163428229.jpg",
+      "asset": "public/img/community/posts-2026-10-18/news-01-163428229.jpg",
+      "sha256": "236a43654b3e664bcf80aeee8da088e66f505505cf09ff543ba028bdfab4c21c",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-FREE-1",
+      "id": 3,
+      "group": 0,
+      "pageid": 163455969,
+      "title": "File:Hyundai Ioniq 6 CE1 PE – Seoul Mobility Show 2025 (06).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Hyundai_Ioniq_6_CE1_PE_%E2%80%93_Seoul_Mobility_Show_2025_(06).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Hyundai_Ioniq_6_CE1_PE_%E2%80%93_Seoul_Mobility_Show_2025_%2806%29.jpg/1920px-Hyundai_Ioniq_6_CE1_PE_%E2%80%93_Seoul_Mobility_Show_2025_%2806%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Treeinkr",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Hyundai Ioniq 6 CE1 PE at the Seoul Mobility Show 2025",
+      "width": 1600,
+      "height": 900,
+      "filename": "free-01-163455969.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\free-01-163455969.jpg",
+      "asset": "public/img/community/posts-2026-10-18/free-01-163455969.jpg",
+      "sha256": "e2db7d3da95a9e0173a8b130ecec3e950d81fd6b536238185d92a2cacc0fd998",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-RECOMMEND-1",
+      "id": 5,
+      "group": 0,
+      "pageid": 163455967,
+      "title": "File:Hyundai Ioniq 6 CE1 PE – Seoul Mobility Show 2025 (05).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Hyundai_Ioniq_6_CE1_PE_%E2%80%93_Seoul_Mobility_Show_2025_(05).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Hyundai_Ioniq_6_CE1_PE_%E2%80%93_Seoul_Mobility_Show_2025_%2805%29.jpg/1920px-Hyundai_Ioniq_6_CE1_PE_%E2%80%93_Seoul_Mobility_Show_2025_%2805%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Treeinkr",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Hyundai Ioniq 6 CE1 PE at the Seoul Mobility Show 2025",
+      "width": 1600,
+      "height": 1067,
+      "filename": "recommend-01-163455967.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\recommend-01-163455967.jpg",
+      "asset": "public/img/community/posts-2026-10-18/recommend-01-163455967.jpg",
+      "sha256": "698a4ab4df90913670d75e2beb4823ceee7696d39108881ff4e537fddce35ee9",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-HUMOR-1",
+      "id": 9,
+      "group": 0,
+      "pageid": 163455959,
+      "title": "File:Hyundai Ioniq 6 CE1 PE – Seoul Mobility Show 2025 (01).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Hyundai_Ioniq_6_CE1_PE_%E2%80%93_Seoul_Mobility_Show_2025_(01).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Hyundai_Ioniq_6_CE1_PE_%E2%80%93_Seoul_Mobility_Show_2025_%2801%29.jpg/1920px-Hyundai_Ioniq_6_CE1_PE_%E2%80%93_Seoul_Mobility_Show_2025_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Treeinkr",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Hyundai Ioniq 6 CE1 PE at the Seoul Mobility Show 2025",
+      "width": 1600,
+      "height": 1067,
+      "filename": "humor-01-163455959.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\humor-01-163455959.jpg",
+      "asset": "public/img/community/posts-2026-10-18/humor-01-163455959.jpg",
+      "sha256": "f78fe82b44dcd197286bd25d1d3d2c551ec087edef06683c194e5b43f810719b",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-NEWS-2",
+      "id": 4,
+      "group": 0,
+      "pageid": 163454835,
+      "title": "File:Hyundai RN24 Concept – Seoul Mobility Show 2025 (01).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Hyundai_RN24_Concept_%E2%80%93_Seoul_Mobility_Show_2025_(01).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Hyundai_RN24_Concept_%E2%80%93_Seoul_Mobility_Show_2025_%2801%29.jpg/1920px-Hyundai_RN24_Concept_%E2%80%93_Seoul_Mobility_Show_2025_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Treeinkr",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Hyundai RN24 at the Seoul Mobility Show 2025",
+      "width": 1600,
+      "height": 1236,
+      "filename": "news-02-163454835.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\news-02-163454835.jpg",
+      "asset": "public/img/community/posts-2026-10-18/news-02-163454835.jpg",
+      "sha256": "8eb48035b8d6e01688cd2a9489327c188f6ba4bd02397f37b9ff9ca78ead26c5",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-FREE-2",
+      "id": 20,
+      "group": 2,
+      "pageid": 159901404,
+      "title": "File:Crowd (129490105).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Crowd_(129490105).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Crowd_%28129490105%29.jpg/1920px-Crowd_%28129490105%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "deejayqueue",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "description": "Crowd",
+      "width": 1600,
+      "height": 1200,
+      "filename": "free-02-159901404.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\free-02-159901404.jpg",
+      "asset": "public/img/community/posts-2026-10-18/free-02-159901404.jpg",
+      "sha256": "852848ab1d06976048a554805b87c246f9d006b92145b27cc69292ca23a9d3f9",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-RECOMMEND-2",
+      "id": 6,
+      "group": 0,
+      "pageid": 163427512,
+      "title": "File:Hyundai Ioniq 6 CE1 PE Interior – Seoul Mobility Show 2025 (01).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Hyundai_Ioniq_6_CE1_PE_Interior_%E2%80%93_Seoul_Mobility_Show_2025_(01).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Hyundai_Ioniq_6_CE1_PE_Interior_%E2%80%93_Seoul_Mobility_Show_2025_%2801%29.jpg/1920px-Hyundai_Ioniq_6_CE1_PE_Interior_%E2%80%93_Seoul_Mobility_Show_2025_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Treeinkr",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Hyundai Ioniq 6 CE1 PE at the Seoul Mobility Show 2025",
+      "width": 1600,
+      "height": 1067,
+      "filename": "recommend-02-163427512.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\recommend-02-163427512.jpg",
+      "asset": "public/img/community/posts-2026-10-18/recommend-02-163427512.jpg",
+      "sha256": "ff403d2049b79932758f32dfa7dd9d0916f58aa6a012fe30fe92f688d54e2e6b",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-HUMOR-2",
+      "id": 14,
+      "group": 1,
+      "pageid": 123497431,
+      "title": "File:LAMBORGHINI AVENTADOR LP700-4 PIRELLI EDITION at GIMS 2015,Geneva, Switzerland 01.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:LAMBORGHINI_AVENTADOR_LP700-4_PIRELLI_EDITION_at_GIMS_2015,Geneva,_Switzerland_01.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/LAMBORGHINI_AVENTADOR_LP700-4_PIRELLI_EDITION_at_GIMS_2015%2CGeneva%2C_Switzerland_01.jpg/1920px-LAMBORGHINI_AVENTADOR_LP700-4_PIRELLI_EDITION_at_GIMS_2015%2CGeneva%2C_Switzerland_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Ank Kumar",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "LAMBORGHINI AVENTADOR LP700-4 PIRELLI EDITION at Geneva International Motor Show 2015, Palexpo, Geneva, Switzerland",
+      "width": 1600,
+      "height": 1067,
+      "filename": "humor-02-123497431.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\humor-02-123497431.jpg",
+      "asset": "public/img/community/posts-2026-10-18/humor-02-123497431.jpg",
+      "sha256": "d87fb628beb0829d52e9746befd4b655e2d08b91f5ea756a5873d3b4ad80249f",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-NEWS-3",
+      "id": 10,
+      "group": 1,
+      "pageid": 67258147,
+      "title": "File:Audi Pop.Up Next, GIMS 2018, Le Grand-Saconnex (1X7A1558).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Audi_Pop.Up_Next,_GIMS_2018,_Le_Grand-Saconnex_(1X7A1558).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Audi_Pop.Up_Next%2C_GIMS_2018%2C_Le_Grand-Saconnex_%281X7A1558%29.jpg/1920px-Audi_Pop.Up_Next%2C_GIMS_2018%2C_Le_Grand-Saconnex_%281X7A1558%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Matti Blume",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Audi Pop.Up.Next, Geneva International Motor Show 2018",
+      "width": 1600,
+      "height": 1067,
+      "filename": "news-03-67258147.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\news-03-67258147.jpg",
+      "asset": "public/img/community/posts-2026-10-18/news-03-67258147.jpg",
+      "sha256": "b239991c53119ad09b8ae63452e678b3f2e12b0e2b1584f3dea31448bd752d42",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-FREE-3",
+      "id": 28,
+      "group": 3,
+      "pageid": 198968761,
+      "title": "File:1993 Nissan Silvia S13.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:1993_Nissan_Silvia_S13.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/1993_Nissan_Silvia_S13.jpg/1920px-1993_Nissan_Silvia_S13.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Peugeot 206",
+      "license": "Public domain",
+      "licenseUrl": "",
+      "description": "2026 Blackwood Cars and Coffee",
+      "width": 1600,
+      "height": 1200,
+      "filename": "free-03-198968761.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\free-03-198968761.jpg",
+      "asset": "public/img/community/posts-2026-10-18/free-03-198968761.jpg",
+      "sha256": "f75930440670245ac3fcd0024c46120fb3b07795f6eb01fc04793c3796ef4406",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-RECOMMEND-3",
+      "id": 7,
+      "group": 0,
+      "pageid": 163455962,
+      "title": "File:Hyundai Ioniq 6 CE1 PE – Seoul Mobility Show 2025 (03).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Hyundai_Ioniq_6_CE1_PE_%E2%80%93_Seoul_Mobility_Show_2025_(03).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Hyundai_Ioniq_6_CE1_PE_%E2%80%93_Seoul_Mobility_Show_2025_%2803%29.jpg/1920px-Hyundai_Ioniq_6_CE1_PE_%E2%80%93_Seoul_Mobility_Show_2025_%2803%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Treeinkr",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Hyundai Ioniq 6 CE1 PE at the Seoul Mobility Show 2025",
+      "width": 1600,
+      "height": 900,
+      "filename": "recommend-03-163455962.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\recommend-03-163455962.jpg",
+      "asset": "public/img/community/posts-2026-10-18/recommend-03-163455962.jpg",
+      "sha256": "d24eb425ebb46185a4094a39868db1f6fd479c16b2402142f9c2712634fb7c60",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-HUMOR-3",
+      "id": 54,
+      "group": 6,
+      "pageid": 182115396,
+      "title": "File:Camping-car tout-terrain en bois, garé sur une plage d'Adounko 03.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Camping-car_tout-terrain_en_bois,_gar%C3%A9_sur_une_plage_d%27Adounko_03.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Camping-car_tout-terrain_en_bois%2C_gar%C3%A9_sur_une_plage_d%27Adounko_03.jpg/1920px-Camping-car_tout-terrain_en_bois%2C_gar%C3%A9_sur_une_plage_d%27Adounko_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Fawaz.tairou",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Camping-car tout-terrain en bois, du projet Africa Ride, garé sur une plage d'Adounko au sud du Bénin",
+      "width": 1600,
+      "height": 1200,
+      "filename": "humor-03-182115396.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\humor-03-182115396.jpg",
+      "asset": "public/img/community/posts-2026-10-18/humor-03-182115396.jpg",
+      "sha256": "710e4a8df1c4725fc387c824a7060d387576b7e4350ac0928f7ebad95b80411f",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-NEWS-4",
+      "id": 12,
+      "group": 1,
+      "pageid": 118974676,
+      "title": "File:Pagani Huayra, Geneva 2014 (Ank Kumar, Infosys Limited) 01.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Pagani_Huayra,_Geneva_2014_(Ank_Kumar,_Infosys_Limited)_01.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Pagani_Huayra%2C_Geneva_2014_%28Ank_Kumar%2C_Infosys_Limited%29_01.jpg/1920px-Pagani_Huayra%2C_Geneva_2014_%28Ank_Kumar%2C_Infosys_Limited%29_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Ank Kumar",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Pagani Huayra at Geneva International Motor Show 2014",
+      "width": 1600,
+      "height": 1200,
+      "filename": "news-04-118974676.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\news-04-118974676.jpg",
+      "asset": "public/img/community/posts-2026-10-18/news-04-118974676.jpg",
+      "sha256": "6387ee339e2c2f27302d1b437232cb8a240dc3697f870488eb3c780b40d2b45c",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-FREE-4",
+      "id": 30,
+      "group": 3,
+      "pageid": 198968759,
+      "title": "File:1988 Nissan Fairlady Z 200ZR.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:1988_Nissan_Fairlady_Z_200ZR.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1988_Nissan_Fairlady_Z_200ZR.jpg/1920px-1988_Nissan_Fairlady_Z_200ZR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Peugeot 206",
+      "license": "Public domain",
+      "licenseUrl": "",
+      "description": "2026 Blackwood Cars and Coffee",
+      "width": 1600,
+      "height": 938,
+      "filename": "free-04-198968759.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\free-04-198968759.jpg",
+      "asset": "public/img/community/posts-2026-10-18/free-04-198968759.jpg",
+      "sha256": "428e819d15e74b92ddf7f839708f17b9909716695c120f733b1b61055e0b18d4",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-RECOMMEND-4",
+      "id": 8,
+      "group": 0,
+      "pageid": 163454841,
+      "title": "File:Hyundai RN24 Concept – Seoul Mobility Show 2025 (05).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Hyundai_RN24_Concept_%E2%80%93_Seoul_Mobility_Show_2025_(05).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Hyundai_RN24_Concept_%E2%80%93_Seoul_Mobility_Show_2025_%2805%29.jpg/1920px-Hyundai_RN24_Concept_%E2%80%93_Seoul_Mobility_Show_2025_%2805%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Treeinkr",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Hyundai RN24 at the Seoul Mobility Show 2025",
+      "width": 1600,
+      "height": 800,
+      "filename": "recommend-04-163454841.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\recommend-04-163454841.jpg",
+      "asset": "public/img/community/posts-2026-10-18/recommend-04-163454841.jpg",
+      "sha256": "4bf6a3966242817965f61752812aa9f66e0aa5f6a78fdb920e96cd120de2eb41",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-HUMOR-4",
+      "id": 21,
+      "group": 2,
+      "pageid": 159902161,
+      "title": "File:Crowd II (129497256).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Crowd_II_(129497256).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Crowd_II_%28129497256%29.jpg/1920px-Crowd_II_%28129497256%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "deejayqueue",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "description": "Crowd II",
+      "width": 1600,
+      "height": 1200,
+      "filename": "humor-04-159902161.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\humor-04-159902161.jpg",
+      "asset": "public/img/community/posts-2026-10-18/humor-04-159902161.jpg",
+      "sha256": "332880e9899af9d39e49e11f655eb5138007ce7b27eadbcabf25bce500c54954",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-NEWS-5",
+      "id": 13,
+      "group": 1,
+      "pageid": 80371638,
+      "title": "File:Honda CR-Z. Tokyo Motor Show 2.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Honda_CR-Z._Tokyo_Motor_Show_2.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Honda_CR-Z._Tokyo_Motor_Show_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "author": "Motokoka",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Honda CR-Z. Tokyo Motor Show 2009",
+      "width": 1600,
+      "height": 1068,
+      "filename": "news-05-80371638.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\news-05-80371638.jpg",
+      "asset": "public/img/community/posts-2026-10-18/news-05-80371638.jpg",
+      "sha256": "eaec3396c494415625031f1ea2b516b6e3a124055148720c7dfbd840da47b418",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-FREE-5",
+      "id": 40,
+      "group": 4,
+      "pageid": 62516937,
+      "title": "File:IAA 2017, Frankfurt (1Y7A2244).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:IAA_2017,_Frankfurt_(1Y7A2244).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/IAA_2017%2C_Frankfurt_%281Y7A2244%29.jpg/1920px-IAA_2017%2C_Frankfurt_%281Y7A2244%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Matti Blume",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Seat Arona",
+      "width": 1600,
+      "height": 1067,
+      "filename": "free-05-62516937.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\free-05-62516937.jpg",
+      "asset": "public/img/community/posts-2026-10-18/free-05-62516937.jpg",
+      "sha256": "51e532f362980e41ac0effa19da9b4c437ef41a79309fc782784dd4750b2942d",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-RECOMMEND-5",
+      "id": 16,
+      "group": 1,
+      "pageid": 67241356,
+      "title": "File:Geneva International Motor Show 2018, Le Grand-Saconnex (1X7A1707).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Geneva_International_Motor_Show_2018,_Le_Grand-Saconnex_(1X7A1707).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Geneva_International_Motor_Show_2018%2C_Le_Grand-Saconnex_%281X7A1707%29.jpg/1920px-Geneva_International_Motor_Show_2018%2C_Le_Grand-Saconnex_%281X7A1707%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Matti Blume",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Geneva International Motor Show 2018",
+      "width": 1600,
+      "height": 1067,
+      "filename": "recommend-05-67241356.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\recommend-05-67241356.jpg",
+      "asset": "public/img/community/posts-2026-10-18/recommend-05-67241356.jpg",
+      "sha256": "9d2b4e1e330ef9fa6bb2838b8a87781823971553fc8c816f55c65ae119d7de53",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-HUMOR-5",
+      "id": 23,
+      "group": 2,
+      "pageid": 103414814,
+      "title": "File:Crowds at the Corvette Display (12494369513).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Crowds_at_the_Corvette_Display_(12494369513).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Crowds_at_the_Corvette_Display_%2812494369513%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "author": "artistmac",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "description": "",
+      "width": 1280,
+      "height": 960,
+      "filename": "humor-05-103414814.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\humor-05-103414814.jpg",
+      "asset": "public/img/community/posts-2026-10-18/humor-05-103414814.jpg",
+      "sha256": "33a234147656c3f048d4f12b940f094676dc1b66cbdcc44469639bc088c3a4dc",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-NEWS-6",
+      "id": 17,
+      "group": 1,
+      "pageid": 67532798,
+      "title": "File:BMW X4 M40d Presentation Genf 2018.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:BMW_X4_M40d_Presentation_Genf_2018.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/BMW_X4_M40d_Presentation_Genf_2018.jpg/1920px-BMW_X4_M40d_Presentation_Genf_2018.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "BMW X4 at Geneva Motorshow 2018",
+      "width": 1600,
+      "height": 1069,
+      "filename": "news-06-67532798.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\news-06-67532798.jpg",
+      "asset": "public/img/community/posts-2026-10-18/news-06-67532798.jpg",
+      "sha256": "9ac31c07d02f02b3dd566712c3bf4458af840127124733bb001ba107135f1b59",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-FREE-6",
+      "id": 43,
+      "group": 4,
+      "pageid": 169807409,
+      "title": "File:Moscow car meet 2025-07-12 RC cars 01.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Moscow_car_meet_2025-07-12_RC_cars_01.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Moscow_car_meet_2025-07-12_RC_cars_01.jpg/1920px-Moscow_car_meet_2025-07-12_RC_cars_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Retired electrician",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "description": "2025 Moscow classic automobile show",
+      "width": 1600,
+      "height": 1067,
+      "filename": "free-06-169807409.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\free-06-169807409.jpg",
+      "asset": "public/img/community/posts-2026-10-18/free-06-169807409.jpg",
+      "sha256": "1d9ba1bd49d3f31c1d0922b035fdf23912a86337b0cae65ddb5ba97e2707457e",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-RECOMMEND-6",
+      "id": 22,
+      "group": 2,
+      "pageid": 103414812,
+      "title": "File:Crowds at the Corvette Display (12494246245).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Crowds_at_the_Corvette_Display_(12494246245).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Crowds_at_the_Corvette_Display_%2812494246245%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "author": "artistmac",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "description": "",
+      "width": 1280,
+      "height": 960,
+      "filename": "recommend-06-103414812.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\recommend-06-103414812.jpg",
+      "asset": "public/img/community/posts-2026-10-18/recommend-06-103414812.jpg",
+      "sha256": "fdfdc29c5f6ddef5e1b028811632c4c918bbfff4c475244403a0eac07024f20d",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-HUMOR-6",
+      "id": 24,
+      "group": 2,
+      "pageid": 115960015,
+      "title": "File:Chicago Auto Show Crowds, 2012 (6872276435).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Chicago_Auto_Show_Crowds,_2012_(6872276435).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Chicago_Auto_Show_Crowds%2C_2012_%286872276435%29.jpg/1920px-Chicago_Auto_Show_Crowds%2C_2012_%286872276435%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "artistmac",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "description": "Attendance always hovers at just under a million, during good times and bad. Even if you can't afford even a used car, it's always fun to look, sit in them and dream. Sometimes, dreams are all we have.",
+      "width": 1600,
+      "height": 1074,
+      "filename": "humor-06-115960015.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\humor-06-115960015.jpg",
+      "asset": "public/img/community/posts-2026-10-18/humor-06-115960015.jpg",
+      "sha256": "237939456765291f2ca61e85b7d2e5f9f70006ade5516a77a40712a37c762adc",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-NEWS-7",
+      "id": 37,
+      "group": 4,
+      "pageid": 62403000,
+      "title": "File:Kia, IAA 2017 (1Y7A2595).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Kia,_IAA_2017_(1Y7A2595).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Kia%2C_IAA_2017_%281Y7A2595%29.jpg/1920px-Kia%2C_IAA_2017_%281Y7A2595%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "MB-one",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Kia Motors Europe COO Michael Cole at Kia press conference, IAA 2017",
+      "width": 1600,
+      "height": 1067,
+      "filename": "news-07-62403000.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\news-07-62403000.jpg",
+      "asset": "public/img/community/posts-2026-10-18/news-07-62403000.jpg",
+      "sha256": "7068a90c246c6a9267e4dd569c0e376e6aeb9f73247ed10383303ee290249c09",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-FREE-7",
+      "id": 45,
+      "group": 4,
+      "pageid": 169807210,
+      "title": "File:Moscow car meet 2025-07-12 Mercedes row 04.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Moscow_car_meet_2025-07-12_Mercedes_row_04.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Moscow_car_meet_2025-07-12_Mercedes_row_04.jpg/1920px-Moscow_car_meet_2025-07-12_Mercedes_row_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Retired electrician",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "description": "2025 Moscow classic automobile show",
+      "width": 1600,
+      "height": 900,
+      "filename": "free-07-169807210.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\free-07-169807210.jpg",
+      "asset": "public/img/community/posts-2026-10-18/free-07-169807210.jpg",
+      "sha256": "49a7d14f9ec1c5147d9e31d8e62f5d1c54952c47f16ad373ffae04d8e5beb3a7",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-RECOMMEND-7",
+      "id": 25,
+      "group": 2,
+      "pageid": 103414554,
+      "title": "File:Crowds at the Chrysler Jeep Trail Course (12494011485).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Crowds_at_the_Chrysler_Jeep_Trail_Course_(12494011485).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Crowds_at_the_Chrysler_Jeep_Trail_Course_%2812494011485%29.jpg/1920px-Crowds_at_the_Chrysler_Jeep_Trail_Course_%2812494011485%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "artistmac",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "description": "Crowds at the Chrysler/Jeep Trail Course",
+      "width": 1600,
+      "height": 1200,
+      "filename": "recommend-07-103414554.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\recommend-07-103414554.jpg",
+      "asset": "public/img/community/posts-2026-10-18/recommend-07-103414554.jpg",
+      "sha256": "585e6418f1643135b9948338c6870e04032df68fa2fe00ea3f9d4c30f390367b",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-HUMOR-7",
+      "id": 26,
+      "group": 2,
+      "pageid": 115960013,
+      "title": "File:Chicago Auto Show Crowds, 2012 (6872273551).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Chicago_Auto_Show_Crowds,_2012_(6872273551).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Chicago_Auto_Show_Crowds%2C_2012_%286872273551%29.jpg/1920px-Chicago_Auto_Show_Crowds%2C_2012_%286872273551%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "artistmac",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "description": "Attendance always hovers at just under a million, during good times and bad. Even if you can't afford even a used car, it's always fun to look, sit in them and dream. Sometimes, dreams are all we have.",
+      "width": 1600,
+      "height": 1074,
+      "filename": "humor-07-115960013.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\humor-07-115960013.jpg",
+      "asset": "public/img/community/posts-2026-10-18/humor-07-115960013.jpg",
+      "sha256": "2825d81340bfc83d913d1d64745c4beaab96836a5a4215c42a7e4a44f04c00ad",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-NEWS-8",
+      "id": 38,
+      "group": 4,
+      "pageid": 73384995,
+      "title": "File:Paris Motor Show 2018, Paris (1Y7A1828).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Paris_Motor_Show_2018,_Paris_(1Y7A1828).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Paris_Motor_Show_2018%2C_Paris_%281Y7A1828%29.jpg/1920px-Paris_Motor_Show_2018%2C_Paris_%281Y7A1828%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Matti Blume",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Skoda Vision RS at Mondiale Paris Motor Show 2018",
+      "width": 1600,
+      "height": 1067,
+      "filename": "news-08-73384995.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\news-08-73384995.jpg",
+      "asset": "public/img/community/posts-2026-10-18/news-08-73384995.jpg",
+      "sha256": "e4f2c0711cf59cd819e1686eb9eef42242404239d516e844d6b44e1ba72c2ed4",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-FREE-8",
+      "id": 59,
+      "group": 8,
+      "pageid": 33485989,
+      "title": "File:20140605 Renault Samsung SM3 Neo 2.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:20140605_Renault_Samsung_SM3_Neo_2.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/20140605_Renault_Samsung_SM3_Neo_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "author": "Chu",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "description": "Renault Samsung SM3 Neo",
+      "width": 1310,
+      "height": 740,
+      "filename": "free-08-33485989.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\free-08-33485989.jpg",
+      "asset": "public/img/community/posts-2026-10-18/free-08-33485989.jpg",
+      "sha256": "5be866a0ed29f74e6180919f20a0524f4ad399dda284d671a6ba5e84e6d2d550",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-RECOMMEND-8",
+      "id": 27,
+      "group": 2,
+      "pageid": 7421666,
+      "title": "File:The 2009 Shanghai International Auto Show.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:The_2009_Shanghai_International_Auto_Show.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/The_2009_Shanghai_International_Auto_Show.jpg/1920px-The_2009_Shanghai_International_Auto_Show.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Ridking",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "description": "This is the photo of 2009 Shanghai International Auto Show",
+      "width": 1600,
+      "height": 1200,
+      "filename": "recommend-08-7421666.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\recommend-08-7421666.jpg",
+      "asset": "public/img/community/posts-2026-10-18/recommend-08-7421666.jpg",
+      "sha256": "32efd0354f0fe2107a16e7ac7d7ca3820b69980e9d1ea57a51040a6cb069eed5",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-HUMOR-8",
+      "id": 51,
+      "group": 5,
+      "pageid": 20834908,
+      "title": "File:System-Mechanic-California.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:System-Mechanic-California.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/26/System-Mechanic-California.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "author": "T.Voekler",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "description": "Auto mechanics. California.",
+      "width": 1308,
+      "height": 1028,
+      "filename": "humor-08-20834908.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\humor-08-20834908.jpg",
+      "asset": "public/img/community/posts-2026-10-18/humor-08-20834908.jpg",
+      "sha256": "1502303028784c3b321322b11ba7b8e54a49dc3731b182de7372814cc2483627",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-NEWS-9",
+      "id": 39,
+      "group": 4,
+      "pageid": 67213652,
+      "title": "File:Volkswagen Press Conference, Le Grand-Saconnex (1X7A9947).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Volkswagen_Press_Conference,_Le_Grand-Saconnex_(1X7A9947).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Volkswagen_Press_Conference%2C_Le_Grand-Saconnex_%281X7A9947%29.jpg/1920px-Volkswagen_Press_Conference%2C_Le_Grand-Saconnex_%281X7A9947%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Matti Blume",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "Geneva International Motor Show 2018",
+      "width": 1600,
+      "height": 1067,
+      "filename": "news-09-67213652.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\news-09-67213652.jpg",
+      "asset": "public/img/community/posts-2026-10-18/news-09-67213652.jpg",
+      "sha256": "1afffa0e0d71643f6628e5ea5dfa5ba5a0e503d4adc90663bb2de69ddc757836",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-FREE-9",
+      "id": 61,
+      "group": 8,
+      "pageid": 21011910,
+      "title": "File:Kia K5.JPG",
+      "source": "https://commons.wikimedia.org/wiki/File:Kia_K5.JPG",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Kia_K5.JPG/1920px-Kia_K5.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "hyolee2",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "description": "기아 K5(부산국제모터쇼에서 촬영)",
+      "width": 1600,
+      "height": 1200,
+      "filename": "free-09-21011910.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\free-09-21011910.jpg",
+      "asset": "public/img/community/posts-2026-10-18/free-09-21011910.jpg",
+      "sha256": "3da1d546b9e862b5bbca4311fe50f163236aef4f20b5a192fb9aa49077a692c7",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-RECOMMEND-9",
+      "id": 49,
+      "group": 5,
+      "pageid": 194784616,
+      "title": "File:Young mechanic with laptop doing car diagnostic at automobile repair shop close.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Young_mechanic_with_laptop_doing_car_diagnostic_at_automobile_repair_shop_close.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Young_mechanic_with_laptop_doing_car_diagnostic_at_automobile_repair_shop_close.jpg/1920px-Young_mechanic_with_laptop_doing_car_diagnostic_at_automobile_repair_shop_close.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Shixart1985",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "description": "Young mechanic with laptop doing car diagnostic at automobile repair shop close",
+      "width": 1600,
+      "height": 1068,
+      "filename": "recommend-09-194784616.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\recommend-09-194784616.jpg",
+      "asset": "public/img/community/posts-2026-10-18/recommend-09-194784616.jpg",
+      "sha256": "57ca8d18daa94625a931bb7db1ddb5abe6c2d51ca869b6c6119f91b05bbc3d2f",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-HUMOR-9",
+      "id": 58,
+      "group": 7,
+      "pageid": 57574161,
+      "title": "File:Along Old Rt. 66, Seligman, AZ, Snow Cap Drive In 2005 (6589859695).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Along_Old_Rt._66,_Seligman,_AZ,_Snow_Cap_Drive_In_2005_(6589859695).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Along_Old_Rt._66%2C_Seligman%2C_AZ%2C_Snow_Cap_Drive_In_2005_%286589859695%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "author": "inkknife_2000 (7.5 million views +)",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "description": "(1 in a multiple picture set) To give you an idea of Juan Delgadillo's sense of humor, look at the car he has put together. He drives this around town in parades, advertising his drive-in and Rt. 66. Seligman looks very much as it did when the Mother Road came through town, but now it is miles from I-40 and few people get a chance to enjoy what it has to offer.",
+      "width": 1519,
+      "height": 1148,
+      "filename": "humor-09-57574161.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\humor-09-57574161.jpg",
+      "asset": "public/img/community/posts-2026-10-18/humor-09-57574161.jpg",
+      "sha256": "244924b03dd9f85c7c0802d5c18f84fbdbcdd151bba86a02e256daab938d5d38",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-NEWS-10",
+      "id": 63,
+      "group": 8,
+      "pageid": 33663675,
+      "title": "File:20140605 Kia Soul EV 1.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:20140605_Kia_Soul_EV_1.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/86/20140605_Kia_Soul_EV_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "author": "Chu",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "description": "Kia Soul EV",
+      "width": 1300,
+      "height": 910,
+      "filename": "news-10-33663675.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\news-10-33663675.jpg",
+      "asset": "public/img/community/posts-2026-10-18/news-10-33663675.jpg",
+      "sha256": "61d65d1dffa7e9742f68d40fb1c8f67961406e740e8b05589ac6549e397045d6",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-FREE-10",
+      "id": 62,
+      "group": 8,
+      "pageid": 33210855,
+      "title": "File:RENAULT SAMSUNG QM3 LE 002.JPG",
+      "source": "https://commons.wikimedia.org/wiki/File:RENAULT_SAMSUNG_QM3_LE_002.JPG",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/RENAULT_SAMSUNG_QM3_LE_002.JPG/1920px-RENAULT_SAMSUNG_QM3_LE_002.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "CEFICEFI",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "description": "ルノーサムスン・QM3",
+      "width": 1600,
+      "height": 1200,
+      "filename": "free-10-33210855.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\free-10-33210855.jpg",
+      "asset": "public/img/community/posts-2026-10-18/free-10-33210855.jpg",
+      "sha256": "1ac30f2ef78490768df4fd686d2cc8f33dd4bf5ea5bb2bea806450412668ddd2",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-RECOMMEND-10",
+      "id": 53,
+      "group": 5,
+      "pageid": 63786296,
+      "title": "File:Mechanic working in Nairobi.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Mechanic_working_in_Nairobi.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Mechanic_working_in_Nairobi.jpg/1920px-Mechanic_working_in_Nairobi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Eugene Odanga masinde",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "description": "This is an image of \"African people at work\" from",
+      "width": 1600,
+      "height": 1067,
+      "filename": "recommend-10-63786296.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\recommend-10-63786296.jpg",
+      "asset": "public/img/community/posts-2026-10-18/recommend-10-63786296.jpg",
+      "sha256": "7e1fdecce944b057da6f715991a3139f866d20ebadf53e0da39d064cef61520f",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    },
+    {
+      "key": "community-20261018-HUMOR-10",
+      "id": 60,
+      "group": 8,
+      "pageid": 33485988,
+      "title": "File:20140605 Renault Samsung SM3 Neo 1.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:20140605_Renault_Samsung_SM3_Neo_1.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/20140605_Renault_Samsung_SM3_Neo_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "author": "Chu",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "description": "Renault Samsung SM3 Neo",
+      "width": 1310,
+      "height": 740,
+      "filename": "humor-10-33485988.jpg",
+      "archived": "C:\\Users\\behru\\Desktop\\CARIMG\\ANORCAR-Community-2026-10-18\\humor-10-33485988.jpg",
+      "asset": "public/img/community/posts-2026-10-18/humor-10-33485988.jpg",
+      "sha256": "06651259c47dc736d21f249228c2660378643e6661f4eaf96c874b08e7d79650",
+      "changes": "Resized to max 1600px width and JPEG optimized. No AI generation. Photo license applies to derivative."
+    }
+  ],
+  "validation": {
+    "published": 40,
+    "uniquePhotos": 40,
+    "perCategory": 10,
+    "exactApiReadback": true,
+    "uploadedImageHashes": true
+  }
+}

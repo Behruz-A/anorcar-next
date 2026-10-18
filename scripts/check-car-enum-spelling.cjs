@@ -1,11 +1,18 @@
 ﻿const assert = require('assert/strict');
-async function request(search={}) {
- const response=await fetch('http://localhost:3007/graphql',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:'query($input:CarsInquiry!){getCars(input:$input){list{_id carTransmission carLocation}metaCounter{total}}}',variables:{input:{page:1,limit:100,sort:'createdAt',direction:'DESC',search}}}),signal:AbortSignal.timeout(15000)});
+async function request(search={}, page=1) {
+ const response=await fetch('http://localhost:3007/graphql',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:'query($input:CarsInquiry!){getCars(input:$input){list{_id carTransmission carLocation}metaCounter{total}}}',variables:{input:{page,limit:100,sort:'createdAt',direction:'DESC',search}}}),signal:AbortSignal.timeout(15000)});
+ assert.ok(response.ok, `GraphQL HTTP ${response.status}`);
  return response.json();
 }
 (async()=>{
  const all=await request();assert.ok(!all.errors,JSON.stringify(all.errors));
- const list=all.data.getCars.list;assert.ok(list.length);assert.equal(list.length,all.data.getCars.metaCounter[0].total);
+ const list=[...all.data.getCars.list],total=all.data.getCars.metaCounter[0]?.total||0;
+ for(let page=2;page<=Math.ceil(total/100);page++){
+  const next=await request({},page);assert.ok(!next.errors,JSON.stringify(next.errors));
+  assert.equal(next.data.getCars.metaCounter[0]?.total||0,total,'Inventory changed during enum verification');
+  list.push(...next.data.getCars.list);
+ }
+ assert.ok(list.length);assert.equal(list.length,total);assert.equal(new Set(list.map(car=>car._id)).size,total);
  assert.ok(list.every(car=>['AUTOMATIC','MANUAL'].includes(car.carTransmission)&&car.carLocation!=='DAEJON'));
  for(const [key,value,field] of [['transmissions','AUTOMATIC','carTransmission'],['locations','DAEJEON','carLocation']]){
   const filtered=await request({[key]:[value]});assert.ok(!filtered.errors,JSON.stringify(filtered.errors));

@@ -1,0 +1,236 @@
+{
+  "apiImageReferencesChecked": 258,
+  "files": [
+    {
+      "file": "public/img/banner/joinBg.svg",
+      "bytes": 11140285,
+      "sha256": "7097164142fae2c3b9aea7f9f39ea5883ac8d927c60209cf229a7dab0a1898bc"
+    },
+    {
+      "file": "public/img/banner/aboutBanner.svg",
+      "bytes": 3997198,
+      "sha256": "f262711dbd555aa928aff087a4a9e9a5c524d6012cd902720e2747625916685f"
+    },
+    {
+      "file": "public/img/banner/header3.svg",
+      "bytes": 3582133,
+      "sha256": "a0f0c23bc04b8807f63c5405d88d1306f7285d3f804875e6290ab142d6206155"
+    },
+    {
+      "file": "public/img/car/home-hero.png",
+      "bytes": 2206405,
+      "sha256": "c60246aeaf521c520f4e5bd713cb06892b6fc79f305f82effff65cde1e9fb746"
+    },
+    {
+      "file": "libs/components/homepage/CompareCars.tsx",
+      "bytes": 4459,
+      "sha256": "a8d881497623c11690702f4642d1b26ed03135dba4b264f477bdde6e0dec7df6"
+    },
+    {
+      "file": "libs/components/car/compareHistory.ts",
+      "bytes": 900,
+      "sha256": "27ea5b3cc8948cf2e449ea1db7c7a819d581bc7d7b995bc69770f5b5ca28e396"
+    },
+    {
+      "file": "libs/utils.ts",
+      "bytes": 1003,
+      "sha256": "89541eab041b0c17d493c734af6259d51bae58decd591d3866acac1dad2bbfa1"
+    },
+    {
+      "file": "libs/enums/notice.enum.ts",
+      "bytes": 182,
+      "sha256": "1d390c911f5dbae268c5e6948de3ad066a3663717c1e473f3449889dc8536459"
+    },
+    {
+      "file": "libs/types/brand/brand.update.ts",
+      "bytes": 193,
+      "sha256": "73f841ae40021a88ba67711a34ca0c56c808e293f513ecd6ce68bb0342376635"
+    },
+    {
+      "file": "libs/types/like/like.input.ts",
+      "bytes": 152,
+      "sha256": "907b05c73b7f69e8aac6a48b54297c9f4acea3167498dac5f319a3a27af59f5e"
+    },
+    {
+      "file": "libs/types/like/like.ts",
+      "bytes": 200,
+      "sha256": "f791c426830d6cfc26e5064ee674d3c5a61b74f6daa0aac3b7999ce0fb1115a8"
+    },
+    {
+      "file": "libs/types/view/view.input.ts",
+      "bytes": 152,
+      "sha256": "08086ec3ff26b73e1b517c7a039b9be8f609679331b91c283a094b572e1712c5"
+    },
+    {
+      "file": "libs/types/view/view.ts",
+      "bytes": 200,
+      "sha256": "a5d49734e7356157febcb7bb7f853b11551054e81f961f36a594e47bf2984692"
+    },
+    {
+      "file": "public/img/events/anorcar-ev.png",
+      "bytes": 2222139,
+      "sha256": "504ca5ef66d8078743145a258777f401af1f7807047f4cc244eba83c3286d126"
+    },
+    {
+      "file": "public/img/events/anorcar-festival.png",
+      "bytes": 2341896,
+      "sha256": "c8bac671d39e1bc3f3f989bc5c7ad074c18f7a7403c2820b1c84e56ff548d959"
+    },
+    {
+      "file": "public/img/events/anorcar-meetup.png",
+      "bytes": 2337900,
+      "sha256": "6925b013063f597b27166debdd98619f9acea3ab050b9bd548b924178a1bef90"
+    },
+    {
+      "file": "public/img/events/anorcar-show.png",
+      "bytes": 2206864,
+      "sha256": "b9d2bd2c18bda32fbc923587d3f4b74b9a56d9f91f7ccb1ca2c97af1bb171c2b"
+    },
+    {
+      "file": "public/img/events/anorcar-track.png",
+      "bytes": 2249817,
+      "sha256": "839e7560f0ee92ee9dc734ff9bbf06cbd66eb08097bb43d9e4ff6c18c8212b19"
+    },
+    {
+      "file": "public/img/events/BUSAN.webp",
+      "bytes": 495132,
+      "sha256": "b941957d86cb73e831e6d66a560b98d825674ffdd762232f84249a504f848f35"
+    },
+    {
+      "file": "public/img/events/DAEGU.webp",
+      "bytes": 55848,
+      "sha256": "1fe0305d500109126fe56d5f76771f625eb58b77ef6a858b187314e18493bcfa"
+    },
+    {
+      "file": "public/img/events/INCHEON.webp",
+      "bytes": 86016,
+      "sha256": "8ec4dc9b241bb4fd3e19252ffb76e3edfd6108f379929b652848aa2d1f149c63"
+    },
+    {
+      "file": "public/img/events/SEOUL.webp",
+      "bytes": 661254,
+      "sha256": "0ce33e1cee0dffb3df628c9b90fd5cc93ba6e52d0a856e224a3d0442c0b5b421"
+    },
+    {
+      "file": "public/img/property/bigImage.png",
+      "bytes": 1187096,
+      "sha256": "6a755e5612f5ff554d036e910654dd53f13a820071ab30d6d317ea75950e0a38"
+    },
+    {
+      "file": "public/img/property/floorPlan.png",
+      "bytes": 419156,
+      "sha256": "dda08372bef959a9848fa89a2fb13191344e642aca98604f9d3620522961f7e1"
+    },
+    {
+      "file": "public/img/property/girlBrunette.png",
+      "bytes": 19779,
+      "sha256": "08345aaf9b11ce496303ed77563646aa99e54ac64d356e49420b657e49305f44"
+    },
+    {
+      "file": "public/img/property/sub1.png",
+      "bytes": 34139,
+      "sha256": "bb677e3263af436c469de7ca2409113672d3a30641a0bd39363f171a816b1ca1"
+    },
+    {
+      "file": "public/img/property/sub2.png",
+      "bytes": 26190,
+      "sha256": "34b24d3d6dc21fa0dc21d936308a7d428e56f4bb4e232267522fa65128306129"
+    },
+    {
+      "file": "public/img/property/sub3.png",
+      "bytes": 28969,
+      "sha256": "b763f8da183b36ad87d609335aad1b0fc7dc8d22f75eff49b54b08461fdac5dd"
+    },
+    {
+      "file": "public/img/property/sub4.png",
+      "bytes": 34307,
+      "sha256": "ab610e46fe46550a6d341bb07bdcb8528492045303f72cc9ba0bb68fc755c4a1"
+    },
+    {
+      "file": "public/img/fiber/img1.jpg",
+      "bytes": 62875,
+      "sha256": "4d64619eac4446b7d06ec2dd95e4ce2ed27e19cabd1e15ea16ec8c6dcd8dddda"
+    },
+    {
+      "file": "public/img/fiber/img2.jpg",
+      "bytes": 2472830,
+      "sha256": "1e9ef8be9bc8ef37d569dd579bea8eb3015767106c696262ec926033e65610b6"
+    },
+    {
+      "file": "public/img/fiber/img3.jpg",
+      "bytes": 347345,
+      "sha256": "827028f122e0a6efb3724b22b05ebce6a04d8881c196237c39e41f765826f9dd"
+    },
+    {
+      "file": "public/img/fiber/img4.jpg",
+      "bytes": 1194870,
+      "sha256": "1af4a9e2efd6ab33379f0df91ec5693305adefac95cc89d439ce53ae5a94214e"
+    },
+    {
+      "file": "public/img/fiber/img5.jpg",
+      "bytes": 815880,
+      "sha256": "e1d6fb0c6ed0624380618023d187fabf7b2e9a291530bc9af9445e0b7ffa31c0"
+    },
+    {
+      "file": "public/img/fiber/img6.jpg",
+      "bytes": 504879,
+      "sha256": "de493582b24e65def66c1a3bfd8fbc3f6467c790633bf26e0c10f558905fbcc2"
+    },
+    {
+      "file": "public/img/fiber/img7.jpg",
+      "bytes": 289125,
+      "sha256": "50a5832ed6d68d0ffcd4cf6dd0fef4192df6d9ffedd761f371fb44dcb1260c97"
+    },
+    {
+      "file": "public/img/fiber/img8.jpg",
+      "bytes": 219792,
+      "sha256": "4490c3a3cfe1f55ad6bcf3a3b4b10bef0709c24b52e350eaca38532805508a44"
+    },
+    {
+      "file": "public/img/banner/types/apartment.webp",
+      "bytes": 526030,
+      "sha256": "5902f8aa46080fe1dd02886fd4aa2e2c866ec3e365b6c4d4f3357e8395263e3b"
+    },
+    {
+      "file": "public/img/banner/types/house.webp",
+      "bytes": 969944,
+      "sha256": "e12d6b0cf792feb7cd74377a606f568a1680ca508883ba595edd77a51b3a196c"
+    },
+    {
+      "file": "public/img/banner/types/villa.webp",
+      "bytes": 862162,
+      "sha256": "ac3a0a1eb5bc6b37e45ba54bb0e5f07fc2f133a0cb25bdc4d9de6eb9df917648"
+    },
+    {
+      "file": "public/img/agents/demo/alex-choi.png",
+      "bytes": 2080091,
+      "sha256": "c9d56bfff908af02e80d5c602aec95a42c842f979b9d19b3664cb43ab9fcf266"
+    },
+    {
+      "file": "public/img/agents/demo/daniel-kim.png",
+      "bytes": 1999334,
+      "sha256": "5161ab73179dff8e5ca529dad3ffd316498a288ca6981699aefc54c37856f4ff"
+    },
+    {
+      "file": "public/img/agents/demo/eunwoo-lim.png",
+      "bytes": 1969714,
+      "sha256": "2b315c2a01b6ae35c34e4b133145cb33f6f2dd8cd43598f89a60e67821c3820a"
+    },
+    {
+      "file": "public/img/agents/demo/hyeryeong-yoon.png",
+      "bytes": 1924092,
+      "sha256": "26dc3d8f08cd79ac86ccd5cc38fe27e9896cd949d961126a69dc0c0299333294"
+    },
+    {
+      "file": "public/img/agents/demo/jisoo-han.png",
+      "bytes": 2011637,
+      "sha256": "a82f4d940d92b910233e40ac27c55632627777f76896af42a5c238baa7ed06b8"
+    },
+    {
+      "file": "public/img/agents/demo/minyoung-shin.png",
+      "bytes": 2054565,
+      "sha256": "e1d2cbe11d70923fa5cff7a3a84486724e258c12d4d5e2cb29e5f496a1cdfbdd"
+    }
+  ],
+  "totalBytes": 55645129
+}
