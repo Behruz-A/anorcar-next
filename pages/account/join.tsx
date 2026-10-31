@@ -11,6 +11,8 @@ import withLayoutBasic from '../../libs/components/layout/LayoutBasic';
 import { logIn, signUp } from '../../libs/auth';
 import { MemberType } from '../../libs/enums/member.enum';
 import { Message } from '../../libs/enums/common.enum';
+import SocialLoginButtons from '../../libs/components/account/SocialLoginButtons';
+import { startGoogleLogin } from '../../libs/auth/google';
 
 export const getStaticProps = async ({ locale }: any) => ({
  props: { ...(await serverSideTranslations(locale, ['common'])) },
@@ -37,6 +39,25 @@ const Join: NextPage = () => {
   setError('');
   setErrors({});
  }, [signup]);
+
+ useEffect(() => {
+  if (router.isReady && router.query.google === 'error') setError('Google sign-in could not be completed. Please try again.');
+ }, [router.isReady, router.query.google]);
+
+ const googleLogin = async () => {
+  if (submitting.current) return;
+  submitting.current = true;
+  setPending(true);
+  setError('');
+  try {
+   const referrer = typeof router.query.referrer === 'string' ? router.query.referrer : undefined;
+   window.location.assign(await startGoogleLogin(router.locale, referrer));
+  } catch {
+   setError('Google sign-in could not be completed. Please try again.');
+   submitting.current = false;
+   setPending(false);
+  }
+ };
 
  const change = (name: keyof typeof input, value: string) => {
   setInput(previous => ({ ...previous, [name]: value }));
@@ -101,19 +122,13 @@ const Join: NextPage = () => {
   <section className="auth-page">
 
    <div className="auth-frame">
-    <aside className="auth-visual">
-     <NextImage width={1462} height={984} unoptimized className="auth-photo" src="/img/car/loginpageimg.png" alt="" />
-     <Link href="/" className="auth-wordmark"><NextImage width={258} height={46} unoptimized src="/img/logo/anorcar-white.svg" alt="ANORCAR" /></Link>
-     <div className="auth-visual-copy">
-      <h2>{t('Find your next car.')}</h2>
-      <p>{t('Buy, sell and explore with ANORCAR.')}</p>
-     </div>
-    </aside>
     <div className="auth-panel">
+     <div className="auth-panel-header">
      <Link className="auth-back" href="/car">{t('Back to cars')}</Link>
      <div className="auth-mode" aria-label={t('Account access')}>
       <button type="button" aria-pressed={!signup} disabled={pending} onClick={() => signup && switchMode()}>{t('Log in')}</button>
       <button type="button" aria-pressed={signup} disabled={pending} onClick={() => !signup && switchMode()}>{t('Sign up')}</button>
+     </div>
      </div>
      <h1>{t(signup ? 'Create your account' : 'Welcome back')}</h1>
      <p className="auth-intro">{t(signup ? 'Join ANORCAR to find or sell your next car.' : 'Log in to your ANORCAR account.')}</p>
@@ -157,9 +172,18 @@ const Join: NextPage = () => {
        <Button className="auth-submit" type="submit" variant="contained" disabled={pending} startIcon={pending ? <CircularProgress size={18} color="inherit" /> : undefined}>{t(pending ? (signup ? 'Creating account...' : 'Logging in...') : (signup ? 'Create account' : 'Log in'))}</Button>
       </fieldset>
      </form>
+     {!signup && <SocialLoginButtons disabled={pending} onGoogleLogin={googleLogin} />}
      <p className="auth-switch">{t(signup ? 'Already have an account?' : 'New to ANORCAR?')} <button type="button" disabled={pending} onClick={switchMode}>{t(signup ? 'Log in' : 'Sign up')}</button></p>
      <p className="auth-help"><Link href="/cs">{t('Need help signing in?')}</Link></p>
     </div>
+    <aside className="auth-visual">
+     <NextImage width={1462} height={984} unoptimized priority className="auth-photo" src="/img/car/loginpageimg.png" alt="" />
+     <Link href="/" className="auth-wordmark"><NextImage width={258} height={46} unoptimized src="/img/logo/anorcar-white.svg" alt="ANORCAR" /></Link>
+     <div className="auth-visual-copy">
+      <h2>{t('Find your next car.')}</h2>
+      <p>{t('Buy, sell and explore with ANORCAR.')}</p>
+     </div>
+    </aside>
    </div>
   </section>
  );

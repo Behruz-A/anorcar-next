@@ -45,13 +45,20 @@ async function until(expression, label) {
 const base = process.env.QA_BASE_URL || 'http://localhost:3000';
 const fixture = `(() => {
  if(location.origin!==${JSON.stringify(base)})return;
- localStorage.clear(); window.__calls=[]; window.__mode='wrong';
+ if(location.pathname.endsWith('/account/join'))localStorage.clear(); window.__calls=[]; window.__mode='wrong';
  const nativeFetch=window.fetch.bind(window);
  window.fetch=async(resource,options)=>{
   const url=typeof resource==='string'?resource:resource.url;
   if(url.includes('/graphql')){
    const body=JSON.parse(options.body);window.__calls.push({...body,credentials:options.credentials,headers:options.headers});
    await new Promise(r=>setTimeout(r,500));
+   if(body.operationName==='StartGoogleLogin')return new Response(JSON.stringify({errors:[{message:'Fixture Google start unavailable'}]}),{headers:{'Content-Type':'application/json'}});
+   if(body.operationName==='CompleteGoogleLogin'){
+    sessionStorage.setItem('qa-google-complete',JSON.stringify({code:body.variables.code,hash:location.hash,credentials:options.credentials,client:new Headers(options.headers).get('X-Anorcar-Client')}));
+    const claims={_id:'507f1f77bcf86cd799439012',memberType:'USER',memberStatus:'ACTIVE',memberAuthType:'GOOGLE',memberNick:'googleuser',iat:Math.floor(Date.now()/1000),exp:Math.floor(Date.now()/1000)+900};
+    const token=btoa(JSON.stringify({alg:'HS256'}))+'.'+btoa(JSON.stringify(claims))+'.fixture';
+    return new Response(JSON.stringify({data:{completeGoogleLogin:{accessToken:token,returnTo:'/cs'}}}),{headers:{'Content-Type':'application/json'}});
+   }
    if(window.__mode==='offline')throw new TypeError('Fixture offline');
    if(['Login','Signup'].includes(body.operationName)){
     if(window.__mode!=='success')return new Response(JSON.stringify({errors:[{message:window.__mode==='duplicate'?'Already used member nick or phone!':'Wrong password, try again!'}]}),{headers:{'Content-Type':'application/json'}});
@@ -99,7 +106,16 @@ async function screenshot(name) {
     assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'overflow '+width+' '+mode);
     assert.ok(await evaluate("document.querySelector('.navbar-main').getBoundingClientRect().bottom<=document.querySelector('.auth-frame').getBoundingClientRect().top"),'navbar clearance');
     assert.equal(await evaluate("document.getElementById('auth-password').type"),'password');
-    assert.ok(await evaluate("[...document.querySelectorAll('.auth-page img')].every(i=>i.complete&&i.naturalWidth>0)"));
+    if(mode==='login') {
+     assert.deepEqual(await evaluate("[...document.querySelectorAll('.auth-social-button')].map(b=>({text:b.textContent.trim(),disabled:b.disabled}))"),[
+      {text:'Continue with Google',disabled:false},{text:'Continue with Kakao',disabled:true},
+     ]);
+     await evaluate("document.querySelector('.auth-kakao').click()");
+     assert.equal(await evaluate('window.__calls.length'),0,'disabled Kakao must not authenticate');
+     assert.ok(await evaluate("!!document.getElementById('auth-social-notice')?.textContent.trim()"));
+     if(width<500) assert.equal(await evaluate("getComputedStyle(document.querySelector('.auth-visual')).display"),'none');
+    }
+    await until("[...document.querySelectorAll('.auth-page img')].filter(i=>i.getClientRects().length).every(i=>i.complete&&i.naturalWidth>0)",'visible auth images');
     await screenshot('auth-'+mode+'-'+width);
     if(width===1440&&mode==='login') {
      const shot=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
@@ -138,10 +154,24 @@ async function screenshot(name) {
   }
   await navigate(390,'?referrer=%2Fcs');await evaluate("document.querySelectorAll('.auth-mode button')[1].click()");await until("!!document.getElementById('auth-confirm')",'mode switch');
   assert.equal(await evaluate("new URLSearchParams(location.search).get('referrer')"),'/cs');
+  await navigate(390,'?referrer=%2Fcs');
+  await evaluate("document.querySelector('.auth-google').click()");
+  await until("!!document.querySelector('.MuiAlert-root')",'Google start failure');
+  assert.equal(await evaluate("window.__calls[0].operationName"),'StartGoogleLogin');
+  assert.deepEqual(await evaluate("window.__calls[0].variables.input"),{origin:base,locale:'en',referrer:'/cs'});
+  assert.equal(await evaluate("document.querySelector('.auth-google').disabled"),false,'Google retry');
+  await command('Page.navigate',{url:base+'/account/google-callback#code='+'g'.repeat(43)});
+  await until("location.pathname==='/cs'",'Google callback session and return');
+  assert.equal(await evaluate('JSON.parse(atob(localStorage.getItem("accessToken").split(".")[1])).memberAuthType'),'GOOGLE');
+  assert.equal(await evaluate('localStorage.getItem("authSession")'),'cookie');
+  assert.deepEqual(await evaluate('JSON.parse(sessionStorage.getItem("qa-google-complete"))'),{code:'g'.repeat(43),hash:'',credentials:'include',client:'web'});
+  await command('Page.navigate',{url:base+'/account/google-callback'});
+  await until("!!document.querySelector('.MuiAlert-root')",'missing Google code');
+  assert.equal(await evaluate('window.__calls.length'),0,'no exchange without code');
   for(const locale of ['kr','ru']) {
    await navigate(390,'?mode=signup',locale);assert.notEqual(await evaluate("document.querySelector('.auth-panel h1').textContent"),'Create your account');
    assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'));console.log('PASS locale',locale);
   }
-  assert.deepEqual(exceptions,[]);console.log('PASS validation, password visibility, pending lock, errors/retry, role payload, sessions, safe return, mode/referrer, locales; no live auth writes.');
+  assert.deepEqual(exceptions,[]);console.log('PASS password/signup regressions, Google start retry, callback exchange/session/fragment removal, missing code, locales; no live auth writes.');
  } finally {if(socket)socket.close();chrome.kill();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

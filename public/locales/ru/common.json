@@ -1063,5 +1063,13 @@
   "Manage your ANORCAR account.": "Управляйте своим аккаунтом ANORCAR.",
   "The requested page could not be found on ANORCAR.": "Запрошенная страница не найдена на ANORCAR.",
   "Explore this {{car}} listing on ANORCAR. View vehicle details, photos, price, and seller information.": "Изучите объявление {{car}} на ANORCAR. Посмотрите характеристики, фотографии, цену и информацию о продавце.",
-  "View {{agent}} on ANORCAR. Explore their car listings and public agent profile.": "Посмотрите профиль {{agent}} на ANORCAR. Изучите объявления об автомобилях и открытый профиль агента."
+  "View {{agent}} on ANORCAR. Explore their car listings and public agent profile.": "Посмотрите профиль {{agent}} на ANORCAR. Изучите объявления об автомобилях и открытый профиль агента.",
+  "or continue with": "или продолжить с",
+  "Continue with Google": "Продолжить с Google",
+  "Continue with Kakao": "Продолжить с Kakao",
+  "Google and Kakao sign-in coming soon.": "Вход через Google и Kakao скоро появится.",
+  "Kakao sign-in coming soon.": "Вход через Kakao скоро появится.",
+  "Signing you in...": "Выполняется вход...",
+  "Google sign-in could not be completed. Please try again.": "Не удалось войти через Google. Попробуйте ещё раз.",
+  "Back to log in": "Вернуться ко входу"
 }

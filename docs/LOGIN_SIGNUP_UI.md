@@ -1,5 +1,20 @@
 # Login and signup — 2026-10-12
 
+## Google authentication enabled
+
+Google now starts real backend OAuth and returns through the localized callback page to the existing JWT/refresh session system. Kakao remains disabled. The earlier frontend-only coming-soon notes below describe historical UI phases. Implementation, configuration, tests and production handoff: [GOOGLE_LOGIN.md](GOOGLE_LOGIN.md).
+
+## Frontend refresh — 2026-10-31
+
+- Joined the existing left automotive image and right form into one responsive frame. Removed the fixed 832px panel minimum; the desktop image now stretches with the form. Mobile hides decorative imagery to prioritize account access. Kept the existing Poppins typography, ANORCAR wordmark and supplied car image.
+- Scoped the requested navy (#0B1F33), blue (#2563EB) and soft white (#F8FAFC) palette to the account shell, including focus indicators, mode controls and signup roles. Inputs and primary/social buttons use consistent 50px heights.
+- Added `libs/components/account/SocialLoginButtons.tsx` using existing MUI and react-icons dependencies. Login shows Google then Kakao, a separator and an EN/KR/RU coming-soon notice. Both buttons are natively disabled with no authentication handlers. Signup keeps its existing fields and roles.
+- Login/signup helpers, validation, mutation payloads, JWT/session storage, referrer redirects, routing and shared layout remain unchanged. No backend, database, dependencies or OAuth implementation changes.
+- Real OAuth still requires provider configuration, trusted backend exchange/callbacks and integration with the existing account/session contract before enabling these buttons.
+- Extended the existing isolated browser suite to check provider order, disabled buttons, zero social authentication requests, mobile imagery and visible image loading.
+- Verification: Yarn strict typecheck, zero-warning lint and auth-session regression passed. The browser suite passed login/signup at 320/390/768/1024/1440px, KR/RU localization, validation, pending locks, password visibility, error/retry, role payloads, session storage and safe redirects without live auth writes. Desktop and mobile screenshots were visually reviewed and refreshed. Existing Sass import deprecation/cache warnings appear during production compilation.
+- Production `yarn build` passed, including all 82 static-generation tasks. Build also reports shared localized page-data size warnings (including account access); no build errors. Handoff stays in this frontend document to respect the explicitly frontend-only scope; backend documents were read without modification.
+
 The existing `/account/join` page now has a responsive ANORCAR login/signup form. Signup is directly accessible through `/account/join?mode=signup`; the default route opens login. Existing referrer queries survive mode changes.
 
 - Preserved Pages Router, layout HOC, MUI, SCSS, Apollo login/signup operations, JWT storage and 15-minute access/30-day cookie refresh sessions.

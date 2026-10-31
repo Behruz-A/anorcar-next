@@ -7,7 +7,7 @@ export interface Member {
 	memberType: MemberType;
 	memberStatus: MemberStatus;
 	memberAuthType: MemberAuthType;
-	memberPhone: string;
+	memberPhone?: string | null;
 	memberNick: string;
 
 	memberFullName?: string | null;

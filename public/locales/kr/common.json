@@ -1063,5 +1063,13 @@
   "Manage your ANORCAR account.": "ANORCAR 계정을 관리하세요.",
   "The requested page could not be found on ANORCAR.": "요청하신 ANORCAR 페이지를 찾을 수 없습니다.",
   "Explore this {{car}} listing on ANORCAR. View vehicle details, photos, price, and seller information.": "ANORCAR에서 {{car}} 매물을 살펴보세요. 차량 상세 정보, 사진, 가격과 판매자 정보를 확인하세요.",
-  "View {{agent}} on ANORCAR. Explore their car listings and public agent profile.": "ANORCAR에서 {{agent}} 에이전트를 만나보세요. 차량 매물과 공개 프로필을 확인하세요."
+  "View {{agent}} on ANORCAR. Explore their car listings and public agent profile.": "ANORCAR에서 {{agent}} 에이전트를 만나보세요. 차량 매물과 공개 프로필을 확인하세요.",
+  "or continue with": "또는 다음으로 계속",
+  "Continue with Google": "Google로 계속하기",
+  "Continue with Kakao": "카카오로 계속하기",
+  "Google and Kakao sign-in coming soon.": "Google 및 카카오 로그인은 준비 중입니다.",
+  "Kakao sign-in coming soon.": "카카오 로그인은 준비 중입니다.",
+  "Signing you in...": "로그인 중입니다...",
+  "Google sign-in could not be completed. Please try again.": "Google 로그인을 완료하지 못했습니다. 다시 시도해 주세요.",
+  "Back to log in": "로그인으로 돌아가기"
 }

@@ -1,5 +1,17 @@
 import { gql } from '@apollo/client';
 
+export const START_GOOGLE_LOGIN = gql`
+ mutation StartGoogleLogin($input: GoogleLoginInput!) {
+  startGoogleLogin(input: $input)
+ }
+`;
+
+export const COMPLETE_GOOGLE_LOGIN = gql`
+ mutation CompleteGoogleLogin($code: String!) {
+  completeGoogleLogin(code: $code) { accessToken returnTo }
+ }
+`;
+
 export const ASK_AI_ASSISTANT = gql`
 	mutation AskAiAssistant($input: AiChatInput!) {
 		askAiAssistant(input: $input) { answer }
