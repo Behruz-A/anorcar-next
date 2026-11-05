@@ -6,9 +6,10 @@ import { useTranslation } from 'next-i18next';
 interface SocialLoginButtonsProps {
  disabled: boolean;
  onGoogleLogin: () => void;
+ onKakaoLogin: () => void;
 }
 
-const SocialLoginButtons = ({ disabled, onGoogleLogin }: SocialLoginButtonsProps) => {
+const SocialLoginButtons = ({ disabled, onGoogleLogin, onKakaoLogin }: SocialLoginButtonsProps) => {
  const { t } = useTranslation('common');
 
  return (
@@ -17,10 +18,10 @@ const SocialLoginButtons = ({ disabled, onGoogleLogin }: SocialLoginButtonsProps
    <Button className="auth-social-button auth-google" variant="outlined" disabled={disabled} onClick={onGoogleLogin} startIcon={<FcGoogle aria-hidden="true" />}>
     {t('Continue with Google')}
    </Button>
-   <Button className="auth-social-button auth-kakao" variant="contained" disabled startIcon={<RiKakaoTalkFill aria-hidden="true" />}>
+   <Button className="auth-social-button auth-kakao" variant="contained" disabled={disabled} onClick={onKakaoLogin} startIcon={<RiKakaoTalkFill aria-hidden="true" />}>
     {t('Continue with Kakao')}
    </Button>
-   <p id="auth-social-notice" className="auth-social-notice">{t('Kakao sign-in coming soon.')}</p>
+   <p id="auth-social-notice" className="auth-social-notice">{t('Your first social sign-in creates an account. You can edit your profile afterwards.')}</p>
   </div>
  );
 };

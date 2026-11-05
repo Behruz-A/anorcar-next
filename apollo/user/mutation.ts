@@ -1,5 +1,17 @@
 import { gql } from '@apollo/client';
 
+export const START_KAKAO_LOGIN = gql`
+ mutation StartKakaoLogin($input: KakaoLoginInput!) {
+  startKakaoLogin(input: $input)
+ }
+`;
+
+export const COMPLETE_KAKAO_LOGIN = gql`
+ mutation CompleteKakaoLogin($code: String!) {
+  completeKakaoLogin(code: $code) { accessToken returnTo }
+ }
+`;
+
 export const START_GOOGLE_LOGIN = gql`
  mutation StartGoogleLogin($input: GoogleLoginInput!) {
   startGoogleLogin(input: $input)

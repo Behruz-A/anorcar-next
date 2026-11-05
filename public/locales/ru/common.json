@@ -1071,5 +1071,7 @@
   "Kakao sign-in coming soon.": "Вход через Kakao скоро появится.",
   "Signing you in...": "Выполняется вход...",
   "Google sign-in could not be completed. Please try again.": "Не удалось войти через Google. Попробуйте ещё раз.",
-  "Back to log in": "Вернуться ко входу"
+  "Back to log in": "Вернуться ко входу",
+  "Kakao sign-in could not be completed. Please try again.": "Не удалось войти через Kakao. Попробуйте ещё раз.",
+  "Your first social sign-in creates an account. You can edit your profile afterwards.": "При первом входе через социальную сеть создаётся аккаунт. Профиль можно изменить позже."
 }

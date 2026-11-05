@@ -10,7 +10,7 @@
 		"lint": "eslint pages libs apollo --ext .ts,.tsx --max-warnings 0",
 		"changelog": "standard-version --skip.tag",
 		"typecheck": "tsc --noEmit --incremental false --noUnusedLocals --noUnusedParameters",
-		"test:auth": "node scripts/check-auth-session.cjs",
+		"test:auth": "node scripts/check-auth-session.cjs && node scripts/check-social-auth.cjs",
 		"test:chat": "node scripts/check-firebase-chat.cjs",
 		"test:cache": "node scripts/check-apollo-cache.cjs && node scripts/check-like-updates.cjs",
 		"test:migration": "node scripts/check-car-migration.cjs",

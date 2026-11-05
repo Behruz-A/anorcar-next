@@ -12,7 +12,7 @@ import { logIn, signUp } from '../../libs/auth';
 import { MemberType } from '../../libs/enums/member.enum';
 import { Message } from '../../libs/enums/common.enum';
 import SocialLoginButtons from '../../libs/components/account/SocialLoginButtons';
-import { startGoogleLogin } from '../../libs/auth/google';
+import { startSocialLogin, socialLoginError, SocialProvider } from '../../libs/auth/social';
 
 export const getStaticProps = async ({ locale }: any) => ({
  props: { ...(await serverSideTranslations(locale, ['common'])) },
@@ -42,18 +42,19 @@ const Join: NextPage = () => {
 
  useEffect(() => {
   if (router.isReady && router.query.google === 'error') setError('Google sign-in could not be completed. Please try again.');
- }, [router.isReady, router.query.google]);
+  if (router.isReady && router.query.kakao === 'error') setError('Kakao sign-in could not be completed. Please try again.');
+ }, [router.isReady, router.query.google, router.query.kakao]);
 
- const googleLogin = async () => {
+ const socialLogin = async (provider: SocialProvider) => {
   if (submitting.current) return;
   submitting.current = true;
   setPending(true);
   setError('');
   try {
    const referrer = typeof router.query.referrer === 'string' ? router.query.referrer : undefined;
-   window.location.assign(await startGoogleLogin(router.locale, referrer));
+   window.location.assign(await startSocialLogin(provider, router.locale, referrer));
   } catch {
-   setError('Google sign-in could not be completed. Please try again.');
+   setError(socialLoginError(provider));
    submitting.current = false;
    setPending(false);
   }
@@ -172,7 +173,7 @@ const Join: NextPage = () => {
        <Button className="auth-submit" type="submit" variant="contained" disabled={pending} startIcon={pending ? <CircularProgress size={18} color="inherit" /> : undefined}>{t(pending ? (signup ? 'Creating account...' : 'Logging in...') : (signup ? 'Create account' : 'Log in'))}</Button>
       </fieldset>
      </form>
-     {!signup && <SocialLoginButtons disabled={pending} onGoogleLogin={googleLogin} />}
+     <SocialLoginButtons disabled={pending} onGoogleLogin={() => void socialLogin('google')} onKakaoLogin={() => void socialLogin('kakao')} />
      <p className="auth-switch">{t(signup ? 'Already have an account?' : 'New to ANORCAR?')} <button type="button" disabled={pending} onClick={switchMode}>{t(signup ? 'Log in' : 'Sign up')}</button></p>
      <p className="auth-help"><Link href="/cs">{t('Need help signing in?')}</Link></p>
     </div>

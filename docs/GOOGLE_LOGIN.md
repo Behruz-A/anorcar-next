@@ -1,6 +1,6 @@
 # Google sign-in integration
 
-Google sign-in is connected to the existing ANORCAR backend and access/refresh session contract. Kakao remains disabled. Nickname/password login and signup remain available.
+Google sign-in is connected to the existing ANORCAR backend and access/refresh session contract. Google and Kakao now appear on both login and signup; see [SOCIAL_LOGIN.md](SOCIAL_LOGIN.md) for Kakao setup and current verification. Nickname/password login and signup remain available.
 
 ## Local setup
 

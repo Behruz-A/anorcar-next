@@ -2,7 +2,7 @@
 
 ## Google authentication enabled
 
-Google now starts real backend OAuth and returns through the localized callback page to the existing JWT/refresh session system. Kakao remains disabled. The earlier frontend-only coming-soon notes below describe historical UI phases. Implementation, configuration, tests and production handoff: [GOOGLE_LOGIN.md](GOOGLE_LOGIN.md).
+Google and Kakao are available on both login and signup and return through localized callback pages to the existing JWT/refresh session system. The first provider sign-in creates a buyer account. Kakao application configuration is still required; see [SOCIAL_LOGIN.md](SOCIAL_LOGIN.md). The earlier coming-soon notes below describe historical UI phases.
 
 ## Frontend refresh — 2026-10-31
 

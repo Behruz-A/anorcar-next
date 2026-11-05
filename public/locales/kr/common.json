@@ -1071,5 +1071,7 @@
   "Kakao sign-in coming soon.": "카카오 로그인은 준비 중입니다.",
   "Signing you in...": "로그인 중입니다...",
   "Google sign-in could not be completed. Please try again.": "Google 로그인을 완료하지 못했습니다. 다시 시도해 주세요.",
-  "Back to log in": "로그인으로 돌아가기"
+  "Back to log in": "로그인으로 돌아가기",
+  "Kakao sign-in could not be completed. Please try again.": "카카오 로그인을 완료하지 못했습니다. 다시 시도해 주세요.",
+  "Your first social sign-in creates an account. You can edit your profile afterwards.": "소셜 계정으로 처음 로그인하면 계정이 생성됩니다. 프로필은 나중에 수정할 수 있습니다."
 }
